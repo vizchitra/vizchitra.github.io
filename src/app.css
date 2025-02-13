@@ -1,6 +1,14 @@
 @import 'tailwindcss';
 @import '@fontsource/fira-mono';
 
+@font-face {
+	font-family: 'Cairo';
+	src: url('./lib/fonts/Cairo-VariableFont.ttf') format('truetype');
+	font-weight: 200 1000;
+	font-style: oblique -11deg 11deg;
+	font-display: swap;
+}
+
 :root {
 	--font-body:
 		Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
@@ -24,7 +32,6 @@ body {
 	background-attachment: fixed;
 	background-color: var(--color-bg-0);
 	background-size: 100vw 100vh;
-	
 	overflow-x: hidden;
 }
 
@@ -110,4 +117,8 @@ button:focus:not(:focus-visible) {
 	margin-left: calc(50% - 50vw);
 	margin-right: calc(50% - 50vw);
 	position: relative;
+}
+
+.slanted-text {
+	font-variation-settings: 'slnt' var(--letter-slant);
 }
