@@ -1,12 +1,10 @@
 <script>
 	import { scaleLinear, Delaunay } from 'd3';
-	import { onMount } from 'svelte';
-	import { createNoise2D } from 'simplex-noise';
+	import { MousePointer2 } from 'lucide-svelte';
 
 	// Constants
 	const POINT_COUNT = 160;
-	const NOISE_SCALE = 0.008; // Controls how smooth the noise is
-	const MOVEMENT_SPEED = 0.00005; // Controls how fast points move
+	const CURSOR_SIZE = 24;
 	const colors = [
 		'#FF9EAA', // pink
 		'#87CEEB', // light blue
@@ -17,40 +15,32 @@
 
 	let width, height;
 	let voronoi;
-	let intersections = [];
-	let time = 0;
-	const noise2D = createNoise2D();
+	let cursorX = 0;
+	let cursorY = 0;
 
-	// Add a store for animation state
-	let animationFrame;
-
-	// Generate initial random data with position and noise offset
+	// Generate initial random data
 	let data = Array.from({ length: POINT_COUNT }).map(() => ({
 		a: Math.random(),
-		b: Math.random(),
-		offsetX: Math.random() * 1000,
-		offsetY: Math.random() * 1000
+		b: Math.random()
 	}));
 
 	const getColor = (index) => colors[index % colors.length];
 
 	function handleMouseMove(event) {
 		const { layerX, layerY } = event;
-		// Convert screen coordinates back to our data space
-		const a = xScale.invert(layerX);
-		const b = yScale.invert(layerY);
+		cursorX = layerX;
+		cursorY = layerY;
 
 		// Update the first point's position
+		const a = xScale.invert(layerX);
+		const b = yScale.invert(layerY);
 		data[0].a = a;
 		data[0].b = b;
-
-		// Force reactivity
 		data = data;
 	}
 
 	function findIntersections(cells) {
 		const vertices = new Set();
-
 		cells.forEach((cell) => {
 			if (!cell) return;
 			cell.forEach((point) => {
@@ -65,43 +55,13 @@
 		});
 	}
 
-	// Animate points using noise
-	function animate() {
-		time += 1;
-
-		data.forEach((point, i) => {
-			if (i === 0) return; // Skip the first point (mouse-controlled)
-
-			// Apply noise-based movement
-			const noiseX = noise2D(point.offsetX + time * NOISE_SCALE, 0) * MOVEMENT_SPEED;
-			const noiseY = noise2D(0, point.offsetY + time * NOISE_SCALE) * MOVEMENT_SPEED;
-
-			point.a = (point.a + noiseX + 1) % 1;
-			point.b = (point.b + noiseY + 1) % 1;
-		});
-
-		// Force a reactive update by reassigning data
-		data = data;
-
-		animationFrame = requestAnimationFrame(animate);
-	}
-
-	onMount(() => {
-		animate();
-		return () => {
-			if (animationFrame) {
-				cancelAnimationFrame(animationFrame);
-			}
-		};
-	});
-
 	$: xScale = scaleLinear()
 		.domain([0, 1])
-		.range([50, width - 50]); // Adding padding
+		.range([50, width - 50]);
 
 	$: yScale = scaleLinear()
 		.domain([0, 1])
-		.range([50, height - 50]); // Adding padding
+		.range([50, height - 50]);
 
 	$: renderedData = data.map((d) => ({
 		x: xScale(d.a),
@@ -115,8 +75,6 @@
 			(d) => d.y
 		);
 		voronoi = delaunay.voronoi([0, 0, width, height]);
-		// Update intersections whenever voronoi updates
-		intersections = findIntersections([...voronoi.cellPolygons()]);
 	}
 </script>
 
@@ -125,7 +83,7 @@
 	bind:clientHeight={height}
 	on:mousemove={handleMouseMove}
 	role="banner"
-	class="relative h-screen"
+	class="relative h-screen cursor-none"
 >
 	<svg viewBox="0 0 {width} {height}" preserveAspectRatio="xMidYMid meet">
 		{#if voronoi}
@@ -133,12 +91,19 @@
 				{#each renderedData as _, i}
 					<path class="polygon" d={voronoi.renderCell(i)} style="stroke: {getColor(i)}" />
 				{/each}
-				{#each intersections as point}
+				{#each findIntersections([...voronoi.cellPolygons()]) as point}
 					<circle class="node" cx={point.x} cy={point.y} r="3" />
 				{/each}
 			</g>
 		{/if}
 	</svg>
+
+	<div
+		class="custom-cursor"
+		style="transform: translate({cursorX - CURSOR_SIZE / 2}px, {cursorY - CURSOR_SIZE / 2}px)"
+	>
+		<MousePointer2 size={CURSOR_SIZE} class="cursor-icon" />
+	</div>
 </div>
 
 <style>
@@ -166,5 +131,22 @@
 		fill: none;
 		stroke-width: 2;
 		vector-effect: non-scaling-stroke;
+	}
+
+	.custom-cursor {
+		position: absolute;
+		top: 0;
+		left: 0;
+		pointer-events: none;
+		will-change: transform;
+	}
+
+	:global(.cursor-icon) {
+		color: white;
+		filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+	}
+
+	.relative {
+		cursor: none;
 	}
 </style>
