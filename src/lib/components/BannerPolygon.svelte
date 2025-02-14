@@ -25,9 +25,11 @@
 	}
 
 	const POINT_COUNT = 150;
+	const MOBILE_POINT_COUNT = 50;
 	const CURSOR_SIZE = 24;
 	const CURSOR_TIMEOUT = 10000;
 	const UPDATE_INTERVAL = 16;
+	const MOBILE_BREAKPOINT = 768;
 	const colors = [
 		'#ee88b3', // pink
 		'#a8bdf0', // light blue
@@ -35,6 +37,9 @@
 		'#ffd485', // yellow
 		'#f89f72' // light salmon
 	];
+
+	const getPointCount = () =>
+		window.innerWidth < MOBILE_BREAKPOINT ? MOBILE_POINT_COUNT : POINT_COUNT;
 
 	const staticPoints: Point[] = Array.from({ length: POINT_COUNT }, () => ({
 		x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
@@ -97,6 +102,30 @@
 				JSON.stringify({
 					x: layerX / width,
 					y: layerY / height
+				})
+			);
+		}
+
+		updateDataWithCursors();
+	}
+
+	function handleTouchMove(event: TouchEvent) {
+		event.preventDefault();
+		const touch = event.touches[0];
+		if (!touch) return;
+
+		const rect = canvas.getBoundingClientRect();
+		const x = touch.clientX - rect.left;
+		const y = touch.clientY - rect.top;
+
+		cursorX = x;
+		cursorY = y;
+
+		if (socket?.readyState === WebSocket.OPEN) {
+			socket.send(
+				JSON.stringify({
+					x: x / width,
+					y: y / height
 				})
 			);
 		}
@@ -259,8 +288,10 @@
 	bind:clientWidth={width}
 	bind:clientHeight={height}
 	on:mousemove={handleMouseMove}
+	on:touchmove|preventDefault={handleTouchMove}
+	on:touchstart|preventDefault={handleTouchMove}
 	role="banner"
-	class="relative h-screen cursor-none"
+	class="relative h-[100svh] cursor-none"
 >
 	<canvas bind:this={canvas} {width} {height} class="absolute inset-0 h-full w-full" />
 
@@ -299,6 +330,9 @@
 		left: 0;
 		pointer-events: none;
 		will-change: transform;
+		@media (max-width: 768px) {
+			display: none;
+		}
 	}
 
 	:global(.cursor-icon) {
@@ -355,5 +389,21 @@
 
 	.relative {
 		cursor: none;
+	}
+
+	@media (max-width: 768px) {
+		.cursor-info {
+			font-size: 0.5rem;
+			left: 12px;
+			padding: 0.05rem 0.15rem;
+		}
+
+		.flag {
+			font-size: 0.75rem;
+		}
+
+		.location {
+			font-size: 0.5rem;
+		}
 	}
 </style>

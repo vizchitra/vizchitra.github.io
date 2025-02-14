@@ -10,22 +10,29 @@
 <svelte:head>
 	<title>Home</title>
 	<meta name="description" content="Svelte demo app" />
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+	/>
 </svelte:head>
 
 <div class="banner-container full-bleed relative">
 	<BannerPolygon />
 	<div
-		class="logo-container pointer-events-none absolute top-1/2 left-1/2 mb-2 flex -translate-x-1/2 -translate-y-1/2 items-center gap-0 rounded-md bg-white px-8 py-4 shadow-lg"
+		class="logo-container pointer-events-none absolute top-1/2 left-1/2 mb-2 flex max-w-[90vw] -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-4 rounded-md bg-white px-4 py-4 shadow-lg md:max-w-none md:flex-row md:gap-0 md:px-8"
 	>
-		<div class="logo w-[150px]">
+		<div class="logo w-[120px] md:w-[150px]">
 			{@html VizchitraLogo}
 		</div>
 
 		<h3
-			class="tagline max-w-[20ch] border-l-2 border-black pl-5 text-[1.6rem] leading-none uppercase"
+			class="tagline max-w-[20ch] border-black text-center text-[1.2rem] leading-none uppercase md:border-l-2 md:pl-5 md:text-left md:text-[1.6rem]"
 		>
 			{#each formatSlantedText('A SPACE TO CONNECT AND CREATE WITH DATA') as letter}
-				<span class="slanted-text text-[24px]" style="--letter-slant: {letter.slant}">
+				<span
+					class="slanted-text text-[18px] md:text-[24px]"
+					style="--letter-slant: {letter.slant}"
+				>
 					{letter.letter}
 				</span>
 			{/each}
@@ -33,62 +40,65 @@
 	</div>
 </div>
 
-<div class="mt-20 flex flex-col items-start gap-10">
+<div class="mt-10 flex flex-col items-start gap-6 px-4 md:mt-20 md:gap-10 md:px-0">
 	<div class="content flex flex-col gap-2">
-		<h2 class="font-display font-bold">OUR MISSION</h2>
+		<h2 class="font-display text-[1.5rem] font-bold md:text-[2rem]">OUR MISSION</h2>
 
-		<p class="mb-4 max-w-[55ch] text-[22px]">
+		<p class="mb-4 max-w-[55ch] text-[18px] md:text-[22px]">
 			To foster a vibrant <span class="font-semibold">community of data storytellers in India</span
 			>, bridging technical analysis & design expertise to shape perspectives & drive change
 		</p>
 
-		<p class="mx-auto mb-8">
+		<p class="mx-auto mb-6 text-center md:mb-8">
 			{#each formatSlantedText('AN INDIAN DATA VISUALIZATION COMMUNITY') as letter}
-				<span class="slanted-text text-[24px]" style="--letter-slant: {letter.slant}">
+				<span
+					class="slanted-text text-[18px] md:text-[24px]"
+					style="--letter-slant: {letter.slant}"
+				>
 					{letter.letter}
 				</span>
 			{/each}
 		</p>
 
 		<div class="pillars">
-			<p class="mb-1 max-w-[55ch] text-[22px]">
+			<p class="mb-1 max-w-[55ch] text-[18px] md:text-[22px]">
 				The VizChitra community plans to drive this using these three main pillars of work:
 			</p>
-			<ol>
-				<li class="mb-[8px]">
-					<h3 class="font-display block text-[22px] leading-[1.5] font-bold">
+			<ol class="space-y-4 md:space-y-2">
+				<li>
+					<h3 class="font-display text-[18px] leading-[1.5] font-bold md:text-[22px]">
 						1. Consider & Curate:
 					</h3>
-					<p class="text-[22px]">
+					<p class="text-[16px] md:text-[22px]">
 						Build a rhythm of curated events to spread the practice of data visualisation
 					</p>
 				</li>
-				<li class="mb-[8px]">
-					<h3 class="font-display block text-[22px] leading-[1.5] font-bold">
+				<li>
+					<h3 class="font-display text-[18px] leading-[1.5] font-bold md:text-[22px]">
 						2. Cultivate & Care:
 					</h3>
-					<p class="text-[22px]">
+					<p class="text-[16px] md:text-[22px]">
 						Nurture a fertile space for learning & sharing of data visualisation skills
 					</p>
 				</li>
-				<li class="mb-[8px]">
-					<h3 class="font-display block text-[22px] leading-[1.5] font-bold">
+				<li>
+					<h3 class="font-display text-[18px] leading-[1.5] font-bold md:text-[22px]">
 						3. Create & Collaborate:
 					</h3>
-					<p class="text-[22px]">
+					<p class="text-[16px] md:text-[22px]">
 						Express and co-create to push the boundaries of data visualization
 					</p>
 				</li>
 			</ol>
 		</div>
 
-		<PolygonDivider></PolygonDivider>
+		<PolygonDivider />
 	</div>
 </div>
 
 <style>
 	.banner-container {
-		height: 100vh;
+		height: 100svh;
 		width: 100vw;
 		position: relative;
 	}
@@ -99,9 +109,16 @@
 		position: absolute;
 		left: 0;
 		right: 0;
-		height: 40vh;
+		height: 25vh;
 		pointer-events: none;
 		z-index: 1;
+	}
+
+	@media (min-width: 768px) {
+		.banner-container::before,
+		.banner-container::after {
+			height: 40vh;
+		}
 	}
 
 	.banner-container::before {
