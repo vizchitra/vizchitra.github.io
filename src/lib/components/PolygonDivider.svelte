@@ -52,7 +52,7 @@
 	});
 </script>
 
-<div class="divider-container w-full" bind:clientWidth={width}>
+<div class="divider-container my-5 w-full" bind:clientWidth={width}>
 	<svg {width} {height} viewBox="0 0 {width} {height}" preserveAspectRatio="xMidYMid meet">
 		{#each lines as line}
 			<line

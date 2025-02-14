@@ -37,7 +37,7 @@
 	<div class="content flex flex-col gap-2">
 		<h1>
 			{#each formatSlantedText('VIZCHITRA') as letter}
-				<span class="slanted-text text-[3 rem] font-bold" style="--letter-slant: {letter.slant}">
+				<span class="slanted-text text-[3rem] font-bold" style="--letter-slant: {letter.slant}">
 					{letter.letter}
 				</span>
 			{/each}
@@ -117,6 +117,30 @@
 				</li>
 			</ol>
 		</div>
+
+		<PolygonDivider></PolygonDivider>
+
+		<h2 class="font-display mt-5 !text-[2rem] font-bold">VIZCHITRA 2025</h2>
+
+		<p class="mb-4 max-w-[55ch] text-[22px]">One day of talks & dialogues & One day of workshops</p>
+
+		<div class="mb-10 flex flex-row">
+			<div class="w-[50%]">
+				<h3 class="font-display block text-[22px] leading-[1.5] font-bold">CONFERENCE DAY</h3>
+				<p class="mb-1 max-w-[55ch] text-[22px]">
+					27th June, 2025 <br />
+					Bangalore International Center
+				</p>
+			</div>
+			<div class="w-[50%]">
+				<h3 class="font-display block text-[22px] leading-[1.5] font-bold">WORKSHOP DAY</h3>
+				<p class="mb-1 max-w-[55ch] text-[22px]">
+					28th June, 2025 <br />
+					Across Bengaluru
+				</p>
+			</div>
+		</div>
+		[LINK TO HASGEEK]
 
 		<PolygonDivider></PolygonDivider>
 	</div>
