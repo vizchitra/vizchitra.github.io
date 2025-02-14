@@ -93,6 +93,9 @@
 	}
 
 	function handleMouseMove(event: MouseEvent) {
+		// Only handle mouse moves if not scrolling/dragging
+		if (event.buttons) return; // Skip if any mouse button is pressed
+
 		const { layerX, layerY } = event;
 		cursorX = layerX;
 		cursorY = layerY;
@@ -110,7 +113,7 @@
 	}
 
 	function handleTouchMove(event: TouchEvent) {
-		event.preventDefault();
+		// Don't prevent default behavior anymore to allow scrolling
 		const touch = event.touches[0];
 		if (!touch) return;
 
@@ -288,10 +291,10 @@
 	bind:clientWidth={width}
 	bind:clientHeight={height}
 	on:mousemove={handleMouseMove}
-	on:touchmove|preventDefault={handleTouchMove}
-	on:touchstart|preventDefault={handleTouchMove}
+	on:touchmove={handleTouchMove}
+	on:touchstart={handleTouchMove}
 	role="banner"
-	class="relative h-[100svh] cursor-none"
+	class="relative h-full cursor-none"
 >
 	<canvas bind:this={canvas} {width} {height} class="absolute inset-0 h-full w-full" />
 

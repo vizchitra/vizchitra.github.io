@@ -34,7 +34,6 @@ type ConnectionWithCursor = Party.Connection & { cursor?: Cursor };
 
 export default class CursorServer implements Party.Server {
 	private cursorCache = new Map<string, Cursor>();
-	private readonly MAX_CURSORS_TO_SHOW = 100;
 
 	constructor(public party: Party.Party) {}
 	options: Party.ServerOptions = {
@@ -59,17 +58,12 @@ export default class CursorServer implements Party.Server {
 
 		this.cursorCache.set(websocket.id, cursor);
 
-		// Get all cursors with positions, sorted by last update
-		const activeCursors = Array.from(this.cursorCache.entries())
-			.filter(
-				([id, cursor]) =>
-					id !== websocket.id && cursor?.x !== undefined && cursor?.lastUpdate !== undefined
-			)
-			.sort((a, b) => (b[1].lastUpdate || 0) - (a[1].lastUpdate || 0))
-			.slice(0, this.MAX_CURSORS_TO_SHOW);
-
-		// Convert to record object
-		const cursors: Record<string, Cursor> = Object.fromEntries(activeCursors);
+		const cursors: Record<string, Cursor> = {};
+		for (const [id, existingCursor] of this.cursorCache.entries()) {
+			if (id !== websocket.id && existingCursor?.x !== undefined) {
+				cursors[id] = existingCursor;
+			}
+		}
 
 		websocket.send(JSON.stringify({ type: 'sync', cursors }));
 	}
@@ -85,23 +79,13 @@ export default class CursorServer implements Party.Server {
 		cursor.lastUpdate = Date.now();
 		this.cursorCache.set(websocket.id, cursor);
 
-		// Get most recent cursors up to MAX_CURSORS_TO_SHOW
-		const activeCursors = Array.from(this.cursorCache.entries())
-			.filter(([id, cursor]) => cursor?.x !== undefined && cursor?.lastUpdate !== undefined)
-			.sort((a, b) => (b[1].lastUpdate || 0) - (a[1].lastUpdate || 0))
-			.slice(0, this.MAX_CURSORS_TO_SHOW);
-
-		// Only broadcast to clients who should see this cursor
-		const clientsToNotify = activeCursors.map(([id]) => id);
-
 		const updateMessage: UpdateMessage = {
 			type: 'update',
 			id: websocket.id,
 			...cursor
 		};
 
-		// Broadcast to all clients that should see this cursor, except the sender
-		this.party.broadcast(JSON.stringify(updateMessage), [websocket.id, ...clientsToNotify]);
+		this.party.broadcast(JSON.stringify(updateMessage), [websocket.id]);
 	}
 
 	onClose(websocket: Party.Connection) {

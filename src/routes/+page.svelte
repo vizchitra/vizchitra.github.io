@@ -16,7 +16,7 @@
 	/>
 </svelte:head>
 
-<div class="banner-container full-bleed relative">
+<div class="banner-container full-bleed relative h-[100svh]">
 	<BannerPolygon />
 	<div
 		class="logo-container pointer-events-none absolute top-1/2 left-1/2 mb-2 flex max-w-[90vw] -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-4 rounded-md bg-white px-4 py-4 shadow-lg md:max-w-none md:flex-row md:gap-0 md:px-8"
@@ -98,7 +98,6 @@
 
 <style>
 	.banner-container {
-		height: 100svh;
 		width: 100vw;
 		position: relative;
 	}
