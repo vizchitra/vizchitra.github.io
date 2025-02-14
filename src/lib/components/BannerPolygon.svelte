@@ -6,8 +6,8 @@
 	import { browser } from '$app/environment';
 
 	interface Point {
-		a: number;
-		b: number;
+		x: number;
+		y: number;
 	}
 
 	interface LocationInfo {
@@ -35,8 +35,8 @@
 	];
 
 	const staticPoints: Point[] = Array.from({ length: POINT_COUNT }, () => ({
-		a: Math.random(),
-		b: Math.random()
+		x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
+		y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000)
 	}));
 
 	let width = 0;
@@ -46,7 +46,7 @@
 	let cursorY = 0;
 	let socket: PartySocket;
 	let otherCursors: Record<string, CursorInfo> = {};
-	let data: Point[] = [...staticPoints];
+	let points: Point[] = [...staticPoints];
 
 	const getColor = (index: number) => colors[index % colors.length];
 
@@ -71,36 +71,24 @@
 	const isCursorActive = (cursor: CursorInfo): boolean =>
 		!!cursor.lastActive && Date.now() - cursor.lastActive < CURSOR_TIMEOUT;
 
-	let rafId: number | null = null;
-	let voronoiRafId: number | null = null;
-	let lastVoronoiUpdate = 0;
-	const VORONOI_UPDATE_INTERVAL = 10;
-
 	function updateDataWithCursors() {
 		if (!width || !height || !browser) return;
 
-		data = [
-			{ a: xScale.invert(cursorX), b: yScale.invert(cursorY) },
+		points = [
+			{ x: cursorX, y: cursorY },
 			...Object.values(otherCursors).map((cursor) => ({
-				a: xScale.invert(cursor.x * width),
-				b: yScale.invert(cursor.y * height)
+				x: cursor.x * width,
+				y: cursor.y * height
 			})),
 			...staticPoints
 		];
 
-		const now = Date.now();
-		if (now - lastVoronoiUpdate > VORONOI_UPDATE_INTERVAL) {
-			if (voronoiRafId) cancelAnimationFrame(voronoiRafId);
-			voronoiRafId = requestAnimationFrame(() => {
-				lastVoronoiUpdate = now;
-				const delaunay = Delaunay.from(
-					renderedData,
-					(d: Point) => d.x,
-					(d: Point) => d.y
-				);
-				voronoi = delaunay.voronoi([0, 0, width, height]);
-			});
-		}
+		const delaunay = Delaunay.from(
+			points,
+			(d) => d.x,
+			(d) => d.y
+		);
+		voronoi = delaunay.voronoi([0, 0, width, height]);
 	}
 
 	function handleMouseMove(event: MouseEvent) {
@@ -117,23 +105,27 @@
 			);
 		}
 
-		if (rafId) cancelAnimationFrame(rafId);
-		rafId = requestAnimationFrame(updateDataWithCursors);
+		updateDataWithCursors();
 	}
 
 	function findIntersections(cells: any[]) {
-		const vertices = new Set<string>();
-		cells.forEach((cell) => {
-			if (!cell) return;
-			cell.forEach((point: number[]) => {
-				vertices.add(`${((point[0] * 100) | 0) / 100},${((point[1] * 100) | 0) / 100}`);
-			});
-		});
+		const vertices = new Map<string, { x: number; y: number }>();
 
-		return Array.from(vertices, (v) => {
-			const [x, y] = v.split(',').map(Number);
-			return { x, y };
-		});
+		for (const cell of cells) {
+			if (!cell) continue;
+
+			for (const point of cell) {
+				const x = Math.round(point[0] * 10) / 10;
+				const y = Math.round(point[1] * 10) / 10;
+				const key = `${x},${y}`;
+
+				if (!vertices.has(key)) {
+					vertices.set(key, { x, y });
+				}
+			}
+		}
+
+		return Array.from(vertices.values());
 	}
 
 	onMount(() => {
@@ -168,15 +160,13 @@
 					break;
 			}
 
-			if (rafId) cancelAnimationFrame(rafId);
-			rafId = requestAnimationFrame(updateDataWithCursors);
+			updateDataWithCursors();
 		});
 	});
 
 	onDestroy(() => {
 		socket?.close();
-		if (rafId) cancelAnimationFrame(rafId);
-		if (voronoiRafId) cancelAnimationFrame(voronoiRafId);
+		if (socket) cancelAnimationFrame(socket);
 	});
 
 	$: xScale = scaleLinear()
@@ -185,12 +175,6 @@
 	$: yScale = scaleLinear()
 		.domain([0, 1])
 		.range([50, height - 50]);
-	$: renderedData = data.map(
-		(d: Point): Point => ({
-			x: xScale(d.a),
-			y: yScale(d.b)
-		})
-	);
 </script>
 
 <div
@@ -203,14 +187,14 @@
 	<svg viewBox="0 0 {width} {height}" preserveAspectRatio="xMidYMid meet">
 		{#if voronoi}
 			<g>
-				{#each renderedData.slice(0, Object.keys(otherCursors).length + 1) as _, i}
+				{#each points.slice(0, Object.keys(otherCursors).length + 1) as _, i}
 					<path
 						class="polygon cursor-polygon"
 						d={voronoi.renderCell(i)}
 						style="stroke: {getColor(i)}"
 					/>
 				{/each}
-				{#each renderedData.slice(Object.keys(otherCursors).length + 1) as _, i (i)}
+				{#each points.slice(Object.keys(otherCursors).length + 1) as _, i (i)}
 					<path
 						class="polygon static-polygon"
 						d={voronoi.renderCell(i + Object.keys(otherCursors).length + 1)}
