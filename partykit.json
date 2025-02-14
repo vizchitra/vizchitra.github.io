@@ -1,6 +1,6 @@
 {
-  "$schema": "https://www.partykit.io/schema.json",
-  "name": "site-party",
-  "main": "party/index.ts",
-  "compatibilityDate": "2025-02-13"
+	"$schema": "https://www.partykit.io/schema.json",
+	"name": "vizchitra-cursors",
+	"main": "src/partykit/server.ts",
+	"compatibilityDate": "2025-02-13"
 }
