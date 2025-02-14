@@ -51,4 +51,10 @@
 			padding: 12px 0;
 		}
 	}
+
+	@media (max-width: 768px) {
+		main {
+			max-width: 100%;
+		}
+	}
 </style>

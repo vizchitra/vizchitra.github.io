@@ -25,9 +25,11 @@
 	}
 
 	const POINT_COUNT = 150;
+	const MOBILE_POINT_COUNT = 50;
 	const CURSOR_SIZE = 24;
 	const CURSOR_TIMEOUT = 10000;
 	const UPDATE_INTERVAL = 16;
+	const MOBILE_BREAKPOINT = 768;
 	const colors = [
 		'#ee88b3', // pink
 		'#a8bdf0', // light blue
@@ -35,6 +37,9 @@
 		'#ffd485', // yellow
 		'#f89f72' // light salmon
 	];
+
+	const getPointCount = () =>
+		window.innerWidth < MOBILE_BREAKPOINT ? MOBILE_POINT_COUNT : POINT_COUNT;
 
 	const staticPoints: Point[] = Array.from({ length: POINT_COUNT }, () => ({
 		x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
@@ -88,6 +93,9 @@
 	}
 
 	function handleMouseMove(event: MouseEvent) {
+		// Only handle mouse moves if not scrolling/dragging
+		if (event.buttons) return; // Skip if any mouse button is pressed
+
 		const { layerX, layerY } = event;
 		cursorX = layerX;
 		cursorY = layerY;
@@ -97,6 +105,30 @@
 				JSON.stringify({
 					x: layerX / width,
 					y: layerY / height
+				})
+			);
+		}
+
+		updateDataWithCursors();
+	}
+
+	function handleTouchMove(event: TouchEvent) {
+		// Don't prevent default behavior anymore to allow scrolling
+		const touch = event.touches[0];
+		if (!touch) return;
+
+		const rect = canvas.getBoundingClientRect();
+		const x = touch.clientX - rect.left;
+		const y = touch.clientY - rect.top;
+
+		cursorX = x;
+		cursorY = y;
+
+		if (socket?.readyState === WebSocket.OPEN) {
+			socket.send(
+				JSON.stringify({
+					x: x / width,
+					y: y / height
 				})
 			);
 		}
@@ -199,24 +231,28 @@
 
 		socket.addEventListener('message', (event) => {
 			const msg = JSON.parse(event.data);
-			// console.log('Received message:', msg);
 
 			switch (msg.type) {
 				case 'sync':
-					// console.log('Sync cursors:', msg.cursors);
-					otherCursors = msg.cursors;
+					// Filter out any cursors without positions
+					otherCursors = Object.fromEntries(
+						Object.entries(msg.cursors).filter(
+							([_, cursor]) => cursor.x !== undefined && cursor.y !== undefined
+						)
+					);
 					break;
 				case 'update':
-					// console.log('Update cursor:', msg.id, msg.location);
-					otherCursors = {
-						...otherCursors,
-						[msg.id]: {
-							x: msg.x,
-							y: msg.y,
-							location: msg.location,
-							lastActive: Date.now()
-						}
-					};
+					if (msg.x !== undefined && msg.y !== undefined) {
+						otherCursors = {
+							...otherCursors,
+							[msg.id]: {
+								x: msg.x,
+								y: msg.y,
+								location: msg.location,
+								lastActive: Date.now()
+							}
+						};
+					}
 					break;
 				case 'remove':
 					const { [msg.id]: _, ...rest } = otherCursors;
@@ -255,8 +291,10 @@
 	bind:clientWidth={width}
 	bind:clientHeight={height}
 	on:mousemove={handleMouseMove}
+	on:touchmove={handleTouchMove}
+	on:touchstart={handleTouchMove}
 	role="banner"
-	class="relative h-screen cursor-none"
+	class="relative h-full cursor-none"
 >
 	<canvas bind:this={canvas} {width} {height} class="absolute inset-0 h-full w-full" />
 
@@ -301,12 +339,9 @@
 		color: #c4c4c4;
 		fill: #f2f2f2;
 		filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
-	}
-
-	:global(.cursor-icon.other) {
-		color: #f3f3f3;
-		stroke: #2f2f2f33;
-		opacity: 0.8;
+		@media (max-width: 768px) {
+			display: none;
+		}
 	}
 
 	.cursor-info {
@@ -320,7 +355,6 @@
 		padding: 0.05rem 0.25rem;
 		border-radius: 4px;
 		color: rgb(33, 33, 33);
-
 		white-space: nowrap;
 		transform: translateY(-50%);
 		opacity: 0;
@@ -351,5 +385,25 @@
 
 	.relative {
 		cursor: none;
+	}
+
+	@media (max-width: 768px) {
+		.cursor-info {
+			left: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			background: rgba(255, 255, 255, 0.8);
+			padding: 0.15rem 0.35rem;
+			border-radius: 20px;
+		}
+
+		.flag {
+			font-size: 0.875rem;
+		}
+
+		.location {
+			font-size: 0.7rem;
+			font-weight: 500;
+		}
 	}
 </style>
