@@ -50,16 +50,18 @@ export default class CursorServer implements Party.Server {
 			city: request.cf?.city || null
 		};
 
-		this.cursorCache.set(websocket.id, {
+		const cursor: Cursor = {
 			id: websocket.id,
 			uri: websocket.uri,
 			location
-		});
+		};
+
+		this.cursorCache.set(websocket.id, cursor);
 
 		const cursors: Record<string, Cursor> = {};
-		for (const [id, cursor] of this.cursorCache.entries()) {
-			if (id !== websocket.id && cursor?.x !== undefined) {
-				cursors[id] = cursor;
+		for (const [id, existingCursor] of this.cursorCache.entries()) {
+			if (id !== websocket.id && existingCursor?.x !== undefined) {
+				cursors[id] = existingCursor;
 			}
 		}
 
@@ -75,17 +77,15 @@ export default class CursorServer implements Party.Server {
 		cursor.x = position.x;
 		cursor.y = position.y;
 		cursor.lastUpdate = Date.now();
+		this.cursorCache.set(websocket.id, cursor);
 
-		this.party.broadcast(
-			JSON.stringify({
-				type: 'update',
-				id: websocket.id,
-				x: position.x,
-				y: position.y,
-				location: cursor.location
-			}),
-			[websocket.id]
-		);
+		const updateMessage: UpdateMessage = {
+			type: 'update',
+			id: websocket.id,
+			...cursor
+		};
+
+		this.party.broadcast(JSON.stringify(updateMessage), [websocket.id]);
 	}
 
 	onClose(websocket: Party.Connection) {

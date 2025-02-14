@@ -199,24 +199,28 @@
 
 		socket.addEventListener('message', (event) => {
 			const msg = JSON.parse(event.data);
-			// console.log('Received message:', msg);
 
 			switch (msg.type) {
 				case 'sync':
-					// console.log('Sync cursors:', msg.cursors);
-					otherCursors = msg.cursors;
+					// Filter out any cursors without positions
+					otherCursors = Object.fromEntries(
+						Object.entries(msg.cursors).filter(
+							([_, cursor]) => cursor.x !== undefined && cursor.y !== undefined
+						)
+					);
 					break;
 				case 'update':
-					// console.log('Update cursor:', msg.id, msg.location);
-					otherCursors = {
-						...otherCursors,
-						[msg.id]: {
-							x: msg.x,
-							y: msg.y,
-							location: msg.location,
-							lastActive: Date.now()
-						}
-					};
+					if (msg.x !== undefined && msg.y !== undefined) {
+						otherCursors = {
+							...otherCursors,
+							[msg.id]: {
+								x: msg.x,
+								y: msg.y,
+								location: msg.location,
+								lastActive: Date.now()
+							}
+						};
+					}
 					break;
 				case 'remove':
 					const { [msg.id]: _, ...rest } = otherCursors;
