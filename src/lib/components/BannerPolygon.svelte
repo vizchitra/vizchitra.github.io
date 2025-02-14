@@ -23,7 +23,7 @@
 		lastActive?: number;
 	}
 
-	const POINT_COUNT = 160;
+	const POINT_COUNT = 40;
 	const CURSOR_SIZE = 24;
 	const CURSOR_TIMEOUT = 10000;
 	const colors = [
@@ -47,6 +47,8 @@
 	let socket: PartySocket;
 	let otherCursors: Record<string, CursorInfo> = {};
 	let points: Point[] = [...staticPoints];
+	let lastUpdate = 0;
+	const UPDATE_INTERVAL = 32;
 
 	const getColor = (index: number) => colors[index % colors.length];
 
@@ -76,6 +78,10 @@
 	function updateDataWithCursors() {
 		if (!width || !height || !browser) return;
 
+		const now = Date.now();
+		if (now - lastUpdate < UPDATE_INTERVAL) return;
+		lastUpdate = now;
+
 		points = [
 			{ x: cursorX, y: cursorY },
 			...Object.values(otherCursors).map((cursor) => ({
@@ -85,12 +91,16 @@
 			...staticPoints
 		];
 
-		const delaunay = Delaunay.from(
-			points,
-			(d) => d.x,
-			(d) => d.y
-		);
-		voronoi = delaunay.voronoi([0, 0, width, height]);
+		try {
+			const delaunay = Delaunay.from(
+				points,
+				(d) => d.x,
+				(d) => d.y
+			);
+			voronoi = delaunay.voronoi([0, 0, width, height]);
+		} catch (e) {
+			console.error('Voronoi calculation failed:', e);
+		}
 	}
 
 	function handleMouseMove(event: MouseEvent) {
@@ -111,14 +121,15 @@
 	}
 
 	function findIntersections(cells: any[]) {
+		const cursorCells = cells.slice(0, Object.keys(otherCursors).length + 1);
 		const vertices = new Map<string, { x: number; y: number }>();
 
-		for (const cell of cells) {
+		for (const cell of cursorCells) {
 			if (!cell) continue;
 
 			for (const point of cell) {
-				const x = Math.round(point[0] * 10) / 10;
-				const y = Math.round(point[1] * 10) / 10;
+				const x = Math.round(point[0]);
+				const y = Math.round(point[1]);
 				const key = `${x},${y}`;
 
 				if (!vertices.has(key)) {
@@ -203,9 +214,11 @@
 						style="stroke: {getColor(i)}"
 					/>
 				{/each}
-				{#each findIntersections([...voronoi.cellPolygons()]) as point (point.x + ',' + point.y)}
-					<circle class="node" cx={point.x} cy={point.y} r="3" />
-				{/each}
+				{#if Object.keys(otherCursors).length > 0}
+					{#each findIntersections([...voronoi.cellPolygons()]) as point (point.x + ',' + point.y)}
+						<circle class="node" cx={point.x} cy={point.y} r="3" />
+					{/each}
+				{/if}
 			</g>
 		{/if}
 	</svg>
