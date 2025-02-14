@@ -1,5 +1,6 @@
 <script lang="ts">
 	import BannerPolygon from '$lib/components/BannerPolygon.svelte';
+	import PolygonDivider from '$lib/components/PolygonDivider.svelte';
 	import VizchitraLogo from '$lib/assets/images/viz-logo.svg?raw';
 	import { formatSlantedText } from '$lib/utils/utils.js';
 
@@ -79,6 +80,8 @@
 				</li>
 			</ol>
 		</div>
+
+		<PolygonDivider></PolygonDivider>
 	</div>
 </div>
 
