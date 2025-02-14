@@ -1,9 +1,15 @@
 import type * as Party from 'partykit/server';
 
+type LocationInfo = {
+	country: string | null;
+	region: string | null;
+	city: string | null;
+};
+
 type Cursor = {
 	id: string;
 	uri: string;
-	country: string | null;
+	location: LocationInfo;
 	x?: number;
 	y?: number;
 	lastUpdate?: number;
@@ -36,11 +42,15 @@ export default class CursorServer implements Party.Server {
 		websocket: Party.Connection,
 		{ request }: Party.ConnectionContext
 	): void | Promise<void> {
-		const country = request.cf?.country ?? null;
+		const location: LocationInfo = {
+			country: request.cf?.country ?? null,
+			region: request.cf?.region ?? null,
+			city: request.cf?.city ?? null
+		};
 
 		websocket.serializeAttachment({
 			...websocket.deserializeAttachment(),
-			country: country
+			location
 		});
 
 		let cursors: { [id: string]: Cursor } = {};
@@ -73,7 +83,7 @@ export default class CursorServer implements Party.Server {
 			uri: websocket.id,
 			x: position.x,
 			y: position.y,
-			country: prevCursor?.country,
+			location: prevCursor?.location ?? { country: null, region: null, city: null },
 			lastUpdate: Date.now()
 		};
 

@@ -15,9 +15,23 @@
 		y: number;
 	};
 
+	type LocationInfo = {
+		country: string | null;
+		region: string | null;
+		city: string | null;
+	};
+
+	type CursorInfo = {
+		x: number;
+		y: number;
+		location: LocationInfo;
+		lastActive?: number;
+	};
+
 	// Constants
 	const POINT_COUNT = 160;
 	const CURSOR_SIZE = 24;
+	const CURSOR_TIMEOUT = 10000; // 10 seconds
 	const colors = [
 		'#FF9EAA', // pink
 		'#87CEEB', // light blue
@@ -32,7 +46,7 @@
 	let cursorX = 0;
 	let cursorY = 0;
 	let socket: PartySocket;
-	let otherCursors: { [key: string]: { x: number; y: number } } = {};
+	let otherCursors: { [key: string]: CursorInfo } = {};
 
 	// Generate static random background points
 	const staticPoints: Point[] = Array.from({ length: POINT_COUNT }).map(() => ({
@@ -44,6 +58,29 @@
 	let data: Point[] = [...staticPoints];
 
 	const getColor = (index: number) => colors[index % colors.length];
+
+	function getFlagEmoji(countryCode: string | null): string {
+		if (!countryCode) return '🌐';
+		const codePoints = countryCode
+			.toUpperCase()
+			.split('')
+			.map((char) => 127397 + char.charCodeAt(0));
+		return String.fromCodePoint(...codePoints);
+	}
+
+	function getLocationLabel(location: LocationInfo): string {
+		if (!location.country) return '';
+		if (location.country === 'IN') {
+			return location.region || location.city || '';
+		}
+		return location.city || location.region || location.country;
+	}
+
+	function isCursorActive(cursor: CursorInfo): boolean {
+		return cursor.lastActive ? Date.now() - cursor.lastActive < CURSOR_TIMEOUT : false;
+	}
+
+	let updateTimeout: ReturnType<typeof setTimeout>;
 
 	onMount(() => {
 		socket = new PartySocket({
@@ -61,7 +98,12 @@
 				case 'update':
 					otherCursors = {
 						...otherCursors,
-						[msg.id]: { x: msg.x, y: msg.y }
+						[msg.id]: {
+							x: msg.x,
+							y: msg.y,
+							location: msg.location,
+							lastActive: Date.now()
+						}
 					};
 					break;
 				case 'remove':
@@ -70,8 +112,9 @@
 					break;
 			}
 
-			// Update data points with cursor positions
-			updateDataWithCursors();
+			// Debounce the data update
+			clearTimeout(updateTimeout);
+			updateTimeout = setTimeout(updateDataWithCursors, 16); // ~60fps
 		});
 	});
 
@@ -79,30 +122,28 @@
 		if (socket) {
 			socket.close();
 		}
+		clearTimeout(updateTimeout);
 	});
 
 	function updateDataWithCursors() {
-		// Combine cursor points with static points
 		data = [
-			// Current cursor
 			{ a: xScale.invert(cursorX), b: yScale.invert(cursorY) },
-			// Other cursors
 			...Object.values(otherCursors).map((cursor) => ({
 				a: xScale.invert(cursor.x * width),
 				b: yScale.invert(cursor.y * height)
 			})),
-			// Static background points
 			...staticPoints
 		];
 	}
+
+	let moveTimeout: ReturnType<typeof setTimeout>;
 
 	function handleMouseMove(event: MouseEvent) {
 		const { layerX, layerY } = event;
 		cursorX = layerX;
 		cursorY = layerY;
 
-		// Send cursor position to server
-		if (socket && socket.readyState === WebSocket.OPEN) {
+		if (socket?.readyState === WebSocket.OPEN) {
 			socket.send(
 				JSON.stringify({
 					x: layerX / width,
@@ -111,7 +152,9 @@
 			);
 		}
 
-		updateDataWithCursors();
+		// Debounce the data update
+		clearTimeout(moveTimeout);
+		moveTimeout = setTimeout(updateDataWithCursors, 16); // ~60fps
 	}
 
 	function findIntersections(cells: any[]) {
@@ -178,7 +221,7 @@
 	<!-- Main cursor -->
 	<div
 		class="custom-cursor"
-		style="transform: translate({cursorX - CURSOR_SIZE / 2}px, {cursorY - CURSOR_SIZE / 2}px)"
+		style="transform: translate3d({cursorX - CURSOR_SIZE / 2}px, {cursorY - CURSOR_SIZE / 2}px, 0)"
 	>
 		<MousePointer2 size={CURSOR_SIZE} class="cursor-icon" />
 	</div>
@@ -187,10 +230,16 @@
 	{#each Object.entries(otherCursors) as [id, cursor]}
 		<div
 			class="custom-cursor"
-			style="transform: translate({cursor.x * width - CURSOR_SIZE / 2}px, {cursor.y * height -
-				CURSOR_SIZE / 2}px)"
+			style="transform: translate3d({cursor.x * width - CURSOR_SIZE / 2}px, {cursor.y * height -
+				CURSOR_SIZE / 2}px, 0)"
 		>
 			<MousePointer2 size={CURSOR_SIZE} class="cursor-icon other" />
+			{#if isCursorActive(cursor)}
+				<div class="cursor-info" class:active={isCursorActive(cursor)}>
+					<span class="flag">{getFlagEmoji(cursor.location.country)}</span>
+					<span class="location">{getLocationLabel(cursor.location)}</span>
+				</div>
+			{/if}
 		</div>
 	{/each}
 </div>
@@ -238,6 +287,37 @@
 	:global(.cursor-icon.other) {
 		color: #ff9eaa;
 		opacity: 0.8;
+	}
+
+	.cursor-info {
+		position: absolute;
+		left: 24px;
+		top: 0;
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+		background: rgba(0, 0, 0, 0.75);
+		padding: 0.125rem 0.375rem;
+		border-radius: 3px;
+		color: white;
+		font-size: 0.75rem;
+		white-space: nowrap;
+		transform: translateY(-50%);
+		opacity: 0;
+		transition: opacity 0.3s ease-out;
+	}
+
+	.cursor-info.active {
+		opacity: 1;
+	}
+
+	.flag {
+		font-size: 1rem;
+	}
+
+	.location {
+		opacity: 0.9;
+		font-weight: 500;
 	}
 
 	.relative {
