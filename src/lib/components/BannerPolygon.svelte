@@ -84,7 +84,7 @@
 
 	onMount(() => {
 		socket = new PartySocket({
-			host: 'localhost:1999', // Change this in production
+			host: import.meta.env.VITE_PARTYKIT_HOST || 'vizchitra-cursors.genmon.partykit.dev',
 			room: 'banner'
 		});
 
@@ -280,12 +280,12 @@
 	}
 
 	:global(.cursor-icon) {
-		color: white;
+		color: rgb(146, 146, 146);
 		filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
 	}
 
 	:global(.cursor-icon.other) {
-		color: #ff9eaa;
+		color: #f3f3f3;
 		opacity: 0.8;
 	}
 
