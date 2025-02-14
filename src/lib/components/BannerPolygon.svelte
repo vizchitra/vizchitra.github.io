@@ -24,9 +24,10 @@
 		lastActive?: number;
 	}
 
-	const POINT_COUNT = 100;
+	const POINT_COUNT = 150;
 	const CURSOR_SIZE = 24;
 	const CURSOR_TIMEOUT = 10000;
+	const UPDATE_INTERVAL = 16;
 	const colors = [
 		'#ee88b3', // pink
 		'#a8bdf0', // light blue
@@ -40,6 +41,8 @@
 		y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000)
 	}));
 
+	let canvas: HTMLCanvasElement;
+	let ctx: CanvasRenderingContext2D;
 	let width = 0;
 	let height = 0;
 	let voronoi: any;
@@ -49,7 +52,7 @@
 	let otherCursors: Record<string, CursorInfo> = {};
 	let points: Point[] = [...staticPoints];
 	let lastUpdate = 0;
-	const UPDATE_INTERVAL = 32;
+	let animationFrameId: number;
 
 	const getColor = (index: number) => colors[index % colors.length];
 
@@ -122,8 +125,72 @@
 		return Array.from(vertices.values());
 	}
 
+	function draw() {
+		if (!ctx || !width || !height) return;
+
+		// Clear canvas
+		ctx.clearRect(0, 0, width, height);
+
+		// Update data if needed
+		updateDataWithCursors();
+
+		// Draw Voronoi cells
+		if (voronoi) {
+			// Draw static polygons first (background)
+			for (let i = Object.keys(otherCursors).length + 1; i < points.length; i++) {
+				const cell = voronoi.cellPolygon(i);
+				if (!cell) continue;
+
+				ctx.beginPath();
+				ctx.moveTo(cell[0][0], cell[0][1]);
+				for (let j = 1; j < cell.length; j++) {
+					ctx.lineTo(cell[j][0], cell[j][1]);
+				}
+				ctx.closePath();
+				ctx.strokeStyle = getColor(i);
+				ctx.globalAlpha = 0.4;
+				ctx.lineWidth = 3;
+				ctx.stroke();
+			}
+
+			// Draw cursor polygons (foreground)
+			for (let i = 0; i <= Object.keys(otherCursors).length; i++) {
+				const cell = voronoi.cellPolygon(i);
+				if (!cell) continue;
+
+				ctx.beginPath();
+				ctx.moveTo(cell[0][0], cell[0][1]);
+				for (let j = 1; j < cell.length; j++) {
+					ctx.lineTo(cell[j][0], cell[j][1]);
+				}
+				ctx.closePath();
+				ctx.strokeStyle = getColor(i);
+				ctx.globalAlpha = 0.8;
+				ctx.lineWidth = 3;
+				ctx.stroke();
+			}
+
+			// Draw intersection points
+			const intersections = findIntersections([...voronoi.cellPolygons()]);
+			ctx.globalAlpha = 1;
+			intersections.forEach((point) => {
+				ctx.beginPath();
+				ctx.arc(point.x, point.y, 3, 0, Math.PI * 2);
+				ctx.fillStyle = '#5f5f5f';
+				ctx.strokeStyle = '#ffffff';
+				ctx.lineWidth = 2;
+				ctx.fill();
+				ctx.stroke();
+			});
+		}
+
+		animationFrameId = requestAnimationFrame(draw);
+	}
+
 	onMount(() => {
 		if (!browser) return;
+
+		ctx = canvas.getContext('2d')!;
 
 		socket = new PartySocket({
 			host: import.meta.env.VITE_PARTYKIT_HOST || 'vizchitra-cursors.genmon.partykit.dev',
@@ -132,15 +199,15 @@
 
 		socket.addEventListener('message', (event) => {
 			const msg = JSON.parse(event.data);
-			console.log('Received message:', msg);
+			// console.log('Received message:', msg);
 
 			switch (msg.type) {
 				case 'sync':
-					console.log('Sync cursors:', msg.cursors);
+					// console.log('Sync cursors:', msg.cursors);
 					otherCursors = msg.cursors;
 					break;
 				case 'update':
-					console.log('Update cursor:', msg.id, msg.location);
+					// console.log('Update cursor:', msg.id, msg.location);
 					otherCursors = {
 						...otherCursors,
 						[msg.id]: {
@@ -159,11 +226,29 @@
 
 			updateDataWithCursors();
 		});
+
+		// Start animation loop
+		draw();
 	});
 
 	onDestroy(() => {
 		socket?.close();
+		if (animationFrameId) {
+			cancelAnimationFrame(animationFrameId);
+		}
 	});
+
+	$: if (width && height && canvas) {
+		// Handle resize
+		canvas.width = width;
+		canvas.height = height;
+		// Update static points positions
+		staticPoints.forEach((point) => {
+			point.x = Math.random() * width;
+			point.y = Math.random() * height;
+		});
+		updateDataWithCursors();
+	}
 </script>
 
 <div
@@ -173,31 +258,7 @@
 	role="banner"
 	class="relative h-screen cursor-none"
 >
-	<svg viewBox="0 0 {width} {height}" preserveAspectRatio="xMidYMid meet">
-		{#if voronoi}
-			<g>
-				{#each points.slice(0, Object.keys(otherCursors).length + 1) as _, i}
-					<path
-						class="polygon cursor-polygon"
-						d={voronoi.renderCell(i)}
-						style="stroke: {getColor(i)}"
-					/>
-				{/each}
-				{#each points.slice(Object.keys(otherCursors).length + 1) as _, i (i)}
-					<path
-						class="polygon static-polygon"
-						d={voronoi.renderCell(i + Object.keys(otherCursors).length + 1)}
-						style="stroke: {getColor(i)}"
-					/>
-				{/each}
-				{#if Object.keys(otherCursors).length > 0}
-					{#each findIntersections([...voronoi.cellPolygons()]) as point (point.x + ',' + point.y)}
-						<circle class="node" cx={point.x} cy={point.y} r="3" />
-					{/each}
-				{/if}
-			</g>
-		{/if}
-	</svg>
+	<canvas bind:this={canvas} {width} {height} class="absolute inset-0 h-full w-full" />
 
 	<!-- Main cursor -->
 	<div
@@ -228,32 +289,6 @@
 </div>
 
 <style>
-	svg {
-		width: 100%;
-		height: 100%;
-		display: block;
-		-webkit-mask:
-			linear-gradient(to right, transparent, white 10%, white 90%, transparent),
-			linear-gradient(to bottom, transparent, white 10%, white 90%, transparent);
-		mask:
-			linear-gradient(to right, transparent, white 10%, white 90%, transparent),
-			linear-gradient(to bottom, transparent, white 10%, white 90%, transparent);
-		-webkit-mask-composite: intersect;
-		mask-composite: intersect;
-	}
-
-	.node {
-		fill: #5f5f5f;
-		stroke: #ffffff;
-		stroke-width: 2;
-	}
-
-	.polygon {
-		fill: none;
-		stroke-width: 3;
-		vector-effect: non-scaling-stroke;
-	}
-
 	.custom-cursor {
 		position: absolute;
 		top: 0;
@@ -316,13 +351,5 @@
 
 	.relative {
 		cursor: none;
-	}
-
-	.cursor-polygon {
-		opacity: 0.8;
-	}
-
-	.static-polygon {
-		opacity: 0.4;
 	}
 </style>

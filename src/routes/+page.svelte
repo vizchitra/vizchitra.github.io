@@ -91,9 +91,36 @@
 		height: 100vh;
 		width: 100vw;
 		position: relative;
-		top: 0;
+	}
+
+	.banner-container::before,
+	.banner-container::after {
+		content: '';
+		position: absolute;
 		left: 0;
 		right: 0;
+		height: 40vh;
+		pointer-events: none;
+		z-index: 1;
+	}
+
+	.banner-container::before {
+		top: 0;
+		background: linear-gradient(
+			to bottom,
+			rgb(255 255 255) 0%,
+			rgba(255, 255, 255, 0.8) 5%,
+			transparent 100%
+		);
+	}
+
+	.banner-container::after {
 		bottom: 0;
+		background: linear-gradient(
+			to top,
+			rgb(255 255 255) 0%,
+			rgba(255, 255, 255, 0.8) 5%,
+			transparent 100%
+		);
 	}
 </style>
