@@ -53,8 +53,6 @@ body {
 	overflow-x: hidden;
 }
 
-h1,
-h2,
 p {
 	font-weight: 400;
 }
@@ -78,7 +76,7 @@ h1 {
 }
 
 h2 {
-	font-size: 1rem;
+	font-size: 1.5rem;
 }
 
 pre {
@@ -139,6 +137,14 @@ button:focus:not(:focus-visible) {
 	margin-left: calc(50% - 50vw);
 	margin-right: calc(50% - 50vw);
 	position: relative;
+}
+
+.font-display {
+	font-family: var(--font-display);
+}
+
+.font-body {
+	font-family: var(--font-body);
 }
 
 .slanted-text {

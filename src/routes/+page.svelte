@@ -32,19 +32,53 @@
 		</h3>
 	</div>
 
-	<div class="content">
-		<h2 class="mb-1">
-			{#each formatSlantedText('OUR MISSION') as letter}
-				<span class="slanted-text text-[32px] font-bold" style="--letter-slant: {letter.slant}">
+	<div class="content flex flex-col gap-2">
+		<h2 class="font-display font-bold">OUR MISSION</h2>
+
+		<p class="mb-4 max-w-[55ch] text-[22px]">
+			To foster a vibrant <span class="font-semibold">community of data storytellers in India</span
+			>, bridging technical analysis & design expertise to shape perspectives & drive change
+		</p>
+
+		<p class="mx-auto mb-8">
+			{#each formatSlantedText('AN INDIAN DATA VISUALIZATION COMMUNITY') as letter}
+				<span class="slanted-text text-[24px]" style="--letter-slant: {letter.slant}">
 					{letter.letter}
 				</span>
 			{/each}
-		</h2>
-
-		<p class="max-w-[50ch] text-[22px]">
-			To foster a vibrant <strong>community of data storytellers in India</strong>, bridging
-			technical analysis & design expertise to shape perspectives & drive change
 		</p>
+
+		<div class="pillars">
+			<p class="mb-1 max-w-[55ch] text-[22px]">
+				The VizChitra community plans to drive this using these three main pillars of work:
+			</p>
+			<ol>
+				<li class="mb-[8px]">
+					<h3 class="font-display block text-[22px] leading-[1.5] font-bold">
+						1. Consider & Curate:
+					</h3>
+					<p class="text-[22px]">
+						Build a rhythm of curated events to spread the practice of data visualisation
+					</p>
+				</li>
+				<li class="mb-[8px]">
+					<h3 class="font-display block text-[22px] leading-[1.5] font-bold">
+						2. Cultivate & Care:
+					</h3>
+					<p class="text-[22px]">
+						Nurture a fertile space for learning & sharing of data visualisation skills
+					</p>
+				</li>
+				<li class="mb-[8px]">
+					<h3 class="font-display block text-[22px] leading-[1.5] font-bold">
+						3. Create & Collaborate:
+					</h3>
+					<p class="text-[22px]">
+						Express and co-create to push the boundaries of data visualization
+					</p>
+				</li>
+			</ol>
+		</div>
 	</div>
 </div>
 
