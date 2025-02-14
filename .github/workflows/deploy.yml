@@ -47,7 +47,7 @@ jobs:
       - name: Build
         run: pnpm build
         env:
-          VITE_PARTYKIT_HOST: vizchitra-cursors.genmon.partykit.dev
+          VITE_PARTYKIT_HOST: vizchitra-cursors.thedivtagguy.partykit.dev
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
