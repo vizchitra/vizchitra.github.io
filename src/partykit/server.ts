@@ -8,58 +8,88 @@ type LocationInfo = {
 
 type Cursor = {
 	id: string;
+	uri: string;
 	location: LocationInfo;
 	x?: number;
 	y?: number;
-	lastActive?: number;
+	lastUpdate?: number;
+};
+
+type UpdateMessage = {
+	type: 'update';
+	id: string;
+} & Cursor;
+
+type SyncMessage = {
+	type: 'sync';
+	cursors: { [id: string]: Cursor };
+};
+
+type RemoveMessage = {
+	type: 'remove';
+	id: string;
 };
 
 type ConnectionWithCursor = Party.Connection & { cursor?: Cursor };
 
 export default class CursorServer implements Party.Server {
-	constructor(public party: Party.Party) {}
+	private cursorCache = new Map<string, Cursor>();
 
-	onConnect(websocket: Party.Connection, { request }: Party.ConnectionContext) {
+	constructor(public party: Party.Party) {}
+	options: Party.ServerOptions = {
+		hibernate: true
+	};
+
+	onConnect(
+		websocket: Party.Connection,
+		{ request }: Party.ConnectionContext
+	): void | Promise<void> {
 		const location: LocationInfo = {
-			country: request.cf?.country ?? null,
-			region: request.cf?.region ?? null,
-			city: request.cf?.city ?? null
+			country: request.cf?.country || null,
+			region: request.cf?.region || null,
+			city: request.cf?.city || null
 		};
 
-		websocket.serializeAttachment({ location });
+		this.cursorCache.set(websocket.id, {
+			id: websocket.id,
+			uri: websocket.uri,
+			location
+		});
 
-		// Send current cursors to new connection
 		const cursors: Record<string, Cursor> = {};
-		for (const conn of this.party.getConnections()) {
-			const cursor = (conn as ConnectionWithCursor).cursor;
-			if (conn.id !== websocket.id && cursor?.x !== undefined) {
-				cursors[conn.id] = cursor;
+		for (const [id, cursor] of this.cursorCache.entries()) {
+			if (id !== websocket.id && cursor?.x !== undefined) {
+				cursors[id] = cursor;
 			}
 		}
 
 		websocket.send(JSON.stringify({ type: 'sync', cursors }));
 	}
 
-	onMessage(message: string, websocket: Party.Connection) {
+	onMessage(message: string, websocket: Party.Connection): void {
 		const position = JSON.parse(message);
-		const cursor: Cursor = {
-			id: websocket.id,
-			location: (websocket as ConnectionWithCursor).cursor?.location ?? {
-				country: null,
-				region: null,
-				city: null
-			},
-			x: position.x,
-			y: position.y,
-			lastActive: Date.now()
-		};
+		const cursor = this.cursorCache.get(websocket.id);
 
-		(websocket as ConnectionWithCursor).cursor = cursor;
+		if (!cursor) return;
 
-		this.party.broadcast(JSON.stringify({ type: 'update', ...cursor }), [websocket.id]);
+		cursor.x = position.x;
+		cursor.y = position.y;
+		cursor.lastUpdate = Date.now();
+
+		this.party.broadcast(
+			JSON.stringify({
+				type: 'update',
+				id: websocket.id,
+				x: position.x,
+				y: position.y,
+				location: cursor.location
+			}),
+			[websocket.id]
+		);
 	}
 
 	onClose(websocket: Party.Connection) {
+		this.cursorCache.delete(websocket.id);
 		this.party.broadcast(JSON.stringify({ type: 'remove', id: websocket.id }), []);
 	}
 }

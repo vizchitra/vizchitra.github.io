@@ -4,6 +4,7 @@
 	import { onMount, onDestroy } from 'svelte';
 	import PartySocket from 'partysocket';
 	import { browser } from '$app/environment';
+	import { getFlagEmoji, getLocationLabel } from '$lib/utils/utils';
 
 	interface Point {
 		x: number;
@@ -23,7 +24,7 @@
 		lastActive?: number;
 	}
 
-	const POINT_COUNT = 40;
+	const POINT_COUNT = 100;
 	const CURSOR_SIZE = 24;
 	const CURSOR_TIMEOUT = 10000;
 	const colors = [
@@ -52,26 +53,6 @@
 
 	const getColor = (index: number) => colors[index % colors.length];
 
-	const getFlagEmoji = (countryCode: string | null): string | null => {
-		if (!countryCode) return null;
-		return String.fromCodePoint(
-			...countryCode
-				.toUpperCase()
-				.split('')
-				.map((char) => 127397 + char.charCodeAt(0))
-		);
-	};
-
-	function getLocationLabel(location: LocationInfo): string {
-		if (!location?.country) return '';
-		// For India, show region only
-		if (location.country === 'IN') {
-			return location.region?.split(' ')[0] || '';
-		}
-		// For others, prefer city, fallback to first word of region
-		return location.city || location.region?.split(' ')[0] || '';
-	}
-
 	const isCursorActive = (cursor: CursorInfo): boolean =>
 		!!cursor.lastActive && Date.now() - cursor.lastActive < CURSOR_TIMEOUT;
 
@@ -94,8 +75,8 @@
 		try {
 			const delaunay = Delaunay.from(
 				points,
-				(d) => d.x,
-				(d) => d.y
+				(d: Point) => d.x,
+				(d: Point) => d.y
 			);
 			voronoi = delaunay.voronoi([0, 0, width, height]);
 		} catch (e) {
@@ -151,12 +132,15 @@
 
 		socket.addEventListener('message', (event) => {
 			const msg = JSON.parse(event.data);
+			console.log('Received message:', msg);
 
 			switch (msg.type) {
 				case 'sync':
+					console.log('Sync cursors:', msg.cursors);
 					otherCursors = msg.cursors;
 					break;
 				case 'update':
+					console.log('Update cursor:', msg.id, msg.location);
 					otherCursors = {
 						...otherCursors,
 						[msg.id]: {
@@ -179,15 +163,7 @@
 
 	onDestroy(() => {
 		socket?.close();
-		if (socket) cancelAnimationFrame(socket);
 	});
-
-	$: xScale = scaleLinear()
-		.domain([0, 1])
-		.range([50, width - 50]);
-	$: yScale = scaleLinear()
-		.domain([0, 1])
-		.range([50, height - 50]);
 </script>
 
 <div
@@ -241,10 +217,10 @@
 			<MousePointer2 size={CURSOR_SIZE / 1.5} class="cursor-icon other" />
 			{#if isCursorActive(cursor) && cursor.location}
 				<div class="cursor-info" class:active={isCursorActive(cursor)}>
-					{#if cursor.location.country}
+					{#if cursor.location?.country}
 						<span class="flag">{getFlagEmoji(cursor.location.country)}</span>
 					{/if}
-					<span class="location">{getLocationLabel(cursor.location)}</span>
+					<span class="location text-[10px]">{getLocationLabel(cursor.location)}</span>
 				</div>
 			{/if}
 		</div>
@@ -294,6 +270,7 @@
 
 	:global(.cursor-icon.other) {
 		color: #f3f3f3;
+		stroke: #2f2f2f33;
 		opacity: 0.8;
 	}
 
@@ -304,17 +281,19 @@
 		display: flex;
 		align-items: center;
 		gap: 0.25rem;
-		background: rgba(0, 0, 0, 0.8);
-		padding: 0.25rem 0.5rem;
+		background: rgba(255, 255, 255, 0.1);
+		padding: 0.05rem 0.25rem;
 		border-radius: 4px;
-		color: white;
-		font-size: 0.75rem;
+		color: rgb(33, 33, 33);
+
 		white-space: nowrap;
 		transform: translateY(-50%);
 		opacity: 0;
+		font-family: monospace;
 		transition: opacity 0.2s ease-out;
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-		backdrop-filter: blur(4px);
+		backdrop-filter: blur(8px);
+		border: 1px solid #2f2f2f33;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 	}
 
 	.cursor-info.active {
@@ -323,13 +302,16 @@
 
 	.flag {
 		font-size: 0.875rem;
+		filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.3));
 	}
 
 	.location {
-		opacity: 0.9;
-		font-weight: 500;
-		font-size: 0.7rem;
+		opacity: 0.95;
+		font-weight: 400;
+		font-size: 0.6rem;
 		text-transform: capitalize;
+		letter-spacing: 0.02em;
+		text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 	}
 
 	.relative {
