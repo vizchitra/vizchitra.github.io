@@ -33,9 +33,45 @@
 	</div>
 </div>
 
-<div class="mt-20 flex flex-col items-start gap-10">
+<div class="mt-20 flex flex-col items-center gap-10">
 	<div class="content flex flex-col gap-2">
-		<h2 class="font-display font-bold">OUR MISSION</h2>
+		<h1>
+			{#each formatSlantedText('VIZCHITRA') as letter}
+				<span class="slanted-text text-[3 rem] font-bold" style="--letter-slant: {letter.slant}">
+					{letter.letter}
+				</span>
+			{/each}
+		</h1>
+
+		<p class="mb-4 max-w-[55ch] text-[22px]">
+			Data visualisation practitioners in India have been spread across different communities. As
+			the first of its kind <span class="font-semibold">
+				data visualisation community, VizChitra
+			</span> is putting together a conference to bring these people together.
+		</p>
+
+		<p class="mx-auto mb-8">
+			{#each formatSlantedText('A SPACE TO CONNECT AND CREATE WITH DATA') as letter}
+				<span class="slanted-text text-[24px]" style="--letter-slant: {letter.slant}">
+					{letter.letter}
+				</span>
+			{/each}
+		</p>
+
+		<div class="pillars">
+			<p class="mb-1 max-w-[55ch] text-[22px]">
+				Our goal is to build a community of diverse, interdisciplinary individuals working across
+				the visualization spectrum, and facilitate learning and connections between people from
+				different industries & disciplines who share a common interest in the power of data and
+				storytelling.
+			</p>
+		</div>
+
+		<PolygonDivider></PolygonDivider>
+	</div>
+
+	<div class="content flex flex-col gap-2">
+		<h2 class="font-display !text-[2rem] font-bold">OUR MISSION</h2>
 
 		<p class="mb-4 max-w-[55ch] text-[22px]">
 			To foster a vibrant <span class="font-semibold">community of data storytellers in India</span
