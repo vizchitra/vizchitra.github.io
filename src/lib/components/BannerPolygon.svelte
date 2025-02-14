@@ -330,21 +330,15 @@
 		left: 0;
 		pointer-events: none;
 		will-change: transform;
-		@media (max-width: 768px) {
-			display: none;
-		}
 	}
 
 	:global(.cursor-icon) {
 		color: #c4c4c4;
 		fill: #f2f2f2;
 		filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
-	}
-
-	:global(.cursor-icon.other) {
-		color: #f3f3f3;
-		stroke: #2f2f2f33;
-		opacity: 0.8;
+		@media (max-width: 768px) {
+			display: none;
+		}
 	}
 
 	.cursor-info {
@@ -358,7 +352,6 @@
 		padding: 0.05rem 0.25rem;
 		border-radius: 4px;
 		color: rgb(33, 33, 33);
-
 		white-space: nowrap;
 		transform: translateY(-50%);
 		opacity: 0;
@@ -393,17 +386,21 @@
 
 	@media (max-width: 768px) {
 		.cursor-info {
-			font-size: 0.5rem;
-			left: 12px;
-			padding: 0.05rem 0.15rem;
+			left: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			background: rgba(255, 255, 255, 0.8);
+			padding: 0.15rem 0.35rem;
+			border-radius: 20px;
 		}
 
 		.flag {
-			font-size: 0.75rem;
+			font-size: 0.875rem;
 		}
 
 		.location {
-			font-size: 0.5rem;
+			font-size: 0.7rem;
+			font-weight: 500;
 		}
 	}
 </style>
