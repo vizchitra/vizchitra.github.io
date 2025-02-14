@@ -61,11 +61,13 @@
 	};
 
 	function getLocationLabel(location: LocationInfo): string {
-		if (!location.country) return '';
+		if (!location?.country) return '';
+		// For India, show region only
 		if (location.country === 'IN') {
-			return location.region || location.city || '';
+			return location.region?.split(' ')[0] || '';
 		}
-		return location.city || location.region || location.country;
+		// For others, prefer city, fallback to first word of region
+		return location.city || location.region?.split(' ')[0] || '';
 	}
 
 	const isCursorActive = (cursor: CursorInfo): boolean =>
@@ -224,9 +226,11 @@
 				CURSOR_SIZE / 2}px, 0)"
 		>
 			<MousePointer2 size={CURSOR_SIZE / 1.5} class="cursor-icon other" />
-			{#if isCursorActive(cursor)}
+			{#if isCursorActive(cursor) && cursor.location}
 				<div class="cursor-info" class:active={isCursorActive(cursor)}>
-					<span class="flag">{getFlagEmoji(cursor.location.country)}</span>
+					{#if cursor.location.country}
+						<span class="flag">{getFlagEmoji(cursor.location.country)}</span>
+					{/if}
 					<span class="location">{getLocationLabel(cursor.location)}</span>
 				</div>
 			{/if}
@@ -287,15 +291,17 @@
 		display: flex;
 		align-items: center;
 		gap: 0.25rem;
-
-		padding: 0.125rem 0.375rem;
-		border-radius: 3px;
+		background: rgba(0, 0, 0, 0.8);
+		padding: 0.25rem 0.5rem;
+		border-radius: 4px;
 		color: white;
 		font-size: 0.75rem;
 		white-space: nowrap;
 		transform: translateY(-50%);
 		opacity: 0;
-		transition: opacity 0.3s ease-out;
+		transition: opacity 0.2s ease-out;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		backdrop-filter: blur(4px);
 	}
 
 	.cursor-info.active {
@@ -303,12 +309,14 @@
 	}
 
 	.flag {
-		font-size: 1rem;
+		font-size: 0.875rem;
 	}
 
 	.location {
 		opacity: 0.9;
 		font-weight: 500;
+		font-size: 0.7rem;
+		text-transform: capitalize;
 	}
 
 	.relative {
