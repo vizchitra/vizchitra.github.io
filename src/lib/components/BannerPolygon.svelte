@@ -3,70 +3,62 @@
 	import { MousePointer2 } from 'lucide-svelte';
 	import { onMount, onDestroy } from 'svelte';
 	import PartySocket from 'partysocket';
+	import { browser } from '$app/environment';
 
-	// Types
-	type Point = {
+	interface Point {
 		a: number;
 		b: number;
-	};
+	}
 
-	type RenderedPoint = {
-		x: number;
-		y: number;
-	};
-
-	type LocationInfo = {
+	interface LocationInfo {
 		country: string | null;
 		region: string | null;
 		city: string | null;
-	};
+	}
 
-	type CursorInfo = {
+	interface CursorInfo {
 		x: number;
 		y: number;
 		location: LocationInfo;
 		lastActive?: number;
-	};
+	}
 
-	// Constants
 	const POINT_COUNT = 160;
 	const CURSOR_SIZE = 24;
-	const CURSOR_TIMEOUT = 10000; // 10 seconds
+	const CURSOR_TIMEOUT = 10000;
 	const colors = [
-		'#FF9EAA', // pink
-		'#87CEEB', // light blue
-		'#98FB98', // light green
-		'#FFD700', // yellow
-		'#FFA07A' // light salmon
+		'#ee88b3', // pink
+		'#a8bdf0', // light blue
+		'#88e0d8', // light green
+		'#ffd485', // yellow
+		'#f89f72' // light salmon
 	];
 
-	let width: number;
-	let height: number;
-	let voronoi: any;
-	let cursorX = 0;
-	let cursorY = 0;
-	let socket: PartySocket;
-	let otherCursors: { [key: string]: CursorInfo } = {};
-
-	// Generate static random background points
-	const staticPoints: Point[] = Array.from({ length: POINT_COUNT }).map(() => ({
+	const staticPoints: Point[] = Array.from({ length: POINT_COUNT }, () => ({
 		a: Math.random(),
 		b: Math.random()
 	}));
 
-	// Current data points (will include cursors + static points)
+	let width = 0;
+	let height = 0;
+	let voronoi: any;
+	let cursorX = 0;
+	let cursorY = 0;
+	let socket: PartySocket;
+	let otherCursors: Record<string, CursorInfo> = {};
 	let data: Point[] = [...staticPoints];
 
 	const getColor = (index: number) => colors[index % colors.length];
 
-	function getFlagEmoji(countryCode: string | null): string {
-		if (!countryCode) return '🌐';
-		const codePoints = countryCode
-			.toUpperCase()
-			.split('')
-			.map((char) => 127397 + char.charCodeAt(0));
-		return String.fromCodePoint(...codePoints);
-	}
+	const getFlagEmoji = (countryCode: string | null): string | null => {
+		if (!countryCode) return null;
+		return String.fromCodePoint(
+			...countryCode
+				.toUpperCase()
+				.split('')
+				.map((char) => 127397 + char.charCodeAt(0))
+		);
+	};
 
 	function getLocationLabel(location: LocationInfo): string {
 		if (!location.country) return '';
@@ -76,13 +68,77 @@
 		return location.city || location.region || location.country;
 	}
 
-	function isCursorActive(cursor: CursorInfo): boolean {
-		return cursor.lastActive ? Date.now() - cursor.lastActive < CURSOR_TIMEOUT : false;
+	const isCursorActive = (cursor: CursorInfo): boolean =>
+		!!cursor.lastActive && Date.now() - cursor.lastActive < CURSOR_TIMEOUT;
+
+	let rafId: number | null = null;
+	let voronoiRafId: number | null = null;
+	let lastVoronoiUpdate = 0;
+	const VORONOI_UPDATE_INTERVAL = 10;
+
+	function updateDataWithCursors() {
+		if (!width || !height || !browser) return;
+
+		data = [
+			{ a: xScale.invert(cursorX), b: yScale.invert(cursorY) },
+			...Object.values(otherCursors).map((cursor) => ({
+				a: xScale.invert(cursor.x * width),
+				b: yScale.invert(cursor.y * height)
+			})),
+			...staticPoints
+		];
+
+		const now = Date.now();
+		if (now - lastVoronoiUpdate > VORONOI_UPDATE_INTERVAL) {
+			if (voronoiRafId) cancelAnimationFrame(voronoiRafId);
+			voronoiRafId = requestAnimationFrame(() => {
+				lastVoronoiUpdate = now;
+				const delaunay = Delaunay.from(
+					renderedData,
+					(d: Point) => d.x,
+					(d: Point) => d.y
+				);
+				voronoi = delaunay.voronoi([0, 0, width, height]);
+			});
+		}
 	}
 
-	let updateTimeout: ReturnType<typeof setTimeout>;
+	function handleMouseMove(event: MouseEvent) {
+		const { layerX, layerY } = event;
+		cursorX = layerX;
+		cursorY = layerY;
+
+		if (socket?.readyState === WebSocket.OPEN) {
+			socket.send(
+				JSON.stringify({
+					x: layerX / width,
+					y: layerY / height
+				})
+			);
+		}
+
+		if (rafId) cancelAnimationFrame(rafId);
+		rafId = requestAnimationFrame(updateDataWithCursors);
+	}
+
+	function findIntersections(cells: any[]) {
+		const vertices = new Set<string>();
+		cells.forEach((cell) => {
+			if (!cell) return;
+			cell.forEach((point: number[]) => {
+				vertices.add(`${((point[0] * 100) | 0) / 100},${((point[1] * 100) | 0) / 100}`);
+			});
+		});
+
+		return Array.from(vertices, (v) => {
+			const [x, y] = v.split(',').map(Number);
+			return { x, y };
+		});
+	}
 
 	onMount(() => {
+		if (!browser) return;
+
 		socket = new PartySocket({
 			host: import.meta.env.VITE_PARTYKIT_HOST || 'vizchitra-cursors.genmon.partykit.dev',
 			room: 'banner'
@@ -107,95 +163,34 @@
 					};
 					break;
 				case 'remove':
-					const { [msg.id]: removed, ...rest } = otherCursors;
+					const { [msg.id]: _, ...rest } = otherCursors;
 					otherCursors = rest;
 					break;
 			}
 
-			// Debounce the data update
-			clearTimeout(updateTimeout);
-			updateTimeout = setTimeout(updateDataWithCursors, 16); // ~60fps
+			if (rafId) cancelAnimationFrame(rafId);
+			rafId = requestAnimationFrame(updateDataWithCursors);
 		});
 	});
 
 	onDestroy(() => {
-		if (socket) {
-			socket.close();
-		}
-		clearTimeout(updateTimeout);
+		socket?.close();
+		if (rafId) cancelAnimationFrame(rafId);
+		if (voronoiRafId) cancelAnimationFrame(voronoiRafId);
 	});
-
-	function updateDataWithCursors() {
-		data = [
-			{ a: xScale.invert(cursorX), b: yScale.invert(cursorY) },
-			...Object.values(otherCursors).map((cursor) => ({
-				a: xScale.invert(cursor.x * width),
-				b: yScale.invert(cursor.y * height)
-			})),
-			...staticPoints
-		];
-	}
-
-	let moveTimeout: ReturnType<typeof setTimeout>;
-
-	function handleMouseMove(event: MouseEvent) {
-		const { layerX, layerY } = event;
-		cursorX = layerX;
-		cursorY = layerY;
-
-		if (socket?.readyState === WebSocket.OPEN) {
-			socket.send(
-				JSON.stringify({
-					x: layerX / width,
-					y: layerY / height
-				})
-			);
-		}
-
-		// Debounce the data update
-		clearTimeout(moveTimeout);
-		moveTimeout = setTimeout(updateDataWithCursors, 16); // ~60fps
-	}
-
-	function findIntersections(cells: any[]) {
-		const vertices = new Set();
-		cells.forEach((cell) => {
-			if (!cell) return;
-			cell.forEach((point: number[]) => {
-				const key = `${Math.round(point[0] * 100) / 100},${Math.round(point[1] * 100) / 100}`;
-				vertices.add(key);
-			});
-		});
-
-		return Array.from(vertices).map((v) => {
-			const [x, y] = (v as string).split(',').map(Number);
-			return { x, y };
-		});
-	}
 
 	$: xScale = scaleLinear()
 		.domain([0, 1])
 		.range([50, width - 50]);
-
 	$: yScale = scaleLinear()
 		.domain([0, 1])
 		.range([50, height - 50]);
-
 	$: renderedData = data.map(
-		(d: Point): RenderedPoint => ({
+		(d: Point): Point => ({
 			x: xScale(d.a),
 			y: yScale(d.b)
 		})
 	);
-
-	$: if (width && height) {
-		const delaunay = Delaunay.from(
-			renderedData,
-			(d: RenderedPoint) => d.x,
-			(d: RenderedPoint) => d.y
-		);
-		voronoi = delaunay.voronoi([0, 0, width, height]);
-	}
 </script>
 
 <div
@@ -208,10 +203,21 @@
 	<svg viewBox="0 0 {width} {height}" preserveAspectRatio="xMidYMid meet">
 		{#if voronoi}
 			<g>
-				{#each renderedData as _, i}
-					<path class="polygon" d={voronoi.renderCell(i)} style="stroke: {getColor(i)}" />
+				{#each renderedData.slice(0, Object.keys(otherCursors).length + 1) as _, i}
+					<path
+						class="polygon cursor-polygon"
+						d={voronoi.renderCell(i)}
+						style="stroke: {getColor(i)}"
+					/>
 				{/each}
-				{#each findIntersections([...voronoi.cellPolygons()]) as point}
+				{#each renderedData.slice(Object.keys(otherCursors).length + 1) as _, i (i)}
+					<path
+						class="polygon static-polygon"
+						d={voronoi.renderCell(i + Object.keys(otherCursors).length + 1)}
+						style="stroke: {getColor(i)}"
+					/>
+				{/each}
+				{#each findIntersections([...voronoi.cellPolygons()]) as point (point.x + ',' + point.y)}
 					<circle class="node" cx={point.x} cy={point.y} r="3" />
 				{/each}
 			</g>
@@ -233,7 +239,7 @@
 			style="transform: translate3d({cursor.x * width - CURSOR_SIZE / 2}px, {cursor.y * height -
 				CURSOR_SIZE / 2}px, 0)"
 		>
-			<MousePointer2 size={CURSOR_SIZE} class="cursor-icon other" />
+			<MousePointer2 size={CURSOR_SIZE / 1.5} class="cursor-icon other" />
 			{#if isCursorActive(cursor)}
 				<div class="cursor-info" class:active={isCursorActive(cursor)}>
 					<span class="flag">{getFlagEmoji(cursor.location.country)}</span>
@@ -250,24 +256,24 @@
 		height: 100%;
 		display: block;
 		-webkit-mask:
-			linear-gradient(to right, transparent, white 20%, white 80%, transparent),
-			linear-gradient(to bottom, transparent, white 20%, white 80%, transparent);
+			linear-gradient(to right, transparent, white 10%, white 90%, transparent),
+			linear-gradient(to bottom, transparent, white 10%, white 90%, transparent);
 		mask:
-			linear-gradient(to right, transparent, white 20%, white 80%, transparent),
-			linear-gradient(to bottom, transparent, white 20%, white 80%, transparent);
+			linear-gradient(to right, transparent, white 10%, white 90%, transparent),
+			linear-gradient(to bottom, transparent, white 10%, white 90%, transparent);
 		-webkit-mask-composite: intersect;
 		mask-composite: intersect;
 	}
 
 	.node {
-		fill: #333;
+		fill: #5f5f5f;
 		stroke: #ffffff;
 		stroke-width: 2;
 	}
 
 	.polygon {
 		fill: none;
-		stroke-width: 2;
+		stroke-width: 3;
 		vector-effect: non-scaling-stroke;
 	}
 
@@ -280,7 +286,8 @@
 	}
 
 	:global(.cursor-icon) {
-		color: rgb(146, 146, 146);
+		color: #c4c4c4;
+		fill: #f2f2f2;
 		filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
 	}
 
@@ -291,12 +298,12 @@
 
 	.cursor-info {
 		position: absolute;
-		left: 24px;
+		left: 16px;
 		top: 0;
 		display: flex;
 		align-items: center;
 		gap: 0.25rem;
-		background: rgba(0, 0, 0, 0.75);
+
 		padding: 0.125rem 0.375rem;
 		border-radius: 3px;
 		color: white;
@@ -322,5 +329,13 @@
 
 	.relative {
 		cursor: none;
+	}
+
+	.cursor-polygon {
+		opacity: 0.8;
+	}
+
+	.static-polygon {
+		opacity: 0.4;
 	}
 </style>

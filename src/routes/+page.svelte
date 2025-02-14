@@ -12,13 +12,12 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<div class="banner-container full-bleed">
+<div class="banner-container full-bleed relative">
 	<BannerPolygon />
-</div>
-
-<div class="flex flex-col items-start gap-10">
-	<div class="logo-container mb-2 flex items-center gap-0">
-		<div class="logo w-[300px]">
+	<div
+		class="logo-container pointer-events-none absolute top-1/2 left-1/2 mb-2 flex -translate-x-1/2 -translate-y-1/2 items-center gap-0 rounded-md bg-white px-8 py-4 shadow-lg"
+	>
+		<div class="logo w-[150px]">
 			{@html VizchitraLogo}
 		</div>
 
@@ -32,7 +31,9 @@
 			{/each}
 		</h3>
 	</div>
+</div>
 
+<div class="mt-20 flex flex-col items-start gap-10">
 	<div class="content flex flex-col gap-2">
 		<h2 class="font-display font-bold">OUR MISSION</h2>
 
