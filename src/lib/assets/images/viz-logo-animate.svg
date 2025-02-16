@@ -1,4 +1,4 @@
-<svg width="150" height="150" viewBox="130 130 380 280">
+<svg width="280" height="280" viewBox="130 130 380 280">
   <g transform="translate(30,0)">
     <line stroke="#A8BDF0" stroke-width="5">
       <animate attributeName="x1" values="244; 244; 244; 255; 244; 244;" dur="8s" repeatCount="indefinite" />
