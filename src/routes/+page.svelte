@@ -3,6 +3,7 @@
 	import PolygonDivider from '$lib/components/PolygonDivider.svelte';
 	import VizchitraLogo from '$lib/assets/images/viz-logo-animate.svg?raw';
 	import { formatSlantedText } from '$lib/utils/utils.js';
+	import CallToAction from '$lib/components/CallToAction.svelte';
 
 	export let data;
 </script>
@@ -39,6 +40,8 @@
 		</h3>
 	</div>
 </div>
+
+<CallToAction/>
 
 <div class="mt-20 flex flex-col items-center gap-10">
 	<div class="content flex flex-col gap-2">
