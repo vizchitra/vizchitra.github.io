@@ -2,7 +2,7 @@
 	import horn from '$lib/assets/images/horn.svg?raw';
 </script>
 
-<div class="flex items-center justify-center gap-4 p-2">
+<div class="flex items-center justify-center gap-4 bg-[#FFE5B7] p-2">
 	<div class="svg-horn">{@html horn}</div>
 	<div>
 		<p class="text-xl">
