@@ -1,31 +1,6 @@
+@import url('lib/assets/css/fonts.css');
+
 @import 'tailwindcss';
-@import '@fontsource/fira-mono';
-
-@font-face {
-	font-family: 'Cairo';
-	src: url('./lib/assets/fonts/Cairo-VariableFont.ttf') format('truetype');
-	font-weight: 200 1000;
-	font-style: oblique -11deg 11deg;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'IBM Plex Sans';
-	src: url('./lib/assets/fonts/IBMPlexSans-Regular.ttf') format('truetype');
-	font-weight: 400;
-}
-
-@font-face {
-	font-family: 'IBM Plex Sans';
-	src: url('./lib/assets/fonts/IBMPlexSans-SemiBold.ttf') format('truetype');
-	font-weight: 500;
-}
-
-@font-face {
-	font-family: 'IBM Plex Sans';
-	src: url('./lib/assets/fonts/IBMPlexSans-Bold.ttf') format('truetype');
-	font-weight: 600;
-}
 
 :root {
 	--font-body: 'IBM Plex Sans', 'Open Sans', 'Helvetica Neue', sans-serif;
