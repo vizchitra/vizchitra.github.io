@@ -6,8 +6,10 @@
 	<div class="svg-horn">{@html horn}</div>
 	<div>
 		<p class="text-xl">
-			Register for <a href="https://hasgeek.com/VizChitra/launch-party/" target="_blank"
-				>VizChitra Launch Party &#8599;</a
+			Register for <a
+				href="https://hasgeek.com/VizChitra/launch-party/"
+				class="inline-block"
+				target="_blank">VizChitra Launch Party &#8599;</a
 			>
 		</p>
 	</div>
