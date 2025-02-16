@@ -1,0 +1,83 @@
+<svg width="150" height="150" viewBox="130 130 380 280">
+  <g transform="translate(30,0)">
+    <line stroke="#A8BDF0" stroke-width="5">
+      <animate attributeName="x1" values="244; 244; 244; 255; 244; 244;" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="y1" values="150; 169; 109; 90; 90; 150;" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="x2" values="130; 149; 168; 122; 168; 130;" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="y2" values="212; 219; 225; 206; 225; 212;" dur="8s" repeatCount="indefinite" />
+    </line>
+    <line stroke="#EE88B3" stroke-width="5">
+      <animate attributeName="x1" values="130; 149; 168; 122; 169; 130;" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="y1" values="212; 219; 225; 206; 225; 212;" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="x2" values="197; 150; 150; 161; 162; 197;" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="y2" values="314; 379; 379; 379; 363; 314;" dur="8s" repeatCount="indefinite" />
+    </line>
+    <line stroke="#F89F72" stroke-width="5">
+      <animate attributeName="x1" values="197; 150; 150; 161; 162; 197;" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="y1" values="314; 379; 379; 379; 363; 314;" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="x2" values="326; 326; 303; 337; 338; 326;" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="y2" values="363; 363; 330; 363; 379; 363;" dur="8s" repeatCount="indefinite" />
+    </line>
+    <line stroke="#FFD485" stroke-width="5">
+      <animate attributeName="x1" values="326; 326; 303; 337; 338; 326;" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="y1" values="363; 363; 330; 363; 379; 363;" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="x2" values="358; 396; 396; 407; 358; 358;" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="y2" values="212; 200; 200; 200; 212; 212;" dur="8s" repeatCount="indefinite" />
+    </line>
+    <line stroke="#88E0D8" stroke-width="5">
+      <animate attributeName="x1" values="358; 396; 396; 407; 358; 358;" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="y1" values="212; 200; 200; 200; 212; 212;" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="x2" values="244; 244; 244; 255; 244; 244;" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="y2" values="150; 169; 109; 90; 90; 150;" dur="8s" repeatCount="indefinite" />
+    </line>
+    <!-- circle one start -->
+    <circle stroke="white" stroke-width="3" r="4">
+      <animate attributeName="cx" values="244; 244; 244; 255; 244; 244;" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="150; 169; 109; 90; 90; 150;" dur="8s" repeatCount="indefinite" />
+    </circle>
+    <!-- circle one end -->
+    <!-- circle two start -->
+    <circle stroke="white" stroke-width="3" r="4">
+      <animate attributeName="cx" values="130; 149; 168; 122; 168; 130" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="212; 219; 225; 206; 225; 212;" dur="8s" repeatCount="indefinite" />
+    </circle>
+    <!-- circle two end -->
+    <!-- circle three start -->
+    <circle stroke="white" stroke-width="3" r="4">
+      <animate attributeName="cx" values="197; 150; 150; 161; 162; 197" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="314; 379; 379; 379; 363; 314;" dur="8s" repeatCount="indefinite" />
+    </circle>
+    <!-- circle three end -->
+    <!-- circle four start -->
+    <circle stroke="white" stroke-width="3" r="4">
+      <animate attributeName="cx" values="326; 326; 303; 337; 338; 326;" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="363; 363; 330; 363; 379; 363;" dur="8s" repeatCount="indefinite" />
+    </circle>
+    <!-- circle four end -->
+    <!-- circle five start -->
+    <circle stroke="white" stroke-width="3" r="4">
+      <animate attributeName="cx" values="356; 396; 396; 407; 358; 358;" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="212; 200; 200; 200; 212; 212;" dur="8s" repeatCount="indefinite" />
+    </circle>
+    <!-- circle five end -->
+  </g>
+    <rect x="250" y="250" width="230" height="39" fill="white" />
+    <path d="M256.972 287.614L251.222 251.739H259.972L263.472 279.489H265.347L272.597 251.739H281.347L270.722 287.614H256.972Z" fill="#4C4C4C" />
+    <path d="M289.244 287.614L284.119 251.739H292.494L297.619 287.614H289.244Z" fill="#4C4C4C" />
+    <path d="M299.744 287.611V280.486L314.869 259.736V258.736H299.744V251.861H325.619V259.236L310.494 279.736V280.736H325.619V287.736H299.744V287.611Z" fill="#4C4C4C" />
+    <path
+      d="M343.228 288.26C340.478 288.26 338.228 287.885 336.478 287.135C334.728 286.385 333.353 285.135 332.228 283.635C331.228 282.01 330.478 280.135 329.978 277.76C329.478 275.385 329.228 272.76 329.103 269.635C329.103 266.51 329.103 263.76 329.353 261.51C329.603 259.135 330.228 257.135 331.228 255.635C332.228 254.01 333.478 252.885 335.228 252.01C336.978 251.26 339.228 250.885 341.978 250.885C344.728 250.885 344.478 250.885 345.728 251.01C346.978 251.01 348.103 251.26 349.228 251.51C350.353 251.76 351.228 251.885 352.103 252.01V255.885C351.228 255.76 350.353 255.635 349.228 255.51C348.103 255.385 346.978 255.26 345.853 255.135C344.728 255.135 343.603 255.01 342.728 255.01C340.728 255.01 339.228 255.26 337.978 255.885C336.728 256.51 335.853 257.385 335.228 258.51C334.603 259.76 334.228 261.26 334.103 263.01C333.978 264.885 333.853 267.01 333.978 269.635C333.978 272.135 334.353 274.26 334.603 276.135C334.853 278.01 335.478 279.51 336.103 280.635C336.728 281.885 337.728 282.76 338.978 283.26C340.228 283.885 341.853 284.135 343.853 284.135C345.853 284.135 346.978 284.135 348.728 283.885C350.478 283.635 351.978 283.51 353.103 283.26L353.353 287.135C352.478 287.26 351.478 287.51 350.353 287.635C349.228 287.76 348.103 288.01 346.853 288.01C345.603 288.01 344.353 288.135 343.228 288.135V288.26Z"
+      fill="#4C4C4C"
+    />
+    <path d="M359.237 287.626L354.737 251.251H359.362L361.362 267.376H379.112L377.112 251.251H381.737L386.237 287.626H381.612L379.612 271.376H361.862L363.862 287.626H359.237Z" fill="#4C4C4C" />
+    <path d="M393.98 287.626L388.855 251.251H393.48L398.605 287.626H393.98Z" fill="#4C4C4C" />
+    <path d="M406.487 287.626L409.862 255.376H398.987L399.487 251.251H425.862L425.362 255.376H414.612L411.237 287.626H406.487Z" fill="#4C4C4C" />
+    <path
+      d="M423.71 287.626L428.835 251.251H442.335C444.96 251.251 447.085 251.626 448.71 252.376C450.335 253.126 451.585 254.376 452.21 256.126C452.835 257.876 453.085 260.001 452.71 262.626C452.335 265.251 451.585 267.501 450.21 269.251C448.96 271.001 447.085 272.251 444.835 273.126L449.335 287.626H444.335L439.96 274.001H430.085L428.21 287.626H423.585H423.71ZM430.835 270.001H439.835C441.585 270.001 442.96 269.626 444.085 269.001C445.21 268.376 446.085 267.376 446.835 266.251C447.46 265.126 447.96 263.751 448.085 262.251C448.46 259.876 448.085 258.126 447.21 257.001C446.21 255.876 444.585 255.251 442.085 255.251H432.96L430.835 270.001Z"
+      fill="#4C4C4C"
+    />
+    <path
+      d="M452.641 287.626L462.391 251.251H472.016L481.266 287.626H476.641L474.641 278.626H459.641L457.141 287.626H452.516H452.641ZM460.766 274.751H473.891L468.641 255.251H466.016L460.766 274.751Z"
+      fill="#4C4C4C"
+    />
+</svg>

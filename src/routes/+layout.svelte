@@ -1,6 +1,7 @@
 <script>
 	import Header from './Header.svelte';
 	import '../app.css';
+	import HeaderCallToAction from '$lib/components/HeaderCallToAction.svelte';
 
 	/** @type {{children: import('svelte').Snippet}} */
 	let { children } = $props();
@@ -8,7 +9,7 @@
 
 <div class="app">
 	<!-- <Header /> -->
-
+	<HeaderCallToAction />
 	<main>
 		{@render children()}
 	</main>
