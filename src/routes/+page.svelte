@@ -4,6 +4,7 @@
 	import VizchitraLogo from '$lib/assets/images/viz-logo-animate.svg?raw';
 	import { formatSlantedText } from '$lib/utils/utils.js';
 	import CallToAction from '$lib/components/CallToAction.svelte';
+	import SocialLink from '$lib/components/SocialLink.svelte';
 
 	export let data;
 </script>
@@ -42,6 +43,8 @@
 </div>
 
 <CallToAction />
+
+<SocialLink />
 
 <div class="mt-20 flex flex-col items-center gap-10">
 	<div class="content flex flex-col gap-2">
