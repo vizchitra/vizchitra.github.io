@@ -2,28 +2,10 @@
 	import Header from './Header.svelte';
 	import '../app.css';
 	import HeaderCallToAction from '$lib/components/HeaderCallToAction.svelte';
-	import { base } from '$app/path';
 
 	/** @type {{children: import('svelte').Snippet}} */
 	let { children } = $props();
 </script>
-
-<svelte:head>
-	<link
-		rel="preload"
-		href="{base}/fonts/Cairo-Variable-Latin.woff2"
-		as="font"
-		type="font/woff2"
-		crossorigin
-	/>
-	<link
-		rel="preload"
-		href="{base}/fonts/IBMPlexSans-Regular-Latin1.woff2"
-		as="font"
-		type="font/woff2"
-		crossorigin
-	/>
-</svelte:head>
 
 <div class="app">
 	<!-- <Header /> -->
