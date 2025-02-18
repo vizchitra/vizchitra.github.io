@@ -2,6 +2,7 @@
     import instagram from '$lib/assets/images/socials/instagram.svg';
     import twitter from '$lib/assets/images/socials/twitter.svg';
     import linkedIn from '$lib/assets/images/socials/linkedin.svg';
+    import blueSky from '$lib/assets/images/socials/bluesky.svg';
 
     const socials = [
         {
@@ -18,6 +19,11 @@
             icon: linkedIn,
             alt: 'VizChitra linkedin link',
             link: 'https://www.linkedin.com/company/vizchitra/'
+        },
+        {
+            icon: blueSky,
+            alt: 'VizChitra bluesky link',
+            link: 'https://bsky.app/profile/vizchitra.bsky.social'
         }
     ];
 </script>
