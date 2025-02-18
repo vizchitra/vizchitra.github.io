@@ -4,17 +4,33 @@
 	import VizchitraLogo from '$lib/assets/images/viz-logo-animate.svg?raw';
 	import { formatSlantedText } from '$lib/utils/utils.js';
 	import CallToAction from '$lib/components/CallToAction.svelte';
+	import VizChitraLogoType from '$lib/components/VizChitraLogoType.svelte';
 	import SocialLink from '$lib/components/SocialLink.svelte';
+	import { base } from '$app/paths';
 
 	export let data;
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<!-- <title>Home</title>
 	<meta name="description" content="Svelte demo app" />
 	<meta
 		name="viewport"
 		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+	/> -->
+	<link
+		rel="preload"
+		href="{base}/fonts/Cairo-Variable-Latin.woff2"
+		as="font"
+		type="font/woff2"
+		crossorigin
+	/>
+	<link
+		rel="preload"
+		href="{base}/fonts/IBMPlexSans-Regular-Latin1.woff2"
+		as="font"
+		type="font/woff2"
+		crossorigin
 	/>
 </svelte:head>
 
@@ -49,11 +65,7 @@
 <div class="mt-20 flex flex-col items-center gap-10">
 	<div class="content flex flex-col gap-2">
 		<h1>
-			{#each formatSlantedText('VIZCHITRA') as letter}
-				<span class="slanted-text text-[3rem] font-bold" style="--letter-slant: {letter.slant}">
-					{letter.letter}
-				</span>
-			{/each}
+			<VizChitraLogoType></VizChitraLogoType>
 		</h1>
 
 		<p class="mb-4 max-w-[55ch] text-[22px]">
