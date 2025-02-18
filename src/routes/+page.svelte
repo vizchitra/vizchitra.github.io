@@ -5,16 +5,31 @@
 	import { formatSlantedText } from '$lib/utils/utils.js';
 	import CallToAction from '$lib/components/CallToAction.svelte';
 	import VizChitraLogoType from '$lib/components/VizChitraLogoType.svelte';
+	import { base } from '$app/paths';
 
 	export let data;
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<!-- <title>Home</title>
 	<meta name="description" content="Svelte demo app" />
 	<meta
 		name="viewport"
 		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+	/> -->
+	<link
+		rel="preload"
+		href="{base}/fonts/Cairo-Variable-Latin.woff2"
+		as="font"
+		type="font/woff2"
+		crossorigin
+	/>
+	<link
+		rel="preload"
+		href="{base}/fonts/IBMPlexSans-Regular-Latin1.woff2"
+		as="font"
+		type="font/woff2"
+		crossorigin
 	/>
 </svelte:head>
 
