@@ -4,6 +4,7 @@
 	import VizchitraLogo from '$lib/assets/images/viz-logo-animate.svg?raw';
 	import { formatSlantedText } from '$lib/utils/utils.js';
 	import CallToAction from '$lib/components/CallToAction.svelte';
+	import VizChitraLogoType from '$lib/components/VizChitraLogoType.svelte';
 
 	export let data;
 </script>
@@ -46,11 +47,7 @@
 <div class="mt-20 flex flex-col items-center gap-10">
 	<div class="content flex flex-col gap-2">
 		<h1>
-			{#each formatSlantedText('VIZCHITRA') as letter}
-				<span class="slanted-text text-[3rem] font-bold" style="--letter-slant: {letter.slant}">
-					{letter.letter}
-				</span>
-			{/each}
+			<VizChitraLogoType></VizChitraLogoType>
 		</h1>
 
 		<p class="mb-4 max-w-[55ch] text-[22px]">
