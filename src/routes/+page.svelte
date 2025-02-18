@@ -5,6 +5,7 @@
 	import { formatSlantedText } from '$lib/utils/utils.js';
 	import CallToAction from '$lib/components/CallToAction.svelte';
 	import VizChitraLogoType from '$lib/components/VizChitraLogoType.svelte';
+	import SocialLink from '$lib/components/SocialLink.svelte';
 	import { base } from '$app/paths';
 
 	export let data;
@@ -58,6 +59,8 @@
 </div>
 
 <CallToAction />
+
+<SocialLink />
 
 <div class="mt-20 flex flex-col items-center gap-10">
 	<div class="content flex flex-col gap-2">
