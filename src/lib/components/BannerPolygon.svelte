@@ -292,7 +292,7 @@
 	on:touchmove={staticBanner ? undefined : handleTouchMove}
 	on:touchstart={staticBanner ? undefined : handleTouchMove}
 	role="banner"
-	class="relative h-full {staticBanner ? '' : 'cursor-none'}"
+	class="relative h-full overflow-hidden {staticBanner ? '' : 'cursor-none'}"
 >
 	<canvas bind:this={canvas} {width} {height} class="absolute inset-0 h-full w-full" />
 
