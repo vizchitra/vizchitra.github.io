@@ -1,42 +1,42 @@
 <script lang="ts">
-    import instagram from '$lib/assets/images/socials/instagram.svg';
-    import twitter from '$lib/assets/images/socials/twitter.svg';
-    import linkedIn from '$lib/assets/images/socials/linkedin.svg';
-    import blueSky from '$lib/assets/images/socials/bluesky.svg';
+	import instagram from '$lib/assets/images/socials/instagram.svg';
+	import twitter from '$lib/assets/images/socials/twitter.svg';
+	import linkedIn from '$lib/assets/images/socials/linkedin.svg';
+	import blueSky from '$lib/assets/images/socials/bluesky.svg';
 
-    const socials = [
-        {
-            icon: instagram,
-            alt: 'VizChitra instagram link',
-            link: 'https://www.instagram.com/vizchitra/'
-        },
-        {
-            icon: twitter,
-            alt: 'VizChitra twitter link',
-            link: 'https://www.x.com/vizchitra/'
-        },
-        {
-            icon: linkedIn,
-            alt: 'VizChitra linkedin link',
-            link: 'https://www.linkedin.com/company/vizchitra/'
-        },
-        {
-            icon: blueSky,
-            alt: 'VizChitra bluesky link',
-            link: 'https://bsky.app/profile/vizchitra.bsky.social'
-        }
-    ];
+	const socials = [
+		{
+			icon: instagram,
+			alt: 'VizChitra instagram link',
+			link: 'https://www.instagram.com/vizchitra/'
+		},
+		{
+			icon: twitter,
+			alt: 'VizChitra twitter link',
+			link: 'https://www.x.com/vizchitra/'
+		},
+		{
+			icon: linkedIn,
+			alt: 'VizChitra linkedin link',
+			link: 'https://www.linkedin.com/company/vizchitra/'
+		},
+		{
+			icon: blueSky,
+			alt: 'VizChitra bluesky link',
+			link: 'https://bsky.app/profile/vizchitra.bsky.social'
+		}
+	];
 </script>
 
-<div class="flex items-center justify-center mt-14 gap-6">
-    <span class="text-left text-lg font-semibold">Follow Us</span>
-    <div class="flex gap-6">
-        {#each socials as social}
-            <span>
-                <a href="{social.link}" target="_blank">
-                    <img width="30px" height="30px" src={social.icon} alt={social.alt}/>
-                </a>
-            </span>
-        {/each}
-    </div>
+<div class="mt-14 flex items-center justify-center gap-6">
+	<span class="text-left text-lg font-semibold">Follow Us</span>
+	<div class="flex gap-6">
+		{#each socials as social}
+			<span>
+				<a href={social.link} target="_blank">
+					<img width="30px" height="30px" src={social.icon} alt={social.alt} />
+				</a>
+			</span>
+		{/each}
+	</div>
 </div>

@@ -30,6 +30,8 @@
 	--color-viz-blue-dark: #718bd1;
     --color-viz-orange-dark: #d46637;
     --color-viz-pink-dark: #c94b7f; */
+
+
 }
 
 :root {
@@ -66,10 +68,6 @@ p {
 	line-height: 1.5;
 }
 
-a {
-	color: var(--color-theme-1);
-	text-decoration: none;
-}
 
 a:hover {
 	text-decoration: underline;

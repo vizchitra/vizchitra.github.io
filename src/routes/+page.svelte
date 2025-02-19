@@ -37,14 +37,14 @@
 <div class="banner-container full-bleed relative h-[100svh]">
 	<BannerPolygon />
 	<div
-		class="logo-container pointer-events-none absolute top-1/3 left-1/2 mb-2 flex -translate-x-1/2 -translate-y-1/3 flex-col items-center gap-4 rounded-md bg-white px-4 py-4 shadow-lg md:max-w-none md:flex-row md:gap-0 md:px-8"
+		class="logo-container pointer-events-none absolute top-1/3 left-1/2 mb-2 flex -translate-x-1/2 -translate-y-1/3 flex-col items-center rounded-md bg-white px-2 pt-2 pb-4 shadow-lg md:max-w-none md:flex-row md:gap-0 md:px-8"
 	>
 		<div class="logo">
 			{@html VizchitraLogo}
 		</div>
 
 		<h3
-			class="tagline max-w-[20ch] border-black text-center text-[1.2rem] leading-none uppercase md:border-l-2 md:pl-5 md:text-left md:text-[1.6rem]"
+			class="tagline -mt-8 max-w-[20ch] border-black text-center text-[1.2rem] leading-none uppercase md:mt-0 md:border-l-2 md:pl-5 md:text-left md:text-[1.6rem]"
 		>
 			{#each formatSlantedText('A SPACE TO CONNECT AND CREATE WITH DATA') as letter}
 				<span
@@ -68,7 +68,7 @@
 			<VizChitraLogoType></VizChitraLogoType>
 		</h1>
 
-		<p class="mb-4 max-w-[55ch] text-[22px]">
+		<p class="mb-4 max-w-[55ch] text-[18px] md:text-[22px]">
 			Data visualisation practitioners in India have been spread across different communities. As
 			the first of its kind <span class="font-semibold">
 				data visualisation community, VizChitra
@@ -84,7 +84,7 @@
 		</p>
 
 		<div class="pillars">
-			<p class="mb-1 max-w-[55ch] text-[22px]">
+			<p class="mb-1 max-w-[55ch] text-[18px] md:text-[22px]">
 				Our goal is to build a community of diverse, interdisciplinary individuals working across
 				the visualization spectrum, and facilitate learning and connections between people from
 				different industries & disciplines who share a common interest in the power of data and
@@ -150,22 +150,29 @@
 
 		<h2 class="font-display mt-5 !text-[2rem] font-bold">VIZCHITRA 2025</h2>
 
-		<p class="mb-4 max-w-[55ch] text-[22px]">One day of talks & dialogues & One day of workshops</p>
+		<p class="mb-6 max-w-[55ch] text-[18px] md:text-[22px]">
+			One day of talks & dialogues & One day of workshops
+		</p>
 
-		<div class="mb-10 flex flex-row">
-			<div class="w-[50%]">
-				<h3 class="font-display block text-[22px] leading-[1.5] font-bold">CONFERENCE DAY</h3>
-				<p class="mb-1 max-w-[55ch] text-[22px]">
-					27th June, 2025 <br />
-					Bangalore International Center
-				</p>
+		<div
+			class="mb-10 grid grid-cols-1 gap-6 rounded-lg bg-gray-100 p-6 md:grid-cols-2 md:gap-8 md:p-8"
+		>
+			<div class="space-y-2">
+				<h3 class="font-display text-primary text-[22px] leading-[1.5] font-bold">
+					CONFERENCE DAY
+				</h3>
+				<div class="space-y-1">
+					<p class="text-[22px] font-semibold">27th June, 2025</p>
+					<p class="text-[20px]">Bangalore International Center</p>
+				</div>
 			</div>
-			<div class="w-[50%]">
-				<h3 class="font-display block text-[22px] leading-[1.5] font-bold">WORKSHOP DAY</h3>
-				<p class="mb-1 max-w-[55ch] text-[22px]">
-					28th June, 2025 <br />
-					Across Bengaluru
-				</p>
+
+			<div class="space-y-2">
+				<h3 class="font-display text-primary text-[22px] leading-[1.5] font-bold">WORKSHOP DAY</h3>
+				<div class="space-y-1">
+					<p class="text-[22px] font-semibold">28th June, 2025</p>
+					<p class="text-[20px]">Across Bengaluru</p>
+				</div>
 			</div>
 		</div>
 		[LINK TO HASGEEK]

@@ -36,9 +36,6 @@ importers:
       d3:
         specifier: ^7.9.0
         version: 7.9.0
-      lucide-svelte:
-        specifier: ^0.475.0
-        version: 0.475.0(svelte@5.20.0)
       mdsvex:
         specifier: ^0.12.3
         version: 0.12.3(svelte@5.20.0)
@@ -57,9 +54,6 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: ^0.6.11
         version: 0.6.11(prettier-plugin-svelte@3.3.3(prettier@3.5.1)(svelte@5.20.0))(prettier@3.5.1)
-      simplex-noise:
-        specifier: ^4.0.3
-        version: 4.0.3
       svelte:
         specifier: ^5.0.0
         version: 5.20.0
@@ -3934,11 +3928,6 @@ packages:
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0-rc
 
-  lucide-svelte@0.475.0:
-    resolution: {integrity: sha512-N5+hFTPHaZe9HhqJDxxxODfYuOmI6v+JIowzERcea/uxytN/JZlehVTcINBNp8wMo7l6ov1Jf5srrDbkI/WsJg==}
-    peerDependencies:
-      svelte: ^3 || ^4 || ^5.0.0-next.42
-
   lunr@2.3.9:
     resolution: {integrity: sha512-zTU3DaZaF3Rt9rhN3uBMGQD3dD2/vFQqnvZCDv4dl5iOzq2IZQqTxu90r4E5J+nP70J3ilqVCrbho2eWaeW8Ow==}
 
@@ -5093,9 +5082,6 @@ packages:
 
   simple-swizzle@0.2.2:
     resolution: {integrity: sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==}
-
-  simplex-noise@4.0.3:
-    resolution: {integrity: sha512-qSE2I4AngLQG7BXqoZj51jokT4WUXe8mOBrvfOXpci8+6Yu44+/dD5zqDpOx3Ux792eamTd2lLcI8jqFntk/lg==}
 
   sirv@3.0.0:
     resolution: {integrity: sha512-BPwJGUeDaDCHihkORDchNyyTvWFhcusy1XMmhEVTQTwGeybFbp8YEmB+njbPnth1FibULBSBVwCQni25XlCUDg==}
@@ -9920,10 +9906,6 @@ snapshots:
     dependencies:
       react: 18.3.1
 
-  lucide-svelte@0.475.0(svelte@5.20.0):
-    dependencies:
-      svelte: 5.20.0
-
   lunr@2.3.9: {}
 
   magic-string@0.27.0:
@@ -11426,8 +11408,6 @@ snapshots:
   simple-swizzle@0.2.2:
     dependencies:
       is-arrayish: 0.3.2
-
-  simplex-noise@4.0.3: {}
 
   sirv@3.0.0:
     dependencies:

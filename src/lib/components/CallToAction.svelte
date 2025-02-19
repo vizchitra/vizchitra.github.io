@@ -1,14 +1,19 @@
 <script lang="ts">
-	import communityBanner from '$lib/assets/images/call-to-action/community-banner.png';
-	import conferenceBanner from '$lib/assets/images/call-to-action/conference-banner.png';
-	import launchPartyBanner from '$lib/assets/images/call-to-action/launch-party-banner.png';
+	import communityBanner from '$lib/assets/images/call-to-action/community-banner.webp';
+	import conferenceBanner from '$lib/assets/images/call-to-action/conference-banner.webp';
+	import launchPartyBanner from '$lib/assets/images/call-to-action/launch-party-banner.webp';
+	import { confetti } from '@neoconfetti/svelte';
+	import { tick } from 'svelte';
+
+	let isVisible = false;
+	let hasShownConfetti = false;
 
 	const cards = [
 		{
 			image: communityBanner,
 			alt: 'Join the community banner',
 			title: 'Join the community',
-			description: 'The good side of data viz is here',
+			description: 'Join our 600+ growing member community on WhatsApp',
 			link: 'https://chat.whatsapp.com/CbIu7z6ITmGFvwfw0BjDdL',
 			buttonText: 'Connect',
 			isAnimated: false
@@ -17,7 +22,8 @@
 			image: launchPartyBanner,
 			alt: 'launch party banner',
 			title: 'Launch Party',
-			description: 'Connect with the data viz community in India',
+			description:
+				'Connect with the data viz community in India, virtually on 21 Feb 2025, 5pm IST',
 			link: 'https://hasgeek.com/VizChitra/launch-party/',
 			buttonText: 'Registrations open',
 			isAnimated: true
@@ -32,48 +38,70 @@
 			isAnimated: false
 		}
 	];
+
+	function handleCardMouseLeave() {
+		isVisible = false;
+		hasShownConfetti = false;
+	}
+
+	async function handleCardMouseOver(card: (typeof cards)[number]) {
+		if (card.isAnimated && !hasShownConfetti) {
+			isVisible = false;
+			await tick();
+			isVisible = true;
+			hasShownConfetti = true;
+		}
+	}
 </script>
 
 <div
-	class="z-12 -mt-[15%] grid grid-cols-1 gap-4 rounded-2xl bg-white px-4 py-4 shadow-lg sm:grid-cols-2 sm:px-6 lg:grid-cols-3 lg:px-4"
+	class="z-12 -mt-[15%] grid grid-cols-1 gap-4 rounded-2xl bg-white px-4 py-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-3 lg:px-4"
 >
 	{#each cards as card}
 		<div
-			class="group relative overflow-hidden rounded-lg border border-slate-100 transition-all duration-300 hover:shadow-lg"
-			class:animated-border={card.isAnimated}
+			role="button"
+			tabindex="0"
+			class:shadow-viz-pink={card.isAnimated}
+			class="group relative flex flex-col overflow-hidden rounded-sm border border-slate-200 shadow-lg transition-all duration-300"
+			on:mouseleave={handleCardMouseLeave}
 		>
-			<div class="aspect-[16/9] overflow-hidden">
+			<div class="aspect-[3/2] overflow-hidden">
 				<img
 					src={card.image}
 					alt={card.alt}
 					class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
 				/>
 			</div>
-			<div class="p-6">
+			<div class="flex flex-1 flex-col p-6">
 				<h3 class="mb-2 text-xl font-bold tracking-tight">{card.title}</h3>
 				<p class="mb-4 text-slate-600">{card.description}</p>
-				<a
-					href={card.link}
-					target="_blank"
-					class="inline-flex items-center font-semibold text-[#FF4A11] transition-colors hover:text-[#FF6B11]"
-				>
-					{card.buttonText}
-					<span class="ml-1 text-lg">↗</span>
-				</a>
+				<div class="mt-auto">
+					{#if card.isAnimated}
+						{#if isVisible}
+							<div class="pointer-events-none absolute bottom-10 left-0 z-10">
+								<div
+									use:confetti={{ colors: ['#ffd485', '#97e4dd', '#a8bdf0', '#f89f72', '#ee88b3'] }}
+								></div>
+							</div>
+						{/if}
+					{/if}
+					<a
+						href={card.link}
+						on:mouseover={() => handleCardMouseOver(card)}
+						on:focus={() => handleCardMouseOver(card)}
+						target="_blank"
+						class="text-viz-pink-dark inline-flex items-center font-semibold transition-colors"
+					>
+						{card.buttonText}
+						<span class="ml-1 text-lg">↗</span>
+					</a>
+				</div>
 			</div>
 		</div>
 	{/each}
 </div>
 
 <style>
-	.animated-border {
-		background: linear-gradient(90deg, #ffd485, #97e4dd, #a8bdf0, #f89f72, #ee88b3);
-		background-size: 300% 300%;
-		animation: borderAnimation 10s linear infinite;
-		position: relative;
-		z-index: 1;
-	}
-
 	@keyframes borderAnimation {
 		0% {
 			background-position: 0% 50%;
@@ -84,24 +112,5 @@
 		100% {
 			background-position: 0% 50%;
 		}
-	}
-
-	.group:not(.animated-border) {
-		background: #fff;
-		transition: background 0.3s ease;
-	}
-
-	.group:not(.animated-border):hover {
-		background: linear-gradient(to right bottom, #fff, #f8f8f8);
-	}
-
-	.group {
-		transition: box-shadow 0.3s ease;
-	}
-
-	.group:hover {
-		box-shadow:
-			0 10px 15px -3px rgb(0 0 0 / 0.1),
-			0 4px 6px -4px rgb(0 0 0 / 0.1);
 	}
 </style>
