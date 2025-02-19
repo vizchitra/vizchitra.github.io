@@ -86,7 +86,7 @@
 			<p class="mb-1 max-w-[55ch] text-[18px] md:text-[22px]">
 				Our goal is to build a community of diverse, interdisciplinary individuals working across
 				the visualization spectrum, and facilitate learning and connections between people from
-				different industries & disciplines who share a common interest in the power of data and
+				different industries and disciplines who share a common interest in the power of data and
 				storytelling.
 			</p>
 		</div>
@@ -99,7 +99,7 @@
 
 		<p class="mb-4 max-w-[55ch] text-[18px] md:text-[22px]">
 			To foster a vibrant <span class="font-semibold">community of data storytellers in India</span
-			>, bridging technical analysis & design expertise to shape perspectives & drive change
+			>, bridging technical analysis and design expertise to shape perspectives and drive change
 		</p>
 
 		<p class="mx-auto mb-6 text-center md:mb-8">
@@ -120,7 +120,7 @@
 			<ol class="space-y-4 md:space-y-2">
 				<li>
 					<h3 class="font-display text-[18px] leading-[1.5] font-bold md:text-[22px]">
-						1. Consider & Curate:
+						1. Consider and Curate:
 					</h3>
 					<p class="text-[16px] md:text-[22px]">
 						Build a rhythm of curated events to spread the practice of data visualization
@@ -128,15 +128,15 @@
 				</li>
 				<li>
 					<h3 class="font-display text-[18px] leading-[1.5] font-bold md:text-[22px]">
-						2. Cultivate & Care:
+						2. Cultivate and Care:
 					</h3>
 					<p class="text-[16px] md:text-[22px]">
-						Nurture a fertile space for learning & sharing of data visualization skills
+						Nurture a fertile space for learning and sharing of data visualization skills
 					</p>
 				</li>
 				<li>
 					<h3 class="font-display text-[18px] leading-[1.5] font-bold md:text-[22px]">
-						3. Create & Collaborate:
+						3. Create and Collaborate:
 					</h3>
 					<p class="text-[16px] md:text-[22px]">
 						Express and co-create to push the boundaries of data visualization
@@ -150,7 +150,7 @@
 		<h2 class="font-display mt-5 !text-[2rem] font-bold">VIZCHITRA 2025</h2>
 
 		<p class="mb-6 max-w-[55ch] text-[18px] md:text-[22px]">
-			One day of talks & dialogues & One day of workshops
+			One day of talks and dialogues and One day of workshops
 		</p>
 
 		<div
