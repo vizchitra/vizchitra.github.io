@@ -21,14 +21,14 @@
 	/> -->
 	<link
 		rel="preload"
-		href="{base}/fonts/Cairo-Variable-Latin.woff2"
+		href="/fonts/Cairo-Variable-Latin.woff2"
 		as="font"
 		type="font/woff2"
 		crossorigin
 	/>
 	<link
 		rel="preload"
-		href="{base}/fonts/IBMPlexSans-Regular-Latin1.woff2"
+		href="/fonts/IBMPlexSans-Regular-Latin1.woff2"
 		as="font"
 		type="font/woff2"
 		crossorigin
