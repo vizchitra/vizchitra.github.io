@@ -5,7 +5,7 @@
 <div class="flex items-center justify-center gap-4 bg-[#FFE5B7] p-2">
 	<div class="svg-horn">{@html horn}</div>
 	<div>
-		<p class="text-xl">
+		<p class="w-fit text-xl">
 			Register for <a
 				href="https://hasgeek.com/VizChitra/launch-party/"
 				class="text-viz-pink-dark inline-block underline"
