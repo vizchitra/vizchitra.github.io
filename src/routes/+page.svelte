@@ -170,11 +170,11 @@
 				<h3 class="font-display text-primary text-[22px] leading-[1.5] font-bold">WORKSHOP DAY</h3>
 				<div class="space-y-1">
 					<p class="text-[22px] font-semibold">28th June, 2025</p>
-					<p class="text-[20px]">Across Bengaluru</p>
+					<p class="text-[20px]">Across Bangalore</p>
 				</div>
 			</div>
 		</div>
-		<Button variant="primary" href="https://hasgeek.com/vizchitra/vizchitra-2025" external
+		<Button variant="primary" href="https://hasgeek.com/VizChitra/2025/" external
 			>Add us to your calendar!</Button
 		>
 
