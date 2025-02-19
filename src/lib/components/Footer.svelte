@@ -3,8 +3,8 @@
 	import SocialLink from './SocialLink.svelte';
 </script>
 
-<div class="footer-content relative mt-20 pb-24">
-	<footer class="relative mt-20">
+<div class="footer-content relative pb-24">
+	<footer class="relative">
 		<div class="z-10 flex flex-col items-center gap-8 py-16">
 			<!-- <div class="links flex gap-8">
 				<a href="/about" class="hover:text-primary">About</a>
