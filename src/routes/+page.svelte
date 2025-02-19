@@ -69,9 +69,9 @@
 		</h1>
 
 		<p class="mb-4 max-w-[55ch] text-[18px] md:text-[22px]">
-			Data visualisation practitioners in India have been spread across different communities. As
+			Data visualization practitioners in India have been spread across different communities. As
 			the first of its kind <span class="font-semibold">
-				data visualisation community, VizChitra
+				data visualization community, VizChitra
 			</span> is putting together a conference to bring these people together.
 		</p>
 
@@ -124,7 +124,7 @@
 						1. Consider & Curate:
 					</h3>
 					<p class="text-[16px] md:text-[22px]">
-						Build a rhythm of curated events to spread the practice of data visualisation
+						Build a rhythm of curated events to spread the practice of data visualization
 					</p>
 				</li>
 				<li>
@@ -132,7 +132,7 @@
 						2. Cultivate & Care:
 					</h3>
 					<p class="text-[16px] md:text-[22px]">
-						Nurture a fertile space for learning & sharing of data visualisation skills
+						Nurture a fertile space for learning & sharing of data visualization skills
 					</p>
 				</li>
 				<li>
