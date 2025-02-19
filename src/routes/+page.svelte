@@ -7,6 +7,7 @@
 	import VizChitraLogoType from '$lib/components/VizChitraLogoType.svelte';
 	import SocialLink from '$lib/components/SocialLink.svelte';
 	import { base } from '$app/paths';
+	import Button from '$lib/components/Button.svelte';
 
 	export let data;
 </script>
@@ -175,7 +176,9 @@
 				</div>
 			</div>
 		</div>
-		[LINK TO HASGEEK]
+		<Button variant="primary" href="https://hasgeek.com/vizchitra/vizchitra-2025" external
+			>Add us to your calendar!</Button
+		>
 
 		<PolygonDivider></PolygonDivider>
 	</div>

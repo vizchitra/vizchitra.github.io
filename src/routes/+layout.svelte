@@ -1,5 +1,6 @@
 <script>
 	import Header from './Header.svelte';
+	import Footer from '$lib/components/Footer.svelte';
 	import '../app.css';
 	import HeaderCallToAction from '$lib/components/HeaderCallToAction.svelte';
 
@@ -14,11 +15,7 @@
 		{@render children()}
 	</main>
 
-	<footer>
-		<p>
-			Copyright {new Date().getFullYear()} Vizchitra
-		</p>
-	</footer>
+	<Footer />
 </div>
 
 <style>
@@ -37,20 +34,6 @@
 		max-width: 60vw;
 		margin: 0 auto;
 		box-sizing: border-box;
-	}
-
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 12px;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 12px 0;
-		}
 	}
 
 	@media (max-width: 768px) {

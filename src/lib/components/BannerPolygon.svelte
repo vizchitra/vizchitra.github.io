@@ -6,6 +6,9 @@
 	import { getFlagEmoji, getLocationLabel } from '$lib/utils/utils';
 	import MousePointer from '../assets/images/MousePointer.svelte';
 
+	// Add staticBanner prop
+	export let staticBanner = false;
+
 	interface Point {
 		x: number;
 		y: number;
@@ -24,7 +27,7 @@
 		lastActive?: number;
 	}
 
-	const POINT_COUNT = 150;
+	const POINT_COUNT = staticBanner ? 50 : 150;
 
 	const CURSOR_SIZE = 24;
 	const CURSOR_TIMEOUT = 10000;
@@ -159,7 +162,7 @@
 
 		// Draw Voronoi cells
 		if (voronoi) {
-			// Draw static polygons first (background)
+			// Draw staticBanner polygons first (background)
 			for (let i = Object.keys(otherCursors).length + 1; i < points.length; i++) {
 				const cell = voronoi.cellPolygon(i);
 				if (!cell) continue;
@@ -215,51 +218,55 @@
 
 		ctx = canvas.getContext('2d')!;
 
-		socket = new PartySocket({
-			host: import.meta.env.VITE_PARTYKIT_HOST || 'vizchitra-cursors.genmon.partykit.dev',
-			room: 'banner'
-		});
+		if (!staticBanner) {
+			socket = new PartySocket({
+				host: import.meta.env.VITE_PARTYKIT_HOST || 'vizchitra-cursors.genmon.partykit.dev',
+				room: 'banner'
+			});
 
-		socket.addEventListener('message', (event) => {
-			const msg = JSON.parse(event.data);
+			socket.addEventListener('message', (event) => {
+				const msg = JSON.parse(event.data);
 
-			switch (msg.type) {
-				case 'sync':
-					// Filter out any cursors without positions
-					otherCursors = Object.fromEntries(
-						Object.entries(msg.cursors).filter(
-							([_, cursor]) => cursor.x !== undefined && cursor.y !== undefined
-						)
-					);
-					break;
-				case 'update':
-					if (msg.x !== undefined && msg.y !== undefined) {
-						otherCursors = {
-							...otherCursors,
-							[msg.id]: {
-								x: msg.x,
-								y: msg.y,
-								location: msg.location,
-								lastActive: Date.now()
-							}
-						};
-					}
-					break;
-				case 'remove':
-					const { [msg.id]: _, ...rest } = otherCursors;
-					otherCursors = rest;
-					break;
-			}
+				switch (msg.type) {
+					case 'sync':
+						// Filter out any cursors without positions
+						otherCursors = Object.fromEntries(
+							Object.entries(msg.cursors).filter(
+								([_, cursor]) => cursor.x !== undefined && cursor.y !== undefined
+							)
+						);
+						break;
+					case 'update':
+						if (msg.x !== undefined && msg.y !== undefined) {
+							otherCursors = {
+								...otherCursors,
+								[msg.id]: {
+									x: msg.x,
+									y: msg.y,
+									location: msg.location,
+									lastActive: Date.now()
+								}
+							};
+						}
+						break;
+					case 'remove':
+						const { [msg.id]: _, ...rest } = otherCursors;
+						otherCursors = rest;
+						break;
+				}
 
-			updateDataWithCursors();
-		});
+				updateDataWithCursors();
+			});
+		}
 
 		// Start animation loop
 		draw();
 	});
 
 	onDestroy(() => {
-		socket?.close();
+		if (!staticBanner) {
+			socket?.close();
+		}
 		if (animationFrameId) {
 			cancelAnimationFrame(animationFrameId);
 		}
@@ -269,7 +276,7 @@
 		// Handle resize
 		canvas.width = width;
 		canvas.height = height;
-		// Update static points positions
+		// Update staticBanner points positions
 		staticPoints.forEach((point) => {
 			point.x = Math.random() * width;
 			point.y = Math.random() * height;
@@ -281,40 +288,43 @@
 <div
 	bind:clientWidth={width}
 	bind:clientHeight={height}
-	on:mousemove={handleMouseMove}
-	on:touchmove={handleTouchMove}
-	on:touchstart={handleTouchMove}
+	on:mousemove={staticBanner ? undefined : handleMouseMove}
+	on:touchmove={staticBanner ? undefined : handleTouchMove}
+	on:touchstart={staticBanner ? undefined : handleTouchMove}
 	role="banner"
-	class="relative h-full cursor-none"
+	class="relative h-full {staticBanner ? '' : 'cursor-none'}"
 >
 	<canvas bind:this={canvas} {width} {height} class="absolute inset-0 h-full w-full" />
 
-	<!-- Main cursor -->
-	<div
-		class="custom-cursor"
-		style="transform: translate3d({cursorX - CURSOR_SIZE / 2}px, {cursorY - CURSOR_SIZE / 2}px, 0)"
-	>
-		<MousePointer size={CURSOR_SIZE} />
-	</div>
-
-	<!-- Other cursors -->
-	{#each Object.entries(otherCursors) as [id, cursor]}
+	{#if !staticBanner}
+		<!-- Main cursor -->
 		<div
 			class="custom-cursor"
-			style="transform: translate3d({cursor.x * width - CURSOR_SIZE / 2}px, {cursor.y * height -
+			style="transform: translate3d({cursorX - CURSOR_SIZE / 2}px, {cursorY -
 				CURSOR_SIZE / 2}px, 0)"
 		>
-			<MousePointer size={CURSOR_SIZE / 1.5} class="cursor-icon other" />
-			{#if isCursorActive(cursor) && cursor.location}
-				<div class="cursor-info" class:active={isCursorActive(cursor)}>
-					{#if cursor.location?.country}
-						<span class="flag">{getFlagEmoji(cursor.location.country)}</span>
-					{/if}
-					<span class="location text-[10px]">{getLocationLabel(cursor.location)}</span>
-				</div>
-			{/if}
+			<MousePointer size={CURSOR_SIZE} />
 		</div>
-	{/each}
+
+		<!-- Other cursors -->
+		{#each Object.entries(otherCursors) as [id, cursor]}
+			<div
+				class="custom-cursor"
+				style="transform: translate3d({cursor.x * width - CURSOR_SIZE / 2}px, {cursor.y * height -
+					CURSOR_SIZE / 2}px, 0)"
+			>
+				<MousePointer size={CURSOR_SIZE / 1.5} class="cursor-icon other" />
+				{#if isCursorActive(cursor) && cursor.location}
+					<div class="cursor-info" class:active={isCursorActive(cursor)}>
+						{#if cursor.location?.country}
+							<span class="flag">{getFlagEmoji(cursor.location.country)}</span>
+						{/if}
+						<span class="location text-[10px]">{getLocationLabel(cursor.location)}</span>
+					</div>
+				{/if}
+			</div>
+		{/each}
+	{/if}
 </div>
 
 <style>
