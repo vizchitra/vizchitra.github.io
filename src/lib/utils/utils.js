@@ -87,17 +87,17 @@ export function getFlagEmoji(countryCode) {
 export function getLocationLabel(location) {
 	if (!location?.country) return '';
 
-	// For India, show state abbreviation
-	if (location.country === 'IN' && location.region) {
-		// Try to find the abbreviation for the state
-		for (const [stateName, abbr] of Object.entries(INDIA_STATE_ABBR)) {
-			if (location.region.includes(stateName)) {
-				return abbr;
-			}
-		}
-		// Fallback to first word if no abbreviation found
-		return location.region.split(' ')[0];
-	}
+	// // For India, show state abbreviation
+	// if (location.country === 'IN' && location.region) {
+	// 	// Try to find the abbreviation for the state
+	// 	for (const [stateName, abbr] of Object.entries(INDIA_STATE_ABBR)) {
+	// 		if (location.region.includes(stateName)) {
+	// 			return abbr;
+	// 		}
+	// 	}
+	// 	// Fallback to first word if no abbreviation found
+	// 	return location.region.split(' ')[0];
+	// }
 
 	// For others, prefer city, fallback to first word of region
 	return location.city || location.region?.split(' ')[0] || '';

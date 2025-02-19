@@ -2,6 +2,11 @@
 	import communityBanner from '$lib/assets/images/call-to-action/community-banner.webp';
 	import conferenceBanner from '$lib/assets/images/call-to-action/conference-banner.webp';
 	import launchPartyBanner from '$lib/assets/images/call-to-action/launch-party-banner.webp';
+	import { confetti } from '@neoconfetti/svelte';
+	import { tick } from 'svelte';
+
+	let isVisible = false;
+	let hasShownConfetti = false;
 
 	const cards = [
 		{
@@ -33,6 +38,20 @@
 			isAnimated: false
 		}
 	];
+
+	function handleCardMouseLeave() {
+		isVisible = false;
+		hasShownConfetti = false;
+	}
+
+	async function handleCardMouseOver(card: (typeof cards)[number]) {
+		if (card.isAnimated && !hasShownConfetti) {
+			isVisible = false;
+			await tick();
+			isVisible = true;
+			hasShownConfetti = true;
+		}
+	}
 </script>
 
 <div
@@ -40,7 +59,11 @@
 >
 	{#each cards as card}
 		<div
+			role="button"
+			tabindex="0"
+			class:shadow-viz-pink={card.isAnimated}
 			class="group relative flex flex-col overflow-hidden rounded-sm border border-slate-200 shadow-lg transition-all duration-300"
+			on:mouseleave={handleCardMouseLeave}
 		>
 			<div class="aspect-[3/2] overflow-hidden">
 				<img
@@ -53,8 +76,19 @@
 				<h3 class="mb-2 text-xl font-bold tracking-tight">{card.title}</h3>
 				<p class="mb-4 text-slate-600">{card.description}</p>
 				<div class="mt-auto">
+					{#if card.isAnimated}
+						{#if isVisible}
+							<div class="pointer-events-none absolute bottom-10 left-0 z-10">
+								<div
+									use:confetti={{ colors: ['#ffd485', '#97e4dd', '#a8bdf0', '#f89f72', '#ee88b3'] }}
+								></div>
+							</div>
+						{/if}
+					{/if}
 					<a
 						href={card.link}
+						on:mouseover={() => handleCardMouseOver(card)}
+						on:focus={() => handleCardMouseOver(card)}
 						target="_blank"
 						class="text-viz-pink-dark inline-flex items-center font-semibold transition-colors"
 					>
@@ -68,14 +102,6 @@
 </div>
 
 <style>
-	.animated-border {
-		background: linear-gradient(90deg, #ffd485, #97e4dd, #a8bdf0, #f89f72, #ee88b3);
-		background-size: 300% 300%;
-		animation: borderAnimation 10s linear infinite;
-		position: relative;
-		z-index: 1;
-	}
-
 	@keyframes borderAnimation {
 		0% {
 			background-position: 0% 50%;
@@ -86,24 +112,5 @@
 		100% {
 			background-position: 0% 50%;
 		}
-	}
-
-	.group:not(.animated-border) {
-		background: #fff;
-		transition: background 0.3s ease;
-	}
-
-	.group:not(.animated-border):hover {
-		background: linear-gradient(to right bottom, #fff, #f8f8f8);
-	}
-
-	.group {
-		transition: box-shadow 0.3s ease;
-	}
-
-	.group:hover {
-		box-shadow:
-			0 10px 15px -3px rgb(0 0 0 / 0.1),
-			0 4px 6px -4px rgb(0 0 0 / 0.1);
 	}
 </style>

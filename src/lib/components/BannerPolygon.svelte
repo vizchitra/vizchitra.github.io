@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { scaleLinear, Delaunay } from 'd3';
-	import { MousePointer2 } from 'lucide-svelte';
 	import { onMount, onDestroy } from 'svelte';
 	import PartySocket from 'partysocket';
 	import { browser } from '$app/environment';
 	import { getFlagEmoji, getLocationLabel } from '$lib/utils/utils';
+	import MousePointer from '../assets/images/MousePointer.svelte';
 
 	interface Point {
 		x: number;
@@ -294,7 +294,7 @@
 		class="custom-cursor"
 		style="transform: translate3d({cursorX - CURSOR_SIZE / 2}px, {cursorY - CURSOR_SIZE / 2}px, 0)"
 	>
-		<MousePointer2 size={CURSOR_SIZE} class="cursor-icon" />
+		<MousePointer size={CURSOR_SIZE} />
 	</div>
 
 	<!-- Other cursors -->
@@ -304,7 +304,7 @@
 			style="transform: translate3d({cursor.x * width - CURSOR_SIZE / 2}px, {cursor.y * height -
 				CURSOR_SIZE / 2}px, 0)"
 		>
-			<MousePointer2 size={CURSOR_SIZE / 1.5} class="cursor-icon other" />
+			<MousePointer size={CURSOR_SIZE / 1.5} class="cursor-icon other" />
 			{#if isCursorActive(cursor) && cursor.location}
 				<div class="cursor-info" class:active={isCursorActive(cursor)}>
 					{#if cursor.location?.country}
