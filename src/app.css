@@ -30,6 +30,8 @@
 	--color-viz-blue-dark: #718bd1;
     --color-viz-orange-dark: #d46637;
     --color-viz-pink-dark: #c94b7f; */
+
+
 }
 
 :root {
@@ -65,7 +67,6 @@ p {
 p {
 	line-height: 1.5;
 }
-
 
 
 a:hover {
