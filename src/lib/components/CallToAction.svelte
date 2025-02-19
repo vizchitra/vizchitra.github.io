@@ -1,7 +1,7 @@
 <script lang="ts">
-	import communityBanner from '$lib/assets/images/call-to-action/community-banner.png';
-	import conferenceBanner from '$lib/assets/images/call-to-action/conference-banner.png';
-	import launchPartyBanner from '$lib/assets/images/call-to-action/launch-party-banner.png';
+	import communityBanner from '$lib/assets/images/call-to-action/community-banner.webp';
+	import conferenceBanner from '$lib/assets/images/call-to-action/conference-banner.webp';
+	import launchPartyBanner from '$lib/assets/images/call-to-action/launch-party-banner.webp';
 
 	const cards = [
 		{
