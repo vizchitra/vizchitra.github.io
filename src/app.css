@@ -2,6 +2,36 @@
 
 @import 'tailwindcss';
 
+/* Add brand design tokens here */
+@theme {
+	/* COLOR PALLETE*/
+    --color-viz-white: #ffffff;
+    --color-viz-black: #131313;
+    --color-viz-grey: #4c4c4c;
+
+    --color-viz-yellow: #ffd485;
+    --color-viz-teal: #97e4dd;
+    --color-viz-blue: #a8bdf0;
+    --color-viz-orange: #f89f72;
+    --color-viz-pink: #ee88b3;
+
+    --color-viz-yellow-light: #ffe6b8;
+    --color-viz-teal-light: #b1ede7;
+    --color-viz-blue-light: #c6d4f7;
+
+    --color-viz-grey-dark: oklch(from var(--color-viz-grey) calc(l * .75) c h);
+    --color-viz-yellow-dark: oklch(from var(--color-viz-yellow) calc(l * .75) c h);
+    --color-viz-teal-dark: oklch(from var(--color-viz-teal) calc(l * .75) c h);
+    --color-viz-blue-dark: oklch(from var(--color-viz-blue) calc(l * .75) c h);
+    --color-viz-orange-dark: oklch(from var(--color-viz-orange) calc(l * .75) c h);
+    --color-viz-pink-dark: oklch(from var(--color-viz-pink) calc(l * .75) c h);
+
+    /* Brand Guidelines has the following dark color. Check an fix later.
+	--color-viz-blue-dark: #718bd1;
+    --color-viz-orange-dark: #d46637;
+    --color-viz-pink-dark: #c94b7f; */
+}
+
 :root {
 	--font-body: 'IBM Plex Sans', 'Open Sans', 'Helvetica Neue', sans-serif;
 	--font-display: 'Cairo', sans-serif;
