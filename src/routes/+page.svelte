@@ -68,7 +68,7 @@
 			<VizChitraLogoType></VizChitraLogoType>
 		</h1>
 
-		<p class="mb-4 max-w-[55ch] text-[22px]">
+		<p class="mb-4 max-w-[55ch] text-[18px] md:text-[22px]">
 			Data visualisation practitioners in India have been spread across different communities. As
 			the first of its kind <span class="font-semibold">
 				data visualisation community, VizChitra
@@ -84,7 +84,7 @@
 		</p>
 
 		<div class="pillars">
-			<p class="mb-1 max-w-[55ch] text-[22px]">
+			<p class="mb-1 max-w-[55ch] text-[18px] md:text-[22px]">
 				Our goal is to build a community of diverse, interdisciplinary individuals working across
 				the visualization spectrum, and facilitate learning and connections between people from
 				different industries & disciplines who share a common interest in the power of data and
@@ -150,7 +150,9 @@
 
 		<h2 class="font-display mt-5 !text-[2rem] font-bold">VIZCHITRA 2025</h2>
 
-		<p class="mb-6 max-w-[55ch] text-[22px]">One day of talks & dialogues & One day of workshops</p>
+		<p class="mb-6 max-w-[55ch] text-[18px] md:text-[22px]">
+			One day of talks & dialogues & One day of workshops
+		</p>
 
 		<div
 			class="mb-10 grid grid-cols-1 gap-6 rounded-lg bg-gray-100 p-6 md:grid-cols-2 md:gap-8 md:p-8"
