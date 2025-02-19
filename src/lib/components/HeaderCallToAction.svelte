@@ -8,7 +8,7 @@
 		<p class="text-xl">
 			Register for <a
 				href="https://hasgeek.com/VizChitra/launch-party/"
-				class="inline-block"
+				class="text-viz-pink-dark inline-block underline"
 				target="_blank">VizChitra Launch Party &#8599;</a
 			>
 		</p>

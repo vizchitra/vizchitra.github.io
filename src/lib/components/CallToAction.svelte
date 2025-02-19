@@ -55,7 +55,7 @@
 				<a
 					href={card.link}
 					target="_blank"
-					class="inline-flex items-center font-semibold text-[#FF4A11] transition-colors hover:text-[#FF6B11]"
+					class="text-viz-pink-dark inline-flex items-center font-semibold transition-colors"
 				>
 					{card.buttonText}
 					<span class="ml-1 text-lg">↗</span>

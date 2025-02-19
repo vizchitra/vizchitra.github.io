@@ -1,11 +1,10 @@
-<script>
-	import { color } from 'd3';
+<script lang="ts">
 	import { onMount } from 'svelte';
 
 	let width = null;
 	let height = 80;
 
-	const colors = ['#FFD485', '#97E4DD', '#A8BDF0', '#F89F72', '#EE88B3'];
+	const colors = ['#ffd485', '#97e4dd', '#a8bdf0', '#f89f72', '#ee88b3'];
 
 	const NUM_POINTS = 3;
 
