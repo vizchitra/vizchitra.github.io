@@ -8,7 +8,7 @@
 			image: communityBanner,
 			alt: 'Join the community banner',
 			title: 'Join the community',
-			description: 'The good side of data viz is here',
+			description: 'Join our 600+ growing member community on WhatsApp',
 			link: 'https://chat.whatsapp.com/CbIu7z6ITmGFvwfw0BjDdL',
 			buttonText: 'Connect',
 			isAnimated: false
@@ -17,7 +17,8 @@
 			image: launchPartyBanner,
 			alt: 'launch party banner',
 			title: 'Launch Party',
-			description: 'Connect with the data viz community in India',
+			description:
+				'Connect with the data viz community in India, virtually on 21 Feb 2025, 5pm IST',
 			link: 'https://hasgeek.com/VizChitra/launch-party/',
 			buttonText: 'Registrations open',
 			isAnimated: true
@@ -35,31 +36,32 @@
 </script>
 
 <div
-	class="z-12 -mt-[15%] grid grid-cols-1 gap-4 rounded-2xl bg-white px-4 py-4 shadow-lg sm:grid-cols-2 sm:px-6 lg:grid-cols-3 lg:px-4"
+	class="z-12 -mt-[15%] grid grid-cols-1 gap-4 rounded-2xl bg-white px-4 py-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-3 lg:px-4"
 >
 	{#each cards as card}
 		<div
-			class="group relative overflow-hidden rounded-lg border border-slate-100 transition-all duration-300 hover:shadow-lg"
-			class:animated-border={card.isAnimated}
+			class="group relative flex flex-col overflow-hidden rounded-sm border border-slate-200 shadow-lg transition-all duration-300"
 		>
-			<div class="aspect-[16/9] overflow-hidden">
+			<div class="aspect-[3/2] overflow-hidden">
 				<img
 					src={card.image}
 					alt={card.alt}
 					class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
 				/>
 			</div>
-			<div class="p-6">
+			<div class="flex flex-1 flex-col p-6">
 				<h3 class="mb-2 text-xl font-bold tracking-tight">{card.title}</h3>
 				<p class="mb-4 text-slate-600">{card.description}</p>
-				<a
-					href={card.link}
-					target="_blank"
-					class="text-viz-pink-dark inline-flex items-center font-semibold transition-colors"
-				>
-					{card.buttonText}
-					<span class="ml-1 text-lg">↗</span>
-				</a>
+				<div class="mt-auto">
+					<a
+						href={card.link}
+						target="_blank"
+						class="text-viz-pink-dark inline-flex items-center font-semibold transition-colors"
+					>
+						{card.buttonText}
+						<span class="ml-1 text-lg">↗</span>
+					</a>
+				</div>
 			</div>
 		</div>
 	{/each}
