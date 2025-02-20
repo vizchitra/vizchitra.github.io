@@ -18,7 +18,12 @@ export const redirects: Redirect[] = [
 	},
 	{
 		path: 'conference',
-		url: 'https://hasgeek.com/vizchitra/vizchitra-2025',
+		url: 'https://hasgeek.com/VizChitra/2025',
+		type: 'permanent'
+	},
+	{
+		path: 'cfp',
+		url: 'https://hasgeek.com/VizChitra/2025/sub',
 		type: 'permanent'
 	}
 ];
