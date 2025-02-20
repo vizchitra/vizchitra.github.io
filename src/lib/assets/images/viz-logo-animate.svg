@@ -1,68 +1,68 @@
 <svg width="280" height="280" viewBox="130 130 380 280">
   <g transform="translate(30,0)">
-    <line stroke="#A8BDF0" stroke-width="5">
+    <line stroke="#A8BDF0" stroke-width="10">
       <animate attributeName="x1" values="244; 244; 244; 255; 244; 244;" dur="8s" repeatCount="indefinite" />
       <animate attributeName="y1" values="150; 169; 109; 90; 90; 150;" dur="8s" repeatCount="indefinite" />
       <animate attributeName="x2" values="130; 149; 168; 122; 168; 130;" dur="8s" repeatCount="indefinite" />
       <animate attributeName="y2" values="212; 219; 225; 206; 225; 212;" dur="8s" repeatCount="indefinite" />
     </line>
-    <line stroke="#EE88B3" stroke-width="5">
+    <line stroke="#EE88B3" stroke-width="10">
       <animate attributeName="x1" values="130; 149; 168; 122; 169; 130;" dur="8s" repeatCount="indefinite" />
       <animate attributeName="y1" values="212; 219; 225; 206; 225; 212;" dur="8s" repeatCount="indefinite" />
       <animate attributeName="x2" values="197; 150; 150; 161; 162; 197;" dur="8s" repeatCount="indefinite" />
       <animate attributeName="y2" values="314; 379; 379; 379; 363; 314;" dur="8s" repeatCount="indefinite" />
     </line>
-    <line stroke="#F89F72" stroke-width="5">
+    <line stroke="#F89F72" stroke-width="10">
       <animate attributeName="x1" values="197; 150; 150; 161; 162; 197;" dur="8s" repeatCount="indefinite" />
       <animate attributeName="y1" values="314; 379; 379; 379; 363; 314;" dur="8s" repeatCount="indefinite" />
       <animate attributeName="x2" values="326; 326; 303; 337; 338; 326;" dur="8s" repeatCount="indefinite" />
       <animate attributeName="y2" values="363; 363; 330; 363; 379; 363;" dur="8s" repeatCount="indefinite" />
     </line>
-    <line stroke="#FFD485" stroke-width="5">
+    <line stroke="#FFD485" stroke-width="10">
       <animate attributeName="x1" values="326; 326; 303; 337; 338; 326;" dur="8s" repeatCount="indefinite" />
       <animate attributeName="y1" values="363; 363; 330; 363; 379; 363;" dur="8s" repeatCount="indefinite" />
       <animate attributeName="x2" values="358; 396; 396; 407; 358; 358;" dur="8s" repeatCount="indefinite" />
       <animate attributeName="y2" values="212; 200; 200; 200; 212; 212;" dur="8s" repeatCount="indefinite" />
     </line>
-    <line stroke="#88E0D8" stroke-width="5">
+    <line stroke="#88E0D8" stroke-width="10">
       <animate attributeName="x1" values="358; 396; 396; 407; 358; 358;" dur="8s" repeatCount="indefinite" />
       <animate attributeName="y1" values="212; 200; 200; 200; 212; 212;" dur="8s" repeatCount="indefinite" />
       <animate attributeName="x2" values="244; 244; 244; 255; 244; 244;" dur="8s" repeatCount="indefinite" />
       <animate attributeName="y2" values="150; 169; 109; 90; 90; 150;" dur="8s" repeatCount="indefinite" />
     </line>
     <!-- circle one start -->
-    <circle stroke="white" stroke-width="3" r="4">
+    <circle stroke="white" stroke-width="6" r="10">
       <animate attributeName="cx" values="244; 244; 244; 255; 244; 244;" dur="8s" repeatCount="indefinite" />
       <animate attributeName="cy" values="150; 169; 109; 90; 90; 150;" dur="8s" repeatCount="indefinite" />
     </circle>
     <!-- circle one end -->
     <!-- circle two start -->
-    <circle stroke="white" stroke-width="3" r="4">
+    <circle stroke="white" stroke-width="6" r="10">
       <animate attributeName="cx" values="130; 149; 168; 122; 168; 130" dur="8s" repeatCount="indefinite" />
       <animate attributeName="cy" values="212; 219; 225; 206; 225; 212;" dur="8s" repeatCount="indefinite" />
     </circle>
     <!-- circle two end -->
     <!-- circle three start -->
-    <circle stroke="white" stroke-width="3" r="4">
+    <circle stroke="white" stroke-width="6" r="10">
       <animate attributeName="cx" values="197; 150; 150; 161; 162; 197" dur="8s" repeatCount="indefinite" />
       <animate attributeName="cy" values="314; 379; 379; 379; 363; 314;" dur="8s" repeatCount="indefinite" />
     </circle>
     <!-- circle three end -->
     <!-- circle four start -->
-    <circle stroke="white" stroke-width="3" r="4">
+    <circle stroke="white" stroke-width="6" r="10">
       <animate attributeName="cx" values="326; 326; 303; 337; 338; 326;" dur="8s" repeatCount="indefinite" />
       <animate attributeName="cy" values="363; 363; 330; 363; 379; 363;" dur="8s" repeatCount="indefinite" />
     </circle>
     <!-- circle four end -->
     <!-- circle five start -->
-    <circle stroke="white" stroke-width="3" r="4">
+    <circle stroke="white" stroke-width="6" r="10">
       <animate attributeName="cx" values="356; 396; 396; 407; 358; 358;" dur="8s" repeatCount="indefinite" />
       <animate attributeName="cy" values="212; 200; 200; 200; 212; 212;" dur="8s" repeatCount="indefinite" />
     </circle>
     <!-- circle five end -->
   </g>
   <g transform="translate(-45,-25) scale(1.1, 1.1)">
-    <rect x="250" y="250" width="230" height="39" fill="white" />
+    <rect x="245" y="242" width="240" height="55" fill="white" />
     <path d="M256.972 287.614L251.222 251.739H259.972L263.472 279.489H265.347L272.597 251.739H281.347L270.722 287.614H256.972Z" fill="#4C4C4C" />
     <path d="M289.244 287.614L284.119 251.739H292.494L297.619 287.614H289.244Z" fill="#4C4C4C" />
     <path d="M299.744 287.611V280.486L314.869 259.736V258.736H299.744V251.861H325.619V259.236L310.494 279.736V280.736H325.619V287.736H299.744V287.611Z" fill="#4C4C4C" />

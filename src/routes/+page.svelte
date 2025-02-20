@@ -85,7 +85,7 @@
 			<p class="content-text mb-1 max-w-[55ch]">
 				Our goal is to build a community of diverse, interdisciplinary individuals working across
 				the visualization spectrum, and facilitate learning and connections between people from
-				different industries & disciplines who share a common interest in the power of data and
+				different industries and disciplines who share a common interest in the power of data and
 				storytelling.
 			</p>
 		</div>
@@ -98,7 +98,7 @@
 
 		<p class="content-text mb-4 max-w-[55ch]">
 			To foster a vibrant <span class="font-semibold">community of data storytellers in India</span
-			>, bridging technical analysis & design expertise to shape perspectives & drive change
+			>, bridging technical analysis and design expertise to shape perspectives and drive change
 		</p>
 
 		<p class="mx-auto mb-6 text-center">
@@ -118,19 +118,20 @@
 			</p>
 			<ol class="mt-4 space-y-6">
 				<li>
-					<h3 class="content-heading">1. Consider & Curate:</h3>
+					<h3 class="content-heading">1. Consider and Curate:</h3>
 					<p class="content-text">
 						Build a rhythm of curated events to spread the practice of data visualization
 					</p>
 				</li>
 				<li>
-					<h3 class="content-heading">2. Cultivate & Care:</h3>
+					<h3 class="content-heading">2. Cultivate and Care:</h3>
 					<p class="content-text">
-						Nurture a fertile space for learning & sharing of data visualization skills
+						Nurture a fertile space for learning and sharing of data visualization skills
 					</p>
 				</li>
+
 				<li>
-					<h3 class="content-heading">3. Create & Collaborate:</h3>
+					<h3 class="content-heading">3. Create and Collaborate:</h3>
 					<p class="content-text">
 						Express and co-create to push the boundaries of data visualization
 					</p>
@@ -143,7 +144,7 @@
 		<h2 class="content-heading mt-5 !text-[2rem]">VIZCHITRA 2025</h2>
 
 		<p class="content-text mb-6 max-w-[55ch]">
-			One day of talks & dialogues & One day of workshops
+			One day of talks and dialogues and one day of workshops
 		</p>
 
 		<div class="content-notice mb-10 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
@@ -159,12 +160,11 @@
 				<h3 class="content-heading text-primary">WORKSHOP DAY</h3>
 				<div class="space-y-1">
 					<p class="content-text font-semibold">28th June, 2025</p>
-					<p class="text-[20px]">Across Bengaluru</p>
+					<p class="text-[20px]">Across Bangalore</p>
 				</div>
 			</div>
 		</div>
-
-		<Button variant="primary" href="https://hasgeek.com/vizchitra/vizchitra-2025" external
+		<Button variant="primary" href="https://hasgeek.com/VizChitra/2025/" external
 			>Add us to your calendar!</Button
 		>
 
