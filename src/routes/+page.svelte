@@ -146,15 +146,15 @@
 		</div>
 
 		<PolygonDivider></PolygonDivider>
-	</div>
 
+		<h2 class="font-display text-left !text-[2rem] font-bold">MEET THE TEAM</h2>
+	</div>
 	<div>
-		<h2 class="font-display !text-[2rem] font-bold">MEET THE TEAM</h2>
 		<TeamSection></TeamSection>
 	</div>
 
-	<PolygonDivider></PolygonDivider>
 	<div>
+		<PolygonDivider></PolygonDivider>
 		<h2 class="font-display mt-5 !text-[2rem] font-bold">VIZCHITRA 2025</h2>
 
 		<p class="mb-6 max-w-[55ch] text-[18px] md:text-[22px]">
