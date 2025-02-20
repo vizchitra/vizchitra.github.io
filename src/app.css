@@ -69,9 +69,6 @@ p {
 }
 
 
-a:hover {
-	text-decoration: underline;
-}
 
 h1 {
 	font-size: 2rem;
@@ -151,4 +148,22 @@ button:focus:not(:focus-visible) {
 
 .slanted-text {
 	font-variation-settings: 'slnt' var(--letter-slant);
+}
+
+/* Common Text Styles */
+.content-text {
+	@apply text-[18px] md:text-[22px];
+	line-height: 1.5;
+}
+
+.content-heading {
+	@apply  text-[22px] leading-[1.5] font-bold;
+}
+
+.content-container {
+	@apply mx-auto max-w-3xl px-4;
+}
+
+.content-notice {
+	@apply mb-8 rounded-lg border border-gray-200 bg-gray-100 p-6 md:p-8;
 }
