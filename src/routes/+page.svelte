@@ -6,8 +6,8 @@
 	import CallToAction from '$lib/components/CallToAction.svelte';
 	import VizChitraLogoType from '$lib/components/VizChitraLogoType.svelte';
 	import SocialLink from '$lib/components/SocialLink.svelte';
-	import { base } from '$app/paths';
 	import Button from '$lib/components/Button.svelte';
+	import TeamSection from '$lib/components/TeamSection/TeamSection.svelte';
 
 	export let data;
 </script>
@@ -146,7 +146,15 @@
 		</div>
 
 		<PolygonDivider></PolygonDivider>
+	</div>
 
+	<div>
+		<h2 class="font-display !text-[2rem] font-bold">MEET THE TEAM</h2>
+		<TeamSection></TeamSection>
+	</div>
+
+	<PolygonDivider></PolygonDivider>
+	<div>
 		<h2 class="font-display mt-5 !text-[2rem] font-bold">VIZCHITRA 2025</h2>
 
 		<p class="mb-6 max-w-[55ch] text-[18px] md:text-[22px]">
@@ -174,8 +182,12 @@
 				</div>
 			</div>
 		</div>
-		<Button variant="primary" href="https://hasgeek.com/vizchitra/vizchitra-2025" external
-			>Add us to your calendar!</Button
+
+		<Button
+			class_name="w-full"
+			variant="primary"
+			href="https://hasgeek.com/vizchitra/vizchitra-2025"
+			external>Add us to your calendar!</Button
 		>
 
 		<PolygonDivider></PolygonDivider>
