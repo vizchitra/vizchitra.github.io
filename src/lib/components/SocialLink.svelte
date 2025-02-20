@@ -34,7 +34,13 @@
 		{#each socials as social}
 			<span>
 				<a href={social.link} target="_blank">
-					<img width="30px" height="30px" src={social.icon} alt={social.alt} />
+					<img
+						width="30px"
+						height="30px"
+						src={social.icon}
+						alt={social.alt}
+						class="transition-all duration-50 hover:[filter:invert(33%)_sepia(96%)_saturate(1231%)_hue-rotate(308deg)_brightness(99%)_contrast(99%)]"
+					/>
 				</a>
 			</span>
 		{/each}
