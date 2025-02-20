@@ -1,5 +1,4 @@
 <script>
-	import Header from './Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import '../app.css';
 	import HeaderCallToAction from '$lib/components/HeaderCallToAction.svelte';
@@ -16,8 +15,9 @@
 {/if}
 
 <div class="app">
-	<!-- <Header /> -->
-	<HeaderCallToAction />
+	{#if $page.url.pathname === '/'}
+		<HeaderCallToAction />
+	{/if}
 	<main>
 		{@render children()}
 	</main>
