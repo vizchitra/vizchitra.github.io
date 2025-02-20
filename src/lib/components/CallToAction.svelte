@@ -32,7 +32,7 @@
 			image: conferenceBanner,
 			alt: 'Call for conference proposals banner',
 			title: 'VizChitra 2025',
-			description: 'Annual flagship in-person conference, on 27 Jun 2025, 8am IST',
+			description: 'Annual flagship in-person conference, on 27 June',
 			link: 'https://hasgeek.com/VizChitra/2025/sub',
 			buttonText: 'Call for proposals',
 			isAnimated: false
