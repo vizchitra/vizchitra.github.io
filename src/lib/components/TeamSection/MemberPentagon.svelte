@@ -60,7 +60,7 @@
 		</svg>
 
 		<div class="image-container">
-			<img src={getImageURL(memberData.name)} alt={memberData.name} />
+			<img src="/images/team/{memberData.image}" alt={memberData.name} />
 		</div>
 	</div>
 

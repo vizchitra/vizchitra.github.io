@@ -13,8 +13,8 @@
 </script>
 
 {#if teamData}
-	<div class="team-section flex">
-		{#each teamData.slice(0, 5) as teamMember}
+	<div class="team-section flex flex-wrap justify-center gap-5">
+		{#each teamData.sort((a, b) => a.order - b.order).slice(0, 12) as teamMember}
 			<MemberPentagon memberData={teamMember} />
 		{/each}
 	</div>
