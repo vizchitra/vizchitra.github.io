@@ -4,9 +4,16 @@
 	import '../app.css';
 	import HeaderCallToAction from '$lib/components/HeaderCallToAction.svelte';
 
+	import { page } from '$app/stores';
+	import NavMenu from '$lib/components/NavMenu.svelte';
+
 	/** @type {{children: import('svelte').Snippet}} */
 	let { children } = $props();
 </script>
+
+{#if $page.url.pathname !== '/'}
+	<NavMenu />
+{/if}
 
 <div class="app">
 	<!-- <Header /> -->

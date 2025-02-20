@@ -5,8 +5,7 @@
 	import { formatSlantedText } from '$lib/utils/utils.js';
 	import CallToAction from '$lib/components/CallToAction.svelte';
 	import VizChitraLogoType from '$lib/components/VizChitraLogoType.svelte';
-	import SocialLink from '$lib/components/SocialLink.svelte';
-	import { base } from '$app/paths';
+
 	import Button from '$lib/components/Button.svelte';
 
 	export let data;
