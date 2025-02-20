@@ -58,12 +58,14 @@
 	class="z-12 -mt-[15%] grid grid-cols-1 gap-4 rounded-2xl bg-white px-4 py-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-3 lg:px-4"
 >
 	{#each cards as card}
-		<div
-			role="button"
-			tabindex="0"
+		<a
+			href={card.link}
+			target="_blank"
 			class:shadow-viz-pink={card.isAnimated}
-			class="group relative flex flex-col overflow-hidden rounded-sm border border-slate-200 shadow-lg transition-all duration-300"
+			class="group relative flex flex-col overflow-hidden rounded-sm border border-slate-200 no-underline shadow-lg transition-all duration-300"
 			on:mouseleave={handleCardMouseLeave}
+			on:mouseover={() => handleCardMouseOver(card)}
+			on:focus={() => handleCardMouseOver(card)}
 		>
 			<div class="aspect-[3/2] overflow-hidden">
 				<img
@@ -74,7 +76,7 @@
 			</div>
 			<div class="flex flex-1 flex-col p-6">
 				<h3 class="mb-2 text-xl font-bold tracking-tight">{card.title}</h3>
-				<p class="mb-4 text-slate-600">{card.description}</p>
+				<p class="mb-4 text-slate-600 group-hover:no-underline">{card.description}</p>
 				<div class="mt-auto">
 					{#if card.isAnimated}
 						{#if isVisible}
@@ -85,19 +87,13 @@
 							</div>
 						{/if}
 					{/if}
-					<a
-						href={card.link}
-						on:mouseover={() => handleCardMouseOver(card)}
-						on:focus={() => handleCardMouseOver(card)}
-						target="_blank"
-						class="text-viz-pink-dark inline-flex items-center font-semibold transition-colors"
-					>
+					<span class="text-viz-pink-dark inline-flex items-center font-semibold transition-colors">
 						{card.buttonText}
 						<span class="ml-1 text-lg">↗</span>
-					</a>
+					</span>
 				</div>
 			</div>
-		</div>
+		</a>
 	{/each}
 </div>
 
