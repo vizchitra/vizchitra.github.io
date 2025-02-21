@@ -33,57 +33,77 @@
 	<PageHeader title="Polygon Playground" />
 
 	<div class="content-container w-full !max-w-[90%] !px-0 py-12">
-		<p class="content-text mb-6">
+		<p class="content-text mb-10">
 			Play around with the following section to create your own custom VizChitra logo.
 		</p>
 
-		<div class="flex flex-row gap-10">
+		<div class="flex flex-row gap-14">
 			<div class="form flex w-[40%] max-w-[400px] flex-col gap-5">
 				<div class="details-section">
-					<h2 class="content-text">About yourself</h2>
-
-					<div class="text-input relative mb-5 pt-[10px]">
-						<input
-							class=" block h-[30px] w-full max-w-[300px] border-b-2 !outline-0 placeholder:opacity-0"
-							type="text"
-							id="name"
-							name="name"
-							placeholder="Name"
-							bind:value={form.name}
-						/>
-						<label class="h-[30px]" for="name">Name</label>
+					<div class="section-header mb-4 flex items-center gap-3">
+						<span
+							class="fonts flex h-[30px] w-[30px] items-center justify-center rounded-[50%] bg-[#747474] text-white"
+						>
+							1
+						</span>
+						<h2 class="content-text font-base text-viz-grey">About yourself</h2>
 					</div>
 
-					<div class="text-input relative mb-3 pt-[10px]">
-						<textarea
-							class=" block h-fit min-h-[30px] w-full max-w-[300px] border-b-2 !outline-0 placeholder:opacity-0"
-							type="text"
-							id="desc"
-							name="desc"
-							placeholder="About yourself"
-							bind:value={form.desc}
-						></textarea>
-						<label class="h-[30px]" for="desc">What do you do with data?</label>
+					<div class="details-controls pl-10">
+						<div class="text-input relative mb-5 pt-[10px]">
+							<input
+								class=" block h-[30px] w-full max-w-[300px] border-b-2 border-[#dddddd] !outline-0 placeholder:opacity-0"
+								type="text"
+								id="name"
+								name="name"
+								placeholder="Name"
+								bind:value={form.name}
+							/>
+							<label class="h-[30px]" for="name">Name</label>
+						</div>
+
+						<div class="text-input relative mb-3 pt-[10px]">
+							<textarea
+								class=" block h-fit min-h-[30px] w-full max-w-[300px] border-b-2 border-[#dddddd] !outline-0 placeholder:opacity-0"
+								type="text"
+								id="desc"
+								name="desc"
+								placeholder="About yourself"
+								bind:value={form.desc}
+							></textarea>
+							<label class="h-[30px]" for="desc">What do you do with data?</label>
+						</div>
 					</div>
 				</div>
 
 				<div class="interests-section">
-					<h2 class="content-text">Your data interests</h2>
-					<p class="content-text !text-[20px]">
-						How interested are you in the following activities?
-					</p>
+					<div class="section-header mb-4 flex items-center gap-3">
+						<span
+							class="flex h-[30px] w-[30px] items-center justify-center rounded-[50%] bg-[#747474] text-white"
+						>
+							2
+						</span>
+						<h2 class="content-text font-base text-viz-grey">Your data interests</h2>
+					</div>
 
-					<SliderInput label="Data Collection" bind:formValue={form.collection}></SliderInput>
-					<SliderInput label="Data Analysis" bind:formValue={form.analysis}></SliderInput>
-					<SliderInput label="Coding Visualizations" bind:formValue={form.coding}></SliderInput>
-					<SliderInput label="Designing visualizations" bind:formValue={form.designing}
-					></SliderInput>
-					<SliderInput label="Narrating insights" bind:formValue={form.narrating}></SliderInput>
+					<div class="interests-controls pl-10">
+						<p class="content-text mb-4 !text-[20px] !leading-[1.25]">
+							How interested are you in the following activities?
+						</p>
 
-					<SelectInput
-						label="Which of the previous are you strongest at?"
-						bind:formValue={form.strength}
-					></SelectInput>
+						<SliderInput label="Data Collection" bind:formValue={form.collection} showLegend="true"
+						></SliderInput>
+						<SliderInput label="Data Analysis" bind:formValue={form.analysis}></SliderInput>
+						<SliderInput label="Coding Visualizations" bind:formValue={form.coding}></SliderInput>
+						<SliderInput label="Designing visualizations" bind:formValue={form.designing}
+						></SliderInput>
+						<SliderInput label="Narrating insights" bind:formValue={form.narrating}></SliderInput>
+
+						<SelectInput
+							label="Which of the previous are you strongest at?"
+							bind:formValue={form.strength}
+						></SelectInput>
+					</div>
 				</div>
 
 				<button
@@ -92,7 +112,7 @@
 				>
 			</div>
 
-			<div class="logo-container flex w-[60%] items-center justify-center">
+			<div class="logo-container height-100% flex w-[60%] flex-col items-center">
 				<PolygonGenerator formData={form} />
 			</div>
 		</div>

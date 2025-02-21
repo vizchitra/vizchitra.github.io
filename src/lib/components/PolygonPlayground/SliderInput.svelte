@@ -1,6 +1,7 @@
 <script>
 	export let label = null;
 	export let formValue = null;
+	export let showLegend = false;
 </script>
 
 <div class="slider-input mb-4">
@@ -14,10 +15,15 @@
 		bind:value={formValue}
 	/>
 
-	<div class="axis flex justify-between px-1">
+	<div class="axis flex justify-between px-1" class:mb-10={showLegend}>
 		<div class="axis-item relative flex flex-col items-center gap-[2px]">
 			<div class="tick bg-viz-grey h-1 w-[1px] -translate-y-1"></div>
 			<span class="text-viz-grey text-[12px] leading-none">1</span>
+			{#if showLegend}
+				<span class="text-viz-grey absolute -bottom-9 left-0 text-[12px] leading-none"
+					>Not interested at all
+				</span>
+			{/if}
 		</div>
 		<div class="axis-item relative flex flex-col items-center gap-[2px] opacity-80">
 			<div class="tick bg-viz-grey h-1 w-[1px] -translate-y-1"></div>
@@ -26,6 +32,12 @@
 		<div class="axis-item relative flex flex-col items-center gap-[2px]">
 			<div class="tick bg-viz-grey h-1 w-[1px] -translate-y-1"></div>
 			<span class="text-viz-grey text-[12px] leading-none">3</span>
+			{#if showLegend}
+				<span
+					class="text-viz-grey absolute -bottom-4 left-1/2 -translate-x-1/2 text-[12px] leading-none"
+					>Neutral
+				</span>
+			{/if}
 		</div>
 		<div class="axis-item relative flex flex-col items-center gap-[2px] opacity-80">
 			<div class="tick bg-viz-grey h-1 w-[1px] -translate-y-1"></div>
@@ -34,6 +46,11 @@
 		<div class="axis-item relative flex flex-col items-center gap-[2px]">
 			<div class="tick bg-viz-grey h-1 w-[1px] -translate-y-1"></div>
 			<span class="text-viz-grey text-[12px] leading-none">5</span>
+			{#if showLegend}
+				<span class="text-viz-grey absolute right-0 -bottom-7 text-right text-[12px] leading-none"
+					>Very interested</span
+				>
+			{/if}
 		</div>
 	</div>
 </div>

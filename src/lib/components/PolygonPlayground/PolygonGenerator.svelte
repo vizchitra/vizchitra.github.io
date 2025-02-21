@@ -72,7 +72,7 @@
 
 <div
 	id="custom-card"
-	class="container flex h-full w-full flex-col items-center justify-start rounded p-8"
+	class="sticky top-[80px] container flex h-full w-full flex-col items-center justify-start rounded p-8"
 	style="max-height: {cardWidth}px"
 	bind:clientWidth={cardWidth}
 >
