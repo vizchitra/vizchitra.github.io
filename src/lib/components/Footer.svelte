@@ -10,6 +10,10 @@
 				<a href="/code-of-conduct" class=" text-viz-pink-dark font-bold underline"
 					>Code of Conduct</a
 				>
+				|
+				<a href="/polygon-playground" class=" text-viz-pink-dark font-bold underline"
+					>Create your Data Selfie</a
+				>
 			</div>
 
 			<SocialLink />
