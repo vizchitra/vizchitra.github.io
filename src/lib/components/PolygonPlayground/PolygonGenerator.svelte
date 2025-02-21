@@ -117,7 +117,7 @@
 
 	<div class="member-details w-[250px] max-w-[350px] text-center md:w-[350px]">
 		{#if formData.name}
-			<p class="font-display align-bottom text-[18px] leading-[1] uppercase md:text-[22px]">
+			<!-- <p class="font-display align-bottom text-[18px] leading-[1] uppercase md:text-[22px]">
 				{#each formatSlantedText(formData.name) as letter}
 					<span
 						class="slanted-text text-[18px] font-bold md:text-[24px]"
@@ -126,7 +126,10 @@
 						{letter.letter}
 					</span>
 				{/each}
-			</p>
+			</p> -->
+			<h2 class="font-display align-bottom text-[18px] leading-[1] font-bold md:text-[22px]">
+				{formData.name}
+			</h2>
 		{/if}
 
 		{#if formData.desc}
@@ -168,7 +171,7 @@
 		}
 	}
 
-	@media (max-width: 400px) {
+	@media (max-width: 450px) {
 		.container {
 			max-height: fit-content !important;
 		}
