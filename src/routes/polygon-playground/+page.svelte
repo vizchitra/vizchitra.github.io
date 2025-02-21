@@ -6,6 +6,7 @@
 	import PolygonGenerator from '$lib/components/PolygonPlayground/PolygonGenerator.svelte';
 	import SelectInput from '$lib/components/PolygonPlayground/SelectInput.svelte';
 	import { domToPng } from 'modern-screenshot';
+	import ImageUpload from '$lib/components/PolygonPlayground/ImageUpload.svelte';
 
 	$: form = {
 		name: null,
@@ -52,7 +53,7 @@
 					<div class="details-controls pl-10">
 						<div class="text-input relative mb-5 pt-[10px]">
 							<input
-								class=" block h-[30px] w-full max-w-[300px] border-b-2 border-[#dddddd] !outline-0 placeholder:opacity-0"
+								class="block h-[30px] w-full max-w-[300px] border-b-2 border-[#dddddd] !outline-0 placeholder:opacity-0"
 								type="text"
 								id="name"
 								name="name"
@@ -64,7 +65,7 @@
 
 						<div class="text-input relative mb-3 pt-[10px]">
 							<textarea
-								class=" block h-fit min-h-[30px] w-full max-w-[300px] border-b-2 border-[#dddddd] !outline-0 placeholder:opacity-0"
+								class="block h-fit min-h-[30px] w-full max-w-[300px] border-b-2 border-[#dddddd] !outline-0 placeholder:opacity-0"
 								type="text"
 								id="desc"
 								name="desc"
@@ -73,6 +74,8 @@
 							></textarea>
 							<label class="h-[30px]" for="desc">What do you do with data?</label>
 						</div>
+
+						<ImageUpload bind:src={form.image}></ImageUpload>
 					</div>
 				</div>
 
@@ -108,8 +111,9 @@
 
 				<button
 					class="bg-viz-orange cursor-pointer rounded py-3 font-semibold text-white hover:opacity-90 md:ml-10"
-					on:click={downloadPNG}>Download logo</button
-				>
+					on:click={downloadPNG}
+					>Download logo
+				</button>
 			</div>
 
 			<div class="logo-container height-100% flex w-full flex-col items-center md:w-[60%]">

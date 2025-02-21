@@ -14,6 +14,12 @@
 		{ x: 0, y: 38 }
 	];
 
+	let imageConfig = {
+		scale: 0.95,
+		xOffset: 0,
+		yOffset: 0
+	};
+
 	$: if (formData) {
 		points = computePoints(points);
 	}
@@ -54,9 +60,9 @@
 	}
 
 	function computeTransform() {
-		let xOffset = formData['xOffset'] || 0;
-		let yOffset = formData['yOffset'] || 0;
-		let scale = formData['scale'] || 1;
+		let xOffset = imageConfig['xOffset'] || 0;
+		let yOffset = imageConfig['yOffset'] || 0;
+		let scale = imageConfig['scale'] || 1;
 		return `translate(${xOffset}px, ${yOffset}px) scale(${scale})`;
 	}
 
@@ -77,10 +83,10 @@
 	bind:clientWidth={cardWidth}
 >
 	<div class="pentagon-container relative h-[250px] w-[250px] md:h-[350px] md:w-[350px]">
-		<div class="logo-type absolute top-[45%] right-[15px] z-20">
+		<div class="logo-type absolute top-[45%] right-[5px] z-20">
 			<VizChitraLogoType classes="text-[28px] md:text-[42px] "></VizChitraLogoType>
 		</div>
-		<svg class="absolute z-10" width="100%" height="100%">
+		<svg class="absolute z-10" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
 			{#each points as point, i}
 				<line
 					stroke={COLOR_MAPPING[formData.strength]}
@@ -98,17 +104,12 @@
 			{/each}
 		</svg>
 
-		<!-- 
 		<div
 			class="image-container"
 			style="clip-path: polygon({clipPath}); --strength-color: {COLOR_MAPPING[formData.strength]}"
-		><img
-				src="/images/team/{formData.image}"
-				alt={formData.name}
-				style="transform: {computeTransform()} "
-			/>
-		</div> 
-        -->
+		>
+			<img src={formData.image} alt={formData.name} style="transform: {computeTransform()} " />
+		</div>
 	</div>
 
 	<div class="member-details w-[250px] max-w-[350px] text-center md:w-[350px]">
@@ -143,6 +144,9 @@
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 
 		&::after {
 			content: '';
@@ -154,6 +158,12 @@
 			background: var(--strength-color);
 			opacity: 0.4;
 			mix-blend-mode: hard-light;
+		}
+	}
+
+	@media (max-width: 400px) {
+		.container {
+			max-height: fit-content !important;
 		}
 	}
 </style>
