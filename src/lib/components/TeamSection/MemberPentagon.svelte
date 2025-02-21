@@ -113,6 +113,10 @@
 		height: 100%;
 		overflow: hidden;
 
+		img {
+			filter: grayscale(100%);
+		}
+
 		&::after {
 			content: '';
 			position: absolute;

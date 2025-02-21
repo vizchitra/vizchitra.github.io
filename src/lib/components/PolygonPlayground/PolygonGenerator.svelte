@@ -151,6 +151,10 @@
 		align-items: center;
 		justify-content: center;
 
+		img {
+			filter: grayscale(100%);
+		}
+
 		&::after {
 			content: '';
 			position: absolute;
