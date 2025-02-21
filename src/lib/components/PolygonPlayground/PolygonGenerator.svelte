@@ -1,6 +1,7 @@
 <script>
 	import { formatSlantedText } from '$lib/utils/utils';
 	import VizChitraLogoType from '../VizChitraLogoType.svelte';
+	import VizChitraLogoSVG from '$lib/assets/images/vizchitra-logo-type.svg?raw';
 
 	export let formData = {};
 
@@ -30,11 +31,11 @@
 		let adjustedPoints = points.slice();
 
 		let data = [
-			formData['collection'],
 			formData['analysis'],
 			formData['coding'],
-			formData['designing'],
-			formData['narrating']
+			formData['collection'],
+			formData['narrating'],
+			formData['designing']
 		];
 
 		for (let i = 0; i < 5; i++) {
@@ -83,8 +84,8 @@
 	bind:clientWidth={cardWidth}
 >
 	<div class="pentagon-container relative h-[250px] w-[250px] md:h-[350px] md:w-[350px]">
-		<div class="logo-type absolute top-[45%] right-[5px] z-20">
-			<VizChitraLogoType classes="text-[28px] md:text-[42px] "></VizChitraLogoType>
+		<div class="logo-type absolute top-[45%] right-[5px] z-20 w-[120px] md:w-[180px]">
+			{@html VizChitraLogoSVG}
 		</div>
 		<svg class="absolute z-10" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
 			{#each points as point, i}
@@ -94,7 +95,7 @@
 					y1="{point.y}%"
 					x2="{i === points.length - 1 ? points[0].x : points[i + 1].x}%"
 					y2="{i === points.length - 1 ? points[0].y : points[i + 1].y}%"
-					stroke-width="6"
+					stroke-width="7"
 				/>
 			{/each}
 
