@@ -71,11 +71,12 @@
 </script>
 
 <div
+	id="custom-card"
 	class="container flex h-full w-full flex-col items-center justify-start rounded p-8"
 	style="max-height: {cardWidth}px"
 	bind:clientWidth={cardWidth}
 >
-	<div class="pentagon-container relative h-[150px] w-[150px] md:h-[300px] md:w-[300px]">
+	<div class="pentagon-container relative h-[150px] w-[150px] md:h-[350px] md:w-[350px]">
 		<div class="logo-type absolute top-[45%] -right-[20px] z-20">
 			<VizChitraLogoType classes="text-[42px] "></VizChitraLogoType>
 		</div>
@@ -110,7 +111,7 @@
         -->
 	</div>
 
-	<div class="member-details w-[150px] max-w-[300px] text-center md:w-[300px]">
+	<div class="member-details w-[150px] max-w-[350px] text-center md:w-[350px]">
 		{#if formData.name}
 			<p class="font-display align-bottom text-[18px] leading-[1] uppercase md:text-[22px]">
 				{#each formatSlantedText(formData.name) as letter}

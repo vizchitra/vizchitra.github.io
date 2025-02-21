@@ -5,11 +5,26 @@
 	import SliderInput from '$lib/components/PolygonPlayground/SliderInput.svelte';
 	import PolygonGenerator from '$lib/components/PolygonPlayground/PolygonGenerator.svelte';
 	import SelectInput from '$lib/components/PolygonPlayground/SelectInput.svelte';
+	import { domToPng } from 'modern-screenshot';
 
 	$: form = {
 		name: null,
 		strength: 'none'
 	};
+
+	function downloadPNG() {
+		let filename = `vizchitra-logo-${form.name.toLowerCase().replaceAll(' ', '-')}.png`;
+
+		domToPng(document.querySelector('#custom-card'), {
+			backgroundColor: '#ffffff',
+			scale: 1.5
+		}).then((dataUrl) => {
+			const link = document.createElement('a');
+			link.download = filename;
+			link.href = dataUrl;
+			link.click();
+		});
+	}
 </script>
 
 <NavMenu />
@@ -27,7 +42,7 @@
 				<div class="details-section">
 					<h2 class="content-text">About yourself</h2>
 
-					<div class="text-input relative mb-3 pt-[10px]">
+					<div class="text-input relative mb-5 pt-[10px]">
 						<input
 							class=" block h-[30px] w-full max-w-[300px] border-b-2 !outline-0 placeholder:opacity-0"
 							type="text"
@@ -41,7 +56,7 @@
 
 					<div class="text-input relative mb-3 pt-[10px]">
 						<textarea
-							class=" block min-h-[30px] w-full max-w-[300px] border-b-2 !outline-0 placeholder:opacity-0"
+							class=" block h-fit min-h-[30px] w-full max-w-[300px] border-b-2 !outline-0 placeholder:opacity-0"
 							type="text"
 							id="desc"
 							name="desc"
@@ -70,6 +85,11 @@
 						bind:formValue={form.strength}
 					></SelectInput>
 				</div>
+
+				<button
+					class="bg-viz-orange rounded py-2 font-semibold text-white hover:opacity-90"
+					on:click={downloadPNG}>Download logo</button
+				>
 			</div>
 
 			<div class="logo-container flex w-[60%] items-center justify-center">
