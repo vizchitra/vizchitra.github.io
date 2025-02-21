@@ -1,6 +1,4 @@
 <script>
-	import TrashIcon from '$lib/assets/images/trash-icon.svg?raw';
-
 	export let src = null;
 
 	const onFileSelected = (e) => {
