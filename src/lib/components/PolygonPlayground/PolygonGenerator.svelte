@@ -104,12 +104,14 @@
 			{/each}
 		</svg>
 
-		<div
-			class="image-container"
-			style="clip-path: polygon({clipPath}); --strength-color: {COLOR_MAPPING[formData.strength]}"
-		>
-			<img src={formData.image} alt={formData.name} style="transform: {computeTransform()} " />
-		</div>
+		{#if formData.image}
+			<div
+				class="image-container"
+				style="clip-path: polygon({clipPath}); --strength-color: {COLOR_MAPPING[formData.strength]}"
+			>
+				<img src={formData.image} alt={formData?.name} style="transform: {computeTransform()} " />
+			</div>
+		{/if}
 	</div>
 
 	<div class="member-details w-[250px] max-w-[350px] text-center md:w-[350px]">
