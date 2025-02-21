@@ -75,7 +75,7 @@
 
 		<p class="mx-auto mt-2 mb-6">
 			{#each formatSlantedText('A SPACE TO CONNECT AND CREATE WITH DATA') as letter}
-				<span class="slanted-text text-[24px]" style="--letter-slant: {letter.slant}">
+				<span class="slanted-text text-[18px] md:text-[24px]" style="--letter-slant: {letter.slant}">
 					{letter.letter}
 				</span>
 			{/each}
