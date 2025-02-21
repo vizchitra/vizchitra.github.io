@@ -18,7 +18,7 @@
 	{#if $page.url.pathname === '/'}
 		<HeaderCallToAction />
 	{/if}
-	<main>
+	<main class:full-width={$page.url.pathname.includes('polygon-playground')}>
 		{@render children()}
 	</main>
 
@@ -43,9 +43,14 @@
 		box-sizing: border-box;
 	}
 
+	main.full-width {
+		max-width: 90vw;
+	}
+
 	@media (max-width: 768px) {
 		main {
 			max-width: 100%;
+			padding: 1rem;
 		}
 	}
 </style>

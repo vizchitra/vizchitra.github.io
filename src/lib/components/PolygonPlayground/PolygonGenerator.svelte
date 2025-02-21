@@ -72,13 +72,13 @@
 
 <div
 	id="custom-card"
-	class="sticky top-[80px] container flex h-full w-full flex-col items-center justify-start rounded p-8"
+	class="sticky top-[80px] container flex h-full w-full max-w-[550px] flex-col items-center justify-start rounded p-8"
 	style="max-height: {cardWidth}px"
 	bind:clientWidth={cardWidth}
 >
-	<div class="pentagon-container relative h-[150px] w-[150px] md:h-[350px] md:w-[350px]">
-		<div class="logo-type absolute top-[45%] -right-[20px] z-20">
-			<VizChitraLogoType classes="text-[42px] "></VizChitraLogoType>
+	<div class="pentagon-container relative h-[250px] w-[250px] md:h-[350px] md:w-[350px]">
+		<div class="logo-type absolute top-[45%] right-[15px] z-20">
+			<VizChitraLogoType classes="text-[28px] md:text-[42px] "></VizChitraLogoType>
 		</div>
 		<svg class="absolute z-10" width="100%" height="100%">
 			{#each points as point, i}
@@ -111,7 +111,7 @@
         -->
 	</div>
 
-	<div class="member-details w-[150px] max-w-[350px] text-center md:w-[350px]">
+	<div class="member-details w-[250px] max-w-[350px] text-center md:w-[350px]">
 		{#if formData.name}
 			<p class="font-display align-bottom text-[18px] leading-[1] uppercase md:text-[22px]">
 				{#each formatSlantedText(formData.name) as letter}
@@ -126,7 +126,7 @@
 		{/if}
 
 		{#if formData.desc}
-			<p class="text-[16px] !leading-[1.3] md:text-[18px]">{formData.desc}</p>
+			<p class="text-[14px] !leading-[1.3] md:text-[18px]">{formData.desc}</p>
 		{/if}
 	</div>
 </div>

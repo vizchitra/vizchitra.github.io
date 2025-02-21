@@ -9,11 +9,11 @@
 
 	$: form = {
 		name: null,
-		strength: 'none'
+		strength: 'Analyzing data'
 	};
 
 	function downloadPNG() {
-		let filename = `vizchitra-logo-${form.name.toLowerCase().replaceAll(' ', '-')}.png`;
+		let filename = `vizchitra-logo-${form.name ? form.name.toLowerCase().replaceAll(' ', '-') : '2025'}.png`;
 
 		domToPng(document.querySelector('#custom-card'), {
 			backgroundColor: '#ffffff',
@@ -29,16 +29,16 @@
 
 <NavMenu />
 
-<div class="min-h-screen">
+<div class="min-h-screen w-full">
 	<PageHeader title="Polygon Playground" />
 
-	<div class="content-container w-full !max-w-[90%] !px-0 py-12">
+	<div class="content-container mx-auto !max-w-[min(90vw,1400px)] !px-0 py-12">
 		<p class="content-text mb-10">
 			Play around with the following section to create your own custom VizChitra logo.
 		</p>
 
-		<div class="flex flex-row gap-14">
-			<div class="form flex w-[40%] max-w-[400px] flex-col gap-5">
+		<div class="flex flex-col gap-14 md:flex-row">
+			<div class="form flex w-full flex-col gap-5 md:w-[40%] md:max-w-[500px]">
 				<div class="details-section">
 					<div class="section-header mb-4 flex items-center gap-3">
 						<span
@@ -107,12 +107,12 @@
 				</div>
 
 				<button
-					class="bg-viz-orange rounded py-3 font-semibold text-white hover:opacity-90"
+					class="bg-viz-orange cursor-pointer rounded py-3 font-semibold text-white hover:opacity-90 md:ml-10"
 					on:click={downloadPNG}>Download logo</button
 				>
 			</div>
 
-			<div class="logo-container height-100% flex w-[60%] flex-col items-center">
+			<div class="logo-container height-100% flex w-full flex-col items-center md:w-[60%]">
 				<PolygonGenerator formData={form} />
 			</div>
 		</div>
