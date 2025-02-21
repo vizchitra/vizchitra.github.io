@@ -5,8 +5,8 @@
 	import { formatSlantedText } from '$lib/utils/utils.js';
 	import CallToAction from '$lib/components/CallToAction.svelte';
 	import VizChitraLogoType from '$lib/components/VizChitraLogoType.svelte';
-
 	import Button from '$lib/components/Button.svelte';
+	import TeamSection from '$lib/components/TeamSection/TeamSection.svelte';
 
 	export let data;
 </script>
@@ -141,6 +141,14 @@
 
 		<PolygonDivider></PolygonDivider>
 
+		<h2 class="font-display text-left !text-[2rem] font-bold">MEET THE TEAM</h2>
+	</div>
+	<div>
+		<TeamSection></TeamSection>
+	</div>
+
+	<div>
+		<PolygonDivider></PolygonDivider>
 		<h2 class="content-heading mt-5 !text-[2rem]">VIZCHITRA 2025</h2>
 
 		<p class="content-text mb-6 max-w-[55ch]">
@@ -164,8 +172,11 @@
 				</div>
 			</div>
 		</div>
-		<Button variant="primary" href="https://hasgeek.com/VizChitra/2025/" external
-			>Add us to your calendar!</Button
+		<Button
+			class_name="w-full"
+			variant="primary"
+			href="https://hasgeek.com/VizChitra/2025/"
+			external>Add us to your calendar!</Button
 		>
 
 		<PolygonDivider></PolygonDivider>
