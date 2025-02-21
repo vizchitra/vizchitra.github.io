@@ -31,7 +31,7 @@
 <NavMenu />
 
 <div class="min-h-screen w-full">
-	<PageHeader title="Polygon Playground" />
+	<PageHeader title="Create your own Vizchitra selfie!" />
 
 	<div class="content-container mx-auto !max-w-[min(90vw,1400px)] !px-0 py-12">
 		<p class="content-text mb-10">
