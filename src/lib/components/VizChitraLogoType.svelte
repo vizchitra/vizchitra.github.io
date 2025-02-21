@@ -1,4 +1,8 @@
-<span class="viz-logo-type">
+<script>
+	export let classes = '';
+</script>
+
+<span class="viz-logo-type {classes}">
 	<span class="V1">V</span><span class="I1">I</span><span class="Z1">Z</span><span class="C2"
 		>C</span
 	><span class="H2">H</span><span class="I2">I</span><span class="T2">T</span><span class="R2"
