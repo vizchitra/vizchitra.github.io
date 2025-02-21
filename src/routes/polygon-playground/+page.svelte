@@ -87,7 +87,7 @@
 				</div>
 
 				<button
-					class="bg-viz-orange rounded py-2 font-semibold text-white hover:opacity-90"
+					class="bg-viz-orange rounded py-3 font-semibold text-white hover:opacity-90"
 					on:click={downloadPNG}>Download logo</button
 				>
 			</div>
