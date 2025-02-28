@@ -263,7 +263,11 @@ packages:
     engines: {node: '>=6.9.0'}
     dev: true
 
+<<<<<<< HEAD
   /@babel/helpers@7.26.7:
+=======
+  '@babel/helpers@7.26.7':
+>>>>>>> c1087a9d4d380a6e1795c12ac88a4c5da2c9713e
     resolution: {integrity: sha512-8NHiL98vsi0mbPQmYAGWwfcFaOy4j2HY49fXJCfuDcdE7fMIsH9a7GdaeXpIBsbT7307WU8KCMp5pUVDNL4f9A==}
     engines: {node: '>=6.9.0'}
     dependencies:
@@ -271,7 +275,11 @@ packages:
       '@babel/types': 7.26.8
     dev: true
 
+<<<<<<< HEAD
   /@babel/parser@7.26.8:
+=======
+  '@babel/parser@7.26.8':
+>>>>>>> c1087a9d4d380a6e1795c12ac88a4c5da2c9713e
     resolution: {integrity: sha512-TZIQ25pkSoaKEYYaHbbxkfL36GNsQ6iFiBbeuzAkLnXayKR1yP1zFe+NxuZWWsUyvt8icPU9CCq0sgWGXR1GEw==}
     engines: {node: '>=6.0.0'}
     hasBin: true
@@ -305,7 +313,11 @@ packages:
     dependencies:
       regenerator-runtime: 0.14.1
 
+<<<<<<< HEAD
   /@babel/template@7.26.8:
+=======
+  '@babel/template@7.26.8':
+>>>>>>> c1087a9d4d380a6e1795c12ac88a4c5da2c9713e
     resolution: {integrity: sha512-iNKaX3ZebKIsCvJ+0jd6embf+Aulaa3vNBqZ41kM7iTWjx5qzWKXGHiJUW3+nTpQ18SG11hdF8OAzKrpXkb96Q==}
     engines: {node: '>=6.9.0'}
     dependencies:
@@ -314,7 +326,11 @@ packages:
       '@babel/types': 7.26.8
     dev: true
 
+<<<<<<< HEAD
   /@babel/traverse@7.26.8:
+=======
+  '@babel/traverse@7.26.8':
+>>>>>>> c1087a9d4d380a6e1795c12ac88a4c5da2c9713e
     resolution: {integrity: sha512-nic9tRkjYH0oB2dzr/JoGIm+4Q6SuYeLEiIiZDwBscRMYFJ+tMAz98fuel9ZnbXViA2I0HVSSRRK8DW5fjXStA==}
     engines: {node: '>=6.9.0'}
     dependencies:
@@ -329,7 +345,11 @@ packages:
       - supports-color
     dev: true
 
+<<<<<<< HEAD
   /@babel/types@7.26.8:
+=======
+  '@babel/types@7.26.8':
+>>>>>>> c1087a9d4d380a6e1795c12ac88a4c5da2c9713e
     resolution: {integrity: sha512-eUuWapzEGWFEpHFxgEaBG8e3n6S8L3MSu0oda755rOfabWPnh0Our1AozNFVUxGFIhbKgd1ksprsoDGMinTOTA==}
     engines: {node: '>=6.9.0'}
     dependencies:
