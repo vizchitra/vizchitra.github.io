@@ -1,7 +1,6 @@
 <script lang="ts">
 	import communityBanner from '$lib/assets/images/call-to-action/community-banner.webp';
 	import conferenceBanner from '$lib/assets/images/call-to-action/conference-banner.webp';
-	import launchPartyBanner from '$lib/assets/images/call-to-action/launch-party-banner.webp';
 	import { confetti } from '@neoconfetti/svelte';
 	import { tick } from 'svelte';
 
@@ -17,16 +16,6 @@
 			link: 'https://chat.whatsapp.com/CbIu7z6ITmGFvwfw0BjDdL',
 			buttonText: 'Connect',
 			isAnimated: false
-		},
-		{
-			image: launchPartyBanner,
-			alt: 'launch party banner',
-			title: 'Launch Party',
-			description:
-				'Connect with the data viz community in India, virtually on 21 Feb 2025, 5pm IST',
-			link: 'https://hasgeek.com/VizChitra/launch-party/',
-			buttonText: 'Registrations open',
-			isAnimated: true
 		},
 		{
 			image: conferenceBanner,
@@ -55,7 +44,7 @@
 </script>
 
 <div
-	class="z-12 -mt-[15%] grid grid-cols-1 gap-4 rounded-2xl bg-white px-4 py-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-3 lg:px-4"
+	class="z-12 -mt-[15%] grid grid-cols-1 gap-4 rounded-2xl bg-white px-4 py-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-2 lg:px-4"
 >
 	{#each cards as card}
 		<a
