@@ -9,7 +9,7 @@
 			Register for <a
 				href="https://hasgeek.com/VizChitra/launch-party/"
 				class="text-viz-pink-dark inline-block underline"
-				target="_blank">VizChitra Launch Party &#8599;</a
+				target="_blank">Proposal Jam &#8599;</a
 			>
 		</p>
 	</div>

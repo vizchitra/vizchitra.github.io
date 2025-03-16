@@ -1,6 +1,7 @@
 <script>
 	import Footer from '$lib/components/Footer.svelte';
 	import '../app.css';
+	import HeaderCallToAction from '$lib/components/HeaderCallToAction.svelte';
 
 	import { page } from '$app/stores';
 	import NavMenu from '$lib/components/NavMenu.svelte';
@@ -14,6 +15,9 @@
 {/if}
 
 <div class="app">
+	{#if $page.url.pathname === '/'}
+		<HeaderCallToAction />
+	{/if}
 	<main class:full-width={$page.url.pathname.includes('polygon-playground')}>
 		{@render children()}
 	</main>
