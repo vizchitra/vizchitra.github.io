@@ -6,8 +6,8 @@
 	import CallToAction from '$lib/components/CallToAction.svelte';
 	import VizChitraLogoType from '$lib/components/VizChitraLogoType.svelte';
 	import TeamSection from '$lib/components/TeamSection/TeamSection.svelte';
-	import TextBlock from '$lib/components/Common/TextBlock.svelte';
-	import ConferenceDetails from '$lib/components/ConferenceDetails.svelte';
+	import TextBlock from '$lib/components/Homepage/HomepageSection.svelte';
+	import ConferenceDetails from '$lib/components/Homepage/ConferenceDetails.svelte';
 
 	export let data;
 </script>
