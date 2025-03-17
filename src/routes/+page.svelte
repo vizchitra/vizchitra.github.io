@@ -6,7 +6,7 @@
 	import CallToAction from '$lib/components/CallToAction.svelte';
 	import VizChitraLogoType from '$lib/components/VizChitraLogoType.svelte';
 	import TeamSection from '$lib/components/TeamSection/TeamSection.svelte';
-	import TextBlock from '$lib/components/Homepage/HomepageSection.svelte';
+	import HomepageSection from '$lib/components/Homepage/HomepageSection.svelte';
 	import ConferenceDetails from '$lib/components/Homepage/ConferenceDetails.svelte';
 
 	export let data;
@@ -62,7 +62,8 @@
 <CallToAction />
 
 <div class="mt-20 flex flex-col items-center gap-10">
-	<TextBlock>
+	<!-- OPENING SECTION -->
+	<HomepageSection>
 		<div slot="content">
 			<h1>
 				<VizChitraLogoType></VizChitraLogoType>
@@ -95,9 +96,10 @@
 
 			<PolygonDivider></PolygonDivider>
 		</div>
-	</TextBlock>
+	</HomepageSection>
 
-	<TextBlock>
+	<!-- OUR MISSION -->
+	<HomepageSection>
 		<div slot="content">
 			<h2 class="content-heading !text-[2rem]">OUR MISSION</h2>
 
@@ -118,46 +120,48 @@
 				{/each}
 			</p>
 
-			<div class="pillars">
-				<p class="content-text mb-1">
-					The VizChitra community plans to drive this using these three main pillars of work:
-				</p>
-				<ol class="mt-4 space-y-6">
-					<li>
-						<h3 class="content-heading">1. Consider and Curate:</h3>
-						<p class="content-text">
-							Build a rhythm of curated events to spread the practice of data visualization
-						</p>
-					</li>
-					<li>
-						<h3 class="content-heading">2. Cultivate and Care:</h3>
-						<p class="content-text">
-							Nurture a fertile space for learning and sharing of data visualization skills
-						</p>
-					</li>
+			<p class="content-text mb-1">
+				The VizChitra community plans to drive this using these three main pillars of work:
+			</p>
+			<ol class="mt-4 space-y-6">
+				<li>
+					<h3 class="content-heading">1. Consider and Curate:</h3>
+					<p class="content-text">
+						Build a rhythm of curated events to spread the practice of data visualization
+					</p>
+				</li>
+				<li>
+					<h3 class="content-heading">2. Cultivate and Care:</h3>
+					<p class="content-text">
+						Nurture a fertile space for learning and sharing of data visualization skills
+					</p>
+				</li>
 
-					<li>
-						<h3 class="content-heading">3. Create and Collaborate:</h3>
-						<p class="content-text">
-							Express and co-create to push the boundaries of data visualization
-						</p>
-					</li>
-				</ol>
-			</div>
+				<li>
+					<h3 class="content-heading">3. Create and Collaborate:</h3>
+					<p class="content-text">
+						Express and co-create to push the boundaries of data visualization
+					</p>
+				</li>
+			</ol>
 
 			<PolygonDivider></PolygonDivider>
 		</div>
-	</TextBlock>
+	</HomepageSection>
 
-	<TextBlock>
-		<div slot="content">
-			<h2 class="font-display text-left !text-[2rem] font-bold">MEET THE TEAM</h2>
+	<!-- TEAM SECTION -->
+	<HomepageSection containerWidth="full">
+		<div slot="content" class="">
+			<h2 class="font-display mx-auto mb-6 max-w-[750px] text-left !text-[2rem] font-bold">
+				MEET THE TEAM
+			</h2>
+
+			<TeamSection></TeamSection>
 		</div>
-	</TextBlock>
+	</HomepageSection>
 
-	<TeamSection></TeamSection>
-
-	<TextBlock>
+	<!-- END CARD -->
+	<HomepageSection>
 		<div slot="content">
 			<PolygonDivider></PolygonDivider>
 			<h2 class="content-heading mt-5 !text-[2rem]">VIZCHITRA 2025</h2>
@@ -167,7 +171,7 @@
 			<ConferenceDetails></ConferenceDetails>
 			<PolygonDivider></PolygonDivider>
 		</div>
-	</TextBlock>
+	</HomepageSection>
 </div>
 
 <style>
