@@ -5,28 +5,28 @@
 /* Add brand design tokens here */
 @theme {
 	/* COLOR PALLETE*/
-    --color-viz-white: #ffffff;
-    --color-viz-black: #131313;
-    --color-viz-grey: #4c4c4c;
+	--color-viz-white: #ffffff;
+	--color-viz-black: #131313;
+	--color-viz-grey: #4c4c4c;
 
-    --color-viz-yellow: #ffd485;
-    --color-viz-teal: #97e4dd;
-    --color-viz-blue: #a8bdf0;
-    --color-viz-orange: #f89f72;
-    --color-viz-pink: #ee88b3;
+	--color-viz-yellow: #ffd485;
+	--color-viz-teal: #97e4dd;
+	--color-viz-blue: #a8bdf0;
+	--color-viz-orange: #f89f72;
+	--color-viz-pink: #ee88b3;
 
-    --color-viz-yellow-light: #ffe6b8;
-    --color-viz-teal-light: #b1ede7;
-    --color-viz-blue-light: #c6d4f7;
+	--color-viz-yellow-light: #ffe6b8;
+	--color-viz-teal-light: #b1ede7;
+	--color-viz-blue-light: #c6d4f7;
 
-    --color-viz-grey-dark: oklch(from var(--color-viz-grey) calc(l * .75) c h);
-    --color-viz-yellow-dark: oklch(from var(--color-viz-yellow) calc(l * .75) c h);
-    --color-viz-teal-dark: oklch(from var(--color-viz-teal) calc(l * .75) c h);
-    --color-viz-blue-dark: oklch(from var(--color-viz-blue) calc(l * .75) c h);
-    --color-viz-orange-dark: oklch(from var(--color-viz-orange) calc(l * .75) c h);
-    --color-viz-pink-dark: oklch(from var(--color-viz-pink) calc(l * .75) c h);
+	--color-viz-grey-dark: oklch(from var(--color-viz-grey) calc(l * .75) c h);
+	--color-viz-yellow-dark: oklch(from var(--color-viz-yellow) calc(l * .75) c h);
+	--color-viz-teal-dark: oklch(from var(--color-viz-teal) calc(l * .75) c h);
+	--color-viz-blue-dark: oklch(from var(--color-viz-blue) calc(l * .75) c h);
+	--color-viz-orange-dark: oklch(from var(--color-viz-orange) calc(l * .75) c h);
+	--color-viz-pink-dark: oklch(from var(--color-viz-pink) calc(l * .75) c h);
 
-    /* Brand Guidelines has the following dark color. Check an fix later.
+	/* Brand Guidelines has the following dark color. Check an fix later.
 	--color-viz-blue-dark: #718bd1;
     --color-viz-orange-dark: #d46637;
     --color-viz-pink-dark: #c94b7f; */
@@ -152,12 +152,12 @@ button:focus:not(:focus-visible) {
 
 /* Common Text Styles */
 .content-text {
-	@apply text-[18px] md:text-[22px];
+	@apply text-[18px] md:text-[22px] max-w-[55ch];
 	line-height: 1.5;
 }
 
 .content-heading {
-	@apply  text-[22px] leading-[1.5] font-bold;
+	@apply text-[22px] leading-[1.5] font-bold;
 }
 
 .content-container {
