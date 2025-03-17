@@ -8,6 +8,7 @@
 	import TeamSection from '$lib/components/TeamSection/TeamSection.svelte';
 	import HomepageSection from '$lib/components/Homepage/HomepageSection.svelte';
 	import ConferenceDetails from '$lib/components/Homepage/ConferenceDetails.svelte';
+	import CustomSlantedText from '$lib/components/Common/CustomSlantedText.svelte';
 
 	export let data;
 </script>
@@ -47,14 +48,7 @@
 		<h3
 			class="tagline -mt-8 max-w-[20ch] border-black text-center uppercase md:mt-0 md:border-l-2 md:pl-5 md:text-left"
 		>
-			{#each formatSlantedText('A SPACE TO CONNECT AND CREATE WITH DATA') as letter}
-				<span
-					class="slanted-text text-[18px] md:text-[20px]"
-					style="--letter-slant: {letter.slant}"
-				>
-					{letter.letter}
-				</span>
-			{/each}
+			<CustomSlantedText textContent="A SPACE TO CONNECT AND CREATE WITH DATA"></CustomSlantedText>
 		</h3>
 	</div>
 </div>
@@ -77,14 +71,10 @@
 			</p>
 
 			<p class="mx-auto mb-6">
-				{#each formatSlantedText('A SPACE TO CONNECT AND CREATE WITH DATA') as letter}
-					<span
-						class="slanted-text text-[18px] md:text-[24px]"
-						style="--letter-slant: {letter.slant}"
-					>
-						{letter.letter}
-					</span>
-				{/each}
+				<CustomSlantedText
+					textContent="A SPACE TO CONNECT AND CREATE WITH DATA"
+					classes="text-[18px] md:text-[24px]"
+				></CustomSlantedText>
 			</p>
 
 			<p class="content-text mb-1">
@@ -110,14 +100,10 @@
 			</p>
 
 			<p class="mx-auto mb-6 text-center">
-				{#each formatSlantedText('AN INDIAN DATA VISUALIZATION COMMUNITY') as letter}
-					<span
-						class="slanted-text text-[18px] md:text-[24px]"
-						style="--letter-slant: {letter.slant}"
-					>
-						{letter.letter}
-					</span>
-				{/each}
+				<CustomSlantedText
+					textContent="AN INDIAN DATA VISUALIZATION COMMUNITY"
+					classes="text-[18px] md:text-[24px]"
+				></CustomSlantedText>
 			</p>
 
 			<p class="content-text mb-1">
