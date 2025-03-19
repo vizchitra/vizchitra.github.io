@@ -7,7 +7,7 @@
 	<div>
 		<p class="w-fit text-xl">
 			Register for <a
-				href="https://hasgeek.com/VizChitra/launch-party/"
+				href="https://hasgeek.com/VizChitra/proposal-jam/"
 				class="text-viz-pink-dark inline-block underline"
 				target="_blank">Proposal Jam &#8599;</a
 			>
