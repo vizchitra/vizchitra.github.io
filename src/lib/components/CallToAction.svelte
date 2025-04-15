@@ -1,6 +1,7 @@
 <script lang="ts">
 	import communityBanner from '$lib/assets/images/call-to-action/community-banner.webp';
 	import conferenceBanner from '$lib/assets/images/call-to-action/conference-banner.webp';
+	import vizBizBanner from '$lib/assets/images/call-to-action/viz-biz-banner.png';
 	import proposalJamBanner from '$lib/assets/images/call-to-action/proposal-jam-banner.png';
 
 	import { confetti } from '@neoconfetti/svelte';
@@ -14,18 +15,18 @@
 			image: communityBanner,
 			alt: 'Join the community banner',
 			title: 'Join the community',
-			description: 'Join our 600+ growing member community on WhatsApp',
+			description: 'Join our 1000+ growing member community on WhatsApp',
 			link: 'https://chat.whatsapp.com/G9p4HbALukeAa5NSVn0OoA',
 			buttonText: 'Connect',
 			isAnimated: false
 		},
 		{
-			image: proposalJamBanner,
-			alt: 'proposal jam banner',
-			title: 'Proposal Jam',
+			image: vizBizBanner,
+			alt: 'Panel Discussion: Breaking into the Viz Biz',
+			title: 'Panel Discussion: Breaking into the Viz Biz',
 			description:
-				'To help you craft a strong proposal, or address any queries around submissions, we’re hosting a proposal jam, on 22nd March',
-			link: 'https://hasgeek.com/VizChitra/proposal-jam/',
+				'Curious about building a career in data visualization? Join us for a dynamic discussion with professionals, on 26th April',
+			link: 'https://hasgeek.com/VizChitra/designing-a-career-with-data/',
 			buttonText: 'Registrations open',
 			isAnimated: true
 		},
