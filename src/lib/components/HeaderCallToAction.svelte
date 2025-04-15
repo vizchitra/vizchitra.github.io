@@ -7,9 +7,9 @@
 	<div>
 		<p class="w-fit text-xl">
 			Register for <a
-				href="https://hasgeek.com/VizChitra/proposal-jam/"
+				href="https://hasgeek.com/VizChitra/designing-a-career-with-data/"
 				class="text-viz-pink-dark inline-block underline"
-				target="_blank">Proposal Jam &#8599;</a
+				target="_blank">Panel Discussion: Breaking into the Viz Biz &#8599;</a
 			>
 		</p>
 	</div>
