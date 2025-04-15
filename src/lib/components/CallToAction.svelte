@@ -15,7 +15,7 @@
 			alt: 'Join the community banner',
 			title: 'Join the community',
 			description: 'Join our 600+ growing member community on WhatsApp',
-			link: 'https://chat.whatsapp.com/CbIu7z6ITmGFvwfw0BjDdL',
+			link: 'https://chat.whatsapp.com/G9p4HbALukeAa5NSVn0OoA',
 			buttonText: 'Connect',
 			isAnimated: false
 		},
