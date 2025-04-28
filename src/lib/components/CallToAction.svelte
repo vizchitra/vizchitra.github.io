@@ -20,6 +20,16 @@
 			buttonText: 'Connect',
 			isAnimated: false
 		},
+
+		{
+			image: conferenceBanner,
+			alt: 'Call for conference proposals banner',
+			title: 'VizChitra 2025',
+			description: 'Annual flagship in-person conference, on 27 June',
+			link: 'https://hasgeek.com/VizChitra/2025/sub',
+			buttonText: 'Buy tickets now!',
+			isAnimated: true
+		},
 		{
 			image: vizBizBanner,
 			alt: 'Panel Discussion: Breaking into the Viz Biz',
@@ -28,15 +38,6 @@
 				'Curious about building a career in data visualization? Join us for a dynamic discussion with professionals, on 26th April',
 			link: 'https://hasgeek.com/VizChitra/designing-a-career-with-data/',
 			buttonText: 'Registrations open',
-			isAnimated: true
-		},
-		{
-			image: conferenceBanner,
-			alt: 'Call for conference proposals banner',
-			title: 'VizChitra 2025',
-			description: 'Annual flagship in-person conference, on 27 June',
-			link: 'https://hasgeek.com/VizChitra/2025/sub',
-			buttonText: 'Call for proposals',
 			isAnimated: false
 		}
 	];
@@ -57,7 +58,7 @@
 </script>
 
 <div
-	class="z-12 -mt-[15%] grid grid-cols-1 gap-4 rounded-2xl bg-white px-4 py-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-3 lg:px-4"
+	class="z-12 -mt-[15%] grid grid-cols-1 gap-4 rounded-2xl bg-white px-4 py-4 sm:px-6 lg:grid-cols-3 lg:px-4"
 >
 	{#each cards as card}
 		<a
