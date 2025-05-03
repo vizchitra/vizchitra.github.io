@@ -3,6 +3,7 @@
 	import conferenceBanner from '$lib/assets/images/call-to-action/conference-banner.webp';
 	import vizBizBanner from '$lib/assets/images/call-to-action/viz-biz-banner.png';
 	import proposalJamBanner from '$lib/assets/images/call-to-action/proposal-jam-banner.png';
+	import sponsorshipBanner from '$lib/assets/images/call-to-action/sponsorship-banner.png';
 
 	import { confetti } from '@neoconfetti/svelte';
 	import { tick } from 'svelte';
@@ -26,18 +27,18 @@
 			alt: 'Call for conference proposals banner',
 			title: 'VizChitra 2025',
 			description: 'Annual flagship in-person conference, on 27 June',
-			link: 'https://hasgeek.com/VizChitra/2025/sub',
+			link: 'https://hasgeek.com/VizChitra/2025/#tickets',
 			buttonText: 'Buy tickets now!',
 			isAnimated: true
 		},
 		{
-			image: vizBizBanner,
-			alt: 'Panel Discussion: Breaking into the Viz Biz',
-			title: 'Panel Discussion: Breaking into the Viz Biz',
+			image: sponsorshipBanner,
+			alt: 'Sponsor the Conference',
+			title: 'Sponsor the Conference',
 			description:
-				'Curious about building a career in data visualization? Join us for a dynamic discussion with professionals, on 26th April',
-			link: 'https://hasgeek.com/VizChitra/designing-a-career-with-data/',
-			buttonText: 'Registrations open',
+				'Want to partner with VizChitra? Sponsorships are open for orgs big and small. Reach out to us at sales@hasgeek.com',
+			link: 'https://speakerdeck.com/vizchitra/sponsor-the-conference-vizchitra-2025',
+			buttonText: 'Sponsorship info',
 			isAnimated: false
 		}
 	];
