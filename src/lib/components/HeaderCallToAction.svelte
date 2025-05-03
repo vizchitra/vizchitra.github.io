@@ -7,7 +7,7 @@
 	<div>
 		<p class="w-fit text-xl">
 			Register for <a
-				href="https://hasgeek.com/VizChitra/2025/"
+				href="https://hasgeek.com/VizChitra/2025/#tickets"
 				class="text-viz-pink-dark inline-block underline"
 				target="_blank">Vizchitra 2025: Tickets are now available! &#8599;</a
 			>
