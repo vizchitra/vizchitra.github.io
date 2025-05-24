@@ -96,6 +96,18 @@
 		</div>
 	</HomepageSection>
 
+	<HomepageSection>
+		<div slot="content">
+			<h2 class="content-heading !text-[2rem]">SPEAKERS</h2>
+			<div class="flex flex-col py-4 bg-viz-grey/5 mt-4">
+				<span class="text-viz-pink-dark text-center font-[Cairo] text-xl"> COMING SOON !</span>
+				<span class="text-left font-[Cairo] px-12"
+					>As we confirm our speakers and schedule, stay tuned to find all the goodness we have
+					packed in just for you.
+				</span>
+			</div>
+		</div>
+	</HomepageSection>
 	<!-- OUR MISSION -->
 	<!-- <HomepageSection>
 		<div slot="content">
