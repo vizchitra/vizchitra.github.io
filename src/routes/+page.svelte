@@ -9,6 +9,7 @@
 	import HomepageSection from '$lib/components/Homepage/HomepageSection.svelte';
 	import ConferenceDetails from '$lib/components/Homepage/ConferenceDetails.svelte';
 	import CustomSlantedText from '$lib/components/Common/CustomSlantedText.svelte';
+	import KeyNote from '$lib/components/KeyNote.svelte';
 
 	export let data;
 </script>
@@ -84,12 +85,19 @@
 				storytelling.
 			</p>
 
-			<PolygonDivider></PolygonDivider>
+			<!-- <PolygonDivider></PolygonDivider> -->
+		</div>
+	</HomepageSection>
+
+	<HomepageSection>
+		<div slot="content">
+			<h2 class="content-heading !text-[2rem]">KEYNOTES</h2>
+			<KeyNote></KeyNote>
 		</div>
 	</HomepageSection>
 
 	<!-- OUR MISSION -->
-	<HomepageSection>
+	<!-- <HomepageSection>
 		<div slot="content">
 			<h2 class="content-heading !text-[2rem]">OUR MISSION</h2>
 
@@ -133,10 +141,10 @@
 
 			<PolygonDivider></PolygonDivider>
 		</div>
-	</HomepageSection>
+	</HomepageSection> -->
 
 	<!-- TEAM SECTION -->
-	<HomepageSection containerWidth="full">
+	<!-- <HomepageSection containerWidth="full">
 		<div slot="content" class="">
 			<h2 class="font-display mx-auto mb-6 max-w-[750px] text-left !text-[2rem] font-bold">
 				MEET THE TEAM
@@ -144,10 +152,10 @@
 
 			<TeamSection></TeamSection>
 		</div>
-	</HomepageSection>
+	</HomepageSection> -->
 
 	<!-- END CARD -->
-	<HomepageSection>
+	<!-- <HomepageSection>
 		<div slot="content">
 			<PolygonDivider></PolygonDivider>
 			<h2 class="content-heading mt-5 !text-[2rem]">VIZCHITRA 2025</h2>
@@ -157,7 +165,7 @@
 			<ConferenceDetails></ConferenceDetails>
 			<PolygonDivider></PolygonDivider>
 		</div>
-	</HomepageSection>
+	</HomepageSection> -->
 </div>
 
 <style>
