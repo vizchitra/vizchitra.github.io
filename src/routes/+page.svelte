@@ -11,6 +11,7 @@
 	import CustomSlantedText from '$lib/components/Common/CustomSlantedText.svelte';
 	import KeyNote from '$lib/components/LineUp/KeyNote.svelte';
 	import Speakers2025 from '$lib/components/LineUp/Speakers2025.svelte';
+	import Workshop2025 from '$lib/components/LineUp/Workshop2025.svelte';
 
 	export let data;
 </script>
@@ -101,6 +102,14 @@
 		<div slot="content">
 			<h2 class="content-heading !text-[2rem]">SPEAKERS</h2>
 			<Speakers2025></Speakers2025>
+		</div>
+	</HomepageSection>
+
+	<HomepageSection>
+		<div slot="content">
+			<h2 class="content-heading !text-[2rem]">WORKSHOPS</h2>
+			<p class="text-lg">So much fun to look forward to! Bear in mind, workshops are located at <b>two</b> different locations. Do check ahead of time.</p>
+			<Workshop2025></Workshop2025>
 		</div>
 	</HomepageSection>
 	<!-- OUR MISSION -->
