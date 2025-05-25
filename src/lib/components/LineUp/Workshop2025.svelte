@@ -154,6 +154,7 @@
 		{#if selectedIndex === index}
 			<div class="border-viz-grey col-span-1 mb-2 block border-2 bg-white p-4 lg:hidden">
 				<div>{@html workshopInfo[selectedIndex].workshop_info}</div>
+				<br>
 				<div>
 					<p class="text-grey p-0 text-xs">{workshopInfo[selectedIndex].time}</p>
 					<p class="text-grey p-0 text-xs">{workshopInfo[selectedIndex].location}</p>
@@ -172,6 +173,7 @@
 					class="border-viz-grey col-span-2 mb-2 hidden grid-cols-1 gap-2 border-2 bg-white p-4 lg:grid"
 				>
 					<div>{@html workshopInfo[selectedIndex].workshop_info}</div>
+					<br>
 					<div>
 						<p class="text-grey p-0 text-xs">{workshopInfo[selectedIndex].time}</p>
 						<p class="text-grey p-0 text-xs">{workshopInfo[selectedIndex].location}</p>
