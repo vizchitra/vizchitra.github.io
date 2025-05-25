@@ -10,7 +10,16 @@
 	let expanded = false;
 </script>
 
-<button class="h-full w-full border-2" on:click={(expanded = !expanded)}>OPEN</button>
+<button
+	class="trigger h-full w-full cursor-pointer"
+	class:expanded
+	on:click={(expanded = !expanded)}
+	aria-label="Toggle navigation"
+>
+	<span class=""></span>
+	<span class=""></span>
+	<span class=""></span>
+</button>
 
 {#if expanded}
 	<div
@@ -91,5 +100,34 @@
 
 	:global(.drawer.slide-in) {
 		transform: translateX(0);
+	}
+
+	button.trigger {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+
+		height: 14px;
+	}
+
+	button.trigger span {
+		--translate-amount: 6px;
+
+		display: block;
+		width: 18px;
+		height: 2px;
+		background-color: #4c4c4c;
+		transition: transform 0.3s ease-in-out;
+	}
+
+	button.trigger.expanded span:nth-of-type(1) {
+		transform: translateY(var(--translate-amount)) rotateZ(45deg);
+	}
+	button.trigger.expanded span:nth-of-type(2) {
+		transform: rotateY(90deg);
+	}
+	button.trigger.expanded span:nth-of-type(3) {
+		transform: translateY(calc(-1 * var(--translate-amount))) rotate(-45deg);
 	}
 </style>

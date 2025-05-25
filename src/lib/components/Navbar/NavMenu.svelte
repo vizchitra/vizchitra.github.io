@@ -62,7 +62,7 @@
 				</a>
 			</div>
 
-			<div class="mobile-drawer-container relative h-full">
+			<div class="mobile-drawer-container relative flex h-full items-center justify-center">
 				<MobileNavDrawer {navSections}></MobileNavDrawer>
 			</div>
 
@@ -147,7 +147,7 @@
 
 	@media (max-width: 500px) {
 		.mobile-drawer-container {
-			display: block;
+			display: flex;
 		}
 
 		.desktop-drawer-container {
