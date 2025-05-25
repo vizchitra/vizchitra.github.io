@@ -66,12 +66,18 @@
 				<VizChitraLogoType></VizChitraLogoType>
 			</h1>
 
-			<p class="content-text mb-6">
+			<p class="mb-28 font-[Cairo] text-4xl">
+				This first India conference brings <span class="text-viz-pink-dark font-bold">data visualization practitioners</span> from across India,
+				representing <span class="text-viz-orange font-bold">different industries and disciplines,</span> together to facilitate <span class="text-viz-orange font-bold">learning and
+				connections</span> around a common interest in the power of <span class="text-viz-pink-dark font-bold">visual data storytelling.</span>
+			</p>
+
+			<!-- <p class="content-text mb-6">
 				Data visualization practitioners in India have been spread across different communities. As
 				the first of its kind <span class="font-semibold">
 					data visualization community, VizChitra
 				</span> is putting together a conference to bring these people together.
-			</p>
+			</p> -->
 
 			<p class="mx-auto mb-6">
 				<CustomSlantedText
@@ -108,7 +114,10 @@
 	<HomepageSection>
 		<div slot="content">
 			<h2 class="content-heading !text-[2rem]">WORKSHOPS</h2>
-			<p class="text-lg">So much fun to look forward to! Bear in mind, workshops are located at <b>two</b> different locations. Do check ahead of time.</p>
+			<p class="text-lg">
+				So much fun to look forward to! Bear in mind, workshops are located at <b>two</b> different locations.
+				Do check ahead of time.
+			</p>
 			<Workshop2025></Workshop2025>
 		</div>
 	</HomepageSection>
