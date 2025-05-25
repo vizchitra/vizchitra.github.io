@@ -99,7 +99,7 @@
 	let selectedIndex: number | null = null;
 </script>
 
-<div class="grid auto-rows-min grid-cols-1 lg:grid-cols-2">
+<div class="grid auto-rows-min grid-cols-1 lg:grid-cols-2 mt-4">
 	{#each workshopInfo as speaker, index}
 		<!-- speaker grid start -->
 		<div
