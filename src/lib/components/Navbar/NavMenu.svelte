@@ -1,6 +1,7 @@
 <script>
 	import exp from 'constants';
 	import VizChitraLogoType from '../VizChitraLogoType.svelte';
+	import MobileNavDrawer from './MobileNavDrawer.svelte';
 	import { clickOutside } from '$lib/utils/actions';
 
 	let navSections = [
@@ -60,7 +61,12 @@
 					<VizChitraLogoType />
 				</a>
 			</div>
-			<div class="font-display ml-6 flex items-center gap-2">
+
+			<div class="mobile-drawer-container relative h-full">
+				<MobileNavDrawer {navSections}></MobileNavDrawer>
+			</div>
+
+			<div class="desktop-drawer-container font-display ml-6 flex items-center gap-2">
 				{#each navSections as section}
 					{#if section?.subsections}
 						<!-- svelte-ignore a11y_no_static_element_interactions -->
@@ -74,13 +80,15 @@
 								aria-haspopup="true"
 								aria-expanded={section.expanded}
 							>
-								<span class="font-base text-xl whitespace-nowrap text-black">{section.name}</span>
+								<span class="font-base text-xl whitespace-nowrap text-[#4C4C4C]"
+									>{section.name}</span
+								>
 								<span
 									style="transform-origin: 75% 25%;"
 									class:rotate-315={section.expanded}
 									class:scale-120={section.expanded}
 									class:expanded={section.expanded}
-									class="chevron h-2 w-2 translate-y-[25%] rotate-135 rounded-none border-4 border-t-black border-r-black border-b-white border-l-white transition-transform"
+									class="chevron h-2 w-2 translate-y-[25%] rotate-135 rounded-none border-4 border-t-[#4C4C4C] border-r-[#4C4C4C] border-b-white border-l-white transition-transform"
 								></span>
 							</button>
 							{#if section.expanded}
@@ -95,7 +103,7 @@
 								>
 									{#each section.subsections as subsection}
 										<a href={subsection.href} class="w-full cursor-pointer px-1 py-2">
-											<span class="font-base text-xl whitespace-nowrap text-black"
+											<span class="font-base text-xl whitespace-nowrap text-[#4C4C4C]"
 												>{subsection.name}</span
 											>
 										</a>
@@ -109,7 +117,7 @@
 							class="cursor-pointer rounded-md px-3 py-2"
 							target={section?.target || '_self'}
 						>
-							<span class="font-base text-xl whitespace-nowrap text-black">{section.name}</span>
+							<span class="font-base text-xl whitespace-nowrap text-[#4C4C4C]">{section.name}</span>
 						</a>
 					{/if}
 				{/each}
@@ -125,8 +133,25 @@
 	}
 
 	.chevron.expanded {
-		/* transform: scale(1.2) rotate(180deg); */
 		border-top-color: var(--accent-color);
 		border-right-color: var(--accent-color);
+	}
+
+	.mobile-drawer-container {
+		display: none;
+	}
+
+	.desktop-drawer-container {
+		display: flex;
+	}
+
+	@media (max-width: 500px) {
+		.mobile-drawer-container {
+			display: block;
+		}
+
+		.desktop-drawer-container {
+			display: none;
+		}
 	}
 </style>
