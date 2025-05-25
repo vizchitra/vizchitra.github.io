@@ -116,8 +116,8 @@
 				? 'bg-viz-grey'
 				: 'white'} p-4 transition hover:shadow-sm"
 		>
-			<div class="grid grid-cols-3 items-stretch gap-2">
-				<div class="col-span-1">
+			<div class="grid grid-cols-3 gap-2">
+				<div class="col-span-1 self-center">
 					{#if index === 5}
 						<img src={speaker.image1} alt={speaker.alt1} />
 						<img src={speaker.image2} alt={speaker.alt2} />
@@ -125,7 +125,7 @@
 						<img src={speaker.image} alt={speaker.alt} />
 					{/if}
 				</div>
-				<div class="col-span-2">
+				<div class="col-span-2 self-center">
 					<div class="flex justify-between">
 						<h3
 							class="font-[Cairo] text-sm {selectedIndex === index
@@ -188,108 +188,3 @@
 		<!-- on click div info end -->
 	{/each}
 </div>
-
-<!-- <div class="grid auto-rows-min grid-cols-2">
-	{#each items as item, i}
-		<div
-			on:click={() => (openIndex = openIndex === i ? null : i)}
-			class="cursor-pointer  { openIndex === i ? 'bg-blue-100':'bg-white'} p-4"
-		>
-			{item}
-		</div>
-
-		{#if i % 2 === 1}
-			{#if openIndex === i || openIndex === i - 1}
-			Insert an info row with left/right alignment
-				{#if openIndex === i - 1}
-					<div class="col-span-2 bg-white border-2 border-blue-100 mb-2">
-						Info under {items[openIndex]}
-					</div>
-				{:else}
-					<div class="col-span-2 bg-white border-2 border-blue-100 mb-2">
-						Info under {items[openIndex]}
-					</div>
-				{/if}
-			{/if}
-		{/if}
-	{/each}
-</div> -->
-
-<!-- <div class="grid auto-rows-min grid-cols-2 gap-4">
-	<div on:click={() => (openIndex = 0)} class="cursor-pointer bg-blue-200 p-4">A</div>
-	<div on:click={() => (openIndex = 1)} class="cursor-pointer bg-blue-200 p-4">B</div>
-	<div on:click={() => (openIndex = 2)} class="cursor-pointer bg-blue-200 p-4">C</div>
-	<div on:click={() => (openIndex = 3)} class="cursor-pointer bg-blue-200 p-4">D</div>
-
-	{#if openIndex === 0}
-		<div class="col-span-2 bg-blue-100 p-4">Info under A</div>
-	{:else if openIndex === 1}
-		<div class="col-span-2 bg-blue-100 p-4">Info under B</div>
-		{:else if openIndex === 2}
-		<div class="col-span-2 bg-blue-100 p-4">Info under C</div>
-		{:else if openIndex === 3}
-		<div class="col-span-2 bg-blue-100 p-4">Info under D</div>
-	{/if}
-
-	
-</div> -->
-
-<!-- Parent grid -->
-
-<!-- <div class="grid grid-cols-1 gap-4 py-8 lg:grid-cols-2">
-	{#each workshopInfo as speaker, index}
-		<div
-			tabindex="0"
-			role="button"
-			on:click={() => (selectedIndex = index)}
-			on:keydown={(e) => {
-				if (e.key === 'Enter' || e.key === ' ') {
-					selectedIndex = index;
-					e.preventDefault();
-				}
-			}}
-			class="cursor-pointer flex flex-col"
-		>
-			{#if index === 5}
-				<div class="grid grid-cols-3 items-stretch gap-2">
-					<div class="col-span-1">
-						<img src={speaker.image1} alt={speaker.alt1} />
-						<img src={speaker.image2} alt={speaker.alt2} />
-					</div>
-					<div class="col-span-2">
-						<h3 class="text-viz-grey font-[Cairo] text-2xl font-bold">
-							{speaker.speaker}
-						</h3>
-						<h3 class="{speaker.title_color} font-[Cairo] text-lg">
-							<span class="font-bold">{speaker.title_1}</span><br />
-							<span>{speaker.title_2}</span>
-						</h3>
-						<p class="p-0 text-xs">{speaker.time}</p>
-						<p class="p-0 text-xs">{speaker.location}</p>
-					</div>
-				</div>
-			{:else}
-				<div class="grid grid-cols-3 items-stretch gap-2">
-					<div class="col-span-1">
-						<img src={speaker.image} alt={speaker.alt} />
-					</div>
-					<div class="col-span-2">
-						<h3 class="text-viz-grey font-[Cairo] text-2xl font-bold">
-							{speaker.speaker}
-						</h3>
-						<h3 class="{speaker.title_color} font-[Cairo] text-lg">
-							<span class="font-bold">{speaker.title_1}</span><br />
-							<span>{speaker.title_2}</span>
-						</h3>
-						<p class="p-0 text-xs">{speaker.time}</p>
-						<p class="p-0 text-xs">{speaker.location}</p>
-					</div>
-				</div>
-			{/if}
-            {#if selectedIndex === index}
-						<div class="rounded-xl border border-gray-300 bg-gray-100 p-4">
-							<p class="text-sm font-medium">More info about {speaker.speaker} goes here...</p>
-						</div>
-					{/if}
-	{/each}
-</div> -->
