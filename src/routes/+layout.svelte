@@ -10,10 +10,13 @@
 	let { children } = $props();
 </script>
 
-<NavMenu />
+<NavMenu>
+	<div slot="cta">
+		<HeaderCallToAction />
+	</div>
+</NavMenu>
 
 <div class="app">
-	<HeaderCallToAction />
 	<main class:full-width={$page.url.pathname.includes('polygon-playground')}>
 		{@render children()}
 	</main>

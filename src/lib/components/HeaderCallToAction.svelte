@@ -5,10 +5,10 @@
 <div class="bg-viz-yellow-light text-viz flex items-center justify-center gap-4 p-2">
 	<div class="svg-horn">{@html horn}</div>
 	<div>
-		<p class="w-fit text-xl">
+		<p class="w-fit text-lg">
 			Register for <a
 				href="https://hasgeek.com/VizChitra/2025/#tickets"
-				class="text-viz-pink-dark inline-block underline"
+				class="text-viz-pink-dark inline underline"
 				target="_blank">Vizchitra 2025: Tickets are now available! &#8599;</a
 			>
 		</p>
