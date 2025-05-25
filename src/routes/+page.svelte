@@ -9,7 +9,8 @@
 	import HomepageSection from '$lib/components/Homepage/HomepageSection.svelte';
 	import ConferenceDetails from '$lib/components/Homepage/ConferenceDetails.svelte';
 	import CustomSlantedText from '$lib/components/Common/CustomSlantedText.svelte';
-	import KeyNote from '$lib/components/KeyNote.svelte';
+	import KeyNote from '$lib/components/LineUp/KeyNote.svelte';
+	import Speakers2025 from '$lib/components/LineUp/Speakers2025.svelte';
 
 	export let data;
 </script>
@@ -99,13 +100,7 @@
 	<HomepageSection>
 		<div slot="content">
 			<h2 class="content-heading !text-[2rem]">SPEAKERS</h2>
-			<div class="flex flex-col py-4 bg-viz-grey/5 mt-4">
-				<span class="text-viz-pink-dark text-center font-[Cairo] text-xl"> COMING SOON !</span>
-				<span class="text-left font-[Cairo] px-12"
-					>As we confirm our speakers and schedule, stay tuned to find all the goodness we have
-					packed in just for you.
-				</span>
-			</div>
+			<Speakers2025></Speakers2025>
 		</div>
 	</HomepageSection>
 	<!-- OUR MISSION -->
