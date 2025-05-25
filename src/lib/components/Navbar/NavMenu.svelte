@@ -1,6 +1,7 @@
 <script>
 	import exp from 'constants';
 	import VizChitraLogoType from '../VizChitraLogoType.svelte';
+	import { clickOutside } from '$lib/utils/actions';
 
 	let navSections = [
 		{
@@ -42,6 +43,13 @@
 			}
 		});
 	}
+
+	// close all dropdowns when clicking outside
+	function handleClickOutside(event) {
+		Object.keys(navSections).forEach((key) => {
+			navSections[key].expanded = false;
+		});
+	}
 </script>
 
 <nav class="fixed top-0 right-0 left-0 z-50 border-b border-gray-200 bg-white">
@@ -52,42 +60,48 @@
 					<VizChitraLogoType />
 				</a>
 			</div>
-			<div class="font-display ml-6 flex items-center">
+			<div class="font-display ml-6 flex items-center gap-2">
 				{#each navSections as section}
 					{#if section?.subsections}
+						<!-- svelte-ignore a11y_no_static_element_interactions -->
 						<div
 							class="dropdown-button-container relative"
 							style:--accent-color={section.accentColor}
 						>
 							<button
 								class="flex cursor-pointer items-center gap-2 rounded-md px-3 py-2"
-								on:click={() => toggleDropdown(section.name)}
+								on:click|stopPropagation={() => toggleDropdown(section.name)}
 								aria-haspopup="true"
 								aria-expanded={section.expanded}
 							>
-								<span class="font-base text-base whitespace-nowrap text-black">{section.name}</span>
+								<span class="font-base text-xl whitespace-nowrap text-black">{section.name}</span>
 								<span
 									style="transform-origin: 75% 25%;"
 									class:rotate-315={section.expanded}
 									class:scale-120={section.expanded}
 									class:expanded={section.expanded}
-									class="chevron h-2 w-2 translate-y-[25%] rotate-135 rounded-none border-4 border-t-black border-r-black border-b-white border-l-white transition-all"
+									class="chevron h-2 w-2 translate-y-[25%] rotate-135 rounded-none border-4 border-t-black border-r-black border-b-white border-l-white transition-transform"
 								></span>
 							</button>
-
-							<div
-								class="dropdown display-none absolute top-[100%] right-0 z-10 min-w-[150px] flex-col rounded-md bg-white px-3 py-3 shadow-lg transition-all duration-200 ease-in-out {section.expanded
-									? 'flex'
-									: 'hidden'}"
-							>
-								{#each section.subsections as subsection}
-									<a href={subsection.href} class="w-full cursor-pointer px-1 py-2">
-										<span class="font-base text-base whitespace-nowrap text-black"
-											>{subsection.name}</span
-										>
-									</a>
-								{/each}
-							</div>
+							{#if section.expanded}
+								<!-- svelte-ignore a11y_click_events_have_key_events -->
+								<div
+									class="dropdown display-none absolute top-[100%] right-0 z-10 min-w-[150px] flex-col rounded-md bg-white px-3 py-3 shadow-lg transition-all duration-200 ease-in-out {section.expanded
+										? 'flex'
+										: 'hidden'}"
+									use:clickOutside
+									on:outsideclick={handleClickOutside}
+									on:click|stopPropagation
+								>
+									{#each section.subsections as subsection}
+										<a href={subsection.href} class="w-full cursor-pointer px-1 py-2">
+											<span class="font-base text-xl whitespace-nowrap text-black"
+												>{subsection.name}</span
+											>
+										</a>
+									{/each}
+								</div>
+							{/if}
 						</div>
 					{:else}
 						<a
@@ -95,7 +109,7 @@
 							class="cursor-pointer rounded-md px-3 py-2"
 							target={section?.target || '_self'}
 						>
-							<span class="font-base text-base whitespace-nowrap text-black">{section.name}</span>
+							<span class="font-base text-xl whitespace-nowrap text-black">{section.name}</span>
 						</a>
 					{/if}
 				{/each}
