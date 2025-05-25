@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { formatSlantedText } from '$lib/utils/utils.js';
-	import NavMenu from '$lib/components/NavMenu.svelte';
+	import NavMenu from '$lib/components/Navbar/NavMenu.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 </script>
 
