@@ -126,6 +126,7 @@
 	}
 
 	let selectedIndex: number | null = null;
+    // let globalIndex = pageIndex * speakersPerPage + index;
 </script>
 
 <!-- Navigation Buttons -->
@@ -173,10 +174,11 @@
 			<div class="w-full flex-shrink-0">
 				<div class="grid grid-cols-1 lg:grid-cols-2">
 					{#each speakerInfo.slice(pageIndex * speakersPerPage, (pageIndex + 1) * speakersPerPage) as speaker, index (pageIndex * speakersPerPage + index)}
+
 						<div
 							tabindex="0"
 							role="button"
-							on:click={() => (selectedIndex = selectedIndex === index ? null : index)}
+							on:click={() => (selectedIndex = selectedIndex === (pageIndex * speakersPerPage + index) ? null : (pageIndex * speakersPerPage + index))}
 							on:keydown={(e) => {
 								if (e.key === 'Enter' || e.key === ' ') {
 									selectedIndex = index;
@@ -223,7 +225,7 @@
 								</div>
 							</div>
 						</div>
-						{#if selectedIndex === index}
+						{#if selectedIndex === pageIndex * speakersPerPage + index}
 							<div class="border-viz-grey col-span-1 block border-2 bg-white p-4 lg:hidden">
 								<div>{@html speakerInfo[selectedIndex].talk_info}</div>
 								<br />
@@ -235,9 +237,10 @@
 						{/if}
 
 						<!-- desktop version: shows below the row if either item in the pair is selected -->
-						<!-- {#if index % 2 === 1}
+						{#if index % 2 === 1}
                         
-							{#if selectedIndex === index || selectedIndex === index - 1}
+                        
+							{#if selectedIndex === pageIndex * speakersPerPage + index || selectedIndex === pageIndex * speakersPerPage + index - 1}
 								<div
 									class="border-viz-grey col-span-2 mb-2 hidden grid-cols-1 gap-2 border-2 bg-white p-4 lg:grid"
 								>
@@ -250,20 +253,8 @@
 									</div>
 								</div>
 							{/if}
-						{/if} -->
-						{#if (index % 2 === 1 && (selectedIndex === index || selectedIndex === index - 1)) || (speakerInfo.length === 1 && selectedIndex === index)}
-							<div
-								class="border-viz-grey col-span-2 mb-2 hidden grid-cols-1 gap-2 border-2 bg-white p-4 lg:grid"
-							>
-								<div>{@html speakerInfo[selectedIndex].talk_info}</div>
-								<br />
-								<div>
-									<p class="text-grey p-0 text-xs">{speakerInfo[selectedIndex].time}</p>
-									<p class="text-grey p-0 text-xs">{speakerInfo[selectedIndex].location}</p>
-									<br />
-								</div>
-							</div>
 						{/if}
+						
 					{/each}
 				</div>
 			</div>
