@@ -1,5 +1,6 @@
 <script lang="ts">
 	import prasanta from '$lib/assets/images/speakers-2025/prasanta.png';
+    import expand from '$lib/assets/images/icons/expand.png';
 	const speakerInfo = [
 		{
 			image: prasanta,
@@ -191,14 +192,17 @@
 									<img src={speaker.image} alt={speaker.alt} />
 								</div>
 								<div class="col-span-4 mb-2 self-center">
-									<h3
-										class="{selectedIndex === index
-											? 'text-white'
-											: 'text-viz-grey'} m-0 p-0 font-[Cairo] text-lg"
-										style="font-variation-settings: 'slnt' -8;"
-									>
-										{@html speaker.speaker}
-									</h3>
+                                    <div class="flex justify-between">
+                                        <h3
+                                            class="{selectedIndex === index
+                                                ? 'text-white'
+                                                : 'text-viz-grey'} m-0 p-0 font-[Cairo] text-lg"
+                                            style="font-variation-settings: 'slnt' -8;"
+                                        >
+                                            {@html speaker.speaker}
+                                        </h3>
+                                        <img class="inline-block self-center" width="12" src={expand} alt="icon" />
+                                    </div>
 									<span
 										class="{selectedIndex === index
 											? 'text-white'
