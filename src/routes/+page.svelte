@@ -66,7 +66,7 @@
 				<VizChitraLogoType></VizChitraLogoType>
 			</h1>
 
-			<p class="mb-12 font-[Cairo] text-2xl">
+			<p class="mb-8 font-[Cairo] text-2xl">
 				This first India conference brings <span class="text-viz-pink-dark font-bold">data visualization practitioners</span> from across India,
 				representing <span class="text-viz-orange font-bold">different industries and disciplines,</span> together to facilitate <span class="text-viz-orange font-bold">learning and
 				connections</span> around a common interest in the power of <span class="text-viz-pink-dark font-bold">visual data storytelling.</span>
