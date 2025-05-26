@@ -1,5 +1,6 @@
 <script>
 	export let memberData = {};
+	console.log('memberData', memberData);
 
 	// 50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%
 	let regularPentagonPoints = [

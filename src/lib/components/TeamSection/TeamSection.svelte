@@ -8,6 +8,7 @@
 
 	onMount(async () => {
 		teamData = await csv(`${base}/data/vizchitra_team.csv`);
+		console.log('teamData', teamData);
 	});
 </script>
 

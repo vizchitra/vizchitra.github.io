@@ -6,7 +6,6 @@
 <div class="footer-content relative pb-24">
 	<footer class="relative">
 		<div class="z-10 flex flex-col items-center gap-8 py-16">
-			<!-- 
 			<div class="links flex gap-8">
 				<a href="/code-of-conduct" class=" text-viz-pink-dark font-bold underline"
 					>Code of Conduct</a
@@ -15,8 +14,7 @@
 				<a href="/polygon-playground" class=" text-viz-pink-dark font-bold underline"
 					>Create your Data Selfie</a
 				>
-			</div> 
-			-->
+			</div>
 
 			<SocialLink />
 
