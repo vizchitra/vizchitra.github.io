@@ -1,5 +1,6 @@
 <script>
 	import { formatSlantedText } from '$lib/utils/utils.js';
+	import NavMenu from '$lib/components/NavMenu.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import SliderInput from '$lib/components/PolygonPlayground/SliderInput.svelte';
 	import PolygonGenerator from '$lib/components/PolygonPlayground/PolygonGenerator.svelte';
@@ -26,6 +27,8 @@
 		});
 	}
 </script>
+
+<NavMenu />
 
 <div class="min-h-screen w-full">
 	<PageHeader title="Create your own Vizchitra selfie!" />

@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { formatSlantedText } from '$lib/utils/utils.js';
+	import NavMenu from '$lib/components/NavMenu.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 </script>
+
+<NavMenu />
 
 <div class="min-h-screen">
 	<PageHeader title="Code of Conduct" />
