@@ -12,6 +12,7 @@
 	import KeyNote from '$lib/components/LineUp/KeyNote.svelte';
 	import Speakers2025 from '$lib/components/LineUp/Speakers2025.svelte';
 	import Workshop2025 from '$lib/components/LineUp/Workshop2025.svelte';
+	import SpeakerPolygonImg from '$lib/components/LineUp/SpeakerPolygonImg.svelte';
 
 	export let data;
 </script>
@@ -67,9 +68,15 @@
 			</h1>
 
 			<p class="mb-8 font-[Cairo] text-2xl">
-				This first India conference brings <span class="text-viz-pink-dark font-bold">data visualization practitioners</span> from across India,
-				representing <span class="text-viz-orange font-bold">different industries and disciplines,</span> together to facilitate <span class="text-viz-orange font-bold">learning and
-				connections</span> around a common interest in the power of <span class="text-viz-pink-dark font-bold">visual data storytelling.</span>
+				This first India conference brings <span class="text-viz-pink-dark font-bold"
+					>data visualization practitioners</span
+				>
+				from across India, representing
+				<span class="text-viz-orange font-bold">different industries and disciplines,</span>
+				together to facilitate
+				<span class="text-viz-orange font-bold">learning and connections</span>
+				around a common interest in the power of
+				<span class="text-viz-pink-dark font-bold">visual data storytelling.</span>
 			</p>
 
 			<!-- <p class="content-text mb-6">
@@ -106,10 +113,32 @@
 
 	<HomepageSection>
 		<div slot="content">
+			<h2 class="content-heading !text-[2rem]">CONFERENCE</h2>
+			<br />
+			<p class="text-viz-grey mb-4 font-[Cairo] text-xl">
+				Get ready to hear from leaders in design, business, media, research and more.
+			</p>
+			<p class="text-viz-orange font-[Cairo] text-xl" style="font-variation-settings: 'slnt' -11;">
+				Keep checking back as we'll be adding many more soon.
+			</p>
+			<span class="m-8 block text-center font-[Cairo] text-3xl"
+				><span style="font-variation-settings: 'slnt' 2;">MEET OUR</span>
+				<span class="font-bold text-[#C94B7F]" style="font-variation-settings: 'slnt' -3;"
+					>SPEAKERS</span
+				></span
+			>
+			<SpeakerPolygonImg></SpeakerPolygonImg>
+		</div>
+	</HomepageSection>
+
+	<HomepageSection>
+		<div slot="content">
 			<h2 class="content-heading !text-[2rem]">SPEAKERS</h2>
+			<p class="text-viz-grey mb-4 font-[Cairo] text-xl">Find something that sparks your curiosity? Find talks across parallel tracks on conference day.</p>
 			<Speakers2025></Speakers2025>
 		</div>
 	</HomepageSection>
+
 
 	<HomepageSection>
 		<div slot="content">
@@ -236,4 +265,8 @@
 			transparent 100%
 		);
 	}
+
+	/* .speakerTag {
+		font-variation-settings: 'slnt' -3;
+	} */
 </style>
