@@ -40,7 +40,7 @@
 			href: '/about',
 			accentColor: 'var(--color-viz-pink)',
 			subsections: [
-				{ name: 'Team', href: '/' },
+				{ name: 'Team', href: '/meet-the-team' },
 				{ name: 'Code of Conduct', href: '/code-of-conduct' }
 			],
 			expanded: false
