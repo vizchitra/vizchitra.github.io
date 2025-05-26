@@ -16,7 +16,7 @@
 			talk_info: `The last ten years have seen a dramatic improvement in access to Indian data, allowing journalists to tell richer stories, analysts to get a better sense of Indian realities, and designers to have much more to work with. Improvements are now happening faster than ever, more so with the adoption of machine learning and large language models. How do we use this moment to do better than we had imagined? By asking the important questions. <br>
 			We talk too little about what goes into the making of data, who has access to information and who doesn’t, and who is able to work with it or make sense of it and not, and how we are using this data and to what end. In this talk, I hope to share some data that grounds my insights, and encourage us to engage with these questions.`,
 			location: 'Bangalore International Centre, Bengaluru',
-			link: 'https://hasgeek.com/VizChitra/2025/sub/the-data-is-here-but-whom-is-it-serving-T8JzpVLF6VruwBTE6rP8zR'
+			link: 'https://hasgeek.com/VizChitra/2025/sub/the-data-is-here-but-whom-is-it-serving-T8JzpVLF6VruwBTE6rP8zR#tickets'
 		},
 		{
 			image: anand,
@@ -36,7 +36,7 @@
 			&#9679; Automate interpretation: ask the model for captions, tooltips, and data insights <br>
 			&#9679; Spotlight future trends: what generative data art looks like in six months`,
 			location: 'Bangalore International Centre, Bengaluru',
-			link: 'https://hasgeek.com/VizChitra/2025/sub/data-design-by-dialogue-visualizing-data-with-llms-EX3YtVF1mqSqnxY5LAtuRE'
+			link: 'https://hasgeek.com/VizChitra/2025/sub/data-design-by-dialogue-visualizing-data-with-llms-EX3YtVF1mqSqnxY5LAtuRE#tickets'
 		}
 	];
 
