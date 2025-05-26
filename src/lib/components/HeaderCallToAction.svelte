@@ -40,7 +40,7 @@
 	.marquee-track {
 		width: 100%;
 		height: fit-content;
-		animation: marquee-animation 50s linear infinite;
+		animation: marquee-animation 75s linear infinite;
 	}
 
 	@keyframes marquee-animation {

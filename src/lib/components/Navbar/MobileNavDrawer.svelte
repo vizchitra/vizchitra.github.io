@@ -26,12 +26,49 @@
 		class="drawer font-display absolute right-[-16px] flex max-h-[90dvh] flex-col gap-2 overflow-auto rounded-lg border-[1px] border-[#ddd] bg-white p-4 shadow-lg sm:right-[-24px] lg:right-[-32px]"
 		use:slideInDrawer
 	>
-		{#each navSections as section}
+		{#each navSections as section, index}
 			{@const pointX = (0.3 + Math.random() * 0.7) * 100}
+			{@const pointY = height / 2}
+			{@const pointY2 = height / 2}
 			{@const lineColor1 = colors[Math.floor(Math.random() * colors.length)]}
 			{@const lineColor2 = colors[Math.floor(Math.random() * colors.length)]}
 
+			<!-- `pointX` but only for the starting polygon divider  -->
+			{@const pointStartingX = (0.3 + Math.random() * 0.7) * 100}
+
 			<div class="nav-section">
+				<!-- adds additional polygon divider only before the first dropdown option -->
+				{#if index === 0}
+					<div class="polygon-divider mb-2 w-full" bind:clientWidth={width}>
+						<svg
+							{width}
+							{height}
+							viewBox="0 0 {width} {height}"
+							preserveAspectRatio="xMidYMid meet"
+						>
+							<line
+								x1={0}
+								y1={height / 2}
+								x2="{pointStartingX}%"
+								y2={height / 2}
+								stroke={colors[Math.floor(Math.random() * colors.length)]}
+								stroke-width={8}
+							></line>
+							<line
+								x1="{pointStartingX}%"
+								y1={height / 2}
+								x2={width}
+								y2={height / 2}
+								stroke={colors[Math.floor(Math.random() * colors.length + 2) % colors.length]}
+								stroke-width={8}
+							></line>
+
+							<circle cx="{pointStartingX}%" cy="50%" r={5 + 4} fill={'white'}></circle>
+							<circle cx="{pointStartingX}%" cy="50%" r={5} fill={'#4c4c4c'}></circle>
+						</svg>
+					</div>
+				{/if}
+
 				<div class="links mb-1">
 					{#if section?.subsections}
 						<span class="w-full text-left">

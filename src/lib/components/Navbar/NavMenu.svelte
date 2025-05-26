@@ -1,12 +1,11 @@
 <script>
-	import exp from 'constants';
 	import VizChitraLogoType from '../VizChitraLogoType.svelte';
 	import MobileNavDrawer from './MobileNavDrawer.svelte';
 	import { clickOutside } from '$lib/utils/actions';
 
 	let navSections = [
 		{
-			name: "VizChitra '25",
+			name: 'VizChitra 2025',
 			href: '/',
 			accentColor: 'var(--color-viz-orange)',
 			subsections: [
