@@ -8,6 +8,7 @@
 	><span class="H2">H</span><span class="I2">I</span><span class="T2">T</span><span class="R2"
 		>R</span
 	><span class="A2">A</span>
+	<span class="text-[#D46637] font-bold year">2025</span>
 </span>
 
 <style>
@@ -78,5 +79,9 @@
 			'slnt' 0,
 			'wght' 400;
 		letter-spacing: 0rem;
+	}
+	.year {
+		font-variation-settings:
+			'slnt' 8;
 	}
 </style>

@@ -9,6 +9,9 @@
 	import HomepageSection from '$lib/components/Homepage/HomepageSection.svelte';
 	import ConferenceDetails from '$lib/components/Homepage/ConferenceDetails.svelte';
 	import CustomSlantedText from '$lib/components/Common/CustomSlantedText.svelte';
+	import KeyNote from '$lib/components/LineUp/KeyNote.svelte';
+	import Speakers2025 from '$lib/components/LineUp/Speakers2025.svelte';
+	import Workshop2025 from '$lib/components/LineUp/Workshop2025.svelte';
 
 	export let data;
 </script>
@@ -63,12 +66,18 @@
 				<VizChitraLogoType></VizChitraLogoType>
 			</h1>
 
-			<p class="content-text mb-6">
+			<p class="mb-8 font-[Cairo] text-2xl">
+				This first India conference brings <span class="text-viz-pink-dark font-bold">data visualization practitioners</span> from across India,
+				representing <span class="text-viz-orange font-bold">different industries and disciplines,</span> together to facilitate <span class="text-viz-orange font-bold">learning and
+				connections</span> around a common interest in the power of <span class="text-viz-pink-dark font-bold">visual data storytelling.</span>
+			</p>
+
+			<!-- <p class="content-text mb-6">
 				Data visualization practitioners in India have been spread across different communities. As
 				the first of its kind <span class="font-semibold">
 					data visualization community, VizChitra
 				</span> is putting together a conference to bring these people together.
-			</p>
+			</p> -->
 
 			<p class="mx-auto mb-6">
 				<CustomSlantedText
@@ -84,12 +93,36 @@
 				storytelling.
 			</p>
 
-			<PolygonDivider></PolygonDivider>
+			<!-- <PolygonDivider></PolygonDivider> -->
 		</div>
 	</HomepageSection>
 
-	<!-- OUR MISSION -->
 	<HomepageSection>
+		<div slot="content">
+			<h2 class="content-heading !text-[2rem]">KEYNOTES</h2>
+			<KeyNote></KeyNote>
+		</div>
+	</HomepageSection>
+
+	<HomepageSection>
+		<div slot="content">
+			<h2 class="content-heading !text-[2rem]">SPEAKERS</h2>
+			<Speakers2025></Speakers2025>
+		</div>
+	</HomepageSection>
+
+	<HomepageSection>
+		<div slot="content">
+			<h2 class="content-heading !text-[2rem]">WORKSHOPS</h2>
+			<p class="text-lg">
+				So much fun to look forward to! Bear in mind, workshops are located at <b>two</b> different locations.
+				Do check ahead of time.
+			</p>
+			<Workshop2025></Workshop2025>
+		</div>
+	</HomepageSection>
+	<!-- OUR MISSION -->
+	<!-- <HomepageSection>
 		<div slot="content">
 			<h2 class="content-heading !text-[2rem]">OUR MISSION</h2>
 
@@ -133,10 +166,10 @@
 
 			<PolygonDivider></PolygonDivider>
 		</div>
-	</HomepageSection>
+	</HomepageSection> -->
 
 	<!-- TEAM SECTION -->
-	<HomepageSection containerWidth="full">
+	<!-- <HomepageSection containerWidth="full">
 		<div slot="content" class="">
 			<h2 class="font-display mx-auto mb-6 max-w-[750px] text-left !text-[2rem] font-bold">
 				MEET THE TEAM
@@ -144,10 +177,10 @@
 
 			<TeamSection></TeamSection>
 		</div>
-	</HomepageSection>
+	</HomepageSection> -->
 
 	<!-- END CARD -->
-	<HomepageSection>
+	<!-- <HomepageSection>
 		<div slot="content">
 			<PolygonDivider></PolygonDivider>
 			<h2 class="content-heading mt-5 !text-[2rem]">VIZCHITRA 2025</h2>
@@ -157,7 +190,7 @@
 			<ConferenceDetails></ConferenceDetails>
 			<PolygonDivider></PolygonDivider>
 		</div>
-	</HomepageSection>
+	</HomepageSection> -->
 </div>
 
 <style>
