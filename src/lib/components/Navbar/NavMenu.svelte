@@ -9,24 +9,37 @@
 			href: '/',
 			accentColor: 'var(--color-viz-orange)',
 			subsections: [
-				{ name: 'The conference', href: '/' },
-				{ name: 'Speaker line-up', href: '/' },
-				{ name: 'Sponsorship', href: '/' }
+				{ name: 'The conference', href: '/#intro' },
+				{ name: 'Speaker line-up', href: '/#speakers' },
+				{ name: 'Workshops', href: '/#workshops' },
+				{
+					name: 'Sponsorship',
+					href: 'https://speakerdeck.com/vizchitra/sponsor-the-conference-vizchitra-2025',
+					target: '_blank'
+				}
 			],
 			expanded: false
 		},
 		{
 			name: 'Community',
-			href: 'https://chat.whatsapp.com/G9p4HbALukeAa5NSVn0OoA',
 			accentColor: 'var(--color-viz-teal)',
-			target: '_blank'
+			subsections: [
+				{
+					name: 'WhatsApp',
+					href: 'https://chat.whatsapp.com/G9p4HbALukeAa5NSVn0OoA',
+					target: '_blank'
+				},
+				{
+					name: 'Create your Data Selfie',
+					href: '/polygon-playground'
+				}
+			]
 		},
 		{
 			name: 'About',
 			href: '/about',
 			accentColor: 'var(--color-viz-pink)',
 			subsections: [
-				{ name: 'Mission', href: '/' },
 				{ name: 'Team', href: '/' },
 				{ name: 'Code of Conduct', href: '/code-of-conduct' }
 			],
@@ -101,7 +114,11 @@
 									on:click|stopPropagation
 								>
 									{#each section.subsections as subsection}
-										<a href={subsection.href} class="w-full cursor-pointer px-1 py-2">
+										<a
+											href={subsection.href}
+											class="w-full cursor-pointer px-1 py-2"
+											target={subsection?.target || '_self'}
+										>
 											<span class="font-base text-xl whitespace-nowrap text-[#4C4C4C]"
 												>{subsection.name}</span
 											>
