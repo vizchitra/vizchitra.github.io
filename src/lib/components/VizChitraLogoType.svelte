@@ -1,5 +1,6 @@
 <script>
 	export let classes = '';
+	export let includeYear = true;
 </script>
 
 <span class="viz-logo-type {classes}">
@@ -8,7 +9,10 @@
 	><span class="H2">H</span><span class="I2">I</span><span class="T2">T</span><span class="R2"
 		>R</span
 	><span class="A2">A</span>
-	<span class="text-[#D46637] font-bold year">2025</span>
+
+	{#if includeYear}
+		<span class="year font-bold text-[#D46637]">2025</span>
+	{/if}
 </span>
 
 <style>
@@ -81,7 +85,6 @@
 		letter-spacing: 0rem;
 	}
 	.year {
-		font-variation-settings:
-			'slnt' 8;
+		font-variation-settings: 'slnt' 8;
 	}
 </style>

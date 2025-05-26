@@ -57,7 +57,7 @@
 		<div class="flex h-16 justify-between">
 			<div class="flex">
 				<a href="/" class="flex items-center text-3xl">
-					<VizChitraLogoType />
+					<VizChitraLogoType includeYear={false} />
 				</a>
 			</div>
 
