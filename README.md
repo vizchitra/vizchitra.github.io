@@ -1,38 +1,27 @@
-# sv
+# VizChitra
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+![VizChitra Logo](src/lib/assets/images/viz-logo.svg)
 
-## Creating a project
+VizChitra is an Indian data visualization community. Our mission is to foster a vibrant community of data storytellers in India. 
 
-If you're seeing this, you've probably already done this step. Congrats!
 
-```bash
-# create a new project in the current directory
-npx sv create
+## Contribution Guidelines
 
-# create a new project in my-app
-npx sv create my-app
-```
+We welcome contributions to VizChitra! To ensure a smooth and collaborative process, please adhere to the following guidelines:
 
-## Developing
+### Development Process
+1.  **Issue Tracking:** Check the existing issues or create a new one to discuss your proposed changes.
+2.  **Branching:** Create a new branch for your feature or bug fix (e.g., `feature/your-feature-name` or `fix/issue-number`).
+3.  **Pull Request (PR):** 
+    *   Submit a PR to the `main` or `dev` branch.
+    *   Provide a clear description of the changes in your PR.
+    *   Ensure your PR addresses the relevant issue.
+    *   Once accepted, changes will be merged to the main site.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+### Getting Started
+1.  Fork the repository.
+2.  Clone your fork: `git clone https://github.com/YOUR_USERNAME/vizchitra.github.io.git`
+3.  Install dependencies: `pnpm install`
+4.  Start the development server: `pnpm dev`
 
-```bash
-npm run dev
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
