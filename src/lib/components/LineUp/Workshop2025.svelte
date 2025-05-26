@@ -21,7 +21,7 @@
 			location: 'Samagata Space, Church St',
 			workshop_info:
 				"In this hands-on workshop, you'll go from zero to a live data visualization using only natural-language prompts (plus a dash of copy-&-paste). Turn raw data into a compelling narrative—all by chatting with an LLM. No coding knowledge is required (but it’ll help a lot.) No API key required but you’re welcome to bring your own. This will be an end-to-end workflow that designers, developers and data enthusiasts can follow verbatim.",
-			link: 'https://hasgeek.com/VizChitra/2025/sub/prompt-to-plot-crafting-visual-stories-with-llms-NgKP2m1BeYMTJsdY2gcepz'
+			link: 'https://hasgeek.com/VizChitra/2025/sub/prompt-to-plot-crafting-visual-stories-with-llms-NgKP2m1BeYMTJsdY2gcepz#tickets'
 		},
 		{
 			image: arvind,
@@ -34,7 +34,7 @@
 			time: '28 June | 02:30PM - 05:30PM',
 			location: 'Samagata Space, Church St',
 			workshop_info: `A brief foray into Data, Data Viz, and a wee bit of stats. What we might cover:<br> • Throwing it All Away with Brad Pitt: Data Summaries<br> • Geometry and the culture of Data Viz Charts with Katy Ledecky<br> • Constructing Alternate Worlds: Statistical Testing, Inference, and p-values with Gabbar Singh`,
-			link: 'https://hasgeek.com/VizChitra/2025/sub/data-dataviz-and-stats-with-stars-SAmnne94KTNjBNdyFz7WN4'
+			link: 'https://hasgeek.com/VizChitra/2025/sub/data-dataviz-and-stats-with-stars-SAmnne94KTNjBNdyFz7WN4#tickets'
 		},
 		{
 			image: arundathi,
@@ -48,7 +48,7 @@
 			location: 'Underline Center, 2nd Floor, Indiranagar',
 			workshop_info:
 				'What power structures can be dismantled when the power to speak the language of data becomes accessible to everyone? The Daily Data Project is a workshop designed to engage in a discourse on creating data visualizations using everyday household objects. The workshop introduces a toolkit developed as a part of my graduation project, which acts as a vertical to simplify the visualization process. While the toolkit offers structure and encourages participants to experiment and explore freely, the key purpose of the workshop is to develop visualizations on a particular city’s transport system and services. And for a city like Bangalore, the results would be quite interesting to observe.',
-			link: 'https://hasgeek.com/VizChitra/2025/sub/democratising-data-stories-using-everyday-objects-Hzpvjihbd8BytrnqDhUjyS'
+			link: 'https://hasgeek.com/VizChitra/2025/sub/democratising-data-stories-using-everyday-objects-Hzpvjihbd8BytrnqDhUjyS#tickets'
 		},
 		{
 			image: samarth,
@@ -62,7 +62,7 @@
 			location: 'Underline Center, 2nd Floor, Indiranagar',
 			workshop_info:
 				"Ever wondered what the unique sound of your name looks like? In this hands-on workshop, we’ll embark on an exciting journey to capture your “sonic signature” and translate it into a striking visual landscape. We’ll begin by generating the audio waveform of your name using text-to-speech. We'll then delve into audio analysis, extracting meaningful data from the audio output. This data will form the foundation for our visualization. Next, we’ll explore data visualization, learning how to sculpt this processed audio data into a compelling visual representation inspired by the iconic and stark aesthetic of Joy Division’s album artwork. By the end of this exercise, participants will have the opportunity to plot their visual representation, and take home as a physical artwork.",
-			link: 'https://hasgeek.com/VizChitra/2025/sub/the-sonic-signature-plotting-your-names-audio-land-338GFKxc1WGoTnpQywGEMs'
+			link: 'https://hasgeek.com/VizChitra/2025/sub/the-sonic-signature-plotting-your-names-audio-land-338GFKxc1WGoTnpQywGEMs#tickets'
 		},
 		{
 			image: pulaha,
@@ -76,7 +76,7 @@
 			location: 'Underline Center, 3rd Floor, Indiranagar',
 			workshop_info:
 				"Of all the data visualisation forms available, maps have always fascinated me the most - it deals with data that is about us, the space we inhabit, and they just look wow. While there are many mapping softwares available, the one we will be focussing on is Quantum GIS or QGIS. Why QGIS? Because it's open source and a one-stop-solution for everything spatial.",
-			link: 'https://hasgeek.com/VizChitra/2025/sub/lets-get-mapping-with-qgis-tHTXRBChT1y4DtC89dqua'
+			link: 'https://hasgeek.com/VizChitra/2025/sub/lets-get-mapping-with-qgis-tHTXRBChT1y4DtC89dqua#tickets'
 		},
 		{
 			image1: sarath,
@@ -92,7 +92,7 @@
 			location: 'Underline Center, 3rd Floor, Indiranagar',
 			workshop_info:
 				"Schools taught us, “We cannot see air, only feel it.” But sadly now, we don't just feel it deep inside our lungs but also see it with our red, itchy eyes. But there is more than what our irritable eye can see. This session is about learning to see air using data from monitoring stations, modeling results, and satellites. Building a city's pollution storyline using visual aids, without missing the scientific rigor.",
-			link: 'https://hasgeek.com/VizChitra/2025/sub/chitra-lekha-narrating-air-pollution-data-AshpXZxTBkjAKpZzAxfjFg'
+			link: 'https://hasgeek.com/VizChitra/2025/sub/chitra-lekha-narrating-air-pollution-data-AshpXZxTBkjAKpZzAxfjFg#tickets'
 		}
 	];
 
@@ -189,4 +189,9 @@
 
 		<!-- on click div info end -->
 	{/each}
+</div>
+<div>
+	<a href="https://hasgeek.com/VizChitra/2025/#tickets" target="_blank">
+		<button class="mt-8 p-2 bg-viz-pink-dark rounded-sm text-white cursor-pointer">Buy Tickets ↗</button>
+	</a>
 </div>
