@@ -62,14 +62,20 @@
 	<!-- OPENING SECTION -->
 	<HomepageSection>
 		<div slot="content">
-			<h1>
+			<h1 id="intro">
 				<VizChitraLogoType></VizChitraLogoType>
 			</h1>
 
 			<p class="mb-8 font-[Cairo] text-2xl">
-				This first India conference brings <span class="text-viz-pink-dark font-bold">data visualization practitioners</span> from across India,
-				representing <span class="text-viz-orange font-bold">different industries and disciplines,</span> together to facilitate <span class="text-viz-orange font-bold">learning and
-				connections</span> around a common interest in the power of <span class="text-viz-pink-dark font-bold">visual data storytelling.</span>
+				This first India conference brings <span class="text-viz-pink-dark font-bold"
+					>data visualization practitioners</span
+				>
+				from across India, representing
+				<span class="text-viz-orange font-bold">different industries and disciplines,</span>
+				together to facilitate
+				<span class="text-viz-orange font-bold">learning and connections</span>
+				around a common interest in the power of
+				<span class="text-viz-pink-dark font-bold">visual data storytelling.</span>
 			</p>
 
 			<!-- <p class="content-text mb-6">
@@ -99,7 +105,7 @@
 
 	<HomepageSection>
 		<div slot="content">
-			<h2 class="content-heading !text-[2rem]">KEYNOTES</h2>
+			<h2 id="speakers" class="content-heading !text-[2rem]">KEYNOTES</h2>
 			<KeyNote></KeyNote>
 		</div>
 	</HomepageSection>
@@ -113,7 +119,7 @@
 
 	<HomepageSection>
 		<div slot="content">
-			<h2 class="content-heading !text-[2rem]">WORKSHOPS</h2>
+			<h2 id="workshops" class="content-heading !text-[2rem]">WORKSHOPS</h2>
 			<p class="text-lg">
 				So much fun to look forward to! Bear in mind, workshops are located at <b>two</b> different locations.
 				Do check ahead of time.
