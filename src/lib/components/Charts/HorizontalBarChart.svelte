@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
 	import * as d3 from 'd3';
 	import { onMount } from 'svelte';
 
@@ -13,7 +14,7 @@
 	let isMobile = false;
 	let maxLabelWidth = 0;
 
-	$: {
+	$: if (browser) {
 		if (data.length > 0) {
 			// Create a temporary canvas to measure text width
 			const canvas = document.createElement('canvas');

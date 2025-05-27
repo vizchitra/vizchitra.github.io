@@ -24,6 +24,8 @@
 	import functionalRoles from './functional-roles.json';
 	import HorizontalBarChart from '$lib/components/Charts/HorizontalBarChart.svelte';
 
+	const contactEmail = 'sponsorship@vizchitra.com';
+
 	const sponsorshipPolygons = [
 		{
 			title: 'Explore & Play',
@@ -78,29 +80,6 @@
 		{ items: companies.slice(0, 9), direction: 'right' },
 		{ items: companies.slice(9, 18), direction: 'left' },
 		{ items: companies.slice(18, 27), direction: 'right' }
-	];
-
-	// Attendee profile statistics
-	const attendeeStats = [
-		{
-			percentage: '70',
-			color: 'text-viz-pink-dark',
-			description: 'of the attendees have more than 5+ years of work experience'
-		},
-		{
-			percentage: '48',
-			color: 'text-viz-blue-dark',
-			description:
-				'Diverse participation with designers, followed by data & AI/BI professionals (27%) & also journalists, educators and developers',
-			hasEmphasis: true,
-			emphasisText: 'Diverse'
-		},
-		{
-			percentage: '60',
-			color: 'text-viz-teal',
-			description:
-				'of the attendees are from enterprises and micro & solo orgs – covering both ends of the spectrum'
-		}
 	];
 
 	const benefits = [
@@ -165,6 +144,18 @@
 			</h1>
 		</div>
 	</div>
+	<div
+		class="logo-container absolute bottom-0 left-1/2 z-100 mb-2 flex max-w-2xl -translate-x-1/2 -translate-y-1/3 flex-col items-center bg-white px-4 pt-4 pb-6 md:bottom-[20%] md:flex-row md:gap-0"
+	>
+		<button
+			on:click={() => {
+				window.location.href = `mailto:${contactEmail}?subject=VizChitra%20Sponsorship%20Inquiry`;
+			}}
+			class="bg-viz-pink-dark hover:bg-viz-pink-dark/90 w-full cursor-pointer rounded-sm px-6 py-4 text-xl text-white italic"
+		>
+			Become a sponsor →
+		</button>
+	</div>
 </div>
 
 <main id="sponsorship-details" class="mx-auto max-w-4xl px-4 py-20">
@@ -217,7 +208,7 @@
 	</section>
 
 	<!-- Companies Marquee Section -->
-	<section class="full-bleed my-20 overflow-hidden py-12">
+	<section class="full-bleed my-12 overflow-hidden py-12">
 		<div class="mb-8 text-center">
 			<h2 class="content-heading !text-[2rem]">
 				<span class="font-bold italic">Attendee</span> company
@@ -229,18 +220,14 @@
 		{/each}
 	</section>
 
-	<!-- Why sponsor section -->
-	<section class="mx-auto my-20 max-w-4xl">
-		<!-- Attendee Profile Section -->
+	<section class="mx-auto my-4 max-w-4xl">
 		<div class="mb-20">
 			<h2 class="content-heading mb-12 !text-[2rem]">
 				<span class="font-bold italic">Attendee</span> Profile
 			</h2>
 
-			<!-- Integrated Stats and Charts Layout -->
 			<div class="space-y-12">
-				<!-- Row 1: 70% stat (1/3) + Years of Experience Chart (2/3) -->
-				<div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+				<div class="space-y-8 lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
 					<div class="text-left">
 						<div class="mb-4">
 							<span class="font-display-sans text-viz-pink-dark text-6xl font-bold md:text-6xl">
@@ -263,17 +250,7 @@
 					</div>
 				</div>
 
-				<!-- Row 2: Functional Roles Chart (2/3) + 48% stat (1/3) -->
-				<div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
-					<div class="lg:order-1 lg:col-span-2">
-						<HorizontalBarChart
-							data={functionalRoles}
-							title="Functional Role at Work"
-							maxValue={30}
-							barColor="#f9a8d4"
-							sampleSize={126}
-						/>
-					</div>
+				<div class="space-y-8 lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
 					<div class="text-left lg:order-2">
 						<div class="mb-4">
 							<span class="font-display-sans text-viz-blue-dark text-6xl font-bold md:text-6xl">
@@ -289,10 +266,18 @@
 							educators and developers
 						</p>
 					</div>
+					<div class="lg:order-1 lg:col-span-2">
+						<HorizontalBarChart
+							data={functionalRoles}
+							title="Functional Role at Work"
+							maxValue={30}
+							barColor="#f9a8d4"
+							sampleSize={126}
+						/>
+					</div>
 				</div>
 
-				<!-- Row 3: 60% stat (1/3) + Organization Size Chart (2/3) -->
-				<div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+				<div class="space-y-8 lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
 					<div class="text-left">
 						<div class="mb-4">
 							<span class="font-display-sans text-viz-teal text-6xl font-bold md:text-6xl">60</span>
@@ -316,10 +301,8 @@
 			</div>
 		</div>
 
-		<!-- Strategic Partnership & Sponsors Section -->
 		<section class="my-20 py-16">
 			<div class="mx-auto max-w-6xl">
-				<!-- Strategic Partnership Header -->
 				<div class="mb-16">
 					<h2 class="content-heading mb-4 !text-[2rem]">
 						<span class="font-bold italic">Strategic Partnership</span> with
@@ -328,9 +311,7 @@
 					<p class="content-text">Organize the conference, Support the growth of the community.</p>
 				</div>
 
-				<!-- Platinum Sponsors -->
 				<div class="mt-24 grid grid-cols-1 md:-ml-20 lg:max-w-5xl lg:grid-cols-2">
-					<!-- Nutanix Sponsor -->
 					<div class="relative my-20 -mr-22 flex items-center justify-center">
 						<img
 							src={pinkPolygon}
@@ -343,7 +324,6 @@
 						</div>
 					</div>
 
-					<!-- Revisual Labs Sponsor -->
 					<div class="relative my-20 -ml-22 flex items-center justify-center">
 						<img
 							src={yellowPolygon}
@@ -394,6 +374,16 @@
 		</div>
 	</section>
 </main>
+<div class="mx-auto my-12 w-full max-w-4xl text-center">
+	<button
+		on:click={() => {
+			window.location.href = `mailto:${contactEmail}?subject=VizChitra%20Sponsorship%20Inquiry`;
+		}}
+		class="bg-viz-pink-dark hover:bg-viz-pink-dark/90 w-full cursor-pointer rounded-sm px-6 py-4 text-xl text-white italic"
+	>
+		Become a sponsor →
+	</button>
+</div>
 
 <style>
 	.full-bleed {
