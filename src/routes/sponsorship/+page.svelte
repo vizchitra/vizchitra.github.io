@@ -152,7 +152,7 @@
 			class="content-container flex w-fit flex-col items-center md:items-start md:border-l-2 md:border-black"
 		>
 			<h1
-				class=" font-display-sans -mt-8 text-center text-4xl uppercase md:mt-0 md:text-left md:text-5xl"
+				class="font-display-sans -mt-8 text-center text-4xl uppercase md:mt-0 md:text-left md:text-5xl"
 			>
 				<span class="font-bold italic">SPONSOR</span> OUR
 				<span class="text-viz-blue-dark font-bold">CONFERENCE</span>
@@ -213,9 +213,9 @@
 	<!-- Companies Marquee Section -->
 	<section class="full-bleed my-20 overflow-hidden py-12">
 		<div class="mb-8 text-center">
-			<h3 class="font-display-sans text-3xl text-gray-700 md:text-4xl">
+			<h2 class="content-heading !text-[2rem]">
 				<span class="font-bold italic">Attendee</span> company
-			</h3>
+			</h2>
 		</div>
 
 		{#each marqueeRows as row}
@@ -227,9 +227,9 @@
 	<section class="mx-auto my-20 max-w-4xl">
 		<!-- Attendee Profile Section -->
 		<div class="mb-20">
-			<h3 class="font-display-sans mb-12 text-4xl text-gray-700 md:text-4xl">
+			<h2 class="content-heading mb-12 !text-[2rem]">
 				<span class="font-bold italic">Attendee</span> Profile
-			</h3>
+			</h2>
 
 			<div class="grid grid-cols-1 gap-12 md:grid-cols-3">
 				{#each attendeeStats as stat}
@@ -240,7 +240,7 @@
 							</span>
 							<span class="font-display-sans {stat.color} text-4xl font-bold md:text-5xl">%</span>
 						</div>
-						<p class="font-display-sans text-lg text-gray-700">
+						<p class="content-text">
 							{#if stat.hasEmphasis}
 								<span class="font-bold italic">{stat.emphasisText}</span>
 								{stat.description.replace(stat.emphasisText, '')}
@@ -254,17 +254,15 @@
 		</div>
 
 		<!-- Strategic Partnership & Sponsors Section -->
-		<section class=" my-20 py-16">
+		<section class="my-20 py-16">
 			<div class="mx-auto max-w-6xl">
 				<!-- Strategic Partnership Header -->
 				<div class="mb-16">
-					<h3 class="font-display-sans mb-4 text-4xl text-gray-700 md:text-4xl">
+					<h2 class="content-heading mb-4 !text-[2rem]">
 						<span class="font-bold italic">Strategic Partnership</span> with
 						<img src={hasgeekLogo} alt="HasGeek" class="mx-2 inline-block h-12 w-auto" />
-					</h3>
-					<p class="font-display-sans mt-4 text-xl text-gray-600">
-						Organize the conference, Support the growth of the community.
-					</p>
+					</h2>
+					<p class="content-text">Organize the conference, Support the growth of the community.</p>
 				</div>
 
 				<!-- Platinum Sponsors -->
@@ -277,9 +275,7 @@
 							class="absolute size-150 object-contain"
 						/>
 						<div class="relative inset-0 flex flex-col items-center justify-center text-center">
-							<p class="font-display-sans mb-4 text-lg font-medium text-gray-700">
-								Platinum Sponsor
-							</p>
+							<p class="content-text mb-4 font-medium">Platinum Sponsor</p>
 							<img src={nutanixLogo} alt="Nutanix" class="h-16 w-auto max-w-40 object-contain" />
 						</div>
 					</div>
@@ -292,9 +288,7 @@
 							class="absolute size-150 object-contain"
 						/>
 						<div class="relative inset-0 flex flex-col items-center justify-center text-center">
-							<p class="font-display-sans mb-4 text-lg font-medium text-gray-700">
-								Platinum Sponsor
-							</p>
+							<p class="content-text mb-4 font-medium">Platinum Sponsor</p>
 							<img
 								src={revisualLogo}
 								alt="Revisual Labs"
@@ -305,11 +299,12 @@
 				</div>
 			</div>
 		</section>
+
 		<div class="mb-16">
-			<h3 class="font-display-sans mb-4 text-4xl text-gray-700 md:text-4xl">
+			<h2 class="content-heading mb-4 !text-[2rem]">
 				<span class="font-bold italic">Why</span> sponsor?
-			</h3>
-			<p class="text-2xl text-gray-600">
+			</h2>
+			<p class="content-text">
 				Benefits of sponsoring
 				<span class="font-display-sans text-[#20887F]">
 					<VizChitraLogoType yearClasses="text-[#20887F]"></VizChitraLogoType> Conference
@@ -322,13 +317,13 @@
 					<div class="icon-container flex-shrink-0">
 						<img src={benefit.icon} alt={benefit.alt} class="h-20 w-20" />
 					</div>
-					<div class="content font-display-sans text-xl">
+					<div class="content content-text">
 						{#if benefit.textFirst}
-							<span class="text-gray-700">{benefit.text}</span>
+							<span>{benefit.text}</span>
 							<span class="text-viz-pink-dark font-bold italic">{benefit.boldText}</span>
 						{:else}
 							<span class="text-viz-pink-dark font-bold italic">{benefit.boldText}</span>
-							<span class="text-gray-700">{benefit.text}</span>
+							<span>{benefit.text}</span>
 						{/if}
 					</div>
 				</div>
