@@ -145,7 +145,7 @@
 		</div>
 	</div>
 	<div
-		class="logo-container absolute bottom-0 left-1/2 z-100 mb-2 flex max-w-2xl -translate-x-1/2 -translate-y-1/3 flex-col items-center bg-white px-4 pt-4 pb-6 md:bottom-[20%] md:flex-row md:gap-0"
+		class="logo-container absolute bottom-0 left-1/2 mb-2 flex max-w-2xl -translate-x-1/2 -translate-y-1/3 flex-col items-center bg-white px-4 pt-4 pb-6 md:bottom-[20%] md:flex-row md:gap-0"
 	>
 		<button
 			on:click={() => {
@@ -301,8 +301,8 @@
 			</div>
 		</div>
 
-		<section class="my-20 py-16">
-			<div class="mx-auto max-w-6xl">
+		<section class="my-8 md:my-20 md:py-16">
+			<div class="mx-auto max-w-6xl overflow-hidden">
 				<div class="mb-16">
 					<h2 class="content-heading mb-4 !text-[2rem]">
 						<span class="font-bold italic">Strategic Partnership</span> with
@@ -311,7 +311,7 @@
 					<p class="content-text">Organize the conference, Support the growth of the community.</p>
 				</div>
 
-				<div class="mt-24 grid grid-cols-1 md:-ml-20 lg:max-w-5xl lg:grid-cols-2">
+				<div class="grid grid-cols-1 pb-4 md:mt-24 md:-ml-20 md:pb-0 lg:max-w-5xl lg:grid-cols-2">
 					<div class="relative my-20 -mr-22 flex items-center justify-center">
 						<img
 							src={pinkPolygon}
@@ -343,7 +343,7 @@
 			</div>
 		</section>
 
-		<div class="mb-16">
+		<div class="md:mb-16">
 			<h2 class="content-heading mb-4 !text-[2rem]">
 				<span class="font-bold italic">Why</span> sponsor?
 			</h2>
@@ -374,7 +374,7 @@
 		</div>
 	</section>
 </main>
-<div class="mx-auto my-12 w-full max-w-4xl text-center">
+<div class="mx-auto w-full max-w-4xl text-center md:my-12">
 	<button
 		on:click={() => {
 			window.location.href = `mailto:${contactEmail}?subject=VizChitra%20Sponsorship%20Inquiry`;
