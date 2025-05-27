@@ -1,0 +1,57 @@
+[
+    {
+        "category": "Product Designer",
+        "percentage": 25,
+        "count": 35
+    },
+    {
+        "category": "Visual Designer",
+        "percentage": 18,
+        "count": 26
+    },
+    {
+        "category": "AI & Data Scientist",
+        "percentage": 13,
+        "count": 18
+    },
+    {
+        "category": "Data Analyst",
+        "percentage": 9,
+        "count": 13
+    },
+    {
+        "category": "Data Engineer",
+        "percentage": 2,
+        "count": 3
+    },
+    {
+        "category": "Journalist",
+        "percentage": 7,
+        "count": 10
+    },
+    {
+        "category": "Communication",
+        "percentage": 1,
+        "count": 2
+    },
+    {
+        "category": "Researcher",
+        "percentage": 5,
+        "count": 7
+    },
+    {
+        "category": "Educator",
+        "percentage": 3,
+        "count": 4
+    },
+    {
+        "category": "Engineer",
+        "percentage": 3,
+        "count": 4
+    },
+    {
+        "category": "Developer",
+        "percentage": 3,
+        "count": 4
+    }
+]

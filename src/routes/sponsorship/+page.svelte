@@ -18,6 +18,12 @@
 	import revisualLogo from './assets/revisual-logo.png';
 	import yellowPolygon from './assets/yellow-pentagon.png';
 	import pinkPolygon from './assets/pink-pentagon.png';
+
+	import yearsOfExperience from './years-of-experience.json';
+	import organizationSize from './organization-size.json';
+	import functionalRoles from './functional-roles.json';
+	import HorizontalBarChart from '$lib/components/Charts/HorizontalBarChart.svelte';
+
 	const sponsorshipPolygons = [
 		{
 			title: 'Explore & Play',
@@ -231,25 +237,82 @@
 				<span class="font-bold italic">Attendee</span> Profile
 			</h2>
 
-			<div class="grid grid-cols-1 gap-12 md:grid-cols-3">
-				{#each attendeeStats as stat}
+			<!-- Integrated Stats and Charts Layout -->
+			<div class="space-y-12">
+				<!-- Row 1: 70% stat (1/3) + Years of Experience Chart (2/3) -->
+				<div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
 					<div class="text-left">
 						<div class="mb-4">
-							<span class="font-display-sans {stat.color} text-6xl font-bold md:text-7xl">
-								{stat.percentage}
+							<span class="font-display-sans text-viz-pink-dark text-6xl font-bold md:text-6xl">
+								70
 							</span>
-							<span class="font-display-sans {stat.color} text-4xl font-bold md:text-5xl">%</span>
+							<span class="font-display-sans text-viz-pink-dark text-4xl font-bold md:text-6xl"
+								>%</span
+							>
+						</div>
+						<p class="content-text">of the attendees have more than 5+ years of work experience</p>
+					</div>
+					<div class="lg:col-span-2">
+						<HorizontalBarChart
+							data={yearsOfExperience}
+							title="Years of Work Experience"
+							maxValue={30}
+							barColor="#a5b4fc"
+							sampleSize={121}
+						/>
+					</div>
+				</div>
+
+				<!-- Row 2: Functional Roles Chart (2/3) + 48% stat (1/3) -->
+				<div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+					<div class="lg:order-1 lg:col-span-2">
+						<HorizontalBarChart
+							data={functionalRoles}
+							title="Functional Role at Work"
+							maxValue={30}
+							barColor="#f9a8d4"
+							sampleSize={126}
+						/>
+					</div>
+					<div class="text-left lg:order-2">
+						<div class="mb-4">
+							<span class="font-display-sans text-viz-blue-dark text-6xl font-bold md:text-6xl">
+								48
+							</span>
+							<span class="font-display-sans text-viz-blue-dark text-4xl font-bold md:text-6xl"
+								>%</span
+							>
 						</div>
 						<p class="content-text">
-							{#if stat.hasEmphasis}
-								<span class="font-bold italic">{stat.emphasisText}</span>
-								{stat.description.replace(stat.emphasisText, '')}
-							{:else}
-								{stat.description}
-							{/if}
+							<span class="font-bold italic">Diverse</span>
+							participation with designers, followed by data & AI/BI professionals (27%) & also journalists,
+							educators and developers
 						</p>
 					</div>
-				{/each}
+				</div>
+
+				<!-- Row 3: 60% stat (1/3) + Organization Size Chart (2/3) -->
+				<div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+					<div class="text-left">
+						<div class="mb-4">
+							<span class="font-display-sans text-viz-teal text-6xl font-bold md:text-6xl">60</span>
+							<span class="font-display-sans text-viz-teal text-4xl font-bold md:text-6xl">%</span>
+						</div>
+						<p class="content-text">
+							of the attendees are from enterprises and micro & solo orgs – covering both ends of
+							the spectrum
+						</p>
+					</div>
+					<div class="lg:col-span-2">
+						<HorizontalBarChart
+							data={organizationSize}
+							title="Size of Work Organization"
+							maxValue={30}
+							barColor="#6ee7b7"
+							sampleSize={131}
+						/>
+					</div>
+				</div>
 			</div>
 		</div>
 

@@ -1,0 +1,37 @@
+[
+    {
+        "category": "0 – 1",
+        "percentage": 9,
+        "count": 12
+    },
+    {
+        "category": "1 – 2",
+        "percentage": 13,
+        "count": 18
+    },
+    {
+        "category": "2 - 5",
+        "percentage": 12,
+        "count": 17
+    },
+    {
+        "category": "5 - 10",
+        "percentage": 25,
+        "count": 35
+    },
+    {
+        "category": "10 - 15",
+        "percentage": 16,
+        "count": 22
+    },
+    {
+        "category": "15 - 25",
+        "percentage": 9,
+        "count": 12
+    },
+    {
+        "category": "25+",
+        "percentage": 4,
+        "count": 5
+    }
+]
