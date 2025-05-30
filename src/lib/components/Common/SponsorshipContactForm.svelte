@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Formspree endpoint
-	const formAction = 'https://formspree.io/f/mrgolwal';
+	const formAction = 'https://formspree.io/f/xzzgpgkb';
 
 	// Checkbox options
 	const reasons = [
@@ -30,7 +30,7 @@
 					type="checkbox"
 					name="reason"
 					value={reason}
-					class="accent-viz-pink-dark size-5 rounded border-gray-300"
+					class="checkbox-custom accent-viz-pink-dark rounded border-gray-300"
 					aria-label={reason}
 				/>
 				{reason}
@@ -122,5 +122,48 @@
 	input,
 	textarea {
 		font-family: inherit;
+	}
+
+	.checkbox-custom {
+		width: 20px;
+		height: 20px;
+		min-width: 20px;
+		min-height: 20px;
+		flex-shrink: 0;
+		cursor: pointer;
+		appearance: none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		border: 2px solid #d1d5db;
+		border-radius: 4px;
+		background-color: white;
+		position: relative;
+		transition: all 0.2s ease;
+	}
+
+	.checkbox-custom:checked {
+		background-color: #e91e63;
+		border-color: #e91e63;
+	}
+
+	.checkbox-custom:checked::after {
+		content: '';
+		position: absolute;
+		left: 6px;
+		top: 2px;
+		width: 6px;
+		height: 10px;
+		border: solid white;
+		border-width: 0 2px 2px 0;
+		transform: rotate(45deg);
+	}
+
+	.checkbox-custom:hover {
+		border-color: #e91e63;
+	}
+
+	.checkbox-custom:focus {
+		outline: 2px solid #e91e63;
+		outline-offset: 2px;
 	}
 </style>

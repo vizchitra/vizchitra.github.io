@@ -2,9 +2,9 @@
 <script lang="ts">
 	export let heading = 'Platinum Sponsor';
 	export let logo = ''; // Can be text, image URL, or HTML
-	export let logoType = 'text'; // "text", "image", or "html"
-	export let variant = 'pink'; // "pink", "yellow", "blue", "green"
-	export let size = 'medium'; // "small", "medium", "large"
+	export let logoType: 'text' | 'image' | 'html' = 'text';
+	export let variant: 'pink' | 'yellow' | 'blue' | 'green' = 'pink';
+	export let size: 'small' | 'medium' | 'large' = 'medium';
 	export let seed = 12345; // Seed for shape variations
 
 	// Color variants with proper typing
@@ -25,7 +25,7 @@
 			light: '#e8f5e8',
 			dark: '#4caf50'
 		}
-	};
+	} as const;
 
 	// Size variants with proper typing
 	const sizes = {
@@ -47,7 +47,7 @@
 			fontSize: '20px',
 			logoSize: '32px'
 		}
-	};
+	} as const;
 
 	// Simple pseudo-random number generator based on seed
 	function seededRandom(seed: number): number {
@@ -91,8 +91,8 @@
 		};
 	}
 
-	$: currentVariant = variants[variant] ?? variants.pink;
-	$: currentSize = sizes[size] ?? sizes.medium;
+	$: currentVariant = variants[variant];
+	$: currentSize = sizes[size];
 	$: shapeVariations = getShapeVariations(seed);
 </script>
 
@@ -121,6 +121,7 @@
 	</div>
 	<div class="content-flat">
 		<div class="heading">{heading}</div>
+		<hr class="my-4" />
 		<div class="logo-container">
 			{#if logoType === 'image'}
 				<img src={logo} alt="Logo" class="logo-image" />
@@ -141,6 +142,16 @@
 		position: relative;
 		width: var(--card-width);
 		height: var(--card-height);
+		transition: transform 0.3s ease;
+	}
+
+	.sponsor-card:hover {
+		transform: scale(1.02);
+	}
+
+	hr {
+		width: 2ch;
+		border: 1px solid #000;
 	}
 
 	.pentagon-3d {
@@ -153,11 +164,6 @@
 		transform: rotateX(var(--rotate-x)) rotateY(var(--rotate-y)) rotateZ(var(--rotate-z));
 		transition: transform 0.3s ease;
 	}
-
-	/* .sponsor-card:hover .pentagon-3d {
-		transform: rotateX(var(--hover-rotate-x)) rotateY(var(--hover-rotate-y))
-			rotateZ(var(--hover-rotate-z)) scale(1.02);
-	} */
 
 	.pentagon-background {
 		width: 100%;
@@ -196,13 +202,14 @@
 	}
 
 	.heading {
-		font-size: var(--font-size);
+		font-size: 0.8rem;
 		font-weight: 600;
 		color: #444;
 		text-align: center;
 		letter-spacing: 0.5px;
-		text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
 		pointer-events: auto;
+		margin-top: 20px;
+		text-transform: uppercase;
 	}
 
 	.logo-container {
@@ -214,29 +221,63 @@
 	}
 
 	.logo-text {
-		font-size: var(--logo-size);
+		font-size: 1rem;
 		font-weight: 800;
 		color: #333;
 		text-align: center;
 		letter-spacing: 1px;
 		text-transform: uppercase;
-		text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
 	}
 
 	.logo-image {
 		max-width: 160px;
 		max-height: 100px;
 		object-fit: contain;
-		filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.1));
 	}
 
 	/* Responsive adjustments */
 	@media (max-width: 768px) {
 		.sponsor-card {
-			margin: 10px 0 10px -10px;
+			margin: 10px auto;
+			width: min(95vw, 480px);
+			height: auto;
+			aspect-ratio: 1.4;
 			--rotate-x: calc(var(--rotate-x) * 0.7);
 			--rotate-y: calc(var(--rotate-y) * 0.5);
 			--rotate-z: calc(var(--rotate-z) * 0.6);
+		}
+
+		.content-flat {
+			padding: 30px 25px;
+		}
+
+		.logo-image {
+			max-width: 120px;
+			max-height: 80px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.sponsor-card {
+			width: min(95vw, 250px);
+			margin: 8px auto;
+		}
+
+		.content-flat {
+			padding: 25px 20px;
+		}
+
+		.heading {
+			font-size: 0.8rem;
+		}
+
+		.logo-text {
+			font-size: 1rem;
+		}
+
+		.logo-image {
+			max-width: 100px;
+			max-height: 60px;
 		}
 	}
 </style>
