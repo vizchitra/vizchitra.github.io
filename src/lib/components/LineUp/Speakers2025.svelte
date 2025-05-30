@@ -1,12 +1,24 @@
 <script>
 	import SpeakerCard from '../SpeakerCard/SpeakerCard.svelte';
-	import rukmini from '$lib/assets/images/speakers-2025/Rukmini.png';
-	import anand from '$lib/assets/images/speakers-2025/Anand.png';
 	import expand from '$lib/assets/images/icons/expand.png';
+	import aditiImage from '$lib/assets/images/speakers-2025/speaker-aditi.jpeg';
+	import amanImage from '$lib/assets/images/speakers-2025/speaker-aman.jpg';
+	import yashnaImage from '$lib/assets/images/speakers-2025/speaker-yashna.jpg';
+	import gopikaImage from '$lib/assets/images/speakers-2025/speaker-gopika.png';
+	import gyanImage from '$lib/assets/images/speakers-2025/speaker-gyan.jpg';
+	import prasantaImage from '$lib/assets/images/speakers-2025/speaker-prasanta.png';
+	import rahulNeelImage from '$lib/assets/images/speakers-2025/speaker-rahul-neel.png';
+	import sabhyataImage from '$lib/assets/images/speakers-2025/speaker-sabhyata.jpeg';
+	import saketImage from '$lib/assets/images/speakers-2025/speaker-saket.png';
+	import sriniImage from '$lib/assets/images/speakers-2025/speaker-srini.jpeg';
+	import vikramImage from '$lib/assets/images/speakers-2025/speaker-vikram.png';
 
 	const speakerInfo = [
 		{
-			image: rukmini,
+			image: yashnaImage,
+			scale: 1,
+			xOffset: -0,
+			yOffset: -25,
 			name: 'Yashna Jhamb',
 			role: 'Co-founder, Ooloi Labs',
 			title: 'Making Sense of Stories:',
@@ -25,7 +37,7 @@
 			link: ''
 		},
 		{
-			image: anand,
+			image: prasantaImage,
 			name: 'Prasanta Kumar Dutta',
 			role: `Data Visualisation Developer, Reuters`,
 			title: 'The Eyes Have It:',
@@ -44,7 +56,7 @@
 			link: ''
 		},
 		{
-			image: anand,
+			image: saketImage,
 			name: 'Saket Choudhary',
 			role: `Assistant Professor, IIT Bombay`,
 			title: 'India’s Public Health Genome: ',
@@ -63,7 +75,7 @@
 			link: ''
 		},
 		{
-			image: anand,
+			image: aditiImage,
 			name: 'Aditi Bhat',
 			role: `Founder and Chief Spinner, Spinfinity`,
 			title: 'Data Visceralization:',
@@ -82,7 +94,10 @@
 			link: ''
 		},
 		{
-			image: anand,
+			image: amanImage,
+			scale: 0.75,
+			xOffset: -5,
+			yOffset: -55,
 			name: 'Aman Bhargava',
 			role: `Developer, Revisual Labs`,
 			title: 'The Unreasonable Effectiveness of Tinkering',
@@ -101,7 +116,10 @@
 			link: ''
 		},
 		{
-			image: anand,
+			image: vikramImage,
+			scale: 0.95,
+			xOffset: 10,
+			yOffset: 25,
 			name: 'Vikram Nayak',
 			role: `Founder, Chartboss`,
 			title: 'The UX of Charts:',
@@ -120,7 +138,7 @@
 			link: ''
 		},
 		{
-			image: anand,
+			image: rahulNeelImage,
 			name: 'Rahul Beniwal and Neel Lakhwani',
 			role: `Tibba Design Studio`,
 			title: 'Democratizing financial data for a growing India',
@@ -139,7 +157,7 @@
 			link: ''
 		},
 		{
-			image: anand,
+			image: sriniImage,
 			name: 'Srinivasan Ramani',
 			role: `Deputy National Editor, The Hindu`,
 			title: 'Data Journalism and Visualisation ',
@@ -158,7 +176,7 @@
 			link: ''
 		},
 		{
-			image: anand,
+			image: sabhyataImage,
 			name: 'Sabhyata Jain',
 			role: `Product Designer, Microsoft`,
 			title: 'The invisible graph:',
@@ -177,7 +195,7 @@
 			link: ''
 		},
 		{
-			image: anand,
+			image: gyanImage,
 			name: 'Gyan Lakhwani',
 			role: `Design Educator, Founder at Public Knowledge Studio`,
 			title: 'Teaching Information Visualisation',
@@ -196,7 +214,10 @@
 			link: ''
 		},
 		{
-			image: anand,
+			image: gopikaImage,
+			scale: 0.8,
+			xOffset: -0,
+			yOffset: -0,
 			name: 'Gopika',
 			role: `Lega Research Associate, Enfold Proactive Health Trust`,
 			title: 'Whose Analysis is it Anyway? ',

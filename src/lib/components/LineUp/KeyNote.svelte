@@ -1,7 +1,7 @@
 <script>
 	import SpeakerCard from '../SpeakerCard/SpeakerCard.svelte';
 	import rukmini from '$lib/assets/images/speakers-2025/Rukmini.png';
-	import anand from '$lib/assets/images/speakers-2025/Anand.png';
+	import anand from '$lib/assets/images/speakers-2025/speaker-anand.png';
 	import expand from '$lib/assets/images/icons/expand.png';
 
 	const speakerInfo = [
