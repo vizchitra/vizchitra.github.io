@@ -8,6 +8,12 @@
 	let height = 16;
 
 	let expanded = false;
+
+	function handleClick() {
+		setTimeout(() => {
+			expanded = false;
+		}, 100);
+	}
 </script>
 
 <button
@@ -81,7 +87,11 @@
 							style:--accent-color={section.accentColor}
 						>
 							{#each section.subsections as subsection}
-								<a href={subsection.href} class="subsection w-full cursor-pointer py-2">
+								<a
+									href={subsection.href}
+									class="subsection w-full cursor-pointer py-2"
+									on:click={handleClick}
+								>
 									<span class="font-base text-xl whitespace-nowrap text-[#4C4C4C]"
 										>{subsection.name}</span
 									>
