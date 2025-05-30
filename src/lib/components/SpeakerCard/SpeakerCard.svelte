@@ -14,12 +14,14 @@
 		},
 		talk: {
 			primary: 'var(--color-viz-orange)',
-			patternGradient: ['#FFD485', '#F89F72'],
+			patternGradient: ['#F68669', '#E6327E'],
+			// patternGradient: ['#FFD485', '#F89F72'],
 			bannerColor: '#FBBC9D'
 		},
 		workshop: {
 			primary: 'var(--color-viz-blue-dark)',
-			patternGradient: ['#A4D8E1', '#68B9B2'],
+			patternGradient: ['#F68669', '#E6327E'],
+			// patternGradient: ['#A4D8E1', '#68B9B2'],
 			bannerColor: '#9CAEDF'
 		}
 	};
