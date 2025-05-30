@@ -61,13 +61,17 @@
 			{#if isKeynote === false}
 				<div class="title-text 'max-w-unset' mb-6 min-w-[240px]">
 					<h3
+						style="text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;"
 						class="font-display mb-1 text-left align-bottom {isKeynote
 							? 'text-[2rem]  xl:text-[2.5rem]'
 							: 'text-[1.75rem] lg:text-[1.75rem] xl:text-[2rem]'}  leading-[1] font-bold uppercase"
 					>
 						{data.name}
 					</h3>
-					<p class="text-left text-[1rem] !leading-[1.2] sm:text-[1.25rem]">
+					<p
+						style="text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;"
+						class="text-left text-[1rem] !leading-[1.2] sm:text-[1.25rem]"
+					>
 						{data.role}
 					</p>
 				</div>
