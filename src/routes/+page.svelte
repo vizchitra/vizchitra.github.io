@@ -106,9 +106,10 @@
 	<HomepageSection>
 		<div slot="content">
 			<h2 id="speakers" class="content-heading !text-[2rem]">KEYNOTES</h2>
-			<KeyNote></KeyNote>
 		</div>
 	</HomepageSection>
+
+	<KeyNote></KeyNote>
 
 	<HomepageSection>
 		<div slot="content">
@@ -124,9 +125,11 @@
 				So much fun to look forward to! Bear in mind, workshops are located at <b>two</b> different locations.
 				Do check ahead of time.
 			</p>
-			<Workshop2025></Workshop2025>
 		</div>
 	</HomepageSection>
+
+	<Workshop2025></Workshop2025>
+
 	<!-- OUR MISSION -->
 	<!-- <HomepageSection>
 		<div slot="content">
