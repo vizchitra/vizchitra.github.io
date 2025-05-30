@@ -127,10 +127,10 @@
 				So much fun to look forward to! Bear in mind, workshops are located at <b>two</b> different locations.
 				Do check ahead of time.
 			</p>
+
+			<Workshop2025></Workshop2025>
 		</div>
 	</HomepageSection>
-
-	<Workshop2025></Workshop2025>
 
 	<!-- OUR MISSION -->
 	<!-- <HomepageSection>

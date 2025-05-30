@@ -30,9 +30,9 @@
 {#if data}
 	<div
 		style:max-width={!isKeynote ? '350px' : '550px'}
-		class="speaker-card relative w-full min-w-[400px] overflow-hidden rounded-lg border-[1px] border-[#ccc] p-4 shadow-md sm:p-8 sm:pt-8 lg:max-w-[550px] {isKeynote
+		class="speaker-card relative w-full overflow-hidden rounded-lg border-[1px] border-[#ccc] p-4 shadow-md sm:p-8 sm:pt-8 md:min-w-[400px] lg:max-w-[550px] {isKeynote
 			? 'pb-12 sm:pb-24'
-			: 'pb-6'}"
+			: 'min-w-[350px] pb-6'}"
 	>
 		<div
 			class="title-section flex {isKeynote
