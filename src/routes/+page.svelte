@@ -113,24 +113,31 @@
 
 	<HomepageSection>
 		<div slot="content">
-			<h2 class="content-heading !text-[2rem]">SPEAKERS</h2>
+			<h2 class="content-heading !text-[2rem]">Speakers</h2>
 
-			<p class="content-text mb-1">These are the voices you won’t want to miss</p>
+			<p class="content-text mb-1">
+				These are the voices you won’t want to miss at <strong
+					>Bangalore International Centre, Bengaluru</strong
+				>
+				on <strong>27<sup>th</sup> June</strong>
+			</p>
 		</div>
 	</HomepageSection>
+
 	<Speakers2025></Speakers2025>
 
 	<HomepageSection>
 		<div slot="content">
 			<h2 id="workshops" class="content-heading !text-[2rem]">WORKSHOPS</h2>
-			<p class="text-lg">
-				So much fun to look forward to! Bear in mind, workshops are located at <b>two</b> different locations.
-				Do check ahead of time.
+			<p class="content-text mb-1">
+				So much fun to look forward to! Bear in mind, workshops are located at <b
+					>two different locations</b
+				>. Do check ahead of time.
 			</p>
-
-			<Workshop2025></Workshop2025>
 		</div>
 	</HomepageSection>
+
+	<Workshop2025></Workshop2025>
 
 	<!-- OUR MISSION -->
 	<!-- <HomepageSection>

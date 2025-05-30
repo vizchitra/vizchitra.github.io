@@ -15,10 +15,10 @@
 		{ x: 0, y: 38 }
 	];
 
-	$: points = computePoints(regularPentagonPoints);
+	$: points = computePoints(regularPentagonPoints, pentagonSize);
 	let clipPath;
 
-	function computePoints(points) {
+	function computePoints(points, pentagonSize) {
 		const MIN_VALUE = 55;
 
 		let adjustedPoints = points.slice();
@@ -71,14 +71,19 @@
 		'Designing visualizations': 'var(--color-viz-pink)'
 	};
 
-	const pentagonSize = memberData.talkType === 'keynote' ? 425 : 275;
+	let pentagonSize = memberData.talkType === 'keynote' ? 425 : 275;
 	const pentagonXOffset = memberData.talkType === 'keynote' ? 120 : 20; // Adjust as needed for positioning
-	const pentagonYOffset = memberData.talkType === 'keynote' ? 0 : 20; // Adjust as needed for positioning
+	let pentagonYOffset = memberData.talkType === 'keynote' ? 0 : 20; // Adjust as needed for positioning
 	let svgWidth = 800;
 	let svgHeight = 800;
 	let screenWidth = 800;
 
 	$: isKeynote = memberData.talkType === 'keynote';
+
+	$: if (screenWidth < 500 && isKeynote) {
+		pentagonSize = isKeynote ? 300 : 275;
+		pentagonYOffset = isKeynote ? 55 : 20;
+	}
 </script>
 
 <svelte:window bind:innerWidth={screenWidth} />

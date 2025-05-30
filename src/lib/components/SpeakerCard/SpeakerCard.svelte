@@ -14,12 +14,14 @@
 		},
 		talk: {
 			primary: 'var(--color-viz-orange)',
-			patternGradient: ['#FFD485', '#F89F72'],
+			patternGradient: ['#F68669', '#E6327E'],
+			// patternGradient: ['#FFD485', '#F89F72'],
 			bannerColor: '#FBBC9D'
 		},
 		workshop: {
 			primary: 'var(--color-viz-blue-dark)',
-			patternGradient: ['#A4D8E1', '#68B9B2'],
+			patternGradient: ['#F68669', '#E6327E'],
+			// patternGradient: ['#A4D8E1', '#68B9B2'],
 			bannerColor: '#9CAEDF'
 		}
 	};
@@ -81,7 +83,7 @@
 					style="color: {colorMapping[data.talkType]?.primary}"
 					class="talk-title {isKeynote
 						? 'text-[1.5rem] md:text-[2rem] xl:text-[2.5rem]'
-						: 'text-[1.25rem] md:text-[1.75rem] xl:text-[2rem]'} mb-1 !leading-[1.1] font-bold"
+						: 'text-[1.25rem] md:text-[1.75rem] xl:text-[1.8rem]'} mb-2 !leading-[1.1] font-bold"
 				>
 					{data.title}
 				</h3>
@@ -91,7 +93,7 @@
 						style="color: {colorMapping[data.talkType]?.primary}"
 						class="talk-subtitle {isKeynote
 							? 'text-[1.25rem] md:text-[1.75rem] xl:text-[2rem]'
-							: 'text-[1.25rem] md:text-[1.5rem] xl:text-[1.5rem]'}  !leading-[1.1]"
+							: 'text-[1.25rem] md:text-[1.4rem] xl:text-[1.4rem]'}  !leading-[1.1]"
 					>
 						{data.subtitle}
 					</p>
