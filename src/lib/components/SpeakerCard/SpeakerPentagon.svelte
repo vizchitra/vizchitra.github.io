@@ -76,8 +76,6 @@
 	let svgWidth = 800;
 	let svgHeight = 800;
 	let screenWidth = 800;
-
-	$: console.log('points', points);
 </script>
 
 <svelte:window bind:innerWidth={screenWidth} />
@@ -85,16 +83,22 @@
 <div class="flex h-full w-full flex-row items-start justify-between gap-4 md:gap-8">
 	<div class="pentagon-container relative h-full w-full">
 		<div
-			class="pattern-container absolute z-[-1]"
+			class="pattern-container absolute z-[-1] opacity-70"
 			style="transform: translate({-50}px, {points[1].y}px); transform-origin: top right;"
 		>
-			{@html SpeakerCardPattern1}
+			{@html SpeakerCardPattern1.replaceAll(
+				'#FFD485',
+				colorMapping[memberData.talkType].patternGradient[0]
+			).replaceAll('#F89F72', colorMapping[memberData.talkType].patternGradient[1])}
 		</div>
 		<div
-			class="pattern-container absolute right-0 bottom-0 z-[-1]"
+			class="pattern-container absolute right-0 bottom-0 z-[-1] opacity-70"
 			style="transform: translate({0}px, {0}px); "
 		>
-			{@html SpeakerCardPattern2}
+			{@html SpeakerCardPattern2.replaceAll(
+				'#FFD485',
+				colorMapping[memberData.talkType].patternGradient[0]
+			).replaceAll('#F89F72', colorMapping[memberData.talkType].patternGradient[1])}
 		</div>
 
 		<!-- svelte-ignore component_name_lowercase -->

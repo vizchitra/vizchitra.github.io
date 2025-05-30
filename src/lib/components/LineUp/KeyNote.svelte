@@ -12,7 +12,7 @@
 			title: 'The Data Is Here.',
 			subtitle: 'But Whom Is It Serving?',
 			titleColor: 'var(--color-viz-pink-dark)',
-			talkType: 'talk',
+			talkType: 'keynote',
 			kickerText: 'Opening keynote',
 			time: '27 June | 09:30 - 10:00 am',
 			talkInfo: `The last ten years have seen a dramatic improvement in access to Indian data, allowing journalists to tell richer stories, analysts to get a better sense of Indian realities, and designers to have much more to work with. Improvements are now happening faster than ever, more so with the adoption of machine learning and large language models. How do we use this moment to do better than we had imagined? By asking the important questions. <br>
@@ -33,7 +33,7 @@
 			role: `LLM Psychologist @ Straive and CEO @ Gramener`,
 			title: 'Data Design By Dialogue.',
 			subtitle: 'Visualising Data with LLMs',
-			talkType: 'talk',
+			talkType: 'keynote',
 			titleColor: 'var(--color-viz-orange-dark)',
 			kickerText: 'Closing keynote',
 			time: '27 June | 04:15 - 04:45 pm',
@@ -44,10 +44,10 @@
 			&#9679; Automate interpretation: ask the model for captions, tooltips, and data insights <br>
 			&#9679; Spotlight future trends: what generative data art looks like in six months`,
 			location: 'Bangalore International Centre, Bengaluru',
-			collection: 2,
+			collection: 5,
 			analysis: 5,
-			coding: 3,
-			designing: 4,
+			coding: 5,
+			designing: 5,
 			narrating: 5,
 			strength: 'Narrating insights',
 			link: 'https://hasgeek.com/VizChitra/2025/sub/data-design-by-dialogue-visualizing-data-with-llms-EX3YtVF1mqSqnxY5LAtuRE#tickets'
@@ -57,7 +57,7 @@
 	let selectedIndex = null;
 </script>
 
-<div class="mt-4 grid w-full auto-rows-min grid-cols-1 gap-4 lg:grid-cols-2">
+<div class="mt-4 grid w-full max-w-[1400px] auto-rows-min grid-cols-1 gap-4 lg:grid-cols-2">
 	<SpeakerCard data={speakerInfo[0]}></SpeakerCard>
 	<SpeakerCard data={speakerInfo[1]}></SpeakerCard>
 </div>
