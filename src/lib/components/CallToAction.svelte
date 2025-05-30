@@ -37,7 +37,7 @@
 			title: 'Sponsor the Conference',
 			description:
 				'Want to partner with VizChitra? Sponsorships are open for orgs big and small. Reach out to us at sales@hasgeek.com',
-			link: 'https://speakerdeck.com/vizchitra/sponsor-the-conference-vizchitra-2025',
+			link: '/sponsorship',
 			buttonText: 'Sponsorship info',
 			isAnimated: false
 		}

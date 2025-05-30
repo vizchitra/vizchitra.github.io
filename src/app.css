@@ -8,6 +8,10 @@
 	--color-viz-white: #ffffff;
 	--color-viz-black: #131313;
 	--color-viz-grey: #4c4c4c;
+	/* TYPOGRAPHY */
+	--font-text-sans: 'IBM Plex Sans', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, system-ui, sans-serif;
+	--font-display-sans: 'Cairo', Optima, Candara, 'Noto Sans', source-sans-pro, system-ui, sans-serif;
+	--font-body-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
 
 	--color-viz-yellow: #ffd485;
 	--color-viz-teal: #97e4dd;

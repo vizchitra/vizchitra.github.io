@@ -14,8 +14,7 @@
 				{ name: 'Workshops', href: '/#workshops' },
 				{
 					name: 'Sponsorship',
-					href: 'https://speakerdeck.com/vizchitra/sponsor-the-conference-vizchitra-2025',
-					target: '_blank'
+					href: '/sponsorship'
 				}
 			],
 			expanded: false
