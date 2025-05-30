@@ -114,9 +114,11 @@
 	<HomepageSection>
 		<div slot="content">
 			<h2 class="content-heading !text-[2rem]">SPEAKERS</h2>
-			<Speakers2025></Speakers2025>
+
+			<p class="content-text mb-1">These are the voices you won’t want to miss</p>
 		</div>
 	</HomepageSection>
+	<Speakers2025></Speakers2025>
 
 	<HomepageSection>
 		<div slot="content">
