@@ -122,7 +122,7 @@
 			yOffset: 25,
 			name: 'Vikram Nayak',
 			role: `Founder, Chartboss`,
-			title: 'The UX of Charts:',
+			title: 'The UX of Charts',
 			subtitle: '',
 			talkType: 'talk',
 			kickerText: '',
