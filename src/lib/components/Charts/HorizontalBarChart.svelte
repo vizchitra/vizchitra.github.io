@@ -156,7 +156,7 @@
 			case 'bottom-left':
 				return { x: padding, y: dynamicHeight - padding };
 			case 'bottom-right':
-				return { x: containerWidth, y: dynamicHeight - padding - 20 };
+				return { x: containerWidth, y: dynamicHeight - padding - 30 };
 			case 'center':
 				return { x: containerWidth / 2, y: dynamicHeight / 2 };
 			case 'middle-right':

@@ -22,9 +22,9 @@
 	import organizationSize from '$lib/data/size.csv';
 	import functionalRoles from '$lib/data/roles.csv';
 	import HorizontalBarChart from '$lib/components/Charts/HorizontalBarChart.svelte';
-
+	import SponsorshipContactForm from '$lib/components/Common/SponsorshipContactForm.svelte';
 	const contactEmail = 'sponsorship@vizchitra.com';
-
+	import SponsorCard from '$lib/components/SponsorCards.svelte';
 	// Define a mapping from categories to colors
 	const categoryColors = {
 		'Academia, Education & Research': 'var(--color-viz-yellow)',
@@ -61,9 +61,9 @@
 	// Split companies into rows for marquee
 	/** @type {Array<{items: {name: string, category: string, color: string}[], direction: 'right' | 'left'}>} */
 	const marqueeRows = [
-		{ items: companies.slice(0, 20), direction: 'right' },
-		{ items: companies.slice(20, 40), direction: 'left' },
-		{ items: companies.slice(40, 60), direction: 'right' }
+		{ items: companies.slice(0, 20), direction: 'right', duration: '80s' },
+		{ items: companies.slice(20, 40), direction: 'left', duration: '80s' },
+		{ items: companies.slice(40, 60), direction: 'right', duration: '80s' }
 	];
 
 	const benefits = [
@@ -108,8 +108,12 @@
 </script>
 
 <div class="banner-container full-bleed relative h-[80svh]">
-	<img src={headerpolygon2} alt="header polygon" class="absolute top-0 left-0 hidden md:block" />
-	<img src={headerpolygon1} alt="header polygon" class="absolute right-0 bottom-0" />
+	<img
+		src={headerpolygon2}
+		alt="header polygon"
+		class="absolute top-0 left-0 w-1/3 md:block md:w-1/6"
+	/>
+	<img src={headerpolygon1} alt="header polygon" class="absolute right-0 bottom-0 w-1/3 md:w-1/8" />
 	<div
 		class="logo-container pointer-events-none absolute top-1/3 left-1/2 mb-2 flex max-w-2xl -translate-x-1/2 -translate-y-1/3 flex-col items-center bg-white px-4 pt-4 pb-6 md:flex-row md:gap-0"
 	>
@@ -205,7 +209,7 @@
 		</div>
 
 		{#each marqueeRows as row}
-			<MarqueeRow items={row.items} direction={row.direction} />
+			<MarqueeRow items={row.items} direction={row.direction} duration={row.duration} />
 		{/each}
 		<div class="mx-auto mt-6 flex max-w-3xl flex-wrap justify-center gap-2">
 			{#each legendItems.sort((a, b) => b.count - a.count) as item}
@@ -293,50 +297,56 @@
 	</div>
 
 	<section class="mx-auto max-w-4xl">
-		<section class="my-8 md:my-4 md:py-16">
+		<section class="my-8 md:my-4">
 			<div class="mx-auto max-w-6xl overflow-hidden">
-				<div class="mb-16">
-					<h2 class="content-heading mb-4 !text-[2rem]">
+				<div class="mb-16 text-center">
+					<h2 class="content-heading mb-4 text-center !text-[2rem]">
 						<span class="font-bold italic">Strategic Partnership</span> with
 						<img src={hasgeekLogo} alt="HasGeek" class="mx-2 inline-block h-12 w-auto" />
 					</h2>
-					<p class="content-text">Organize the conference, Support the growth of the community.</p>
+					<p class="content-text mx-auto max-w-2xl">
+						Organize the conference, Support the growth of the community.
+					</p>
 				</div>
+				<div class="mx-auto grid grid-cols-1 pb-4 md:pb-0 lg:max-w-2xl lg:grid-cols-2">
+					<SponsorCard
+						heading="Platinum Sponsor"
+						logo={nutanixLogo}
+						logoType="image"
+						variant="pink"
+						seed={343442}
+					/>
 
-				<div class="grid grid-cols-1 pb-4 md:mt-24 md:-ml-20 md:pb-0 lg:max-w-5xl lg:grid-cols-2">
-					<div class="relative my-20 -mr-22 flex items-center justify-center">
-						<img
-							src={pinkPolygon}
-							alt="Pink polygon background"
-							class="absolute size-150 object-contain"
-						/>
-						<div class="relative inset-0 flex flex-col items-center justify-center text-center">
-							<p class="content-text mb-4 font-medium">Platinum Sponsor</p>
-							<img src={nutanixLogo} alt="Nutanix" class="h-16 w-auto max-w-40 object-contain" />
-						</div>
-					</div>
+					<SponsorCard
+						heading="Silver Sponsor"
+						logo={revisualLogo}
+						logoType="image"
+						variant="yellow"
+						seed={343554354}
+					/>
 
-					<div class="relative my-20 -ml-22 flex items-center justify-center">
-						<img
-							src={yellowPolygon}
-							alt="Yellow polygon background"
-							class="absolute size-150 object-contain"
-						/>
-						<div class="relative inset-0 flex flex-col items-center justify-center text-center">
-							<p class="content-text mb-4 font-medium">Platinum Sponsor</p>
-							<img
-								src={revisualLogo}
-								alt="Revisual Labs"
-								class="h-16 w-auto max-w-40 object-contain"
-							/>
-						</div>
-					</div>
+					<!-- HasGeek -->
+					<SponsorCard
+						heading="Event Partner"
+						logo={hasgeekLogo}
+						logoType="image"
+						variant="blue"
+						seed={342}
+					/>
+
+					<SponsorCard
+						heading="Affiliate Partner"
+						logo="https://images.squarespace-cdn.com/content/v1/5c6055b5fb18206d45d6b27e/1562601203642-ZHLHUGGYNWOIZHZK46U9/Data+Visualization+Society+logo+2019-05-transparent.png"
+						logoType="image"
+						variant="green"
+						seed={34435432}
+					/>
 				</div>
 			</div>
 		</section>
 	</section>
 </main>
-<div class="mx-auto w-full max-w-4xl text-center md:my-12">
+<!-- <div class="mx-auto w-full max-w-4xl text-center md:my-12">
 	<button
 		on:click={() => {
 			window.location.href = `mailto:${contactEmail}?subject=VizChitra%20Sponsorship%20Inquiry`;
@@ -345,14 +355,16 @@
 	>
 		Become a sponsor →
 	</button>
-</div>
+</div> -->
+
+<SponsorshipContactForm />
 
 <iframe
 	class="speakerdeck-iframe"
 	frameborder="0"
 	src="https://speakerdeck.com/player/4812baba218e4c14b34229497312bb67"
 	title="Sponsor the Conference | VizChitra 2025"
-	allowfullscreen="true"
+	allowfullscreen
 	style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 100%; height: auto; aspect-ratio: 560 / 315;"
 	data-ratio="1.7777777777777777"
 ></iframe>

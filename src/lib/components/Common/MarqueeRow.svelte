@@ -10,7 +10,7 @@
 </script>
 
 <div class="marquee-container">
-	<div class="marquee marquee-{direction}">
+	<div class="marquee marquee-{direction}" style="--duration: {duration};">
 		{#each Array(repetitions).fill(items).flat() as item}
 			<div
 				class="text-md flex-shrink-0 border border-gray-200 px-6 py-3 font-medium whitespace-nowrap"
@@ -33,7 +33,7 @@
 		display: flex;
 		gap: 1rem;
 		width: fit-content;
-		animation-duration: var(--duration, 40s);
+		animation-duration: var(--duration);
 		animation-timing-function: linear;
 		animation-iteration-count: infinite;
 	}
@@ -67,5 +67,12 @@
 	/* Pause animation on hover */
 	.marquee:hover {
 		animation-play-state: paused;
+	}
+
+	/* Pause animation for reduced motion */
+	@media (prefers-reduced-motion: reduce) {
+		.marquee {
+			animation-play-state: paused;
+		}
 	}
 </style>
