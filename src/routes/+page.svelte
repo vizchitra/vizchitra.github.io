@@ -118,6 +118,7 @@
 			<p class="content-text mb-1">These are the voices you won’t want to miss</p>
 		</div>
 	</HomepageSection>
+
 	<Speakers2025></Speakers2025>
 
 	<HomepageSection>
@@ -127,10 +128,10 @@
 				So much fun to look forward to! Bear in mind, workshops are located at <b>two</b> different locations.
 				Do check ahead of time.
 			</p>
-
-			<Workshop2025></Workshop2025>
 		</div>
 	</HomepageSection>
+
+	<Workshop2025></Workshop2025>
 
 	<!-- OUR MISSION -->
 	<!-- <HomepageSection>

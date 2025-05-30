@@ -136,17 +136,19 @@
 </script>
 
 <div class="max-w-[100%] overflow-auto">
-	<div class="speaker-track flex flex-row flex-nowrap gap-4">
-		{#each workshopInfo as workshop, index (workshop.name)}
-			<SpeakerCard data={workshop}></SpeakerCard>
-		{/each}
+	<div class="max-w-[100%] overflow-auto">
+		<div class="speaker-track flex flex-row flex-nowrap gap-4">
+			{#each workshopInfo as workshop, index (workshop.name)}
+				<SpeakerCard data={workshop}></SpeakerCard>
+			{/each}
+		</div>
 	</div>
-</div>
 
-<div>
-	<a href="https://hasgeek.com/VizChitra/2025/#tickets" target="_blank">
-		<button class="bg-viz-pink-dark mt-8 cursor-pointer rounded-sm p-2 text-white"
-			>Buy Tickets ↗</button
-		>
-	</a>
+	<div>
+		<a href="https://hasgeek.com/VizChitra/2025/#tickets" target="_blank">
+			<button class="bg-viz-pink-dark mt-8 cursor-pointer rounded-sm p-2 text-white"
+				>Buy Tickets ↗</button
+			>
+		</a>
+	</div>
 </div>
