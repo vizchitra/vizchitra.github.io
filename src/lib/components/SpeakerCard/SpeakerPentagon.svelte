@@ -89,7 +89,7 @@
 				class="pattern-container absolute z-[-1] opacity-70"
 				style="transform: translate({-50}px, {points[1].y +
 					pentagonYOffset +
-					(isKeynote ? 0 : -50)}px); transform-origin: top right;"
+					(isKeynote && screenWidth > 550 ? 0 : -50)}px); transform-origin: top right;"
 			>
 				{@html SpeakerCardPattern1.replaceAll(
 					'#FFD485',
@@ -98,7 +98,7 @@
 			</div>
 			<div
 				class="pattern-container absolute right-0 bottom-0 z-[-1] opacity-70"
-				style="transform: translate({0}px, {isKeynote ? 0 : 75}px); "
+				style="transform: translate({0}px, {isKeynote && screenWidth > 550 ? 0 : 75}px); "
 			>
 				{@html SpeakerCardPattern2.replaceAll(
 					'#FFD485',
