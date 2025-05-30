@@ -71,111 +71,125 @@
 		'Designing visualizations': 'var(--color-viz-pink)'
 	};
 
-	const pentagonSize = 450;
-	const pentagonXOffset = 120; // Adjust as needed for positioning
+	const pentagonSize = memberData.talkType === 'keynote' ? 425 : 275;
+	const pentagonXOffset = memberData.talkType === 'keynote' ? 120 : 20; // Adjust as needed for positioning
+	const pentagonYOffset = memberData.talkType === 'keynote' ? 0 : 20; // Adjust as needed for positioning
 	let svgWidth = 800;
 	let svgHeight = 800;
 	let screenWidth = 800;
+
+	$: isKeynote = memberData.talkType === 'keynote';
 </script>
 
 <svelte:window bind:innerWidth={screenWidth} />
+{#if colorMapping}
+	<div class="flex h-full w-full flex-row items-start justify-between gap-4 md:gap-8">
+		<div class="pentagon-container relative h-full w-full">
+			<div
+				class="pattern-container absolute z-[-1] opacity-70"
+				style="transform: translate({-50}px, {points[1].y +
+					pentagonYOffset +
+					(isKeynote && screenWidth > 550 ? 0 : -50)}px); transform-origin: top right;"
+			>
+				{@html SpeakerCardPattern1.replaceAll(
+					'#FFD485',
+					colorMapping[memberData.talkType]?.patternGradient[0]
+				).replaceAll('#F89F72', colorMapping[memberData.talkType]?.patternGradient[1])}
+			</div>
+			<div
+				class="pattern-container absolute right-0 bottom-0 z-[-1] opacity-70"
+				style="transform: translate({0}px, {isKeynote && screenWidth > 550 ? 0 : 75}px); "
+			>
+				{@html SpeakerCardPattern2.replaceAll(
+					'#FFD485',
+					colorMapping[memberData.talkType]?.patternGradient[0]
+				).replaceAll('#F89F72', colorMapping[memberData.talkType]?.patternGradient[1])}
+			</div>
 
-<div class="flex h-full w-full flex-row items-start justify-between gap-4 md:gap-8">
-	<div class="pentagon-container relative h-full w-full">
-		<div
-			class="pattern-container absolute z-[-1] opacity-70"
-			style="transform: translate({-50}px, {points[1].y}px); transform-origin: top right;"
-		>
-			{@html SpeakerCardPattern1.replaceAll(
-				'#FFD485',
-				colorMapping[memberData.talkType].patternGradient[0]
-			).replaceAll('#F89F72', colorMapping[memberData.talkType].patternGradient[1])}
-		</div>
-		<div
-			class="pattern-container absolute right-0 bottom-0 z-[-1] opacity-70"
-			style="transform: translate({0}px, {0}px); "
-		>
-			{@html SpeakerCardPattern2.replaceAll(
-				'#FFD485',
-				colorMapping[memberData.talkType].patternGradient[0]
-			).replaceAll('#F89F72', colorMapping[memberData.talkType].patternGradient[1])}
-		</div>
-
-		<!-- svelte-ignore component_name_lowercase -->
-		<svg
-			class="absolute z-10 overflow-hidden"
-			width="100%"
-			height="100%"
-			bind:clientWidth={svgWidth}
-			bind:clientHeight={svgHeight}
-		>
-			<path
-				transform="translate({svgWidth - pentagonSize + pentagonXOffset},{0})"
-				d="M {-(svgWidth - pentagonSize + pentagonXOffset)},0 
+			<!-- svelte-ignore component_name_lowercase -->
+			<svg
+				class="absolute z-10 overflow-hidden"
+				width="100%"
+				height="100%"
+				bind:clientWidth={svgWidth}
+				bind:clientHeight={svgHeight}
+			>
+				<path
+					transform="translate({svgWidth - pentagonSize + pentagonXOffset},{0})"
+					d="M {-(svgWidth - pentagonSize + pentagonXOffset)},0 
 				L {svgWidth},0 
-				L {svgWidth},{points[1].y} 
-				L {points[4].x},{points[4].y} 
-				L {points[0].x},{points[0].y}  
-				L {points[1].x},{points[1].y}  
-				L {-(svgWidth - pentagonSize + pentagonXOffset)},{points[1].y} Z"
-				fill={colorMapping[memberData.talkType].bannerColor}
-			></path>
+				L {svgWidth},{points[1].y + pentagonYOffset} 
+				L {points[4].x},{points[4].y + pentagonYOffset} 
+				L {points[0].x},{points[0].y + pentagonYOffset}  
+				L {points[1].x},{points[1].y + pentagonYOffset}  
+				L {-(svgWidth - pentagonSize + pentagonXOffset)},{points[1].y + pentagonYOffset} Z"
+					fill={colorMapping[memberData.talkType]?.bannerColor}
+				></path>
 
-			<line
-				stroke={'white'}
-				x1={0}
-				y1={points[1].y}
-				x2={points[1].x + svgWidth - pentagonSize + pentagonXOffset}
-				y2={points[1].y}
-				stroke-width="16"
-			/>
-			<line
-				stroke={colorMapping[memberData.talkType].primary}
-				x1={0}
-				y1={points[1].y}
-				x2={points[1].x + svgWidth - pentagonSize + pentagonXOffset}
-				y2={points[1].y}
-				stroke-width="6"
-			/>
+				<line
+					stroke={'white'}
+					x1={0}
+					y1={points[1].y + pentagonYOffset}
+					x2={points[1].x + svgWidth - pentagonSize + pentagonXOffset}
+					y2={points[1].y + pentagonYOffset}
+					stroke-width="16"
+				/>
+				<line
+					stroke={colorMapping[memberData.talkType]?.primary}
+					x1={0}
+					y1={points[1].y + pentagonYOffset}
+					x2={points[1].x + svgWidth - pentagonSize + pentagonXOffset}
+					y2={points[1].y + pentagonYOffset}
+					stroke-width="6"
+				/>
 
-			<g class="pentagon" transform="translate({svgWidth - pentagonSize + pentagonXOffset},{0})">
-				{#each points as point, i}
-					<line
-						stroke={'white'}
-						x1={point.x}
-						y1={point.y}
-						x2={i === points.length - 1 ? points[0].x : points[i + 1].x}
-						y2={i === points.length - 1 ? points[0].y : points[i + 1].y}
-						stroke-width="16"
-					/>
-					<line
-						stroke={colorMapping[memberData.talkType].primary}
-						x1={point.x}
-						y1={point.y}
-						x2={i === points.length - 1 ? points[0].x : points[i + 1].x}
-						y2={i === points.length - 1 ? points[0].y : points[i + 1].y}
-						stroke-width="6"
-					/>
-				{/each}
+				<g
+					class="pentagon"
+					transform="translate({svgWidth - pentagonSize + pentagonXOffset},{pentagonYOffset})"
+				>
+					{#each points as point, i}
+						<line
+							stroke={'white'}
+							x1={point.x}
+							y1={point.y}
+							x2={i === points.length - 1 ? points[0].x : points[i + 1].x}
+							y2={i === points.length - 1 ? points[0].y : points[i + 1].y}
+							stroke-width="16"
+						/>
+						<line
+							stroke={colorMapping[memberData.talkType]?.primary}
+							x1={point.x}
+							y1={point.y}
+							x2={i === points.length - 1 ? points[0].x : points[i + 1].x}
+							y2={i === points.length - 1 ? points[0].y : points[i + 1].y}
+							stroke-width="6"
+						/>
+					{/each}
 
-				{#each points as point, i}
-					<circle cx={point.x} cy={point.y} r="9" fill="white" />
-					<circle cx={point.x} cy={point.y} r="5" fill="#4c4c4c" />
-				{/each}
-			</g>
-		</svg>
+					{#each points as point, i}
+						<circle cx={point.x} cy={point.y} r="9" fill="white" />
+						<circle cx={point.x} cy={point.y} r="5" fill="#4c4c4c" />
+					{/each}
+				</g>
+			</svg>
 
-		<div
-			class="image-container relative"
-			style="clip-path: polygon({clipPath}); --strength-color: {colorMapping[memberData.talkType]
-				.primary};width: {pentagonSize}px; height: {pentagonSize}px; transform: translate({svgWidth -
-				pentagonSize +
-				pentagonXOffset}px, 0);"
-		>
-			<img src={memberData.image} alt={memberData.name} style="transform: {computeTransform()} " />
+			<div
+				class="image-container relative"
+				style="clip-path: polygon({clipPath}); --strength-color: {colorMapping[memberData.talkType]
+					?.primary};width: {pentagonSize}px; height: {pentagonSize}px; transform: translate({svgWidth -
+					pentagonSize +
+					pentagonXOffset}px, {pentagonYOffset}px);"
+			>
+				<img
+					src={memberData.image}
+					alt={memberData.name}
+					class="bg-white"
+					style="transform: {computeTransform()} "
+				/>
+			</div>
 		</div>
 	</div>
-</div>
+{/if}
 
 <style>
 	.image-container {

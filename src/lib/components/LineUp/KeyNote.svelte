@@ -1,7 +1,7 @@
 <script>
 	import SpeakerCard from '../SpeakerCard/SpeakerCard.svelte';
 	import rukmini from '$lib/assets/images/speakers-2025/Rukmini.png';
-	import anand from '$lib/assets/images/speakers-2025/Anand.png';
+	import anand from '$lib/assets/images/speakers-2025/speaker-anand.png';
 	import expand from '$lib/assets/images/icons/expand.png';
 
 	const speakerInfo = [
@@ -11,7 +11,6 @@
 			role: 'Founder and Director, Data For India',
 			title: 'The Data Is Here.',
 			subtitle: 'But Whom Is It Serving?',
-			titleColor: 'var(--color-viz-pink-dark)',
 			talkType: 'keynote',
 			kickerText: 'Opening keynote',
 			time: '27 June | 09:30 - 10:00 am',
@@ -34,7 +33,6 @@
 			title: 'Data Design By Dialogue.',
 			subtitle: 'Visualising Data with LLMs',
 			talkType: 'keynote',
-			titleColor: 'var(--color-viz-orange-dark)',
 			kickerText: 'Closing keynote',
 			time: '27 June | 04:15 - 04:45 pm',
 			talkInfo: `In this live session, we'll walk through how to go from a bare prompt to a polished, shareable chart—entirely by conversing with an LLM. Along the way, you'll see real demos, such as this Web Features explorer, Elimination Game, LLM mental math evaluation, etc. and learn to:<br>
@@ -57,7 +55,7 @@
 	let selectedIndex = null;
 </script>
 
-<div class="mt-4 grid w-full max-w-[1400px] auto-rows-min grid-cols-1 gap-4 lg:grid-cols-2">
+<div class="mt-4 mb-10 flex w-full flex-col items-center justify-center gap-4 lg:flex-row">
 	<SpeakerCard data={speakerInfo[0]}></SpeakerCard>
 	<SpeakerCard data={speakerInfo[1]}></SpeakerCard>
 </div>
