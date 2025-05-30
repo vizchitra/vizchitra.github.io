@@ -135,6 +135,34 @@
 	<!-- OUR MISSION -->
 	<!-- <HomepageSection>
 		<div slot="content">
+			<h2 id="speakers" class="content-heading !text-[2rem]">KEYNOTES</h2>
+		</div>
+	</HomepageSection>
+
+	<KeyNote></KeyNote>
+
+	<HomepageSection>
+		<div slot="content">
+			<h2 class="content-heading !text-[2rem]">SPEAKERS</h2>
+			<Speakers2025></Speakers2025>
+		</div>
+	</HomepageSection>
+
+	<HomepageSection>
+		<div slot="content">
+			<h2 id="workshops" class="content-heading !text-[2rem]">WORKSHOPS</h2>
+			<p class="text-lg">
+				So much fun to look forward to! Bear in mind, workshops are located at <b>two</b> different locations.
+				Do check ahead of time.
+			</p>
+		</div>
+	</HomepageSection>
+
+	<Workshop2025></Workshop2025>
+
+	<!-- OUR MISSION -->
+	<!-- <HomepageSection>
+		<div slot="content">
 			<h2 class="content-heading !text-[2rem]">OUR MISSION</h2>
 
 			<p class="content-text mb-4 max-w-[55ch]">
