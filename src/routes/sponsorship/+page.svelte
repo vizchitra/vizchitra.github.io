@@ -1,9 +1,8 @@
-<script>
+<script lang="ts">
 	import VizchitraLogo from '$lib/assets/images/viz-logo-animate.svg?raw';
 	import HomepageSection from '$lib/components/Homepage/HomepageSection.svelte';
 	import VizChitraLogoType from '$lib/components/VizChitraLogoType.svelte';
 	import CustomSlantedText from '$lib/components/Common/CustomSlantedText.svelte';
-	import SponsorshipPentagon from '$lib/components/SponsorshipPentagon.svelte';
 	import MarqueeRow from '$lib/components/Common/MarqueeRow.svelte';
 	import headerpolygon1 from './assets/header-1.png';
 	import headerpolygon2 from './assets/header-2.png';
@@ -18,68 +17,53 @@
 	import revisualLogo from './assets/revisual-logo.png';
 	import yellowPolygon from './assets/yellow-pentagon.png';
 	import pinkPolygon from './assets/pink-pentagon.png';
-
-	import yearsOfExperience from './years-of-experience.json';
-	import organizationSize from './organization-size.json';
-	import functionalRoles from './functional-roles.json';
+	import orgs from '$lib/data/orgs.csv';
+	import yearsOfExperience from '$lib/data/years.csv';
+	import organizationSize from '$lib/data/size.csv';
+	import functionalRoles from '$lib/data/roles.csv';
 	import HorizontalBarChart from '$lib/components/Charts/HorizontalBarChart.svelte';
 
 	const contactEmail = 'sponsorship@vizchitra.com';
 
-	const sponsorshipPolygons = [
-		{
-			title: 'Explore & Play',
-			description: 'On practices of data exploration, interface & dashboard design for dataviz.',
-			color: 'var(--color-viz-yellow)'
-		},
-		{
-			title: 'Explain & Learn',
-			description: 'Centered on fundamentals of process, design & communication for dataviz.',
-			color: 'var(--color-viz-teal)'
-		},
-		{
-			title: 'Imagine & Innovate',
-			description: 'Use of new mediums, approaches, AI & tech to shape how we do dataviz in future',
-			color: 'var(--color-viz-pink)'
-		}
-	];
+	// Define a mapping from categories to colors
+	const categoryColors = {
+		'Academia, Education & Research': 'var(--color-viz-yellow)',
+		'Data & AI, Consulting & Services': 'var(--color-viz-teal)',
+		'Design, Media & Communication': 'var(--color-viz-blue)',
+		'Domain Specific Visualisation': 'var(--color-viz-orange)',
+		'Tool Builders & Creators': 'var(--color-viz-pink)'
+	};
 
-	const companies = [
-		'Times of India',
-		'Economist',
-		'BCC',
-		'Deccan',
-		'Herald',
-		'Deccan',
-		'Herald',
-		'Clinton Health',
-		'Cegis',
-		'Flipkart',
-		'Walmart',
-		'Capital One',
-		'S&P',
-		'PhonePe',
-		'Broadcom',
-		'Ford',
-		'Enphase',
-		'Novo Nordisk',
-		'Google',
-		'Microsoft',
-		'Wysa',
-		'Fractal',
-		'Infocept',
-		'Tata Consultancy',
-		'Tata Elxsi',
-		'Madras',
-		'ISB'
-	];
+	// Map the orgs data to an array of company objects including category and color
+	const companies = orgs.map((org: { name: string; category: string }) => ({
+		name: org.name,
+		category: org.category,
+		color: categoryColors[org.category as keyof typeof categoryColors]
+	}));
 
+	// Calculate category counts
+	const categoryCounts = companies.reduce(
+		(acc, company) => {
+			acc[company.category] = (acc[company.category] || 0) + 1;
+			return acc;
+		},
+		{} as Record<string, number>
+	);
+
+	// Prepare legend data
+	const legendItems = Object.keys(categoryColors).map((category) => ({
+		category,
+		count: categoryCounts[category] || 0,
+		color: categoryColors[category as keyof typeof categoryColors]
+	}));
+
+	console.log(companies);
 	// Split companies into rows for marquee
-	/** @type {Array<{items: string[], direction: 'right' | 'left'}>} */
+	/** @type {Array<{items: {name: string, category: string, color: string}[], direction: 'right' | 'left'}>} */
 	const marqueeRows = [
-		{ items: companies.slice(0, 9), direction: 'right' },
-		{ items: companies.slice(9, 18), direction: 'left' },
-		{ items: companies.slice(18, 27), direction: 'right' }
+		{ items: companies.slice(0, 20), direction: 'right' },
+		{ items: companies.slice(20, 40), direction: 'left' },
+		{ items: companies.slice(40, 60), direction: 'right' }
 	];
 
 	const benefits = [
@@ -193,23 +177,28 @@
 		</div>
 	</HomepageSection>
 
-	<!-- Pentagon section -->
-	<section class="pentagon-section my-12">
-		<div class="grid grid-cols-1 items-center justify-center gap-12 lg:grid-cols-3 lg:gap-8">
-			{#each sponsorshipPolygons as polygon}
-				<SponsorshipPentagon
-					backgroundColor={polygon.color}
-					title={polygon.title}
-					description={polygon.description}
-					seed={Math.floor(Math.random() * 1000)}
-				/>
-			{/each}
-		</div>
-	</section>
+	<div class="benefits-grid mt-12 grid grid-cols-1 gap-12 md:grid-cols-2 lg:gap-16">
+		{#each benefits as benefit}
+			<div class="benefit-item flex items-center gap-6">
+				<div class="icon-container flex-shrink-0">
+					<img src={benefit.icon} alt={benefit.alt} class="h-20 w-20" />
+				</div>
+				<div class="content content-text">
+					{#if benefit.textFirst}
+						<span>{benefit.text}</span>
+						<span class="text-viz-pink-dark font-bold italic">{benefit.boldText}</span>
+					{:else}
+						<span class="text-viz-pink-dark font-bold italic">{benefit.boldText}</span>
+						<span>{benefit.text}</span>
+					{/if}
+				</div>
+			</div>
+		{/each}
+	</div>
 
 	<!-- Companies Marquee Section -->
 	<section class="full-bleed my-12 overflow-hidden py-12">
-		<div class="mb-8 text-center">
+		<div class="mx-auto mb-8 max-w-4xl text-center">
 			<h2 class="content-heading !text-[2rem]">
 				<span class="font-bold italic">Attendee</span> company
 			</h2>
@@ -218,90 +207,93 @@
 		{#each marqueeRows as row}
 			<MarqueeRow items={row.items} direction={row.direction} />
 		{/each}
+		<div class="mx-auto mt-6 flex max-w-3xl flex-wrap justify-center gap-2">
+			{#each legendItems.sort((a, b) => b.count - a.count) as item}
+				<div class="flex items-center gap-2 text-xs">
+					<div
+						class="flex size-6 items-center justify-center rounded-full"
+						style="background-color: {item.color};"
+					>
+						<span class="text-xs font-bold">{item.count}</span>
+					</div>
+					<span>{item.category} </span>
+				</div>
+			{/each}
+		</div>
 	</section>
 
-	<section class="mx-auto my-4 max-w-4xl">
-		<div class="mb-20">
-			<h2 class="content-heading mb-12 !text-[2rem]">
-				<span class="font-bold italic">Attendee</span> Profile
-			</h2>
+	<!-- Legend Section -->
 
-			<div class="space-y-12">
-				<div class="space-y-8 lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
-					<div class="text-left">
-						<div class="mb-4">
-							<span class="font-display-sans text-viz-pink-dark text-6xl font-bold md:text-6xl">
-								70
-							</span>
-							<span class="font-display-sans text-viz-pink-dark text-4xl font-bold md:text-6xl"
-								>%</span
-							>
-						</div>
-						<p class="content-text">of the attendees have more than 5+ years of work experience</p>
-					</div>
-					<div class="lg:col-span-2">
-						<HorizontalBarChart
-							data={yearsOfExperience}
-							title="Years of Work Experience"
-							maxValue={30}
-							barColor="#a5b4fc"
-							sampleSize={121}
-						/>
-					</div>
-				</div>
+	<div class="full-bleed mx-auto mb-20 md:px-12">
+		<h2 class="content-heading mx-auto mb-12 max-w-2xl text-center !text-[2rem]">
+			<span class="font-bold italic">Attendee</span> Profile
+		</h2>
 
-				<div class="space-y-8 lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
-					<div class="text-left lg:order-2">
-						<div class="mb-4">
-							<span class="font-display-sans text-viz-blue-dark text-6xl font-bold md:text-6xl">
-								48
-							</span>
-							<span class="font-display-sans text-viz-blue-dark text-4xl font-bold md:text-6xl"
-								>%</span
-							>
-						</div>
-						<p class="content-text">
-							<span class="font-bold italic">Diverse</span>
-							participation with designers, followed by data & AI/BI professionals (27%) & also journalists,
-							educators and developers
-						</p>
-					</div>
-					<div class="lg:order-1 lg:col-span-2">
-						<HorizontalBarChart
-							data={functionalRoles}
-							title="Functional Role at Work"
-							maxValue={30}
-							barColor="#f9a8d4"
-							sampleSize={126}
-						/>
-					</div>
-				</div>
+		<div class="grid grid-cols-1 gap-6 xl:grid-cols-3">
+			<!-- Years of Experience Chart -->
+			<div class="relative">
+				<HorizontalBarChart
+					xkey="years"
+					countKey="count"
+					ykey="perc"
+					data={yearsOfExperience}
+					title="Years of Work Experience"
+					maxValue={30}
+					barColor="#a5b4fc"
+					annotations={[
+						{
+							text: '~70% of the attendees have more than 5+ years of work experience',
+							position: 'bottom-right',
+							style: 'color: #8b5cf6; max-width: 160px; width: 100%; font-size: 12px;'
+						}
+					]}
+				/>
+			</div>
 
-				<div class="space-y-8 lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
-					<div class="text-left">
-						<div class="mb-4">
-							<span class="font-display-sans text-viz-teal text-6xl font-bold md:text-6xl">60</span>
-							<span class="font-display-sans text-viz-teal text-4xl font-bold md:text-6xl">%</span>
-						</div>
-						<p class="content-text">
-							of the attendees are from enterprises and micro & solo orgs – covering both ends of
-							the spectrum
-						</p>
-					</div>
-					<div class="lg:col-span-2">
-						<HorizontalBarChart
-							data={organizationSize}
-							title="Size of Work Organization"
-							maxValue={30}
-							barColor="#6ee7b7"
-							sampleSize={131}
-						/>
-					</div>
-				</div>
+			<!-- Functional Role Chart -->
+			<div class="relative">
+				<HorizontalBarChart
+					xkey="role"
+					countKey="count"
+					ykey="perc"
+					data={functionalRoles}
+					title="Functional Role at Work"
+					maxValue={30}
+					barColor="#f9a8d4"
+					annotations={[
+						{
+							text: 'Diverse participation with designers (~48%), followed by data & AI/BI professionals (~27%) & also journalists, educators and developers',
+							position: 'bottom-right',
+							style: 'color: #ec4899; max-width: 160px; width: 100%; font-size: 12px;'
+						}
+					]}
+				/>
+			</div>
+
+			<!-- Organization Size Chart -->
+			<div class="relative">
+				<HorizontalBarChart
+					xkey="size"
+					countKey="count"
+					ykey="perc"
+					data={organizationSize}
+					title="Size of Work Organization"
+					maxValue={30}
+					barColor="#6ee7b7"
+					annotations={[
+						{
+							text: '~60% of the attendees are from enterprises and micro & solo orgs – covering both ends of the spectrum',
+							position: 'bottom-right',
+							style: 'color: #10b981; max-width: 160px; width: 100%; font-size: 12px;'
+						}
+					]}
+				/>
 			</div>
 		</div>
+	</div>
 
-		<section class="my-8 md:my-20 md:py-16">
+	<section class="mx-auto max-w-4xl">
+		<section class="my-8 md:my-4 md:py-16">
 			<div class="mx-auto max-w-6xl overflow-hidden">
 				<div class="mb-16">
 					<h2 class="content-heading mb-4 !text-[2rem]">
@@ -342,36 +334,6 @@
 				</div>
 			</div>
 		</section>
-
-		<div class="md:mb-16">
-			<h2 class="content-heading mb-4 !text-[2rem]">
-				<span class="font-bold italic">Why</span> sponsor?
-			</h2>
-			<p class="content-text">
-				Benefits of sponsoring
-				<span class="font-display-sans text-[#20887F]">
-					<VizChitraLogoType yearClasses="text-[#20887F]"></VizChitraLogoType> Conference
-				</span>
-			</p>
-		</div>
-		<div class="benefits-grid grid grid-cols-1 gap-12 md:grid-cols-2 lg:gap-16">
-			{#each benefits as benefit}
-				<div class="benefit-item flex items-center gap-6">
-					<div class="icon-container flex-shrink-0">
-						<img src={benefit.icon} alt={benefit.alt} class="h-20 w-20" />
-					</div>
-					<div class="content content-text">
-						{#if benefit.textFirst}
-							<span>{benefit.text}</span>
-							<span class="text-viz-pink-dark font-bold italic">{benefit.boldText}</span>
-						{:else}
-							<span class="text-viz-pink-dark font-bold italic">{benefit.boldText}</span>
-							<span>{benefit.text}</span>
-						{/if}
-					</div>
-				</div>
-			{/each}
-		</div>
 	</section>
 </main>
 <div class="mx-auto w-full max-w-4xl text-center md:my-12">
@@ -384,6 +346,16 @@
 		Become a sponsor →
 	</button>
 </div>
+
+<iframe
+	class="speakerdeck-iframe"
+	frameborder="0"
+	src="https://speakerdeck.com/player/4812baba218e4c14b34229497312bb67"
+	title="Sponsor the Conference | VizChitra 2025"
+	allowfullscreen="true"
+	style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 100%; height: auto; aspect-ratio: 560 / 315;"
+	data-ratio="1.7777777777777777"
+></iframe>
 
 <style>
 	.full-bleed {

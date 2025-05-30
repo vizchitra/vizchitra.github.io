@@ -1,5 +1,5 @@
 <script>
-	/** @type {string[]} */
+	/** @type {{name: string, category: string, color: string}[]} */
 	export let items = [];
 	/** @type {'right' | 'left'} */
 	export let direction = 'right';
@@ -13,9 +13,10 @@
 	<div class="marquee marquee-{direction}">
 		{#each Array(repetitions).fill(items).flat() as item}
 			<div
-				class="text-md flex-shrink-0 rounded-sm border border-gray-200 bg-gray-50 px-6 py-3 font-medium whitespace-nowrap text-gray-700"
+				class="text-md flex-shrink-0 border border-gray-200 px-6 py-3 font-medium whitespace-nowrap"
+				style="background-color: {item.color}; clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0% 100%);"
 			>
-				{item}
+				{item.name}
 			</div>
 		{/each}
 	</div>
