@@ -16,6 +16,7 @@
 <form
 	action={formAction}
 	method="POST"
+	id="sponsorship-contact-form"
 	class="mx-auto mb-12 flex w-full max-w-3xl flex-col gap-6 rounded-lg bg-white p-4 shadow md:p-8"
 	autocomplete="on"
 >

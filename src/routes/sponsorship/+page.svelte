@@ -137,7 +137,10 @@
 	>
 		<button
 			on:click={() => {
-				window.location.href = `mailto:${contactEmail}?subject=VizChitra%20Sponsorship%20Inquiry`;
+				document.getElementById('sponsorship-contact-form')?.scrollIntoView({
+					behavior: 'smooth',
+					block: 'center'
+				});
 			}}
 			class="bg-viz-pink-dark hover:bg-viz-pink-dark/90 w-full cursor-pointer rounded-sm px-6 py-4 text-xl text-white italic"
 		>
@@ -374,5 +377,9 @@
 		width: 100vw;
 		margin-left: calc(50% - 50vw);
 		margin-right: calc(50% - 50vw);
+	}
+
+	:global(html) {
+		scroll-behavior: smooth;
 	}
 </style>
