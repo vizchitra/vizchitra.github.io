@@ -1,0 +1,8 @@
+shortName,size,perc,count
+Enterprise,"Enterprise (10,001+)",30,43
+Mega,"Mega (5,001-10,000)",6,09
+Large,"Large (1,001-5,000)",11,15
+Medium,"Medium (200-1,000)",16,23
+Small,"Small (11-200)",14,20
+Micro,"Micro (2-10)",16,22
+Solo,"Solo (1)",6,9

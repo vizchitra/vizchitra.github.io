@@ -1,5 +1,6 @@
 <script>
 	export let classes = '';
+	export let yearClasses = 'text-[#D46637]';
 	export let includeYear = true;
 </script>
 
@@ -11,7 +12,7 @@
 	><span class="A2">A</span>
 
 	{#if includeYear}
-		<span class="year font-bold text-[#D46637]">2025</span>
+		<span class="year font-bold {yearClasses}">2025</span>
 	{/if}
 </span>
 
