@@ -12,6 +12,8 @@
 	import KeyNote from '$lib/components/LineUp/KeyNote.svelte';
 	import Speakers2025 from '$lib/components/LineUp/Speakers2025.svelte';
 	import Workshop2025 from '$lib/components/LineUp/Workshop2025.svelte';
+	import Agenda2025 from '$lib/components/LineUp/Agenda2025.svelte';
+
 
 	export let data;
 </script>
@@ -138,6 +140,8 @@
 	</HomepageSection>
 
 	<Workshop2025></Workshop2025>
+
+	<Agenda2025></Agenda2025>
 
 	<!-- OUR MISSION -->
 	<!-- <HomepageSection>
