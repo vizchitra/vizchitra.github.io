@@ -12,6 +12,7 @@
 				{ name: 'The conference', href: '/#intro' },
 				{ name: 'Speaker line-up', href: '/#speakers' },
 				{ name: 'Workshops', href: '/#workshops' },
+				{ name: 'Agenda', href: '/#agenda' },
 				{
 					name: 'Sponsorship',
 					href: '/sponsorship'
