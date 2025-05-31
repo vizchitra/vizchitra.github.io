@@ -266,7 +266,7 @@
 
 	function scrollTrack(direction) {
 		if (trackContainer) {
-			const scrollAmount = 350;
+			const scrollAmount = 420;
 			trackContainer.scrollBy({
 				left: (direction === 'right' ? 1 : -1) * scrollAmount,
 				behavior: 'smooth'
@@ -314,17 +314,17 @@
 		</div>
 	</div>
 
-	<div class="track-controls flex items-center gap-4 self-start pl-4">
+	<div class="track-controls flex items-center gap-3 self-start pl-4 sm:gap-4">
 		<button
 			on:click={() => scrollTrack('left')}
 			disabled={atStart}
-			class="flex h-[75px] w-[75px] cursor-pointer items-center justify-center rounded-full border-[1px] border-[#999] bg-[#F5C7C7] p-3 hover:opacity-70 disabled:bg-white disabled:opacity-60"
+			class="flex h-[60px] w-[60px] cursor-pointer items-center justify-center rounded-full border-[1px] border-[#999] bg-[#F5C7C7] p-3 hover:opacity-70 disabled:bg-white disabled:opacity-60 sm:h-[75px] sm:w-[75px]"
 			aria-label="scroll left">{@html arrowLeft}</button
 		>
 		<button
 			on:click={() => scrollTrack('right')}
 			disabled={atEnd}
-			class="flex h-[75px] w-[75px] cursor-pointer items-center justify-center rounded-full border-[1px] border-[#999] bg-[#F5C7C7] p-3 hover:opacity-70 disabled:bg-white disabled:opacity-60"
+			class="flex h-[60px] w-[60px] cursor-pointer items-center justify-center rounded-full border-[1px] border-[#999] bg-[#F5C7C7] p-3 hover:opacity-70 disabled:bg-white disabled:opacity-60 sm:h-[75px] sm:w-[75px]"
 			aria-label="scroll right">{@html arrowRight}</button
 		>
 	</div>
