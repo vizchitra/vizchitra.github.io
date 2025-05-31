@@ -94,7 +94,7 @@
 				class="pattern-container absolute z-[-1] opacity-70"
 				style="transform: translate({-50}px, {points[1].y +
 					pentagonYOffset +
-					(isKeynote && screenWidth > 550 ? 0 : -50)}px); transform-origin: top right;"
+					(isKeynote && screenWidth > 550 ? 0 : -55)}px); transform-origin: top right;"
 			>
 				{@html SpeakerCardPattern1.replaceAll(
 					'#FFD485',

@@ -1,12 +1,14 @@
 <script>
 	import SpeakerCard from '../SpeakerCard/SpeakerCard.svelte';
 	import rukmini from '$lib/assets/images/speakers-2025/Rukmini.png';
-	import anand from '$lib/assets/images/speakers-2025/speaker-anand.png';
+	import anand from '$lib/assets/images/speakers-2025/speaker-anand.jpg';
 	import expand from '$lib/assets/images/icons/expand.png';
 
 	const speakerInfo = [
 		{
 			image: rukmini,
+			xOffset: -20,
+			yOffset: 15,
 			name: 'Rukmini S',
 			role: 'Founder and Director, Data For India',
 			title: 'The Data Is Here.',
@@ -27,6 +29,8 @@
 		},
 		{
 			image: anand,
+			xOffset: -30,
+			scale: 0.9,
 			alt: 'Anand',
 			name: 'S ANAND',
 			role: `LLM Psychologist @ Straive and CEO @ Gramener`,
