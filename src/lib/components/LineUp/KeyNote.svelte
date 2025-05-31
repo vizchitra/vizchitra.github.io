@@ -7,6 +7,8 @@
 	const speakerInfo = [
 		{
 			image: rukmini,
+			xOffset: -20,
+			yOffset: 15,
 			name: 'Rukmini S',
 			role: 'Founder and Director, Data For India',
 			title: 'The Data Is Here.',
@@ -27,6 +29,8 @@
 		},
 		{
 			image: anand,
+			xOffset: -30,
+			scale: 0.9,
 			alt: 'Anand',
 			name: 'S ANAND',
 			role: `LLM Psychologist @ Straive and CEO @ Gramener`,
