@@ -1,17 +1,17 @@
 <script>
 	import SpeakerCard from '../SpeakerCard/SpeakerCard.svelte';
 	import expand from '$lib/assets/images/icons/expand.png';
-	import aditiImage from '$lib/assets/images/speakers-2025/speaker-aditi.jpeg';
+	import aditiImage from '$lib/assets/images/speakers-2025/speaker-aditi.jpg';
 	import amanImage from '$lib/assets/images/speakers-2025/speaker-aman.jpg';
 	import yashnaImage from '$lib/assets/images/speakers-2025/speaker-yashna.jpg';
-	import gopikaImage from '$lib/assets/images/speakers-2025/speaker-gopika.png';
+	import gopikaImage from '$lib/assets/images/speakers-2025/speaker-gopika.jpg';
 	import gyanImage from '$lib/assets/images/speakers-2025/speaker-gyan.jpg';
-	import prasantaImage from '$lib/assets/images/speakers-2025/speaker-prasanta.png';
+	import prasantaImage from '$lib/assets/images/speakers-2025/speaker-prasanta.jpg';
 	import rahulNeelImage from '$lib/assets/images/speakers-2025/speaker-rahul-neel.png';
-	import sabhyataImage from '$lib/assets/images/speakers-2025/speaker-sabhyata.jpeg';
+	import sabhyataImage from '$lib/assets/images/speakers-2025/speaker-sabhyata.jpg';
 	import saketImage from '$lib/assets/images/speakers-2025/speaker-saket.png';
-	import sriniImage from '$lib/assets/images/speakers-2025/speaker-srini.jpeg';
-	import vikramImage from '$lib/assets/images/speakers-2025/speaker-vikram.png';
+	import sriniImage from '$lib/assets/images/speakers-2025/speaker-srini.jpg';
+	import vikramImage from '$lib/assets/images/speakers-2025/speaker-vikram.jpg';
 	import arrowLeft from '$lib/assets/images/icons/arrow-left.svg?raw';
 	import arrowRight from '$lib/assets/images/icons/arrow-right.svg?raw';
 

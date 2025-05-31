@@ -1,10 +1,10 @@
 <script>
-	import anandImage from '$lib/assets/images/speakers-2025/speaker-anand.png';
+	import anandImage from '$lib/assets/images/speakers-2025/speaker-anand.jpg';
 	import arvindImage from '$lib/assets/images/speakers-2025/speaker-arvind.jpg';
-	import samarthImage from '$lib/assets/images/speakers-2025/speaker-samarth.png';
+	import samarthImage from '$lib/assets/images/speakers-2025/speaker-samarth.jpg';
 	import arundathiImage from '$lib/assets/images/speakers-2025/speaker-arundathi.jpg';
 	import pulahaImage from '$lib/assets/images/speakers-2025/speaker-pulaha.jpg';
-	import sarathKrishnaImage from '$lib/assets/images/speakers-2025/speaker-sarath-krishna.png';
+	import sarathKrishnaImage from '$lib/assets/images/speakers-2025/speaker-sarath-krishna.jpg';
 	import SpeakerCard from '../SpeakerCard/SpeakerCard.svelte';
 	import arrowLeft from '$lib/assets/images/icons/arrow-left.svg?raw';
 	import arrowRight from '$lib/assets/images/icons/arrow-right.svg?raw';
