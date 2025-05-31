@@ -87,7 +87,7 @@
 					style="color: {colorMapping[data.talkType]?.primary}"
 					class="talk-title {isKeynote
 						? 'text-[1.5rem] md:text-[2rem] xl:text-[2.5rem]'
-						: 'text-[1.25rem] md:text-[1.75rem] xl:text-[1.8rem]'} mb-2 !leading-[1.1] font-bold"
+						: 'text-[1.25rem] md:text-[1.75rem] xl:text-[1.8rem]'} text-shadow mb-2 !leading-[1.1] font-bold"
 				>
 					{data.title}
 				</h3>
@@ -97,7 +97,7 @@
 						style="color: {colorMapping[data.talkType]?.primary}"
 						class="talk-subtitle {isKeynote
 							? 'text-[1.25rem] md:text-[1.75rem] xl:text-[2rem]'
-							: 'text-[1.25rem] md:text-[1.4rem] xl:text-[1.4rem]'}  !leading-[1.1]"
+							: 'text-[1.25rem] md:text-[1.4rem] xl:text-[1.4rem]'} text-shadow !leading-[1.1]"
 					>
 						{data.subtitle}
 					</p>
@@ -130,3 +130,13 @@
 		</div>
 	</div>
 {/if}
+
+<style>
+	.text-shadow {
+		text-shadow:
+			-1px -1px 0 white,
+			1px -1px 0 white,
+			-1px 1px 0 white,
+			1px 1px 0 white;
+	}
+</style>
