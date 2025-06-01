@@ -17,7 +17,7 @@
 15:30, 16:00,Tea Break,FALSE,,,,Break,,,,Audi,BIC,conference
 16:00, 16:15,"The UX of Charts: Get the Insight Across, Every Time",TRUE,Vikram Nayak,https://hasgeek.com/VizChitra/2025/sub/the-ux-of-charts-get-the-insight-across-every-time-DrGYcthTdJvPT3KvPBCCMj,15 mins,Lightning,lightning,bg-viz-yellow,AI & VIS,Audi,BIC,conference
 16:15, 16:45,Data Design by Dialogue: Visualizing Data with LLMs,TRUE,S Anand,https://hasgeek.com/VizChitra/2025/sub/visualizing-data-with-llms-EX3YtVF1mqSqnxY5LAtuRE,30 mins,Keynote,keynote,bg-viz-pink,AI & VIS,Audi,BIC,conference
-16:45, 17:00,Closing remarks,TRUE,,,15 mins,Empty,,bg-viz-grey,,Audi,BIC,conference
+16:45, 17:00,Closing remarks,TRUE,,,15 mins,other,,bg-viz-grey,,Audi,BIC,conference
 08:00, 09:00,Registration,TRUE,,,60 mins,other,,bg-viz-grey,,Hall 1,BIC,conference
 09:00, 09:15,,FALSE,,,15 mins,Empty,,,,Hall 1,BIC,conference
 09:15, 09:30,,FALSE,,,15 mins,Empty,,,,Hall 1,BIC,conference
@@ -61,3 +61,24 @@ Sahana Ghosh",https://hasgeek.com/VizChitra/2025/sub/lessons-for-newsrooms-from-
 16:00, 16:15,,FALSE,,,15 mins,Empty,,,,Hall 2,BIC,conference
 16:15, 16:45,,FALSE,,,30 mins,Empty,,,,Hall 2,BIC,conference
 16:45, 17:00,,FALSE,,,15 mins,Empty,,,,Hall 2,BIC,conference
+08:00, 09:00,Registration,TRUE,,,60 mins,other,,bg-viz-grey,,,Samagata,workshop
+09:00, 09:15,,FALSE,,,15 mins,Empty,,,,,Samagata,workshop
+09:15, 09:30,,FALSE,,,15 mins,Empty,,,,,Samagata,workshop
+09:30, 10:00,,FALSE,,,30 mins,Empty,,,,,Samagata,workshop
+10:00,13:00,Prompt-to-Plot: Crafting Visual Stories with LLMs,TRUE,S Anand,,180 mins,Workshop,workshop,bg-viz-teal,AI & Vis,,Samagata,workshop
+13:00,14:30,Break,FALSE,,,,,,,,,Samagata,workshop
+14:30,17:30,Dancing with the Stars: No-Code Data Analysis & Visualisation,TRUE,Arvind V,,180 mins,Workshop,workshop,bg-viz-teal,,,Samagata,workshop
+08:00, 09:00,Registration,TRUE,,,60 mins,other,,bg-viz-grey,,2nd Floor,Underline Center,workshop
+09:00, 09:15,,FALSE,,,,Empty,,,,2nd Floor,Underline Center,workshop
+09:15, 09:30,,FALSE,,,,Empty,,,,2nd Floor,Underline Center,workshop
+09:30, 10:00,,FALSE,,,,Empty,,,,2nd Floor,Underline Center,workshop
+10:00,13:00,Democratising Data: Stories using everyday objects,TRUE,Arundathi Rajan,,180 mins,Workshop,workshop,bg-viz-teal,AI & Vis,2nd Floor,Underline Center,workshop
+13:00,14:30,Break,FALSE,,,,,,,,2nd Floor,Underline Center,workshop
+14:30,17:30,The Sonic Signature: Plotting Your Name's Audio Landscape,TRUE,SAMARTH GULATI,,180 mins,Workshop,workshop,bg-viz-teal,,2nd Floor,Underline Center,workshop
+08:00, 09:00,Registration,FALSE,,,60 mins,other,,bg-viz-grey,,3rd Floor,Underline Center,workshop
+09:00, 09:15,,FALSE,,,,Empty,,,,3rd Floor,Underline Center,workshop
+09:15, 09:30,,FALSE,,,,Empty,,,,3rd Floor,Underline Center,workshop
+09:30, 10:00,,FALSE,,,,Empty,,,,3rd Floor,Underline Center,workshop
+10:00,13:00,Let’s get mapping! (QGIS) ,TRUE,Pulaha Roy,,180 mins,Workshop,workshop,bg-viz-teal,AI & Vis,3rd Floor,Underline Center,workshop
+13:00,14:30,Break,FALSE,,,,,,,,3rd Floor,Underline Center,workshop
+14:30,17:30,Chitra-Lekha: Engaging with environmental storytelling through the lens of air pollution data,TRUE,Sarath Guttikunda and Dammalapati Sai Krishna,,180 mins,Workshop,workshop,bg-viz-teal,,3rd Floor,Underline Center,workshop
