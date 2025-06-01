@@ -12,6 +12,9 @@
 	import standard from '$lib/assets/images/icons/standard.png';
 	import workshop from '$lib/assets/images/icons/workshop.png';
 	import { group, hierarchy, pack, scaleOrdinal } from 'd3';
+	import tippy from 'tippy.js';
+	import 'tippy.js/dist/tippy.css';
+	import 'tippy.js/themes/light.css';
 
 	interface EventType {
 		title: string;
@@ -56,6 +59,7 @@
 		room: string;
 		location: string;
 		day: string;
+		date: string;
 	}
 
 	interface HierarchyNode {
@@ -169,7 +173,11 @@
 				children: Array.from(sessions, ([sessionKey, values]) => ({
 					name: sessionKey,
 					value: values.reduce((sum, d) => sum + Number(d.duration), 0),
-					type: values[0].type
+					type: values[0].type,
+					session: values[0].session,
+					facilitator: values[0].facilitator,
+					location: values[0].location,
+					date: values[0].date
 				}))
 			}))
 		};
@@ -221,6 +229,26 @@
 			'#F89F72',
 			'#97E4DD'
 		]);
+
+	function tooltip(node: SVGCircleElement, params: object) {
+		let tip = tippy(node, {
+			...params,
+			theme: 'light',
+			allowHTML: true
+		});
+		return {
+			update: (newParams: object) => {
+				tip.setProps({
+					...newParams,
+					theme: 'light',
+					allowHTML: true
+				});
+			},
+			destroy: () => {
+				tip.destroy();
+			}
+		};
+	}
 
 	onMount(() => {
 		const updateHourHeight = () => {
@@ -398,11 +426,27 @@
 				>
 					{#each circlePackingData(chitra, 'topic', containerWidth) as d, i}
 						<circle
+							use:tooltip={{
+								content: `${
+									d.depth !== 2
+										? d.data.name
+										: `<div class="font-[Cairo]">
+							<h3 class="font-bold">${d.data.name}</h3>
+							<span>by ${d.data.facilitator}</span>
+							<hr class="border border-gray-300 my-2">
+							<span>${d.data.date}</span><br>
+							<span>${d.data.location}</span>
+							</div>
+							`
+								}`
+							}}
+							class="cursor-pointer"
 							cx={d.x}
 							cy={d.y}
 							r={d.r}
-							fill={d.depth === 2 ? colorScale(d.data.type) : 'transparent'}
-							stroke="grey"
+							fill={d.depth === 2 ? colorScale(d.data.type) : 'white'}
+							stroke={d.depth === 2 ? 'white' : 'grey'}
+							stroke-width="2"
 						/>
 
 						<defs>
@@ -432,11 +476,27 @@ a ${d.r},${d.r} 0 1,1 -${2 * d.r},0`}
 				>
 					{#each circlePackingData(chitra, 'type', containerWidth) as d, i}
 						<circle
+							use:tooltip={{
+								content: `${
+									d.depth !== 2
+										? d.data.name
+										: `<div class="font-[Cairo]">
+					<h3 class="font-bold">${d.data.name}</h3>
+					<span>by ${d.data.facilitator}</span>
+					<hr class="border border-gray-300 my-2">
+					<span>${d.data.date}</span><br>
+					<span>${d.data.location}</span>
+					</div>
+					`
+								}`
+							}}
+							class="cursor-pointer"
 							cx={d.x}
 							cy={d.y}
 							r={d.r}
-							fill={d.depth === 2 ? colorScale(d.data.type) : 'transparent'}
-							stroke="grey"
+							fill={d.depth === 2 ? colorScale(d.data.type) : 'white'}
+							stroke={d.depth === 2 ? 'white' : 'grey'}
+							stroke-width="2"
 						/>
 
 						<defs>
@@ -451,7 +511,7 @@ a ${d.r},${d.r} 0 1,1 -${2 * d.r},0`}
 						</defs>
 						{#if d.depth === 1}
 							<text class="lg:text-md text-sm" fill="grey" y="-5" text-anchor="middle">
-								<textPath href={`#circlePath-${i}`} startOffset="40%" dy="-10" fill="black">
+								<textPath href={`#circlePath-${i}`} startOffset="25%" dy="-10" fill="black">
 									{d.data.name}
 								</textPath>
 							</text>
