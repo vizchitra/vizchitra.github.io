@@ -1,63 +1,63 @@
-﻿start,end,session,show,facilitator,link,duration,type,audience,room,location,day
-08:00,09:00,Registration,True,,,60 mins,other,,Audi,BIC,conference
-09:00,09:15,Opening Address,True,,,15 mins,other,,Audi,BIC,conference
-09:15,09:30,Djembe Solo,True,Ashok Kumar,https://jembeashok.com,15 mins,other,,Audi,BIC,conference
-09:30,10:00,The data is here. But whom is it serving?,True,Rukmini S,https://hasgeek.com/VizChitra/2025/sub/putting-the-data-in-data-viz-T8JzpVLF6VruwBTE6rP8zR,30 mins,Keynote,Public Data,Audi,BIC,conference
-10:00, 10:30,Setting the Context: How Data Journalism is Redefining Print,True,Srinivasan Ramani,https://hasgeek.com/VizChitra/2025/sub/setting-the-context-how-data-journalism-is-redefin-QeX3UqdyBWupywXLwe3SUr,30 mins,Standard,NewsRoom,Audi,BIC,conference
-10:30, 11:00,Sponsored Talk — Standard — Nutanix,True,Hardik,???,30 mins,Sponsored,???,Audi,BIC,conference
-11:00, 11:30,Tea Break,False,,,,Break,,Audi,BIC,conference
-11:30, 12:00,The Eyes Have It: Understanding Perception-Driven Data Visualisation,True,Prasanta,https://hasgeek.com/VizChitra/2025/sub/the-eyes-have-it-understanding-perception-driven-d-2aERpLPse53SfYjSYW5XFi,30 mins,Standard,NewsRoom,Audi,BIC,conference
-12:00,12:15,"The ATCGs of India’s Public Health Genome: A Visual Story of Anomalies, Trajectories, Correlations and Geographies",True,Saket Choudhary,https://hasgeek.com/VizChitra/2025/sub/the-atcgs-of-indias-public-health-genome-a-visual-WHHeaYvzwyrEDGUhqeC8n5,15 mins,Lightning,Public HealthCare,Audi,BIC,conference
-12:00, 12:30,Sponsored Talk — Standard — Lilly,True,???,???,30 mins,Sponsored,Private HealthCare,Audi,BIC,conference
-12:45, 14:00,Lunch Break,False,,,,Break,,Audi,BIC,conference
-14:00, 14:30,Moving Data: Climate Stripes in Motion and Emotion,True,Aditi Bhat,https://hasgeek.com/VizChitra/2025/sub/moving-data-climate-stripes-in-motion-and-emotion-5xDVBA3JB3Xd6zU5TLUbqK,30 mins,Standard,Physicalization,Audi,BIC,conference
-14:30, 14:45,Making Sense of Stories: Structuring Qual Data at Scale,True,Yashna,https://hasgeek.com/VizChitra/2025/sub/making-sense-of-stories-structuring-qual-data-at-s-MWBidJxMGVKyxum8i1cEhr,15 mins,Lightning,Qualitative,Audi,BIC,conference
-14:45, 15:15,"PANEL with Kavitha, Nutanix",True,Sponsors,???,30 mins,Panel,Dashboard,Audi,BIC,conference
-15:15, 15:30,The Invisible Graph: Leveraging AI to make data visualization accessible,True,Sabhayata,https://hasgeek.com/VizChitra/2025/sub/the-invisible-graph-leveraging-ai-to-make-data-vis-SrUaS5bWXe3SGbwmfHeyL9,15 mins,Lightning,Accessibiity AI,Audi,BIC,conference
-15:30, 16:00,Tea Break,False,,,,Break,,Audi,BIC,conference
-16:00, 16:15,"The UX of Charts: Get the Insight Across, Every Time",True,Vikram Nayak,https://hasgeek.com/VizChitra/2025/sub/the-ux-of-charts-get-the-insight-across-every-time-DrGYcthTdJvPT3KvPBCCMj,15 mins,Lightning,AI & VIS,Audi,BIC,conference
-16:15, 16:45,Data Design by Dialogue: Visualizing Data with LLMs,True,S Anand,https://hasgeek.com/VizChitra/2025/sub/visualizing-data-with-llms-EX3YtVF1mqSqnxY5LAtuRE,30 mins,Keynote,AI & VIS,Audi,BIC,conference
-16:45, 17:00,Closing remarks,True,,,15 mins,other,,Audi,BIC,conference
-08:00, 09:00,Registration,False,,,60 mins,Empty,,Hall 1,BIC,conference
-09:00, 09:15,,False,,,15 mins,Empty,,Hall 1,BIC,conference
-09:15, 09:30,,False,,,15 mins,Empty,,Hall 1,BIC,conference
-09:30, 10:00,,False,,,30 mins,Empty,,Hall 1,BIC,conference
-10:00, 10:30,,False,,,30 mins,Empty,,Hall 1,BIC,conference
-10:30, 11:00,,False,,,30 mins,Empty,,Hall 1,BIC,conference
-11:00, 11:30,Tea Break,False,,,,Break,,Hall 1,BIC,conference
-11:30, 12:00,Planet Under Pressure: Visualizing Earth's Fragile Balance through ,True,Rama Krushna Behera,https://hasgeek.com/VizChitra/2025/sub/beyond-headlines-understanding-india-through-data-5J6iAy2yGck73DnjmsF5pr,30 mins,Alternate,,Hall 1,BIC,conference
-12:30, 12:45,The Unreasonable Effectiveness of Tinkering,True,Aman Bhargava,https://hasgeek.com/VizChitra/2025/sub/the-unreasonable-effectiveness-of-tinkering-HWu7i2WhMk7GHBeBaZMgTy,15 mins,Lightning,Personal,Hall 1,BIC,conference
-12:00, 12:30,You Had One Job: Chart Edition,True,"Anushka G
-Rutu Tank",https://hasgeek.com/VizChitra/2025/sub/you-had-one-job-chart-edition-QWa6KsEswfEMpTP9Uiy8Vh,30 mins,Alternate,Critique,Hall 1,BIC,conference
-12:45, 14:00,Lunch Break,False,,,,Break,,Hall 1,BIC,conference
-14:00, 14:30,Flash Talks - 5 mins each,True,,,30 mins,Lightning,,Hall 1,BIC,conference
-14:30, 14:45,Democratizing Financial Data for a Growing India,True,"Rahul Beniwal
-Neel Lakhwani",https://hasgeek.com/VizChitra/2025/sub/democratizing-financial-data-for-a-growing-india-Dd38iBU6tSvKC7fNGHBMAf,15 mins,Lightning,Financial,Hall 1,BIC,conference
-14:45, 15:15,Contractions - A performance/play on the dark side of AI and Data,True,Suhasini Seelin,https://hasgeek.com/VizChitra/2025/sub/contractions-a-performance-play-on-the-dark-side-o-GkyAcvuztec4NeRiuiF1Pr,30 mins,Alternate,"Performance, AI + Data",Hall 1,BIC,conference
-15:15, 15:30,Beyond Headlines: Understanding India Through Data,True,Pragnya,https://hasgeek.com/VizChitra/2025/sub/beyond-headlines-understanding-india-through-data-5J6iAy2yGck73DnjmsF5pr,15 mins,Alternate,Public Data,Hall 1,BIC,conference
-15:30, 16:00,Tea Break,False,,,,Break,,Hall 1,BIC,conference
-16:00, 16:15,,False,,,15 mins,Empty,,Hall 1,BIC,conference
-16:15, 16:45,,False,,,30 mins,Empty,,Hall 1,BIC,conference
-16:45, 17:00,,False,,,15 mins,Empty,,Hall 1,BIC,conference
-08:00, 09:00,Registration,False,,,60 mins,Empty,,Hall 2,BIC,conference
-09:00, 09:15,,False,,,15 mins,Empty,,Hall 2,BIC,conference
-09:15, 09:30,,False,,,15 mins,Empty,,Hall 2,BIC,conference
-09:30, 10:00,,False,,,30 mins,Empty,,Hall 2,BIC,conference
-10:00, 10:30,Teaching Information Visualisation,True,Gyan Lakhwani,https://hasgeek.com/VizChitra/2025/sub/teaching-information-visualisation-VaYWrEcBSxEqFryPWCjkTm,30 mins,BoF,Educators,Hall 2,BIC,conference
-10:30, 11:00,Teaching Information Visualisation,True,Gyan Lakhwani,https://hasgeek.com/VizChitra/2025/sub/teaching-information-visualisation-VaYWrEcBSxEqFryPWCjkTm,30 mins,BoF,Educators,Hall 2,BIC,conference
-11:00, 11:30,Tea Break,False,,,,Break,,Hall 2,BIC,conference
-11:30, 12:00,Whose Analysis is it Anyway? The Role of AI and Humans in Data Analysis and Visualization,True,Gopika,https://hasgeek.com/VizChitra/2025/sub/whose-analysis-is-it-anyway-the-role-of-ai-and-hum-8xVeJYL1H4dQPY1pTiPR7F,30 mins,BoF,AI & Vis,Hall 2,BIC,conference
-12:30, 12:45,,False,,,15 mins,Empty,,Hall 2,BIC,conference
-12:00, 12:30,Whose Analysis is it Anyway? The Role of AI and Humans in Data Analysis and Visualization,True,Gopika,https://hasgeek.com/VizChitra/2025/sub/whose-analysis-is-it-anyway-the-role-of-ai-and-hum-8xVeJYL1H4dQPY1pTiPR7F,30 mins,BoF,AI & Vis,Hall 2,BIC,conference
-12:45, 14:00,Lunch Break,False,,,,Break,,Hall 2,BIC,conference
-14:00, 14:30,,False,,,30 mins,Empty,,Hall 2,BIC,conference
-14:30, 14:45,Lessons For Newsrooms From Data Visualisers,True,"Kartik Chandramouli 
-Sahana Ghosh",https://hasgeek.com/VizChitra/2025/sub/lessons-for-newsrooms-from-data-visualisers-DkBAnW3Terhtk7sKCFG3Lv,15 mins,BoF,NewsRoom,Hall 2,BIC,conference
-14:45, 15:15,Lessons For Newsrooms From Data Visualisers,True,"Kartik Chandramouli 
-Sahana Ghosh",https://hasgeek.com/VizChitra/2025/sub/lessons-for-newsrooms-from-data-visualisers-DkBAnW3Terhtk7sKCFG3Lv,30 mins,BoF,NewsRoom,Hall 2,BIC,conference
-15:15, 15:30,Lessons For Newsrooms From Data Visualisers,True,"Kartik Chandramouli 
-Sahana Ghosh",https://hasgeek.com/VizChitra/2025/sub/lessons-for-newsrooms-from-data-visualisers-DkBAnW3Terhtk7sKCFG3Lv,15 mins,BoF,NewsRoom,Hall 2,BIC,conference
-15:30, 16:00,Tea Break,False,,,,Break,,Hall 2,BIC,conference
-16:00, 16:15,,False,,,15 mins,Empty,,Hall 2,BIC,conference
-16:15, 16:45,,False,,,30 mins,Empty,,Hall 2,BIC,conference
-16:45, 17:00,,False,,,15 mins,Empty,,Hall 2,BIC,conference
+﻿start,end,session,show,facilitator,link,duration,type,icon,bgFill,audience,room,location,day
+08:00,09:00,Registration,TRUE,,,60 mins,other,,bg-viz-grey,,Audi,BIC,conference
+09:00,09:15,Opening Address,TRUE,,,15 mins,other,,bg-viz-grey,,Audi,BIC,conference
+09:15,09:30,Djembe Solo,TRUE,Ashok Kumar,https://jembeashok.com,15 mins,other,,bg-viz-grey,,Audi,BIC,conference
+09:30,10:00,The data is here. But whom is it serving?,TRUE,Rukmini S,https://hasgeek.com/VizChitra/2025/sub/putting-the-data-in-data-viz-T8JzpVLF6VruwBTE6rP8zR,30 mins,Keynote,keynote,bg-viz-pink,Public Data,Audi,BIC,conference
+10:00, 10:30,Setting the Context: How Data Journalism is Redefining Print,TRUE,Srinivasan Ramani,https://hasgeek.com/VizChitra/2025/sub/setting-the-context-how-data-journalism-is-redefin-QeX3UqdyBWupywXLwe3SUr,30 mins,Standard,standard,bg-viz-orange,NewsRoom,Audi,BIC,conference
+10:30, 11:00,Sponsored Talk — Standard — Nutanix,TRUE,Hardik,???,30 mins,Sponsored,sponsored,bg-viz-teal,???,Audi,BIC,conference
+11:00, 11:30,Tea Break,FALSE,,,,Break,,,,Audi,BIC,conference
+11:30, 12:00,The Eyes Have It: Understanding Perception-Driven Data Visualisation,TRUE,Prasanta,https://hasgeek.com/VizChitra/2025/sub/the-eyes-have-it-understanding-perception-driven-d-2aERpLPse53SfYjSYW5XFi,30 mins,Standard,standard,bg-viz-orange,NewsRoom,Audi,BIC,conference
+12:00,12:15,"The ATCGs of India’s Public Health Genome: A Visual Story of Anomalies, Trajectories, Correlations and Geographies",TRUE,Saket Choudhary,https://hasgeek.com/VizChitra/2025/sub/the-atcgs-of-indias-public-health-genome-a-visual-WHHeaYvzwyrEDGUhqeC8n5,15 mins,Lightning,lightning,bg-viz-yellow,Public HealthCare,Audi,BIC,conference
+12:15, 12:45,Sponsored Talk — Standard — Lilly,TRUE,???,???,30 mins,Sponsored,sponsored,bg-viz-teal,Private HealthCare,Audi,BIC,conference
+12:45, 14:00,Lunch Break,FALSE,,,,Break,,,,Audi,BIC,conference
+14:00, 14:30,Moving Data: Climate Stripes in Motion and Emotion,TRUE,Aditi Bhat,https://hasgeek.com/VizChitra/2025/sub/moving-data-climate-stripes-in-motion-and-emotion-5xDVBA3JB3Xd6zU5TLUbqK,30 mins,Standard,standard,bg-viz-orange,Physicalization,Audi,BIC,conference
+14:30, 14:45,Making Sense of Stories: Structuring Qual Data at Scale,TRUE,Yashna,https://hasgeek.com/VizChitra/2025/sub/making-sense-of-stories-structuring-qual-data-at-s-MWBidJxMGVKyxum8i1cEhr,15 mins,Lightning,lightning,bg-viz-yellow,Qualitative,Audi,BIC,conference
+14:45, 15:15,"PANEL with Kavitha, Nutanix",TRUE,Sponsors,???,30 mins,Panel,panel,bg-viz-teal,Dashboard,Audi,BIC,conference
+15:15, 15:30,The Invisible Graph: Leveraging AI to make data visualization accessible,TRUE,Sabhayata,https://hasgeek.com/VizChitra/2025/sub/the-invisible-graph-leveraging-ai-to-make-data-vis-SrUaS5bWXe3SGbwmfHeyL9,15 mins,Lightning,lightning,bg-viz-yellow,Accessibiity AI,Audi,BIC,conference
+15:30, 16:00,Tea Break,FALSE,,,,Break,,,,Audi,BIC,conference
+16:00, 16:15,"The UX of Charts: Get the Insight Across, Every Time",TRUE,Vikram Nayak,https://hasgeek.com/VizChitra/2025/sub/the-ux-of-charts-get-the-insight-across-every-time-DrGYcthTdJvPT3KvPBCCMj,15 mins,Lightning,lightning,bg-viz-yellow,AI & VIS,Audi,BIC,conference
+16:15, 16:45,Data Design by Dialogue: Visualizing Data with LLMs,TRUE,S Anand,https://hasgeek.com/VizChitra/2025/sub/visualizing-data-with-llms-EX3YtVF1mqSqnxY5LAtuRE,30 mins,Keynote,keynote,bg-viz-pink,AI & VIS,Audi,BIC,conference
+16:45, 17:00,Closing remarks,TRUE,,,15 mins,Empty,,bg-viz-grey,,Audi,BIC,conference
+08:00, 09:00,Registration,TRUE,,,60 mins,other,,bg-viz-grey,,Hall 1,BIC,conference
+09:00, 09:15,,FALSE,,,15 mins,Empty,,,,Hall 1,BIC,conference
+09:15, 09:30,,FALSE,,,15 mins,Empty,,,,Hall 1,BIC,conference
+09:30, 10:00,,FALSE,,,30 mins,Empty,,,,Hall 1,BIC,conference
+10:00, 10:30,,FALSE,,,30 mins,Empty,,,,Hall 1,BIC,conference
+10:30, 11:00,,FALSE,,,30 mins,Empty,,,,Hall 1,BIC,conference
+11:00, 11:30,Tea Break,FALSE,,,,Break,,,,Hall 1,BIC,conference
+11:30, 12:00,Planet Under Pressure: Visualizing Earth's Fragile Balance through ,TRUE,Rama Krushna Behera,https://hasgeek.com/VizChitra/2025/sub/beyond-headlines-understanding-india-through-data-5J6iAy2yGck73DnjmsF5pr,30 mins,Alternate,alternate,bg-viz-orange,,Hall 1,BIC,conference
+12:30, 12:45,The Unreasonable Effectiveness of Tinkering,TRUE,Aman Bhargava,https://hasgeek.com/VizChitra/2025/sub/the-unreasonable-effectiveness-of-tinkering-HWu7i2WhMk7GHBeBaZMgTy,15 mins,Lightning,lightning,bg-viz-yellow,Personal,Hall 1,BIC,conference
+12:00, 12:30,You Had One Job: Chart Edition,TRUE,"Anushka G
+Rutu Tank",https://hasgeek.com/VizChitra/2025/sub/you-had-one-job-chart-edition-QWa6KsEswfEMpTP9Uiy8Vh,30 mins,Alternate,alternate,bg-viz-orange,Critique,Hall 1,BIC,conference
+12:45, 14:00,Lunch Break,FALSE,,,,Break,,,,Hall 1,BIC,conference
+14:00, 14:30,Flash Talks - 5 mins each,TRUE,,,30 mins,Lightning,lightning,bg-viz-yellow,,Hall 1,BIC,conference
+14:30, 14:45,Democratizing Financial Data for a Growing India,TRUE,"Rahul Beniwal
+Neel Lakhwani",https://hasgeek.com/VizChitra/2025/sub/democratizing-financial-data-for-a-growing-india-Dd38iBU6tSvKC7fNGHBMAf,15 mins,Lightning,lightning,bg-viz-yellow,Financial,Hall 1,BIC,conference
+14:45, 15:15,Contractions - A performance/play on the dark side of AI and Data,TRUE,Suhasini Seelin,https://hasgeek.com/VizChitra/2025/sub/contractions-a-performance-play-on-the-dark-side-o-GkyAcvuztec4NeRiuiF1Pr,30 mins,Alternate,alternate,bg-viz-orange,"Performance, AI + Data",Hall 1,BIC,conference
+15:15, 15:30,Beyond Headlines: Understanding India Through Data,TRUE,Pragnya,https://hasgeek.com/VizChitra/2025/sub/beyond-headlines-understanding-india-through-data-5J6iAy2yGck73DnjmsF5pr,15 mins,Alternate,alternate,bg-viz-orange,Public Data,Hall 1,BIC,conference
+15:30, 16:00,Tea Break,FALSE,,,,Break,,,,Hall 1,BIC,conference
+16:00, 16:15,,FALSE,,,15 mins,Empty,,,,Hall 1,BIC,conference
+16:15, 16:45,,FALSE,,,30 mins,Empty,,,,Hall 1,BIC,conference
+16:45, 17:00,,FALSE,,,15 mins,Empty,,,,Hall 1,BIC,conference
+08:00, 09:00,Registration,TRUE,,,60 mins,other,,bg-viz-grey,,Hall 2,BIC,conference
+09:00, 09:15,,FALSE,,,15 mins,Empty,,,,Hall 2,BIC,conference
+09:15, 09:30,,FALSE,,,15 mins,Empty,,,,Hall 2,BIC,conference
+09:30, 10:00,,FALSE,,,30 mins,Empty,,,,Hall 2,BIC,conference
+10:00, 10:30,Teaching Information Visualisation,TRUE,Gyan Lakhwani,https://hasgeek.com/VizChitra/2025/sub/teaching-information-visualisation-VaYWrEcBSxEqFryPWCjkTm,30 mins,BoF,bof,bg-[#A8BDF0],Educators,Hall 2,BIC,conference
+10:30, 11:00,Teaching Information Visualisation,TRUE,Gyan Lakhwani,https://hasgeek.com/VizChitra/2025/sub/teaching-information-visualisation-VaYWrEcBSxEqFryPWCjkTm,30 mins,BoF,bof,bg-[#A8BDF0],Educators,Hall 2,BIC,conference
+11:00, 11:30,Tea Break,FALSE,,,,Break,,,,Hall 2,BIC,conference
+11:30, 12:00,Whose Analysis is it Anyway? The Role of AI and Humans in Data Analysis and Visualization,TRUE,Gopika,https://hasgeek.com/VizChitra/2025/sub/whose-analysis-is-it-anyway-the-role-of-ai-and-hum-8xVeJYL1H4dQPY1pTiPR7F,30 mins,BoF,bof,bg-[#A8BDF0],AI & Vis,Hall 2,BIC,conference
+12:30, 12:45,,FALSE,,,15 mins,Empty,,,,Hall 2,BIC,conference
+12:00, 12:30,Whose Analysis is it Anyway? The Role of AI and Humans in Data Analysis and Visualization,TRUE,Gopika,https://hasgeek.com/VizChitra/2025/sub/whose-analysis-is-it-anyway-the-role-of-ai-and-hum-8xVeJYL1H4dQPY1pTiPR7F,30 mins,BoF,bof,bg-[#A8BDF0],AI & Vis,Hall 2,BIC,conference
+12:45, 14:00,Lunch Break,FALSE,,,,Break,,,,Hall 2,BIC,conference
+14:00, 14:30,,FALSE,,,30 mins,Empty,,,,Hall 2,BIC,conference
+14:30, 14:45,Lessons For Newsrooms From Data Visualisers,TRUE,"Kartik Chandramouli 
+Sahana Ghosh",https://hasgeek.com/VizChitra/2025/sub/lessons-for-newsrooms-from-data-visualisers-DkBAnW3Terhtk7sKCFG3Lv,15 mins,BoF,bof,bg-[#A8BDF0],NewsRoom,Hall 2,BIC,conference
+14:45, 15:15,Lessons For Newsrooms From Data Visualisers,TRUE,"Kartik Chandramouli 
+Sahana Ghosh",https://hasgeek.com/VizChitra/2025/sub/lessons-for-newsrooms-from-data-visualisers-DkBAnW3Terhtk7sKCFG3Lv,30 mins,BoF,bof,bg-[#A8BDF0],NewsRoom,Hall 2,BIC,conference
+15:15, 15:30,Lessons For Newsrooms From Data Visualisers,TRUE,"Kartik Chandramouli 
+Sahana Ghosh",https://hasgeek.com/VizChitra/2025/sub/lessons-for-newsrooms-from-data-visualisers-DkBAnW3Terhtk7sKCFG3Lv,15 mins,BoF,bof,bg-[#A8BDF0],NewsRoom,Hall 2,BIC,conference
+15:30, 16:00,Tea Break,FALSE,,,,Break,,,,Hall 2,BIC,conference
+16:00, 16:15,,FALSE,,,15 mins,Empty,,,,Hall 2,BIC,conference
+16:15, 16:45,,FALSE,,,30 mins,Empty,,,,Hall 2,BIC,conference
+16:45, 17:00,,FALSE,,,15 mins,Empty,,,,Hall 2,BIC,conference
