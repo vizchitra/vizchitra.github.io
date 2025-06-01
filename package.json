@@ -42,6 +42,7 @@
 		]
 	},
 	"dependencies": {
-		"tinacms": "^2.6.4"
+		"tinacms": "^2.6.4",
+		"tippy.js": "^6.3.7"
 	}
 }
