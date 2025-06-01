@@ -1,6 +1,7 @@
 <script lang="ts">
 	import VizChitraLogoType from '$lib/components/VizChitraLogoType.svelte';
 	import agenda from '$lib/data/agenda.csv';
+	import chitra from '$lib/data/chitra.csv';
 	import { onMount } from 'svelte';
 	import alternate from '$lib/assets/images/icons/alternate.png';
 	import bof from '$lib/assets/images/icons/bof.png';
@@ -10,7 +11,7 @@
 	import sponsored from '$lib/assets/images/icons/sponsored.png';
 	import standard from '$lib/assets/images/icons/standard.png';
 	import workshop from '$lib/assets/images/icons/workshop.png';
-	import { group } from 'd3';
+	import { group, hierarchy, pack, scaleOrdinal } from 'd3';
 
 	interface EventType {
 		title: string;
@@ -40,6 +41,27 @@
 		iconName: string;
 		icon: string;
 		iconLine: string;
+	}
+
+	interface ChitraType {
+		session: string;
+		facilitator: string;
+		duration: number;
+		type: string;
+		icon: string;
+		bgFill: string;
+		audience: string;
+		theme: string;
+		topic: string;
+		room: string;
+		location: string;
+		day: string;
+	}
+
+	interface HierarchyNode {
+		name: string;
+		value?: number;
+		children?: HierarchyNode[];
 	}
 
 	const scheduleDate = [
@@ -111,8 +133,6 @@
 		[hall1Schedule, hall2Schedule]
 	];
 
-	console.log(schedule);
-
 	let selectedDayIndex = 0;
 	let selectedConfIndex = 0;
 	let selectedWorkIndex = 0;
@@ -138,6 +158,70 @@
 		return `top: ${top}px; height: ${height}px;`;
 	}
 
+	let containerEl: HTMLDivElement;
+	let containerWidth = 500;
+
+	function buildHierarchy(grouped: Map<string, Map<string, ChitraType[]>>): any {
+		return {
+			name: 'root',
+			children: Array.from(grouped, ([key, sessions]) => ({
+				name: key,
+				children: Array.from(sessions, ([sessionKey, values]) => ({
+					name: sessionKey,
+					value: values.reduce((sum, d) => sum + Number(d.duration), 0),
+					type: values[0].type
+				}))
+			}))
+		};
+	}
+
+	function circlePackingData(data: ChitraType[], type: string, containerWidth: number) {
+		const chitraByTopic = group(
+			data,
+			(d: ChitraType) => d.topic,
+			(d: ChitraType) => d.session
+		);
+		const chitraByTalk = group(
+			data,
+			(d: ChitraType) => d.type,
+			(d: ChitraType) => d.session
+		);
+
+		const grouped = type === 'topic' ? chitraByTopic : chitraByTalk;
+
+		const rootObject = buildHierarchy(grouped);
+
+		const root = hierarchy(rootObject)
+			.sum((d: HierarchyNode) => d.value || 0)
+			.sort((a: HierarchyNode, b: HierarchyNode) => (b.value || 0) - (a.value || 0));
+
+		const layout = pack().size([containerWidth, containerWidth]).padding(30);
+
+		return layout(root).descendants().slice(1);
+	}
+
+	const colorScale = scaleOrdinal()
+		.domain([
+			'Alternate',
+			'Bof',
+			'Keynote',
+			'Lightning',
+			'Panel',
+			'Sponsored',
+			'Standard',
+			'Workshop'
+		])
+		.range([
+			'#F89F72',
+			'#A8BDF0',
+			'#EE88B3',
+			'#FFD485',
+			'#97E4DD',
+			'#97E4DD',
+			'#F89F72',
+			'#97E4DD'
+		]);
+
 	onMount(() => {
 		const updateHourHeight = () => {
 			hourHeight = window.matchMedia('(min-width: 1024px)').matches ? 190 : 290;
@@ -146,8 +230,20 @@
 		updateHourHeight(); // initial check
 		window.addEventListener('resize', updateHourHeight);
 
+		const resizeObserver = new ResizeObserver((entries) => {
+			for (const entry of entries) {
+				const width = entry.contentRect.width;
+				if (width !== containerWidth) {
+					containerWidth = width;
+				}
+			}
+		});
+
+		resizeObserver.observe(containerEl);
+
 		return () => {
 			window.removeEventListener('resize', updateHourHeight);
+			resizeObserver.disconnect();
 		};
 	});
 </script>
@@ -218,80 +314,153 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="mt-6 mr-1 flex">
-		<div class="time-labels pr-4 text-right">
-			{#each Array(scheduleEnd - scheduleStart + 1)
-				.fill(0)
-				.map((_, i) => scheduleStart + i) as hour}
-				<div style="height: {hourHeight}px" class="text-sm text-gray-400">{hour}:00</div>
-			{/each}
-		</div>
-		<div
-			class="relative w-full border-l border-gray-300"
-			style="height: {(scheduleEnd - scheduleStart) * hourHeight}px"
-		>
-			{#each schedule[selectedDayIndex][selectedDayIndex === 0 ? selectedConfIndex : selectedDayIndex === 1 ? selectedWorkIndex : selectedChitraIndex] as event}
-				<div
-					class="absolute right-0 left-0 flex gap-2 rounded-xs border-y border-white px-2 shadow {event.bgFill}"
-					style={getPositionStyle(event)}
-				>
-					{#if event.type === 'other'}
-						<div class="flex items-center">
-							<span class="text-white">{event.session}</span>
-						</div>
-					{:else if selectedDayIndex === 1&& selectedWorkIndex === 1 && event.type !== 'other'}
-						<div class="flex flex-col gap-4 justify-center">
-							<div class="flex gap-4 items-center">
-								<img
-									src={iconGroup.get(event.icon)?.[0].icon}
-									alt={iconGroup.get(event.icon)?.[0].iconName}
-									class="h-[20px] w-auto self-center"
-								/>
-								<div class="text-md leading-4.5 lg:text-lg">
-									<div>
-										<span>{event.floor2.session} - </span>
-										<span class="font-bold">{event.floor2.facilitator}</span>
-										<span>| 2nd Floor</span>
+	{#if selectedDayIndex !== 2}
+		<div class="mt-6 mr-1 flex">
+			<div class="time-labels pr-4 text-right">
+				{#each Array(scheduleEnd - scheduleStart + 1)
+					.fill(0)
+					.map((_, i) => scheduleStart + i) as hour}
+					<div style="height: {hourHeight}px" class="text-sm text-gray-400">{hour}:00</div>
+				{/each}
+			</div>
+			<div
+				class="relative w-full border-l border-gray-300"
+				style="height: {(scheduleEnd - scheduleStart) * hourHeight}px"
+			>
+				{#each schedule[selectedDayIndex][selectedDayIndex === 0 ? selectedConfIndex : selectedDayIndex === 1 ? selectedWorkIndex : selectedChitraIndex] as event}
+					<div
+						class="absolute right-0 left-0 flex gap-2 rounded-xs border-y border-white px-2 shadow {event.bgFill}"
+						style={getPositionStyle(event)}
+					>
+						{#if event.type === 'other'}
+							<div class="flex items-center">
+								<span class="text-white">{event.session}</span>
+							</div>
+						{:else if selectedDayIndex === 1 && selectedWorkIndex === 1 && event.type !== 'other'}
+							<div class="flex flex-col justify-center gap-4">
+								<div class="flex items-center gap-4">
+									<img
+										src={iconGroup.get(event.icon)?.[0].icon}
+										alt={iconGroup.get(event.icon)?.[0].iconName}
+										class="h-[20px] w-auto self-center"
+									/>
+									<div class="text-md leading-4.5 lg:text-lg">
+										<div>
+											<span>{event.floor2.session} - </span>
+											<span class="font-bold">{event.floor2.facilitator}</span>
+											<span>| 2nd Floor</span>
+										</div>
+									</div>
+								</div>
+								<div class="flex items-center gap-4">
+									<img
+										src={iconGroup.get(event.icon)?.[0].icon}
+										alt={iconGroup.get(event.icon)?.[0].iconName}
+										class="h-[20px] w-auto self-center"
+									/>
+									<div class="text-md leading-4.5 lg:text-lg">
+										<div>
+											<span>{event.floor3.session} - </span>
+											<span class="font-bold">{event.floor3.facilitator}</span>
+											<span>| 3rd Floor</span>
+										</div>
 									</div>
 								</div>
 							</div>
-							<div class="flex gap-4 items-center">
-								<img
-									src={iconGroup.get(event.icon)?.[0].icon}
-									alt={iconGroup.get(event.icon)?.[0].iconName}
-									class="h-[20px] w-auto self-center"
-								/>
-								<div class="text-md leading-4.5 lg:text-lg">
-									<div>
-										<span>{event.floor3.session} - </span>
-										<span class="font-bold">{event.floor3.facilitator}</span>
-										<span>| 3rd Floor</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					{:else}
-						<div class="flex items-center gap-4">
-							<div>
-								<img
-									src={iconGroup.get(event.icon)?.[0].icon}
-									alt={iconGroup.get(event.icon)?.[0].iconName}
-									class="h-[20px] w-auto self-center"
-								/>
-							</div>
-							<div class="text-md leading-4.5 lg:text-lg">
+						{:else}
+							<div class="flex items-center gap-4">
 								<div>
-									<span>{event.session} - </span>
-									<span class="font-bold">{event.facilitator}</span>
+									<img
+										src={iconGroup.get(event.icon)?.[0].icon}
+										alt={iconGroup.get(event.icon)?.[0].iconName}
+										class="h-[20px] w-auto self-center"
+									/>
+								</div>
+								<div class="text-md leading-4.5 lg:text-lg">
+									<div>
+										<span>{event.session} - </span>
+										<span class="font-bold">{event.facilitator}</span>
+									</div>
 								</div>
 							</div>
-						</div>
-					{/if}
-				</div>
-			{/each}
+						{/if}
+					</div>
+				{/each}
+			</div>
 		</div>
-	</div>
+	{:else}
+		<div bind:this={containerEl}>
+			{#if selectedChitraIndex === 0}
+				<svg
+					viewBox={`0 0 ${containerWidth} ${containerWidth}`}
+					preserveAspectRatio="xMidYMid meet"
+					class="h-auto w-full"
+				>
+					{#each circlePackingData(chitra, 'topic', containerWidth) as d, i}
+						<circle
+							cx={d.x}
+							cy={d.y}
+							r={d.r}
+							fill={d.depth === 2 ? colorScale(d.data.type) : 'transparent'}
+							stroke="grey"
+						/>
+
+						<defs>
+							<path
+								id={`circlePath-${i}`}
+								d={`M ${d.x} ${d.y}
+m -${d.r}, 0
+a ${d.r},${d.r} 0 1,1 ${2 * d.r},0
+a ${d.r},${d.r} 0 1,1 -${2 * d.r},0`}
+								fill="white"
+							/>
+						</defs>
+						{#if d.depth === 1}
+							<text class="lg:text-md text-sm" fill="grey" y="-5" text-anchor="middle">
+								<textPath href={`#circlePath-${i}`} startOffset="40%" dy="-10" fill="black">
+									{d.data.name}
+								</textPath>
+							</text>
+						{/if}
+					{/each}
+				</svg>
+			{:else}
+				<svg
+					viewBox={`0 0 ${containerWidth} ${containerWidth}`}
+					preserveAspectRatio="xMidYMid meet"
+					class="h-auto w-full"
+				>
+					{#each circlePackingData(chitra, 'type', containerWidth) as d, i}
+						<circle
+							cx={d.x}
+							cy={d.y}
+							r={d.r}
+							fill={d.depth === 2 ? colorScale(d.data.type) : 'transparent'}
+							stroke="grey"
+						/>
+
+						<defs>
+							<path
+								id={`circlePath-${i}`}
+								d={`M ${d.x} ${d.y}
+m -${d.r}, 0
+a ${d.r},${d.r} 0 1,1 ${2 * d.r},0
+a ${d.r},${d.r} 0 1,1 -${2 * d.r},0`}
+								fill="white"
+							/>
+						</defs>
+						{#if d.depth === 1}
+							<text class="lg:text-md text-sm" fill="grey" y="-5" text-anchor="middle">
+								<textPath href={`#circlePath-${i}`} startOffset="40%" dy="-10" fill="black">
+									{d.data.name}
+								</textPath>
+							</text>
+						{/if}
+					{/each}
+				</svg>
+			{/if}
+		</div>
+	{/if}
 </div>
 
 <style>
