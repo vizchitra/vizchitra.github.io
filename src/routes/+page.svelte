@@ -15,6 +15,7 @@
 	import Pentagons from '$lib/components/Pentagons.svelte';
 	import Map from '$lib/components/Map.svelte';
 	import VenueCard from '$lib/components/VenueCard.svelte';
+	import FAQ from '$lib/components/FAQ.svelte';
 
 	const sponsors = [
 		{
@@ -66,7 +67,7 @@
 	const conferenceVenue = {
 		name: 'Bangalore International Centre',
 		address: '7, 4th Main Rd, Stage 2, Domlur, Bengaluru, Karnataka 560071',
-		googleMapsURL: 'https://maps.app.goo.gl/NmHhknNLt5y2xCE89',
+		googleMapsURL: 'https://maps.app.goo.gl/duqbbwf2Hi3Q8dcSA',
 		transportation: [
 			{
 				method: 'Metro',
@@ -290,6 +291,21 @@
 			{/each}
 		</div>
 	</div>
+
+	<!-- FAQs SECTION -->
+	<HomepageSection>
+		<div slot="content">
+			<h2 class="content-heading mt-16 mb-8 text-center !text-[2rem]">
+				FREQUENTLY ASKED QUESTIONS
+			</h2>
+			<p class="content-text mb-8 text-center">
+				Got questions? We've got answers! Here are some common questions about VizChitra.
+			</p>
+		</div>
+	</HomepageSection>
+</div>
+<div class=" w-full px-8">
+	<FAQ />
 </div>
 
 <style>
