@@ -39,7 +39,7 @@
 		</div>
 		<button
 			onclick={() => window.open(venue.googleMapsURL, '_blank')}
-			class="bg-viz-pink hover:bg-viz-pink/90 inline-flex w-full items-center justify-center gap-3 rounded-lg px-6 py-3 font-semibold text-gray-800 transition-all duration-200 hover:text-white"
+			class="bg-viz-pink hover:bg-viz-pink/90 mt-3 inline-flex w-full items-center justify-center gap-3 rounded-lg px-6 py-3 font-semibold text-gray-800 transition-all duration-200 hover:text-white"
 		>
 			<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
 				<path

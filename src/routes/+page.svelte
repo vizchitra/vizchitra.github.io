@@ -252,11 +252,11 @@
 		<h3 class="mb-6 text-center text-2xl font-bold text-gray-800">Workshop Locations</h3>
 		<div class="mx-auto grid w-full grid-cols-1 gap-8 xl:grid-cols-8">
 			{#each workshopVenues as venue, index}
-				<div class="lg:col-span-1 xl:col-span-2">
+				<div class="order-2 lg:col-span-1 xl:order-none xl:col-span-2">
 					<VenueCard {venue} {index} />
 				</div>
 			{/each}
-			<div class="lg:col-span-1 xl:col-span-4">
+			<div class="order-1 lg:col-span-1 xl:order-none xl:col-span-4">
 				<div class="h-full w-full overflow-hidden rounded-2xl">
 					<Map type="workshop" />
 				</div>
