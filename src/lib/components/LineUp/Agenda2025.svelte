@@ -117,7 +117,7 @@
 		end: '13:00',
 		type: 'Workshop',
 		icon: 'workshop',
-		bgFill: 'bg-viz-teal',
+		bgFill: '#97E4DD',
 		floor2: underlineSchedule.slice(1)[0],
 		floor3: underlineSchedule.slice(1)[2]
 	};
@@ -126,7 +126,7 @@
 		end: '17:30',
 		type: 'Workshop',
 		icon: 'workshop',
-		bgFill: 'bg-viz-teal',
+		bgFill: '#97E4DD',
 		floor2: underlineSchedule.slice(1)[1],
 		floor3: underlineSchedule.slice(1)[3]
 	};
@@ -357,8 +357,8 @@
 			>
 				{#each schedule[selectedDayIndex][selectedDayIndex === 0 ? selectedConfIndex : selectedDayIndex === 1 ? selectedWorkIndex : selectedChitraIndex] as event}
 					<div
-						class="absolute right-0 left-0 flex gap-2 rounded-xs border-y border-white px-2 shadow {event.bgFill}"
-						style={getPositionStyle(event)}
+						class="absolute right-0 left-0 flex gap-2 rounded-xs border-y border-white px-2 shadow"
+						style="{getPositionStyle(event)} background-color:{event.bgFill}"
 					>
 						{#if event.type === 'other'}
 							<div class="flex items-center">
