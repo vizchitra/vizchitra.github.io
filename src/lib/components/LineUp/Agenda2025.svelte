@@ -313,7 +313,7 @@
 			<hr class="border border-gray-200" />
 		</div>
 		<div class="flex justify-center py-4 pt-4">
-			<div class="flex gap-10">
+			<div class="flex gap-6">
 				{#each byDay[selectedDayIndex] as room, roomIndex}
 					<button
 						class="cursor-pointer {(selectedDayIndex === 0 && selectedConfIndex === roomIndex) ||
