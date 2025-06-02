@@ -13,30 +13,32 @@
 	import revisualLogo from './sponsorship/assets/revisual-logo.png';
 	import hasgeekLogo from './sponsorship/assets/hasgeek-logo.png';
 	import Pentagons from '$lib/components/Pentagons.svelte';
+	import Map from '$lib/components/Map.svelte';
+	import VenueCard from '$lib/components/VenueCard.svelte';
 
 	const sponsors = [
 		{
 			heading: 'Platinum Sponsor',
 			logo: nutanixLogo,
-			variant: 'pink',
+			variant: 'pink' as const,
 			seed: 343442
 		},
 		{
 			heading: 'Silver Sponsor',
 			logo: revisualLogo,
-			variant: 'yellow',
+			variant: 'yellow' as const,
 			seed: 343554354
 		},
 		{
 			heading: 'Event Partner',
 			logo: hasgeekLogo,
-			variant: 'blue',
+			variant: 'blue' as const,
 			seed: 342
 		},
 		{
 			heading: 'Affiliate Partner',
 			logo: 'https://images.squarespace-cdn.com/content/v1/5c6055b5fb18206d45d6b27e/1562601203642-ZHLHUGGYNWOIZHZK46U9/Data+Visualization+Society+logo+2019-05-transparent.png',
-			variant: 'green',
+			variant: 'green' as const,
 			seed: 34435432
 		}
 	];
@@ -59,7 +61,70 @@
 			backgroundColor: 'var(--color-viz-blue)'
 		}
 	];
-	export let data;
+
+	// Consolidated venue data
+	const conferenceVenue = {
+		name: 'Bangalore International Centre',
+		address: '7, 4th Main Rd, Stage 2, Domlur, Bengaluru, Karnataka 560071',
+		googleMapsURL: 'https://maps.app.goo.gl/NmHhknNLt5y2xCE89',
+		transportation: [
+			{
+				method: 'Metro',
+				details: 'Indiranagar Metro Station (Purple Line) - 20 min walk'
+			},
+			{
+				method: 'Bus',
+				details: 'Buses 335-E, 333-E, 201-G, Domlur Bridge stop'
+			},
+			{
+				method: 'Auto/Cab',
+				details: 'Ask for Bangalore International Centre'
+			}
+		]
+	};
+
+	const workshopVenues = [
+		{
+			name: 'Samagata Foundation',
+			address:
+				'46/1, Cobalt, 4th, Church St, Haridevpur, Shanthala Nagar, Ashok Nagar, Bengaluru, Karnataka 560001',
+			googleMapsURL: 'https://maps.app.goo.gl/4vnThEKY916vymQn6',
+			transportation: [
+				{
+					method: 'Metro',
+					details: 'MG Road Metro Station (Purple Line) - 5 min walk'
+				},
+				{
+					method: 'Bus',
+					details: 'Buses 210-G, 13, Chinnaswamy Stadium/MG Statue stop'
+				},
+				{
+					method: 'Cab',
+					details: 'Ask for Empire Restaurant on Church Street'
+				}
+			]
+		},
+		{
+			name: 'Underline Center',
+			address:
+				'3rd Floor, above Blue Tokai, #24 3rd A Cross, 1st Main Rd, Bengaluru, Karnataka 560071',
+			googleMapsURL: 'https://maps.app.goo.gl/NmHhknNLt5y2xCE89',
+			transportation: [
+				{
+					method: 'Metro',
+					details: 'Indiranagar Metro Station (Purple Line) - 20 min walk'
+				},
+				{
+					method: 'Bus',
+					details: 'Buses 335-E, 333-E, 201-G, Domlur Bridge stop'
+				},
+				{
+					method: 'Cab',
+					details: 'Ask for Bangalore International Centre'
+				}
+			]
+		}
+	];
 </script>
 
 <div class="banner-container full-bleed relative h-[100svh]">
@@ -132,7 +197,7 @@
 			<h2 class="content-heading !text-[2rem]">Speakers</h2>
 
 			<p class="content-text mb-1">
-				These are the voices you won’t want to miss at <strong
+				These are the voices you won't want to miss at <strong
 					>Bangalore International Centre, Bengaluru</strong
 				>
 				on <strong>27<sup>th</sup> June</strong>
@@ -155,6 +220,49 @@
 
 	<Workshop2025></Workshop2025>
 
+	<!-- VENUES SECTION -->
+	<HomepageSection>
+		<div slot="content">
+			<h2 class="content-heading mb-6 text-center !text-[2rem]">EVENT LOCATIONS</h2>
+			<p class="content-text mb-8 text-center">
+				The conference will be held at Bangalore International Centre, while workshops are at two
+				different locations in the city.
+			</p>
+		</div>
+	</HomepageSection>
+
+	<!-- Conference Venue -->
+	<div class="w-full px-8">
+		<h3 class="mb-6 text-center text-2xl font-bold text-gray-800">Conference Venue</h3>
+		<div class="mx-auto grid w-full grid-cols-1 gap-8 lg:grid-cols-3">
+			<div class="lg:col-span-2">
+				<div class="h-[380px] w-full overflow-hidden rounded-2xl">
+					<Map type="conference" />
+				</div>
+			</div>
+			<div class="lg:col-span-1">
+				<VenueCard venue={conferenceVenue} />
+			</div>
+		</div>
+	</div>
+
+	<!-- Workshop Venues -->
+	<div class="mb-10 w-full px-8">
+		<h3 class="mb-6 text-center text-2xl font-bold text-gray-800">Workshop Locations</h3>
+		<div class="mx-auto grid w-full grid-cols-1 gap-8 xl:grid-cols-8">
+			{#each workshopVenues as venue, index}
+				<div class="lg:col-span-1 xl:col-span-2">
+					<VenueCard {venue} {index} />
+				</div>
+			{/each}
+			<div class="lg:col-span-1 xl:col-span-4">
+				<div class="h-full w-full overflow-hidden rounded-2xl">
+					<Map type="workshop" />
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div class="mx-auto flex max-w-4xl flex-wrap gap-4">
 		{#each whyAttend as item, i}
 			<Pentagons
@@ -165,7 +273,6 @@
 			/>
 		{/each}
 	</div>
-
 	<h2 class="content-heading text-center !text-[2rem]">
 		Our <span class="font-bold italic">valued partners</span>
 	</h2>
@@ -183,105 +290,6 @@
 			{/each}
 		</div>
 	</div>
-
-	<!-- OUR MISSION -->
-	<!-- <HomepageSection>
-		<div slot="content">
-			<h2 id="speakers" class="content-heading !text-[2rem]">KEYNOTES</h2>
-		</div>
-	</HomepageSection>
-
-	<KeyNote></KeyNote>
-
-	<HomepageSection>
-		<div slot="content">
-			<h2 class="content-heading !text-[2rem]">SPEAKERS</h2>
-			<Speakers2025></Speakers2025>
-		</div>
-	</HomepageSection>
-
-	<HomepageSection>
-		<div slot="content">
-			<h2 id="workshops" class="content-heading !text-[2rem]">WORKSHOPS</h2>
-			<p class="text-lg">
-				So much fun to look forward to! Bear in mind, workshops are located at <b>two</b> different locations.
-				Do check ahead of time.
-			</p>
-		</div>
-	</HomepageSection>
-
-	<Workshop2025></Workshop2025>
-
-	<!-- OUR MISSION -->
-	<!-- <HomepageSection>
-		<div slot="content">
-			<h2 class="content-heading !text-[2rem]">OUR MISSION</h2>
-
-			<p class="content-text mb-4 max-w-[55ch]">
-				To foster a vibrant <span class="font-semibold"
-					>community of data storytellers in India</span
-				>, bridging technical analysis and design expertise to shape perspectives and drive change
-			</p>
-
-			<p class="mx-auto mb-6 text-center">
-				<CustomSlantedText
-					textContent="AN INDIAN DATA VISUALIZATION COMMUNITY"
-					classes="text-[18px] md:text-[24px]"
-				></CustomSlantedText>
-			</p>
-
-			<p class="content-text mb-1">
-				The VizChitra community plans to drive this using these three main pillars of work:
-			</p>
-			<ol class="mt-4 space-y-6">
-				<li>
-					<h3 class="content-heading">1. Consider and Curate:</h3>
-					<p class="content-text">
-						Build a rhythm of curated events to spread the practice of data visualization
-					</p>
-				</li>
-				<li>
-					<h3 class="content-heading">2. Cultivate and Care:</h3>
-					<p class="content-text">
-						Nurture a fertile space for learning and sharing of data visualization skills
-					</p>
-				</li>
-
-				<li>
-					<h3 class="content-heading">3. Create and Collaborate:</h3>
-					<p class="content-text">
-						Express and co-create to push the boundaries of data visualization
-					</p>
-				</li>
-			</ol>
-
-			<PolygonDivider></PolygonDivider>
-		</div>
-	</HomepageSection> -->
-
-	<!-- TEAM SECTION -->
-	<!-- <HomepageSection containerWidth="full">
-		<div slot="content" class="">
-			<h2 class="font-display mx-auto mb-6 max-w-[750px] text-left !text-[2rem] font-bold">
-				MEET THE TEAM
-			</h2>
-
-			<TeamSection></TeamSection>
-		</div>
-	</HomepageSection> -->
-
-	<!-- END CARD -->
-	<!-- <HomepageSection>
-		<div slot="content">
-			<PolygonDivider></PolygonDivider>
-			<h2 class="content-heading mt-5 !text-[2rem]">VIZCHITRA 2025</h2>
-
-			<p class="content-text mb-6">One day of talks and dialogues and one day of workshops</p>
-
-			<ConferenceDetails></ConferenceDetails>
-			<PolygonDivider></PolygonDivider>
-		</div>
-	</HomepageSection> -->
 </div>
 
 <style>
