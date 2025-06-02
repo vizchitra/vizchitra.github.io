@@ -82,7 +82,7 @@
 	</VectorTileSource>
 
 	{#each selectedMarkers as marker}
-		<Marker bind:lnglat={marker.lnglat} draggable>
+		<Marker bind:lnglat={marker.lnglat}>
 			{#snippet content()}
 				<div class="text-center leading-none">
 					<div class="text-3xl">📍</div>
