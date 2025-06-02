@@ -279,7 +279,9 @@
 	</h2>
 
 	<div class="mx-auto">
-		<div class="ml-0 grid grid-cols-1 pb-4 md:-ml-12 md:pb-0 lg:max-w-4xl lg:grid-cols-2">
+		<div
+			class="ml-0 grid grid-cols-2 gap-2 pb-4 md:-ml-12 md:gap-4 md:pb-0 lg:max-w-4xl lg:grid-cols-2"
+		>
 			{#each sponsors as sponsor}
 				<SponsorCard
 					heading={sponsor.heading}
