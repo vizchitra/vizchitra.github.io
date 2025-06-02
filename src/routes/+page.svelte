@@ -1,43 +1,66 @@
 <script lang="ts">
 	import BannerPolygon from '$lib/components/BannerPolygon.svelte';
-	import PolygonDivider from '$lib/components/PolygonDivider.svelte';
 	import VizchitraLogo from '$lib/assets/images/viz-logo-animate.svg?raw';
-	import { formatSlantedText } from '$lib/utils/utils.js';
 	import CallToAction from '$lib/components/CallToAction.svelte';
 	import VizChitraLogoType from '$lib/components/VizChitraLogoType.svelte';
-	import TeamSection from '$lib/components/TeamSection/TeamSection.svelte';
 	import HomepageSection from '$lib/components/Homepage/HomepageSection.svelte';
-	import ConferenceDetails from '$lib/components/Homepage/ConferenceDetails.svelte';
 	import CustomSlantedText from '$lib/components/Common/CustomSlantedText.svelte';
 	import KeyNote from '$lib/components/LineUp/KeyNote.svelte';
 	import Speakers2025 from '$lib/components/LineUp/Speakers2025.svelte';
 	import Workshop2025 from '$lib/components/LineUp/Workshop2025.svelte';
+	import SponsorCard from '$lib/components/SponsorCards.svelte';
+	import nutanixLogo from './sponsorship/assets/nutanix-logo.png';
+	import revisualLogo from './sponsorship/assets/revisual-logo.png';
+	import hasgeekLogo from './sponsorship/assets/hasgeek-logo.png';
+	import Pentagons from '$lib/components/Pentagons.svelte';
 
+	const sponsors = [
+		{
+			heading: 'Platinum Sponsor',
+			logo: nutanixLogo,
+			variant: 'pink',
+			seed: 343442
+		},
+		{
+			heading: 'Silver Sponsor',
+			logo: revisualLogo,
+			variant: 'yellow',
+			seed: 343554354
+		},
+		{
+			heading: 'Event Partner',
+			logo: hasgeekLogo,
+			variant: 'blue',
+			seed: 342
+		},
+		{
+			heading: 'Affiliate Partner',
+			logo: 'https://images.squarespace-cdn.com/content/v1/5c6055b5fb18206d45d6b27e/1562601203642-ZHLHUGGYNWOIZHZK46U9/Data+Visualization+Society+logo+2019-05-transparent.png',
+			variant: 'green',
+			seed: 34435432
+		}
+	];
+
+	const whyAttend = [
+		{
+			title: 'Explore & Play',
+			description: 'On practices of data exploration, interface & dashboard design for dataviz.',
+			backgroundColor: 'var(--color-viz-pink)'
+		},
+		{
+			title: 'Explain & Learn',
+			description: 'Centered on fundamentals of process, design & communication for dataviz.',
+			backgroundColor: 'var(--color-viz-yellow)'
+		},
+		{
+			title: 'Imagine & Innovate',
+			description:
+				'Use of new mediums, approaches, AI & tech to shape how we do dataviz in future.',
+			backgroundColor: 'var(--color-viz-blue)'
+		}
+	];
 	export let data;
 </script>
-
-<svelte:head>
-	<!-- <title>Home</title>
-	<meta name="description" content="Svelte demo app" />
-	<meta
-		name="viewport"
-		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-	/> -->
-	<link
-		rel="preload"
-		href="/fonts/Cairo-Variable-Latin.woff2"
-		as="font"
-		type="font/woff2"
-		crossorigin
-	/>
-	<link
-		rel="preload"
-		href="/fonts/IBMPlexSans-Regular-Latin1.woff2"
-		as="font"
-		type="font/woff2"
-		crossorigin
-	/>
-</svelte:head>
 
 <div class="banner-container full-bleed relative h-[100svh]">
 	<BannerPolygon />
@@ -77,13 +100,6 @@
 				around a common interest in the power of
 				<span class="text-viz-pink-dark font-bold">visual data storytelling.</span>
 			</p>
-
-			<!-- <p class="content-text mb-6">
-				Data visualization practitioners in India have been spread across different communities. As
-				the first of its kind <span class="font-semibold">
-					data visualization community, VizChitra
-				</span> is putting together a conference to bring these people together.
-			</p> -->
 
 			<p class="mx-auto mb-6">
 				<CustomSlantedText
@@ -138,6 +154,35 @@
 	</HomepageSection>
 
 	<Workshop2025></Workshop2025>
+
+	<div class="mx-auto flex max-w-4xl flex-wrap gap-4">
+		{#each whyAttend as item, i}
+			<Pentagons
+				title={item.title}
+				description={item.description}
+				backgroundColor={item.backgroundColor}
+				seed={Math.floor(Math.random() * 10)}
+			/>
+		{/each}
+	</div>
+
+	<h2 class="content-heading text-center !text-[2rem]">
+		Our <span class="font-bold italic">valued partners</span>
+	</h2>
+
+	<div class="mx-auto">
+		<div class="ml-0 grid grid-cols-1 pb-4 md:-ml-12 md:pb-0 lg:max-w-4xl lg:grid-cols-2">
+			{#each sponsors as sponsor}
+				<SponsorCard
+					heading={sponsor.heading}
+					logo={sponsor.logo}
+					logoType="image"
+					variant={sponsor.variant}
+					seed={sponsor.seed}
+				/>
+			{/each}
+		</div>
+	</div>
 
 	<!-- OUR MISSION -->
 	<!-- <HomepageSection>
