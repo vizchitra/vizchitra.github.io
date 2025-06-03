@@ -238,8 +238,8 @@
 	/* Responsive adjustments */
 	@media (max-width: 768px) {
 		.sponsor-card {
-			margin: 10px auto;
-			width: min(95vw, 480px);
+			margin: 8px auto;
+			width: min(46vw, 200px);
 			height: auto;
 			aspect-ratio: 1.4;
 			--rotate-x: calc(var(--rotate-x) * 0.7);
@@ -248,36 +248,41 @@
 		}
 
 		.content-flat {
-			padding: 30px 25px;
+			padding: 25px 20px;
+		}
+
+		.heading {
+			font-size: 0.7rem;
+			margin-top: 15px;
 		}
 
 		.logo-image {
-			max-width: 120px;
-			max-height: 80px;
+			max-width: 100px;
+			max-height: 65px;
 		}
 	}
 
 	@media (max-width: 480px) {
 		.sponsor-card {
-			width: min(95vw, 250px);
-			margin: 8px auto;
+			width: min(44vw, 180px);
+			margin: 6px auto;
 		}
 
 		.content-flat {
-			padding: 25px 20px;
+			padding: 22px 18px;
 		}
 
 		.heading {
-			font-size: 0.8rem;
+			font-size: 0.65rem;
 		}
 
 		.logo-text {
-			font-size: 1rem;
+			font-size: 0.85rem;
 		}
 
 		.logo-image {
-			max-width: 100px;
-			max-height: 60px;
+			max-width: 85px;
+			max-height: 55px;
 		}
 	}
 </style>

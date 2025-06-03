@@ -1,43 +1,132 @@
 <script lang="ts">
 	import BannerPolygon from '$lib/components/BannerPolygon.svelte';
-	import PolygonDivider from '$lib/components/PolygonDivider.svelte';
 	import VizchitraLogo from '$lib/assets/images/viz-logo-animate.svg?raw';
-	import { formatSlantedText } from '$lib/utils/utils.js';
 	import CallToAction from '$lib/components/CallToAction.svelte';
 	import VizChitraLogoType from '$lib/components/VizChitraLogoType.svelte';
-	import TeamSection from '$lib/components/TeamSection/TeamSection.svelte';
 	import HomepageSection from '$lib/components/Homepage/HomepageSection.svelte';
-	import ConferenceDetails from '$lib/components/Homepage/ConferenceDetails.svelte';
 	import CustomSlantedText from '$lib/components/Common/CustomSlantedText.svelte';
 	import KeyNote from '$lib/components/LineUp/KeyNote.svelte';
 	import Speakers2025 from '$lib/components/LineUp/Speakers2025.svelte';
 	import Workshop2025 from '$lib/components/LineUp/Workshop2025.svelte';
+	import SponsorCard from '$lib/components/SponsorCards.svelte';
+	import nutanixLogo from './sponsorship/assets/nutanix-logo.png';
+	import revisualLogo from './sponsorship/assets/revisual-logo.png';
+	import hasgeekLogo from './sponsorship/assets/hasgeek-logo.png';
+	import Pentagons from '$lib/components/Pentagons.svelte';
+	import Map from '$lib/components/Map.svelte';
+	import VenueCard from '$lib/components/VenueCard.svelte';
+	import FAQ from '$lib/components/FAQ.svelte';
 
-	export let data;
+	const sponsors = [
+		{
+			heading: 'Platinum Sponsor',
+			logo: nutanixLogo,
+			variant: 'pink' as const,
+			seed: 343442
+		},
+		{
+			heading: 'Silver Sponsor',
+			logo: revisualLogo,
+			variant: 'yellow' as const,
+			seed: 343554354
+		},
+		{
+			heading: 'Event Partner',
+			logo: hasgeekLogo,
+			variant: 'blue' as const,
+			seed: 342
+		},
+		{
+			heading: 'Affiliate Partner',
+			logo: 'https://images.squarespace-cdn.com/content/v1/5c6055b5fb18206d45d6b27e/1562601203642-ZHLHUGGYNWOIZHZK46U9/Data+Visualization+Society+logo+2019-05-transparent.png',
+			variant: 'green' as const,
+			seed: 34435432
+		}
+	];
+
+	const whyAttend = [
+		{
+			title: 'Explore & Play',
+			description: 'On practices of data exploration, interface & dashboard design for dataviz.',
+			backgroundColor: 'var(--color-viz-pink)'
+		},
+		{
+			title: 'Explain & Learn',
+			description: 'Centered on fundamentals of process, design & communication for dataviz.',
+			backgroundColor: 'var(--color-viz-yellow)'
+		},
+		{
+			title: 'Imagine & Innovate',
+			description:
+				'Use of new mediums, approaches, AI & tech to shape how we do dataviz in future.',
+			backgroundColor: 'var(--color-viz-blue)'
+		}
+	];
+
+	// Consolidated venue data
+	const conferenceVenue = {
+		name: 'Bangalore International Centre',
+		address: '7, 4th Main Rd, Stage 2, Domlur, Bengaluru, Karnataka 560071',
+		googleMapsURL: 'https://maps.app.goo.gl/duqbbwf2Hi3Q8dcSA',
+		transportation: [
+			{
+				method: 'Metro',
+				details: 'Indiranagar Metro Station (Purple Line) - 20 min walk'
+			},
+			{
+				method: 'Bus',
+				details: 'Buses 335-E, 333-E, 201-G, Domlur Bridge stop'
+			},
+			{
+				method: 'Auto/Cab',
+				details: 'Ask for Bangalore International Centre'
+			}
+		]
+	};
+
+	const workshopVenues = [
+		{
+			name: 'Samagata Foundation',
+			address:
+				'46/1, Cobalt, 4th, Church St, Haridevpur, Shanthala Nagar, Ashok Nagar, Bengaluru, Karnataka 560001',
+			googleMapsURL: 'https://maps.app.goo.gl/4vnThEKY916vymQn6',
+			transportation: [
+				{
+					method: 'Metro',
+					details: 'MG Road Metro Station (Purple Line) - 5 min walk'
+				},
+				{
+					method: 'Bus',
+					details: 'Buses 210-G, 13, Chinnaswamy Stadium/MG Statue stop'
+				},
+				{
+					method: 'Cab',
+					details: 'Ask for Empire Restaurant on Church Street'
+				}
+			]
+		},
+		{
+			name: 'Underline Center',
+			address:
+				'3rd Floor, above Blue Tokai, #24 3rd A Cross, 1st Main Rd, Bengaluru, Karnataka 560071',
+			googleMapsURL: 'https://maps.app.goo.gl/NmHhknNLt5y2xCE89',
+			transportation: [
+				{
+					method: 'Metro',
+					details: 'Indiranagar Metro Station (Purple Line) - 20 min walk'
+				},
+				{
+					method: 'Bus',
+					details: 'Buses 335-E, 333-E, 201-G, Domlur Bridge stop'
+				},
+				{
+					method: 'Cab',
+					details: 'Ask for Bangalore International Centre'
+				}
+			]
+		}
+	];
 </script>
-
-<svelte:head>
-	<!-- <title>Home</title>
-	<meta name="description" content="Svelte demo app" />
-	<meta
-		name="viewport"
-		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-	/> -->
-	<link
-		rel="preload"
-		href="/fonts/Cairo-Variable-Latin.woff2"
-		as="font"
-		type="font/woff2"
-		crossorigin
-	/>
-	<link
-		rel="preload"
-		href="/fonts/IBMPlexSans-Regular-Latin1.woff2"
-		as="font"
-		type="font/woff2"
-		crossorigin
-	/>
-</svelte:head>
 
 <div class="banner-container full-bleed relative h-[100svh]">
 	<BannerPolygon />
@@ -78,13 +167,6 @@
 				<span class="text-viz-pink-dark font-bold">visual data storytelling.</span>
 			</p>
 
-			<!-- <p class="content-text mb-6">
-				Data visualization practitioners in India have been spread across different communities. As
-				the first of its kind <span class="font-semibold">
-					data visualization community, VizChitra
-				</span> is putting together a conference to bring these people together.
-			</p> -->
-
 			<p class="mx-auto mb-6">
 				<CustomSlantedText
 					textContent="A SPACE TO CONNECT AND CREATE WITH DATA"
@@ -116,7 +198,7 @@
 			<h2 class="content-heading !text-[2rem]">Speakers</h2>
 
 			<p class="content-text mb-1">
-				These are the voices you won’t want to miss at <strong
+				These are the voices you won't want to miss at <strong
 					>Bangalore International Centre, Bengaluru</strong
 				>
 				on <strong>27<sup>th</sup> June</strong>
@@ -139,104 +221,93 @@
 
 	<Workshop2025></Workshop2025>
 
-	<!-- OUR MISSION -->
-	<!-- <HomepageSection>
-		<div slot="content">
-			<h2 id="speakers" class="content-heading !text-[2rem]">KEYNOTES</h2>
-		</div>
-	</HomepageSection>
-
-	<KeyNote></KeyNote>
-
+	<!-- VENUES SECTION -->
 	<HomepageSection>
 		<div slot="content">
-			<h2 class="content-heading !text-[2rem]">SPEAKERS</h2>
-			<Speakers2025></Speakers2025>
+			<h2 class="content-heading mb-6 text-center !text-[2rem]">EVENT LOCATIONS</h2>
+			<p class="content-text mb-8 text-center">
+				The conference will be held at Bangalore International Centre, while workshops are at two
+				different locations in the city.
+			</p>
 		</div>
 	</HomepageSection>
 
+	<!-- Conference Venue -->
+	<div class="w-full">
+		<h3 class="mb-6 text-center text-2xl font-bold text-gray-800">Conference Venue</h3>
+		<div class="mx-auto grid w-full grid-cols-1 gap-8 lg:grid-cols-3">
+			<div class="lg:col-span-2">
+				<div class="h-[380px] w-full overflow-hidden rounded-2xl">
+					<Map type="conference" />
+				</div>
+			</div>
+			<div class="lg:col-span-1">
+				<VenueCard venue={conferenceVenue} />
+			</div>
+		</div>
+	</div>
+
+	<!-- Workshop Venues -->
+	<div class="mb-10 w-full">
+		<h3 class="mb-6 text-center text-2xl font-bold text-gray-800">Workshop Locations</h3>
+		<div class="mx-auto grid w-full grid-cols-1 gap-8 xl:grid-cols-8">
+			{#each workshopVenues as venue, index}
+				<div class="order-2 lg:col-span-1 xl:order-none xl:col-span-2">
+					<VenueCard {venue} {index} />
+				</div>
+			{/each}
+			<div class="order-1 lg:col-span-1 xl:order-none xl:col-span-4">
+				<div class="h-full w-full overflow-hidden rounded-2xl">
+					<Map type="workshop" />
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="mx-auto flex max-w-4xl flex-wrap gap-4">
+		{#each whyAttend as item, i}
+			<Pentagons
+				title={item.title}
+				description={item.description}
+				backgroundColor={item.backgroundColor}
+				seed={Math.floor(Math.random() * 10)}
+			/>
+		{/each}
+	</div>
+	<h2 class="content-heading text-center !text-[2rem]">
+		Our <span class="font-bold italic">valued partners</span>
+	</h2>
+
+	<div class="mx-auto">
+		<div
+			class="ml-0 grid grid-cols-2 gap-2 pb-4 md:-ml-12 md:gap-4 md:pb-0 lg:max-w-4xl lg:grid-cols-2"
+		>
+			{#each sponsors as sponsor}
+				<SponsorCard
+					heading={sponsor.heading}
+					logo={sponsor.logo}
+					logoType="image"
+					variant={sponsor.variant}
+					seed={sponsor.seed}
+				/>
+			{/each}
+		</div>
+	</div>
+
+	<!-- FAQs SECTION -->
 	<HomepageSection>
 		<div slot="content">
-			<h2 id="workshops" class="content-heading !text-[2rem]">WORKSHOPS</h2>
-			<p class="text-lg">
-				So much fun to look forward to! Bear in mind, workshops are located at <b>two</b> different locations.
-				Do check ahead of time.
-			</p>
-		</div>
-	</HomepageSection>
-
-	<Workshop2025></Workshop2025>
-
-	<!-- OUR MISSION -->
-	<!-- <HomepageSection>
-		<div slot="content">
-			<h2 class="content-heading !text-[2rem]">OUR MISSION</h2>
-
-			<p class="content-text mb-4 max-w-[55ch]">
-				To foster a vibrant <span class="font-semibold"
-					>community of data storytellers in India</span
-				>, bridging technical analysis and design expertise to shape perspectives and drive change
-			</p>
-
-			<p class="mx-auto mb-6 text-center">
-				<CustomSlantedText
-					textContent="AN INDIAN DATA VISUALIZATION COMMUNITY"
-					classes="text-[18px] md:text-[24px]"
-				></CustomSlantedText>
-			</p>
-
-			<p class="content-text mb-1">
-				The VizChitra community plans to drive this using these three main pillars of work:
-			</p>
-			<ol class="mt-4 space-y-6">
-				<li>
-					<h3 class="content-heading">1. Consider and Curate:</h3>
-					<p class="content-text">
-						Build a rhythm of curated events to spread the practice of data visualization
-					</p>
-				</li>
-				<li>
-					<h3 class="content-heading">2. Cultivate and Care:</h3>
-					<p class="content-text">
-						Nurture a fertile space for learning and sharing of data visualization skills
-					</p>
-				</li>
-
-				<li>
-					<h3 class="content-heading">3. Create and Collaborate:</h3>
-					<p class="content-text">
-						Express and co-create to push the boundaries of data visualization
-					</p>
-				</li>
-			</ol>
-
-			<PolygonDivider></PolygonDivider>
-		</div>
-	</HomepageSection> -->
-
-	<!-- TEAM SECTION -->
-	<!-- <HomepageSection containerWidth="full">
-		<div slot="content" class="">
-			<h2 class="font-display mx-auto mb-6 max-w-[750px] text-left !text-[2rem] font-bold">
-				MEET THE TEAM
+			<h2 class="content-heading mt-16 mb-8 text-center !text-[2rem]">
+				FREQUENTLY ASKED QUESTIONS
 			</h2>
-
-			<TeamSection></TeamSection>
+			<p class="content-text mb-8 text-center">
+				Got questions? We've got answers! Here are some common questions about VizChitra.
+			</p>
 		</div>
-	</HomepageSection> -->
-
-	<!-- END CARD -->
-	<!-- <HomepageSection>
-		<div slot="content">
-			<PolygonDivider></PolygonDivider>
-			<h2 class="content-heading mt-5 !text-[2rem]">VIZCHITRA 2025</h2>
-
-			<p class="content-text mb-6">One day of talks and dialogues and one day of workshops</p>
-
-			<ConferenceDetails></ConferenceDetails>
-			<PolygonDivider></PolygonDivider>
-		</div>
-	</HomepageSection> -->
+	</HomepageSection>
+</div>
+<div class=" w-full">
+	<FAQ />
 </div>
 
 <style>

@@ -15,15 +15,12 @@
 	import hasgeekLogo from './assets/hasgeek-logo.png';
 	import nutanixLogo from './assets/nutanix-logo.png';
 	import revisualLogo from './assets/revisual-logo.png';
-	import yellowPolygon from './assets/yellow-pentagon.png';
-	import pinkPolygon from './assets/pink-pentagon.png';
 	import orgs from '$lib/data/orgs.csv';
 	import yearsOfExperience from '$lib/data/years.csv';
 	import organizationSize from '$lib/data/size.csv';
 	import functionalRoles from '$lib/data/roles.csv';
 	import HorizontalBarChart from '$lib/components/Charts/HorizontalBarChart.svelte';
 	import SponsorshipContactForm from '$lib/components/Common/SponsorshipContactForm.svelte';
-	const contactEmail = 'sponsorship@vizchitra.com';
 	import SponsorCard from '$lib/components/SponsorCards.svelte';
 	// Define a mapping from categories to colors
 	const categoryColors = {
@@ -349,16 +346,6 @@
 		</section>
 	</section>
 </main>
-<!-- <div class="mx-auto w-full max-w-4xl text-center md:my-12">
-	<button
-		on:click={() => {
-			window.location.href = `mailto:${contactEmail}?subject=VizChitra%20Sponsorship%20Inquiry`;
-		}}
-		class="bg-viz-pink-dark hover:bg-viz-pink-dark/90 w-full cursor-pointer rounded-sm px-6 py-4 text-xl text-white italic"
-	>
-		Become a sponsor →
-	</button>
-</div> -->
 
 <SponsorshipContactForm />
 
