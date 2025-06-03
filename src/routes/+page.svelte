@@ -233,7 +233,7 @@
 	</HomepageSection>
 
 	<!-- Conference Venue -->
-	<div class="w-full px-8">
+	<div class="w-full">
 		<h3 class="mb-6 text-center text-2xl font-bold text-gray-800">Conference Venue</h3>
 		<div class="mx-auto grid w-full grid-cols-1 gap-8 lg:grid-cols-3">
 			<div class="lg:col-span-2">
@@ -248,7 +248,7 @@
 	</div>
 
 	<!-- Workshop Venues -->
-	<div class="mb-10 w-full px-8">
+	<div class="mb-10 w-full">
 		<h3 class="mb-6 text-center text-2xl font-bold text-gray-800">Workshop Locations</h3>
 		<div class="mx-auto grid w-full grid-cols-1 gap-8 xl:grid-cols-8">
 			{#each workshopVenues as venue, index}
@@ -306,7 +306,7 @@
 		</div>
 	</HomepageSection>
 </div>
-<div class=" w-full px-8">
+<div class=" w-full">
 	<FAQ />
 </div>
 

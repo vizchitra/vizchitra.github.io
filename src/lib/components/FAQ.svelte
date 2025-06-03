@@ -62,7 +62,7 @@
 	.faq-container {
 		max-width: 48rem;
 		margin: auto;
-		padding: 0 1rem;
+		padding: 0;
 		width: 100%;
 	}
 
