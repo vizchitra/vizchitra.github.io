@@ -1,10 +1,13 @@
 <script>
-	import rukmini from '$lib/assets/images/speakers-2025/Rukmini.png';
 	import SpeakerPentagon from './SpeakerPentagon.svelte';
+	import SpeakerDetailsModal from './SpeakerDetailsModal.svelte';
+
 	import CalendarIcon from '$lib/assets/images/icons/calendar.svg?raw';
 	import LocationIcon from '$lib/assets/images/icons/location.svg?raw';
+	import rukmini from '$lib/assets/images/speakers-2025/Rukmini.png';
 
 	export let data = {};
+	export let isDragging = false;
 
 	const colorMapping = {
 		keynote: {
@@ -27,10 +30,18 @@
 	};
 
 	$: isKeynote = data.talkType === 'keynote';
+	let modalOpen = false;
+	let cardElement;
 </script>
 
 {#if data}
+	<!-- svelte-ignore a11y_click_events_have_key_events -->
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div
+		bind:this={cardElement}
+		on:click={() => {
+			if (!isDragging) modalOpen = true;
+		}}
 		style:max-width={!isKeynote ? '350px' : '550px'}
 		class="speaker-card relative w-full overflow-hidden rounded-lg border-[1px] border-[#ccc] p-4 shadow-md sm:p-8 sm:pt-8 md:min-w-[400px] lg:max-w-[550px] {isKeynote
 			? 'pb-12 sm:pb-24'
@@ -129,6 +140,8 @@
 			<SpeakerPentagon {colorMapping} memberData={data}></SpeakerPentagon>
 		</div>
 	</div>
+
+	<SpeakerDetailsModal {data} {colorMapping} {cardElement} bind:modalOpen></SpeakerDetailsModal>
 {/if}
 
 <style>

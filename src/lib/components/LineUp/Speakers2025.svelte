@@ -76,7 +76,7 @@
 			bind:this={speakerTrack}
 		>
 			{#each speakerInfo as speaker, index (speaker.name)}
-				<SpeakerCard data={speaker}></SpeakerCard>
+				<SpeakerCard {isDragging} data={speaker}></SpeakerCard>
 			{/each}
 		</div>
 	</div>
