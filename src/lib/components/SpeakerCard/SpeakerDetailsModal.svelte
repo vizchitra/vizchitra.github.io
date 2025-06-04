@@ -4,6 +4,7 @@
 	import LocationIcon from '$lib/assets/images/icons/location.svg?raw';
 	import SpeakerCardPattern1 from '$lib/assets/images/speakers-2025/speaker-card-pattern-1.svg?raw';
 	import SpeakerCardPattern2 from '$lib/assets/images/speakers-2025/speaker-card-pattern-2.svg?raw';
+	import CloseIcon from '$lib/assets/images/icons/x.svg?raw';
 
 	export let modalOpen = false;
 	export let data = {};
@@ -23,7 +24,7 @@
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<div
-		class="details-modal fixed top-0 left-0 z-50 flex h-screen w-screen items-center justify-center"
+		class="details-modal fixed top-0 left-0 z-50 flex h-screen w-screen cursor-default items-center justify-center"
 		on:click={(event) => {
 			event.stopPropagation();
 			modalOpen = false;
@@ -31,13 +32,22 @@
 		on:mousedown|stopPropagation
 	>
 		<div
-			class="overlay pointer-events-auto fixed top-0 left-0 z-10 h-full w-full bg-gray-900 opacity-40"
+			class="overlay pointer-events-auto fixed top-0 left-0 z-10 h-full w-full bg-[#ffffffaa] opacity-100 backdrop-blur-[2px]"
 		></div>
 		<div
-			class="modal relative z-20 overflow-auto rounded-md bg-white"
+			class="modal relative z-20 overflow-auto rounded-md border-[1px] border-[#ccc] bg-white shadow-2xl"
 			on:mousedown|stopPropagation
 			on:click|stopPropagation
 		>
+			<div class="button-wrapper sticky top-0 z-50">
+				<button
+					class="close-btn absolute top-4 right-4 z-50 cursor-pointer"
+					aria-label="close modal"
+					on:click={() => (modalOpen = false)}
+				>
+					{@html CloseIcon}
+				</button>
+			</div>
 			<div
 				class="modal-header p-8 pt-4"
 				style:background-color={colorMapping[data.talkType]?.primary}
@@ -50,22 +60,22 @@
 					{/if}
 
 					<h3
-						class="talk-title text-shadow mb-[6px] text-[1.5rem] !leading-[1.1] font-bold md:text-[2rem] xl:text-[2.5rem]"
+						class="talk-title text-shadow mb-[6px] text-[1.75rem] !leading-[1.1] font-bold sm:text-[2rem] xl:text-[2.5rem]"
 					>
 						{data.title}
 					</h3>
 
 					{#if data.subtitle}
 						<p
-							class="talk-subtitle text-shadow text-[1.25rem] !leading-[1.1] md:text-[1.75rem] xl:text-[2rem]"
+							class="talk-subtitle text-shadow text-[1.5rem] !leading-[1.1] sm:text-[1.75rem] xl:text-[2rem]"
 						>
 							{data.subtitle}
 						</p>
 					{/if}
 				</div>
 			</div>
-			<div class="details-section relative h-full p-8 px-12">
-				<div class="details-content pt-4 pb-16">
+			<div class="details-section relative h-full p-8 px-6 md:px-8 xl:px-12">
+				<div class="details-content pb-16">
 					<div class="title-text max-w-unset mb-6 min-w-[240px]">
 						<h3
 							style="text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;"
@@ -85,7 +95,7 @@
 					<div class="details mb-8 flex flex-col gap-2">
 						{#if data.talkInfo}
 							<p
-								class="talk-subtitle xl:text-[1.4rem]text-shadow mb-6 text-[1.25rem] !leading-[1.5] md:text-[1.4rem]"
+								class="talk-subtitle text-shadow !md:leading-[1.5] mb-6 text-[1.125rem] !leading-[1.4] md:text-[1.4rem] xl:text-[1.4rem]"
 							>
 								{@html data.talkInfo}
 							</p>
@@ -93,7 +103,7 @@
 
 						{#if data.time}
 							<div class="detail flex items-center gap-3">
-								<div class="icon-container w-5">
+								<div class="icon-container w-4 md:w-5">
 									{@html CalendarIcon.replaceAll('#68B9B2', colorMapping[data.talkType]?.primary)}
 								</div>
 								<p class="text-[1rem] leading-none sm:text-[1.25rem]">{data.time}</p>
@@ -102,7 +112,7 @@
 
 						{#if data.location}
 							<div class="detail flex items-center gap-3">
-								<div class="icon-container w-5">
+								<div class="icon-container w-4 md:w-5">
 									{@html LocationIcon.replaceAll('#68B9B2', colorMapping[data.talkType]?.primary)}
 								</div>
 								<p class="text-[1rem] leading-none sm:text-[1.25rem]">{data.location}</p>
@@ -114,7 +124,7 @@
 						<a
 							class="block w-fit rounded-sm bg-[#444] px-4 py-3 text-[1rem] leading-none text-white hover:opacity-90 sm:text-[1.25rem]"
 							target="_blank"
-							href={data.link}>Buy tickets</a
+							href="{data.link}/#tickets">Buy tickets</a
 						>
 					{/if}
 				</div>

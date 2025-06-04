@@ -8,7 +8,7 @@
 	let selectedIndex = null;
 </script>
 
-<div class="mt-4 mb-10 flex w-full flex-col items-center justify-center gap-4 lg:flex-row">
+<div class="mt-4 mb-10 flex w-full flex-col items-stretch justify-center gap-4 lg:flex-row">
 	<SpeakerCard data={speakerInfo[0]}></SpeakerCard>
 	<SpeakerCard data={speakerInfo[1]}></SpeakerCard>
 </div>
