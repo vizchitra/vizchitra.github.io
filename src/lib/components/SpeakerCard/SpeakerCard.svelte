@@ -64,7 +64,7 @@
 		<div
 			class="title-section flex {isKeynote
 				? 'h-[325px]'
-				: 'h-[250px]'}  flex-row items-center items-start"
+				: 'h-[265px]'}  flex-row items-center items-start"
 		>
 			{#if isKeynote}
 				<div class="title-text {isKeynote ? 'max-w-[50%]' : 'max-w-unset'} min-w-[240px]">
