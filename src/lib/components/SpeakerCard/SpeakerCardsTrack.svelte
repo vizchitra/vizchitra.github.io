@@ -92,7 +92,10 @@
 		bind:this={cardTrack}
 	>
 		{#each sessionInfo as workshop, index (workshop.name)}
-			<SpeakerCard data={workshop}></SpeakerCard>
+			<SpeakerCard
+				data={workshop}
+				dragParams={{ isDragging: isDragging, startX: startX, offsetLeft: cardTrack?.offsetLeft }}
+			></SpeakerCard>
 		{/each}
 	</div>
 </div>

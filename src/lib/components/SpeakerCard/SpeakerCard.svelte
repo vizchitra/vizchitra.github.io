@@ -7,7 +7,7 @@
 	import rukmini from '$lib/assets/images/speakers-2025/Rukmini.png';
 
 	export let data = {};
-	export let isDragging = false;
+	export let dragParams = {};
 
 	const colorMapping = {
 		keynote: {
@@ -47,6 +47,19 @@
 	$: isKeynote = data.talkType === 'keynote';
 	let modalOpen = false;
 	let cardElement;
+
+	function handleCardClick(event) {
+		const dragThreshold = 15;
+		const x = event.pageX - dragParams?.offsetLeft;
+
+		if (Math.abs(x - dragParams.startX) > dragThreshold) return;
+
+		if (data.talkInfo) {
+			modalOpen = true;
+		} else {
+			console.warn('No talk info available for this speaker.');
+		}
+	}
 </script>
 
 {#if data}
@@ -54,9 +67,8 @@
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div
 		bind:this={cardElement}
-		on:click={() => {
-			if (!isDragging) modalOpen = true;
-		}}
+		on:click={handleCardClick}
+		on:touchStart={handleCardClick}
 		style:max-width={!isKeynote ? '350px' : '550px'}
 		class="speaker-card relative w-full overflow-hidden rounded-lg border-[1px] border-[#ccc] p-4 shadow-md sm:p-8 sm:pt-8 md:min-w-[400px] lg:max-w-[550px] {isKeynote
 			? 'pb-12 sm:pb-24'
