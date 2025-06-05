@@ -12,19 +12,33 @@
 	const colorMapping = {
 		keynote: {
 			primary: 'var(--color-viz-pink)',
-			patternGradient: ['#F68669', '#E6327E'],
+			patternGradient: ['#F68669B3', '#E6327EB3'],
 			bannerColor: '#F3ACCA'
 		},
 		talk: {
 			primary: 'var(--color-viz-orange)',
-			patternGradient: ['#F68669', '#E6327E'],
-			// patternGradient: ['#FFD485', '#F89F72'],
+			patternGradient: ['#F68669B3', '#E6327EB3'],
+			// patternGradient: ['#FFD485', '#F3844C'],
+			bannerColor: '#FBBC9D'
+		},
+		'lightning talk': {
+			primary: 'var(--color-viz-orange)',
+			patternGradient: ['#F68669B3', '#E6327EB3'],
+			bannerColor: '#FBBC9D'
+		},
+		alternate: {
+			primary: 'var(--color-viz-orange)',
+			patternGradient: ['#F68669B3', '#E6327EB3'],
+			bannerColor: '#FBBC9D'
+		},
+		bof: {
+			primary: 'var(--color-viz-orange)',
+			patternGradient: ['#F68669B3', '#E6327EB3'],
 			bannerColor: '#FBBC9D'
 		},
 		workshop: {
 			primary: 'var(--color-viz-blue-dark)',
-			patternGradient: ['#F68669', '#E6327E'],
-			// patternGradient: ['#A4D8E1', '#68B9B2'],
+			patternGradient: ['#FACCE5', '#659ABC'],
 			bannerColor: '#9CAEDF'
 		}
 	};
