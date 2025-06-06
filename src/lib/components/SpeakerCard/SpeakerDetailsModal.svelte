@@ -159,4 +159,10 @@
 
 		transition: 0.2s all ease;
 	}
+
+	@media (max-width: 420px) {
+		.details-modal .modal {
+			height: 100%;
+		}
+	}
 </style>
