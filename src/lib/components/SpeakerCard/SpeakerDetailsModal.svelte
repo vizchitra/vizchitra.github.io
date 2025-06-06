@@ -132,7 +132,7 @@
 
 				<div
 					class="pattern-container absolute right-0 bottom-0 z-[-1] opacity-70"
-					style="transform: translate({0}px, {screenWidth > 550 ? 15 : 200}px); "
+					style="transform: translate({0}px, {20}px); "
 				>
 					{@html SpeakerCardPattern2.replaceAll(
 						'#FFD485',
