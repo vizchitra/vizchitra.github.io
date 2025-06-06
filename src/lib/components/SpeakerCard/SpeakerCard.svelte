@@ -15,7 +15,7 @@
 			patternGradient: ['#F68669B3', '#E6327EB3'],
 			bannerColor: '#F3ACCA'
 		},
-		talk: {
+		'standard talk': {
 			primary: 'var(--color-viz-orange)',
 			// patternGradient: ['#F68669B3', '#E6327EB3'],
 			patternGradient: ['#FFD485', '#F3844C'],

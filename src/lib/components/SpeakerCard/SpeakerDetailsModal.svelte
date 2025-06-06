@@ -124,7 +124,8 @@
 						<a
 							class="block w-fit rounded-sm bg-[#444] px-4 py-3 text-[1rem] leading-none text-white hover:opacity-90 sm:text-[1.25rem]"
 							target="_blank"
-							href="{data.link}/#tickets">Buy tickets</a
+							href="{data.link}/#tickets"
+							>{data.talkType === 'workshop' ? 'Buy tickets' : 'Learn more'}</a
 						>
 					{/if}
 				</div>
