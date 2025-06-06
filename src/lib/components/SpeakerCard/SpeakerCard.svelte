@@ -1,36 +1,74 @@
 <script>
-	import rukmini from '$lib/assets/images/speakers-2025/Rukmini.png';
 	import SpeakerPentagon from './SpeakerPentagon.svelte';
+	import SpeakerDetailsModal from './SpeakerDetailsModal.svelte';
+
 	import CalendarIcon from '$lib/assets/images/icons/calendar.svg?raw';
 	import LocationIcon from '$lib/assets/images/icons/location.svg?raw';
+	import rukmini from '$lib/assets/images/speakers-2025/Rukmini.png';
 
 	export let data = {};
+	export let dragParams = {};
 
 	const colorMapping = {
 		keynote: {
 			primary: 'var(--color-viz-pink)',
-			patternGradient: ['#F68669', '#E6327E'],
+			patternGradient: ['#F68669B3', '#E6327EB3'],
 			bannerColor: '#F3ACCA'
 		},
-		talk: {
+		'standard talk': {
 			primary: 'var(--color-viz-orange)',
-			patternGradient: ['#F68669', '#E6327E'],
-			// patternGradient: ['#FFD485', '#F89F72'],
+			// patternGradient: ['#F68669B3', '#E6327EB3'],
+			patternGradient: ['#FFD485', '#F3844C'],
+			bannerColor: '#FBBC9D'
+		},
+		'lightning talk': {
+			primary: 'var(--color-viz-orange)',
+			// patternGradient: ['#F68669B3', '#E6327EB3'],
+			patternGradient: ['#FFD485', '#F3844C'],
+			bannerColor: '#FBBC9D'
+		},
+		alternate: {
+			primary: 'var(--color-viz-orange)',
+			patternGradient: ['#F68669B3', '#E6327EB3'],
+			bannerColor: '#FBBC9D'
+		},
+		bof: {
+			primary: 'var(--color-viz-orange)',
+			patternGradient: ['#F68669B3', '#E6327EB3'],
 			bannerColor: '#FBBC9D'
 		},
 		workshop: {
 			primary: 'var(--color-viz-blue-dark)',
-			patternGradient: ['#F68669', '#E6327E'],
-			// patternGradient: ['#A4D8E1', '#68B9B2'],
+			patternGradient: ['#FACCE5', '#659ABC'],
 			bannerColor: '#9CAEDF'
 		}
 	};
 
 	$: isKeynote = data.talkType === 'keynote';
+	let modalOpen = false;
+	let cardElement;
+
+	function handleCardClick(event) {
+		const dragThreshold = 15;
+		const x = event.pageX - dragParams?.offsetLeft;
+
+		if (Math.abs(x - dragParams.startX) > dragThreshold) return;
+
+		if (data.talkInfo) {
+			modalOpen = true;
+		} else {
+			console.warn('No talk info available for this speaker.');
+		}
+	}
 </script>
 
 {#if data}
+	<!-- svelte-ignore a11y_click_events_have_key_events -->
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div
+		bind:this={cardElement}
+		on:click={handleCardClick}
+		on:touchStart={handleCardClick}
 		style:max-width={!isKeynote ? '350px' : '550px'}
 		class="speaker-card relative w-full overflow-hidden rounded-lg border-[1px] border-[#ccc] p-4 shadow-md sm:p-8 sm:pt-8 md:min-w-[400px] lg:max-w-[550px] {isKeynote
 			? 'pb-12 sm:pb-24'
@@ -39,7 +77,7 @@
 		<div
 			class="title-section flex {isKeynote
 				? 'h-[325px]'
-				: 'h-[250px]'}  flex-row items-center items-start"
+				: 'h-[265px]'}  flex-row items-center items-start"
 		>
 			{#if isKeynote}
 				<div class="title-text {isKeynote ? 'max-w-[50%]' : 'max-w-unset'} min-w-[240px]">
@@ -129,6 +167,8 @@
 			<SpeakerPentagon {colorMapping} memberData={data}></SpeakerPentagon>
 		</div>
 	</div>
+
+	<SpeakerDetailsModal {data} {colorMapping} {cardElement} bind:modalOpen></SpeakerDetailsModal>
 {/if}
 
 <style>

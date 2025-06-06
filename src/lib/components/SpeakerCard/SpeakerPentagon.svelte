@@ -1,5 +1,6 @@
 <script>
 	import { svg } from 'd3';
+	import { speakerImagesMap } from '$lib/utils/speakerDetails';
 	import SpeakerCardPattern1 from '$lib/assets/images/speakers-2025/speaker-card-pattern-1.svg?raw';
 	import SpeakerCardPattern2 from '$lib/assets/images/speakers-2025/speaker-card-pattern-2.svg?raw';
 
@@ -91,7 +92,7 @@
 	<div class="flex h-full w-full flex-row items-start justify-between gap-4 md:gap-8">
 		<div class="pentagon-container relative h-full w-full">
 			<div
-				class="pattern-container absolute z-[-1] opacity-70"
+				class="pattern-container absolute z-[-1] opacity-100"
 				style="transform: translate({-50}px, {points[1].y +
 					pentagonYOffset +
 					(isKeynote && screenWidth > 550 ? 0 : -55)}px); transform-origin: top right;"
@@ -99,16 +100,26 @@
 				{@html SpeakerCardPattern1.replaceAll(
 					'#FFD485',
 					colorMapping[memberData.talkType]?.patternGradient[0]
-				).replaceAll('#F89F72', colorMapping[memberData.talkType]?.patternGradient[1])}
+				)
+					.replaceAll('#F89F72', colorMapping[memberData.talkType]?.patternGradient[1])
+					.replaceAll(
+						'paint0_linear_205_64',
+						`gradient-${memberData.talkType.replace(' ', '-')}-top`
+					)}
 			</div>
 			<div
-				class="pattern-container absolute right-0 bottom-0 z-[-1] opacity-70"
+				class="pattern-container absolute right-0 bottom-0 z-[-1] opacity-100"
 				style="transform: translate({0}px, {isKeynote && screenWidth > 550 ? 0 : 75}px); "
 			>
 				{@html SpeakerCardPattern2.replaceAll(
 					'#FFD485',
 					colorMapping[memberData.talkType]?.patternGradient[0]
-				).replaceAll('#F89F72', colorMapping[memberData.talkType]?.patternGradient[1])}
+				)
+					.replaceAll('#F89F72', colorMapping[memberData.talkType]?.patternGradient[1])
+					.replaceAll(
+						'paint0_linear_207_69',
+						`gradient-${memberData.talkType.replace(' ', '-')}-bottom`
+					)}
 			</div>
 
 			<!-- svelte-ignore component_name_lowercase -->
@@ -186,7 +197,7 @@
 					pentagonXOffset}px, {pentagonYOffset}px);"
 			>
 				<img
-					src={memberData.image}
+					src={speakerImagesMap[memberData.name] || ''}
 					alt={memberData.name}
 					class="bg-white"
 					style="transform: {computeTransform()} "
