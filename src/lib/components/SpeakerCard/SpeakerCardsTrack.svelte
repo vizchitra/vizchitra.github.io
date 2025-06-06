@@ -3,6 +3,7 @@
 	import arrowLeft from '$lib/assets/images/icons/arrow-left.svg?raw';
 	import arrowRight from '$lib/assets/images/icons/arrow-right.svg?raw';
 	import sessionsData from '$lib/data/vizchitra-sessions.csv';
+	import { onMount } from 'svelte';
 
 	export let sessionTypes = ['workshop'];
 
@@ -15,6 +16,12 @@
 	let scrollLeft;
 	let atStart = true;
 	let atEnd = false;
+
+	onMount(() => {
+		if (trackContainer) {
+			updateScrollPosition();
+		}
+	});
 
 	function handleMouseDown(event) {
 		isDragging = true;
@@ -100,20 +107,22 @@
 	</div>
 </div>
 
-<div class="track-controls flex items-center gap-3 self-start pl-4 sm:gap-4">
-	<button
-		on:click={() => scrollTrack('left')}
-		disabled={atStart}
-		class="flex h-[60px] w-[60px] cursor-pointer items-center justify-center rounded-full border-[1px] border-[#999] bg-[#F5C7C7] p-3 hover:opacity-70 disabled:bg-white disabled:opacity-60 sm:h-[75px] sm:w-[75px]"
-		aria-label="scroll left">{@html arrowLeft}</button
-	>
-	<button
-		on:click={() => scrollTrack('right')}
-		disabled={atEnd}
-		class="flex h-[60px] w-[60px] cursor-pointer items-center justify-center rounded-full border-[1px] border-[#999] bg-[#F5C7C7] p-3 hover:opacity-70 disabled:bg-white disabled:opacity-60 sm:h-[75px] sm:w-[75px]"
-		aria-label="scroll right">{@html arrowRight}</button
-	>
-</div>
+{#if atStart === false || atEnd === false}
+	<div class="track-controls flex items-center gap-3 self-start pl-4 sm:gap-4">
+		<button
+			on:click={() => scrollTrack('left')}
+			disabled={atStart}
+			class="flex h-[60px] w-[60px] cursor-pointer items-center justify-center rounded-full border-[1px] border-[#999] bg-[#F5C7C7] p-3 hover:opacity-70 disabled:bg-white disabled:opacity-60 sm:h-[75px] sm:w-[75px]"
+			aria-label="scroll left">{@html arrowLeft}</button
+		>
+		<button
+			on:click={() => scrollTrack('right')}
+			disabled={atEnd}
+			class="flex h-[60px] w-[60px] cursor-pointer items-center justify-center rounded-full border-[1px] border-[#999] bg-[#F5C7C7] p-3 hover:opacity-70 disabled:bg-white disabled:opacity-60 sm:h-[75px] sm:w-[75px]"
+			aria-label="scroll right">{@html arrowRight}</button
+		>
+	</div>
+{/if}
 
 <style>
 	:global(.speaker-track.dragging) {
