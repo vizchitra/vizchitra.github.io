@@ -16,7 +16,9 @@ You'll also learn how to: <br>
 4. Automate interpretation by asking the model for captions, tooltips, and data insights
 <br>
 5. Spotlight future trends: what generative data art might look like in six months",27 June | 04:15 - 04:45 pm,"Bangalore International Centre, Bengaluru",5,5,5,5,5,Narrating insights,https://hasgeek.com/VizChitra/2025/sub/data-design-by-dialogue-visualizing-data-with-llms-EX3YtVF1mqSqnxY5LAtuRE,0.9,-30,,
-3,Yashna Jhamb,"Co-founder, Ooloi Labs",Making Sense of Stories:,Structuring Qualitative Data at Scale,lightning talk,,,,,5,5,4,4,5,Narrating insights,,1,,-25,
+3,Yashna Jhamb,"Co-founder, Ooloi Labs",Making Sense of Stories:,Structuring Qualitative Data at Scale,lightning talk,,"Qualitative data is often considered messy, anecdotal, and hard to scale - yet it holds immense power to illuminate nuance, lived experience, and patterns that numbers alone can't tell. Drawing from my experience as a researcher working on the ground across public health, education, and development sectors, this session will explore the often-overlooked value of qualitative data in shaping decisions, driving insights, and influencing change.
+<br><br>
+We'll dive into how to make sense of qualitative data at scale - from collection and structuring to analysis and integration with quantitative insights. I'll share stories and challenges from working with large, distributed teams capturing observations, narratives, and open-ended feedback - and how we've learned to systematize this using OKF (Open Knowledge Framework), a platform built for qualitative data at scale. We'll explore real-world examples where qualitative data analysis has led to actionable insights, and what it takes to build processes and tools that honor the complexity of human stories.",,,5,5,4,4,5,Narrating insights,https://hasgeek.com/VizChitra/2025/sub/making-sense-of-stories-structuring-qual-data-at-s-MWBidJxMGVKyxum8i1cEhr,1,,-25,
 4,Prasanta Kumar Dutta,"Data Visualisation Developer, Reuters",The Eyes Have It:,Understanding Perception-Driven Data Visualisation,standard talk,,"Did you know that psychological principles developed over a century ago still shape modern graphic design and visual communication? The way we perceive patterns, group elements, and focus our attention is deeply rooted in human cognition - and understanding these principles can transform the way we communicate through data visualizations.
 <br><br>
 In this session, we'll delve into the <strong>science of perception-based design</strong> concepts and the art of creating impactful charts, graphs, and infographics. Through real-world examples of data visualisations, we'll explore how simple design choices can enhance clarity, guide the viewer's eye, and improve storytelling with data.",,,4,5,5,5,5,Designing visualizations,https://hasgeek.com/VizChitra/2025/sub/the-eyes-have-it-understanding-perception-driven-d-2aERpLPse53SfYjSYW5XFi,,,,
@@ -39,16 +41,54 @@ You'll hear how climate data was brought into motion using programmable poi and 
 7,Aman Bhargava,"Developer, Revisual Labs",The Unreasonable Effectiveness of Tinkering,,lightning talk,,"Side projects keep me happy. I couldn't really imagine learning without them, and I think I've genuinely learnt the most about data, programming, and visualization while tinkering away on something that just caught my interest. This talk is about embracing that slightly chaotic, but very rewarding, world of side projects as a personal playground for learning. I want to share a little bit of my own journey so far, focusing on how these projects have helped me pick up skills in programming and data viz (the messy middle bits included, not just the shiny end results). I'll talk about how to approach finding ideas, trying to structure the work, making time when life gets busy, and figuring out ways to actually learn and see progress.
 <br><br>
 To show this, I'll walk through a few examples of projects I've worked on and show how each one nudged me to learn a specific new tool or technique; from data collection and analysis (like for Votes in a Name) to mapping (like BLR Water Log) and web development. This whole approach also connects with something I'm actively thinking about and aiming for: the idea of becoming more 'T-shaped'. I find the concept of building a broad base of knowledge while also diving deeper into specific areas that really excite me quite compelling, and side projects feel like a very natural way to explore that path.",,,5,5,5,5,4,Coding visualizations,https://hasgeek.com/VizChitra/2025/sub/the-unreasonable-effectiveness-of-tinkering-HWu7i2WhMk7GHBeBaZMgTy,0.75,-5,-55,
-8,Vikram Nayak,"Founder, Chartboss",The UX of Charts,,lightning talk,,,,,4,5,4,5,5,Designing visualizations,,0.95,10,25,
-9,Rahul Beniwal and Neel Lakhwani,Tibba Design Studio,Democratizing financial data for a growing India,,lightning talk,,,,,4,4,4,5,5,Designing visualizations,,,,,
+8,Vikram Nayak,"Founder, Chartboss",The UX of Charts,,lightning talk,,"How can you use the best of UX and product thinking to better communicate your data insight? How does human perception, cognition and psychology affect the success of your charts?
+<br><br>
+Can data viz really be broken down into a framework or process? Yes it can! I'll explain my USER framework for data visualisation - a structured way to get to the right visual for your audience, everytime. This is the same framework on which we've built our flagship product, ChartBoss.
+<br><br>
+We'll also go through multiple chart audits and makeovers to help illustrate each concept.",,,4,5,4,5,5,Designing visualizations,https://hasgeek.com/VizChitra/2025/sub/the-ux-of-charts-get-the-insight-across-every-time-DrGYcthTdJvPT3KvPBCCMj,0.95,10,25,
+9,Rahul Beniwal and Neel Lakhwani,Tibba Design Studio,Democratizing financial data for a growing India,,lightning talk,," Retail holdings as direct and indirect investors (through mutual funds) surged more than 10 times over the last 10 years, according to data from the National Stock Exchange (NSE). In a country of 320 million households, we now have 110 million unique investors.
+<br><br>
+With this surge in the number of retail investors, the need to serve them the right information to base their investment decisions on is the need of the hour. The challenge for this demographic is that financial data is usually full of jargon, dense tables and complex charts - which they struggle to make sense of due to low financial literacy. And so, we set out to explore the question - what if people don't need more information, but clearer explanations?
+<br><br>
+With that we set out to build Groww Stories.
+<br><br>
+This talk will cover our journey in helping build Groww stories - a feature on the app designed to bring financial literacy to India's growing segment of first time retail investors. It brings financial stories and data to life in a way that's fun, engaging, and easy to understand while staying true to current events.
+<br><br>
+We'll explore how this feature was conceptualized and built out iteratively. With each story having a less than 4 hour turnaround time, the design language was built on the fly with daily evolutions being the norm. Under the stories banner, we've worked on representing financial events in the context of present day and the past along with visualizing quarterly reports released by public companies.",,,4,4,4,5,5,Designing visualizations,https://hasgeek.com/VizChitra/2025/sub/democratizing-financial-data-for-a-growing-india-Dd38iBU6tSvKC7fNGHBMAf,,,,
 10,Srinivasan Ramani,"Deputy National Editor, The Hindu",Data Journalism and Visualisation,at a time of Print's decline,standard talk,,"The presentation would be about journalism within the larger ambit of story-telling at a time of print in crisis. Story-telling in the print media has to adopt to a milieu where there is a multiplicity of news sources and immediate availability of a lot of content, but which are largely not subject to gate-keeping and verification. It has also got to adopt to a milieu where readership/ viewership has steadily moved away from print into new digital formats - online and video.
 <br><br>
 In order to cater to a diverse audience and to establish a USP, print has to move beyond the idea of just being ""news sources of record"" into investigation, analysis, explanation and to put it in a nutshell - ""context setting"". Data journalism helps in a significant manner to situate print journalism in this new ""context setting"" idea. It helps in explanation, it helps in diversification of audience through innovative story-telling and it, by the very dint of its nature, helps in transition into new mediums.
 <br><br>
 This talk will focus on ways and means we have used data for these aspects of context-setting - investigations, explanation and analysis. We will delve further into how new technologies such as Gen AI has eased the job of entering into these new vistas while enhancing our process of story-telling in a deeper and more engaging manner.",,,5,5,5,4,5,Narrating insights,https://hasgeek.com/VizChitra/2025/sub/setting-the-context-how-data-journalism-is-redefin-QeX3UqdyBWupywXLwe3SUr,,,,
-11,Sabhyata Jain,"Product Designer, Microsoft",The invisible graph:,Leveraging AI to design accessible data visualisations,lightning talk,,,,,4,5,4,5,5,Designing visualizations,,,,,
-12,Gyan Lakhwani,"Design Educator, Founder at Public Knowledge Studio",Teaching Information Visualisation,,bof,Birds of Feather,,,,4,2,4,5,4,Coding visualizations,,,,,
-13,Gopika,"Legal Research Associate, Enfold Proactive Health Trust",Whose Analysis is it Anyway?,The Role of AI and Humans in Data Analysis and Visualization,bof,Birds of Feather,,,,5,5,4,5,5,Designing visualizations,,0.8,,,
+11,Sabhyata Jain,"Product Designer, Microsoft",The invisible graph:,Leveraging AI to design accessible data visualisations,lightning talk,,"Can you read an entire spreadsheet cell-by-cell through a straw? That's how blind people describe using a screen-reader for dataviz. In this talk we understand how when we try to design for the outlier we design for everyone.
+<br><br>
+Data visualizations compress thousands of data points into a glance, unless you rely on audio. Even with ARIA labels, a screen reader still exposes information linearly, piling cognitive load until the user feels, in their words, ""like I'm seeing the world through a microscope."" The result: lost time, lost grades, lost opportunities.
+<br><br>
+<strong>Our Hunch</strong>:
+What if AI could be your eyes and let you hear a data visuslisation.
+<br><br>
+ We also take the time to go through the issues faced when making information accessible and the pitfalls and learnings in making AI tools to bridge this gap in communication.
+<br><br>
+<strong>Takeaway</strong>: Learn actionable methods to make data viz accessible using established guidelines and emerging practices. ",,,4,5, ,5,5,Designing visualizations,https://hasgeek.com/VizChitra/2025/sub/the-invisible-graph-leveraging-ai-to-make-data-vis-SrUaS5bWXe3SGbwmfHeyL9,,,,
+12,Gyan Lakhwani,"Design Educator, Founder at Public Knowledge Studio",Teaching Information Visualisation,,bof,Birds of Feather,"How would you introduce dataviz in a classroom? Visual insights stick, but how do you make the learning slick? At #VizChitra2025, join an open discussion (or as we like to call it a Birds of a Feather session) on ""Teaching Information Visualisation"". Whether you're an educator or curious about teaching data, come swap notes, approaches, and ideas. 
+<br><br>
+The session is a chance to reflect on what works (and what doesn't) when bringing dataviz into the classroom. Bring your questions and experiments. The only syllabus is yours! 
+<br><br>
+Facilitated by Gyan Lakhwani, a design educator, visiting faculty at Department of Design, Delhi Technological University, and founder at Public Knowledge Studio, a plural design practice",,,4,2,4,5,4,Coding visualizations,https://hasgeek.com/VizChitra/2025/sub/teaching-information-visualisation-VaYWrEcBSxEqFryPWCjkTm,,,,
+13,Gopika,"Legal Research Associate, Enfold Proactive Health Trust",Whose Analysis is it Anyway?,The Role of AI and Humans in Data Analysis and Visualization,bof,Birds of Feather,"Artificial Intelligence is rapidly reshaping the world of data - leading to many of us who work with data, wondering what the role of humans will look like in the future.
+<br><br>
+This group chat invites participants to ponder several questions together in the context of data analysis and visualization:
+<br><br>
+1. Which parts of the process can be outsourced to AI? <br>
+2. What are the risks associated with ethics or bias, and how can we work with them? <br>
+3. Is there a tradeoff between speed and nuance? <br>
+4. Which parts of this are humans still necessary for? <br>
+5. What is AI not good at doing? <br>
+6. Is there something we will never be okay with AI doing?
+<br><br>
+What can you expect from this discussion?<br><br>
+1. A space to exchange perspective on the extent of the current role of AI in the context of data analysis and visualization, and imagine what it could look like in the future <br>
+2. A space to think together about concerns to do with the role of AI, and how they can mitigate",,,5,5,4,5,5,Designing visualizations,https://hasgeek.com/VizChitra/2025/sub/whose-analysis-is-it-anyway-the-role-of-ai-and-hum-8xVeJYL1H4dQPY1pTiPR7F,0.8,,,
 14,S ANAND,LLM Psychologist @ Straive CEO @ Gramener,Prompt-to-Plot:,Crafting Visual Stories with LLMs,workshop,,"In this hands-on workshop, you'll go from zero to a live data visualization using <strong>only natural-language prompts</strong> (plus a dash of copy-&-paste). Turn raw data into a compelling narrative - all by chatting with an LLM. 
 <br><br>
 No coding knowledge is required (but it'll help a lot.) 
