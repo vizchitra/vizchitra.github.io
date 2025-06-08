@@ -4,7 +4,7 @@
 </script>
 
 <div class="max-w-[100%] overflow-auto">
-	<SpeakerCardsTrack sessionTypes={['standard talk']} />
+	<SpeakerCardsTrack sessionTypes={['standard talk', 'sponsored talk']} />
 </div>
 
 <HomepageSection>
