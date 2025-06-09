@@ -18,6 +18,8 @@ import samarthImage from '$lib/assets/images/speakers-2025/speaker-samarth.jpg';
 import arundathiImage from '$lib/assets/images/speakers-2025/speaker-arundathi.jpg';
 import pulahaImage from '$lib/assets/images/speakers-2025/speaker-pulaha.jpg';
 import sarathKrishnaImage from '$lib/assets/images/speakers-2025/speaker-sarath-krishna.jpg';
+import SahanaKartikImage from '$lib/assets/images/speakers-2025/speaker-sahana-kartik.jpg';
+import hardikImage from '$lib/assets/images/speakers-2025/speaker-hardik.jpg';
 
 export const speakerImagesMap = {
     'Rukmini S': rukmini,
@@ -39,4 +41,6 @@ export const speakerImagesMap = {
     'SAMARTH GULATI': samarthImage,
     'PULAHA ROY': pulahaImage,
     'SARATH GUTTIKUNDA and DAMMALAPATI SAI KRISHNA': sarathKrishnaImage,
+    'Sahana Ghosh and Kartik Chandramouli': SahanaKartikImage,
+    'Hardik Chandrahas': hardikImage,
 }
