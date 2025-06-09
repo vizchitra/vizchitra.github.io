@@ -74,8 +74,8 @@
 					{/if}
 				</div>
 			</div>
-			<div class="details-section relative h-full p-8 px-6 md:px-8 xl:px-12">
-				<div class="details-content pb-16">
+			<div class="details-section relative h-full">
+				<div class="details-content relative p-8 px-6 pb-16 md:px-8 xl:px-12">
 					<div class="title-text max-w-unset mb-6 min-w-[240px]">
 						<h3
 							style="text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;"
@@ -128,16 +128,16 @@
 							>{data.talkType === 'workshop' ? 'Buy tickets' : 'Learn more'}</a
 						>
 					{/if}
-				</div>
 
-				<div
-					class="pattern-container absolute right-0 bottom-0 z-[-1] opacity-70"
-					style="transform: translate({0}px, {20}px); "
-				>
-					{@html SpeakerCardPattern2.replaceAll(
-						'#FFD485',
-						colorMapping[data.talkType]?.patternGradient[0]
-					).replaceAll('#F89F72', colorMapping[data.talkType]?.patternGradient[1])}
+					<div
+						class="pattern-container absolute right-0 bottom-0 z-[-1] opacity-70"
+						style="transform: translate({0}px, {20}px); "
+					>
+						{@html SpeakerCardPattern2.replaceAll(
+							'#FFD485',
+							colorMapping[data.talkType]?.patternGradient[0]
+						).replaceAll('#F89F72', colorMapping[data.talkType]?.patternGradient[1])}
+					</div>
 				</div>
 			</div>
 		</div>
