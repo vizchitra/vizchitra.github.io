@@ -20,7 +20,6 @@
 		"@sveltejs/kit": "^2.16.0",
 		"@sveltejs/vite-plugin-svelte": "^5.0.0",
 		"@tailwindcss/vite": "^4.0.0",
-		"@tinacms/cli": "^1.8.4",
 		"@types/node": "^22.13.1",
 		"d3": "^7.9.0",
 		"mdsvex": "^0.12.3",
@@ -44,7 +43,6 @@
 	"dependencies": {
 		"geojson": "^0.5.0",
 		"maplibre-gl": "^5.5.0",
-		"svelte-maplibre-gl": "^0.1.8",
-		"tinacms": "^2.6.4"
+		"svelte-maplibre-gl": "^0.1.8"
 	}
 }
