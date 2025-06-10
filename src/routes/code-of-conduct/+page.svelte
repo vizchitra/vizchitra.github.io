@@ -54,8 +54,18 @@
 
 		<div class="content-notice">
 			<p class="content-text mb-4">
-				Please report in confidence by sending an email to the community admins. Reports will be
-				treated seriously and community admins will address this matter quickly.
+				Please report in confidence by sending an email to <a
+					href="mailto:hello@vizchitra.com?subject=Code%20of%20Conduct%20Report"
+				>
+					<strong>hello@vizchitra.com</strong></a
+				>
+				or direct messaging the admins e.g. Rasagy Sharma, Ipsa Jain of the
+				<a href="https://chat.whatsapp.com/CcptoGEeCqJEkiETwAzpbq">
+					<strong> VizChitra Community on WhatsApp</strong></a
+				>. Reports will be treated seriously and community admins will address this matter quickly.
+				To escalate, message or call Gurman Bhatia @
+				<a href="tel:+91 99900 44111">+91 99900 44111</a> or Amit Kapoor @
+				<a href="+91 97392 68197">+91 97392 68197</a>
 			</p>
 
 			<p class="content-text font-semibold">
@@ -65,3 +75,9 @@
 		</div>
 	</div>
 </div>
+
+<style>
+	a {
+		text-decoration: underline;
+	}
+</style>
