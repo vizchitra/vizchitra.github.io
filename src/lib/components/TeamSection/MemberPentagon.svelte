@@ -66,7 +66,7 @@
 </script>
 
 <div>
-	<div class="pentagon-container relative h-[150px] w-[150px] md:h-[200px] md:w-[200px]">
+	<div class="pentagon-container relative h-[150px] w-[150px] md:h-[200px] md:w-[200px] xl:h-[250px] xl:w-[250px]">
 		<svg class="absolute z-10" width="100%" height="100%">
 			{#each points as point, i}
 				<line
@@ -96,7 +96,7 @@
 		</div>
 	</div>
 
-	<div class="member-details w-[150px] max-w-[200px] text-center md:w-[200px]">
+	<div class="member-details w-[150px] max-w-[200px] text-center md:w-[200px] xl:w-[250px] xl:max-w-[250px]">
 		<div class="mb-2 flex h-[45px] flex-col items-center justify-end">
 			<h3 class="font-display align-bottom text-[18px] leading-[1] font-bold md:text-[22px]">
 				{memberData.name}
