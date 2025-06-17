@@ -10,7 +10,8 @@
 	import Workshop2025 from '$lib/components/LineUp/Workshop2025.svelte';
 	import SponsorCard from '$lib/components/SponsorCards.svelte';
 	import nutanixLogo from './sponsorship/assets/nutanix-logo.png';
-	import revisualLogo from './sponsorship/assets/revisual-logo.png';
+	import revisualLogo from './sponsorship/assets/revisual-logo.png';	
+	import lightningChartLogo from './sponsorship/assets/lightning-chart-logo.png';
 	import hasgeekLogo from './sponsorship/assets/hasgeek-logo.png';
 	import Pentagons from '$lib/components/Pentagons.svelte';
 	import Map from '$lib/components/Map.svelte';
@@ -28,6 +29,12 @@
 			heading: 'Silver Sponsor',
 			logo: revisualLogo,
 			variant: 'yellow' as const,
+			seed: 343554354
+		},
+		{
+			heading: 'Bronze Sponsor',
+			logo: lightningChartLogo,
+			variant: 'orange' as const,
 			seed: 343554354
 		},
 		{

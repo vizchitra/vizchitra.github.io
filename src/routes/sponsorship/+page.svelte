@@ -15,6 +15,7 @@
 	import hasgeekLogo from './assets/hasgeek-logo.png';
 	import nutanixLogo from './assets/nutanix-logo.png';
 	import revisualLogo from './assets/revisual-logo.png';
+	import lightningChartLogo from './assets/lightning-chart-logo.png';
 	import orgs from '$lib/data/orgs.csv';
 	import yearsOfExperience from '$lib/data/years.csv';
 	import organizationSize from '$lib/data/size.csv';
@@ -322,6 +323,14 @@
 						logo={revisualLogo}
 						logoType="image"
 						variant="yellow"
+						seed={343554354}
+					/>
+
+					<SponsorCard
+						heading="Bronze Sponsor"
+						logo={lightningChartLogo}
+						logoType="image"
+						variant="orange"
 						seed={343554354}
 					/>
 
