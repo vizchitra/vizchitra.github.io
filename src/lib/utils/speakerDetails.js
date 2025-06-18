@@ -20,6 +20,12 @@ import pulahaImage from '$lib/assets/images/speakers-2025/speaker-pulaha.jpg';
 import sarathKrishnaImage from '$lib/assets/images/speakers-2025/speaker-sarath-krishna.jpg';
 import SahanaKartikImage from '$lib/assets/images/speakers-2025/speaker-sahana-kartik.jpg';
 import hardikImage from '$lib/assets/images/speakers-2025/speaker-hardik.jpg';
+import pragnyaImage from '$lib/assets/images/speakers-2025/speaker-pragnya.jpg';
+import prakritiImage from '$lib/assets/images/speakers-2025/speaker-prakriti.jpg';
+import anushkaRutuImage from '$lib/assets/images/speakers-2025/speaker-anusha-rutu.jpg';
+import ramaKrushnaImage from '$lib/assets/images/speakers-2025/speaker-rama-krushna.jpg';
+import ashokImage from '$lib/assets/images/speakers-2025/speaker-ashok.jpg';
+import aditeyaImage from '$lib/assets/images/speakers-2025/speaker-aditeya.jpg';
 
 export const speakerImagesMap = {
     'Rukmini S': rukmini,
@@ -43,4 +49,10 @@ export const speakerImagesMap = {
     'SARATH GUTTIKUNDA and DAMMALAPATI SAI KRISHNA': sarathKrishnaImage,
     'Sahana Ghosh and Kartik Chandramouli': SahanaKartikImage,
     'Hardik Chandrahas': hardikImage,
+    'Pragnya': pragnyaImage,
+    'Prakriti Bakshi': prakritiImage,
+    'Anushka Gokhale and Rutu Tank': anushkaRutuImage,
+    'Rama Krushna Behera': ramaKrushnaImage,
+    'Ashok Kumar': ashokImage,
+    'Aditeya Pandey': aditeyaImage,
 }
