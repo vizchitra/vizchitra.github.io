@@ -6,7 +6,7 @@ export const redirects = {
 	conference: 'https://hasgeek.com/VizChitra/2025',
 	cfp: 'https://hasgeek.com/VizChitra/2025/sub',
         schedule: 'https://hasgeek.com/VizChitra/2025/schedule',
-        feedback: 'https://vizchitra.com',
+        feedback: ' https://forms.gle/ai8npdr4GKHDHkZw5',
 	tickets: 'https://hasgeek.com/VizChitra/2025/#tickets'
 	
 };
