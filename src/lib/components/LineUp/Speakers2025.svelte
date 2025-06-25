@@ -9,7 +9,7 @@
 
 <HomepageSection>
 	<div slot="content">
-		<h2 id="workshops" class="content-heading !text-[2rem]">Lightning Talks</h2>
+		<h2 class="content-heading !text-[2rem]">Lightning Talks</h2>
 		<p class="content-text mb-1">
 			Shorter sessions of 15 minutes each, where speakers share quick insights, demos, or give you
 			an insider view of the work they do.
