@@ -19,6 +19,7 @@
 	import FAQ from '$lib/components/FAQ.svelte';
 	import lillyLogo from './sponsorship/assets/lilly-logo.png';
 	import ltsLogo from './sponsorship/assets/lasttheoram-logo.png';
+	import straiveLogo	from './sponsorship/assets/straive-logo.png'
 
 	const sponsors = [
 		{
@@ -43,6 +44,12 @@
 			heading: 'Bronze Sponsor',
 			logo: lightningChartLogo,
 			variant: 'orange' as const,
+			seed: 343554354
+		},
+		{
+			heading: 'Bronze Sponsor',
+			logo: straiveLogo,
+			variant: 'yellow' as const,
 			seed: 343554354
 		},
 		{

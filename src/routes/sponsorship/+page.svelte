@@ -18,6 +18,7 @@
 	import lightningChartLogo from './assets/lightning-chart-logo.png';
 	import lillyLogo from './assets/lilly-logo.png';
 	import ltsLogo from './assets/lasttheoram-logo.png';
+	import straiveLogo	from './assets/straive-logo.png'
 	import orgs from '$lib/data/orgs.csv';
 	import yearsOfExperience from '$lib/data/years.csv';
 	import organizationSize from '$lib/data/size.csv';
@@ -331,6 +332,14 @@
 					<SponsorCard
 						heading="Silver & Diversity Sponsor"
 						logo={revisualLogo}
+						logoType="image"
+						variant="yellow"
+						seed={343554354}
+					/>
+
+					<SponsorCard
+						heading="Bronze Sponsor"
+						logo={straiveLogo}
 						logoType="image"
 						variant="yellow"
 						seed={343554354}
