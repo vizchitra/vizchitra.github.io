@@ -12,6 +12,7 @@
 				{ name: 'The conference', href: '/#intro' },
 				{ name: 'Speaker line-up', href: '/#speakers' },
 				{ name: 'Workshops', href: '/#workshops' },
+				{ name: 'Schedule', href: 'https://hasgeek.com/VizChitra/2025/schedule' },
 				{
 					name: 'Sponsorship',
 					href: '/sponsorship'
@@ -74,6 +75,12 @@
 			</div>
 
 			<div class="mobile-drawer-container relative flex h-full items-center justify-center">
+				<a
+					href="https://hasgeek.com/VizChitra/2025/schedule"
+					target="_blank"
+					class="bg-viz-pink hover:bg-viz-pink/90 mr-3 inline-flex w-full items-center justify-center gap-3 rounded-lg border-[1px] border-[#666] px-3 py-1 text-base font-medium text-nowrap whitespace-nowrap text-white transition-all duration-200 hover:text-white sm:text-lg"
+					>View Schedule</a
+				>
 				<MobileNavDrawer {navSections}></MobileNavDrawer>
 			</div>
 
@@ -136,6 +143,13 @@
 						</a>
 					{/if}
 				{/each}
+
+				<a
+					href="https://hasgeek.com/VizChitra/2025/schedule"
+					target="_blank"
+					class="bg-viz-pink hover:bg-viz-pink/90 ml-3 inline-flex w-full items-center justify-center gap-3 rounded-lg border-[1px] border-[#666] px-5 py-2 text-lg font-semibold text-nowrap whitespace-nowrap text-white transition-all duration-200 hover:text-white"
+					>View Schedule</a
+				>
 			</div>
 		</div>
 	</div>
@@ -160,7 +174,7 @@
 		display: flex;
 	}
 
-	@media (max-width: 600px) {
+	@media (max-width: 750px) {
 		.mobile-drawer-container {
 			display: flex;
 		}
