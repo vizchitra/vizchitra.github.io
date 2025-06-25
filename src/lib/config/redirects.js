@@ -7,6 +7,7 @@ export const redirects = {
 	cfp: 'https://hasgeek.com/VizChitra/2025/sub',
         schedule: 'https://hasgeek.com/VizChitra/2025/schedule',
         feedback: ' https://forms.gle/ai8npdr4GKHDHkZw5',
-	tickets: 'https://hasgeek.com/VizChitra/2025/#tickets'
-	
+	tickets: 'https://hasgeek.com/VizChitra/2025/#tickets',
+	flash: 'https://forms.gle/c62J2Pttascvy37W9',
+	merchandise: 'https://hasgeek.com/VizChitra/merchandise/' 
 };
