@@ -16,6 +16,9 @@
 	import nutanixLogo from './assets/nutanix-logo.png';
 	import revisualLogo from './assets/revisual-logo.png';
 	import lightningChartLogo from './assets/lightning-chart-logo.png';
+	import lillyLogo from './assets/lilly-logo.png';
+	import ltsLogo from './assets/lasttheoram-logo.png';
+	import straiveLogo	from './assets/straive-logo.png'
 	import orgs from '$lib/data/orgs.csv';
 	import yearsOfExperience from '$lib/data/years.csv';
 	import organizationSize from '$lib/data/size.csv';
@@ -319,7 +322,15 @@
 					/>
 
 					<SponsorCard
-						heading="Silver Sponsor"
+						heading="Gold Sponsor"
+						logo={lillyLogo}
+						logoType="image"
+						variant="white"
+						seed={3434}
+					/>
+
+					<SponsorCard
+						heading="Silver & Diversity Sponsor"
 						logo={revisualLogo}
 						logoType="image"
 						variant="yellow"
@@ -334,6 +345,14 @@
 						seed={343554354}
 					/>
 
+					<SponsorCard
+						heading="Bronze Sponsor"
+						logo={straiveLogo}
+						logoType="image"
+						variant="yellow"
+						seed={343554354}
+					/>
+
 					<!-- HasGeek -->
 					<SponsorCard
 						heading="Event Partner"
@@ -344,10 +363,17 @@
 					/>
 
 					<SponsorCard
-						heading="Affiliate Partner"
+						heading="A Local Affliate for"
 						logo="https://images.squarespace-cdn.com/content/v1/5c6055b5fb18206d45d6b27e/1562601203642-ZHLHUGGYNWOIZHZK46U9/Data+Visualization+Society+logo+2019-05-transparent.png"
 						logoType="image"
 						variant="green"
+						seed={34435432}
+					/>
+					<SponsorCard
+						heading="Media Partner"
+						logo={ltsLogo}
+						logoType="image"
+						variant="orange"
 						seed={34435432}
 					/>
 				</div>

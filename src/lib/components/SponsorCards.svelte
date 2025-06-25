@@ -3,7 +3,7 @@
 	export let heading = 'Platinum Sponsor';
 	export let logo = ''; // Can be text, image URL, or HTML
 	export let logoType: 'text' | 'image' | 'html' = 'text';
-	export let variant: 'pink' | 'yellow' | 'orange' | 'blue' | 'green' = 'pink';
+	export let variant: 'pink' | 'white' | 'yellow' | 'orange' | 'blue' | 'black' | 'green' = 'pink';
 	export let size: 'small' | 'medium' | 'large' = 'medium';
 	export let seed = 12345; // Seed for shape variations
 
@@ -28,6 +28,14 @@
 		green: {
 			light: '#e8f5e8',
 			dark: '#4caf50'
+		},
+		white: {
+			light: '#F6F6F6',
+			dark: '#4C4C4C'
+		},
+		black: {
+			light: '#4C4C4C',
+			dark: '#3B3B3B'
 		}
 	} as const;
 

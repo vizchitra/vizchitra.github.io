@@ -17,6 +17,9 @@
 	import Map from '$lib/components/Map.svelte';
 	import VenueCard from '$lib/components/VenueCard.svelte';
 	import FAQ from '$lib/components/FAQ.svelte';
+	import lillyLogo from './sponsorship/assets/lilly-logo.png';
+	import ltsLogo from './sponsorship/assets/lasttheoram-logo.png';
+	import straiveLogo	from './sponsorship/assets/straive-logo.png'
 
 	const sponsors = [
 		{
@@ -26,7 +29,13 @@
 			seed: 343442
 		},
 		{
-			heading: 'Silver Sponsor',
+			heading: 'Gold Sponsor',
+			logo: lillyLogo,
+			variant: 'white' as const,
+			seed: 3434
+		},
+		{
+			heading: 'Silver & Diversity Sponsor',
 			logo: revisualLogo,
 			variant: 'yellow' as const,
 			seed: 343554354
@@ -38,15 +47,27 @@
 			seed: 343554354
 		},
 		{
+			heading: 'Bronze Sponsor',
+			logo: straiveLogo,
+			variant: 'yellow' as const,
+			seed: 343554354
+		},
+		{
 			heading: 'Event Partner',
 			logo: hasgeekLogo,
 			variant: 'blue' as const,
 			seed: 342
 		},
 		{
-			heading: 'Affiliate Partner',
+			heading: 'A Local Affliate for',
 			logo: 'https://images.squarespace-cdn.com/content/v1/5c6055b5fb18206d45d6b27e/1562601203642-ZHLHUGGYNWOIZHZK46U9/Data+Visualization+Society+logo+2019-05-transparent.png',
 			variant: 'green' as const,
+			seed: 34435432
+		},
+		{
+			heading: 'Media Partner',
+			logo: ltsLogo,
+			variant: 'orange' as const,
 			seed: 34435432
 		}
 	];
