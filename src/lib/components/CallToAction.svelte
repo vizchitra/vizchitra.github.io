@@ -1,8 +1,6 @@
 <script lang="ts">
 	import communityBanner from '$lib/assets/images/call-to-action/community-banner.webp';
 	import conferenceBanner from '$lib/assets/images/call-to-action/conference-banner.webp';
-	import vizBizBanner from '$lib/assets/images/call-to-action/viz-biz-banner.png';
-	import proposalJamBanner from '$lib/assets/images/call-to-action/proposal-jam-banner.png';
 	import sponsorshipBanner from '$lib/assets/images/call-to-action/sponsorship-banner.png';
 
 	import { confetti } from '@neoconfetti/svelte';
@@ -21,7 +19,16 @@
 			buttonText: 'Connect',
 			isAnimated: false
 		},
-
+		{
+			image: sponsorshipBanner,
+			alt: 'VizChitra 2025 Schedule banner',
+			title: 'Chart your course @ VizChitra 2025',
+			description:
+				"Explore the full schedule for June 27th and don't miss out on keynotes, panels, and alternative sessions.",
+			link: 'https://hasgeek.com/VizChitra/2025/schedule',
+			buttonText: 'View Schedule',
+			isAnimated: true
+		},
 		{
 			image: conferenceBanner,
 			alt: 'Call for conference proposals banner',
@@ -29,18 +36,18 @@
 			description: 'Annual flagship in-person conference, on 27 June',
 			link: 'https://hasgeek.com/VizChitra/2025/#tickets',
 			buttonText: 'Buy tickets now!',
-			isAnimated: true
-		},
-		{
-			image: sponsorshipBanner,
-			alt: 'Sponsor the Conference',
-			title: 'Sponsor the Conference',
-			description:
-				'Want to partner with VizChitra? Sponsorships are open for orgs big and small. Reach out to us at sales@hasgeek.com',
-			link: '/sponsorship',
-			buttonText: 'Sponsorship info',
 			isAnimated: false
 		}
+		// {
+		// 	image: sponsorshipBanner,
+		// 	alt: 'Sponsor the Conference',
+		// 	title: 'Sponsor the Conference',
+		// 	description:
+		// 		'Want to partner with VizChitra? Sponsorships are open for orgs big and small. Reach out to us at sales@hasgeek.com',
+		// 	link: '/sponsorship',
+		// 	buttonText: 'Sponsorship info',
+		// 	isAnimated: false
+		// }
 	];
 
 	function handleCardMouseLeave() {
