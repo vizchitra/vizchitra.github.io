@@ -339,17 +339,17 @@
 
 					<SponsorCard
 						heading="Bronze Sponsor"
-						logo={straiveLogo}
+						logo={lightningChartLogo}
 						logoType="image"
-						variant="yellow"
+						variant="orange"
 						seed={343554354}
 					/>
 
 					<SponsorCard
 						heading="Bronze Sponsor"
-						logo={lightningChartLogo}
+						logo={straiveLogo}
 						logoType="image"
-						variant="orange"
+						variant="yellow"
 						seed={343554354}
 					/>
 
