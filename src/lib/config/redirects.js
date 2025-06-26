@@ -2,13 +2,16 @@
  * @type {Record<string, string>}
  */
 export const redirects = {
-	friends: 'https://chat.whatsapp.com/CbIu7z6ITmGFvwfw0BjDdL',
+	friends: 'https://chat.whatsapp.com/CcptoGEeCqJEkiETwAzpbq',
 	conference: 'https://hasgeek.com/VizChitra/2025',
 	cfp: 'https://hasgeek.com/VizChitra/2025/sub',
-    schedule: 'https://hasgeek.com/VizChitra/2025/schedule',
-    feedback: 'https://forms.gle/ai8npdr4GKHDHkZw5',
+	schedule: 'https://hasgeek.com/VizChitra/2025/schedule',
+	feedback: 'https://forms.gle/ai8npdr4GKHDHkZw5',
 	tickets: 'https://hasgeek.com/VizChitra/2025/#tickets',
 	flash: 'https://forms.gle/c62J2Pttascvy37W9',
-    workfeedback: 'https://forms.gle/qw5xB57QBh1h6P4Q9',
-	merchandise: 'https://hasgeek.com/VizChitra/merchandise/' 
+	workfeedback: 'https://forms.gle/qw5xB57QBh1h6P4Q9',
+	merchandise: 'https://hasgeek.com/VizChitra/merchandise/',
+	map: 'https://maps.app.goo.gl/Xa6N8q7s5S2Tm1559',
+	'sponsor-feedback': 'https://forms.gle/4TBRt6zTuMdMMiyKA'
+	
 };
