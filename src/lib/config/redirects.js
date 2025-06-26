@@ -9,6 +9,6 @@ export const redirects = {
     feedback: 'https://forms.gle/ai8npdr4GKHDHkZw5',
 	tickets: 'https://hasgeek.com/VizChitra/2025/#tickets',
 	flash: 'https://forms.gle/c62J2Pttascvy37W9',
-    workfeedack: 'https://forms.gle/qw5xB57QBh1h6P4Q9',
+    workfeedback: 'https://forms.gle/qw5xB57QBh1h6P4Q9',
 	merchandise: 'https://hasgeek.com/VizChitra/merchandise/' 
 };
