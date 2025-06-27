@@ -16,6 +16,8 @@ export const redirects = {
 	guide: 'https://drive.usercontent.google.com/download?id=1g3e1RkHpv7pW9SZCR4m9FME8rKJ3lSo_&authuser=0&acrobatPromotionSource=GoogleDriveListView',
 	editorial: 'https://docs.google.com/presentation/d/1ODffg_I407aptk8zBzrzEXS4i-GiCCVExp2t2bQKZ7E/',
 	virtual1: 'https://youtube.com/live/4HN9rPrLshc?feature=share',
-	virtual2: 'https://youtube.com/live/-g2wH27Qu58?feature=share'
+	virtual2: 'https://youtube.com/live/-g2wH27Qu58?feature=share',
+	slido1: 'https://app.sli.do/event/xf42twibEgDLDifMKdxDwW',
+	slido2: 'https://app.sli.do/event/5aJYogWhdFTVcg7No9gH8f'
 		
 };
