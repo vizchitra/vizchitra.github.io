@@ -81,6 +81,7 @@
 					class="bg-viz-pink hover:bg-viz-pink/90 mr-3 inline-flex w-full items-center justify-center gap-3 rounded-lg border-[1px] border-[#666] px-3 py-1 text-base font-medium text-nowrap whitespace-nowrap text-white transition-all duration-200 hover:text-white sm:text-lg"
 					>View Schedule</a
 				>
+
 				<MobileNavDrawer {navSections}></MobileNavDrawer>
 			</div>
 
