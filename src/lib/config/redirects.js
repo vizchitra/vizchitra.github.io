@@ -13,6 +13,9 @@ export const redirects = {
 	merchandise: 'https://hasgeek.com/VizChitra/merchandise/',
 	map: 'https://maps.app.goo.gl/Xa6N8q7s5S2Tm1559',
 	'sponsor-feedback': 'https://forms.gle/4TBRt6zTuMdMMiyKA',
-	guide: 'https://drive.usercontent.google.com/download?id=1g3e1RkHpv7pW9SZCR4m9FME8rKJ3lSo_&authuser=0&acrobatPromotionSource=GoogleDriveListView'
-	
+	guide: 'https://drive.usercontent.google.com/download?id=1g3e1RkHpv7pW9SZCR4m9FME8rKJ3lSo_&authuser=0&acrobatPromotionSource=GoogleDriveListView',
+	guidelines: 'https://docs.google.com/presentation/d/1ODffg_I407aptk8zBzrzEXS4i-GiCCVExp2t2bQKZ7E/',
+	virtual1: 'https://youtube.com/live/4HN9rPrLshc?feature=share',
+	virtual2: 'https://youtube.com/live/-g2wH27Qu58?feature=share'
+		
 };
