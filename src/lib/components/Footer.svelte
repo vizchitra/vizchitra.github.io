@@ -21,7 +21,7 @@
 			<SocialLink />
 
 			<p class="bg-white text-sm opacity-75">
-				Copyright © {new Date().getFullYear()} Vizchitra. All rights reserved.
+				Copyright © {new Date().getFullYear()} VizChitra. All rights reserved.
 			</p>
 		</div>
 	</footer>
