@@ -93,7 +93,14 @@
 									on:click={handleClick}
 								>
 									<span class="font-base text-xl whitespace-nowrap text-[#4C4C4C]"
-										>{subsection.name}</span
+										>{subsection.name}
+										{#if subsection.isBadge}
+											<span
+												class="ml-1 rounded-full border border-blue-500 bg-gradient-to-r from-blue-400 to-blue-600 px-2.5 py-0.5 text-xs font-semibold text-white shadow-sm transition-transform duration-200 hover:scale-105"
+											>
+												{subsection.badgeText}
+											</span>
+										{/if}</span
 									>
 								</a>
 							{/each}
