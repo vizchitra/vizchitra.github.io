@@ -103,7 +103,7 @@
 
 <div class="min-h-screen w-full">
 	<!-- Page Header -->
-	<PageHeader title="VizChitra 2025 Recape!" />
+	<PageHeader title="VizChitra 2025 Recap!" />
 
 	<!-- Main content container -->
 	<div class="mx-auto max-w-7xl px-4 py-8">
