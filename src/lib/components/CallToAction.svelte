@@ -21,23 +21,23 @@
 		},
 		{
 			image: sponsorshipBanner,
-			alt: 'VizChitra 2025 Schedule banner',
-			title: 'Chart your course @ VizChitra 2025',
+			alt: 'VizChitra 2025 Recap',
+			title: 'VizChitra 2025 Recap',
 			description:
-				"Explore the full schedule for June 27th and don't miss out on keynotes, panels, and alternative sessions.",
-			link: 'https://hasgeek.com/VizChitra/2025/schedule',
-			buttonText: 'View Schedule',
-			isAnimated: true
-		},
-		{
-			image: conferenceBanner,
-			alt: 'Call for conference proposals banner',
-			title: 'VizChitra 2025',
-			description: 'Annual flagship in-person conference, on 27 June',
-			link: 'https://hasgeek.com/VizChitra/2025/#tickets',
-			buttonText: 'Buy tickets now!',
+				"Catch up on VizChitra 2025. Explore  keynotes, panels and alternative sessions.",
+			link: '/recap',
+			buttonText: 'View Recap',
 			isAnimated: false
-		}
+		},
+		// {
+		// 	image: conferenceBanner,
+		// 	alt: 'Call for conference proposals banner',
+		// 	title: 'VizChitra 2025',
+		// 	description: 'Annual flagship in-person conference, on 27 June',
+		// 	link: 'https://hasgeek.com/VizChitra/2025/#tickets',
+		// 	buttonText: 'Buy tickets now!',
+		// 	isAnimated: false
+		// }
 		// {
 		// 	image: sponsorshipBanner,
 		// 	alt: 'Sponsor the Conference',
@@ -66,7 +66,7 @@
 </script>
 
 <div
-	class="z-12 -mt-[15%] grid grid-cols-1 gap-4 rounded-2xl bg-white px-4 py-4 sm:px-6 lg:grid-cols-3 lg:px-4"
+	class="z-12 -mt-[15%] grid grid-cols-1 gap-4 rounded-2xl bg-white px-4 py-4 sm:px-6 lg:grid-cols-2 lg:px-4"
 >
 	{#each cards as card}
 		<a
