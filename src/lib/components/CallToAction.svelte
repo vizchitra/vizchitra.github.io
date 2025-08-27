@@ -66,7 +66,7 @@
 </script>
 
 <div
-	class="z-12 -mt-[15%] grid grid-cols-1 gap-4 rounded-2xl bg-white px-4 py-4 sm:px-6 lg:grid-cols-3 lg:px-4"
+	class="z-12 -mt-[15%] grid grid-cols-1 gap-4 rounded-2xl bg-white px-4 py-4 sm:px-6 lg:grid-cols-2 lg:px-4"
 >
 	{#each cards as card}
 		<a
