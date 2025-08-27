@@ -1,7 +1,6 @@
 <script>
 	import Footer from '$lib/components/Footer.svelte';
 	import '../app.css';
-	import HeaderCallToAction from '$lib/components/HeaderCallToAction.svelte';
 
 	import { page } from '$app/stores';
 	import NavMenu from '$lib/components/Navbar/NavMenu.svelte';
@@ -10,7 +9,6 @@
 	let { children } = $props();
 </script>
 
-<HeaderCallToAction />
 <div class="app">
 	<NavMenu></NavMenu>
 	<main class:full-width={$page.url.pathname.includes('polygon-playground')}>
