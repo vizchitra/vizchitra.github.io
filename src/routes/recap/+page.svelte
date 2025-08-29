@@ -135,10 +135,10 @@
 				<button
 					type="button"
 					on:click={() => openVideoInModal(video.id)}
-					class={`transform cursor-pointer overflow-hidden rounded-lg border border-gray-200 bg-white text-left transition hover:scale-[1.02] hover:shadow-md ${hoverBorderClasses[video.code] || hoverBorderClasses.Default}`}
+					class={`transform cursor-pointer overflow-hidden rounded-lg border border-gray-100 bg-white text-left transition hover:scale-[1.02] hover:shadow-md ${hoverBorderClasses[video.code] || hoverBorderClasses.Default}`}
 				>
 					<!-- Thumbnail Image -->
-					<img src={video.thumbnail} alt={video.title} class="h-auto w-full" />
+					<img src={video.thumbnail} alt={video.title} class="scale-105" />
 
 					<!-- Video Info -->
 					<div class="p-4">
