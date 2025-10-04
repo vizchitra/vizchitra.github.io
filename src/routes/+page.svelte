@@ -19,18 +19,18 @@
 		{
 			title: 'Explore & Play',
 			description: 'On practices of data exploration, interface & dashboard design for dataviz.',
-			backgroundColor: 'var(--color-viz-pink)'
+			backgroundColor: 'var(--color-viz-teal-light)'
 		},
 		{
 			title: 'Explain &  Learn',
 			description: 'Centered on fundamentals of process, design & communication for dataviz.',
-			backgroundColor: 'var(--color-viz-yellow)'
+			backgroundColor: 'var(--color-viz-yellow-light)'
 		},
 		{
 			title: 'Imagine & Innovate',
 			description:
 				'Use of new mediums, approaches, AI & tech to shape how we do dataviz in future.',
-			backgroundColor: 'var(--color-viz-blue)'
+			backgroundColor: 'var(--color-viz-blue-light)'
 		}
 	];
 	// Import CSV video data
@@ -211,10 +211,10 @@
 	</div>
 
 	<!-- Video Card Grid -->
-	<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+	<div class="grid max-w-[95dvw] grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
 		{#each filteredVideos as video (video.id)}
 			<div
-				class="relative flex h-[550px] flex-col rounded-md border border-black/20 bg-white transition-all duration-300 ease-in-out hover:border-gray-300 hover:shadow-xl"
+				class="max-width relative flex h-[500px] flex-col rounded-md border border-black/20 bg-white transition-all duration-300 ease-in-out hover:border-gray-300 hover:shadow-xl"
 			>
 				<div
 					class="pointer-events-none absolute inset-0 z-1 rounded-md opacity-50"
@@ -226,7 +226,7 @@
 					class="relative z-10 flex h-full w-full cursor-pointer flex-col rounded-xl border-none bg-transparent text-left transition outline-none"
 				>
 					<!-- Card Header with Title -->
-					<div class="h-[120px] flex-shrink-0 p-4 pb-3">
+					<div class="h-[100px] flex-shrink-0 p-4 pb-3">
 						<h3 class="text-viz-orange-dark line-clamp-4 text-xl leading-tight font-bold">
 							{video.title} <span class="text-md font-normal">{video.subtitle}</span>
 						</h3>
@@ -255,10 +255,11 @@
 			</div>
 		{/each}
 	</div>
-	<PolygonDivider></PolygonDivider>
 
-	<div class="mx-auto my-16 flex max-w-4xl flex-col justify-center space-y-4">
-		<h2 class="content-heading mb-3 text-center">
+	<div class="mx-auto max-w-[95dvw] px-5 py-12 md:max-w-7xl">
+		<PolygonDivider></PolygonDivider>
+
+		<h2 class="content-heading mt-6 mb-3 pt-12 text-center">
 			About
 			<VizChitraLogoType includeYear={false}></VizChitraLogoType>
 		</h2>
@@ -270,35 +271,28 @@
 			visualization spectrum, and facilitate learning and connections between people from different
 			industries and disciplines who share a common interest in the power of data and storytelling.
 		</p>
+		<div class="mx-auto mt-6 flex flex-wrap gap-4">
+			{#each whyAttend as item, i}
+				<Pentagons
+					title={item.title}
+					description={item.description}
+					backgroundColor={item.backgroundColor}
+					seed={Math.floor(Math.random() * 10)}
+				/>
+			{/each}
+		</div>
+		<h2 class="content-heading mt-6 pt-12 text-center">Our Mission</h2>
+		<h3 class="content-subheading mb-3 text-center">
+			<CustomSlantedText textContent="BUILDING AN INDIAN DATA VISUALIZATION COMMUNITY"
+			></CustomSlantedText>
+		</h3>
+		<p class="content-text mx-auto mb-1 text-center">
+			To foster a vibrant <span class="font-bold">community of data storytellers in India</span>,
+			bridging technical analysis and design expertise to shape perspectives and drive change
+		</p>
+		<Mission></Mission>
 	</div>
-</div>
-
-<div>
-	<div class="mx-auto flex max-w-6xl flex-wrap gap-4">
-		{#each whyAttend as item, i}
-			<Pentagons
-				title={item.title}
-				description={item.description}
-				backgroundColor={item.backgroundColor}
-				seed={Math.floor(Math.random() * 10)}
-			/>
-		{/each}
-	</div>
+	<PolygonDivider></PolygonDivider>
 </div>
 
 <!-- Mission Section -->
-
-<div class="mx-auto mt-12 max-w-6xl px-4 py-16">
-	<h2 class="content-heading mb-3 text-center">Our Mission</h2>
-	<h3 class="content-subheading mb-3 text-center">
-		<CustomSlantedText textContent="BUILDING AN INDIAN DATA VISUALIZATION COMMUNITY"
-		></CustomSlantedText>
-	</h3>
-	<p class="content-text mx-auto mb-1 text-center">
-		To foster a vibrant <span class="font-bold">community of data storytellers in India</span>,
-		bridging technical analysis and design expertise to shape perspectives and drive change
-	</p>
-	<Mission></Mission>
-	<PolygonDivider></PolygonDivider>
-</div>
--->

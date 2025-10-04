@@ -40,7 +40,7 @@
 	$: clipPath = pentagonPoints.map((point) => `${point.x}% ${point.y}%`).join(', ');
 </script>
 
-<div class="pentagon-card relative mx-auto h-[20rem] w-[20rem] md:h-[20rem] md:w-[20rem]">
+<div class="pentagon-card relative mx-auto h-[15rem] w-[15rem] md:h-[20rem] md:w-[20rem]">
 	<!-- Pentagon background -->
 	<div
 		class="pentagon-background"
@@ -51,10 +51,10 @@
 	<div
 		class="content absolute inset-5 z-10 flex flex-col items-center justify-center p-4 text-center"
 	>
-		<h3 class="font-display mt-10 mb-2 text-2xl font-bold text-[#4c4c4c] md:mb-4 md:text-2xl">
+		<h3 class="font-display mt-10 mb-2 text-xl font-bold text-[#4c4c4c] md:mb-4 md:text-2xl">
 			{title}
 		</h3>
-		<p class="md:text-md text-md mr-4 ml-4 leading-[1.3] text-[#4c4c4c]">
+		<p class="mr-4 ml-4 text-sm leading-[1.3] text-[#4c4c4c] md:text-lg">
 			{description}
 		</p>
 	</div>
