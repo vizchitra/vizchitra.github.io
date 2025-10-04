@@ -3,7 +3,7 @@
 	import SpeakerCardsTrack from '../SpeakerCard/SpeakerCardsTrack.svelte';
 </script>
 
-<div class="max-w-[100%] overflow-auto">
+<div class="max-w-[100%] md:overflow-auto">
 	<SpeakerCardsTrack sessionTypes={['standard talk', 'sponsored talk']} />
 </div>
 
@@ -17,7 +17,7 @@
 	</div>
 </HomepageSection>
 
-<div class="max-w-[100%] overflow-auto">
+<div class="max-w-[100%] md:overflow-auto">
 	<SpeakerCardsTrack sessionTypes={['lightning talk']} />
 </div>
 
