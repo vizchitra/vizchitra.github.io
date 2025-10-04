@@ -1,10 +1,10 @@
 <script lang="ts">
-	import mission from '$lib/assets/images/mission.svg?raw';
+	import MissionViz from '../assets/images/MissionViz.svg?raw';
 </script>
 
 <section class="vis-container">
 	<div class="vis">
-		{@html mission}
+		{@html MissionViz}
 	</div>
 	<div class="legend">
 		<ol>
@@ -17,7 +17,7 @@
 				learn new things from everyone, especially beyond work.
 			</li>
 			<li class="text-lg">
-				<span class="text-viz-orange-dark font-bold"> ■ Community & Diversity</span> - Be part of an
+				<span class="text-viz-orange-dark font-bold"> ■ Community & Diversity</span> – Be part of an
 				(accessible) community, full of creative people with diverse experiences
 			</li>
 			<li class="text-lg">
@@ -40,25 +40,12 @@
 		justify-content: center;
 		align-items: center;
 
-		gap: 5rem;
-		padding: 2rem;
-
-		@media all and (max-width: 500px) {
-			flex-direction: column;
-		}
-	}
-
-	.vis {
-		display: flex;
-		max-width: 90dvw;
-		object-fit: contain;
-	}
-
-	svg {
-		width: auto;
+		gap: 2rem;
+		padding: 1rem;
 	}
 
 	.legend {
-		max-width: 20rem;
+		width: 50ch;
+		max-width: 90dvw;
 	}
 </style>
