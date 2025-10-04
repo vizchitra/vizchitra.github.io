@@ -13,6 +13,8 @@
 	import recapThumbnail from '$lib/assets/images/recap-2025-thumbnail.png';
 	import cardDecor from '$lib/assets/images/card-decor.png';
 	import Pentagons from '$lib/components/Pentagons.svelte';
+	import mission from '$lib/assets/images/mission.svg?raw';
+	import Mission from '$lib/components/Mission.svelte';
 	const whyAttend = [
 		{
 			title: 'Explore & Play',
@@ -20,7 +22,7 @@
 			backgroundColor: 'var(--color-viz-pink)'
 		},
 		{
-			title: 'Explain & Learn',
+			title: 'Explain &  Learn',
 			description: 'Centered on fundamentals of process, design & communication for dataviz.',
 			backgroundColor: 'var(--color-viz-yellow)'
 		},
@@ -34,6 +36,7 @@
 	// Import CSV video data
 	import videosData from '$lib/data/youtube-videos.csv';
 	import Dropdown from '$lib/components/Dropdown.svelte';
+	import VizChitraLogoType from '$lib/components/VizChitraLogoType.svelte';
 
 	let isMobile = false;
 
@@ -115,7 +118,7 @@
 	});
 </script>
 
-<div class="  w-full">
+<div class="w-full">
 	<div class="banner-container full-bleed relative h-[80svh]">
 		<BannerPolygon />
 		<div
@@ -133,6 +136,23 @@
 			</h3>
 		</div>
 	</div>
+	<div class="mx-auto max-w-3xl px-5 py-12">
+		<h2 class="content-heading mb-3 text-center">
+			<VizChitraLogoType></VizChitraLogoType>
+		</h2>
+		<p class="content-text mx-auto mb-1 text-center">
+			India's first community-driven conference dedicated to <span
+				class="text-viz-pink-dark font-bold">data visualization</span
+			>
+			brought together practitioners from
+			<span class="text-viz-orange-dark font-bold">diverse industries and disciplines</span>
+			across the country to foster
+			<span class="text-viz-orange-dark font-bold">learning, collaboration,</span>
+			and a shared passion for the art of
+			<span class="text-viz-pink-dark font-bold">visual data storytelling.</span>
+			See the highlights and talk sessions below.
+		</p>
+	</div>
 	<section class="relative h-[70svh] w-full md:h-[90svh]">
 		<!-- Top Decorative Banner -->
 		<div class="absolute top-0 z-10 w-full transition-opacity duration-300">
@@ -142,7 +162,7 @@
 		<!-- YouTube Video Container -->
 		<div class="relative flex h-full w-full items-center justify-center bg-black">
 			<div class="relative w-full max-w-5xl md:my-36">
-				<Youtube --title-color="transparent" id="dQw4w9WgXcQ" animations={false}>
+				<Youtube --title-color="transparent" id="LfJLCueKkb0" animations={false}>
 					{#snippet thumbnail()}
 						<img
 							slot="thumbnail"
@@ -162,27 +182,90 @@
 			<img src={decorBanner1} alt="Decorative banner bottom" class=" h-36 w-full object-top" />
 		</div>
 	</section>
-	<div class="mx-auto max-w-3xl px-5 py-12">
-		<p class="mb-8 font-[Cairo] text-2xl">
-			India's first conference dedicated to <span class="text-viz-pink-dark font-bold"
-				>data visualization</span
+</div>
+
+<!-- Recap Video Section with Decorative Banners -->
+
+<!-- Main content container -->
+<div class="mx-auto max-w-7xl px-4 py-8">
+	<div class="mx-auto mb-6 flex justify-center">
+		{#if !isMobile}
+			<!-- Filter Button Bar -->
+			<ButtonBar
+				data={buttonBarData}
+				activeValue={selectedType}
+				keyField="code"
+				labelField="label"
+				onSelect={handleButtonBarChange}
+			/>
+		{/if}
+		{#if isMobile}
+			<Dropdown
+				data={buttonBarData}
+				activeValue={selectedType}
+				keyField="code"
+				labelField="label"
+				onSelect={handleDropdownChange}
+			/>
+		{/if}
+	</div>
+
+	<!-- Video Card Grid -->
+	<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+		{#each filteredVideos as video (video.id)}
+			<div
+				class="relative flex h-[550px] flex-col rounded-md border border-black/20 bg-white transition-all duration-300 ease-in-out hover:border-gray-300 hover:shadow-xl"
 			>
-			brings together practitioners from
-			<span class="text-viz-orange font-bold">diverse industries and disciplines</span>
-			across the country to foster
-			<span class="text-viz-orange font-bold">learning, collaboration,</span>
-			and a shared passion for the art of
-			<span class="text-viz-pink-dark font-bold">visual data storytelling.</span>
-		</p>
+				<div
+					class="pointer-events-none absolute inset-0 z-1 rounded-md opacity-50"
+					style="background-image: url({cardDecor}); background-repeat: no-repeat; background-position: bottom left; background-size: 320px;"
+				></div>
+				<button
+					type="button"
+					on:click={() => openVideo(video.id)}
+					class="relative z-10 flex h-full w-full cursor-pointer flex-col rounded-xl border-none bg-transparent text-left transition outline-none"
+				>
+					<!-- Card Header with Title -->
+					<div class="h-[120px] flex-shrink-0 p-4 pb-3">
+						<h3 class="text-viz-orange-dark line-clamp-4 text-xl leading-tight font-bold">
+							{video.title} <span class="text-md font-normal">{video.subtitle}</span>
+						</h3>
+					</div>
 
-		<p class="mx-auto mb-6">
-			<CustomSlantedText
-				textContent="A SPACE TO CONNECT AND CREATE WITH DATA"
-				classes="text-[18px] md:text-[24px]"
-			></CustomSlantedText>
-		</p>
+					<!-- Thumbnail Image -->
+					<div class="mx-4 mb-4 h-[200px] flex-shrink-0 overflow-hidden rounded-sm bg-black">
+						<img src={video.thumbnail} alt={video.title} class="h-full w-full object-cover" />
+					</div>
 
-		<p class="content-text mb-1">
+					<!-- Speaker Info and Badge -->
+					<div class="flex h-[160px] flex-shrink-0 flex-col justify-between px-6 pb-6">
+						<!-- Speaker Name and Subtitle - Right Aligned -->
+						<div class="text-right">
+							<div class="text-xl leading-tight font-bold text-balance text-gray-800">
+								{video.speaker}
+							</div>
+							<p
+								class="mt-2 line-clamp-3 text-base leading-tight text-balance text-gray-600 italic"
+							>
+								{video.hook}
+							</p>
+						</div>
+					</div>
+				</button>
+			</div>
+		{/each}
+	</div>
+	<PolygonDivider></PolygonDivider>
+
+	<div class="mx-auto my-16 flex max-w-4xl flex-col justify-center space-y-4">
+		<h2 class="content-heading mb-3 text-center">
+			About
+			<VizChitraLogoType includeYear={false}></VizChitraLogoType>
+		</h2>
+		<h3 class="content-subheading mb-3 text-center">
+			<CustomSlantedText textContent="A SPACE TO CONNECT AND CREATE WITH DATA"></CustomSlantedText>
+		</h3>
+		<p class="content-text mx-auto mb-1 text-center">
 			Our goal is to build a community of diverse, interdisciplinary individuals working across the
 			visualization spectrum, and facilitate learning and connections between people from different
 			industries and disciplines who share a common interest in the power of data and storytelling.
@@ -191,147 +274,31 @@
 </div>
 
 <div>
-	<!-- Recap Video Section with Decorative Banners -->
-
-	<!-- Main content container -->
-	<div class="mx-auto max-w-7xl px-4 py-8">
-		<div class="mx-auto mb-6 flex justify-center">
-			{#if !isMobile}
-				<!-- Filter Button Bar -->
-				<ButtonBar
-					data={buttonBarData}
-					activeValue={selectedType}
-					keyField="code"
-					labelField="label"
-					onSelect={handleButtonBarChange}
-				/>
-			{/if}
-			{#if isMobile}
-				<Dropdown
-					data={buttonBarData}
-					activeValue={selectedType}
-					keyField="code"
-					labelField="label"
-					onSelect={handleDropdownChange}
-				/>
-			{/if}
-		</div>
-
-		<!-- Video Card Grid -->
-		<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-			{#each filteredVideos as video (video.id)}
-				<div
-					class="relative flex h-[550px] flex-col rounded-md border border-black/20 bg-white transition-all duration-300 ease-in-out hover:border-gray-300 hover:shadow-xl"
-				>
-					<div
-						class="pointer-events-none absolute inset-0 z-1 rounded-md opacity-50"
-						style="background-image: url({cardDecor}); background-repeat: no-repeat; background-position: bottom left; background-size: 320px;"
-					></div>
-					<button
-						type="button"
-						on:click={() => openVideo(video.id)}
-						class="relative z-10 flex h-full w-full cursor-pointer flex-col rounded-xl border-none bg-transparent text-left transition outline-none"
-					>
-						<!-- Card Header with Title -->
-						<div class="h-[120px] flex-shrink-0 p-4 pb-3">
-							<h3 class="text-viz-orange-dark line-clamp-4 text-xl leading-tight font-bold">
-								{video.title} <span class="text-md font-normal">{video.subtitle}</span>
-							</h3>
-						</div>
-
-						<!-- Thumbnail Image -->
-						<div class="mx-4 mb-4 h-[200px] flex-shrink-0 overflow-hidden rounded-sm bg-black">
-							<img src={video.thumbnail} alt={video.title} class="h-full w-full object-cover" />
-						</div>
-
-						<!-- Speaker Info and Badge -->
-						<div class="flex h-[160px] flex-shrink-0 flex-col justify-between px-6 pb-6">
-							<!-- Speaker Name and Subtitle - Right Aligned -->
-							<div class="text-right">
-								<div class="text-xl leading-tight font-bold text-balance text-gray-800">
-									{video.speaker}
-								</div>
-								<p
-									class="mt-2 line-clamp-3 text-base leading-tight text-balance text-gray-600 italic"
-								>
-									{video.hook}
-								</p>
-							</div>
-						</div>
-					</button>
-				</div>
-			{/each}
-		</div>
-		<div class="mx-auto my-16 flex max-w-4xl flex-col justify-center space-y-4">
-			<p class="text-center">
-				<CustomSlantedText
-					textContent="A SPACE TO CONNECT AND CREATE WITH DATA"
-					classes="text-[18px] md:text-[24px]"
-				></CustomSlantedText>
-			</p>
-			<p class="content-text mx-auto mb-1 text-center">
-				Our goal is to build a community of diverse, interdisciplinary individuals working across
-				the visualization spectrum, and facilitate learning and connections between people from
-				different industries and disciplines who share a common interest in the power of data and
-				storytelling.
-			</p>
-		</div>
-	</div>
-
-	<div>
-		<div class="mx-auto flex max-w-4xl flex-wrap gap-4">
-			{#each whyAttend as item, i}
-				<Pentagons
-					title={item.title}
-					description={item.description}
-					backgroundColor={item.backgroundColor}
-					seed={Math.floor(Math.random() * 10)}
-				/>
-			{/each}
-		</div>
-	</div>
-
-	<!-- Mission Section -->
-	<div class="mx-auto max-w-4xl px-4 py-16">
-		<h2 class="mb-6 text-3xl font-bold text-gray-800">OUR MISSION</h2>
-		<p class="mb-8 text-lg text-gray-700">
-			To foster a vibrant <span class="font-bold">community of data storytellers in India</span>,
-			bridging technical analysis and design expertise to shape perspectives and drive change
-		</p>
-
-		<div class="mb-8 text-center">
-			<CustomSlantedText
-				textContent="AN INDIAN DATA VISUALIZATION COMMUNITY"
-				classes="text-[18px] md:text-[24px]"
-			></CustomSlantedText>
-		</div>
-
-		<p class="mb-8 text-lg text-gray-700">
-			The VizChitra community plans to drive this using these three main pillars of work:
-		</p>
-
-		<div class="space-y-6">
-			<div>
-				<h3 class="mb-2 text-xl font-bold text-gray-800">1. Consider and Curate:</h3>
-				<p class="text-gray-700">
-					Build a rhythm of curated events to spread the practice of data visualization
-				</p>
-			</div>
-
-			<div>
-				<h3 class="mb-2 text-xl font-bold text-gray-800">2. Cultivate and Care:</h3>
-				<p class="text-gray-700">
-					Nurture a fertile space for learning and sharing of data visualization skills
-				</p>
-			</div>
-
-			<div>
-				<h3 class="mb-2 text-xl font-bold text-gray-800">3. Create and Collaborate:</h3>
-				<p class="text-gray-700">
-					Express and co-create to push the boundaries of data visualization
-				</p>
-			</div>
-		</div>
-		<PolygonDivider></PolygonDivider>
+	<div class="mx-auto flex max-w-6xl flex-wrap gap-4">
+		{#each whyAttend as item, i}
+			<Pentagons
+				title={item.title}
+				description={item.description}
+				backgroundColor={item.backgroundColor}
+				seed={Math.floor(Math.random() * 10)}
+			/>
+		{/each}
 	</div>
 </div>
+
+<!-- Mission Section -->
+
+<div class="mx-auto mt-12 max-w-6xl px-4 py-16">
+	<h2 class="content-heading mb-3 text-center">Our Mission</h2>
+	<h3 class="content-subheading mb-3 text-center">
+		<CustomSlantedText textContent="BUILDING AN INDIAN DATA VISUALIZATION COMMUNITY"
+		></CustomSlantedText>
+	</h3>
+	<p class="content-text mx-auto mb-1 text-center">
+		To foster a vibrant <span class="font-bold">community of data storytellers in India</span>,
+		bridging technical analysis and design expertise to shape perspectives and drive change
+	</p>
+	<Mission></Mission>
+	<PolygonDivider></PolygonDivider>
+</div>
+-->

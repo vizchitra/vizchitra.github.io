@@ -165,7 +165,11 @@ button:focus:not(:focus-visible) {
 }
 
 .content-heading {
-	@apply text-[22px] leading-[1.5] font-bold;
+	@apply text-[28px] leading-[1.5] font-bold;
+}
+
+.content-subheading {
+	@apply text-[28px] leading-[1.5];
 }
 
 .content-container {
