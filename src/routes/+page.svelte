@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	// Import reusable components
-	import ButtonBar from '$lib/components/ButtonBar.svelte';
+	import ButtonBar from '$lib/assets/images/ButtonBar.svelte';
 	import PolygonDivider from '$lib/components/PolygonDivider.svelte';
 	import BannerPolygon from '$lib/components/BannerPolygon.svelte';
 	import CustomSlantedText from '$lib/components/Common/CustomSlantedText.svelte';
@@ -13,7 +13,6 @@
 	import recapThumbnail from '$lib/assets/images/recap-2025-thumbnail.png';
 	import cardDecor from '$lib/assets/images/card-decor.png';
 	import Pentagons from '$lib/components/Pentagons.svelte';
-	import mission from '$lib/assets/images/mission.svg?raw';
 	import Mission from '$lib/components/Mission.svelte';
 	const whyAttend = [
 		{
@@ -211,7 +210,7 @@
 	</div>
 
 	<!-- Video Card Grid -->
-	<div class="grid max-w-[95dvw] grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+	<div class="grid max-w-[90dvw] grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
 		{#each filteredVideos as video (video.id)}
 			<div
 				class="max-width relative flex h-[500px] flex-col rounded-md border border-black/20 bg-white transition-all duration-300 ease-in-out hover:border-gray-300 hover:shadow-xl"
@@ -256,14 +255,14 @@
 		{/each}
 	</div>
 
-	<div class="mx-auto max-w-[95dvw] px-5 py-12 md:max-w-7xl">
+	<div class="max-w-[90dvw] px-5 py-12 md:max-w-7xl">
 		<PolygonDivider></PolygonDivider>
 
 		<h2 class="content-heading mt-6 mb-3 pt-12 text-center">
 			About
 			<VizChitraLogoType includeYear={false}></VizChitraLogoType>
 		</h2>
-		<h3 class="content-subheading mb-3 text-center">
+		<h3 class="content-subheading mb-3 text-center leading-none">
 			<CustomSlantedText textContent="A SPACE TO CONNECT AND CREATE WITH DATA"></CustomSlantedText>
 		</h3>
 		<p class="content-text mx-auto mb-1 text-center">
@@ -271,7 +270,7 @@
 			visualization spectrum, and facilitate learning and connections between people from different
 			industries and disciplines who share a common interest in the power of data and storytelling.
 		</p>
-		<div class="mx-auto mt-6 flex flex-wrap gap-4">
+		<div class="mt-6 flex flex-wrap gap-4">
 			{#each whyAttend as item, i}
 				<Pentagons
 					title={item.title}
@@ -291,8 +290,8 @@
 			bridging technical analysis and design expertise to shape perspectives and drive change
 		</p>
 		<Mission></Mission>
+		<PolygonDivider></PolygonDivider>
 	</div>
-	<PolygonDivider></PolygonDivider>
 </div>
 
 <!-- Mission Section -->

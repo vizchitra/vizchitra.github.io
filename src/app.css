@@ -169,7 +169,8 @@ button:focus:not(:focus-visible) {
 }
 
 .content-subheading {
-	@apply text-[28px] leading-[1.5];
+	@apply text-[28px] leading-[1.05];
+	text-wrap: balance;
 }
 
 .content-container {
