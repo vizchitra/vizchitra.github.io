@@ -18,6 +18,6 @@ export const redirects = {
 	virtual1: 'https://www.youtube.com/watch?v=MJ8OT6J53o4',
 	virtual2: 'https://youtube.com/live/-g2wH27Qu58?feature=share',
 	slido1: 'https://app.sli.do/event/xf42twibEgDLDifMKdxDwW',
-	slido2: 'https://app.sli.do/event/5aJYogWhdFTVcg7No9gH8f'
-
+	slido2: 'https://app.sli.do/event/5aJYogWhdFTVcg7No9gH8f',
+	2025: 'https://vizchitra.com'
 };

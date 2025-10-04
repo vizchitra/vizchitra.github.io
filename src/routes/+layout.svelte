@@ -29,9 +29,9 @@
 		flex: 1;
 		display: flex;
 		flex-direction: column;
-		padding: 2.5rem;
+		/* padding: 2.5rem; */
 		width: 100%;
-		max-width: 85vw;
+
 		margin: 0 auto;
 		box-sizing: border-box;
 	}
@@ -43,7 +43,7 @@
 	@media (max-width: 768px) {
 		main {
 			max-width: 100%;
-			padding: 1rem;
+		
 		}
 	}
 </style>

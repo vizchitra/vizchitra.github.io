@@ -6,18 +6,17 @@
 	let navSections = [
 		{
 			name: 'VizChitra 2025',
-			href: '/',
+			href: '/2025/conference',
 			accentColor: 'var(--color-viz-orange)',
 			subsections: [
-				{ name: 'The conference', href: '/#intro' },
-				{ name: 'Speaker line-up', href: '/#speakers' },
-				{ name: 'Workshops', href: '/#workshops' },
+				{ name: 'The conference', href: '/2025/conference#intro' },
+				{ name: 'Speaker line-up', href: '/2025/conference#speakers' },
+				{ name: 'Workshops', href: '/2025/conference#workshops' },
 				{ name: 'Schedule', href: 'https://hasgeek.com/VizChitra/2025/schedule' },
 				{
 					name: 'Sponsorship',
 					href: '/sponsorship'
 				},
-				{ name: 'Recap', href: '/recap', isBadge: true, badgeText: 'New' },
 			],
 			expanded: false
 		},

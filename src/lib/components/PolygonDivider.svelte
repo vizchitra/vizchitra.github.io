@@ -4,6 +4,8 @@
 	let width = null;
 	let height = 80;
 
+	export let className: string = '';
+
 	const colors = ['#ffd485', '#97e4dd', '#a8bdf0', '#f89f72', '#ee88b3'];
 
 	const NUM_POINTS = 3;
@@ -51,7 +53,7 @@
 	});
 </script>
 
-<div class="divider-container my-5 w-full" bind:clientWidth={width}>
+<div class="divider-container my-12 w-full" bind:clientWidth={width}>
 	<svg {width} {height} viewBox="0 0 {width} {height}" preserveAspectRatio="xMidYMid meet">
 		{#each lines as line}
 			<line

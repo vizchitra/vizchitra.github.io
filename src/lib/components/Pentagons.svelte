@@ -40,7 +40,7 @@
 	$: clipPath = pentagonPoints.map((point) => `${point.x}% ${point.y}%`).join(', ');
 </script>
 
-<div class="pentagon-card relative mx-auto h-[200px] w-[200px] md:h-[250px] md:w-[250px]">
+<div class="pentagon-card relative mx-auto h-[20rem] w-[20rem] md:h-[20rem] md:w-[20rem]">
 	<!-- Pentagon background -->
 	<div
 		class="pentagon-background"
@@ -49,12 +49,12 @@
 
 	<!-- Content overlaid on the pentagon -->
 	<div
-		class="content absolute inset-0 z-10 flex flex-col items-center justify-center p-4 text-center"
+		class="content absolute inset-5 z-10 flex flex-col items-center justify-center p-4 text-center"
 	>
-		<h3 class="font-display mb-2 text-2xl font-bold text-[#4c4c4c] md:mb-4 md:text-2xl">
+		<h3 class="font-display mt-10 mb-2 text-2xl font-bold text-[#4c4c4c] md:mb-4 md:text-2xl">
 			{title}
 		</h3>
-		<p class="text-md md:text-md leading-[1.3] text-[#4c4c4c]">
+		<p class="md:text-md text-md mr-4 ml-4 leading-[1.3] text-[#4c4c4c]">
 			{description}
 		</p>
 	</div>
