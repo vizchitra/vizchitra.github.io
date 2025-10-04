@@ -50,7 +50,7 @@
 
 	.vis {
 		display: flex;
-		max-width: 90vw;
+		max-width: 90dvw;
 		object-fit: contain;
 	}
 
