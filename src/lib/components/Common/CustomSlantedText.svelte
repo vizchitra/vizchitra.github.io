@@ -6,10 +6,7 @@
 </script>
 
 {#each formatSlantedText(textContent) as letter}
-	<span
-		class="slanted-text text-[18px] md:text-[20px] {classes}"
-		style="--letter-slant: {letter.slant}"
-	>
+	<span class="slanted-text {classes}" style="--letter-slant: {letter.slant}">
 		{letter.letter}
 	</span>
 {/each}

@@ -19,5 +19,7 @@ export const redirects = {
 	virtual2: 'https://youtube.com/live/-g2wH27Qu58?feature=share',
 	slido1: 'https://app.sli.do/event/xf42twibEgDLDifMKdxDwW',
 	slido2: 'https://app.sli.do/event/5aJYogWhdFTVcg7No9gH8f',
-	2025: 'https://vizchitra.com'
+	2025: 'https://vizchitra.com',
+	'meet-the-team': "team",
+	'code-of-conduct': "conduct"
 };
