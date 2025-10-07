@@ -16,7 +16,7 @@
 				{
 					name: 'Sponsorship',
 					href: '/sponsorship'
-				},
+				}
 			],
 			expanded: false
 		},
@@ -40,8 +40,9 @@
 			href: '/about',
 			accentColor: 'var(--color-viz-pink)',
 			subsections: [
-				{ name: 'Team', href: '/meet-the-team' },
-				{ name: 'Code of Conduct', href: '/code-of-conduct' }
+				{ name: 'Our Ethos', href: '/ethos' },
+				{ name: 'Meet the Team', href: '/team' },
+				{ name: 'Code of Conduct', href: '/conduct' }
 			],
 			expanded: false
 		}

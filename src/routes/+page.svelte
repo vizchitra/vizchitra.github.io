@@ -258,14 +258,16 @@
 	<div class="max-w-[90dvw] px-5 py-12 md:max-w-7xl">
 		<PolygonDivider></PolygonDivider>
 
-		<h2 class="content-heading mt-6 mb-3 pt-12 text-center">
-			About
-			<VizChitraLogoType includeYear={false}></VizChitraLogoType>
+		<h2 class="content-heading mt-12 pt-12 text-center">
+			<a href="/ethos"
+				>Our Ethos @
+				<VizChitraLogoType includeYear={false}></VizChitraLogoType>
+			</a>
 		</h2>
-		<h3 class="content-subheading mb-3 text-center leading-none">
+		<h3 class="content-subheading text-viz-pink-dark mt-6 text-center">
 			<CustomSlantedText textContent="A SPACE TO CONNECT AND CREATE WITH DATA"></CustomSlantedText>
 		</h3>
-		<p class="content-text mx-auto mb-1 text-center">
+		<p class="content-text mx-auto mt-3 text-center">
 			Our goal is to build a community of diverse, interdisciplinary individuals working across the
 			visualization spectrum, and facilitate learning and connections between people from different
 			industries and disciplines who share a common interest in the power of data and storytelling.
@@ -280,12 +282,15 @@
 				/>
 			{/each}
 		</div>
-		<h2 class="content-heading mt-6 pt-12 text-center">Our Mission</h2>
-		<h3 class="content-subheading mb-3 text-center">
-			<CustomSlantedText textContent="BUILDING AN INDIAN DATA VISUALIZATION COMMUNITY"
+		<h2 class="content-heading mt-18 pt-12 text-center">
+			Our Mission @
+			<VizChitraLogoType includeYear={false}></VizChitraLogoType>
+		</h2>
+		<h3 class="content-subheading text-viz-blue-dark mt-6 text-center">
+			<CustomSlantedText textContent="BUILD AN INDIAN DATA VISUALIZATION COMMUNITY"
 			></CustomSlantedText>
 		</h3>
-		<p class="content-text mx-auto mb-1 text-center">
+		<p class="content-text mx-auto mt-3 text-center">
 			To foster a vibrant <span class="font-bold">community of data storytellers in India</span>,
 			bridging technical analysis and design expertise to shape perspectives and drive change
 		</p>

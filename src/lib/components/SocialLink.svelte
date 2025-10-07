@@ -41,7 +41,7 @@
 </script>
 
 <div class="mt-14 flex items-center justify-center gap-6">
-	<span class="text-left text-lg font-semibold">Follow Us</span>
+	<!-- <span class="text-left text-lg font-semibold">Follow Us</span> -->
 	<div class="flex gap-6">
 		{#each socials as social}
 			<span>
