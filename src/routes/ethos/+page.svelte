@@ -4,7 +4,7 @@
 </script>
 
 <div class="min-h-screen">
-	<PageHeader title="Our Ethos" />
+	<PageHeader title="VizChitra's Intent" />
 
 	<h2 class="content-subheading text-viz-pink-dark mt-12 text-center">
 		<CustomSlantedText textContent="A SPACE TO CONNECT AND CREATE WITH DATA"></CustomSlantedText>
