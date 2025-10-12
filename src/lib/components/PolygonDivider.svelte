@@ -4,7 +4,7 @@
 	let width = null;
 	let height = 80;
 
-	export let className: string = '';
+	export const className: string = '';
 
 	const colors = ['#ffd485', '#97e4dd', '#a8bdf0', '#f89f72', '#ee88b3'];
 
