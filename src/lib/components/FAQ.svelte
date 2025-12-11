@@ -4,7 +4,9 @@
 		answer: string;
 	}
 
-	const faqItems: FAQItem[] = [
+	export let customFAQs: FAQItem[] | null = null;
+
+	const defaultFAQItems: FAQItem[] = [
 		{
 			question: 'What is VizChitra and who should attend?',
 			answer:
@@ -36,6 +38,8 @@
 				"Absolutely! VizChitra is designed to foster connections within India's data visualization community. We'll have dedicated networking sessions, coffee breaks, lunch, and informal meetups throughout the event. It's a great opportunity to meet like-minded professionals and potential collaborators."
 		}
 	];
+
+	const faqItems = customFAQs || defaultFAQItems;
 </script>
 
 <div class="faq-container">

@@ -2,6 +2,7 @@
 	export let classes = '';
 	export let yearClasses = 'text-[#D46637]';
 	export let includeYear = true;
+	export let year = '2025';
 </script>
 
 <span class="viz-logo-type {classes}">
@@ -12,7 +13,7 @@
 	><span class="A2">A</span>
 
 	{#if includeYear}
-		<span class="year font-bold {yearClasses}">2025</span>
+		<span class="year font-bold {yearClasses}">{year}</span>
 	{/if}
 </span>
 
