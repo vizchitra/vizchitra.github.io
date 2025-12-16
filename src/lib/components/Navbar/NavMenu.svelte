@@ -10,7 +10,7 @@
 			accentColor: 'var(--color-viz-blue)',
 			subsections: [
 				{ name: 'About 2026', href: '/2026' },
-				{ name: 'Submit Proposal', href: '/2026/submit', isBadge: true, badgeText: 'Open' }
+				{ name: 'Call for Proposal', href: '/2026/cfp', isBadge: true, badgeText: 'Open' }
 			],
 			expanded: false
 		},
