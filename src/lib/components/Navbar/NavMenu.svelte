@@ -5,6 +5,16 @@
 
 	let navSections = [
 		{
+			name: 'VizChitra 2026',
+			href: '/2026',
+			accentColor: 'var(--color-viz-blue)',
+			subsections: [
+				{ name: 'About 2026', href: '/2026' },
+				{ name: 'Call for Proposal', href: '/2026/cfp', isBadge: true, badgeText: 'Open' }
+			],
+			expanded: false
+		},
+		{
 			name: 'VizChitra 2025',
 			href: '/2025/conference',
 			accentColor: 'var(--color-viz-orange)',
