@@ -66,7 +66,7 @@
 			</p>
 
 			<div class="mx-auto mb-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-				<Button href="/2026/submit" class_name="!text-white">Submit Your Proposal</Button>
+				<Button href="/2026/cfp" class_name="!text-white">Submit Your Proposal</Button>
 				<Button href="https://chat.whatsapp.com/G9p4HbALukeAa5NSVn0OoA" external variant="secondary"
 					>Join Community</Button
 				>
@@ -135,7 +135,7 @@
 			</p>
 
 			<div class="mb-8 text-center">
-				<Button href="/2026/submit" class_name="!text-white text-xl px-8 py-5"
+				<Button href="/2026/cfp" class_name="!text-white text-xl px-8 py-5"
 					>Submit Your Proposal</Button
 				>
 			</div>

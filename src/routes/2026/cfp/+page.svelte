@@ -5,24 +5,7 @@
 	import CustomSlantedText from '$lib/components/Common/CustomSlantedText.svelte';
 	import FAQ from '$lib/components/FAQ.svelte';
 	import PolygonDivider from '$lib/components/PolygonDivider.svelte';
-	import { onMount } from 'svelte';
-
-	let tallyLoaded = false;
-
-	onMount(() => {
-		// Load Tally embed script
-		const script = document.createElement('script');
-		script.src = 'https://tally.so/widgets/embed.js';
-		script.async = true;
-		script.onload = () => {
-			tallyLoaded = true;
-		};
-		document.body.appendChild(script);
-
-		return () => {
-			document.body.removeChild(script);
-		};
-	});
+	import Button from '$lib/components/Button.svelte';
 
 	const submissionFAQs = [
 		{
@@ -59,14 +42,14 @@
 </script>
 
 <svelte:head>
-	<title>Submit Your Proposal - VizChitra 2026</title>
+	<title>Call for Proposal - VizChitra 2026</title>
 	<meta
 		name="description"
 		content="Submit your proposal for VizChitra 2026. Share your expertise in data visualization with India's growing community."
 	/>
 </svelte:head>
 
-<PageHeader title="Submit Your Proposal" />
+<PageHeader title="Call for Proposal" />
 
 <div class="mx-auto max-w-4xl px-4 py-12">
 	<HomepageSection>
@@ -75,11 +58,11 @@
 				<VizChitraLogoType year="2026"></VizChitraLogoType>
 			</h1>
 
-			<h2 class="content-heading mb-6 text-center !text-[2rem]">Call for Proposals</h2>
+			<h2 class="content-heading mb-6 text-center !text-[2rem]">Call for Proposal</h2>
 
 			<p class="content-text mb-8">
 				We're looking for <span class="text-viz-pink-dark font-bold"
-					>talks, workshops, and alternative sessions</span
+					>talks, workshops, and Birds of a Feather sessions</span
 				>
 				for VizChitra 2026. Whether you're working on cutting-edge visualizations, teaching data literacy,
 				or exploring new tools and techniques, we want to hear from you.
@@ -106,39 +89,28 @@
 			</div>
 
 			<div class="rounded-lg border-2 border-gray-200 bg-white p-6 shadow-sm">
-				<h4 class="text-viz-orange-dark mb-3 text-lg font-bold">Alternative Sessions</h4>
+				<h4 class="text-viz-orange-dark mb-3 text-lg font-bold">Birds of a Feather (BoFs)</h4>
 				<p class="text-sm text-gray-700">
-					Panels, roundtable discussions, lightning talks, or other creative formats that bring the
-					community together.
+					Informal discussion sessions where people with shared interests gather to discuss topics,
+					share experiences, and connect with like-minded practitioners.
 				</p>
 			</div>
 		</div>
 	</div>
 
-	<div class="mx-auto my-12 max-w-3xl">
-		<h3 class="content-heading mb-6 text-center !text-[1.5rem]">Submission Form</h3>
+	<div class="mx-auto my-12 max-w-3xl text-center">
+		<h3 class="content-heading mb-6 !text-[1.5rem]">Ready to Submit?</h3>
 
-		<p class="content-text mb-8 text-center">
-			Fill out the form below to submit your proposal. <br />We review submissions on a rolling
+		<p class="content-text mb-8">
+			Click the button below to open the submission form.<br />We review submissions on a rolling
 			basis.
 		</p>
 
-		<!-- Tally Form Embed -->
-		<div class="mx-auto max-w-3xl">
-			<div class="rounded-lg bg-white p-4 shadow-lg">
-				<iframe
-					data-tally-src="https://tally.so/embed/kdl7oR?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-					loading="lazy"
-					width="100%"
-					height="600"
-					frameborder="0"
-					marginheight="0"
-					marginwidth="0"
-					title="VizChitra 2026 - Call for Proposals"
-					class="min-h-[600px]"
-				></iframe>
-			</div>
-		</div>
+		<Button
+			href="https://forms.vizchitra.com/cfp"
+			external
+			class_name="!text-white text-xl px-8 py-5"
+		>Submit Your Proposal</Button>
 	</div>
 
 	<PolygonDivider />
