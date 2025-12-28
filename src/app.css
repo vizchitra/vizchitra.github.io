@@ -1,6 +1,7 @@
 @import url('lib/assets/css/fonts.css');
 
 @import 'tailwindcss';
+@plugin "@tailwindcss/typography";
 
 /* Add brand design tokens here */
 @theme {
