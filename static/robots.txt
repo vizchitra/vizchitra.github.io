@@ -1,3 +1,20 @@
-# https://www.robotstxt.org/robotstxt.html
+# Global rules for all search engines
 User-agent: *
-Disallow:
+
+# Ensure Conference Page are Accessible
+Allow: /2025
+Allow: /2026
+
+# Do not crawl interactive tools
+Disallow: /polygon-playground/
+Disallow: /selfie/
+
+
+## For future
+
+# Block internal or search results
+# Disallow: /search/
+# Disallow: /admin/
+
+# Link to our sitemap (Future)
+# Sitemap: https://vizchitra.com/sitemap.xml
