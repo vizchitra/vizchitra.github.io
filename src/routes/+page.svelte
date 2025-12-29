@@ -2,9 +2,15 @@
 	import { onMount } from 'svelte';
 	// Import reusable components
 	import ButtonBar from '$lib/assets/images/ButtonBar.svelte';
-	import PolygonDivider from '$lib/components/PolygonDivider.svelte';
-	import BannerPolygon from '$lib/components/BannerPolygon.svelte';
-	import CustomSlantedText from '$lib/components/Common/CustomSlantedText.svelte';
+	import {
+		PolygonDivider,
+		BannerPolygon,
+		CustomSlantedText,
+		Pentagons,
+		Mission,
+		Dropdown,
+		VizChitraLogoType
+	} from '$lib/components';
 	import VizchitraLogo from '$lib/assets/images/viz-logo-animate.svg?raw';
 	import Youtube from 'svelte-youtube-embed';
 	import decorBanner1 from '$lib/assets/images/decor-banner-1.png';
@@ -12,8 +18,7 @@
 	import playButton from '$lib/assets/images/play-button.png';
 	import recapThumbnail from '$lib/assets/images/recap-2025-thumbnail.webp';
 	import cardDecor from '$lib/assets/images/card-decor.png';
-	import Pentagons from '$lib/components/Pentagons.svelte';
-	import Mission from '$lib/components/Mission.svelte';
+
 	const whyAttend = [
 		{
 			title: 'Explore & Play',
@@ -34,8 +39,6 @@
 	];
 	// Import CSV video data
 	import videosData from '$lib/data/youtube-videos.csv';
-	import Dropdown from '$lib/components/Dropdown.svelte';
-	import VizChitraLogoType from '$lib/components/VizChitraLogoType.svelte';
 
 	let isMobile = false;
 

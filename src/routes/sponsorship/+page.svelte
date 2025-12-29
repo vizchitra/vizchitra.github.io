@@ -1,9 +1,14 @@
 <script lang="ts">
 	import VizchitraLogo from '$lib/assets/images/viz-logo-animate.svg?raw';
-	import HomepageSection from '$lib/components/Homepage/HomepageSection.svelte';
-	import VizChitraLogoType from '$lib/components/VizChitraLogoType.svelte';
-	import CustomSlantedText from '$lib/components/Common/CustomSlantedText.svelte';
-	import MarqueeRow from '$lib/components/Common/MarqueeRow.svelte';
+	import {
+		HomepageSection,
+		VizChitraLogoType,
+		CustomSlantedText,
+		MarqueeRow,
+		HorizontalBarChart,
+		SponsorshipContactForm,
+		SponsorCards as SponsorCard
+	} from '$lib/components';
 	import headerpolygon1 from './assets/header-1.png';
 	import headerpolygon2 from './assets/header-2.png';
 	import evangelise from './assets/evangelise.png';
@@ -23,9 +28,7 @@
 	import yearsOfExperience from '$lib/data/years.csv';
 	import organizationSize from '$lib/data/size.csv';
 	import functionalRoles from '$lib/data/roles.csv';
-	import HorizontalBarChart from '$lib/components/Charts/HorizontalBarChart.svelte';
-	import SponsorshipContactForm from '$lib/components/Common/SponsorshipContactForm.svelte';
-	import SponsorCard from '$lib/components/SponsorCards.svelte';
+
 	// Define a mapping from categories to colors
 	const categoryColors = {
 		'Academia, Education & Research': 'var(--color-viz-yellow)',
@@ -60,8 +63,9 @@
 
 	console.log(companies);
 	// Split companies into rows for marquee
-	/** @type {Array<{items: {name: string, category: string, color: string}[], direction: 'right' | 'left'}>} */
-	const marqueeRows = [
+	type MarqueeCompany = { name: string; category: string; color: string };
+	type MarqueeRow = { items: MarqueeCompany[]; direction: 'right' | 'left'; duration: string };
+	const marqueeRows: MarqueeRow[] = [
 		{ items: companies.slice(0, 20), direction: 'right', duration: '80s' },
 		{ items: companies.slice(20, 40), direction: 'left', duration: '80s' },
 		{ items: companies.slice(40, 60), direction: 'right', duration: '80s' }

@@ -3,6 +3,7 @@
  */
 export const redirects = {
 	friends: 'https://chat.whatsapp.com/CcptoGEeCqJEkiETwAzpbq',
+	recap: '/',
 	conference: 'https://hasgeek.com/VizChitra/2025',
 	cfp: 'https://hasgeek.com/VizChitra/2025/sub',
 	schedule: 'https://hasgeek.com/VizChitra/2025/schedule',

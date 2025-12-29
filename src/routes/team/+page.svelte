@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { formatSlantedText } from '$lib/utils/utils.js';
-	import PageHeader from '$lib/components/PageHeader.svelte';
-	import TeamSection from '$lib/components/TeamSection/TeamSection.svelte';
+	import { PageHeader, TeamSection } from '$lib/components';
 </script>
 
 <div class="min-h-screen">

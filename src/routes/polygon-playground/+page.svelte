@@ -1,11 +1,13 @@
 <script>
 	import { formatSlantedText } from '$lib/utils/utils.js';
-	import PageHeader from '$lib/components/PageHeader.svelte';
-	import SliderInput from '$lib/components/PolygonPlayground/SliderInput.svelte';
-	import PolygonGenerator from '$lib/components/PolygonPlayground/PolygonGenerator.svelte';
-	import SelectInput from '$lib/components/PolygonPlayground/SelectInput.svelte';
+	import {
+		PageHeader,
+		SliderInput,
+		PolygonGenerator,
+		SelectInput,
+		ImageUpload
+	} from '$lib/components';
 	import { domToPng } from 'modern-screenshot';
-	import ImageUpload from '$lib/components/PolygonPlayground/ImageUpload.svelte';
 
 	$: form = {
 		name: null,

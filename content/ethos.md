@@ -3,9 +3,11 @@ title: Our Ethos
 description: Ethos for VizChitra Community
 ---
 
-{% slanted color="pink" %}
-## A SPACE TO CONNECT AND CREATE WITH DATA
-{% /slanted %}
+<script>
+	import { Slanted } from '$lib/components';
+</script>
+
+<Slanted color="pink" textContent="A SPACE TO CONNECT AND CREATE WITH DATA" />
 
 VizChitra is a vibrant, inclusive community of data storytellers, blending artistry with technical expertise. Based in India, where data literacy and visualization practices are still in their early stages and largely fragmented, we aim to be a unifying platform that fosters creativity, collaboration, and growth. Our mission extends beyond creating great visualizations – we are here to build awareness and understanding of the power of data storytelling in shaping perspectives and driving change.
 
@@ -19,8 +21,6 @@ We celebrate the craft of visualization not as a means to an end, but as a creat
 
 This unified ethos guides all our efforts. Whether we’re shaping policy, engaging with partners, running events, or curating community dialogue, we remain dedicated to fostering a supportive environment where creative minds can gather, learn, experiment, and shine.
 
-{% slanted color="pink" %}
-## AN INDIAN DATA VISUALISATION COMMUNITY
-{% /slanted %}
+<Slanted color="pink" textContent="AN INDIAN DATA VISUALISATION COMMUNITY" />
 
 At VizChitra, we’re not just creating data stories; we’re building a culture of data storytelling and literacy in India – one that is collaborative, nuanced, and joyfully human.
