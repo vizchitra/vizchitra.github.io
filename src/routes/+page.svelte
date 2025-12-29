@@ -10,7 +10,7 @@
 	import decorBanner1 from '$lib/assets/images/decor-banner-1.png';
 	import decorBanner2 from '$lib/assets/images/decor-banner-2.png';
 	import playButton from '$lib/assets/images/play-button.png';
-	import recapThumbnail from '$lib/assets/images/recap-2025-thumbnail.png';
+	import recapThumbnail from '$lib/assets/images/recap-2025-thumbnail.webp';
 	import cardDecor from '$lib/assets/images/card-decor.png';
 	import Pentagons from '$lib/components/Pentagons.svelte';
 	import Mission from '$lib/components/Mission.svelte';

@@ -9,17 +9,17 @@
 	import Speakers2025 from '$lib/components/LineUp/Speakers2025.svelte';
 	import Workshop2025 from '$lib/components/LineUp/Workshop2025.svelte';
 	import SponsorCard from '$lib/components/SponsorCards.svelte';
-	import nutanixLogo from '../../sponsorship/assets/nutanix-logo.png';
-	import revisualLogo from '../../sponsorship/assets/revisual-logo.png';
-	import lightningChartLogo from '../../sponsorship/assets/lightning-chart-logo.png';
-	import hasgeekLogo from '../../sponsorship/assets/hasgeek-logo.png';
+	import nutanixLogo from '../../sponsorship/assets/nutanix-logo.avif';
+	import revisualLogo from '../../sponsorship/assets/revisual-logo.avif';
+	import lightningChartLogo from '../../sponsorship/assets/lightning-chart-logo.avif';
+	import hasgeekLogo from '../../sponsorship/assets/hasgeek-logo.avif';
 	import Pentagons from '$lib/components/Pentagons.svelte';
 	import Map from '$lib/components/Map.svelte';
 	import VenueCard from '$lib/components/VenueCard.svelte';
 	import FAQ from '$lib/components/FAQ.svelte';
-	import lillyLogo from '../../sponsorship/assets/lilly-logo.png';
-	import ltsLogo from '../../sponsorship/assets/lasttheoram-logo.png';
-	import straiveLogo from '../../sponsorship/assets/straive-logo.png';
+	import lillyLogo from '../../sponsorship/assets/lilly-logo.avif';
+	import ltsLogo from '../../sponsorship/assets/lasttheoram-logo.avif';
+	import straiveLogo from '../../sponsorship/assets/straive-logo.avif';
 
 	const sponsors = [
 		{

@@ -4,7 +4,6 @@
 
 	import CalendarIcon from '$lib/assets/images/icons/calendar.svg?raw';
 	import LocationIcon from '$lib/assets/images/icons/location.svg?raw';
-	import rukmini from '$lib/assets/images/speakers-2025/Rukmini.png';
 
 	export let data = {};
 	export let dragParams = {};
