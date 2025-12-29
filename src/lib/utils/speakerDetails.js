@@ -40,7 +40,6 @@ export const speakerImagesMap = {
     'Sabhyata Jain': sabhyataImage,
     'Gyan Lakhwani': gyanImage,
     'Gopika': gopikaImage,
-    'S ANAND': anandImage,
     'ARVIND V': arvindImage,
     'ARUNDATHI RAJAN': arundathiImage,
     'SAMARTH GULATI': samarthImage,

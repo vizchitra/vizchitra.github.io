@@ -3,9 +3,11 @@ title: Code of Conduct
 description: The Do's and Dont's for the VizChitra community
 ---
 
-{% slanted color="pink" %}
-THE DO'S AND DONT'S FOR THE COMMUNITY
-{% /slanted %}
+<script>
+	import { Slanted } from '$lib/components';
+</script>
+
+<Slanted color="pink" textContent="THE DO'S AND DONT'S FOR THE COMMUNITY" />
 
 This code of conduct applies across online exchanges, conferences and other events hosted by VizChitra community.
 
@@ -26,8 +28,9 @@ We strongly condemn any kind of harassment of any fellow participant. This inclu
 - Inappropriate physical contact and invasion of private space.
 - Deliberate intimidation, unwelcome gestures and stalking.
 
-{% notice %}
+<div class="content-notice">
 Please report in confidence by sending an email to [**hello@vizchitra.com**](mailto:hello@vizchitra.com?subject=Code%20of%20Conduct%20Report) or direct messaging the admins e.g. Rasagy Sharma, Ipsa Jain of the [**VizChitra Community on WhatsApp**](https://chat.whatsapp.com/CcptoGEeCqJEkiETwAzpbq). Reports will be treated seriously and community admins will address this matter quickly. To escalate, message or call Gurman Bhatia @ [+91 99900 44111](tel:+919990044111) or Amit Kapoor @ [+91 97392 68197](tel:+919739268197)
 
 **Violators, regardless of their standing, may be expelled from the community, without a refund (where payment was applicable), and reported to the authorities.**
-{% /notice %}
+
+</div>

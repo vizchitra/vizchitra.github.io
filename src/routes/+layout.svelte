@@ -1,9 +1,8 @@
 <script>
-	import Footer from '$lib/components/Footer.svelte';
+	import { Footer, NavMenu } from '$lib/components';
 	import '../app.css';
 
 	import { page } from '$app/stores';
-	import NavMenu from '$lib/components/Navbar/NavMenu.svelte';
 
 	/** @type {{children: import('svelte').Snippet}} */
 	let { children } = $props();
@@ -43,7 +42,6 @@
 	@media (max-width: 768px) {
 		main {
 			max-width: 100%;
-		
 		}
 	}
 </style>

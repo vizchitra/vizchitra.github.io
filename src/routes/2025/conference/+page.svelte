@@ -1,22 +1,25 @@
 <script lang="ts">
-	import BannerPolygon from '$lib/components/BannerPolygon.svelte';
+	import {
+		BannerPolygon,
+		CallToAction,
+		VizChitraLogoType,
+		HomepageSection,
+		CustomSlantedText,
+		KeyNote,
+		Speakers2025,
+		Workshop2025,
+		SponsorCards as SponsorCard,
+		Pentagons,
+		Map,
+		VenueCard,
+		FAQ
+	} from '$lib/components';
 	import VizchitraLogo from '$lib/assets/images/viz-logo-animate.svg?raw';
-	import CallToAction from '$lib/components/CallToAction.svelte';
-	import VizChitraLogoType from '$lib/components/VizChitraLogoType.svelte';
-	import HomepageSection from '$lib/components/Homepage/HomepageSection.svelte';
-	import CustomSlantedText from '$lib/components/Common/CustomSlantedText.svelte';
-	import KeyNote from '$lib/components/LineUp/KeyNote.svelte';
-	import Speakers2025 from '$lib/components/LineUp/Speakers2025.svelte';
-	import Workshop2025 from '$lib/components/LineUp/Workshop2025.svelte';
-	import SponsorCard from '$lib/components/SponsorCards.svelte';
 	import nutanixLogo from '../../sponsorship/assets/nutanix-logo.avif';
 	import revisualLogo from '../../sponsorship/assets/revisual-logo.avif';
 	import lightningChartLogo from '../../sponsorship/assets/lightning-chart-logo.avif';
 	import hasgeekLogo from '../../sponsorship/assets/hasgeek-logo.avif';
-	import Pentagons from '$lib/components/Pentagons.svelte';
-	import Map from '$lib/components/Map.svelte';
-	import VenueCard from '$lib/components/VenueCard.svelte';
-	import FAQ from '$lib/components/FAQ.svelte';
+
 	import lillyLogo from '../../sponsorship/assets/lilly-logo.avif';
 	import ltsLogo from '../../sponsorship/assets/lasttheoram-logo.avif';
 	import straiveLogo from '../../sponsorship/assets/straive-logo.avif';

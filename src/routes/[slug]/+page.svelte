@@ -1,18 +1,19 @@
 <script lang="ts">
-	import PageHeader from '$lib/components/PageHeader.svelte';
-	import MarkdocRenderer from '$lib/components/Markdoc/MarkdocRenderer.svelte';
-	import Slanted from '$lib/components/Markdoc/Slanted.svelte';
+	import { PageHeader } from '$lib/components';
 
 	export let data: any;
-	// Reactively update local variables when data changes
-	$: ({ frontmatter = {}, html, payloadString } = data);
+	$: ({ frontmatter = {} } = data);
 
-	const components = {
-		Slanted
-	};
+	// Load mdsvex-compiled Svelte components from the content folder at build time.
+	// Eager so components are available during SSR/prerender.
+	const pages = import.meta.glob('../../../content/*.md', { eager: true });
 
-	// Workaround: Parse the JSON string sent from server
-	$: ast = payloadString ? JSON.parse(payloadString) : null;
+	let Component: any = null;
+	const pageKey = Object.keys(pages).find((p) => p.endsWith(`/${data.slug}.md`));
+	if (pageKey) {
+		// default export is the compiled Svelte component
+		Component = (pages as any)[pageKey].default;
+	}
 </script>
 
 <svelte:head>
@@ -36,6 +37,10 @@
 	<section
 		class="content-container prose prose-lg prose-headings:text-viz-black prose-p:text-viz-black prose-a:text-viz-blue-dark max-w-3xl py-12"
 	>
-		<MarkdocRenderer node={ast} {components} />
+		{#if Component}
+			<svelte:component this={Component} />
+		{:else}
+			<p>Content not found.</p>
+		{/if}
 	</section>
 </div>

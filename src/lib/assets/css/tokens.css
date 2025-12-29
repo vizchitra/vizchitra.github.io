@@ -1,0 +1,71 @@
+/*
+	Canonical design tokens for VizChitra.
+
+	This file is intentionally plain CSS (no Tailwind-specific at-rules).
+	Tailwind v4 token utilities are mapped from these variables in src/app.css.
+
+	Naming:
+	- Canonical tokens are prefixed with --viz-*
+	- Tailwind-facing tokens use --color-* / --font-* and are defined in src/app.css
+*/
+
+:root {
+	/* Canonical palette (brand) */
+
+	/* Core neutrals (canonical) */
+	--viz-color-white: oklch(100% 0 0);
+	--viz-color-black: oklch(0.19% 0 0);
+	--viz-color-grey: oklch(41.65% 0 0);
+
+	/* Brand palette (converted from hex -> OKLCH) */
+	--viz-color-yellow: oklch(89.01% 0.1087 81.8);
+	--viz-color-teal: oklch(86.69% 0.0766 188.62);
+	--viz-color-blue: oklch(80.04% 0.0763 267.25);
+	--viz-color-orange: oklch(78.25% 0.1221 47.22);
+	--viz-color-pink: oklch(74.82% 0.1333 354.07);
+
+	/* Light Shade (converted from hex -> OKLCH) */
+	--viz-color-yellow-light: oklch(93.41% 0.0654 82.66);
+	--viz-color-teal-light: oklch(90.38% 0.0612 188.47);
+	--viz-color-blue-light: oklch(86.96% 0.047 266.67);
+
+	/* Dark Shades derived from the canonical OKLCH tokens */
+	--viz-color-grey-dark: oklch(from var(--viz-color-grey) calc(l * 0.75) c h);
+	--viz-color-yellow-dark: oklch(from var(--viz-color-yellow) calc(l * 0.75) c h);
+	--viz-color-teal-dark: oklch(from var(--viz-color-teal) calc(l * 0.75) c h);
+	--viz-color-blue-dark: oklch(from var(--viz-color-blue) calc(l * 0.75) c h);
+	--viz-color-orange-dark: oklch(from var(--viz-color-orange) calc(l * 0.75) c h);
+	--viz-color-pink-dark: oklch(from var(--viz-color-pink) calc(l * 0.75) c h);
+
+	/* Canonical typography */
+	--viz-font-text-sans:
+		'IBM Plex Sans', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, system-ui, sans-serif;
+	--viz-font-display-sans:
+		'Cairo', Optima, Candara, 'Noto Sans', source-sans-pro, system-ui, sans-serif;
+	--viz-font-body-mono:
+		ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+
+	/* Canonical semantic aliases */
+	--viz-font-body: var(--viz-font-text-sans);
+	--viz-font-display: var(--viz-font-display-sans);
+	--viz-font-base: var(--viz-font-text-sans);
+
+	--viz-color-bg: var(--viz-color-white);
+	--viz-color-fg: var(--viz-color-black);
+	--viz-color-muted: var(--viz-color-grey);
+	--viz-color-surface: var(--viz-color-white);
+	--viz-color-border: var(--viz-color-grey);
+	--viz-color-link: var(--viz-color-blue-dark);
+	--viz-color-accent: var(--viz-color-pink);
+
+	/* Legacy / non-Tailwind vars (kept for existing global styles) */
+	--font-mono: 'Fira Mono', monospace;
+	--color-bg-0: rgb(255, 255, 255);
+	--color-bg-1: hsl(209, 36%, 86%);
+	--color-bg-2: hsl(224, 44%, 95%);
+	--color-theme-1: #ff3e00;
+	--color-theme-2: #4075a6;
+	--color-text: rgba(0, 0, 0, 0.7);
+	--column-width: 42rem;
+	--column-margin-top: 4rem;
+}
