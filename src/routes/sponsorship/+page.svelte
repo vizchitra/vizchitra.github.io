@@ -1,14 +1,12 @@
 <script lang="ts">
 	import VizchitraLogo from '$lib/assets/images/logos/viz-logo-animate.svg?raw';
+	import { MarqueeRow, HorizontalBarChart } from '$lib/components/interface';
+	import { VizChitraLogoType, CustomSlantedText } from '$lib/components/typography';
 	import {
 		HomepageSection,
-		VizChitraLogoType,
-		CustomSlantedText,
-		MarqueeRow,
-		HorizontalBarChart,
 		SponsorshipContactForm,
 		SponsorCards as SponsorCard
-	} from '$lib/components';
+	} from '$lib/components/sections';
 	import headerpolygon1 from '$lib/assets/images/logos/header-1.png';
 	import headerpolygon2 from '$lib/assets/images/logos/header-2.png';
 	import evangelise from '$lib/assets/images/logos/evangelise.png';

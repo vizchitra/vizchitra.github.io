@@ -211,12 +211,12 @@
 		width: 100%;
 		height: 100%;
 
-		img {
-			/* filter: grayscale(100%); */
+		/* img {
+			filter: grayscale(100%);
 		}
 
 		&::after {
-			/* content: '';
+			content: '';
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -225,7 +225,7 @@
 			background: var(--strength-color);
 			opacity: 0.4;
 
-			mix-blend-mode: hard-light; */
-		}
+			mix-blend-mode: hard-light;
+		} */
 	}
 </style>

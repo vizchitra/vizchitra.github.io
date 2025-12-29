@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { formatSlantedText } from '$lib/utils/utils.js';
-	import { PageHeader, TeamSection } from '$lib/components';
+	import { PageHeader } from '$lib/components/layout';
+	import { TeamSection } from '$lib/components/sections';
 </script>
 
 <div class="min-h-screen">
