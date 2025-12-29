@@ -1,19 +1,17 @@
 <script lang="ts">
+	import { VizChitraLogoType, CustomSlantedText } from '$lib/components/typography';
+	import { BannerPolygon, Pentagons } from '$lib/components/layout';
 	import {
-		BannerPolygon,
 		CallToAction,
-		VizChitraLogoType,
 		HomepageSection,
-		CustomSlantedText,
 		KeyNote,
 		Speakers2025,
 		Workshop2025,
 		SponsorCards as SponsorCard,
-		Pentagons,
 		Map,
 		VenueCard,
 		FAQ
-	} from '$lib/components';
+	} from '$lib/components/sections';
 	import VizchitraLogo from '$lib/assets/images/logos/viz-logo-animate.svg?raw';
 	import nutanixLogo from '$lib/assets/images/logos/nutanix-logo.avif';
 	import revisualLogo from '$lib/assets/images/logos/revisual-logo.avif';

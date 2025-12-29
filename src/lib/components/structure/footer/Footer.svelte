@@ -1,5 +1,5 @@
 <script lang="ts">
-	import BannerPolygon from '$lib/components/sections/common/BannerPolygon.svelte';
+	import BannerPolygon from '$lib/components/layout/BannerPolygon.svelte';
 	import SocialLink from './SocialLink.svelte';
 </script>
 

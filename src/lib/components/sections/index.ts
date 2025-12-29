@@ -5,7 +5,6 @@ export * from './venue';
 export * from './sponsorship';
 export * from './team';
 export * from './map';
-export * from './common';
 export * from './faq';
 export * from './sponsors';
 export * from './homepage';

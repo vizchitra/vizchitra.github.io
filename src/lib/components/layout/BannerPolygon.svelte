@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { scaleLinear, Delaunay } from 'd3';
 	import { onMount, onDestroy } from 'svelte';
-	import PartySocket from 'partysocket';
 	import { browser } from '$app/environment';
 	import { getFlagEmoji, getLocationLabel } from '$lib/utils/utils';
 	import MousePointer from '$lib/assets/images/MousePointer.svelte';
@@ -47,7 +46,7 @@
 	let voronoi: any;
 	let cursorX = 0;
 	let cursorY = 0;
-	let socket: PartySocket;
+	// PartySocket removed — no runtime cursor networking
 	let otherCursors: Record<string, CursorInfo> = {};
 	let points: Point[] = [...staticPoints];
 	let lastUpdate = 0;
@@ -94,14 +93,7 @@
 		cursorX = layerX;
 		cursorY = layerY;
 
-		if (socket?.readyState === WebSocket.OPEN) {
-			socket.send(
-				JSON.stringify({
-					x: layerX / width,
-					y: layerY / height
-				})
-			);
-		}
+		// networking removed — local cursor only
 
 		updateDataWithCursors();
 	}
@@ -118,14 +110,7 @@
 		cursorX = x;
 		cursorY = y;
 
-		if (socket?.readyState === WebSocket.OPEN) {
-			socket.send(
-				JSON.stringify({
-					x: x / width,
-					y: y / height
-				})
-			);
-		}
+		// networking removed — local cursor only
 
 		updateDataWithCursors();
 	}
@@ -218,55 +203,12 @@
 
 		ctx = canvas.getContext('2d')!;
 
-		if (!staticBanner) {
-			socket = new PartySocket({
-				host: import.meta.env.VITE_PARTYKIT_HOST || 'vizchitra-cursors.genmon.partykit.dev',
-				room: 'banner'
-			});
-
-			socket.addEventListener('message', (event) => {
-				const msg = JSON.parse(event.data);
-
-				switch (msg.type) {
-					case 'sync':
-						// Filter out any cursors without positions
-						otherCursors = Object.fromEntries(
-							Object.entries(msg.cursors).filter(
-								([_, cursor]) => cursor.x !== undefined && cursor.y !== undefined
-							)
-						);
-						break;
-					case 'update':
-						if (msg.x !== undefined && msg.y !== undefined) {
-							otherCursors = {
-								...otherCursors,
-								[msg.id]: {
-									x: msg.x,
-									y: msg.y,
-									location: msg.location,
-									lastActive: Date.now()
-								}
-							};
-						}
-						break;
-					case 'remove':
-						const { [msg.id]: _, ...rest } = otherCursors;
-						otherCursors = rest;
-						break;
-				}
-
-				updateDataWithCursors();
-			});
-		}
-
-		// Start animation loop
+		// Start animation loop (no networking)
 		draw();
 	});
 
 	onDestroy(() => {
-		if (!staticBanner) {
-			socket?.close();
-		}
+		// no networking to close
 		if (animationFrameId) {
 			cancelAnimationFrame(animationFrameId);
 		}

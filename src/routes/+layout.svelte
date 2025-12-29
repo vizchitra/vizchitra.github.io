@@ -1,5 +1,5 @@
 <script>
-	import { Footer, NavMenu } from '$lib/components';
+	import { Footer, NavMenu } from '$lib/components/structure';
 	import '../app.css';
 
 	import { page } from '$app/stores';

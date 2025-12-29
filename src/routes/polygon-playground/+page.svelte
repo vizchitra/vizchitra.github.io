@@ -1,31 +1,51 @@
-<script>
-	import { formatSlantedText } from '$lib/utils/utils.js';
+<script lang="ts">
+	import { formatSlantedText } from '$lib/utils/utils';
+	import { PageHeader } from '$lib/components/layout';
+
 	import {
-		PageHeader,
 		SliderInput,
 		PolygonGenerator,
 		SelectInput,
 		ImageUpload
-	} from '$lib/components';
-	import { domToPng } from 'modern-screenshot';
+	} from '$lib/components/sections';
+
+	// modern-screenshot doesn't ship types — import then assert a typed signature
+	import { domToPng as _domToPng } from 'modern-screenshot';
+	const domToPng = _domToPng as unknown as (
+		node: Element | null,
+		opts?: { backgroundColor?: string; scale?: number }
+	) => Promise<string>;
+
+	type Form = {
+		name: string | null;
+		desc?: string | null;
+		image?: string | null;
+		collection?: number;
+		analysis?: number;
+		coding?: number;
+		designing?: number;
+		narrating?: number;
+		strength: string;
+	};
 
 	$: form = {
 		name: null,
 		strength: 'Analyzing data'
-	};
+	} as Form;
 
-	function downloadPNG() {
-		let filename = `vizchitra-logo-${form.name ? form.name.toLowerCase().replaceAll(' ', '-') : '2025'}.png`;
+	async function downloadPNG(): Promise<void> {
+		const filename = `vizchitra-logo-${form.name ? form.name.toLowerCase().replaceAll(' ', '-') : '2025'}.png`;
 
-		domToPng(document.querySelector('#custom-card'), {
-			backgroundColor: '#ffffff',
-			scale: 1.5
-		}).then((dataUrl) => {
+		const node = document.querySelector('#custom-card');
+		try {
+			const dataUrl = await domToPng(node, { backgroundColor: '#ffffff', scale: 1.5 });
 			const link = document.createElement('a');
 			link.download = filename;
 			link.href = dataUrl;
 			link.click();
-		});
+		} catch (err) {
+			console.error('Failed to generate PNG', err);
+		}
 	}
 </script>
 
@@ -65,7 +85,6 @@
 						<div class="text-input relative mb-3 pt-[10px]">
 							<textarea
 								class="block h-fit min-h-[30px] w-full max-w-[300px] border-b-2 border-[#dddddd] !outline-0 placeholder:opacity-0"
-								type="text"
 								id="desc"
 								name="desc"
 								placeholder="About yourself"
@@ -93,7 +112,7 @@
 							How interested are you in the following activities?
 						</p>
 
-						<SliderInput label="Data Collection" bind:formValue={form.collection} showLegend="true"
+						<SliderInput label="Data Collection" bind:formValue={form.collection} showLegend={true}
 						></SliderInput>
 						<SliderInput label="Data Analysis" bind:formValue={form.analysis}></SliderInput>
 						<SliderInput label="Coding Visualizations" bind:formValue={form.coding}></SliderInput>

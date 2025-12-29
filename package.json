@@ -10,11 +10,9 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
 		"format": "prettier --write .",
-		"lint": "prettier --check .",
-		"deploy:partykit": "partykit deploy"
+		"lint": "prettier --check ."
 	},
 	"devDependencies": {
-		"@markdoc/markdoc": "^0.5.4",
 		"@neoconfetti/svelte": "^2.2.2",
 		"@rollup/plugin-dsv": "^3.0.5",
 		"@sveltejs/adapter-static": "^3.0.10",
@@ -24,11 +22,8 @@
 		"@tailwindcss/vite": "^4.1.18",
 		"@types/node": "^25.0.3",
 		"d3": "^7.9.0",
-		"js-yaml": "^4.1.1",
 		"mdsvex": "^0.12.6",
 		"modern-screenshot": "^4.6.7",
-		"partykit": "0.0.115",
-		"partysocket": "1.1.6",
 		"prettier": "^3.7.4",
 		"prettier-plugin-svelte": "^3.4.1",
 		"prettier-plugin-tailwindcss": "^0.7.2",

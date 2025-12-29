@@ -3,7 +3,9 @@
 	import { onMount } from 'svelte';
 	// Import reusable components
 	import ButtonBar from '$lib/assets/images/ButtonBar.svelte';
-	import { PolygonDivider, BannerPolygon, Pentagons, Mission, Dropdown } from '$lib/components';
+	import { Mission } from '$lib/components/sections';
+	import { Dropdown } from '$lib/components/interface';
+	import { PolygonDivider, BannerPolygon, Pentagons } from '$lib/components/layout';
 	import { CustomSlantedText, VizChitraLogoType } from '$lib/components/typography';
 	import VizchitraLogo from '$lib/assets/images/logos/viz-logo-animate.svg?raw';
 	import Youtube from 'svelte-youtube-embed';
