@@ -1,7 +1,7 @@
 <script lang="ts">
 	import communityBanner from '$lib/assets/images/call-to-action/community-banner.webp';
 	import conferenceBanner from '$lib/assets/images/call-to-action/conference-banner.webp';
-	import sponsorshipBanner from '$lib/assets/images/call-to-action/sponsorship-banner.png';
+	import sponsorshipBanner from '$lib/assets/images/call-to-action/sponsorship-banner.webp';
 
 	import { confetti } from '@neoconfetti/svelte';
 	import { tick } from 'svelte';
@@ -24,11 +24,11 @@
 			alt: 'VizChitra 2025 Recap',
 			title: 'VizChitra 2025 Recap',
 			description:
-				"Catch up on VizChitra 2025. Explore  keynotes, panels and alternative sessions.",
+				'Catch up on VizChitra 2025. Explore  keynotes, panels and alternative sessions.',
 			link: '/recap',
 			buttonText: 'View Recap',
 			isAnimated: false
-		},
+		}
 		// {
 		// 	image: conferenceBanner,
 		// 	alt: 'Call for conference proposals banner',

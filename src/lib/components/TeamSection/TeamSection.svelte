@@ -1,21 +1,13 @@
 <script>
-	import { base } from '$app/paths';
-	import { csv } from 'd3';
-	import { onMount } from 'svelte';
+	import teamData from '$lib/data/vizchitra_team.json' with { type: 'json' };
 	import MemberPentagon from './MemberPentagon.svelte';
 
 	import instagram from '$lib/assets/images/socials/instagram.svg';
 	import twitter from '$lib/assets/images/socials/twitter.svg';
 	import linkedIn from '$lib/assets/images/socials/linkedin.svg';
 	import blueSky from '$lib/assets/images/socials/bluesky.svg';
-	import youtube from '$lib/assets/images/socials/youtube.svg';
-	import github from '$lib/assets/images/socials/github.svg';
-
-	let teamData = [];
-
-	onMount(async () => {
-		teamData = await csv(`${base}/data/vizchitra_team.csv`);
-	});
+	// import youtube from '$lib/assets/images/socials/youtube.svg';
+	// import github from '$lib/assets/images/socials/github.svg';
 
 	const socials = [
 		{

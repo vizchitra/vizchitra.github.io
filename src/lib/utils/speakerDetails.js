@@ -1,35 +1,34 @@
 
-import rukmini from '$lib/assets/images/speakers-2025/Rukmini.png';
-import anand from '$lib/assets/images/speakers-2025/speaker-anand.jpg';
-import aditiImage from '$lib/assets/images/speakers-2025/speaker-aditi.jpg';
-import amanImage from '$lib/assets/images/speakers-2025/speaker-aman.jpg';
-import yashnaImage from '$lib/assets/images/speakers-2025/speaker-yashna.jpg';
-import gopikaImage from '$lib/assets/images/speakers-2025/speaker-gopika.jpg';
-import gyanImage from '$lib/assets/images/speakers-2025/speaker-gyan.jpg';
-import prasantaImage from '$lib/assets/images/speakers-2025/speaker-prasanta.jpg';
-import rahulNeelImage from '$lib/assets/images/speakers-2025/speaker-rahul-neel.png';
-import sabhyataImage from '$lib/assets/images/speakers-2025/speaker-sabhyata.jpg';
-import saketImage from '$lib/assets/images/speakers-2025/speaker-saket.png';
-import sriniImage from '$lib/assets/images/speakers-2025/speaker-srini.jpg';
-import vikramImage from '$lib/assets/images/speakers-2025/speaker-vikram.jpg';
-import anandImage from '$lib/assets/images/speakers-2025/speaker-anand.jpg';
-import arvindImage from '$lib/assets/images/speakers-2025/speaker-arvind.jpg';
-import samarthImage from '$lib/assets/images/speakers-2025/speaker-samarth.jpg';
-import arundathiImage from '$lib/assets/images/speakers-2025/speaker-arundathi.jpg';
-import pulahaImage from '$lib/assets/images/speakers-2025/speaker-pulaha.jpg';
-import sarathKrishnaImage from '$lib/assets/images/speakers-2025/speaker-sarath-krishna.jpg';
-import SahanaKartikImage from '$lib/assets/images/speakers-2025/speaker-sahana-kartik.jpg';
-import hardikImage from '$lib/assets/images/speakers-2025/speaker-hardik.jpg';
-import pragnyaImage from '$lib/assets/images/speakers-2025/speaker-pragnya.jpg';
-import prakritiImage from '$lib/assets/images/speakers-2025/speaker-prakriti.jpg';
-import anushkaRutuImage from '$lib/assets/images/speakers-2025/speaker-anusha-rutu.jpg';
-import ramaKrushnaImage from '$lib/assets/images/speakers-2025/speaker-rama-krushna.jpg';
-import ashokImage from '$lib/assets/images/speakers-2025/speaker-ashok.jpg';
-import aditeyaImage from '$lib/assets/images/speakers-2025/speaker-aditeya.jpg';
+import rukminiImage from '$lib/assets/images/speakers-2025/speaker-rukmini.avif';
+import anandImage from '$lib/assets/images/speakers-2025/speaker-anand.avif';
+import aditiImage from '$lib/assets/images/speakers-2025/speaker-aditi.avif';
+import amanImage from '$lib/assets/images/speakers-2025/speaker-aman.avif';
+import yashnaImage from '$lib/assets/images/speakers-2025/speaker-yashna.avif';
+import gopikaImage from '$lib/assets/images/speakers-2025/speaker-gopika.avif';
+import gyanImage from '$lib/assets/images/speakers-2025/speaker-gyan.avif';
+import prasantaImage from '$lib/assets/images/speakers-2025/speaker-prasanta.avif';
+import rahulNeelImage from '$lib/assets/images/speakers-2025/speaker-rahul-neel.avif';
+import sabhyataImage from '$lib/assets/images/speakers-2025/speaker-sabhyata.avif';
+import saketImage from '$lib/assets/images/speakers-2025/speaker-saket.avif';
+import sriniImage from '$lib/assets/images/speakers-2025/speaker-srini.avif';
+import vikramImage from '$lib/assets/images/speakers-2025/speaker-vikram.avif';
+import arvindImage from '$lib/assets/images/speakers-2025/speaker-arvind.avif';
+import samarthImage from '$lib/assets/images/speakers-2025/speaker-samarth.avif';
+import arundathiImage from '$lib/assets/images/speakers-2025/speaker-arundathi.avif';
+import pulahaImage from '$lib/assets/images/speakers-2025/speaker-pulaha.avif';
+import sarathKrishnaImage from '$lib/assets/images/speakers-2025/speaker-sarath-krishna.avif';
+import SahanaKartikImage from '$lib/assets/images/speakers-2025/speaker-sahana-kartik.avif';
+import hardikImage from '$lib/assets/images/speakers-2025/speaker-hardik.avif';
+import pragnyaImage from '$lib/assets/images/speakers-2025/speaker-pragnya.avif';
+import prakritiImage from '$lib/assets/images/speakers-2025/speaker-prakriti.avif';
+import anushkaRutuImage from '$lib/assets/images/speakers-2025/speaker-anusha-rutu.avif';
+import ramaKrushnaImage from '$lib/assets/images/speakers-2025/speaker-rama-krushna.avif';
+import ashokImage from '$lib/assets/images/speakers-2025/speaker-ashok.avif';
+import aditeyaImage from '$lib/assets/images/speakers-2025/speaker-aditeya.avif';
 
 export const speakerImagesMap = {
-    'Rukmini S': rukmini,
-    'S ANAND': anand,
+    'Rukmini S': rukminiImage,
+    'S ANAND': anandImage,
     'Yashna Jhamb': yashnaImage,
     'Prasanta Kumar Dutta': prasantaImage,
     'Saket Choudhary': saketImage,
@@ -41,7 +40,7 @@ export const speakerImagesMap = {
     'Sabhyata Jain': sabhyataImage,
     'Gyan Lakhwani': gyanImage,
     'Gopika': gopikaImage,
-    'S ANAND': anand,
+    'S ANAND': anandImage,
     'ARVIND V': arvindImage,
     'ARUNDATHI RAJAN': arundathiImage,
     'SAMARTH GULATI': samarthImage,

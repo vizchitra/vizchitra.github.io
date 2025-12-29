@@ -12,13 +12,13 @@
 	import leadGeneration from './assets/lead-generation.png';
 	import connect from './assets/connect.png';
 	import industryLeader from './assets/industry-leader.png';
-	import hasgeekLogo from './assets/hasgeek-logo.png';
-	import nutanixLogo from './assets/nutanix-logo.png';
-	import revisualLogo from './assets/revisual-logo.png';
-	import lightningChartLogo from './assets/lightning-chart-logo.png';
-	import lillyLogo from './assets/lilly-logo.png';
-	import ltsLogo from './assets/lasttheoram-logo.png';
-	import straiveLogo	from './assets/straive-logo.png'
+	import hasgeekLogo from './assets/hasgeek-logo.avif';
+	import nutanixLogo from './assets/nutanix-logo.avif';
+	import revisualLogo from './assets/revisual-logo.avif';
+	import lightningChartLogo from './assets/lightning-chart-logo.avif';
+	import lillyLogo from './assets/lilly-logo.avif';
+	import ltsLogo from './assets/lasttheoram-logo.avif';
+	import straiveLogo from './assets/straive-logo.avif';
 	import orgs from '$lib/data/orgs.csv';
 	import yearsOfExperience from '$lib/data/years.csv';
 	import organizationSize from '$lib/data/size.csv';
