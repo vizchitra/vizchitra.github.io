@@ -14,15 +14,15 @@
 		VenueCard,
 		FAQ
 	} from '$lib/components';
-	import VizchitraLogo from '$lib/assets/images/viz-logo-animate.svg?raw';
-	import nutanixLogo from '../../sponsorship/assets/nutanix-logo.avif';
-	import revisualLogo from '../../sponsorship/assets/revisual-logo.avif';
-	import lightningChartLogo from '../../sponsorship/assets/lightning-chart-logo.avif';
-	import hasgeekLogo from '../../sponsorship/assets/hasgeek-logo.avif';
+	import VizchitraLogo from '$lib/assets/images/logos/viz-logo-animate.svg?raw';
+	import nutanixLogo from '$lib/assets/images/logos/nutanix-logo.avif';
+	import revisualLogo from '$lib/assets/images/logos/revisual-logo.avif';
+	import lightningChartLogo from '$lib/assets/images/logos/lightning-chart-logo.avif';
+	import hasgeekLogo from '$lib/assets/images/logos/hasgeek-logo.avif';
 
-	import lillyLogo from '../../sponsorship/assets/lilly-logo.avif';
-	import ltsLogo from '../../sponsorship/assets/lasttheoram-logo.avif';
-	import straiveLogo from '../../sponsorship/assets/straive-logo.avif';
+	import lillyLogo from '$lib/assets/images/logos/lilly-logo.avif';
+	import ltsLogo from '$lib/assets/images/logos/lasttheoram-logo.avif';
+	import straiveLogo from '$lib/assets/images/logos/straive-logo.avif';
 
 	const sponsors = [
 		{

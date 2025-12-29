@@ -1,23 +1,18 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { onMount } from 'svelte';
 	// Import reusable components
 	import ButtonBar from '$lib/assets/images/ButtonBar.svelte';
-	import {
-		PolygonDivider,
-		BannerPolygon,
-		CustomSlantedText,
-		Pentagons,
-		Mission,
-		Dropdown,
-		VizChitraLogoType
-	} from '$lib/components';
-	import VizchitraLogo from '$lib/assets/images/viz-logo-animate.svg?raw';
+	import { PolygonDivider, BannerPolygon, Pentagons, Mission, Dropdown } from '$lib/components';
+	import { CustomSlantedText, VizChitraLogoType } from '$lib/components/typography';
+	import VizchitraLogo from '$lib/assets/images/logos/viz-logo-animate.svg?raw';
 	import Youtube from 'svelte-youtube-embed';
-	import decorBanner1 from '$lib/assets/images/decor-banner-1.png';
-	import decorBanner2 from '$lib/assets/images/decor-banner-2.png';
-	import playButton from '$lib/assets/images/play-button.png';
-	import recapThumbnail from '$lib/assets/images/recap-2025-thumbnail.webp';
-	import cardDecor from '$lib/assets/images/card-decor.png';
+	import decorBanner1 from '$lib/assets/images/patterns/decor-banner-1.png';
+	import decorBanner2 from '$lib/assets/images/patterns/decor-banner-2.png';
+	import playButton from '$lib/assets/images/icons/play-button.png';
+	import cardDecor from '$lib/assets/images/patterns/card-decor.png';
+
+	const recapImage = resolve('/images/events/recap-2025-thumbnail.webp');
 
 	const whyAttend = [
 		{
@@ -169,7 +164,7 @@
 						<img
 							slot="thumbnail"
 							alt="A video on svelte"
-							src={recapThumbnail}
+							src={recapImage}
 							style="width: 100%; height: 100%; object-fit: contain; object-position: center;"
 						/>
 					{/snippet}

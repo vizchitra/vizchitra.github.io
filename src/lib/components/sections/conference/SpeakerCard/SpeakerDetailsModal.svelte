@@ -2,8 +2,8 @@
 	import { browser } from '$app/environment';
 	import CalendarIcon from '$lib/assets/images/icons/calendar.svg?raw';
 	import LocationIcon from '$lib/assets/images/icons/location.svg?raw';
-	import SpeakerCardPattern1 from '$lib/assets/images/speakers-2025/speaker-card-pattern-1.svg?raw';
-	import SpeakerCardPattern2 from '$lib/assets/images/speakers-2025/speaker-card-pattern-2.svg?raw';
+	import SpeakerCardPattern1 from '$lib/assets/images/patterns/speaker-card-pattern-1.svg?raw';
+	import SpeakerCardPattern2 from '$lib/assets/images/patterns/speaker-card-pattern-2.svg?raw';
 	import CloseIcon from '$lib/assets/images/icons/x.svg?raw';
 
 	export let modalOpen = false;
