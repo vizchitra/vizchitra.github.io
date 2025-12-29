@@ -48,9 +48,6 @@ importers:
       d3:
         specifier: ^7.9.0
         version: 7.9.0
-      js-yaml:
-        specifier: 4.1.1
-        version: 4.1.1
       mdsvex:
         specifier: ^0.12.6
         version: 0.12.6(svelte@5.46.0)
@@ -695,9 +692,6 @@ packages:
     engines: {node: '>=0.4.0'}
     hasBin: true
 
-  argparse@2.0.1:
-    resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
-
   aria-query@5.3.2:
     resolution: {integrity: sha512-COROpnaoap1E2F000S62r6A60uHZnmlvomhfyT2DlTcrY1OrBKn2UhH7qn5wTC9zMvD0AY7csdPSNwKP+7WiQw==}
     engines: {node: '>= 0.4'}
@@ -956,10 +950,6 @@ packages:
 
   jiti@2.6.1:
     resolution: {integrity: sha512-ekilCSN1jwRvIbgeg/57YFh8qQDNbwDb9xT/qu2DAHbFFZUicIl4ygVaAvzveMhMVr3LnpSKTNnwt8PoOfmKhQ==}
-    hasBin: true
-
-  js-yaml@4.1.1:
-    resolution: {integrity: sha512-qQKT4zQxXl8lLwBtHMWwaTcGfFOZviOJet3Oy/xmGk2gZH677CJM9EvtfdSkgWcATZhj/55JZ0rmy3myCT5lsA==}
     hasBin: true
 
   json-stringify-pretty-compact@4.0.0:
@@ -1822,8 +1812,6 @@ snapshots:
 
   acorn@8.15.0: {}
 
-  argparse@2.0.1: {}
-
   aria-query@5.3.2: {}
 
   axobject-query@4.1.0: {}
@@ -2093,10 +2081,6 @@ snapshots:
       '@types/estree': 1.0.8
 
   jiti@2.6.1: {}
-
-  js-yaml@4.1.1:
-    dependencies:
-      argparse: 2.0.1
 
   json-stringify-pretty-compact@4.0.0: {}
 
