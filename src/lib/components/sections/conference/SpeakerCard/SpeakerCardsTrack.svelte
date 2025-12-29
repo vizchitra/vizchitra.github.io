@@ -2,7 +2,7 @@
 	import SpeakerCard from '../SpeakerCard/SpeakerCard.svelte';
 	import arrowLeft from '$lib/assets/images/icons/arrow-left.svg?raw';
 	import arrowRight from '$lib/assets/images/icons/arrow-right.svg?raw';
-	import sessionsData from '$lib/data/vizchitra-sessions.csv';
+	import sessionsData from '$lib/data/sessions2025.json' with { type: 'json' };
 	import { onMount } from 'svelte';
 
 	export let sessionTypes = ['workshop'];

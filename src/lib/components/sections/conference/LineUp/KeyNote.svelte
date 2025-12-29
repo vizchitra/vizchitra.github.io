@@ -1,7 +1,7 @@
 <script>
 	import SpeakerCard from '../SpeakerCard/SpeakerCard.svelte';
 	import expand from '$lib/assets/images/icons/expand.png';
-	import sessionsData from '$lib/data/vizchitra-sessions.csv';
+	import sessionsData from '$lib/data/sessions2025.json' with { type: 'json' };
 
 	const speakerInfo = sessionsData.filter((s) => s.talkType === 'keynote');
 

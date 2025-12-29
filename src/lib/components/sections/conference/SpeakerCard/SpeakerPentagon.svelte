@@ -1,8 +1,7 @@
 <script>
-	import { svg } from 'd3';
-	import { speakerImagesMap } from '$lib/utils/speakerDetails';
-	import SpeakerCardPattern1 from '$lib/assets/images/speakers-2025/speaker-card-pattern-1.svg?raw';
-	import SpeakerCardPattern2 from '$lib/assets/images/speakers-2025/speaker-card-pattern-2.svg?raw';
+	import { resolve } from '$app/paths';
+	import SpeakerCardPattern1 from '$lib/assets/images/patterns/speaker-card-pattern-1.svg?raw';
+	import SpeakerCardPattern2 from '$lib/assets/images/patterns/speaker-card-pattern-2.svg?raw';
 
 	export let memberData = {};
 	export let colorMapping = {};
@@ -197,7 +196,7 @@
 					pentagonXOffset}px, {pentagonYOffset}px);"
 			>
 				<img
-					src={speakerImagesMap[memberData.name] || ''}
+					src={resolve(`/images/speakers2025/${memberData.image || ''}`)}
 					alt={memberData.name}
 					class="bg-white"
 					style="transform: {computeTransform()} "

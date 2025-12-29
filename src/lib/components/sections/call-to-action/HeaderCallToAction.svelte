@@ -1,7 +1,7 @@
 <script lang="ts">
-	import CtaPattern1 from '$lib/assets/images/header-call-to-action/cta-pattern-1.svg?raw';
-	import CtaPattern2 from '$lib/assets/images/header-call-to-action/cta-pattern-2.svg?raw';
-	import CtaPattern3 from '$lib/assets/images/header-call-to-action/cta-pattern-3.svg?raw';
+	import CtaPattern1 from '$lib/assets/images/patterns/cta-pattern-1.svg?raw';
+	import CtaPattern2 from '$lib/assets/images/patterns/cta-pattern-2.svg?raw';
+	import CtaPattern3 from '$lib/assets/images/patterns/cta-pattern-3.svg?raw';
 
 	let marqueeSectionWidth: number = 0;
 

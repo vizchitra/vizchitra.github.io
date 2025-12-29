@@ -1,5 +1,5 @@
 <script lang="ts">
-	import VizchitraLogo from '$lib/assets/images/viz-logo-animate.svg?raw';
+	import VizchitraLogo from '$lib/assets/images/logos/viz-logo-animate.svg?raw';
 	import {
 		HomepageSection,
 		VizChitraLogoType,
@@ -9,21 +9,21 @@
 		SponsorshipContactForm,
 		SponsorCards as SponsorCard
 	} from '$lib/components';
-	import headerpolygon1 from './assets/header-1.png';
-	import headerpolygon2 from './assets/header-2.png';
-	import evangelise from './assets/evangelise.png';
-	import support from './assets/support.png';
-	import showcase from './assets/showcase.png';
-	import leadGeneration from './assets/lead-generation.png';
-	import connect from './assets/connect.png';
-	import industryLeader from './assets/industry-leader.png';
-	import hasgeekLogo from './assets/hasgeek-logo.avif';
-	import nutanixLogo from './assets/nutanix-logo.avif';
-	import revisualLogo from './assets/revisual-logo.avif';
-	import lightningChartLogo from './assets/lightning-chart-logo.avif';
-	import lillyLogo from './assets/lilly-logo.avif';
-	import ltsLogo from './assets/lasttheoram-logo.avif';
-	import straiveLogo from './assets/straive-logo.avif';
+	import headerpolygon1 from '$lib/assets/images/logos/header-1.png';
+	import headerpolygon2 from '$lib/assets/images/logos/header-2.png';
+	import evangelise from '$lib/assets/images/logos/evangelise.png';
+	import support from '$lib/assets/images/logos/support.png';
+	import showcase from '$lib/assets/images/logos/showcase.png';
+	import leadGeneration from '$lib/assets/images/logos/lead-generation.png';
+	import connect from '$lib/assets/images/logos/connect.png';
+	import industryLeader from '$lib/assets/images/logos/industry-leader.png';
+	import hasgeekLogo from '$lib/assets/images/logos/hasgeek-logo.avif';
+	import nutanixLogo from '$lib/assets/images/logos/nutanix-logo.avif';
+	import revisualLogo from '$lib/assets/images/logos/revisual-logo.avif';
+	import lightningChartLogo from '$lib/assets/images/logos/lightning-chart-logo.avif';
+	import lillyLogo from '$lib/assets/images/logos/lilly-logo.avif';
+	import ltsLogo from '$lib/assets/images/logos/lasttheoram-logo.avif';
+	import straiveLogo from '$lib/assets/images/logos/straive-logo.avif';
 	import orgs from '$lib/data/orgs.csv';
 	import yearsOfExperience from '$lib/data/years.csv';
 	import organizationSize from '$lib/data/size.csv';

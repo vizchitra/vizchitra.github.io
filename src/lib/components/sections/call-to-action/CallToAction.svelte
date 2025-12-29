@@ -1,8 +1,5 @@
 <script lang="ts">
-	import communityBanner from '$lib/assets/images/call-to-action/community-banner.webp';
-	import conferenceBanner from '$lib/assets/images/call-to-action/conference-banner.webp';
-	import sponsorshipBanner from '$lib/assets/images/call-to-action/sponsorship-banner.webp';
-
+	import { resolve } from '$app/paths';
 	import { confetti } from '@neoconfetti/svelte';
 	import { tick } from 'svelte';
 
@@ -11,7 +8,7 @@
 
 	const cards = [
 		{
-			image: communityBanner,
+			image: resolve('/images/events/community-banner.webp'),
 			alt: 'Join the community banner',
 			title: 'Join the community',
 			description: 'Join our 1000+ growing member community on WhatsApp',
@@ -20,7 +17,7 @@
 			isAnimated: false
 		},
 		{
-			image: sponsorshipBanner,
+			image: resolve('/images/events/sponsorship-banner.webp'),
 			alt: 'VizChitra 2025 Recap',
 			title: 'VizChitra 2025 Recap',
 			description:

@@ -1,5 +1,5 @@
 <script>
-	import Button from '$lib/components/ui/Button.svelte';
+	import Button from '$lib/components/interface/Button.svelte';
 </script>
 
 <div class="content-notice mb-10 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">

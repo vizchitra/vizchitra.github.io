@@ -1,26 +1,8 @@
 <script>
+	import { resolve } from '$app/paths';
+
 	/** @type {any} */
 	export let memberData = {};
-
-	// Load all team images as URLs at build time so we can lookup by filename.
-	// Use the explicit /src/lib path to avoid alias resolution issues during build.
-	const images = import.meta.glob('/src/lib/assets/images/team/*', { as: 'url', eager: true });
-
-	function getImageUrl(filename) {
-		if (!filename) return '';
-		const key = Object.keys(images).find((p) => p.endsWith(`/${filename}`));
-		if (key) {
-			const val = images[key];
-			if (typeof val === 'string') return val;
-			if (val && typeof val === 'object') return val.default || val.url || val.href || '';
-		}
-		// Fallback to a relative URL resolver so prerender/build still gets a usable href
-		try {
-			return new URL(`../../assets/images/team/${filename}`, import.meta.url).href;
-		} catch (e) {
-			return '';
-		}
-	}
 
 	// 50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%
 	let regularPentagonPoints = [
@@ -112,9 +94,9 @@
 			style="clip-path: polygon({clipPath}); --strength-color: {COLOR_MAPPING[memberData.strength]}"
 		>
 			<img
-				src={getImageUrl(memberData.image)}
+				src={resolve(`/images/team/${memberData.image}`)}
 				alt={memberData.name}
-				style="transform: {computeTransform()} "
+				style="transform: {computeTransform()}"
 			/>
 		</div>
 	</div>
