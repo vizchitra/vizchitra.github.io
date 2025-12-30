@@ -10,17 +10,16 @@
 		class: className = '',
 		classes = '',
 		children
-		} = $props<{
+	} = $props<{
 		textContent?: string;
 		color?: string;
 		align?: string;
 		tag?: string;
 		plain?: boolean;
 		class?: string;
-			children?: import('svelte').Snippet;
-			classes?: string;
-
-		}>();
+		children?: import('svelte').Snippet;
+		classes?: string;
+	}>();
 
 	const finalClass = $derived(className ? className : classes);
 
