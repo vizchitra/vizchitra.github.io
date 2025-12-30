@@ -6,7 +6,7 @@
 	import { Mission } from '$lib/components/sections';
 	import { Dropdown } from '$lib/components/interface';
 	import { PolygonDivider, BannerPolygon, Pentagons } from '$lib/components/structure';
-	import { CustomSlantedText, VizChitraLogoType } from '$lib/components/typography';
+	import { Slanted, VizChitraLogoType } from '$lib/components/typography';
 	import VizchitraLogo from '$lib/assets/images/logos/viz-logo-animate.svg?raw';
 	import Youtube from 'svelte-youtube-embed';
 	import decorBanner1 from '$lib/assets/images/patterns/decor-banner-1.png';
@@ -127,12 +127,11 @@
 				{@html VizchitraLogo}
 			</div>
 
-			<h3
-				class="tagline -mt-8 max-w-[20ch] border-black text-center uppercase md:mt-0 md:border-l-2 md:pl-5 md:text-left"
+			<p
+				class="tagline leading-1.1 -mt-8 mb-2 max-w-[20ch] border-black text-center uppercase md:mt-0 md:border-l-2 md:pl-5 md:text-left"
 			>
-				<CustomSlantedText textContent="A SPACE TO CONNECT AND CREATE WITH DATA"
-				></CustomSlantedText>
-			</h3>
+				<Slanted plain color="black" textContent="A SPACE TO CONNECT AND CREATE WITH DATA" />
+			</p>
 		</div>
 	</div>
 	<div class="mx-auto max-w-3xl px-5 py-12">
@@ -265,7 +264,7 @@
 			</a>
 		</h2>
 		<h3 class="content-subheading text-viz-pink-dark mt-6 text-center">
-			<CustomSlantedText textContent="A SPACE TO CONNECT AND CREATE WITH DATA"></CustomSlantedText>
+			<Slanted textContent="A SPACE TO CONNECT AND CREATE WITH DATA" />
 		</h3>
 		<p class="content-text mx-auto mt-3 text-center">
 			Our goal is to build a community of diverse, interdisciplinary individuals working across the
@@ -287,8 +286,7 @@
 			<VizChitraLogoType includeYear={false}></VizChitraLogoType>
 		</h2>
 		<h3 class="content-subheading text-viz-blue-dark mt-6 text-center">
-			<CustomSlantedText textContent="BUILD AN INDIAN DATA VISUALIZATION COMMUNITY"
-			></CustomSlantedText>
+			<Slanted textContent="BUILD AN INDIAN DATA VISUALIZATION COMMUNITY" />
 		</h3>
 		<p class="content-text mx-auto mt-3 text-center">
 			To foster a vibrant <span class="font-bold">community of data storytellers in India</span>,

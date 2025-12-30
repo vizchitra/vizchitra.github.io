@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { VizChitraLogoType, CustomSlantedText } from '$lib/components/typography';
+	import { VizChitraLogoType, Slanted } from '$lib/components/typography';
 	import { BannerPolygon, Pentagons } from '$lib/components/structure';
 	import {
 		CallToAction,
@@ -169,7 +169,7 @@
 		<h3
 			class="tagline -mt-8 max-w-[20ch] border-black text-center uppercase md:mt-0 md:border-l-2 md:pl-5 md:text-left"
 		>
-			<CustomSlantedText textContent="A SPACE TO CONNECT AND CREATE WITH DATA"></CustomSlantedText>
+			<Slanted textContent="A SPACE TO CONNECT AND CREATE WITH DATA" />
 		</h3>
 	</div>
 </div>
@@ -196,12 +196,9 @@
 				<span class="text-viz-pink-dark font-bold">visual data storytelling.</span>
 			</p>
 
-			<p class="mx-auto mb-6">
-				<CustomSlantedText
-					textContent="A SPACE TO CONNECT AND CREATE WITH DATA"
-					classes="text-[18px] md:text-[24px]"
-				></CustomSlantedText>
-			</p>
+						<p class="mx-auto mb-6">
+							<Slanted classes="text-[18px] md:text-[24px]" textContent="A SPACE TO CONNECT AND CREATE WITH DATA" />
+						</p>
 
 			<p class="content-text mb-1">
 				Our goal is to build a community of diverse, interdisciplinary individuals working across

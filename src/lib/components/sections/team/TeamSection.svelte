@@ -34,7 +34,7 @@
 </script>
 
 {#if teamData}
-	<div class="team-section flex flex-wrap justify-center gap-5 md:min-w-[420px]">
+	<div class="team-section not-prose flex flex-wrap justify-center gap-5 md:min-w-[420px]">
 		{#each teamData.sort((a, b) => a.order - b.order) as teamMember}
 			<div class="team-member mb-4 flex flex-col items-center gap-2">
 				<MemberPentagon memberData={teamMember} />

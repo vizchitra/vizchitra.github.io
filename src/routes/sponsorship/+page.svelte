@@ -1,7 +1,7 @@
 <script lang="ts">
 	import VizchitraLogo from '$lib/assets/images/logos/viz-logo-animate.svg?raw';
-	import { MarqueeRow, HorizontalBarChart } from '$lib/components/interface';
-	import { VizChitraLogoType, CustomSlantedText } from '$lib/components/typography';
+	import { MarqueeRow, HorizontalBarChart, SpeakerDeck } from '$lib/components/interface';
+	import { VizChitraLogoType, Slanted } from '$lib/components/typography';
 	import {
 		HomepageSection,
 		SponsorshipContactForm,
@@ -59,7 +59,6 @@
 		color: categoryColors[category as keyof typeof categoryColors]
 	}));
 
-	console.log(companies);
 	// Split companies into rows for marquee
 	type MarqueeCompany = { name: string; category: string; color: string };
 	type MarqueeRow = { items: MarqueeCompany[]; direction: 'right' | 'left'; duration: string };
@@ -172,10 +171,10 @@
 			</p>
 
 			<p class="mx-auto mb-6">
-				<CustomSlantedText
-					textContent="A SPACE TO CONNECT AND CREATE WITH DATA"
+				<Slanted
 					classes="text-[18px] md:text-[24px]"
-				></CustomSlantedText>
+					textContent="A SPACE TO CONNECT AND CREATE WITH DATA"
+				/>
 			</p>
 
 			<p class="content-text mb-1">
@@ -386,15 +385,11 @@
 
 <SponsorshipContactForm />
 
-<iframe
-	class="speakerdeck-iframe"
-	frameborder="0"
-	src="https://speakerdeck.com/player/4812baba218e4c14b34229497312bb67"
+<SpeakerDeck
+	id="4812baba218e4c14b34229497312bb67"
 	title="Sponsor the Conference | VizChitra 2025"
-	allowfullscreen
-	style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 100%; height: auto; aspect-ratio: 560 / 315;"
-	data-ratio="1.7777777777777777"
-></iframe>
+	className="speakerdeck-iframe"
+/>
 
 <style>
 	.full-bleed {
