@@ -45,10 +45,6 @@
 	let voronoi: any;
 	let cursorX = 0;
 	let cursorY = 0;
-<<<<<<<< HEAD:src/lib/components/structure/banner/BannerPolygon.svelte
-========
-	// PartySocket removed — no runtime cursor networking
->>>>>>>> master:src/lib/components/layout/BannerPolygon.svelte
 	let otherCursors: Record<string, CursorInfo> = {};
 	let points: Point[] = [...staticPoints];
 	let lastUpdate = 0;
@@ -94,11 +90,8 @@
 		cursorX = layerX;
 		cursorY = layerY;
 
-<<<<<<<< HEAD:src/lib/components/structure/banner/BannerPolygon.svelte
-========
 		// networking removed — local cursor only
 
->>>>>>>> master:src/lib/components/layout/BannerPolygon.svelte
 		updateDataWithCursors();
 	}
 
@@ -113,11 +106,8 @@
 		cursorX = x;
 		cursorY = y;
 
-<<<<<<<< HEAD:src/lib/components/structure/banner/BannerPolygon.svelte
-========
 		// networking removed — local cursor only
 
->>>>>>>> master:src/lib/components/layout/BannerPolygon.svelte
 		updateDataWithCursors();
 	}
 
@@ -202,19 +192,14 @@
 		if (!browser) return;
 
 		ctx = canvas.getContext('2d')!;
-<<<<<<<< HEAD:src/lib/components/structure/banner/BannerPolygon.svelte
-========
 
 		// Start animation loop (no networking)
->>>>>>>> master:src/lib/components/layout/BannerPolygon.svelte
+
 		draw();
 	});
 
 	onDestroy(() => {
-<<<<<<<< HEAD:src/lib/components/structure/banner/BannerPolygon.svelte
-========
 		// no networking to close
->>>>>>>> master:src/lib/components/layout/BannerPolygon.svelte
 		if (animationFrameId) {
 			cancelAnimationFrame(animationFrameId);
 		}
