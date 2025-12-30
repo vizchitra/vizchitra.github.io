@@ -18,7 +18,7 @@ This repo uses **CSS-first** approach - using CSS variables and Tailwind utiliti
 - **Global styles + Tailwind entry** live in: `src/app.css`
 - **Fonts (`@font-face`)** live in: `src/lib/assets/css/fonts.css`
 
-Rule: if you need a new color/font token, add it to `tokens.css` (not scattered in components).
+Rule: if you need a new color/font token, add it to `tokens.css` (not scattered in components). Prefer explicit numeric OKLCH values for determinism (avoid runtime `oklch(from var(...))`).
 
 ## CSS-First & Tailwind Approach
 
@@ -99,7 +99,7 @@ Avoid inventing new “container” widths in random components unless necessary
 src/
   lib/
     components/
-      ui/                 # Reusable primitives (no page/business coupling)
+      interface/         # Reusable user interface primitives (no page/business coupling)
         button/
           Button.svelte
           IconButton.svelte
@@ -159,7 +159,7 @@ src/
 
 ### Boundaries (important)
 
-- `components/ui/` should be theme/token-driven and reusable (no page-specific copy, no hard-coded asset paths).
+- `components/interface/` should be theme/token-driven and reusable (no page-specific copy, no hard-coded asset paths).
 - `components/structure/` is global chrome used across pages (header/footer/banners).
 - `components/sections/` are reusable blocks that may appear on multiple pages.
 - If a component is used by exactly one route and tightly coupled to its data, place it in `src/routes/<route>/_components/`.
@@ -175,6 +175,7 @@ src/
   - Use Tailwind color utilities backed by tokens or semantic variables.
 - Prefer Tailwind utilities for spacing/layout.
 - Keep component-scoped `<style>` for geometry/behavior that Tailwind doesn’t express cleanly (clip-path, SVG masks, complex keyframes).
+- **Performance**: Watch for large bundle warnings from Vite; split large pages with dynamic imports if necessary.
 
 ## Markdown Content
 
