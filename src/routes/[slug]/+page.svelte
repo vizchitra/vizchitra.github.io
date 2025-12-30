@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { PageHeader } from '$lib/components/layout';
+	import { PageHeader } from '$lib/components/structure';
 
 	export let data: any;
 	$: ({ frontmatter = {} } = data);

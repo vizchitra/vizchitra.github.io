@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { formatSlantedText } from '$lib/utils/utils.js';
-	import { PageHeader } from '$lib/components/layout';
+	import { PageHeader } from '$lib/components/structure';
 	import { TeamSection } from '$lib/components/sections';
 </script>
 

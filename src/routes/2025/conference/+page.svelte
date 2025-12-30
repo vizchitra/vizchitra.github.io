@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { VizChitraLogoType, CustomSlantedText } from '$lib/components/typography';
-	import { BannerPolygon, Pentagons } from '$lib/components/layout';
+	import { BannerPolygon, Pentagons } from '$lib/components/structure';
 	import {
 		CallToAction,
 		HomepageSection,
