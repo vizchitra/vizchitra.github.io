@@ -3,22 +3,39 @@
 	export let show: boolean;
 	export let onClose: () => void;
 
-	function stopPropagation(event: MouseEvent) {
-		event.stopPropagation();
+	function handleOverlayClick(event: MouseEvent) {
+		// only close when the overlay itself is clicked, not its children
+		if (event.target === event.currentTarget) {
+			onClose();
+		}
+	}
+
+	function handleKey(event: KeyboardEvent) {
+		if (event.key === 'Escape') {
+			event.preventDefault();
+			onClose();
+		}
+		if (event.key === 'Enter' || event.key === ' ') {
+			// allow Enter/Space to activate the overlay close when focused
+			event.preventDefault();
+			onClose();
+		}
 	}
 </script>
 
 {#if show && videoId}
 	<div
 		class="fixed inset-0 z-50 flex items-center justify-center bg-gray-100/20 backdrop-blur-sm"
-		on:click={onClose}
+		on:click={handleOverlayClick}
+		on:keydown={handleKey}
 		role="dialog"
 		aria-modal="true"
 		aria-label="Video modal"
+		tabindex="0"
 	>
 		<div
 			class="relative w-full max-w-3xl overflow-hidden rounded-lg bg-white shadow-lg"
-			on:click={stopPropagation}
+			role="document"
 		>
 			<!-- Close Button -->
 			<button
