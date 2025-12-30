@@ -1,5 +1,5 @@
 <script lang="ts">
-	import BannerPolygon from '$lib/components/layout/BannerPolygon.svelte';
+	import BannerPolygon from '$lib/components/structure/banner/BannerPolygon.svelte';
 	export let title: string;
 </script>
 

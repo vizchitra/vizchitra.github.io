@@ -8,33 +8,27 @@ A content-first SvelteKit site for conference and community pages for VizChitra.
 
 - Keep simple one-word links
 - Keep max navigation depth to 2
-- Prefer canonical tokens and small primitives for consistency
-- Avoid Tailwind classes inside markdown content
+- Refer to [DESIGN.md](file:///Users/amitkaps/Documents/@github/vizchitra.github.io/DESIGN.md) for visual and UI principles.
 
 ## Project Structure
 
 vizchitra.github.io/
+├ content/      (Markdown/mdsvex files)
 ├ src/
-│ ├ content/
 │ ├ lib/
-│ │ ├ assets/ (fonts, tokens, images)
-│ │ ├ components/ (ui, typography, layout, structure, sections)
+│ │ ├ assets/   (fonts, tokens, images)
+│ │ ├ components/ (interface, typography, layout, structure, sections)
 │ │ ├ config/
 │ ├ routes/
 │ ├ app.css
 │ ├ app.html
-├ static/
-│ ├ data/
-│ ├ fonts/
-│ ├ images/
-│ ├ CNAME
-│ ├ favicon.svg
-│ └ robots.txt
-├ build/
-├ package.json
-├ svelte.config.js
-├ jsconfig.json
-└ vite.config.js
+├ static/       (static data and assets)
+├ build/        (output)
+
+## Related Documentation
+
+- [DESIGN.md](file:///Users/amitkaps/Documents/@github/vizchitra.github.io/DESIGN.md): Detailed design system, tokens, and component taxonomy.
+- [agents.md](file:///Users/amitkaps/Documents/@github/vizchitra.github.io/agents.md): Tactical operating manual for AI agents.
 
 ## Build & Deploy
 
@@ -43,21 +37,6 @@ vizchitra.github.io/
 - **Prerender:** global prerendering enabled via `export const prerender = true;` (see `src/routes/+layout.svelte`), with enumerated entries and redirects configured in `svelte.config.js`.
 - **Assets:** static files live in `static/`; Vite-bundled assets should be referenced via `$lib` imports or absolute `/` paths to avoid nested-route lookup failures.
 
-## Design System
-
-- **Canonical tokens:** single source of truth is `src/lib/assets/css/tokens.css` (OKLCH-based `--viz-*` variables).
-- **Tailwind mapping:** Tailwind-facing variables and Tailwind entrypoint live in `src/app.css` — `@theme` maps `--viz-*` → `--color-*` used by Tailwind v4 utilities.
-- **Markdown policy:** content in `content/` and markdown/mdsvex files should not include utility Tailwind classes; use `prose` wrappers or small presentation components instead.
-- **Token determinism:** prefer explicit numeric OKLCH values (avoid runtime `oklch(from var(...))` where determinism is required).
-
-## Component Taxonomy (under `src/lib/components`)
-
-- `ui/` — primitives and atoms: Button, Input, Icon, InlineSvg
-- `typography/` — prose wrappers, Markdoc helpers, display text (Slanted, VizChitra logo)
-- `layout/` — Container, Section, PageHeader, PolygonDivider
-- `structure/` — site chrome: header, footer, banners
-- `sections/` — page-specific blocks: mission, team, sponsorship, polygon-playground
-  Examples: `src/lib/components/ui/Button.svelte`, `src/lib/components/typography/Slanted.svelte`, `src/lib/components/sections/mission/Mission.svelte`.
 
 ## Page Structure
 
@@ -119,8 +98,6 @@ vizchitra.github.io/
 - Prefer `$lib/...` imports for shared modules/assets instead of fragile relative paths to reduce breakage during refactors.
 - Prerender crawler: ensure every linked internal route resolves (or has an explicit redirect) so prerender doesn't encounter 404s.
 - Fonts & asset paths: use `%sveltekit.assets%` in `src/app.html` or place fonts in `static/` to avoid nested-route asset requests.
-- Tokens: avoid ad-hoc hex values in components; derive from `--viz-*` tokens and prefer fixed numeric OKLCH values when determinism is needed.
-- Watch for large bundle warnings from Vite; split large pages with dynamic imports if necessary.
 
 ## Suggested Follow-up Edits
 
