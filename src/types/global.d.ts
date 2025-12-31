@@ -1,11 +1,11 @@
 // Canonical global module declarations for project assets and aliased data imports
 declare module '*.csv' {
-	const content: any;
+	const content: any[];
 	export default content;
 }
 
 declare module '$lib/data/*.csv' {
-	const content: any;
+	const content: any[];
 	export default content;
 }
 
@@ -13,23 +13,23 @@ declare module '$lib/data/*';
 
 // Explicit common CSV imports used in routes
 declare module '$lib/data/youtube-videos.csv' {
-	const content: any;
+	const content: any[];
 	export default content;
 }
 declare module '$lib/data/orgs.csv' {
-	const content: any;
+	const content: any[];
 	export default content;
 }
 declare module '$lib/data/years.csv' {
-	const content: any;
+	const content: any[];
 	export default content;
 }
 declare module '$lib/data/size.csv' {
-	const content: any;
+	const content: any[];
 	export default content;
 }
 declare module '$lib/data/roles.csv' {
-	const content: any;
+	const content: any[];
 	export default content;
 }
 
