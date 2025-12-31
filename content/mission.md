@@ -7,7 +7,7 @@ description: Mission for the VizChitra
 	import { Slanted, InlineSvg } from '$lib/components';
 </script>
 
-<Slanted color="pink" textContent="Build an Indian Data Visualization Community" />
+<Slanted tag="h2" color="pink" textContent="Build an Indian Data Visualization Community" />
 
 <InlineSvg name="images/MissionViz.svg" />
 

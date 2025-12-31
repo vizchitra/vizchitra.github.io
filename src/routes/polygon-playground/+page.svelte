@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { formatSlantedText } from '$lib/utils/utils';
 	import { PageHeader } from '$lib/components/structure';
 
 	import {

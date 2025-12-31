@@ -170,12 +170,11 @@
 				<span class="text-viz-pink-dark font-bold">visual data storytelling.</span>
 			</p>
 
-			<p class="mx-auto mb-6">
-				<Slanted
-					classes="text-[18px] md:text-[24px]"
-					textContent="A SPACE TO CONNECT AND CREATE WITH DATA"
-				/>
-			</p>
+			<Slanted
+				tag="h2"
+				classes="text-[18px] md:text-[24px]"
+				textContent="A SPACE TO CONNECT AND CREATE WITH DATA"
+			/>
 
 			<p class="content-text mb-1">
 				Our goal is to build a community of diverse, interdisciplinary individuals working across

@@ -7,7 +7,7 @@ description: The Do's and Dont's for the VizChitra community
 	import { Slanted } from '$lib/components';
 </script>
 
-<Slanted color="pink" textContent="THE DO'S AND DONT'S FOR THE COMMUNITY" />
+<Slanted tag="h2" color="pink" textContent="THE DO'S AND DONT'S FOR THE COMMUNITY" />
 
 This code of conduct applies across online exchanges, conferences and other events hosted by VizChitra community.
 

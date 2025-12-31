@@ -9,7 +9,7 @@ description: Member of the VizChitra Core Team
 	import { TeamSection } from '$lib/components/sections';
 </script>
 
-<Slanted color="pink" textContent="THE VIZCHITRA TEAM" />
+<Slanted tag="h2" color="pink" textContent="THE VIZCHITRA TEAM" />
 
 Meet the individuals working tirelessly behind the scenes to make India's data visualization community a reality.
 

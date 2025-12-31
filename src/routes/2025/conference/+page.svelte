@@ -169,7 +169,7 @@
 		<h3
 			class="tagline -mt-8 max-w-[20ch] border-black text-center uppercase md:mt-0 md:border-l-2 md:pl-5 md:text-left"
 		>
-			<Slanted textContent="A SPACE TO CONNECT AND CREATE WITH DATA" />
+			<Slanted tag="h2" textContent="A SPACE TO CONNECT AND CREATE WITH DATA" />
 		</h3>
 	</div>
 </div>
@@ -197,7 +197,7 @@
 			</p>
 
 						<p class="mx-auto mb-6">
-							<Slanted classes="text-[18px] md:text-[24px]" textContent="A SPACE TO CONNECT AND CREATE WITH DATA" />
+							<Slanted tag="h2" classes="text-[18px] md:text-[24px]" textContent="A SPACE TO CONNECT AND CREATE WITH DATA" />
 						</p>
 
 			<p class="content-text mb-1">
