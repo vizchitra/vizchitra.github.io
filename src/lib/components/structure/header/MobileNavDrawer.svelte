@@ -49,7 +49,7 @@
 						<svg
 							{width}
 							{height}
-							viewBox="0 0 {width} {height}"
+							viewBox="0 0 {width ?? 0} {height ?? 0}"
 							preserveAspectRatio="xMidYMid meet"
 						>
 							<line
@@ -118,7 +118,7 @@
 				</div>
 
 				<div class="polygon-divider mb-2 w-full" bind:clientWidth={width}>
-					<svg {width} {height} viewBox="0 0 {width} {height}" preserveAspectRatio="xMidYMid meet">
+					<svg {width} {height} viewBox="0 0 {width ?? 0} {height ?? 0}" preserveAspectRatio="xMidYMid meet">
 						<line
 							x1={0}
 							y1={height / 2}
