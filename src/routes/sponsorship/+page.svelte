@@ -1,12 +1,16 @@
 <script lang="ts">
 	import VizchitraLogo from '$lib/assets/images/logos/viz-logo-animate.svg?raw';
 	import { MarqueeRow, HorizontalBarChart, SpeakerDeck } from '$lib/components/interface';
+	import Grid from '$lib/components/layout/Grid.svelte';
+	import Flex from '$lib/components/layout/Flex.svelte';
+	import FullBleed from '$lib/components/layout/FullBleed.svelte';
 	import { VizChitraLogoType, Slanted } from '$lib/components/typography';
 	import {
 		HomepageSection,
 		SponsorshipContactForm,
 		SponsorCards as SponsorCard
 	} from '$lib/components/sections';
+	import sponsors from '$lib/data/sponsors2025.json' with { type: 'json' };
 	import headerpolygon1 from '$lib/assets/images/logos/header-1.png';
 	import headerpolygon2 from '$lib/assets/images/logos/header-2.png';
 	import evangelise from '$lib/assets/images/logos/evangelise.png';
@@ -15,13 +19,6 @@
 	import leadGeneration from '$lib/assets/images/logos/lead-generation.png';
 	import connect from '$lib/assets/images/logos/connect.png';
 	import industryLeader from '$lib/assets/images/logos/industry-leader.png';
-	import hasgeekLogo from '$lib/assets/images/logos/hasgeek-logo.avif';
-	import nutanixLogo from '$lib/assets/images/logos/nutanix-logo.avif';
-	import revisualLogo from '$lib/assets/images/logos/revisual-logo.avif';
-	import lightningChartLogo from '$lib/assets/images/logos/lightning-chart-logo.avif';
-	import lillyLogo from '$lib/assets/images/logos/lilly-logo.avif';
-	import ltsLogo from '$lib/assets/images/logos/lasttheoram-logo.avif';
-	import straiveLogo from '$lib/assets/images/logos/straive-logo.avif';
 	import orgs from '$lib/data/orgs.csv';
 	import yearsOfExperience from '$lib/data/years.csv';
 	import organizationSize from '$lib/data/size.csv';
@@ -85,13 +82,13 @@
 			icon: leadGeneration,
 			alt: 'Lead generation',
 			boldText: 'Lead generation',
-			text: 'and & customer discovery in an underserved market'
+			text: 'and customer discovery in an underserved market'
 		},
 		{
 			icon: support,
 			alt: 'Support and grow',
 			boldText: 'Support and grow',
-			text: 'and the community'
+			text: 'the community'
 		},
 		{
 			icon: industryLeader,
@@ -104,7 +101,7 @@
 			icon: connect,
 			alt: 'Connect',
 			boldText: 'Connect',
-			text: 'and with future employees and collaborators'
+			text: 'with future employees and collaborators'
 		}
 	];
 </script>
@@ -185,9 +182,9 @@
 		</div>
 	</HomepageSection>
 
-	<div class="benefits-grid mt-12 grid grid-cols-1 gap-12 md:grid-cols-2 lg:gap-16">
+	<Grid cols={1} colsMd={2} gap="gap-12 lg:gap-16" className="benefits-grid">
 		{#each benefits as benefit}
-			<div class="benefit-item flex items-center gap-6">
+			<Flex direction="row" align="items-center" gap="gap-6" className="benefit-item">
 				<div class="icon-container flex-shrink-0">
 					<img src={benefit.icon} alt={benefit.alt} class="h-20 w-20" />
 				</div>
@@ -200,9 +197,9 @@
 						<span>{benefit.text}</span>
 					{/if}
 				</div>
-			</div>
+			</Flex>
 		{/each}
-	</div>
+	</Grid>
 
 	<!-- Companies Marquee Section -->
 	<section class="full-bleed my-12 overflow-hidden py-12">
@@ -232,12 +229,12 @@
 
 	<!-- Legend Section -->
 
-	<div class="full-bleed mx-auto mb-20 md:px-12">
+	<FullBleed innerClass="mx-auto mb-20 md:px-12">
 		<h2 class="content-heading mx-auto mb-12 max-w-2xl text-center !text-[2rem]">
 			<span class="font-bold italic">Attendee</span> Profile
 		</h2>
 
-		<div class="grid grid-cols-1 gap-6 xl:grid-cols-3">
+		<Grid cols={1} colsLg={3} gap="gap-6" className="w-full">
 			<!-- Years of Experience Chart -->
 			<div class="relative">
 				<HorizontalBarChart
@@ -297,86 +294,39 @@
 					]}
 				/>
 			</div>
-		</div>
-	</div>
+		</Grid>
+	</FullBleed>
 
 	<section class="mx-auto max-w-4xl">
 		<section class="my-8 md:my-4">
 			<div class="mx-auto max-w-6xl overflow-hidden">
 				<div class="mb-16 text-center">
 					<h2 class="content-heading mb-4 text-center !text-[2rem]">
-						<span class="font-bold italic">Strategic Partnership</span> with
-						<img src={hasgeekLogo} alt="HasGeek" class="mx-2 inline-block h-12 w-auto" />
+						<span class="font-bold italic">Sponsors & Partners</span>
 					</h2>
 					<p class="content-text mx-auto max-w-2xl">
-						Organize the conference, Support the growth of the community.
+						Organize the conference & Support the growth of the community.
 					</p>
 				</div>
-				<div class="mx-auto grid grid-cols-1 pb-4 md:pb-0 lg:max-w-2xl lg:grid-cols-2">
-					<SponsorCard
-						heading="Platinum Sponsor"
-						logo={nutanixLogo}
-						logoType="image"
-						variant="pink"
-						seed={343442}
-					/>
 
-					<SponsorCard
-						heading="Gold Sponsor"
-						logo={lillyLogo}
-						logoType="image"
-						variant="white"
-						seed={3434}
-					/>
-
-					<SponsorCard
-						heading="Silver & Diversity Sponsor"
-						logo={revisualLogo}
-						logoType="image"
-						variant="yellow"
-						seed={343554354}
-					/>
-
-					<SponsorCard
-						heading="Bronze Sponsor"
-						logo={lightningChartLogo}
-						logoType="image"
-						variant="orange"
-						seed={343554354}
-					/>
-
-					<SponsorCard
-						heading="Bronze Sponsor"
-						logo={straiveLogo}
-						logoType="image"
-						variant="yellow"
-						seed={343554354}
-					/>
-
-					<!-- HasGeek -->
-					<SponsorCard
-						heading="Event Partner"
-						logo={hasgeekLogo}
-						logoType="image"
-						variant="blue"
-						seed={342}
-					/>
-
-					<SponsorCard
-						heading="A Local Affliate for"
-						logo="https://images.squarespace-cdn.com/content/v1/5c6055b5fb18206d45d6b27e/1562601203642-ZHLHUGGYNWOIZHZK46U9/Data+Visualization+Society+logo+2019-05-transparent.png"
-						logoType="image"
-						variant="green"
-						seed={34435432}
-					/>
-					<SponsorCard
-						heading="Media Partner"
-						logo={ltsLogo}
-						logoType="image"
-						variant="orange"
-						seed={34435432}
-					/>
-				</div>
+				<Grid cols={2} gap="gap-2 md:gap-4" className="ml-0 pb-4 md:-ml-12 md:pb-0 lg:max-w-4xl">
+					{#each sponsors as sponsor}
+						<SponsorCard
+							heading={sponsor.heading}
+							logo={sponsor.logo}
+							logoType="image"
+							variant={sponsor.variant as
+								| 'pink'
+								| 'white'
+								| 'black'
+								| 'yellow'
+								| 'orange'
+								| 'blue'
+								| 'green'}
+							seed={sponsor.seed}
+						/>
+					{/each}
+				</Grid>
 			</div>
 		</section>
 	</section>

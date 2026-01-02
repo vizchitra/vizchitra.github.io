@@ -8,8 +8,8 @@ VizChitra is an Indian data visualization community. Our mission is to foster a 
 
 - For small content changes (typos, minor edits), you can _directly edit files in the `content/` directory_ and submit a pull request.
 - For larger changes (new pages, significant redesigns), please _open an issue first_ to discuss.
-- Read the [HUMANS.md](HUMANS.md) file to understand _how we work_, _what we care about_, and _how to contribute without breaking things_.
-- Use the [AGENTS.md](AGENTS.md) that outline our _coding standards_ and _technical practices_.
+- Read the [humans.md](humans.md) file to understand _how we work_, _what we care about_, and _how to contribute without breaking things_.
+- Use the [agents.md](agents.md) that outline our _coding standards_ and _technical practices_.
 
 ### Getting Started
 

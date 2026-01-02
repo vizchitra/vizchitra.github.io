@@ -37,8 +37,9 @@ You don’t need to know everything here to contribute, but this is what the sit
 - **SvelteKit** (Svelte v5) with static adapter
 - **MDsveX** for Markdown-based content
 - **Tailwind CSS v4**, driven by design tokens
-- **TypeScript**
-- **Vite**
+- **TypeScript** for type-safe JavaScript
+- **Vite** for build and dev tool
+- **PNPM** for package manager
 
 ---
 

@@ -1,5 +1,10 @@
 <script lang="ts">
-	export let containerWidth: null | string = null;
+	interface Props {
+		containerWidth?: null | string;
+		content?: import('svelte').Snippet;
+	}
+
+	let { containerWidth = null, content }: Props = $props();
 </script>
 
 <div
@@ -7,5 +12,5 @@
 		? 'w-full !max-w-[unset]'
 		: 'w-full !max-w-[750px]'}"
 >
-	<slot name="content"></slot>
+	{@render content?.()}
 </div>

@@ -1,21 +1,25 @@
 <script lang="ts">
-
 	// Define the shape of an individual data item using a generic record.
 	type Item = Record<string, any>;
 
-	// Props passed into the component
-	export let data: Item[] = []; // Array of data items (e.g., [{ code: 'A', name: 'Alpha' }, ...])
-	export let activeValue: string = ''; // Currently selected item's key value
-	export let keyField: string = ''; // Field name used as the unique key (e.g., 'code')
-	export let labelField: string = ''; // Field name used as the display label (e.g., 'name')
+	interface Props {
+		// Props passed into the component
+		data?: Item[]; // Array of data items (e.g., [{ code: 'A', name: 'Alpha' }, ...])
+		activeValue?: string; // Currently selected item's key value
+		keyField?: string; // Field name used as the unique key (e.g., 'code')
+		labelField?: string; // Field name used as the display label (e.g., 'name')
+		onSelect: (value: any) => void;
+	}
 
-  export let onSelect: (value: any) => void; 
+	let { data = [], activeValue = '', keyField = '', labelField = '', onSelect }: Props = $props();
 
 	/**
 	 * Reactive statement to compute unique buttons based on the keyField.
 	 * Ensures no duplicate entries appear in the button bar.
 	 */
-	$: uniqueButtons = Array.from(new Map(data.map((item) => [item[keyField], item])).values());
+	let uniqueButtons = $derived(
+		Array.from(new Map(data.map((item) => [item[keyField], item])).values())
+	);
 
 	/**
 	 * Handles selection of a button item.
@@ -23,7 +27,6 @@
 	 *
 	 * @param item - The selected item object
 	 */
-
 </script>
 
 <!-- Render the button bar UI -->
@@ -31,7 +34,7 @@
 	{#each uniqueButtons as item}
 		<button
 			class="button {item[keyField] === activeValue ? 'selected' : ''}"
-			on:click={() => onSelect(item)}
+			onclick={() => onSelect(item)}
 		>
 			{item[labelField]}
 		</button>

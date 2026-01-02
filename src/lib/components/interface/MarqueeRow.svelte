@@ -1,12 +1,14 @@
 <script>
-	/** @type {{name: string, category: string, color: string}[]} */
-	export let items = [];
-	/** @type {'right' | 'left'} */
-	export let direction = 'right';
-	/** @type {string} */
-	export let duration = '40s';
-	/** @type {number} */
-	export let repetitions = 4;
+	/**
+	 * @typedef {Object} Props
+	 * @property {{name: string, category: string, color: string}[]} [items]
+	 * @property {'right' | 'left'} [direction]
+	 * @property {string} [duration]
+	 * @property {number} [repetitions]
+	 */
+
+	/** @type {Props} */
+	let { items = [], direction = 'right', duration = '40s', repetitions = 4 } = $props();
 </script>
 
 <div class="marquee-container">

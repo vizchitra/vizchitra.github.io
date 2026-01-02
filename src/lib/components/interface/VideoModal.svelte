@@ -1,7 +1,11 @@
 <script lang="ts">
-	export let videoId: string;
-	export let show: boolean;
-	export let onClose: () => void;
+	interface Props {
+		videoId: string;
+		show: boolean;
+		onClose: () => void;
+	}
+
+	let { videoId, show, onClose }: Props = $props();
 
 	function handleOverlayClick(event: MouseEvent) {
 		// only close when the overlay itself is clicked, not its children
@@ -26,8 +30,8 @@
 {#if show && videoId}
 	<div
 		class="fixed inset-0 z-50 flex items-center justify-center bg-gray-100/20 backdrop-blur-sm"
-		on:click={handleOverlayClick}
-		on:keydown={handleKey}
+		onclick={handleOverlayClick}
+		onkeydown={handleKey}
 		role="dialog"
 		aria-modal="true"
 		aria-label="Video modal"
@@ -40,7 +44,7 @@
 			<!-- Close Button -->
 			<button
 				class="absolute top-4 right-4 z-10 cursor-pointer text-3xl font-bold text-gray-600 transition-transform duration-150 hover:scale-110 hover:text-black"
-				on:click={onClose}
+				onclick={onClose}
 				aria-label="Close video modal"
 			>
 				&times;

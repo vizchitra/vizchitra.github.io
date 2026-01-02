@@ -21,6 +21,9 @@ const mdsvexOptions = {
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	extensions: ['.svelte', '.md', '.svx'],
+	// compilerOptions: {
+	// 	runes: true
+	// },
 	kit: {
 		adapter: adapter({
 			pages: 'build',

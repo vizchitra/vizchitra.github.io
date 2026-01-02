@@ -1,39 +1,32 @@
 <script lang="ts">
-	import instagram from '$lib/assets/images/socials/instagram.svg';
-	import twitter from '$lib/assets/images/socials/twitter.svg';
-	import linkedIn from '$lib/assets/images/socials/linkedin.svg';
-	import blueSky from '$lib/assets/images/socials/bluesky.svg';
-	import youtube from '$lib/assets/images/socials/youtube.svg';
-	import github from '$lib/assets/images/socials/github.svg';
-
 	const socials = [
 		{
-			icon: instagram,
+			icon: '/images/socials/instagram.svg',
 			alt: 'VizChitra instagram link',
 			link: 'https://www.instagram.com/vizchitra/'
 		},
 		{
-			icon: twitter,
+			icon: '/images/socials/twitter.svg',
 			alt: 'VizChitra twitter link',
 			link: 'https://www.x.com/vizchitra/'
 		},
 		{
-			icon: linkedIn,
+			icon: '/images/socials/linkedin.svg',
 			alt: 'VizChitra linkedin link',
 			link: 'https://www.linkedin.com/company/vizchitra/'
 		},
 		{
-			icon: blueSky,
+			icon: '/images/socials/bluesky.svg',
 			alt: 'VizChitra bluesky link',
 			link: 'https://bsky.app/profile/vizchitra.bsky.social'
 		},
 		{
-			icon: youtube,
+			icon: '/images/socials/youtube.svg',
 			alt: 'VizChitra youtube link',
 			link: 'https://www.youtube.com/@vizchitra'
 		},
 		{
-			icon: github,
+			icon: '/images/socials/github.svg',
 			alt: 'VizChitra github link',
 			link: 'https://github.com/vizchitra'
 		}

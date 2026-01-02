@@ -3,8 +3,8 @@
 	import SocialLink from './SocialLink.svelte';
 </script>
 
-<div class="footer-content relative pb-24">
-	<footer class="relative">
+<div class="relative bg-gradient-to-t from-transparent from-[0%] to-white to-[65%] pb-24">
+	<footer class="relative min-h-[300px] overflow-hidden">
 		<div class="z-10 flex flex-col items-center gap-8 py-16">
 			<SocialLink />
 
@@ -13,19 +13,7 @@
 			</p>
 		</div>
 	</footer>
-	<div class="absolute inset-0 -z-1 h-full w-full">
+	<div class="absolute inset-0 -z-10 h-full w-full">
 		<BannerPolygon staticBanner />
 	</div>
 </div>
-
-<style>
-	footer {
-		min-height: 300px;
-		overflow: hidden;
-	}
-
-	.footer-content {
-		position: relative;
-		background: linear-gradient(to top, transparent, rgba(255, 255, 255, 1) 65%);
-	}
-</style>

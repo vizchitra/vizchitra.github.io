@@ -1,13 +1,19 @@
 <script>
 	import { slideInDrawer } from '$lib/utils/actions';
 
-	export let navSections = null;
+	/**
+	 * @typedef {Object} Props
+	 * @property {any} [navSections]
+	 */
+
+	/** @type {Props} */
+	let { navSections = null } = $props();
 
 	const colors = ['#ffd485', '#97e4dd', '#a8bdf0', '#f89f72', '#ee88b3'];
-	let width = null;
+	let width = $state(null);
 	let height = 16;
 
-	let expanded = false;
+	let expanded = $state(false);
 
 	function handleClick() {
 		setTimeout(() => {
@@ -19,7 +25,7 @@
 <button
 	class="trigger h-full w-full cursor-pointer"
 	class:expanded
-	on:click={(expanded = !expanded)}
+	onclick={(expanded = !expanded)}
 	aria-label="Toggle navigation"
 >
 	<span class=""></span>
@@ -90,7 +96,7 @@
 								<a
 									href={subsection.href}
 									class="subsection w-full cursor-pointer py-2"
-									on:click={handleClick}
+									onclick={handleClick}
 								>
 									<span class="font-base text-xl whitespace-nowrap text-[#4C4C4C]"
 										>{subsection.name}
@@ -118,7 +124,12 @@
 				</div>
 
 				<div class="polygon-divider mb-2 w-full" bind:clientWidth={width}>
-					<svg {width} {height} viewBox="0 0 {width ?? 0} {height ?? 0}" preserveAspectRatio="xMidYMid meet">
+					<svg
+						{width}
+						{height}
+						viewBox="0 0 {width ?? 0} {height ?? 0}"
+						preserveAspectRatio="xMidYMid meet"
+					>
 						<line
 							x1={0}
 							y1={height / 2}

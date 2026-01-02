@@ -1,32 +1,40 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { Delaunay } from 'd3';
 	import { onMount, onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
 	import MousePointer from '$lib/assets/images/MousePointer.svelte';
 
-	export let staticBanner = false;
+	interface Props {
+		staticBanner?: boolean;
+	}
+
+	let { staticBanner = false }: Props = $props();
 
 	interface Point {
 		x: number;
 		y: number;
 	}
 
-	const POINT_COUNT = staticBanner ? 50 : 150;
+	function getPointCount() {
+		return staticBanner ? 50 : 150;
+	}
 
 	const CURSOR_SIZE = 24;
 	const UPDATE_INTERVAL = 16;
 
 	const colors = ['#ffd485', '#97e4dd', '#a8bdf0', '#f89f72', '#ee88b3'];
 
-	let staticPoints: Point[] = [];
+	let staticPoints: Point[] = $state([]);
 
-	let canvas: HTMLCanvasElement;
+	let canvas: HTMLCanvasElement = $state();
 	let ctx: CanvasRenderingContext2D;
-	let width = 0;
-	let height = 0;
+	let width = $state(0);
+	let height = $state(0);
 	let voronoi: any;
-	let cursorX = 0;
-	let cursorY = 0;
+	let cursorX = $state(0);
+	let cursorY = $state(0);
 	let points: Point[] = [];
 	let lastUpdate = 0;
 	let animationFrameId: number;
@@ -40,10 +48,7 @@
 		if (now - lastUpdate < UPDATE_INTERVAL) return;
 		lastUpdate = now;
 
-		points = [
-			{ x: cursorX, y: cursorY },
-			...staticPoints
-		];
+		points = [{ x: cursorX, y: cursorY }, ...staticPoints];
 
 		try {
 			const delaunay = Delaunay.from(
@@ -171,28 +176,31 @@
 		}
 	});
 
-	$: if (width && height && canvas) {
-		canvas.width = width;
-		canvas.height = height;
+	run(() => {
+		if (width && height && canvas) {
+			canvas.width = width;
+			canvas.height = height;
 
-		// Initialize staticPoints on the client once dimensions are available.
-		if (!staticPoints || staticPoints.length !== POINT_COUNT) {
-			staticPoints = Array.from({ length: POINT_COUNT }, () => ({
-				x: Math.random() * width,
-				y: Math.random() * height
-			}));
+			// Initialize staticPoints on the client once dimensions are available.
+			const needed = getPointCount();
+			if (!staticPoints || staticPoints.length !== needed) {
+				staticPoints = Array.from({ length: needed }, () => ({
+					x: Math.random() * width,
+					y: Math.random() * height
+				}));
+			}
+
+			updateDataWithCursors();
 		}
-
-		updateDataWithCursors();
-	}
+	});
 </script>
 
 <div
 	bind:clientWidth={width}
 	bind:clientHeight={height}
-	on:mousemove={staticBanner ? undefined : handleMouseMove}
-	on:touchmove={staticBanner ? undefined : handleTouchMove}
-	on:touchstart={staticBanner ? undefined : handleTouchMove}
+	onmousemove={staticBanner ? undefined : handleMouseMove}
+	ontouchmove={staticBanner ? undefined : handleTouchMove}
+	ontouchstart={staticBanner ? undefined : handleTouchMove}
 	role="banner"
 	class="relative h-full overflow-hidden {staticBanner ? '' : 'cursor-none'}"
 >
@@ -206,8 +214,6 @@
 		>
 			<MousePointer size={CURSOR_SIZE} />
 		</div>
-
-
 	{/if}
 </div>
 
@@ -229,12 +235,10 @@
 		}
 	}
 
-
 	.relative {
 		cursor: none;
 	}
 
 	@media (max-width: 768px) {
-		
 	}
 </style>
