@@ -1,6 +1,6 @@
 <script lang="ts">
 	import VizchitraLogo from '$lib/assets/images/logos/viz-logo-animate.svg?raw';
-	import { MarqueeRow, HorizontalBarChart, SpeakerDeck } from '$lib/components/interface';
+	import { MarqueeRow, ColumnChart, SpeakerDeck } from '$lib/components/interface';
 	import Grid from '$lib/components/layout/Grid.svelte';
 	import Flex from '$lib/components/layout/Flex.svelte';
 	import FullBleed from '$lib/components/layout/FullBleed.svelte';
@@ -237,7 +237,7 @@
 		<Grid cols={1} colsLg={3} gap="gap-6" className="w-full">
 			<!-- Years of Experience Chart -->
 			<div class="relative">
-				<HorizontalBarChart
+				<ColumnChart
 					xkey="years"
 					countKey="count"
 					ykey="perc"
@@ -257,7 +257,7 @@
 
 			<!-- Functional Role Chart -->
 			<div class="relative">
-				<HorizontalBarChart
+				<ColumnChart
 					xkey="role"
 					countKey="count"
 					ykey="perc"
@@ -277,7 +277,7 @@
 
 			<!-- Organization Size Chart -->
 			<div class="relative">
-				<HorizontalBarChart
+				<ColumnChart
 					xkey="size"
 					countKey="count"
 					ykey="perc"

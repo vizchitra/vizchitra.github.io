@@ -1,5 +1,5 @@
 <script lang="ts">
-	import BannerPolygon from '$lib/components/structure/banner/BannerPolygon.svelte';
+	import BannerPolygon from './BannerPolygon.svelte';
 	interface Props {
 		title: string;
 	}

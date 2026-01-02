@@ -1,5 +1,8 @@
-export * from './header';
-export * from './footer';
-export { default as BannerPolygon } from './banner/BannerPolygon.svelte';
-export { default as PolygonDivider } from './dividers/PolygonDivider.svelte';
-export { default as Pentagons } from './ornaments/Pentagons.svelte';
+export { default as BannerPolygon } from './BannerPolygon.svelte';
+export { default as PolygonDivider } from './PolygonDivider.svelte';
+export { default as Pentagons } from './Pentagons.svelte';
+export { default as NavMenu } from './NavMenu.svelte';
+export { default as MobileNavDrawer } from './MobileNavDrawer.svelte';
+export { default as Header } from './Header.svelte';
+export { default as Footer } from './Footer.svelte';
+export { default as SocialLink } from './SocialLink.svelte';
