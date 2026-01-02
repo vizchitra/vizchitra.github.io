@@ -23,7 +23,7 @@
 			backgroundColor: 'var(--color-viz-teal-light)'
 		},
 		{
-			title: 'Explain &  Learn',
+			title: 'Explain & Learn',
 			description: 'Centered on fundamentals of process, design & communication for dataviz.',
 			backgroundColor: 'var(--color-viz-yellow-light)'
 		},

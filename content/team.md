@@ -1,6 +1,6 @@
 ---
 title: Our Team
-description: Member of the VizChitra Core Team
+description: Members of the VizChitra Core Team
 ---
 
 <script>

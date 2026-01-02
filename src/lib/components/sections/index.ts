@@ -1,4 +1,4 @@
-export * from './polygon-playground';
+export * from './playground';
 export * from './mission';
 export * from './call-to-action';
 export * from './venue';
@@ -6,6 +6,5 @@ export * from './sponsorship';
 export * from './team';
 export * from './map';
 export * from './faq';
-export * from './sponsors';
 export * from './homepage';
 export * from './conference';

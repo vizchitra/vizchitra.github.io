@@ -1,0 +1,19 @@
+<script lang="ts">
+	import BannerPolygon from './BannerPolygon.svelte';
+	import SocialLink from './SocialLink.svelte';
+</script>
+
+<div class="relative bg-gradient-to-t from-transparent from-[0%] to-white to-[65%] pb-24">
+	<footer class="relative min-h-[300px] overflow-hidden">
+		<div class="z-10 flex flex-col items-center gap-8 py-16">
+			<SocialLink />
+
+			<p class="bg-white text-sm opacity-75">
+				Copyright © {new Date().getFullYear()} VizChitra. All rights reserved.
+			</p>
+		</div>
+	</footer>
+	<div class="absolute inset-0 -z-10 h-full w-full">
+		<BannerPolygon staticBanner />
+	</div>
+</div>

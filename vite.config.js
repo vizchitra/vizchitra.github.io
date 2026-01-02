@@ -12,20 +12,27 @@ export default defineConfig({
 			name: 'watch-content-md',
 			apply: 'serve',
 			configureServer(server) {
-				const contentDir = path.join(process.cwd(), 'content');
-				const pattern = path.join(contentDir, '**/*.{md,svx}');
-				try {
-					server.watcher.add(pattern);
-				} catch (e) { }
+				const contentDir = path.resolve(process.cwd(), 'content');
+				// Add the content directory to the watcher
+				server.watcher.add(contentDir);
+
 				const reload = () => server.ws.send({ type: 'full-reload' });
 				const shouldReload = (p) => {
 					if (!p) return false;
+					// Only reload if the file is inside the content directory
+					if (!p.startsWith(contentDir)) return false;
 					const lp = p.toLowerCase();
 					return lp.endsWith('.md') || lp.endsWith('.svx');
 				};
-				server.watcher.on('add', (p) => { if (shouldReload(p)) reload(); });
-				server.watcher.on('change', (p) => { if (shouldReload(p)) reload(); });
-				server.watcher.on('unlink', (p) => { if (shouldReload(p)) reload(); });
+				server.watcher.on('add', (p) => {
+					if (shouldReload(p)) reload();
+				});
+				server.watcher.on('change', (p) => {
+					if (shouldReload(p)) reload();
+				});
+				server.watcher.on('unlink', (p) => {
+					if (shouldReload(p)) reload();
+				});
 			}
 		},
 		dsv()
