@@ -12,66 +12,9 @@
 		VenueCard,
 		FAQ
 	} from '$lib/components/sections';
+	import Grid from '$lib/components/layout/Grid.svelte';
+	import sponsors from '$lib/data/sponsors2025.json';
 	import VizchitraLogo from '$lib/assets/images/logos/viz-logo-animate.svg?raw';
-	import nutanixLogo from '$lib/assets/images/logos/nutanix-logo.avif';
-	import revisualLogo from '$lib/assets/images/logos/revisual-logo.avif';
-	import lightningChartLogo from '$lib/assets/images/logos/lightning-chart-logo.avif';
-	import hasgeekLogo from '$lib/assets/images/logos/hasgeek-logo.avif';
-
-	import lillyLogo from '$lib/assets/images/logos/lilly-logo.avif';
-	import ltsLogo from '$lib/assets/images/logos/lasttheoram-logo.avif';
-	import straiveLogo from '$lib/assets/images/logos/straive-logo.avif';
-
-	const sponsors = [
-		{
-			heading: 'Platinum Sponsor',
-			logo: nutanixLogo,
-			variant: 'pink' as const,
-			seed: 343442
-		},
-		{
-			heading: 'Gold Sponsor',
-			logo: lillyLogo,
-			variant: 'white' as const,
-			seed: 3434
-		},
-		{
-			heading: 'Silver & Diversity Sponsor',
-			logo: revisualLogo,
-			variant: 'yellow' as const,
-			seed: 343554354
-		},
-		{
-			heading: 'Bronze Sponsor',
-			logo: lightningChartLogo,
-			variant: 'orange' as const,
-			seed: 343554354
-		},
-		{
-			heading: 'Bronze Sponsor',
-			logo: straiveLogo,
-			variant: 'yellow' as const,
-			seed: 343554354
-		},
-		{
-			heading: 'Event Partner',
-			logo: hasgeekLogo,
-			variant: 'blue' as const,
-			seed: 342
-		},
-		{
-			heading: 'A Local Affliate for',
-			logo: 'https://images.squarespace-cdn.com/content/v1/5c6055b5fb18206d45d6b27e/1562601203642-ZHLHUGGYNWOIZHZK46U9/Data+Visualization+Society+logo+2019-05-transparent.png',
-			variant: 'green' as const,
-			seed: 34435432
-		},
-		{
-			heading: 'Media Partner',
-			logo: ltsLogo,
-			variant: 'orange' as const,
-			seed: 34435432
-		}
-	];
 
 	const whyAttend = [
 		{
@@ -196,9 +139,13 @@
 				<span class="text-viz-pink-dark font-bold">visual data storytelling.</span>
 			</p>
 
-						<p class="mx-auto mb-6">
-							<Slanted tag="h2" classes="text-[18px] md:text-[24px]" textContent="A SPACE TO CONNECT AND CREATE WITH DATA" />
-						</p>
+			<p class="mx-auto mb-6">
+				<Slanted
+					tag="h2"
+					classes="text-[18px] md:text-[24px]"
+					textContent="A SPACE TO CONNECT AND CREATE WITH DATA"
+				/>
+			</p>
 
 			<p class="content-text mb-1">
 				Our goal is to build a community of diverse, interdisciplinary individuals working across
@@ -307,19 +254,24 @@
 	</h2>
 
 	<div class="mx-auto">
-		<div
-			class="ml-0 grid grid-cols-2 gap-2 pb-4 md:-ml-12 md:gap-4 md:pb-0 lg:max-w-4xl lg:grid-cols-2"
-		>
+		<Grid cols={2} gap="gap-2 md:gap-4" className="ml-0 pb-4 md:-ml-12 md:pb-0 lg:max-w-4xl">
 			{#each sponsors as sponsor}
 				<SponsorCard
 					heading={sponsor.heading}
 					logo={sponsor.logo}
 					logoType="image"
-					variant={sponsor.variant}
+					variant={sponsor.variant as
+						| 'pink'
+						| 'white'
+						| 'black'
+						| 'yellow'
+						| 'orange'
+						| 'blue'
+						| 'green'}
 					seed={sponsor.seed}
 				/>
 			{/each}
-		</div>
+		</Grid>
 	</div>
 
 	<!-- FAQs SECTION -->

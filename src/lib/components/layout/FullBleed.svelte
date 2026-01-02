@@ -1,16 +1,29 @@
 <script>
-	export let contained = false;
-	export let innerClass = '';
-	export let containerClass = 'content-container';
-	export let outerClass = '';
+	/**
+	 * @typedef {Object} Props
+	 * @property {boolean} [contained]
+	 * @property {string} [innerClass]
+	 * @property {string} [containerClass]
+	 * @property {string} [outerClass]
+	 * @property {import('svelte').Snippet} [children]
+	 */
+
+	/** @type {Props} */
+	let {
+		contained = false,
+		innerClass = '',
+		containerClass = 'content-container',
+		outerClass = '',
+		children
+	} = $props();
 </script>
 
-<div class={"full-bleed " + outerClass}>
+<div class={'full-bleed ' + outerClass}>
 	{#if contained}
 		<div class={containerClass + (innerClass ? ' ' + innerClass : '')}>
-			<slot />
+			{@render children?.()}
 		</div>
 	{:else}
-		<slot />
+		{@render children?.()}
 	{/if}
 </div>

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	let width = null;
+	let width = $state(null);
 	let height = 80;
 
 	export const className: string = '';
@@ -10,8 +10,8 @@
 
 	const NUM_POINTS = 3;
 
-	let points = [];
-	let lines = [];
+	let points = $state([]);
+	let lines = $state([]);
 
 	onMount(() => {
 		for (let i = 0; i < NUM_POINTS; i++) {
@@ -54,7 +54,12 @@
 </script>
 
 <div class="divider-container my-12 w-full" bind:clientWidth={width}>
-	<svg {width} {height} viewBox="0 0 {width ?? 0} {height ?? 0}" preserveAspectRatio="xMidYMid meet">
+	<svg
+		{width}
+		{height}
+		viewBox="0 0 {width ?? 0} {height ?? 0}"
+		preserveAspectRatio="xMidYMid meet"
+	>
 		{#each lines as line}
 			<line
 				x1={line.x1}

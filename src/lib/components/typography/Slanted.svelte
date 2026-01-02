@@ -1,19 +1,31 @@
 <script lang="ts">
 	import { formatSlantedText } from '$lib/utils/slanted';
 
-	export let color: string = 'pink';
-	export let align: string = 'center';
-	export let tag: string = 'span';
-	export let plain: boolean = false;
-	export let textContent: string = '';
-	export let className: string = '';
-	export let classes: string = '';
+	interface Props {
+		color?: string;
+		align?: string;
+		tag?: string;
+		plain?: boolean;
+		textContent?: string;
+		className?: string;
+		classes?: string;
+	}
 
-	$: finalClass = className ? className : classes;
-	$: baseClass = plain ? '' : 'content-subheading mt-12 mb-12';
-	$: alignClass = align ? `text-${align}` : '';
-	$: colorClass = color ? `text-viz-${color}-dark` : '';
-	$: letters = textContent ? formatSlantedText(textContent) : [];
+	let {
+		color = 'pink',
+		align = 'center',
+		tag = 'span',
+		plain = false,
+		textContent = '',
+		className = '',
+		classes = ''
+	}: Props = $props();
+
+	let finalClass = $derived(className ? className : classes);
+	let baseClass = $derived(plain ? '' : 'content-subheading mt-12 mb-12');
+	let alignClass = $derived(align ? `text-${align}` : '');
+	let colorClass = $derived(color ? `text-viz-${color}-dark` : '');
+	let letters = $derived(textContent ? formatSlantedText(textContent) : []);
 </script>
 
 <svelte:element

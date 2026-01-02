@@ -2,32 +2,25 @@
 	import teamData from '$lib/data/vizchitra_team.json' with { type: 'json' };
 	import MemberPentagon from './MemberPentagon.svelte';
 
-	import instagram from '$lib/assets/images/socials/instagram.svg';
-	import twitter from '$lib/assets/images/socials/twitter.svg';
-	import linkedIn from '$lib/assets/images/socials/linkedin.svg';
-	import blueSky from '$lib/assets/images/socials/bluesky.svg';
-	// import youtube from '$lib/assets/images/socials/youtube.svg';
-	// import github from '$lib/assets/images/socials/github.svg';
-
 	const socials = [
 		{
 			name: 'instagram',
-			icon: instagram,
+			icon: '/images/socials/instagram.svg',
 			alt: 'instagram link'
 		},
 		{
 			name: 'twitter',
-			icon: twitter,
+			icon: '/images/socials/twitter.svg',
 			alt: 'twitter link'
 		},
 		{
 			name: 'bluesky',
-			icon: blueSky,
+			icon: '/images/socials/bluesky.svg',
 			alt: 'bluesky link'
 		},
 		{
 			name: 'linkedin',
-			icon: linkedIn,
+			icon: '/images/socials/linkedin.svg',
 			alt: 'linkedin link'
 		}
 	];

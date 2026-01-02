@@ -1,8 +1,12 @@
 <script lang="ts">
-	export let backgroundColor = '#ffd485';
-	export let title = '';
-	export let description = '';
-	export let seed = 1;
+	interface Props {
+		backgroundColor?: string;
+		title?: string;
+		description?: string;
+		seed?: number;
+	}
+
+	let { backgroundColor = '#ffd485', title = '', description = '', seed = 1 }: Props = $props();
 
 	function seededRandom(seed: number): number {
 		let x = Math.sin(seed) * 1000;
@@ -31,8 +35,8 @@
 		});
 	}
 
-	$: pentagonPoints = generateRandomizedPentagon(seed);
-	$: clipPath = pentagonPoints.map((point) => `${point.x}% ${point.y}%`).join(', ');
+	let pentagonPoints = $derived(generateRandomizedPentagon(seed));
+	let clipPath = $derived(pentagonPoints.map((point) => `${point.x}% ${point.y}%`).join(', '));
 </script>
 
 <div class="pentagon-card relative mx-auto h-[15rem] w-[15rem] md:h-[20rem] md:w-[20rem]">

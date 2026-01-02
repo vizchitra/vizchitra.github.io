@@ -1,9 +1,12 @@
 <script>
+	import { stopPropagation, createBubbler } from 'svelte/legacy';
+
+	const bubble = createBubbler();
 	import VizChitraLogoType from '$lib/components/typography/VizChitraLogoType.svelte';
 	import MobileNavDrawer from './MobileNavDrawer.svelte';
 	import { clickOutside } from '$lib/utils/actions';
 
-	let navSections = [
+	let navSections = $state([
 		{
 			name: 'VizChitra 2025',
 			href: '/2025/conference',
@@ -46,7 +49,7 @@
 			],
 			expanded: false
 		}
-	];
+	]);
 
 	function toggleDropdown(section) {
 		Object.keys(navSections).forEach((key) => {
@@ -95,7 +98,7 @@
 						>
 							<button
 								class="flex cursor-pointer items-center gap-2 rounded-md px-3 py-2"
-								on:click|stopPropagation={() => toggleDropdown(section.name)}
+								onclick={stopPropagation(() => toggleDropdown(section.name))}
 								aria-haspopup="true"
 								aria-expanded={section.expanded}
 							>
@@ -117,8 +120,8 @@
 										? 'flex'
 										: 'hidden'}"
 									use:clickOutside
-									on:outsideclick={handleClickOutside}
-									on:click|stopPropagation
+									onoutsideclick={handleClickOutside}
+									onclick={stopPropagation(bubble('click'))}
 								>
 									{#each section.subsections as subsection}
 										<a

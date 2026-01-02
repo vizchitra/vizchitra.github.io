@@ -1,11 +1,22 @@
 <!-- SponsorCard.svelte -->
 <script lang="ts">
-	export let heading = 'Platinum Sponsor';
-	export let logo = ''; // Can be text, image URL, or HTML
-	export let logoType: 'text' | 'image' | 'html' = 'text';
-	export let variant: 'pink' | 'white' | 'yellow' | 'orange' | 'blue' | 'black' | 'green' = 'pink';
-	export let size: 'small' | 'medium' | 'large' = 'medium';
-	export let seed = 12345; // Seed for shape variations
+	interface Props {
+		heading?: string;
+		logo?: string; // Can be text, image URL, or HTML
+		logoType?: 'text' | 'image' | 'html';
+		variant?: 'pink' | 'white' | 'yellow' | 'orange' | 'blue' | 'black' | 'green';
+		size?: 'small' | 'medium' | 'large';
+		seed?: number; // Seed for shape variations
+	}
+
+	let {
+		heading = 'Platinum Sponsor',
+		logo = '',
+		logoType = 'text',
+		variant = 'pink',
+		size = 'medium',
+		seed = 12345
+	}: Props = $props();
 
 	// Color variants with proper typing
 	const variants = {
@@ -103,9 +114,9 @@
 		};
 	}
 
-	$: currentVariant = variants[variant];
-	$: currentSize = sizes[size];
-	$: shapeVariations = getShapeVariations(seed);
+	let currentVariant = $derived(variants[variant]);
+	let currentSize = $derived(sizes[size]);
+	let shapeVariations = $derived(getShapeVariations(seed));
 </script>
 
 <div

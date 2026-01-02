@@ -1,7 +1,13 @@
 <script>
-	export let classes = '';
-	export let yearClasses = 'text-[#D46637]';
-	export let includeYear = true;
+	/**
+	 * @typedef {Object} Props
+	 * @property {string} [classes]
+	 * @property {string} [yearClasses]
+	 * @property {boolean} [includeYear]
+	 */
+
+	/** @type {Props} */
+	let { classes = '', yearClasses = 'text-[#D46637]', includeYear = true } = $props();
 </script>
 
 <span class="viz-logo-type {classes}">

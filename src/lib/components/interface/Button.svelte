@@ -1,12 +1,24 @@
 <script lang="ts">
-	/**
-	 * Button component that matches the CTA styling
-	 */
-	export let href: string;
-	export let external = false;
-	export let variant: 'primary' | 'secondary' = 'primary';
-	export let size: 'sm' | 'md' | 'lg' = 'md';
-	export let class_name = '';
+	interface Props {
+		/**
+		 * Button component that matches the CTA styling
+		 */
+		href: string;
+		external?: boolean;
+		variant?: 'primary' | 'secondary';
+		size?: 'sm' | 'md' | 'lg';
+		class_name?: string;
+		children?: import('svelte').Snippet;
+	}
+
+	let {
+		href,
+		external = false,
+		variant = 'primary',
+		size = 'md',
+		class_name = '',
+		children
+	}: Props = $props();
 
 	const sizeClasses = {
 		sm: 'text-sm',
@@ -32,7 +44,7 @@
 		{class_name}
 	"
 >
-	<slot />
+	{@render children?.()}
 	{#if external}
 		<span class="ml-1 text-lg">↗</span>
 	{/if}

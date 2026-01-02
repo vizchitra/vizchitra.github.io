@@ -1,6 +1,10 @@
 <script lang="ts">
 	import BannerPolygon from '$lib/components/structure/banner/BannerPolygon.svelte';
-	export let title: string;
+	interface Props {
+		title: string;
+	}
+
+	let { title }: Props = $props();
 </script>
 
 <div class="relative mt-20 h-48">

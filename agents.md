@@ -14,9 +14,10 @@ These rules are designed to optimize for long-term maintainability, consistency,
 
 - **SvelteKit** (Svelte v5) + **@sveltejs/adapter-static**
 - **MDsveX** for Markdown pages (`content/`)
-- **Tailwind CSS v4**
+- **Tailwind CSS v4** for CSS
 - **TypeScript**
-- **Vite**
+- **Vite** as build and dev tool
+- **PNPM** as package manager
 
 ---
 

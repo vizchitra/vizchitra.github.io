@@ -37,7 +37,7 @@
 	// Import CSV video data
 	import videosData from '$lib/data/youtube-videos.csv';
 
-	let isMobile = false;
+	let isMobile = $state(false);
 
 	// Create a unique list of 'code' values from video data
 	const uniqueCodes = [...new Set(videosData.map((video: any) => video.code))];
@@ -57,7 +57,7 @@
 	hoverBorderClasses['Default'] = 'card-hover-panel';
 
 	// Currently selected video type (filter)
-	let selectedType = 'All';
+	let selectedType = $state('All');
 
 	// Extract unique video types for filter buttons
 	const types = ['All', ...new Set(videosData.map((video: any) => video.type))];
@@ -70,10 +70,11 @@
 	}));
 
 	// Auto-update filtered videos whenever `selectedType` changes
-	$: filteredVideos =
+	let filteredVideos = $derived(
 		selectedType === 'All'
 			? videosData
-			: videosData.filter((video: any) => video.type === selectedType);
+			: videosData.filter((video: any) => video.type === selectedType)
+	);
 
 	/**
 	 * Opens a YouTube video in a new tab using its ID.
@@ -220,7 +221,7 @@
 				></div>
 				<button
 					type="button"
-					on:click={() => openVideo(video.id)}
+					onclick={() => openVideo(video.id)}
 					class="relative z-10 flex h-full w-full cursor-pointer flex-col rounded-xl border-none bg-transparent text-left transition outline-none"
 				>
 					<!-- Card Header with Title -->
