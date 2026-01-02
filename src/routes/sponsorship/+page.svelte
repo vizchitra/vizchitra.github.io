@@ -315,14 +315,7 @@
 							heading={sponsor.heading}
 							logo={sponsor.logo}
 							logoType="image"
-							variant={sponsor.variant as
-								| 'pink'
-								| 'white'
-								| 'black'
-								| 'yellow'
-								| 'orange'
-								| 'blue'
-								| 'green'}
+							variant={sponsor.variant}
 							seed={sponsor.seed}
 						/>
 					{/each}

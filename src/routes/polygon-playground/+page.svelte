@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { PageHeader } from '$lib/components/structure';
+	import { Header } from '$lib/components/structure';
 
 	import {
 		SliderInput,
@@ -49,7 +49,7 @@
 </script>
 
 <div class="min-h-screen w-full">
-	<PageHeader title="Create your own VizChitra selfie!" />
+	<Header title="Create your own VizChitra selfie!" />
 
 	<div class="content-container mx-auto !max-w-[min(90vw,1400px)] !px-0 py-12">
 		<p class="content-text mb-10">

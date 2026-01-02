@@ -4,7 +4,7 @@
 		heading?: string;
 		logo?: string; // Can be text, image URL, or HTML
 		logoType?: 'text' | 'image' | 'html';
-		variant?: 'pink' | 'white' | 'yellow' | 'orange' | 'blue' | 'black' | 'green';
+		variant?: string;
 		size?: 'small' | 'medium' | 'large';
 		seed?: number; // Seed for shape variations
 	}
@@ -114,8 +114,11 @@
 		};
 	}
 
-	let currentVariant = $derived(variants[variant]);
-	let currentSize = $derived(sizes[size]);
+	type VariantKey = keyof typeof variants;
+	type SizeKey = keyof typeof sizes;
+
+	let currentVariant = $derived(variants[variant as VariantKey] ?? variants.pink);
+	let currentSize = $derived(sizes[size as SizeKey] ?? sizes.medium);
 	let shapeVariations = $derived(getShapeVariations(seed));
 </script>
 

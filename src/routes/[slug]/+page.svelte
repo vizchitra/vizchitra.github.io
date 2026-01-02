@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { PageHeader } from '$lib/components/structure';
+	import { Header } from '$lib/components/structure';
 
 	export let data: any;
 	$: ({ frontmatter = {} } = data);
@@ -31,7 +31,7 @@
 
 <div class="min-h-screen">
 	{#if frontmatter.title}
-		<PageHeader title={frontmatter.title} />
+		<Header title={frontmatter.title} />
 	{/if}
 
 	<section
