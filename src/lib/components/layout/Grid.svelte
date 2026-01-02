@@ -28,46 +28,61 @@
 -->
 
 <script lang="ts">
-  export let cols: number = 1;
-  export let colsSm: number | undefined;
-  export let colsMd: number | undefined;
-  export let colsLg: number | undefined;
-  export let gap: string = 'gap-4';
-  export let className: string = '';
+	interface Props {
+		cols?: number;
+		colsSm?: number;
+		colsMd?: number;
+		colsLg?: number;
+		gap?: string;
+		className?: string;
+		children?: import('svelte').Snippet;
+	}
 
-  const mapCols = (n: number | undefined) => {
-    if (!n) return '';
-    switch (n) {
-      case 1:
-        return 'grid-cols-1';
-      case 2:
-        return 'grid-cols-2';
-      case 3:
-        return 'grid-cols-3';
-      case 4:
-        return 'grid-cols-4';
-      case 5:
-        return 'grid-cols-5';
-      case 6:
-        return 'grid-cols-6';
-      default:
-        return 'grid-cols-1';
-    }
-  };
+	let {
+		cols = 1,
+		colsSm,
+		colsMd,
+		colsLg,
+		gap = 'gap-4',
+		className = '',
+		children
+	}: Props = $props();
 
-  $: classes = [
-    'grid',
-    mapCols(cols),
-    colsSm ? `sm:${mapCols(colsSm)}` : '',
-    colsMd ? `md:${mapCols(colsMd)}` : '',
-    colsLg ? `lg:${mapCols(colsLg)}` : '',
-    gap,
-    className
-  ]
-    .filter(Boolean)
-    .join(' ');
+	const mapCols = (n: number | undefined) => {
+		if (!n) return '';
+		switch (n) {
+			case 1:
+				return 'grid-cols-1';
+			case 2:
+				return 'grid-cols-2';
+			case 3:
+				return 'grid-cols-3';
+			case 4:
+				return 'grid-cols-4';
+			case 5:
+				return 'grid-cols-5';
+			case 6:
+				return 'grid-cols-6';
+			default:
+				return 'grid-cols-1';
+		}
+	};
+
+	let classes = $derived(
+		[
+			'grid',
+			mapCols(cols),
+			colsSm ? `sm:${mapCols(colsSm)}` : '',
+			colsMd ? `md:${mapCols(colsMd)}` : '',
+			colsLg ? `lg:${mapCols(colsLg)}` : '',
+			gap,
+			className
+		]
+			.filter(Boolean)
+			.join(' ')
+	);
 </script>
 
 <div class={classes}>
-  <slot />
+	{@render children?.()}
 </div>

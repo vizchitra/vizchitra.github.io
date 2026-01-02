@@ -17,7 +17,9 @@
 		y: number;
 	}
 
-	const POINT_COUNT = staticBanner ? 50 : 150;
+	function getPointCount() {
+		return staticBanner ? 50 : 150;
+	}
 
 	const CURSOR_SIZE = 24;
 	const UPDATE_INTERVAL = 16;
@@ -180,8 +182,9 @@
 			canvas.height = height;
 
 			// Initialize staticPoints on the client once dimensions are available.
-			if (!staticPoints || staticPoints.length !== POINT_COUNT) {
-				staticPoints = Array.from({ length: POINT_COUNT }, () => ({
+			const needed = getPointCount();
+			if (!staticPoints || staticPoints.length !== needed) {
+				staticPoints = Array.from({ length: needed }, () => ({
 					x: Math.random() * width,
 					y: Math.random() * height
 				}));
