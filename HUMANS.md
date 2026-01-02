@@ -54,7 +54,7 @@ At a high level:
   Page routes and layouts
 
 - `src/lib/components/`
-  Reusable UI components (organized by purpose)
+  Reusable components (organized by purpose)
 
 - `src/lib/assets/css/`
   Design tokens and fonts (the “design system”)
