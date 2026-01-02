@@ -24,7 +24,25 @@
 	const CURSOR_SIZE = 24;
 	const UPDATE_INTERVAL = 16;
 
-	const colors = ['#ffd485', '#97e4dd', '#a8bdf0', '#f89f72', '#ee88b3'];
+	// CSS variable names for the 5 main colors
+	const colorVarNames = [
+		'--viz-color-yellow',
+		'--viz-color-teal',
+		'--viz-color-blue',
+		'--viz-color-orange',
+		'--viz-color-pink'
+	];
+
+	let resolvedColors: string[] = $state([]);
+
+	function getComputedColors() {
+		if (!browser) return;
+		const rootStyles = getComputedStyle(document.documentElement);
+		resolvedColors = colorVarNames.map((varName) => {
+			const value = rootStyles.getPropertyValue(varName).trim();
+			return value || '#000000';
+		});
+	}
 
 	let staticPoints: Point[] = $state([]);
 
@@ -39,7 +57,7 @@
 	let lastUpdate = 0;
 	let animationFrameId: number;
 
-	const getColor = (index: number) => colors[index % colors.length];
+	const getColor = (index: number) => resolvedColors[index % resolvedColors.length] || '#000000';
 
 	function updateDataWithCursors() {
 		if (!width || !height || !browser) return;
@@ -163,6 +181,7 @@
 		if (!browser) return;
 
 		ctx = canvas.getContext('2d')!;
+		getComputedColors();
 
 		// Start animation loop (no networking)
 

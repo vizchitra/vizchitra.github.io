@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { Heading } from '$lib/components/typography';
+
 	interface Props {
 		image?: string;
 		alt?: string;
@@ -32,7 +34,9 @@
 {#if isBordered}
 	<div class="max-w-[25rem] rounded-lg border-2 p-6 {c.border}">
 		{#if title}
-			<h3 class="not-prose font-display-sans mb-2 text-lg font-bold {c.text}">{title}</h3>
+			<Heading tag="h3" align="left" class="not-prose font-display-sans mb-2 !text-lg {c.text}">
+				{title}
+			</Heading>
 		{/if}
 		<div class="card-prose">{@render children?.()}</div>
 	</div>
@@ -45,7 +49,9 @@
 		{/if}
 		<div class="flex w-full flex-col gap-2 {image ? 'md:w-2/3' : ''}">
 			{#if title}
-				<h3 class="not-prose font-display-sans text-xl font-bold {c.text}">{title}</h3>
+				<Heading tag="h3" align="left" class="not-prose font-display-sans !text-xl {c.text}">
+					{title}
+				</Heading>
 			{/if}
 			<div class="prose max-w-none">{@render children?.()}</div>
 		</div>

@@ -10,8 +10,12 @@ const contentModules = import.meta.glob('../../../content/**/*.md', {
 
 const contentMap: Record<string, string> = {};
 for (const path in contentModules) {
-	const slug = path.replace('../../../content/', '').replace('.md', '');
+	let slug = path.replace('../../../content/', '').replace('.md', '');
+	// Handle index.md files: map both '2026/index' and '2026' to the same path
 	contentMap[slug] = path;
+	if (slug.endsWith('/index')) {
+		contentMap[slug.replace('/index', '')] = path;
+	}
 }
 
 export const prerender = true;

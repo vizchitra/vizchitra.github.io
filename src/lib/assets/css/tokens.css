@@ -15,30 +15,31 @@
 	/* Core neutrals (canonical) */
 	--viz-color-white: oklch(100% 0 0);
 	--viz-color-black: oklch(0.19% 0 0);
-	--viz-color-grey: oklch(41.65% 0 0);
 
 	/* Brand palette (converted from hex -> OKLCH) */
-	--viz-color-yellow: oklch(89.01% 0.1087 81.8);
+	--viz-color-grey: #4c4c4c;
+	--viz-color-yellow: oklch(89.01% 0.1087 81.79);
 	--viz-color-teal: oklch(86.69% 0.0766 188.62);
 	--viz-color-blue: oklch(80.04% 0.0763 267.25);
 	--viz-color-orange: oklch(78.25% 0.1221 47.22);
 	--viz-color-pink: oklch(74.82% 0.1333 354.07);
 
 	/* Light Shade (converted from hex -> OKLCH) */
-	--viz-color-yellow-light: oklch(93.41% 0.0654 82.66);
-	--viz-color-teal-light: oklch(90.38% 0.0612 188.47);
-	--viz-color-blue-light: oklch(86.96% 0.047 266.67);
-	--viz-color-orange-light: oklch(91% 0.06 47.22);
-	--viz-color-pink-light: oklch(90% 0.06 354.07);
+	--viz-color-grey-light: oklch(from var(--viz-color-grey) calc(l * 0.75) c h);
+	--viz-color-yellow-light: oklch(95.209% 0.04719 82.7);
+	--viz-color-teal-light: oklch(91.745% 0.06307 187.567);
+	--viz-color-blue-light: oklch(86.21% 0.05383 268.925);
+	--viz-color-orange-light: oklch(82.571% 0.08436 48.387);
+	--viz-color-pink-light: oklch(79.617% 0.112 353.489);
 
 	/* Dark Shades derived from the canonical OKLCH tokens */
-	--viz-color-black-dark: oklch(from var(--viz-color-black) calc(l * 0.75) c h);
+	/* --viz-color-black-dark: oklch(from var(--viz-color-black) calc(l * 0.75) c h); */
 	--viz-color-grey-dark: oklch(from var(--viz-color-grey) calc(l * 0.75) c h);
-	--viz-color-yellow-dark: oklch(from var(--viz-color-yellow) calc(l * 0.75) c h);
-	--viz-color-teal-dark: oklch(from var(--viz-color-teal) calc(l * 0.75) c h);
-	--viz-color-blue-dark: oklch(from var(--viz-color-blue) calc(l * 0.75) c h);
-	--viz-color-orange-dark: oklch(from var(--viz-color-orange) calc(l * 0.75) c h);
-	--viz-color-pink-dark: oklch(from var(--viz-color-pink) calc(l * 0.75) c h);
+	--viz-color-yellow-dark: oklch(72.778% 0.1309 78.763);
+	--viz-color-teal-dark: oklch(69.313% 0.08219 187.336);
+	--viz-color-blue-dark: oklch(65.49% 0.09966 268.485);
+	--viz-color-orange-dark: oklch(63.462% 0.15161 42.303);
+	--viz-color-pink-dark: oklch(59.657% 0.16726 357.828);
 
 	/* Canonical typography */
 	--viz-font-text-sans:

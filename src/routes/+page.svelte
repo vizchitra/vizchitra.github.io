@@ -5,7 +5,7 @@
 	import ButtonBar from '$lib/assets/images/ButtonBar.svelte';
 	import { Mission } from '$lib/components/sections';
 	import { Dropdown } from '$lib/components/interface';
-	import { PolygonDivider, BannerPolygon, Pentagons } from '$lib/components/structure';
+	import { DividerPolygon, BannerPolygon, Pentagons } from '$lib/components/structure';
 	import { Slanted, VizChitraLogoType } from '$lib/components/typography';
 	import VizchitraLogo from '$lib/assets/images/logos/viz-logo-animate.svg?raw';
 	import Youtube from 'svelte-youtube-embed';
@@ -256,7 +256,7 @@
 	</div>
 
 	<div class="max-w-[90dvw] px-5 py-12 md:max-w-7xl">
-		<PolygonDivider></PolygonDivider>
+		<DividerPolygon></DividerPolygon>
 
 		<h2 class="content-heading mt-12 pt-12 text-center">
 			<a href="/ethos"
@@ -294,7 +294,7 @@
 			bridging technical analysis and design expertise to shape perspectives and drive change
 		</p>
 		<Mission></Mission>
-		<PolygonDivider></PolygonDivider>
+		<DividerPolygon></DividerPolygon>
 	</div>
 </div>
 

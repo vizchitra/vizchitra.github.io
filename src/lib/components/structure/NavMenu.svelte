@@ -8,7 +8,22 @@
 
 	let navSections = $state([
 		{
-			name: 'VizChitra 2025',
+			name: '2026',
+			href: '/2026/',
+			accentColor: 'var(--color-viz-orange)',
+			subsections: [
+				{ name: 'Event', href: '/2026/' },
+				{ name: 'Proposals', href: '/2026/proposals' },
+				{ name: 'Exhibition', href: '/2026/exhibition' },
+				{
+					name: 'Sponsorship',
+					href: '/sponsorship'
+				}
+			],
+			expanded: false
+		},
+		{
+			name: '2025',
 			href: '/2025/conference',
 			accentColor: 'var(--color-viz-orange)',
 			subsections: [

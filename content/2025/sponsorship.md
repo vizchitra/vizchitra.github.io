@@ -1,6 +1,7 @@
 ---
 title: Sponsorship 2025
 description: Sponsor the VizChitra 2025 Conference
+year: 2025
 ---
 
 <script>

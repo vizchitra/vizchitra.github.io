@@ -1,12 +1,14 @@
 ---
-title: Call for Proposal
-descriptionn: Call for Proposal for VizChitra 2026
+title: Call for Proposals
+descriptionn: Call for Proposals for VizChitra 2026
+year: 2026
+banner: 'curve'
 ---
 
 <script>
 	import { Grid, FullBleed } from '$lib/components/layout';
 	import { Card } from '$lib/components/interface';
-  import {PolygonDivider} from '$lib/components/structure'
+  import {DividerCurves} from '$lib/components/structure'
   import {Slanted} from '$lib/components/typography'
 </script>
 
@@ -44,7 +46,7 @@ Analysts, artists, designers, researchers, scientists, practitioners, journalist
 
 **_Anyone using data to tell stories, ask questions, or serve communities._**
 
-<PolygonDivider></PolygonDivider>
+<DividerCurves/>
 
 <Slanted tag="h2" color="black" textContent="THEMES in 2026" />
 
@@ -97,7 +99,7 @@ What tools, systems, and workflows power the visualizations we create and use?
 </Grid>
 </FullBleed>
 
-<PolygonDivider></PolygonDivider>
+<DividerCurves/>
 
 <Slanted tag="h2" color="black" textContent="PROPOSAL FORMATS" />
 
@@ -145,7 +147,7 @@ You can propose one or more of the following formats. If you are unsure which on
 </Grid>
 </FullBleed>
 
-<PolygonDivider></PolygonDivider>
+<DividerCurves />
 
 ## How to shape your proposal
 

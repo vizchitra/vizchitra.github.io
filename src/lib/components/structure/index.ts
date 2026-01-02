@@ -1,5 +1,7 @@
+export { default as BannerCurve } from './BannerCurve.svelte';
 export { default as BannerPolygon } from './BannerPolygon.svelte';
-export { default as PolygonDivider } from './PolygonDivider.svelte';
+export { default as DividerPolygon } from './DividerPolygon.svelte';
+export { default as DividerCurves } from './DividerCurves.svelte';
 export { default as Pentagons } from './Pentagons.svelte';
 export { default as NavMenu } from './NavMenu.svelte';
 export { default as MobileNavDrawer } from './MobileNavDrawer.svelte';

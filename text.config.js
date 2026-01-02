@@ -71,7 +71,23 @@ export function contentHmrPlugin() {
       // Add the content directory to the watcher
       server.watcher.add(resolvedContentDir);
 
-      const reload = () => server.ws.send({ type: 'full-reload' });
+      const invalidateAndReload = () => {
+        // Invalidate modules that use import.meta.glob for content
+        const modules = server.moduleGraph.getModulesByFile(
+          path.resolve(process.cwd(), 'src/routes/[...slug]/+page.server.ts')
+        );
+        if (modules) {
+          modules.forEach((mod) => server.moduleGraph.invalidateModule(mod));
+        }
+        const pageModules = server.moduleGraph.getModulesByFile(
+          path.resolve(process.cwd(), 'src/routes/[...slug]/+page.svelte')
+        );
+        if (pageModules) {
+          pageModules.forEach((mod) => server.moduleGraph.invalidateModule(mod));
+        }
+        server.ws.send({ type: 'full-reload' });
+      };
+
       const shouldReload = (p) => {
         if (!p) return false;
         // Only reload if the file is inside the content directory
@@ -81,13 +97,13 @@ export function contentHmrPlugin() {
       };
 
       server.watcher.on('add', (p) => {
-        if (shouldReload(p)) reload();
+        if (shouldReload(p)) invalidateAndReload();
       });
       server.watcher.on('change', (p) => {
-        if (shouldReload(p)) reload();
+        if (shouldReload(p)) invalidateAndReload();
       });
       server.watcher.on('unlink', (p) => {
-        if (shouldReload(p)) reload();
+        if (shouldReload(p)) invalidateAndReload();
       });
     }
   };
