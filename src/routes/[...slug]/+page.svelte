@@ -35,7 +35,7 @@
 	{/if}
 
 	<section
-		class="content-container prose prose-lg prose-headings:text-viz-black prose-p:text-viz-black prose-a:text-viz-blue-dark max-w-3xl py-12"
+		class="content-container prose prose-lg prose-headings:text-center prose-headings:text-viz-black prose-p:text-viz-black prose-a:text-viz-blue-dark max-w-3xl py-12"
 	>
 		{#if Component}
 			<svelte:component this={Component} />

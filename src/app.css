@@ -8,9 +8,9 @@
 @theme {
 	/* Palette: core */
 	--color-viz-white: var(--viz-color-white);
+
 	--color-viz-black: var(--viz-color-black);
 	--color-viz-grey: var(--viz-color-grey);
-
 	--color-viz-yellow: var(--viz-color-yellow);
 	--color-viz-teal: var(--viz-color-teal);
 	--color-viz-blue: var(--viz-color-blue);
@@ -20,6 +20,8 @@
 	--color-viz-yellow-light: var(--viz-color-yellow-light);
 	--color-viz-teal-light: var(--viz-color-teal-light);
 	--color-viz-blue-light: var(--viz-color-blue-light);
+	--color-viz-orange-light: var(--viz-color-orange-light);
+	--color-viz-pink-light: var(--viz-color-pink-light);
 
 	--color-viz-black-dark: var(--viz-color-black-dark);
 	--color-viz-grey-dark: var(--viz-color-grey-dark);

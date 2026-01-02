@@ -28,6 +28,8 @@
 	--viz-color-yellow-light: oklch(93.41% 0.0654 82.66);
 	--viz-color-teal-light: oklch(90.38% 0.0612 188.47);
 	--viz-color-blue-light: oklch(86.96% 0.047 266.67);
+	--viz-color-orange-light: oklch(91% 0.06 47.22);
+	--viz-color-pink-light: oklch(90% 0.06 354.07);
 
 	/* Dark Shades derived from the canonical OKLCH tokens */
 	--viz-color-black-dark: oklch(from var(--viz-color-black) calc(l * 0.75) c h);
