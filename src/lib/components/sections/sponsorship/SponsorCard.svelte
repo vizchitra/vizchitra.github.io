@@ -123,7 +123,7 @@
 </script>
 
 <div
-	class="sponsor-card"
+	class="not-prose sponsor-card"
 	style="
       --light-color: {currentVariant.light};
       --dark-color: {currentVariant.dark};

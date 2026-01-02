@@ -34,7 +34,7 @@
 				},
 				{
 					name: 'Create your Data Selfie',
-					href: '/polygon-playground'
+					href: '/tools/selfie'
 				}
 			]
 		},

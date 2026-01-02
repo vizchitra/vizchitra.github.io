@@ -6,7 +6,7 @@
 
 	// Load mdsvex-compiled Svelte components from the content folder at build time.
 	// Eager so components are available during SSR/prerender.
-	const pages = import.meta.glob('../../../content/*.md', { eager: true });
+	const pages = import.meta.glob('../../../content/**/*.md', { eager: true });
 
 	let Component: any = null;
 	const pageKey = Object.keys(pages).find((p) => p.endsWith(`/${data.slug}.md`));

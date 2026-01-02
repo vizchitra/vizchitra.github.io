@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
 	import { confetti } from '@neoconfetti/svelte';
 	import { tick } from 'svelte';
 
@@ -8,7 +7,7 @@
 
 	const cards = [
 		{
-			image: resolve('/images/events/community-banner.webp'),
+			image: '/images/events/community-banner.webp',
 			alt: 'Join the community banner',
 			title: 'Join the community',
 			description: 'Join our 1000+ growing member community on WhatsApp',
@@ -17,7 +16,7 @@
 			isAnimated: false
 		},
 		{
-			image: resolve('/images/events/sponsorship-banner.webp'),
+			image: '/images/events/sponsorship-banner.webp',
 			alt: 'VizChitra 2025 Recap',
 			title: 'VizChitra 2025 Recap',
 			description:

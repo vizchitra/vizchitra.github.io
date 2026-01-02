@@ -7,7 +7,7 @@
 		KeyNote,
 		Speakers2025,
 		Workshop2025,
-		SponsorCards as SponsorCard,
+		SponsorCard,
 		Map,
 		VenueCard,
 		FAQ
@@ -254,7 +254,7 @@
 	</h2>
 
 	<div class="mx-auto">
-		<Grid cols={2} gap="gap-2 md:gap-4" className="ml-0 pb-4 md:-ml-12 md:pb-0 lg:max-w-4xl">
+		<Grid columns={2} gap={4} class="ml-0 pb-4 md:-ml-12 md:pb-0 lg:max-w-4xl">
 			{#each sponsors as sponsor}
 				<SponsorCard
 					heading={sponsor.heading}
