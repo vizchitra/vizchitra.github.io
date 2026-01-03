@@ -5,6 +5,5 @@ year: 2026
 banner: curve
 interactive: true
 size: large
+showLogo: true
 ---
-
-Welcome to VizChitra 2026

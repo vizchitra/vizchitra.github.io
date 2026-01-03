@@ -2,53 +2,81 @@
 title: Call for Proposals
 descriptionn: Call for Proposals for VizChitra 2026
 year: 2026
-banner: 'curve'
+banner: curve
 ---
 
 <script>
-	import { Grid, FullBleed } from '$lib/components/layout';
-	import { Card } from '$lib/components/interface';
-  import {DividerCurves} from '$lib/components/structure'
-  import {Slanted} from '$lib/components/typography'
+	import { Grid, Flex, FullBleed } from '$lib/components/layout';
+	import { Card, FormatCard, Button, Deadline } from '$lib/components/interface';
+  import { DividerCurves } from '$lib/components/structure'
+  import { Slanted, Notice } from '$lib/components/typography'
 </script>
 
 > If data is the new soil, we’re excited to see what you will grow at VizChitra 2026.
 
-For the second edition of the VizChitra Conference, we are excited to open up **two parallel tracks for submissions**: a full conference program featuring talks, dialogues, and workshops, as well as a curated exhibition showcasing innovative data visualization work.
+For the second edition of the flagship event -- **VizChitra 2026**, we are excited to open up the **call for proposals** for the event. There will be **talks** and **dialogues** on the conference day (4th July, 2026), and **workshops** on the workshop day (3rd July, 2026)
 
-**VizChitra 2026 invites you to share how you think, play, and build through data visualization.**
+_We invite you to share how you think, play, and build through data visualization._
 
-<Grid minWidth="18rem" maxColumns={2} gap={6}>
+<div class="flex justify-center align-center">
+<Button href="https://forms.vizchitra.com/proposals" color="pink" external={true}>Submit your Proposal</Button>
+</div>
 
-<Card color="pink" title="Conference">
+<h3 class="text-center">Proposal Deadline: 15 Feb 2026</h3>
 
-Talks, dialogues, and workshops at the VizChitra 2026 conference.
-
-<a href="#" class="mt-4 inline-block rounded-lg bg-viz-pink-dark px-6 py-2 font-bold text-white no-underline hover:opacity-90">Submit Proposal</a>
-
-</Card>
-
-<Card color="blue" title="Exhibition">
-
-Contemporary data visualization work on climate and ecological change.
-
-<a href="#" class="mt-4 inline-block rounded-lg bg-viz-blue-dark px-6 py-2 font-bold text-white no-underline hover:opacity-90">Submit Proposal</a>
-
-</Card>
-
-</Grid>
-
-**Deadline: 15 February, 2026**
-
-## Who should submit?
-
-Analysts, artists, designers, researchers, scientists, practitioners, journalists, educators, students, and anyone working with data visualization across disciplines.
-
-**_Anyone using data to tell stories, ask questions, or serve communities._**
+<!-- <Deadline startDate="2026-01-03" deadline="2026-02-15" title="Proposal Deadline" /> -->
 
 <DividerCurves/>
 
-<Slanted tag="h2" color="black" textContent="THEMES in 2026" />
+<Slanted tag="h2" color="black" textContent="PROPOSAL FORMATS" />
+
+You can propose one or more of the following formats. If you are unsure which one fits best, choose the closest option and explain your thinking in the proposal.
+
+<FullBleed class="px-4 md:px-8 pt-4">
+<Grid minWidth="18rem" maxColumns={3} gap={6}>
+
+<FormatCard
+format="talks"
+title="Talks"
+duration="10–20 mins"
+bestFor="Deep dives into projects, case studies, or bodies of work."
+points={[
+"Share your own or your team's unique experience doing DataViz",
+"Reflect on your process, choices, trade-offs, and learnings",
+"Offer ideas, frameworks, or tools that others can reuse or adapt"
+]}
+/>
+
+<FormatCard
+format="dialogues"
+title="Dialogues"
+duration="45 mins"
+bestFor="Shared questions, challenges, or themes to understand together."
+points={[
+"Facilitate peer learning and exchange",
+"Frame around a theme, domain, challenge, or provocation",
+"Design simple structures or prompts so people can participate"
+]}
+/>
+
+<FormatCard
+format="workshops"
+title="Workshops"
+duration="3 hours"
+bestFor="Practice-oriented, hands-on, skill-building sessions."
+points={[
+"Teach a specific skill, approach, or tool",
+"Guide participants through exercises or mini-projects",
+"Ensure people leave with something they can apply"
+]}
+/>
+
+</Grid>
+</FullBleed>
+
+<DividerCurves/>
+
+<Slanted tag="h2" color="black" textContent="THEMES for 2026" />
 
 This year's conference focuses on **four key themes**. The examples under each are prompts, not limits – feel free to stretch and reinterpret them.
 
@@ -101,51 +129,11 @@ What tools, systems, and workflows power the visualizations we create and use?
 
 <DividerCurves/>
 
-<Slanted tag="h2" color="black" textContent="PROPOSAL FORMATS" />
+## Who should submit?
 
-You can propose one or more of the following formats. If you are unsure which one fits best, choose the closest option and explain your thinking in the proposal.
+Analysts, artists, designers, researchers, scientists, practitioners, journalists, educators, students, and anyone working with data visualization across disciplines.
 
-<FullBleed class="px-4 md:px-8">
-<Grid minWidth="18rem" maxColumns={3} gap={6}>
-
-<Card variant="bordered" color="pink" title="Talks">
-
-**Duration:** 10–20 minutes + Q&A
-
-**Best for:** Deep dives into projects, case studies, or bodies of work.
-
-- Share a project, case study, or body of work
-- Reflect on your process, choices, trade-offs, and learnings
-- Offer ideas, frameworks, or tools that others can reuse or adapt
-
-</Card>
-
-<Card variant="bordered" color="blue" title="Dialogues">
-
-**Duration:** 45 minutes
-
-**Best for:** Shared questions, challenges, or themes.
-
-- Facilitate peer learning and exchange
-- Frame around a theme, domain, challenge, or provocation
-- Design simple structures or prompts so people can participate
-
-</Card>
-
-<Card variant="bordered" color="teal" title="Workshop">
-
-**Duration:** 3 hours
-
-**Best for:** Practice-oriented, skill-building sessions.
-
-- Teach a specific skill, approach, or tool
-- Guide participants through exercises or mini-projects
-- Ensure people leave with something they can apply
-
-</Card>
-
-</Grid>
-</FullBleed>
+**_Anyone using data to tell stories, ask questions, or serve communities._**
 
 <DividerCurves />
 
@@ -161,9 +149,11 @@ Use these prompts as a mini-outline while drafting your submission.
 
 4. **What will participants take away?** -- Share the practical outcomes: skills, mental models, checklists, workflows, or new ways of seeing a familiar problem.
 
-5. **Which format best supports your aims?** – Consider whether your idea works best as a talk, group discussion, or hands-on workshop.
+5. **Which format best supports your aims?** -- Consider whether your idea works best as a talk, group discussion, or hands-on workshop.
 
-### What makes a strong VizChitra session?
+<Notice color="blue">
+
+**What makes a strong VizChitra session?**
 
 The most successful sessions tend to:
 
@@ -171,3 +161,11 @@ The most successful sessions tend to:
 - Make the process visible, not just the polished final chart.
 - Offer concrete, reusable insights or tools.
 - Create room for reflection, conversation, or play.
+
+</Notice>
+
+<div class="flex justify-center align-center">
+<Button href="https://forms.vizchitra.com/proposals" color="pink" external={true}>Submit your Proposal</Button>
+</div>
+
+<h3 class="text-center">Proposal Deadline: 15 Feb 2026</h3>

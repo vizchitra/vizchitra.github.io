@@ -6,8 +6,7 @@
 	import { Mission } from '$lib/components/sections';
 	import { Dropdown } from '$lib/components/interface';
 	import { DividerPolygon, BannerPolygon, Pentagons } from '$lib/components/structure';
-	import { Slanted, VizChitraLogoType } from '$lib/components/typography';
-	import VizchitraLogo from '$lib/assets/images/logos/viz-logo-animate.svg?raw';
+	import { Slanted, VizChitraLogoType, VizChitraLogoTagline } from '$lib/components/typography';
 	import Youtube from 'svelte-youtube-embed';
 	import decorBanner1 from '$lib/assets/images/patterns/decor-banner-1.png';
 	import decorBanner2 from '$lib/assets/images/patterns/decor-banner-2.png';
@@ -122,17 +121,9 @@
 	<div class="banner-container full-bleed relative h-[80svh]">
 		<BannerPolygon />
 		<div
-			class="logo-container pointer-events-none absolute top-1/3 left-1/2 mb-2 flex -translate-x-1/2 -translate-y-1/3 flex-col items-center rounded-md bg-white px-2 pt-2 pb-4 shadow-lg md:max-w-none md:flex-row md:gap-0 md:px-8"
+			class="logo-container pointer-events-none absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/3"
 		>
-			<div class="logo">
-				{@html VizchitraLogo}
-			</div>
-
-			<p
-				class="tagline leading-1.1 -mt-8 mb-2 max-w-[20ch] border-black text-center uppercase md:mt-0 md:border-l-2 md:pl-5 md:text-left"
-			>
-				<Slanted plain color="black" textContent="A SPACE TO CONNECT AND CREATE WITH DATA" />
-			</p>
+			<VizChitraLogoTagline />
 		</div>
 	</div>
 	<div class="mx-auto max-w-3xl px-5 py-12">

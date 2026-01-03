@@ -210,11 +210,21 @@
 		}
 
 		// Draw curves from top (index 0) to bottom - each fills from previous curve down to current
+		// Apply fading alpha to later curves so they blend naturally into background
 		for (let i = 0; i < NUM_CURVES; i++) {
 			const points = allCurvePoints[i];
 			const prevPoints = i > 0 ? allCurvePoints[i - 1] : null;
 			const color = getColor(i);
-			const alpha = 0.95;
+
+			// Fade out the last few curves for a natural blend
+			// For header: later curves (higher index) are at bottom, fade them
+			// For footer: later curves (higher index) are at top, fade them
+			const fadeStart = NUM_CURVES - 3; // Start fading from 3rd-to-last curve
+			let alpha = 0.95;
+			if (i >= fadeStart) {
+				const fadeProgress = (i - fadeStart + 1) / (NUM_CURVES - fadeStart);
+				alpha = 0.95 * (1 - fadeProgress * 0.8); // Fade to ~20% opacity
+			}
 
 			drawFilledCurve(points, prevPoints, color, alpha, i === 0);
 		}

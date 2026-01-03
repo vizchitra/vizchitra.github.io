@@ -8,9 +8,10 @@
 
 	interface Props {
 		staticBanner?: boolean;
+		fadeDirection?: 'none' | 'top' | 'bottom';
 	}
 
-	let { staticBanner = false }: Props = $props();
+	let { staticBanner = false, fadeDirection = 'none' }: Props = $props();
 
 	interface Point {
 		x: number;
@@ -135,6 +136,17 @@
 				const cell = voronoi.cellPolygon(i);
 				if (!cell) continue;
 
+				// Calculate opacity based on fade direction and cell center position
+				const centerY = cell.reduce((sum: number, p: number[]) => sum + p[1], 0) / cell.length;
+				let alpha = 0.8;
+				if (fadeDirection === 'bottom') {
+					// Fade out toward bottom
+					alpha = 0.8 * (1 - centerY / height);
+				} else if (fadeDirection === 'top') {
+					// Fade out toward top
+					alpha = 0.8 * (centerY / height);
+				}
+
 				ctx.beginPath();
 				ctx.moveTo(cell[0][0], cell[0][1]);
 				for (let j = 1; j < cell.length; j++) {
@@ -142,7 +154,7 @@
 				}
 				ctx.closePath();
 				ctx.strokeStyle = getColor(i);
-				ctx.globalAlpha = 0.8;
+				ctx.globalAlpha = Math.max(0.05, alpha);
 				ctx.lineWidth = 2;
 				ctx.stroke();
 			}
@@ -162,8 +174,15 @@
 			}
 
 			const intersections = findIntersections([...voronoi.cellPolygons()]);
-			ctx.globalAlpha = 1;
 			intersections.forEach((point) => {
+				// Calculate opacity based on fade direction
+				let alpha = 1;
+				if (fadeDirection === 'bottom') {
+					alpha = 1 - point.y / height;
+				} else if (fadeDirection === 'top') {
+					alpha = point.y / height;
+				}
+				ctx.globalAlpha = Math.max(0.05, alpha);
 				ctx.beginPath();
 				ctx.arc(point.x, point.y, 3, 0, Math.PI * 2);
 				ctx.fillStyle = '#5f5f5f';
