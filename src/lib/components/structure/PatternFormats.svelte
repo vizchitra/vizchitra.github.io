@@ -12,8 +12,12 @@
 
 	let { format = 'talks', seed, class: className = '' }: Props = $props();
 
-	// Generate a random seed if not provided (stable per instance)
-	const instanceSeed = seed ?? Math.random() * 1000;
+	// Instance seed: prefer provided `seed`, otherwise create one on mount
+	let instanceSeed: number | undefined;
+	$effect(() => {
+		seed;
+		if (seed !== undefined) instanceSeed = seed;
+	});
 
 	// Color token names for each format (using CSS variables)
 	const formatColors: Record<Format, string[]> = {
@@ -33,13 +37,23 @@
 		return x - Math.floor(x);
 	}
 
-	// Create stable random values per instance
-	const r1 = seededRandom(instanceSeed);
-	const r2 = seededRandom(instanceSeed + 1);
-	const r3 = seededRandom(instanceSeed + 2);
-	const amplitudeMultipliers = [0.6 + r1 * 0.6, 0.8 + r2 * 0.6, 0.7 + r3 * 0.5];
-	const phaseOffsets = [r1 * Math.PI * 2, r2 * Math.PI * 2, r3 * Math.PI * 2];
-	const freqMultipliers = [1.5 + r1, 2.5 + r2, 4 + r3];
+	// Create stable random values per instance (computed reactively once seed/instanceSeed available)
+	let r1: number, r2: number, r3: number;
+	let amplitudeMultipliers: number[] | undefined;
+	let phaseOffsets: number[] | undefined;
+	let freqMultipliers: number[] | undefined;
+
+	$effect(() => {
+		instanceSeed;
+		if (instanceSeed !== undefined) {
+			r1 = seededRandom(instanceSeed);
+			r2 = seededRandom(instanceSeed + 1);
+			r3 = seededRandom(instanceSeed + 2);
+			amplitudeMultipliers = [0.6 + r1 * 0.6, 0.8 + r2 * 0.6, 0.7 + r3 * 0.5];
+			phaseOffsets = [r1 * Math.PI * 2, r2 * Math.PI * 2, r3 * Math.PI * 2];
+			freqMultipliers = [1.5 + r1, 2.5 + r2, 4 + r3];
+		}
+	});
 
 	let resolvedColors: string[] = $state([]);
 	let width = $state(1080);
@@ -99,11 +113,13 @@
 	}
 
 	let paths = $derived(
-		Array.from({ length: NUM_CURVES }, (_, i) => ({
-			d: generateCurvePath(i),
-			color: resolvedColors[i] || '#cccccc',
-			opacity: 1 - i * 0.1
-		}))
+		amplitudeMultipliers
+			? Array.from({ length: NUM_CURVES }, (_, i) => ({
+				d: generateCurvePath(i),
+				color: resolvedColors[i] || '#cccccc',
+				opacity: 1 - i * 0.1
+			}))
+			: []
 	);
 
 	onMount(() => {

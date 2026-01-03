@@ -30,8 +30,8 @@ _We invite you to share how you think, play, and build through data visualizatio
 
 You can propose one or more of the following formats. If you are unsure which one fits best, choose the closest option and explain your thinking in the proposal.
 
-<FullBleed class="px-4 md:px-8 pt-4">
-<Grid minWidth="18rem" maxColumns={3} gap={6}>
+<FullBleed class="pt-4">
+<Grid minWidth="30ch" maxColumns={3} gap={6} class="px-6 md:px-8">
 
 <FormatCard
 format="talks"
@@ -78,8 +78,8 @@ points={[
 
 This year's conference focuses on **four key themes**. The examples under each are prompts, not limits – feel free to stretch and reinterpret them.
 
-<FullBleed class="px-4 md:px-8">
-<Grid minWidth="20rem" maxColumns={2} gap={6}>
+<FullBleed>
+<Grid minWidth="30ch" maxColumns={2} gap={6} class="px-6 md:px-8">
 
 <Card variant="bordered" color="pink" title="Visualizations for Community">
 

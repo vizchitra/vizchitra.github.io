@@ -57,6 +57,7 @@
 
 html {
 	scroll-behavior: smooth;
+	font-variation-settings: 'slnt' 0;
 }
 
 body {
