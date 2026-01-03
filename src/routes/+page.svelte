@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
 	import { onMount } from 'svelte';
 	// Import reusable components
 	import ButtonBar from '$lib/assets/images/ButtonBar.svelte';
@@ -13,7 +12,7 @@
 	import playButton from '$lib/assets/images/icons/play-button.png';
 	import cardDecor from '$lib/assets/images/patterns/card-decor.png';
 
-	const recapImage = resolve('/images/events/recap-2025-thumbnail.webp');
+	const recapImage = '/images/events/recap-2025-thumbnail.webp';
 
 	const whyAttend = [
 		{

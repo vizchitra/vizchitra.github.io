@@ -1,5 +1,4 @@
 <script>
-	import { resolve } from '$app/paths';
 	import SpeakerCardPattern1 from '$lib/assets/images/patterns/speaker-card-pattern-1.svg?raw';
 	import SpeakerCardPattern2 from '$lib/assets/images/patterns/speaker-card-pattern-2.svg?raw';
 
@@ -196,7 +195,7 @@
 					pentagonXOffset}px, {pentagonYOffset}px);"
 			>
 				<img
-					src={resolve(`/images/speakers2025/${memberData.image || ''}`)}
+					src={`/images/speakers2025/${memberData.image || ''}`}
 					alt={memberData.name}
 					class="bg-white"
 					style="transform: {computeTransform()} "

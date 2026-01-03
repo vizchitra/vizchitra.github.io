@@ -4,7 +4,7 @@
 	"version": "0.2.0",
 	"type": "module",
 	"engines": {
-		"node": ">24.12"
+		"node": ">=22.16.0"
 	},
 	"scripts": {
 		"dev": "vite dev",
@@ -35,7 +35,7 @@
 		"tailwindcss": "^4.1.18",
 		"typescript": "^5.9.3",
 		"js-yaml": "^4.1.1",
-		"vite": "npm:rolldown-vite@latest"
+		"vite": "npm:rolldown-vite@7.3.0"
 	},
 	"pnpm": {
 		"onlyBuiltDependencies": [
@@ -47,5 +47,6 @@
 		"maplibre-gl": "^5.15.0",
 		"svelte-maplibre-gl": "^1.0.2",
 		"svelte-youtube-embed": "^0.4.6"
-	}
+	},
+	"packageManager": "pnpm@10.27.0+sha512.72d699da16b1179c14ba9e64dc71c9a40988cbdc65c264cb0e489db7de917f20dcf4d64d8723625f2969ba52d4b7e2a1170682d9ac2a5dcaeaab732b7e16f04a"
 }

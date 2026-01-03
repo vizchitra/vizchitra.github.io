@@ -7,32 +7,37 @@
 
 	let { startDate, deadline, title = 'Deadline' }: Props = $props();
 
-	const start = new Date(startDate);
-	const end = new Date(deadline);
-	const today = new Date();
 
-	// Calculate days
-	const totalDays = Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
-	const daysProgress = Math.ceil((today.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
-	const daysLeft = Math.ceil((end.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
 
-	const isPast = daysLeft < 0;
-	const progressPercent = Math.min(Math.max((daysProgress / totalDays) * 100, 0), 100);
+	let start = $derived(new Date(startDate));
+	let end = $derived(new Date(deadline));
+	let today = $derived(new Date());
+
+	let totalDays = $derived(Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)));
+	let daysProgress = $derived(Math.ceil((today.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)));
+	let daysLeft = $derived(Math.ceil((end.getTime() - today.getTime()) / (1000 * 60 * 60 * 24)));
+
+	let isPast = $derived(daysLeft < 0);
+	let progressPercent = $derived(Math.min(Math.max((daysProgress / totalDays) * 100, 0), 100));
 
 	// Format dates
-	const formattedStart = start.toLocaleDateString('en-IN', {
-		day: 'numeric',
-		month: 'short',
-		year: 'numeric'
-	});
+	let formattedStart = $derived(
+		start.toLocaleDateString('en-IN', {
+			day: 'numeric',
+			month: 'short',
+			year: 'numeric'
+		})
+	);
 
-	const formattedEnd = end.toLocaleDateString('en-IN', {
-		day: 'numeric',
-		month: 'short',
-		year: 'numeric'
-	});
+	let formattedEnd = $derived(
+		end.toLocaleDateString('en-IN', {
+			day: 'numeric',
+			month: 'short',
+			year: 'numeric'
+		})
+	);
 
-	const displayTitle = `${title}: ${formattedEnd}`;
+	let displayTitle = $derived(`${title}: ${formattedEnd}`);
 </script>
 
 <div class="not-prose font-display mx-auto my-16 flex w-full max-w-2xl flex-col items-center gap-6">

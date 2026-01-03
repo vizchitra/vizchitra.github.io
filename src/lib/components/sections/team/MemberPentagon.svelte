@@ -1,6 +1,4 @@
 <script>
-	import { resolve } from '$app/paths';
-
 	/** @type {any} */
 	export let memberData = {};
 
@@ -94,7 +92,7 @@
 			style="clip-path: polygon({clipPath}); --strength-color: {COLOR_MAPPING[memberData.strength]}"
 		>
 			<img
-				src={resolve(`/images/team/${memberData.image}`)}
+				src={`/images/team/${memberData.image}`}
 				alt={memberData.name}
 				style="transform: {computeTransform()}"
 			/>
