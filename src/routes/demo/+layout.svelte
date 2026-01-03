@@ -1,23 +1,14 @@
 <script>
-	import { Footer, NavMenu } from '$lib/components/structure';
-	import '../app.css';
-
-	import { page } from '$app/stores';
+	import '../../app.css';
 
 	/** @type {{children: import('svelte').Snippet}} */
 	let { children } = $props();
-
-	// Get banner type from page data (frontmatter), default to 'polygon'
-	let banner = $derived($page.data?.frontmatter?.banner ?? 'polygon');
 </script>
 
 <div class="app">
-	<NavMenu></NavMenu>
-	<main class:full-width={$page.url.pathname.includes('polygon-playground')}>
+	<main>
 		{@render children()}
 	</main>
-
-	<Footer {banner} />
 </div>
 
 <style>
@@ -36,10 +27,6 @@
 
 		margin: 0 auto;
 		box-sizing: border-box;
-	}
-
-	main.full-width {
-		max-width: 90vw;
 	}
 
 	@media (max-width: 768px) {

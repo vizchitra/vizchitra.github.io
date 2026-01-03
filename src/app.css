@@ -8,9 +8,9 @@
 @theme {
 	/* Palette: core */
 	--color-viz-white: var(--viz-color-white);
+
 	--color-viz-black: var(--viz-color-black);
 	--color-viz-grey: var(--viz-color-grey);
-
 	--color-viz-yellow: var(--viz-color-yellow);
 	--color-viz-teal: var(--viz-color-teal);
 	--color-viz-blue: var(--viz-color-blue);
@@ -20,6 +20,8 @@
 	--color-viz-yellow-light: var(--viz-color-yellow-light);
 	--color-viz-teal-light: var(--viz-color-teal-light);
 	--color-viz-blue-light: var(--viz-color-blue-light);
+	--color-viz-orange-light: var(--viz-color-orange-light);
+	--color-viz-pink-light: var(--viz-color-pink-light);
 
 	--color-viz-black-dark: var(--viz-color-black-dark);
 	--color-viz-grey-dark: var(--viz-color-grey-dark);
@@ -175,4 +177,45 @@ button:focus:not(:focus-visible) {
 
 .content-notice {
 	@apply mb-8 rounded-lg border border-gray-200 bg-gray-100 p-6 md:p-8;
+}
+
+/* Site-wide prose customization for VizChitra */
+.prose-viz {
+	/* Text colors */
+	--tw-prose-body: var(--viz-color-black);
+	--tw-prose-headings: var(--viz-color-black);
+	--tw-prose-links: var(--viz-color-blue-dark);
+	--tw-prose-bold: var(--viz-color-black);
+	--tw-prose-counters: var(--viz-color-grey-dark);
+	--tw-prose-bullets: var(--viz-color-grey-dark);
+	--tw-prose-hr: var(--viz-color-grey-light);
+	--tw-prose-quotes: var(--viz-color-grey-dark);
+	--tw-prose-quote-borders: var(--viz-color-pink);
+	--tw-prose-captions: var(--viz-color-grey-dark);
+	--tw-prose-code: var(--viz-color-pink-dark);
+	--tw-prose-pre-code: var(--viz-color-black);
+	--tw-prose-pre-bg: rgba(255, 255, 255, 0.45);
+	--tw-prose-th-borders: var(--viz-color-grey);
+	--tw-prose-td-borders: var(--viz-color-grey-light);
+}
+
+/* Prose link hover state */
+.prose-viz a:hover {
+	color: var(--viz-color-pink-dark);
+	text-decoration-thickness: 2px;
+}
+
+/* Tighter list spacing */
+.prose-viz li {
+	margin-top: 0.25em;
+	margin-bottom: 0.25em;
+}
+
+/* First/last paragraph margin adjustment in containers */
+.prose-viz > :first-child {
+	margin-top: 0;
+}
+
+.prose-viz > :last-child {
+	margin-bottom: 0;
 }

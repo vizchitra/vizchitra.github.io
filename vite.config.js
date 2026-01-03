@@ -2,41 +2,10 @@ import tailwindcss from '@tailwindcss/vite';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 import dsv from '@rollup/plugin-dsv';
-import path from 'path';
-export default defineConfig({
-	plugins: [
-		tailwindcss(),
-		sveltekit(),
-		// Watch content files and trigger full-reload on changes
-		{
-			name: 'watch-content-md',
-			apply: 'serve',
-			configureServer(server) {
-				const contentDir = path.resolve(process.cwd(), 'content');
-				// Add the content directory to the watcher
-				server.watcher.add(contentDir);
+import { contentHmrPlugin } from './text.config.js';
 
-				const reload = () => server.ws.send({ type: 'full-reload' });
-				const shouldReload = (p) => {
-					if (!p) return false;
-					// Only reload if the file is inside the content directory
-					if (!p.startsWith(contentDir)) return false;
-					const lp = p.toLowerCase();
-					return lp.endsWith('.md') || lp.endsWith('.svx');
-				};
-				server.watcher.on('add', (p) => {
-					if (shouldReload(p)) reload();
-				});
-				server.watcher.on('change', (p) => {
-					if (shouldReload(p)) reload();
-				});
-				server.watcher.on('unlink', (p) => {
-					if (shouldReload(p)) reload();
-				});
-			}
-		},
-		dsv()
-	],
+export default defineConfig({
+	plugins: [tailwindcss(), sveltekit(), contentHmrPlugin(), dsv()],
 	server: {
 		fs: {
 			allow: ['..']
