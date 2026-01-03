@@ -42,12 +42,12 @@
 	{href}
 	target={external ? '_blank' : undefined}
 	rel={external ? 'noopener noreferrer' : undefined}
-	style="background-color: var({bgColorVar});"
-	class="not-prose
-		inline-flex items-center justify-center rounded-sm px-4 py-4 text-center text-xl font-semibold
-		text-white transition-colors hover:opacity-90
-		{sizeClass}
-		{class_name}
+	style="background-color: var({bgColorVar}); color: #ffffff;"
+	class="not-prose hover:text-viz-white inline-flex transform items-center justify-center rounded-sm px-4 py-4 text-center
+		text-xl font-semibold text-white no-underline transition-transform duration-300 ease-in-out hover:-translate-y-1
+		hover:scale-102 hover:shadow-[0_12px_30px_rgba(0,0,0,0.14),0_0_22px_rgba(255,255,255,0.06)] focus:outline-none
+		focus-visible:ring-4 focus-visible:ring-white/10 focus-visible:outline-none
+		{sizeClass} {class_name}
 	"
 >
 	{@render children?.()}
