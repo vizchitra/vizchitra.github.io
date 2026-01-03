@@ -19,7 +19,7 @@ For the second edition of the flagship event -- **VizChitra 2026**, we are excit
 _We invite you to share how you think, play, and build through data visualization._
 
 <div class="flex justify-center align-center">
-<Button href="https://forms.vizchitra.com/proposals" color="pink" external={true}>Submit your Proposal</Button>
+<Button href="https://forms.vizchitra.com/proposals" color="yellow" external={true}>Submit your Proposal</Button>
 </div>
 
 <h3 class="text-center">Proposal Deadline: 15 Feb 2026</h3>
@@ -151,7 +151,7 @@ Use these prompts as a mini-outline while drafting your submission.
 
 5. **Which format best supports your aims?** -- Consider whether your idea works best as a talk, group discussion, or hands-on workshop.
 
-<Notice color="blue">
+<Notice color="yellow">
 
 **What makes a strong VizChitra session?**
 
@@ -165,7 +165,7 @@ The most successful sessions tend to:
 </Notice>
 
 <div class="flex justify-center align-center">
-<Button href="https://forms.vizchitra.com/proposals" color="pink" external={true}>Submit your Proposal</Button>
+<Button href="https://forms.vizchitra.com/proposals" color="yellow" external={true}>Submit your Proposal</Button>
 </div>
 
 <h3 class="text-center">Proposal Deadline: 15 Feb 2026</h3>
