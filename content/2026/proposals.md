@@ -12,9 +12,7 @@ banner: curve
   import { Slanted, Notice } from '$lib/components/typography'
 </script>
 
-> If data is the new soil, we’re excited to see what you will grow at VizChitra 2026.
-
-For the second edition of the flagship event -- **VizChitra 2026**, we are excited to open up the **call for proposals** for the event. There will be **talks** and **dialogues** on the conference day (4th July, 2026), and **workshops** on the workshop day (3rd July, 2026)
+For the second edition of the flagship event -- **VizChitra 2026**, we are excited to open up the **call for proposals**. There will be **talks** and **dialogues** on the conference day (4th July, 2026), and **workshops** on the workshop day (3rd July, 2026)
 
 _We invite you to share how you think, play, and build through data visualization._
 
@@ -89,7 +87,7 @@ How can data visualization support communities, public interest work, and social
 
 - Make socio-economic data more accessible in public conversations, or engage marginalized groups through participatory approaches
 - Support nonprofits, NGOs, civic-tech groups, advocacy organizations, environmental justice initiatives, or public interest journalism
-- Practice ethical and inclusive data visualization, including accessibility, representation, and cultural sensitivity
+- Practice ethical and inclusive data visualization, including accessibility, representation and cultural sensitivity
 
 </Card>
 
@@ -100,7 +98,7 @@ How do you design, refine, and craft a visualization from first sketch to final 
 - Explore visual design principles: color, layout, typography in data visualization
 - Shape storytelling and narrative design for data-informed stories
 - Design interactions for dashboards, exploratory tools, and interactive stories
-- Share critiques, reflections, and case studies on what makes visuals effective, confusing, or misleading
+- Share critiques, reflections, and case studies on what makes visualizations effective, confusing, or misleading
 
 </Card>
 
