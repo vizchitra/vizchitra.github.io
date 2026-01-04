@@ -45,6 +45,17 @@ declare module '*.svg' {
 
 declare module '*.ico';
 
+/// <reference types="@sveltejs/kit" />
+declare module '*.md' {
+	import type { SvelteComponent } from 'svelte';
+	export default class Markdown extends SvelteComponent {}
+}
+
+declare module '*.svx' {
+	import type { SvelteComponent } from 'svelte';
+	export default class SvxComponent extends SvelteComponent {}
+}
+
 // Generic catch-all for raw imports
 declare module '*?raw' {
 	const content: string;

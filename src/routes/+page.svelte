@@ -7,12 +7,12 @@
 	import { DividerPolygon, BannerPolygon, Pentagons } from '$lib/components/structure';
 	import { Slanted, VizChitraLogoType, VizChitraLogoTagline } from '$lib/components/typography';
 	import Youtube from 'svelte-youtube-embed';
-	import decorBanner1 from '$lib/assets/images/patterns/decor-banner-1.png';
-	import decorBanner2 from '$lib/assets/images/patterns/decor-banner-2.png';
-	import playButton from '$lib/assets/images/icons/play-button.png';
-	import cardDecor from '$lib/assets/images/patterns/card-decor.png';
 
 	const recapImage = '/images/events/recap-2025-thumbnail.webp';
+	const decorBanner1 = '/images/patterns/decor-banner-1.webp';
+	const decorBanner2 = '/images/patterns/decor-banner-2.png';
+	const playButton = '/images/icons/play-button.webp';
+	const cardDecor = '/images/patterns/card-decor.webp';
 
 	const whyAttend = [
 		{
