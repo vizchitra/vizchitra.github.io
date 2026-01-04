@@ -21,6 +21,8 @@
 
 	type Layer = { d: string; fill: string; opacity?: number; hatched?: boolean };
 
+	type CircleData = { innerRadius: number; layers: Layer[] };
+
 	const tonePalette: Record<Tone, { light: string; normal: string; dark: string }> = {
 		blue: {
 			light: 'var(--color-viz-blue-light)',
@@ -151,7 +153,7 @@
 		return d;
 	}
 
-	function createCircleLayers(): Layer[] {
+	function createCircleLayers(): CircleData {
 		const v = Math.max(0, Math.min(1, Number(variation)));
 		const seed = hashStringToUnit(`circle-${variation}`);
 		const [r1, r2, r3, r4] = sample(4, seed + 0.03);

@@ -36,7 +36,7 @@
 	}
 
 	const STROKE_WIDTH = 6;
-	const NUM_DOTS = 4; // 4 dots = 3 segments
+	const NUM_DOTS = 5; // 4 dots = 3 segments
 
 	interface DotData {
 		cx: number;

@@ -1,0 +1,16 @@
+---
+title: The Community
+description: The community group for VizChitra, called Friends of VizChitra
+---
+
+<script>
+	import { Slanted } from '$lib/components';
+</script>
+
+<Slanted tag="h2" color="pink" textContent="FRIENDS of VIZCHITRA" />
+
+At VizChitra, we’re not just creating data stories; we’re building a culture of data storytelling and literacy in India – one that is collaborative, nuanced, and joyfully human.
+
+We have more than 1,800 people in the community, which we refer to as **Friends of VizChitra**. The primary mode of conversation is through _The VizChitra Community Group_ on WhatsApp. You can join them on WhatsApp at [https://vizchitra.com/friends](https://vizchitra.com/friends)
+
+<Slanted tag="h2" color="blue" textContent="AN INDIAN DATA VISUALIZATION COMMUNITY" />

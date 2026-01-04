@@ -25,26 +25,11 @@
 			subsections: [
 				{ name: 'Event', href: '/2025/conference' },
 				{ name: 'Videos', href: '/2025/videos' },
-				{ name: 'Sessions', href: '/2025/sessions' },
+				// { name: 'Sessions', href: '/2025/sessions' },
 				{ name: 'Schedule', href: '/2025/schedule' },
 				{ name: 'Sponsorship', href: '/2025/sponsorship' }
 			],
 			expanded: false
-		},
-		{
-			name: 'Community',
-			accentColor: 'var(--color-viz-teal)',
-			subsections: [
-				{
-					name: 'WhatsApp',
-					href: 'https://chat.whatsapp.com/G9p4HbALukeAa5NSVn0OoA',
-					target: '_blank'
-				},
-				{
-					name: 'Create your Data Selfie',
-					href: '/tools/selfie'
-				}
-			]
 		},
 		{
 			name: 'About',
@@ -52,8 +37,10 @@
 			accentColor: 'var(--color-viz-pink)',
 			subsections: [
 				{ name: 'Our Ethos', href: '/ethos' },
+				{ name: 'The Community', href: '/community' },
+				{ name: 'Code of Conduct', href: '/conduct' },
 				{ name: 'Meet the Team', href: '/team' },
-				{ name: 'Code of Conduct', href: '/conduct' }
+				{ name: 'Tools & Patterns', href: '/tools' }
 			],
 			expanded: false
 		}
@@ -82,7 +69,7 @@
 		<div class="flex h-16 justify-between">
 			<div class="flex">
 				<a href="/" class="flex items-center text-3xl">
-					<VizChitraLogoType includeYear={false} />
+					<VizChitraLogoType year={null} />
 				</a>
 			</div>
 
