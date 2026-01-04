@@ -9,6 +9,11 @@ export default defineConfig({
 		// Ensure Rolldown optimization options are present to avoid esbuild deprecation warnings
 		rolldownOptions: {}
 	},
+	resolve: {
+		alias: {
+			'../../content': '/content'
+		}
+	},
 	plugins: [tailwindcss(), sveltekit(), contentHmrPlugin(), dsv()],
 	server: {
 		fs: {

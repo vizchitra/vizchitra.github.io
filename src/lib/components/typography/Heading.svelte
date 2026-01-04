@@ -18,7 +18,7 @@
 		target = '_self'
 	}: Props = $props();
 
-	const rel = target === '_blank' ? 'noopener noreferrer' : undefined;
+	const rel = $derived(target === '_blank' ? 'noopener noreferrer' : undefined);
 
 	const alignClasses = {
 		left: 'text-left',

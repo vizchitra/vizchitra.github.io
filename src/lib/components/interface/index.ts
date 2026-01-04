@@ -9,3 +9,4 @@ export { default as ColumnChart } from './ColumnChart.svelte';
 export { default as Card } from './Card.svelte';
 export { default as FormatCard } from './FormatCard.svelte';
 export { default as Deadline } from './Deadline.svelte';
+export { default as CallCard } from './CallCard.svelte';

@@ -20,16 +20,15 @@
 	// Eager so components are available during SSR/prerender.
 	const pages = import.meta.glob('../../../content/**/*.md', { eager: true });
 
-	let Component: any = null;
-	// Try exact match first, then try with /index suffix for directory index pages
-	let pageKey = Object.keys(pages).find((p) => p.endsWith(`/${data.slug}.md`));
-	if (!pageKey) {
-		pageKey = Object.keys(pages).find((p) => p.endsWith(`/${data.slug}/index.md`));
-	}
-	if (pageKey) {
-		// default export is the compiled Svelte component
-		Component = (pages as any)[pageKey].default;
-	}
+	// Make Component reactive so it updates when data.slug changes
+	$: Component = (() => {
+		// Try exact match first, then try with /index suffix for directory index pages
+		let pageKey = Object.keys(pages).find((p) => p.endsWith(`/${data.slug}.md`));
+		if (!pageKey) {
+			pageKey = Object.keys(pages).find((p) => p.endsWith(`/${data.slug}/index.md`));
+		}
+		return pageKey ? (pages as any)[pageKey].default : null;
+	})();
 </script>
 
 <svelte:head>
@@ -45,18 +44,18 @@
 	{/if}
 </svelte:head>
 
-<div class="min-h-screen">
-	{#if frontmatter.title}
-		<Header title={frontmatter.title} {banner} {interactive} {size} {showLogo} {tagline} />
-	{/if}
-
-	<section
-		class="content-container prose prose-lg prose-viz max-w-3xl py-12"
-	>
-		{#if Component}
-			<svelte:component this={Component} />
-		{:else}
-			<p>Content not found.</p>
+{#key data.slug}
+	<div class="min-h-screen">
+		{#if frontmatter.title}
+			<Header title={frontmatter.title} {banner} {interactive} {size} {showLogo} {tagline} />
 		{/if}
-	</section>
-</div>
+
+		<section class="content-container prose prose-lg prose-viz max-w-3xl py-12">
+			{#if Component}
+				<svelte:component this={Component} />
+			{:else}
+				<p>Content not found.</p>
+			{/if}
+		</section>
+	</div>
+{/key}
