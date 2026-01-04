@@ -1,20 +1,6 @@
 <script lang="ts">
-	import { Header, BannerPolygon, BannerCurve } from '$lib/components/structure';
-
 	export let data: any;
 	$: ({ frontmatter = {} } = data);
-
-	// Banner options from frontmatter
-	// banner: 'polygon' | 'curve' (default: 'polygon')
-	// interactive: boolean (default: false, only applies to header)
-	// size: 'default' | 'large' (default: 'default')
-	// showLogo: boolean (default: false)
-	// tagline: string (default: 'A SPACE TO CONNECT AND CREATE WITH DATA')
-	$: banner = frontmatter.banner ?? 'polygon';
-	$: interactive = frontmatter.interactive ?? false;
-	$: size = frontmatter.size ?? 'default';
-	$: showLogo = frontmatter.showLogo ?? false;
-	$: tagline = frontmatter.tagline ?? 'A SPACE TO CONNECT AND CREATE WITH DATA';
 
 	// Load mdsvex-compiled Svelte components from the content folder at build time.
 	// Eager so components are available during SSR/prerender.
@@ -46,11 +32,7 @@
 
 {#key data.slug}
 	<div class="min-h-screen">
-		{#if frontmatter.title}
-			<Header title={frontmatter.title} {banner} {interactive} {size} {showLogo} {tagline} />
-		{/if}
-
-		<section class="content-container prose prose-lg prose-viz max-w-3xl py-12">
+		<section class="content-container prose prose-lg prose-viz max-w-3xl pb-12">
 			{#if Component}
 				<svelte:component this={Component} />
 			{:else}

@@ -3,17 +3,16 @@ title: VizChitra 2026
 description: India's community-driven data visualization conference returns to Bangalore in 2026
 year: 2026
 banner: curve
-interactive: true
-size: large
-showLogo: true
 ---
 
 <script>
 	import { Flex, FullBleed } from '$lib/components/layout';
 	import { CallCard } from '$lib/components/interface';
 	import { Heading, SubHeading, Slanted, VizChitraLogoType } from '$lib/components/typography';
-	import { DividerCurves } from '$lib/components/structure';
+	import { DividerCurves, Header } from '$lib/components/structure';
 </script>
+
+<Header title="VizChitra 2026" banner="curve" interactive={true} size="large" showLogo={true} tagline="A SPACE TO CONNECT AND CREATE WITH DATA" />
 
 <Heading tag="h2">
 	<VizChitraLogoType year="2026"></VizChitraLogoType>

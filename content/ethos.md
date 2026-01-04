@@ -1,11 +1,15 @@
 ---
 title: Our Ethos
 description: Ethos for VizChitra Community
+banner: polygon
 ---
 
 <script>
 	import { Slanted } from '$lib/components';
+	import { Header } from '$lib/components/structure';
 </script>
+
+<Header title="Our Ethos" banner="polygon" />
 
 <Slanted tag="h2" color="pink" textContent="A SPACE TO CONNECT AND CREATE WITH DATA" />
 

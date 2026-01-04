@@ -2,9 +2,6 @@
 title: VizChitra
 description: The Indian Data Visualization Community
 banner: curve
-interactive: true
-size: large
-showLogo: true
 ---
 
 <script lang="ts">
