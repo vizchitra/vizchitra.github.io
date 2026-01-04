@@ -55,7 +55,7 @@
 		});
 		// Randomize color order for each instance
 		shuffledColorOrder = shuffleArray([...Array(colorVariantNames.length).keys()]);
-		console.log('Resolved colors:', resolvedColors, 'Order:', shuffledColorOrder);
+		// console.log('Resolved colors:', resolvedColors, 'Order:', shuffledColorOrder);
 	}
 
 	let canvas: HTMLCanvasElement = $state();
@@ -254,7 +254,7 @@
 		// Give a tick for reactive updates
 		setTimeout(() => {
 			if (width > 0 && height > 0) {
-				console.log('Initial draw', { width, height, colors: resolvedColors.length });
+				// console.log('Initial draw', { width, height, colors: resolvedColors.length });
 				draw();
 			}
 		}, 0);
