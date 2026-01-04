@@ -8,7 +8,8 @@ showLogo: true
 ---
 
 <script lang="ts">
-	import { VideoGrid, RecapVideo, PurposeThree, Mission } from '$lib/components/sections';
+	import { Button } from '$lib/components/interface';
+  import { VideoGrid, RecapVideo, PurposeThree, Mission } from '$lib/components/sections';
 	import { DividerCurves, BannerPolygon, Header } from '$lib/components/structure';
 	import { Slanted, SubHeading, Heading } from '$lib/components/typography';
 	import { VizChitraLogoType, VizChitraLogoTagline } from '$lib/components/typography';
@@ -20,14 +21,27 @@ showLogo: true
 	<VizChitraLogoType year="2026"></VizChitraLogoType>
 </Heading>
 
-<SubHeading>
-India's community-driven conference dedicated to <span class="text-viz-pink-dark font-bold">data visualization</span >
-brought together practitioners from <span class="text-viz-orange-dark font-bold">diverse industries and disciplines</span> across the country to foster <span class="text-viz-orange-dark font-bold">learning, collaboration,</span> and a shared passion for the art of <span class="text-viz-pink-dark font-bold">visual data storytelling.</span> See the highlights and talk sessions below.
+<SubHeading class="pb-6">
+India's community-driven conference dedicated to <span class="text-viz-yellow-dark font-bold">data visualization</span > is back again in <span class="text-viz-teal-dark font-bold">2026</span>. This flagship event over <span class="text-viz-blue-dark font-bold">two days</span> will be in <span class="text-viz-orange-dark font-bold">Bangalore</span> on <span class="text-viz-pink-dark font-bold">3rd & 4th July, 2026 </span>
 </SubHeading>
+
+<div class="flex justify-center align-center pt-4">
+<Button href="/2026" color="pink">Go to our 2026 page</Button>
+</div>
 
 <DividerCurves/>
 
-<Heading tag="h2" class="mt-12 pt-12" href="/ethos">
+<Heading>
+	<VizChitraLogoType year="2025"></VizChitraLogoType>
+</Heading>
+
+<SubHeading class="pb-6">
+Missed the event last year. See the highlights below
+</SubHeading>
+
+<RecapVideo/>
+
+<Heading tag="h2" class="text-viz-pink-dark mt-12 pt-12" href="/ethos">
 	Our Ethos @ <VizChitraLogoType year={null}></VizChitraLogoType>
 </Heading>
 
@@ -38,8 +52,6 @@ Our goal is to build a community of diverse, interdisciplinary individuals worki
 visualization spectrum, and facilitate learning and connections between people from different
 industries and disciplines who share a common interest in the power of data and storytelling.
 </SubHeading>
-
-<PurposeThree />
 
 <DividerCurves/>
 

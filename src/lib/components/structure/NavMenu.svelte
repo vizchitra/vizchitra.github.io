@@ -23,9 +23,8 @@
 			href: '/2025/conference',
 			accentColor: 'var(--color-viz-orange)',
 			subsections: [
-				{ name: 'Event', href: '/2025/conference' },
+				{ name: 'Event', href: '/2025/' },
 				{ name: 'Videos', href: '/2025/videos' },
-				// { name: 'Sessions', href: '/2025/sessions' },
 				{ name: 'Schedule', href: '/2025/schedule' },
 				{ name: 'Sponsorship', href: '/2025/sponsorship' }
 			],
