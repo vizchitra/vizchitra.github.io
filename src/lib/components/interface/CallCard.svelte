@@ -6,14 +6,12 @@
 
 	type Pattern = 'circle' | 'waves' | 'river' | 'stream';
 	type Tone = 'blue' | 'teal' | 'orange' | 'pink' | 'yellow';
-	type Size = 'small' | 'medium' | 'large';
 
 	interface Props {
 		title?: string;
 		subtitle?: string;
 		pattern?: Pattern;
 		tone?: Tone;
-		size?: Size;
 		variation?: number;
 		titlePosition?: string;
 		subtitlePosition?: string;
@@ -27,7 +25,6 @@
 		subtitle = '',
 		pattern = 'circle',
 		tone = 'pink',
-		size = 'medium',
 		variation = 0.5,
 		titlePosition = 'top-0 left-0',
 		subtitlePosition = 'bottom-0 left-0',
@@ -53,17 +50,11 @@
 		yellow: 'border-viz-yellow'
 	};
 
-	const sizeClasses: Record<Size, string> = {
-		small: 'w-full sm:w-80',
-		medium: 'w-full sm:w-96',
-		large: 'w-full sm:w-[28rem]'
-	};
-
 	const titlePositionClass = $derived(`absolute ${titlePosition}`);
 	const subtitlePositionClass = $derived(`absolute ${subtitlePosition}`);
 
 	const containerClass = $derived(
-		`relative overflow-hidden rounded-lg aspect-[4/5] border-2 ${borderColors[tone]} transition-all duration-200 hover:border-4 active:border-4 no-underline ${sizeClasses[size]} ${className}`
+		`relative overflow-hidden rounded-lg aspect-[4/5] border-2 ${borderColors[tone]} transition-all duration-200 hover:border-4 active:border-4 no-underline w-full min-w-[280px] sm:min-w-[320px] md:max-w-sm ${className}`
 	);
 </script>
 
