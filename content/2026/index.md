@@ -3,17 +3,16 @@ title: VizChitra 2026
 description: India's community-driven data visualization conference returns to Bangalore in 2026
 year: 2026
 banner: curve
-interactive: true
-size: large
-showLogo: true
 ---
 
 <script>
 	import { Flex, FullBleed } from '$lib/components/layout';
 	import { CallCard } from '$lib/components/interface';
 	import { Heading, SubHeading, Slanted, VizChitraLogoType } from '$lib/components/typography';
-	import { DividerCurves } from '$lib/components/structure';
+	import { DividerCurves, Header } from '$lib/components/structure';
 </script>
+
+<Header title="VizChitra 2026" banner="curve" interactive={true} size="large" showLogo={true} tagline="A SPACE TO CONNECT AND CREATE WITH DATA" />
 
 <Heading tag="h2">
 	<VizChitraLogoType year="2026"></VizChitraLogoType>
@@ -39,7 +38,6 @@ We invite submissions across across four formats—<span class="font-bold text-v
 	subtitle="Best for deep dives into projects, case studies or bodies of work."
 	pattern="waves"
 	tone="blue"
-	size="small"
 	titlePosition="top-1 left-4 text-left"
 	subtitlePosition="bottom-0 left-4 text-left"
 	href="/2026/proposals"
@@ -50,7 +48,6 @@ We invite submissions across across four formats—<span class="font-bold text-v
 	subtitle="Best for shared questions, challenges, or themes."
 	pattern="river"
 	tone="teal"
-	size="small"
 	titlePosition="top-12 left-4 text-left"
 	subtitlePosition="top-30 left-4 text-left"
 	href="/2026/proposals"
@@ -61,7 +58,6 @@ We invite submissions across across four formats—<span class="font-bold text-v
 	subtitle="Best for practice-oriented, skill-building sessions"
 	pattern="circle"
 	tone="pink"
-	size="small"
 	titlePosition="top-25 left-1/2 -translate-x-1/2 text-center"
 	subtitlePosition="top-45 left-1/2 -translate-x-1/2 text-center"
 	href="/2026/proposals"
@@ -73,7 +69,6 @@ We invite submissions across across four formats—<span class="font-bold text-v
 	subtitle="Focused on climate & ecological change"
 	pattern="stream"
 	tone="orange"
-	size="small"
 	titlePosition="top-0 left-1/2 -translate-x-1/2 text-center"
 	subtitlePosition="bottom-0 left-1/2 -translate-x-1/2 text-center"
 	href="/2026/exhibition"

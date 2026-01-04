@@ -10,7 +10,10 @@ banner: curve
 	import { Card, FormatCard, Button, Deadline } from '$lib/components/interface';
   import { DividerCurves } from '$lib/components/structure'
   import { Slanted, Notice } from '$lib/components/typography'
+	import { Header } from '$lib/components/structure';
 </script>
+
+<Header title="Call for Proposals" banner="curve" />
 
 For the second edition of the flagship event -- **VizChitra 2026**, we are excited to open up the **call for proposals**. There will be **talks** and **dialogues** on the conference day (4th July, 2026), and **workshops** on the workshop day (3rd July, 2026)
 

@@ -11,8 +11,10 @@ year: 2025
 	import {AttendeeCharts, AttendeeMarquee} from '$lib/components/sections';
 	import {Heading, SubHeading} from '$lib/components/typography'
 	import sponsors from '$lib/data/sponsors2025.json' with { type: 'json' };
-
+	import { Header } from '$lib/components/structure';
 </script>
+
+<Header title="Sponsorship 2025" banner="polygon" />
 
 <SponsorButton/>
 <Grid columns={2} >

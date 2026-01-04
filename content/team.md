@@ -1,13 +1,17 @@
 ---
 title: Our Team
 description: Members of the VizChitra Core Team
+banner: polygon
 ---
 
 <script>
 	import { Slanted } from '$lib/components/typography';
 	import { FullBleed } from '$lib/components/layout';
 	import { TeamSection } from '$lib/components/sections';
+	import { Header } from '$lib/components/structure';
 </script>
+
+<Header title="Our Team" banner="polygon" />
 
 <Slanted tag="h2" color="pink" textContent="THE VIZCHITRA TEAM" />
 

@@ -10,7 +10,10 @@ banner: curve
 	import { Card, Button } from '$lib/components/interface';
   import {DividerCurves} from '$lib/components/structure'
   import {Slanted, Notice} from '$lib/components/typography'
+	import { Header } from '$lib/components/structure';
 </script>
+
+<Header title="Call for Exhibition" banner="curve" />
 
 <Slanted tag="h2" color="orange" textContent="DATA, OTHERWISE" />
 

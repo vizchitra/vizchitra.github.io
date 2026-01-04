@@ -1,11 +1,15 @@
 ---
 title: The Community
 description: The community group for VizChitra, called Friends of VizChitra
+banner: polygon
 ---
 
 <script>
 	import { Slanted } from '$lib/components';
+	import { Header } from '$lib/components/structure';
 </script>
+
+<Header title="The Community" banner="polygon" />
 
 <Slanted tag="h2" color="pink" textContent="FRIENDS of VIZCHITRA" />
 

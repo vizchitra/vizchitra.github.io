@@ -1,11 +1,15 @@
 ---
 title: Our Mission
 description: Mission for the VizChitra
+banner: polygon
 ---
 
 <script>
 	import { Slanted, InlineSvg } from '$lib/components';
+	import { Header } from '$lib/components/structure';
 </script>
+
+<Header title="Our Mission" banner="polygon" />
 
 <Slanted tag="h2" color="pink" textContent="Build an Indian Data Visualization Community" />
 

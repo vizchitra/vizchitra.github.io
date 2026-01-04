@@ -1,11 +1,15 @@
 ---
 title: Code of Conduct
 description: The Do's and Dont's for the VizChitra community
+banner: polygon
 ---
 
 <script>
 	import { Slanted, Notice } from '$lib/components/typography';
+	import { Header } from '$lib/components/structure';
 </script>
+
+<Header title="Code of Conduct" banner="polygon" />
 
 <Slanted tag="h2" color="blue" textContent="THE DO'S AND DONT'S FOR THE COMMUNITY" />
 
