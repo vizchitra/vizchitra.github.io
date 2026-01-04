@@ -1,13 +1,13 @@
 <script>
 	/**
-	 * @typedef {Object} Props
+	/** @typedef {Object} Props
 	 * @property {string} [classes]
 	 * @property {string} [yearClasses]
-	 * @property {boolean} [includeYear]
+	 * @property {number|null} [year] - year to show (e.g. 2025). Set to `null`/omit to hide.
 	 */
 
 	/** @type {Props} */
-	let { classes = '', yearClasses = 'text-[#D46637]', includeYear = true } = $props();
+	let { classes = '', yearClasses = 'text-[#D46637]', year = 2025 } = $props();
 </script>
 
 <span class="viz-logo-type {classes}">
@@ -17,8 +17,8 @@
 		>R</span
 	><span class="A2">A</span>
 
-	{#if includeYear}
-		<span class="year font-bold {yearClasses}">2025</span>
+	{#if year}
+		<span class="year font-bold {yearClasses}">{year}</span>
 	{/if}
 </span>
 

@@ -9,6 +9,7 @@
 		"prettier-plugin-tailwindcss"
 	],
 	"pluginSearchDirs": false,
+	"proseWrap": "preserve",
 	"overrides": [
 		{
 			"files": "*.svelte",

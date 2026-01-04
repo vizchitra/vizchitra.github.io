@@ -1,4 +1,7 @@
 {
+	"workbench.editor.labelFormat": "short",
+	"workbench.tree.indent": 15,
+	"explorer.compactFolders": false,
 	"editor.formatOnSave": true,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"[svelte]": {

@@ -8,3 +8,6 @@ export * from './map';
 export * from './faq';
 export * from './homepage';
 export * from './conference';
+export { default as RecapVideo } from './RecapVideo.svelte';
+export { default as PurposeThree } from './PurposeThree.svelte';
+export { default as VideoGrid } from './VideoGrid.svelte';

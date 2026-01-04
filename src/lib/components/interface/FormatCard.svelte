@@ -1,5 +1,5 @@
 <script lang="ts">
-	import PatternFormats from '$lib/components/structure/PatternFormats.svelte';
+	import PatternFormats from '$lib/components/structure/PatternMountain.svelte';
 
 	type Format = 'talks' | 'workshops' | 'dialogues' | 'exhibition';
 
@@ -35,6 +35,14 @@
 	};
 
 	const colors = $derived(formatColors[format]);
+
+	// Map format to a simple color token name used by PatternMountain
+	const formatToColor: Record<Format, 'blue' | 'teal' | 'pink' | 'orange' | 'yellow'> = {
+		talks: 'blue',
+		dialogues: 'teal',
+		workshops: 'pink',
+		exhibition: 'orange'
+	};
 </script>
 
 <article
@@ -59,7 +67,7 @@
 	<div class="relative pb-8">
 		<!-- Pattern Background -->
 		<div class="pointer-events-none absolute inset-0 overflow-hidden">
-			<PatternFormats {format} class="absolute inset-x-0 bottom-0 h-full opacity-60" />
+			<PatternFormats color={formatToColor[format]} class="absolute inset-x-0 bottom-0 h-full opacity-60" />
 		</div>
 
 		<!-- Bullet Points -->

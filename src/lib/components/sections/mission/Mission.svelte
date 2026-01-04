@@ -6,7 +6,7 @@
 	<div class="vis">
 		{@html MissionViz}
 	</div>
-	<div class="legend">
+	<div class="legend not-prose">
 		<ol>
 			<li class="text-lg">
 				<span class="text-viz-pink-dark font-bold"> ■ Collaboration & Sharing</span> – Team up with fellow

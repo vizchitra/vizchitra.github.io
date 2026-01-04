@@ -195,7 +195,7 @@
 					pentagonXOffset}px, {pentagonYOffset}px);"
 			>
 				<img
-					src={`/images/speakers2025/${memberData.image || ''}`}
+					src={`/images/speakers/${memberData.image || ''}`}
 					alt={memberData.name}
 					class="bg-white"
 					style="transform: {computeTransform()} "
