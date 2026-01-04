@@ -10,7 +10,7 @@
 
 	const recapImage = '/images/events/recap-2025-thumbnail.webp';
 	const decorBanner1 = '/images/patterns/decor-banner-1.webp';
-	const decorBanner2 = '/images/patterns/decor-banner-2.png';
+	const decorBanner2 = '/images/patterns/decor-banner-2.webp';
 	const playButton = '/images/icons/play-button.webp';
 	const cardDecor = '/images/patterns/card-decor.webp';
 
