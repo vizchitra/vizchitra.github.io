@@ -3,6 +3,7 @@
 	import BannerCurve from './BannerCurve.svelte';
 	import { VizChitraLogoTagline } from '$lib/components/typography';
 	import FullBleed from '$lib/components/layout/FullBleed.svelte';
+	import Slanted from '../typography/Slanted.svelte';
 
 	interface Props {
 		title: string;
@@ -36,12 +37,27 @@
 				<BannerPolygon staticBanner={!interactive} fadeDirection="bottom" />
 			{/if}
 		</div>
-		<div class="pointer-events-none absolute inset-0 flex items-center justify-center">
-			{#if showLogo}
-				<VizChitraLogoTagline tag="h3" textContent={tagline} />
-			{:else}
+
+		{#if !interactive}
+			<!-- Static header: centered title -->
+			<div class="pointer-events-none absolute inset-0 flex items-center justify-center">
 				<h1 class="font-display rounded-2xl bg-white px-4 text-2xl font-bold">{title}</h1>
-			{/if}
-		</div>
+			</div>
+		{:else if banner === 'polygon'}
+			<!-- Interactive polygon: centered logo with tagline -->
+			<div class="pointer-events-none absolute inset-0 flex items-center justify-center">
+				<VizChitraLogoTagline tag="h3" textContent={tagline} />
+			</div>
+		{:else}
+			<!-- Interactive curve: logo bottom left, tagline top right -->
+			<div class="pointer-events-none absolute bottom-0 left-5 md:left-25">
+				<VizChitraLogoTagline />
+			</div>
+			<div class="pointer-events-none absolute top-0 right-5">
+				<div class="max-w-[40ch]">
+					<Slanted tag="p" color="grey" textContent={tagline} />
+				</div>
+			</div>
+		{/if}
 	</div>
 </FullBleed>

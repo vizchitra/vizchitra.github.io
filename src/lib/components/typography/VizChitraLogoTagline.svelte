@@ -7,7 +7,7 @@
 		tag?: 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'p';
 	}
 
-	let { textContent = 'A SPACE TO CONNECT AND CREATE WITH DATA', tag = 'span' }: Props = $props();
+	let { textContent, tag = 'span' }: Props = $props();
 
 	// Map tag to appropriate text size classes
 	const tagSizeClasses: Record<string, string> = {
@@ -20,21 +20,26 @@
 	};
 
 	const sizeClass = $derived(tagSizeClasses[tag] || tagSizeClasses.span);
+	const showTagline = $derived(textContent && textContent !== 'none');
 </script>
 
 <div
-	class="pointer-events-none flex flex-col items-center gap-0 rounded-sm bg-white/85 px-4 pt-2 pb-2 shadow-md md:flex-row md:gap-4 md:px-6 md:pt-3 md:pb-1"
+	class="pointer-events-none flex flex-col items-center gap-0 rounded-sm bg-white/0 px-4 pt-2 pb-2 {showTagline
+		? 'shadow-md md:flex-row md:gap-4 md:px-6 md:pt-3 md:pb-1'
+		: ''}"
 >
 	<div class="logo flex-shrink-0">
 		{@html VizchitraLogo}
 	</div>
 
-	<div
-		class="tagline max-w-[20ch] flex-shrink-0 border-t pt-2 text-center leading-tight uppercase {sizeClass} md:max-w-[22ch] md:border-t-0 md:border-l-2 md:pt-0 md:pl-4 md:text-left"
-		style="border-color: var(--viz-color-grey-light);"
-	>
-		<Slanted {tag} color="pink" {textContent} />
-	</div>
+	{#if showTagline}
+		<div
+			class="tagline max-w-[20ch] flex-shrink-0 border-t pt-2 text-center leading-tight uppercase {sizeClass} md:max-w-[22ch] md:border-t-0 md:border-l-2 md:pt-0 md:pl-4 md:text-left"
+			style="border-color: var(--viz-color-grey-light);"
+		>
+			<Slanted {tag} color="pink" textContent={textContent || ''} />
+		</div>
+	{/if}
 </div>
 
 <style>
