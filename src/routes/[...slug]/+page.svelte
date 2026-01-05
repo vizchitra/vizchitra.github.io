@@ -24,10 +24,18 @@
 	{#if frontmatter.description}
 		<meta name="description" content={frontmatter.description} />
 		<meta property="og:description" content={frontmatter.description} />
+		<meta name="twitter:description" content={frontmatter.description} />
 	{/if}
 	{#if frontmatter.title}
-		<meta property="og:title" content={frontmatter.title} />
+		<meta property="og:title" content={`${frontmatter.title} | VizChitra`} />
+		<meta name="twitter:title" content={`${frontmatter.title} | VizChitra`} />
 	{/if}
+	{#if frontmatter.image}
+		<meta property="og:image" content={frontmatter.image} />
+		<meta name="twitter:image" content={frontmatter.image} />
+		<meta name="twitter:card" content="summary_large_image" />
+	{/if}
+	<meta property="og:type" content="website" />
 </svelte:head>
 
 {#key data.slug}

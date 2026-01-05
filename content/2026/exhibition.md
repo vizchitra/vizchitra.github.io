@@ -1,6 +1,7 @@
 ---
 title: Call for Exhibition
 descriptionn: Call for Exhibition for VizChitra 2026
+image: /images/preview/preview-2026-exhibition.jpg
 year: 2026
 banner: curve
 ---
