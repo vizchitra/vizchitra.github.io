@@ -1,5 +1,5 @@
 ---
-title: VizChitra 2026
+title: 2026 | VizChitra
 description: India's community-driven data visualization conference returns to Bangalore in 2026
 image: /images/preview/preview-2026.jpg
 year: 2026

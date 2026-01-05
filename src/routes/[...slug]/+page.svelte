@@ -19,7 +19,7 @@
 
 <svelte:head>
 	{#if frontmatter.title}
-		<title>{frontmatter.title} | VizChitra</title>
+		<title>{frontmatter.title}</title>
 	{/if}
 	{#if frontmatter.description}
 		<meta name="description" content={frontmatter.description} />

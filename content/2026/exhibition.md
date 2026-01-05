@@ -1,5 +1,5 @@
 ---
-title: Call for Exhibition
+title: Call for Exhibition | 2026 | VizChitra
 descriptionn: Call for Exhibition for VizChitra 2026
 image: /images/preview/preview-2026-exhibition.jpg
 year: 2026
