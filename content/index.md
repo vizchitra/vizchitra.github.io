@@ -1,7 +1,7 @@
 ---
 title: VizChitra
 description: The Indian Data Visualization Community
-image: /images/vizchitra-preview.png
+image: /images/preview/vizchitra-preview.jpg
 banner: curve
 ---
 
