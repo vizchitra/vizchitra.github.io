@@ -1,6 +1,6 @@
 # VizChitra
 
-![VizChitra Logo](static/images/vizchitra-preview.png)
+![VizChitra Logo](static/images/vizchitra-preview.jpg)
 
 VizChitra is an Indian data visualization community. Our mission is to foster a vibrant community of data storytellers in India. We welcome contributions to the VizChitra website. To ensure a smooth and collaborative process, please adhere to the following guidelines:
 

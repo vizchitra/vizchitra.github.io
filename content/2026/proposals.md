@@ -1,6 +1,7 @@
 ---
 title: Call for Proposals
 descriptionn: Call for Proposals for VizChitra 2026
+image: /images/preview/preview-2026-proposals.jpg
 year: 2026
 banner: curve
 ---
