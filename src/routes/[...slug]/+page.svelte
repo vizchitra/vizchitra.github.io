@@ -27,8 +27,8 @@
 		<meta name="twitter:description" content={frontmatter.description} />
 	{/if}
 	{#if frontmatter.title}
-		<meta property="og:title" content={`${frontmatter.title} | VizChitra`} />
-		<meta name="twitter:title" content={`${frontmatter.title} | VizChitra`} />
+		<meta property="og:title" content={frontmatter.title} />
+		<meta name="twitter:title" content={frontmatter.title} />
 	{/if}
 	{#if frontmatter.image}
 		<meta property="og:image" content={frontmatter.image} />
