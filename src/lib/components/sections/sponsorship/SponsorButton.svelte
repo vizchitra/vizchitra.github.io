@@ -1,11 +1,9 @@
 <script lang="ts">
-	import { FullBleed } from '$lib/components/layout';
+	import { FullBleed } from '$lib/components';
 </script>
 
 <FullBleed>
-	<div
-		class="button-container bg-viz-blue-light/10 relative flex h-[20svh] items-center justify-center"
-	>
+	<div class="button-container bg-viz-blue-light/10 relative flex items-center justify-center">
 		<button
 			on:click={() => {
 				document.getElementById('sponsorship-contact-form')?.scrollIntoView({
@@ -13,7 +11,7 @@
 					block: 'center'
 				});
 			}}
-			class="bg-viz-pink-dark hover:bg-viz-pink-dark/90 center relative mt-4 mb-8 flex cursor-pointer rounded-sm px-6 py-4 text-xl text-white italic"
+			class="bg-viz-pink-dark hover:bg-viz-pink-dark/90 center relative mt-sm mb-lg flex cursor-pointer rounded-sm px-md py-sm text-xl text-white italic"
 		>
 			Become a sponsor →
 		</button>
@@ -29,3 +27,9 @@
 		/>
 	</div>
 </FullBleed>
+
+<style>
+	.button-container {
+		height: 20svh;
+	}
+</style>

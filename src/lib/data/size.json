@@ -1,0 +1,44 @@
+[
+  {
+    "shortName": "Enterprise",
+    "size": "Enterprise (10,001+)",
+    "perc": "30",
+    "count": "43"
+  },
+  {
+    "shortName": "Mega",
+    "size": "Mega (5,001-10,000)",
+    "perc": "6",
+    "count": "09"
+  },
+  {
+    "shortName": "Large",
+    "size": "Large (1,001-5,000)",
+    "perc": "11",
+    "count": "15"
+  },
+  {
+    "shortName": "Medium",
+    "size": "Medium (200-1,000)",
+    "perc": "16",
+    "count": "23"
+  },
+  {
+    "shortName": "Small",
+    "size": "Small (11-200)",
+    "perc": "14",
+    "count": "20"
+  },
+  {
+    "shortName": "Micro",
+    "size": "Micro (2-10)",
+    "perc": "16",
+    "count": "22"
+  },
+  {
+    "shortName": "Solo",
+    "size": "Solo (1)",
+    "perc": "6",
+    "count": "9"
+  }
+]

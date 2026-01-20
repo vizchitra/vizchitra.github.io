@@ -1,17 +1,17 @@
 ---
-title: Our Ethos
-description: Ethos for VizChitra Community
+title: Ethos & Mission
+description: Ethos & Mission for VizChitra Community
 banner: polygon
 ---
 
 <script>
-	import { Slanted } from '$lib/components';
-	import { Header } from '$lib/components/structure';
 </script>
 
-<Header title="Our Ethos" banner="polygon" />
+<Header title="Ethos & Mission" banner="polygon" />
 
-<Slanted tag="h2" color="pink" textContent="A SPACE TO CONNECT AND CREATE WITH DATA" />
+<Title align="center">
+  <Slanted color="pink" textContent="A SPACE TO CONNECT AND CREATE WITH DATA" />
+</Title>
 
 VizChitra is a vibrant, inclusive community of data storytellers, blending artistry with technical expertise. Based in India, where data literacy and visualization practices are still in their early stages and largely fragmented, we aim to be a unifying platform that fosters creativity, collaboration, and growth. Our mission extends beyond creating great visualizations – we are here to build awareness and understanding of the power of data storytelling in shaping perspectives and driving change.
 
@@ -25,6 +25,16 @@ We celebrate the craft of visualization not as a means to an end, but as a creat
 
 This unified ethos guides all our efforts. Whether we’re shaping policy, engaging with partners, running events, or curating community dialogue, we remain dedicated to fostering a supportive environment where creative minds can gather, learn, experiment, and shine.
 
-<Slanted tag="h2" color="pink" textContent="AN INDIAN DATA VISUALIZATION COMMUNITY" />
+<Slanted tag="h2" color="blue" textContent="Build an Indian Data Visualization Community" />
 
 At VizChitra, we’re not just creating data stories; we’re building a culture of data storytelling and literacy in India – one that is collaborative, nuanced, and joyfully human.
+
+<Cluster align="center" justify="center" space="md">
+<InlineSvg name="mission-viz.svg" />
+</Cluster>
+
+- <ColorSpan color="pink">Collaboration & Sharing</ColorSpan>: Team up with fellownerds for fun projects and knowledge sharing.
+- <ColorSpan color="orange">Learning & Growth</ColorSpan>: Geek out, tinker, and learn new things from everyone, especially beyond work.
+- <ColorSpan color="blue">Community & Diversity</ColorSpan>: Be part of a (accessible) community, full of creative people with diverse experiences
+- <ColorSpan color="teal">Connection & Inspiration</ColorSpan>: Engage with data viz creators to connect, and get inspired.
+- <ColorSpan color="yellow">Curation & Advocacy</ColorSpan>: Curate data visualization knowledge, and share Indian voices & work.

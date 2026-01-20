@@ -1,0 +1,142 @@
+[
+  {
+    "id": "0nHw0TTDiEY",
+    "title": "The Data Is Here:",
+    "subtitle": "But Whom Is It Serving?",
+    "thumbnail": "https://i.ytimg.com/vi/0nHw0TTDiEY/maxresdefault.jpg",
+    "type": "Keynote",
+    "code": "Keynote",
+    "speaker": "Rukmini S",
+    "hook": "Challenging who gets access to India's data—and who gets left out"
+  },
+  {
+    "id": "htc3LwVbPgI",
+    "title": "Data Design By Dialogue:",
+    "subtitle": "Visualising Data with LLMs",
+    "thumbnail": "https://i.ytimg.com/vi/htc3LwVbPgI/maxresdefault.jpg",
+    "type": "Keynote",
+    "code": "Keynote",
+    "speaker": "Anand S",
+    "hook": "From bare prompt to polished chart through conversations with AI"
+  },
+  {
+    "id": "ngjkqqjW5kY",
+    "title": "The Eyes Have It:",
+    "subtitle": "Understanding Perception-Driven Data Visualisation",
+    "thumbnail": "https://i.ytimg.com/vi/ngjkqqjW5kY/maxresdefault.jpg",
+    "type": "Standard Talk",
+    "code": "StandardTalk",
+    "speaker": "Prasanta Kumar Dutta",
+    "hook": "Where your viewer's eye goes first is no accident"
+  },
+  {
+    "id": "lNMBq8_zl_M",
+    "title": "Data Journalism and Visualisation:",
+    "subtitle": "At a time of Print's decline",
+    "thumbnail": "https://i.ytimg.com/vi/lNMBq8_zl_M/maxresdefault.jpg",
+    "type": "Standard Talk",
+    "code": "StandardTalk",
+    "speaker": "Srinivasan Ramani",
+    "hook": "How data journalism offers print media a new lease on life"
+  },
+  {
+    "id": "3dZA7iJF51g",
+    "title": "Bringing Order to Chaos:",
+    "subtitle": "Designing Visualizations for Enterprise",
+    "thumbnail": "https://i.ytimg.com/vi/3dZA7iJF51g/maxresdefault.jpg",
+    "type": "Sponsored Talk",
+    "code": "SponsoredTalk",
+    "speaker": "Hardik Chandrahas",
+    "hook": "Transforming enterprise chaos into clear, actionable insights"
+  },
+  {
+    "id": "AUrJVCLiAG0",
+    "title": "Data Visualization at Lilly:",
+    "subtitle": "Designing Visuals that Solve, Simplify, and See Ahead",
+    "thumbnail": "https://i.ytimg.com/vi/AUrJVCLiAG0/maxresdefault.jpg",
+    "type": "Sponsored Talk",
+    "code": "SponsoredTalk",
+    "speaker": "Aditeya Pandey",
+    "hook": "Empowering biopharma teams through clarity, insight and foresight"
+  },
+  {
+    "id": "MmSdz7hPZGM",
+    "title": "The invisible graph:",
+    "subtitle": "Leveraging AI to design accessible data visualisations",
+    "thumbnail": "https://i.ytimg.com/vi/MmSdz7hPZGM/maxresdefault.jpg",
+    "type": "Lightning Talk",
+    "code": "LightningTalk",
+    "speaker": "Sabhyata Jain",
+    "hook": "Making data visualizations audible and inclusive through AI"
+  },
+  {
+    "id": "rHigCIwrTfE",
+    "title": "Panel on Past,Present and Future Of Viz in Biz",
+    "subtitle": "",
+    "thumbnail": "https://i.ytimg.com/vi/rHigCIwrTfE/maxresdefault.jpg",
+    "type": "Panel Disussion",
+    "code": "PanelDisussion",
+    "speaker": "Kavitha Ranganathan, Karthik Shashidharan, Aromal Ram, Rasagy Sharma",
+    "hook": "Unpacking the evolution of dataviz in business"
+  },
+  {
+    "id": "v6u40X5HAns",
+    "title": "The UX of Charts:",
+    "subtitle": "Get the Insight Across, Every Time",
+    "thumbnail": "https://i.ytimg.com/vi/v6u40X5HAns/maxresdefault.jpg",
+    "type": "Lightning Talk",
+    "code": "LightningTalk",
+    "speaker": "Vikram Nayak",
+    "hook": "Design data visuals that actually work and get used"
+  },
+  {
+    "id": "VqFNQPWdFdE",
+    "title": "India's Public Health Genome:",
+    "subtitle": "A Visual Story of Anomalies, Trajectories, Correlations and Geographies",
+    "thumbnail": "https://i.ytimg.com/vi/VqFNQPWdFdE/maxresdefault.jpg",
+    "type": "Lightning Talk",
+    "code": "LightningTalk",
+    "speaker": "Saket Choudhary",
+    "hook": "Decoding India's health patterns through data's genetic code"
+  },
+  {
+    "id": "6jTHeM0KQO4",
+    "title": "Data Visceralization:",
+    "subtitle": "Moving Data, Spinning Stories",
+    "thumbnail": "https://i.ytimg.com/vi/6jTHeM0KQO4/maxresdefault.jpg",
+    "type": "Standard Talk",
+    "code": "StandardTalk",
+    "speaker": "Aditi Bhat",
+    "hook": "When data becomes dance and movement becomes meaning"
+  },
+  {
+    "id": "t-dm1DzU0po",
+    "title": "Making Sense of Stories:",
+    "subtitle": "Structuring Qualitative Data at Scale",
+    "thumbnail": "https://i.ytimg.com/vi/t-dm1DzU0po/maxresdefault.jpg",
+    "type": "Lightning Talk",
+    "code": "LightningTalk",
+    "speaker": "Yashna Jhamb",
+    "hook": "Turning messy qualitative data into meaningful change"
+  },
+  {
+    "id": "AGTyiQZbZCY",
+    "title": "Democratizing Financial Data for a Growing India",
+    "subtitle": "",
+    "thumbnail": "https://i.ytimg.com/vi/AGTyiQZbZCY/maxresdefault.jpg",
+    "type": "Lightning Talk",
+    "code": "LightningTalk",
+    "speaker": "Rahul Beniwal, Neel Lakhwani",
+    "hook": "Making financial data engaging for India's new investors"
+  },
+  {
+    "id": "F4Hr-DTKH70",
+    "title": "The Unreasonable Trickiness of Tinkering",
+    "subtitle": "",
+    "thumbnail": "https://i.ytimg.com/vi/F4Hr-DTKH70/maxresdefault.jpg",
+    "type": "Lightning Talk",
+    "code": "LightningTalk",
+    "speaker": "Aman Bhargava",
+    "hook": "How side projects become powerful learning playgrounds"
+  }
+]

@@ -1,0 +1,142 @@
+/*
+	Canonical design tokens for VizChitra.
+
+	This file is intentionally plain CSS (no Tailwind-specific at-rules).
+	Tailwind v4 token utilities are mapped from these variables in src/app.css.
+
+	Naming:
+	- Canonical tokens are prefixed with --viz-*
+	- Tailwind-facing tokens use --color-* / --font-* and are defined in src/app.css
+*/
+
+:root {
+	/* ============================================
+	   COLOR PALETTE
+	   ============================================ */
+
+	/* Core neutrals */
+	--viz-color-white: oklch(100% 0 0);
+	--viz-color-black: oklch(0.19% 0 0);
+
+	/* Brand palette (OKLCH) */
+	--viz-color-yellow: oklch(89.01% 0.1087 81.79);
+	--viz-color-teal: oklch(86.69% 0.0766 188.62);
+	--viz-color-blue: oklch(80.04% 0.0763 267.25);
+	--viz-color-orange: oklch(78.25% 0.1221 47.22);
+	--viz-color-pink: oklch(74.82% 0.1333 354.07);
+	--viz-color-grey: oklch(41.65% 0.0001 271.15);
+
+	/* Light shades */
+	--viz-color-yellow-light: oklch(95.21% 0.04719 82.7);
+	--viz-color-teal-light: oklch(91.75% 0.06307 187.567);
+	--viz-color-blue-light: oklch(86.21% 0.05383 268.925);
+	--viz-color-orange-light: oklch(82.57% 0.08436 48.387);
+	--viz-color-pink-light: oklch(79.62% 0.112 353.489);
+	--viz-color-grey-light: oklch(46% 0.0001 271.15);
+
+	/* Dark shades */
+	--viz-color-yellow-dark: oklch(72.78% 0.1309 78.763);
+	--viz-color-teal-dark: oklch(69.31% 0.08219 187.336);
+	--viz-color-blue-dark: oklch(65.49% 0.09966 268.485);
+	--viz-color-orange-dark: oklch(63.46% 0.15161 42.303);
+	--viz-color-pink-dark: oklch(59.66% 0.16726 357.828);
+	--viz-color-grey-dark: oklch(35% 0.0001 271.15);
+
+	/* Semantic aliases */
+	--viz-color-bg: var(--viz-color-white);
+	--viz-color-fg: var(--viz-color-black);
+	--viz-color-muted: var(--viz-color-grey);
+	--viz-color-surface: var(--viz-color-white);
+	--viz-color-border: var(--viz-color-grey);
+	--viz-color-link: var(--viz-color-blue-dark);
+	--viz-color-accent: var(--viz-color-pink);
+
+	/* ============================================
+	   TYPOGRAPHY
+	   ============================================ */
+
+	/* Font families */
+	--viz-font-display: 'Cairo', Optima, Candara, 'Noto Sans', source-sans-pro, system-ui, sans-serif;
+	--viz-font-body:
+		'IBM Plex Sans', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, system-ui, sans-serif;
+	--viz-font-mono:
+		ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+
+	/* Font sizes */
+	--viz-font-size-xs: 0.75rem;
+	--viz-font-size-sm: 0.875rem;
+	--viz-font-size-base: 1rem;
+	--viz-font-size-lg: 1.125rem;
+	--viz-font-size-xl: 1.25rem;
+	--viz-font-size-2xl: 1.5rem;
+	--viz-font-size-3xl: 1.875rem;
+	--viz-font-size-4xl: 2.25rem;
+	--viz-font-size-5xl: 3rem;
+
+	/* Line heights */
+	--viz-leading-none: 1;
+	--viz-leading-tight: 1.25;
+	--viz-leading-snug: 1.375;
+	--viz-leading-normal: 1.5;
+	--viz-leading-relaxed: 1.625;
+
+	/* Font weights */
+	--viz-font-weight-normal: 400;
+	--viz-font-weight-medium: 500;
+	--viz-font-weight-semibold: 600;
+	--viz-font-weight-bold: 700;
+	--viz-font-weight-black: 900;
+
+	/* ============================================
+	   SPACING (Fluid scale)
+	   ============================================ */
+	--viz-space-0: 0;
+	--viz-space-px: 1px;
+	--viz-space-xs: clamp(0.25rem, 0.5vw + 0.125rem, 0.5rem);
+	--viz-space-sm: clamp(0.5rem, 1vw + 0.25rem, 1rem);
+	--viz-space-md: clamp(1rem, 2vw + 0.5rem, 1.5rem);
+	--viz-space-lg: clamp(1.5rem, 3vw + 0.75rem, 2.5rem);
+	--viz-space-xl: clamp(2rem, 4vw + 1rem, 4rem);
+	--viz-space-2xl: clamp(3rem, 6vw + 1.5rem, 6rem);
+	--viz-space-3xl: clamp(4rem, 8vw + 2rem, 8rem);
+	--viz-space-4xl: clamp(6rem, 12vw + 3rem, 12rem);
+
+	/* ============================================
+	   BORDER RADIUS
+	   ============================================ */
+	--viz-radius-none: 0;
+	--viz-radius-sm: 0.25rem;
+	--viz-radius-md: 0.5rem;
+	--viz-radius-lg: 0.75rem;
+
+	/* ============================================
+	   SHADOWS
+	   ============================================ */
+	--viz-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	--viz-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+	--viz-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+	/* ============================================
+	   MAX WIDTHS
+	   ============================================ */
+	--viz-max-w-prose: 65ch;
+	--viz-max-w-xs: 20rem;
+	--viz-max-w-sm: 24rem;
+	--viz-max-w-md: 28rem;
+	--viz-max-w-lg: 32rem;
+	--viz-max-w-xl: 36rem;
+	--viz-max-w-2xl: 42rem;
+	--viz-max-w-3xl: 48rem;
+	--viz-max-w-4xl: 56rem;
+	--viz-max-w-5xl: 64rem;
+	--viz-max-w-6xl: 72rem;
+	--viz-max-w-7xl: 80rem;
+
+	/* MIN WIDTHS (component tokens) */
+	--viz-min-w-2xs: 17.5rem;
+	--viz-min-w-xs: 20rem;
+	--viz-min-w-sm: 24rem;
+	--viz-min-w-md: 28rem;
+	--viz-min-w-lg: 32rem;
+	--viz-min-w-xl: 36rem;
+}

@@ -1,18 +1,24 @@
 <script lang="ts">
-	export let trail: { href: string; label: string }[] = [];
-	export let current: string | null = null;
+	import { Cluster } from '$lib/components';
+
+	interface Props {
+		trail?: { href: string; label: string }[];
+		current?: string | null;
+	}
+
+	let { trail = [], current = null }: Props = $props();
 </script>
 
 <nav aria-label="Breadcrumb" class="text-sm">
-	<ol class="text-viz-grey flex items-center gap-2">
+	<Cluster space="sm" align="center" class="text-grey">
 		{#each trail as item, i}
-			<li>
-				<a href={item.href} class="text-viz-grey hover:text-viz-black uppercase">{item.label}</a>
-				<span class="px-2">/</span>
-			</li>
+			<span>
+				<a href={item.href} class="text-grey uppercase hover:text-black">{item.label}</a>
+				<span class="px-sm">/</span>
+			</span>
 		{/each}
 		{#if current}
-			<li class="text-viz-black font-medium uppercase">{current}</li>
+			<span class="font-medium text-black uppercase">{current}</span>
 		{/if}
-	</ol>
+	</Cluster>
 </nav>

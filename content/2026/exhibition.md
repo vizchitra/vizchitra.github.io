@@ -6,36 +6,28 @@ year: 2026
 banner: curve
 ---
 
-<script>
-	import { Grid, FullBleed } from '$lib/components/layout';
-	import { Card, Button } from '$lib/components/interface';
-  import {DividerCurves} from '$lib/components/structure'
-  import {Slanted, Notice} from '$lib/components/typography'
-	import { Header } from '$lib/components/structure';
-</script>
-
 <Header title="Call for Exhibition" banner="curve" />
 
 <Slanted tag="h2" color="orange" textContent="DATA, OTHERWISE" />
 
 VizChitra 2026 invites submissions for **Data, Otherwise**, an exhibition of contemporary data visualization work focused on climate and ecological change, especially work connected to India and South Asia. The exhibition will be organized in a gallery setup on the conference day (4th July, 2026)
 
-**We’re looking for projects that stretch what data visualization can be**: not only charts and screens, but experiences that people can walk through, listen to, touch, or sit with.
+**We're looking for projects that stretch what data visualization can be**: not only charts and screens, but experiences that people can walk through, listen to, touch, or sit with.
 
-<div class="flex justify-center align-center">
+<Cluster justify="center" align="center">
 <Button href="https://forms.vizchitra.com/exhibition" color="orange" external={true}>Submit for Exhibition</Button>
-</div>
+</Cluster>
 
-<h3 class="text-center">Exhibition Deadline: 15 Feb 2026</h3>
+<h3 style="text-align: center">Exhibition Deadline: 15 Feb 2026</h3>
 
-<DividerCurves/>
+<Divider type="curves" />
 
-<Slanted tag="h3" color="black" textContent="TOPICS FOR EXHIBITION" />
+<Slanted tag="h2" color="black" textContent="TOPICS FOR EXHIBITION" />
 
 The exhibition is organized around three interconnected topics. You can use them as starting points, not strict categories:
 
-<FullBleed class="px-4 md:px-8">
-<Grid minWidth="20rem" maxColumns={3} gap={6}>
+<FullBleed containerClass="px-md md:px-lg">
+<Grid minWidth="20rem" maxColumns={3} space="md">
 
 <Card variant="bordered" color="orange" title="More-than-Human Data">
 
@@ -57,7 +49,7 @@ Everyday examples of coping and changing for people, communities, and environmen
 </Grid>
 </FullBleed>
 
-<DividerCurves/>
+<Divider type="curves" />
 
 ## **How to shape your exhibition proposal**
 
@@ -79,7 +71,7 @@ Strong proposals clearly connect the data, the way it’s gathered, and the form
 
 </Notice>
 
-<DividerCurves/>
+<Divider type="curves" />
 
 ### **Production & Support**
 
@@ -101,10 +93,10 @@ Participants are responsible for ensuring that all data used in their work is ob
 
 Selected artists are responsible for realizing their projects in line with the approved proposal, agreed timelines, and production arrangements, and for working collaboratively with the curatorial and technical teams. Any significant changes to the proposed work must be communicated and approved in advance.
 
-<DividerCurves/>
+<Divider type="curves" />
 
-<div class="flex justify-center align-center">
+<Cluster justify="center" align="center">
 <Button href="https://forms.vizchitra.com/exhibition" color="orange" external={true}>Submit for Exhibition</Button>
-</div>
+</Cluster>
 
-<h3 class="text-center">Exhibition Deadline: 15 Feb 2026</h3>
+<h3 style="text-align: center">Exhibition Deadline: 15 Feb 2026</h3>

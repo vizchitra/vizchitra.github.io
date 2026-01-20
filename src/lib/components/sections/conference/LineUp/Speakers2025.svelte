@@ -1,35 +1,35 @@
 <script>
-	import HomepageSection from '$lib/components/sections/homepage/HomepageSection.svelte';
+	import { HomepageSection } from '$lib/components';
 	import SpeakerCardsTrack from '../SpeakerCard/SpeakerCardsTrack.svelte';
 </script>
 
-<div class="max-w-[100%] md:overflow-auto">
+<div class="max-w-full md:overflow-auto">
 	<SpeakerCardsTrack sessionTypes={['standard talk', 'sponsored talk']} />
 </div>
 
 <HomepageSection>
 	<div slot="content">
-		<h2 class="content-heading !text-[2rem]">Lightning Talks</h2>
-		<p class="content-text mb-1">
+		<h2 class="content-heading !text-3xl">Lightning Talks</h2>
+		<p class="content-text mb-xs">
 			Shorter sessions of 15 minutes each, where speakers share quick insights, demos, or give you
 			an insider view of the work they do.
 		</p>
 	</div>
 </HomepageSection>
 
-<div class="max-w-[100%] md:overflow-auto">
+<div class="max-w-full md:overflow-auto">
 	<SpeakerCardsTrack sessionTypes={['lightning talk']} />
 </div>
 
 <HomepageSection>
 	<div slot="content">
-		<p class="content-text mb-1">Additionally we also have two other types of sessions:</p>
-		<ul class="list-disc pl-6">
-			<li class="content-text mb-1">
+		<p class="content-text mb-xs">Additionally we also have two other types of sessions:</p>
+		<ul class="list-disc pl-md">
+			<li class="content-text mb-xs">
 				<strong>Birds of Feather</strong>: A community-driven discussion bringing together
 				participants with shared interests
 			</li>
-			<li class="content-text mb-1">
+			<li class="content-text mb-xs">
 				<strong>Alternative</strong>: A place for all dataviz related experiences that don't quite
 				fit into the previous categories
 			</li>
@@ -37,6 +37,6 @@
 	</div>
 </HomepageSection>
 
-<div class="max-w-[100%] overflow-auto">
+<div class="max-w-full overflow-auto">
 	<SpeakerCardsTrack sessionTypes={['alternate', 'bof']} />
 </div>

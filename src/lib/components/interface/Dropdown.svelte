@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { run } from 'svelte/legacy';
+	import { Cluster } from '$lib/components';
 
 	interface Props {
 		data?: Record<string, any>[];
@@ -13,7 +13,7 @@
 
 	let uniqueOptions: any = $state([]);
 
-	run(() => {
+	$effect(() => {
 		const map = new Map(data.map((item) => [item[keyField], item]));
 		uniqueOptions = Array.from(map.values());
 	});
@@ -26,7 +26,7 @@
 	<select
 		bind:this={element}
 		onchange={() => onSelect(element)}
-		class="appearance-none rounded-md border border-gray-300 bg-white px-3 py-1.5 pr-8 text-sm font-medium text-gray-700 shadow-sm transition focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+		class="border-grey-light px-sm py-xs pr-lg text-grey appearance-none rounded-md border bg-white text-sm font-medium shadow-sm transition focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none"
 	>
 		{#each uniqueOptions as item}
 			<option value={item[keyField]} selected={item[keyField] === activeValue}>
@@ -36,9 +36,14 @@
 	</select>
 
 	<!-- Down arrow icon -->
-	<div class="pointer-events-none absolute inset-y-0 right-2 flex items-center text-gray-400">
+	<Cluster
+		space="xs"
+		align="center"
+		justify="center"
+		class="right-sm pointer-events-none absolute inset-y-0"
+	>
 		<svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
 			<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
 		</svg>
-	</div>
+	</Cluster>
 </div>

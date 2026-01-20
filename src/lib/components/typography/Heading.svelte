@@ -1,38 +1,78 @@
 <script lang="ts">
+  import type { Snippet } from "svelte";
 
-	interface Props {
-		tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-		align?: 'left' | 'center' | 'right';
-		children?: import('svelte').Snippet;
-		class?: string;
-		href?: string;
-		target?: string;
-	}
+  interface Props {
+    tag?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+    size?: "display" | "lg" | "md" | "sm" | "xs";
+    align?: "left" | "center" | "right";
+    color?:
+      | "black"
+      | "white"
+      | "blue"
+      | "pink"
+      | "orange"
+      | "teal"
+      | "yellow"
+      | "grey";
+    children?: Snippet;
+    class?: string;
+  }
 
-	let {
-		tag = 'h2',
-		align = 'center',
-		children,
-		class: className = '',
-		href,
-		target = '_self'
-	}: Props = $props();
+  let {
+    tag = "h2",
+    size = "lg",
+    align = "center",
+    color = "black",
+    children,
+    class: className = "",
+  }: Props = $props();
 
-	const rel = $derived(target === '_blank' ? 'noopener noreferrer' : undefined);
+  const sizeClasses: Record<string, string> = {
+    display: `
+        text-[length:var(--heading-display-size)]
+        font-[var(--heading-display-weight)]
+      `,
+    lg: `
+        text-[length:var(--heading-lg-size)]
+        font-[var(--heading-lg-weight)]
+      `,
+    md: `
+        text-[length:var(--heading-md-size)]
+        font-[var(--heading-md-weight)]
+      `,
+    sm: `
+        text-[length:var(--heading-sm-size)]
+        font-[var(--heading-sm-weight)]
+      `,
+    xs: `
+        text-[length:var(--heading-xs-size)]
+        font-[var(--heading-xs-weight)]
+   `,
+  };
 
-	const alignClasses = {
-		left: 'text-left',
-		center: 'text-center',
-		right: 'text-right'
-	};
+  const alignClasses = {
+    left: "text-left",
+    center: "text-center",
+    right: "text-right",
+  };
+
+  const colorClasses = {
+    black: "text-black",
+    white: "text-white",
+    blue: "text-blue",
+    pink: "text-pink",
+    orange: "text-orange",
+    teal: "text-teal",
+    yellow: "text-yellow",
+    grey: "text-grey",
+  };
 </script>
 
-<svelte:element this={tag} class="content-heading mb-4 {alignClasses[align]} {className}">
-	{#if href}
-		<a href={href} target={target} rel={rel} class="text-viz-blue font-medium inline-flex items-center">
-			{@render children?.()}
-		</a>
-	{:else}
-		{@render children?.()}
-	{/if}
+<svelte:element
+  this={tag}
+  class="{alignClasses[align]} {sizeClasses[size]} {colorClasses[
+    color
+  ]} {className}"
+>
+  {@render children?.()}
 </svelte:element>

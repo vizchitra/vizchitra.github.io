@@ -1,12 +1,16 @@
 <script lang="ts">
-	interface Props {
-		children?: import('svelte').Snippet;
-		class?: string;
-	}
+  import type { Snippet } from "svelte";
 
-	let { children, class: className = '' }: Props = $props();
+  interface Props {
+    children?: Snippet;
+    class?: string;
+  }
+
+  let { children, class: className = "" }: Props = $props();
 </script>
 
-<p class="content-text mx-auto max-w-2xl text-center {className}">
-	{@render children?.()}
+<p
+  class="mx-auto max-w-2xl text-center text-lg leading-normal md:text-xl {className}"
+>
+  {@render children?.()}
 </p>

@@ -54,10 +54,14 @@ At a high level:
   Page routes and layouts
 
 - `src/lib/components/`
-  Reusable components (organized by purpose)
-
-- `src/lib/assets/css/`
-  Design tokens and fonts (the “design system”)
+  Reusable components organized into 7 layers:
+  - `foundation/` – Design tokens and global CSS
+  - `typography/` – Text primitives
+  - `structure/` – Layout & spacing utilities
+  - `interface/` – Interactive primitives
+  - `blocks/` – Semantic UI chunks
+  - `sections/` – Page-level compositions
+  - `patterns/` – Decorative visuals (optional)
 
 - `static/`
   Images and fonts served as-is
@@ -68,22 +72,24 @@ If you’re unsure where something belongs, ask before adding it.
 
 ## How styling works (important)
 
-We follow a **CSS-first, token-driven design system**.
+We follow a **token-driven, layer-based design system**.
 
 ### Design tokens
 
-- Canonical design values live in
-  `src/lib/assets/css/tokens.css` as `--viz-*` variables.
-- These tokens are mapped to Tailwind utilities in `src/app.css`.
+- Canonical design values live in `src/lib/components/foundation/tokens.css` as `--viz-*` variables
+- These tokens are mapped to Tailwind utilities in `src/app.css`
+- See [system.md](src/lib/components/system.md) for the complete architecture
 
 **What this means for contributors:**
 
-- ❌ Don’t use raw hex colors in Tailwind classes
-- ❌ Don’t invent one-off styles inline
+- ❌ Don't use raw hex colors in Tailwind classes
+- ❌ Don't invent one-off styles inline
+- ❌ Don't use `flex`, `grid`, or `gap` directly in reusable components
 - ✅ Use existing Tailwind utilities backed by tokens
-- ✅ If a new design value is needed, add it to tokens first
+- ✅ Use **structure** primitives for layout: `Stack`, `Cluster`, `Grid`
+- ✅ If a new design value is needed, add it to `foundation/tokens.css` first
 
-This keeps the visual system coherent over time.
+This keeps the visual system coherent and maintainable over time.
 
 ---
 
@@ -120,17 +126,25 @@ If you need special layouts or visuals, use a Svelte component instead of hackin
 
 ## Components: how we organize UI
 
-Components are grouped by _responsibility_, not by page:
+Components are organized into **7 composable layers** (dependencies flow downward):
 
-- `interface/` – low-level reusable primitives
-- `typography/` – text wrappers and prose
-- `layout/` – layout building blocks
-- `structure/` – global site chrome (header, footer, banners)
-- `sections/` – reusable page sections
-- `src/routes/<route>/_components/` – page-specific components
+| Layer          | Purpose                       | Examples                       |
+| -------------- | ----------------------------- | ------------------------------ |
+| **Foundation** | Design tokens & global CSS    | `tokens.css`, `components.css` |
+| **Typography** | Text primitives & scales      | `Heading`, `Prose`, `Text`     |
+| **Structure**  | Layout & spacing utilities    | `Stack`, `Cluster`, `Grid`     |
+| **Interface**  | Interactive primitives        | `Button`, `Input`, `Toggle`    |
+| **Blocks**     | Reusable semantic chunks      | `Card`, `Media`, `ListItem`    |
+| **Sections**   | Page-level compositions       | `Header`, `Footer`, `Hero`     |
+| **Patterns**   | Decorative visuals (optional) | `Wave`, `Stream`, `Divider`    |
 
 **Guideline:**
-If a component is tightly coupled to one page, keep it near that page.
+Components can only import from lower layers (Foundation → Typography → Structure → ... → Sections). Patterns are optional decorations that no layer depends on.
+
+**Page-specific components:**
+If a component is tightly coupled to one page, keep it near that page in `src/routes/<route>/`.
+
+See [agents.md](agents.md) Section 3 and 4 for detailed architecture rules.
 
 ---
 
@@ -182,10 +196,13 @@ These are usually set in the page route using `<svelte:head>` and data from fron
 
 ### Adding a UI component
 
-1. Place it under the appropriate `components/` category
-2. Type props using TypeScript
-3. Use Tailwind utilities backed by tokens
-4. Keep components small and focused
+1. Determine which layer your component belongs to (Foundation → Typography → Structure → Interface → Blocks → Sections → Patterns)
+2. Place it in `src/lib/components/<layer>/`
+3. Type all props using TypeScript
+4. Use Tailwind utilities backed by tokens (never raw hex colors)
+5. For layout, use Structure primitives (`Stack`, `Cluster`, `Grid`) instead of `flex`/`grid` classes
+6. Keep components small and focused
+7. Export via `src/lib/components/index.ts` if it's reusable
 
 ### Adding utilities
 
@@ -209,12 +226,16 @@ These are usually set in the page route using `<svelte:head>` and data from fron
 
 Please check:
 
-- [ ] The site builds without errors
+- [ ] The site builds without errors (`pnpm build`)
+- [ ] Linting passes (`pnpm lint`)
 - [ ] No broken internal links
 - [ ] No Tailwind classes inside Markdown
-- [ ] No raw hex colors added
+- [ ] No raw hex colors in component classes
+- [ ] Layout uses `Stack`, `Cluster`, `Grid` (not `flex`/`grid` directly)
+- [ ] Components import from `$lib/components` (barrel imports only)
 - [ ] Images have alt text
 - [ ] Pages work well on mobile
+- [ ] Component layer classification is correct
 
 ---
 

@@ -21,7 +21,7 @@
 			title: 'VizChitra 2025 Recap',
 			description:
 				'Catch up on VizChitra 2025. Explore  keynotes, panels and alternative sessions.',
-			link: '/recap',
+			link: '/2025/videos',
 			buttonText: 'View Recap',
 			isAnimated: false
 		}
@@ -62,7 +62,7 @@
 </script>
 
 <div
-	class="z-12 -mt-[15%] grid grid-cols-1 gap-4 rounded-2xl bg-white px-4 py-4 sm:px-6 lg:grid-cols-2 lg:px-4"
+	class="cta-container z-12 grid grid-cols-1 gap-sm rounded-2xl bg-white px-sm py-sm sm:px-md lg:grid-cols-2 lg:px-sm"
 >
 	{#each cards as card}
 		<a
@@ -74,16 +74,16 @@
 			on:mouseover={() => handleCardMouseOver(card)}
 			on:focus={() => handleCardMouseOver(card)}
 		>
-			<div class="aspect-[3/2] overflow-hidden">
+			<div class="cta-image-container overflow-hidden">
 				<img
 					src={card.image}
 					alt={card.alt}
 					class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
 				/>
 			</div>
-			<div class="flex flex-1 flex-col p-6">
-				<h3 class="mb-2 text-xl font-bold tracking-tight">{card.title}</h3>
-				<p class="mb-4 text-slate-600 group-hover:no-underline">{card.description}</p>
+			<div class="flex flex-1 flex-col p-md">
+				<h3 class="mb-xs text-xl font-bold tracking-tight">{card.title}</h3>
+				<p class="mb-sm text-slate-600 group-hover:no-underline">{card.description}</p>
 				<div class="mt-auto">
 					{#if card.isAnimated}
 						{#if isVisible}
@@ -96,7 +96,7 @@
 					{/if}
 					<span class="text-viz-pink-dark inline-flex items-center font-semibold transition-colors">
 						{card.buttonText}
-						<span class="ml-1 text-lg">↗</span>
+						<span class="ml-xs text-lg">↗</span>
 					</span>
 				</div>
 			</div>
@@ -105,6 +105,14 @@
 </div>
 
 <style>
+	.cta-container {
+		margin-top: -15%;
+	}
+
+	.cta-image-container {
+		aspect-ratio: 3 / 2;
+	}
+
 	@keyframes borderAnimation {
 		0% {
 			background-position: 0% 50%;

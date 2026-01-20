@@ -6,84 +6,79 @@ year: 2026
 banner: curve
 ---
 
-<script>
-	import { Grid, Flex, FullBleed } from '$lib/components/layout';
-	import { Card, FormatCard, Button, Deadline } from '$lib/components/interface';
-  import { DividerCurves } from '$lib/components/structure'
-  import { Slanted, Notice } from '$lib/components/typography'
-	import { Header } from '$lib/components/structure';
-</script>
-
 <Header title="Call for Proposals" banner="curve" />
 
 For the second edition of the flagship event -- **VizChitra 2026**, we are excited to open up the **call for proposals**. There will be **talks** and **dialogues** on the conference day (4th July, 2026), and **workshops** on the workshop day (3rd July, 2026)
 
 _We invite you to share how you think, play, and build through data visualization._
 
-<div class="flex justify-center align-center">
-<Button href="https://forms.vizchitra.com/proposals" color="yellow" external={true}>Submit your Proposal</Button>
-</div>
+<Stack>
+  <Cluster>
+    <Button href="https://forms.vizchitra.com/proposals" color="yellow" external={true}>Submit your Proposal</Button>
+  </Cluster>
+  <Text type="lead" align="center">
+    Proposal Deadline: 15 Feb 2026
+  </Text>
+</Stack>
 
-<h3 class="text-center">Proposal Deadline: 15 Feb 2026</h3>
+<Divider type="curves" />
 
-<!-- <Deadline startDate="2026-01-03" deadline="2026-02-15" title="Proposal Deadline" /> -->
+<Stack>
+  <Title align="center">
+    <Slanted tag="h2" color="black" textContent="PROPOSAL FORMATS" />
+  </Title>
+  <Text >
+  You can propose one or more of the following formats. 
+  If you are unsure which one fits best, choose the closest option and explain your thinking in the proposal.
+  </Text>
+</Stack>
 
-<DividerCurves/>
-
-<Slanted tag="h2" color="black" textContent="PROPOSAL FORMATS" />
-
-You can propose one or more of the following formats. If you are unsure which one fits best, choose the closest option and explain your thinking in the proposal.
-
-<FullBleed class="pt-4">
-<Grid minWidth="30ch" maxColumns={3} gap={6} class="px-6 md:px-8">
-
-<FormatCard
-format="talks"
-title="Talks"
-duration="10–20 mins"
-bestFor="Deep dives into projects, case studies, or bodies of work."
-points={[
-"Share your own or your team's unique experience doing DataViz",
-"Reflect on your process, choices, trade-offs, and learnings",
-"Offer ideas, frameworks, or tools that others can reuse or adapt"
-]}
-/>
-
-<FormatCard
-format="dialogues"
-title="Dialogues"
-duration="45 mins"
-bestFor="Shared questions, challenges, or themes to understand together."
-points={[
-"Facilitate peer learning and exchange",
-"Frame around a theme, domain, challenge, or provocation",
-"Design simple structures or prompts so people can participate"
-]}
-/>
-
-<FormatCard
-format="workshops"
-title="Workshops"
-duration="3 hours"
-bestFor="Practice-oriented, hands-on, skill-building sessions."
-points={[
-"Teach a specific skill, approach, or tool",
-"Guide participants through exercises or mini-projects",
-"Ensure people leave with something they can apply"
-]}
-/>
-
+<FullBleed padX="lg">
+<Grid minWidth="30ch" maxColumns={3} space="md">
+  <FormatCard
+  color="blue"
+  title="Talks"
+  duration="10–20 mins"
+  bestFor="Deep dives into projects, case studies, or bodies of work."
+  points={[
+  "Share your own or your team's unique experience doing DataViz",
+  "Reflect on your process, choices, trade-offs, and learnings",
+  "Offer ideas, frameworks, or tools that others can reuse or adapt"
+  ]}
+  />
+  <FormatCard
+  color="teal"
+  title="Dialogues"
+  duration="45 mins"
+  bestFor="Shared questions, challenges, or themes to understand together."
+  points={[
+  "Facilitate peer learning and exchange",
+  "Frame around a theme, domain, challenge, or provocation",
+  "Design simple structures or prompts so people can participate"
+  ]}
+  />
+  <FormatCard
+  color="pink"
+  title="Workshops"
+  duration="3 hours"
+  bestFor="Practice-oriented, hands-on, skill-building sessions."
+  points={[
+  "Teach a specific skill, approach, or tool",
+  "Guide participants through exercises or mini-projects",
+  "Ensure people leave with something they can apply"
+  ]}
+  />
 </Grid>
 </FullBleed>
 
-<DividerCurves/>
+<Divider type="curves" />
 
 <Slanted tag="h2" color="black" textContent="THEMES for 2026" />
 
 This year's conference focuses on **four key themes**. The examples under each are prompts, not limits – feel free to stretch and reinterpret them.
 
-<FullBleed>
-<Grid minWidth="30ch" maxColumns={2} gap={6} class="px-6 md:px-8">
+<FullBleed innerClass="px-md md:px-lg">
+<Grid minWidth="30ch" maxColumns={2} space="md">
 
 <Card variant="bordered" color="pink" title="Visualizations for Community">
 
@@ -129,7 +124,7 @@ What tools, systems, and workflows power the visualizations we create and use?
 </Grid>
 </FullBleed>
 
-<DividerCurves/>
+<Divider type="curves" />
 
 ## Who should submit?
 
@@ -137,7 +132,7 @@ Analysts, artists, designers, researchers, scientists, practitioners, journalist
 
 **_Anyone using data to tell stories, ask questions, or serve communities._**
 
-<DividerCurves />
+<Divider type="curves" />
 
 ## How to shape your proposal
 
@@ -166,8 +161,10 @@ The most successful sessions tend to:
 
 </Notice>
 
-<div class="flex justify-center align-center">
+<Cluster space="lg" align="center" justify="center">
 <Button href="https://forms.vizchitra.com/proposals" color="yellow" external={true}>Submit your Proposal</Button>
-</div>
+</Cluster>
 
-<h3 class="text-center">Proposal Deadline: 15 Feb 2026</h3>
+<Cluster justify="center">
+<h3>Proposal Deadline: 15 Feb 2026</h3>
+</Cluster>

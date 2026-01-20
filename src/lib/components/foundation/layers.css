@@ -1,0 +1,366 @@
+/*
+  Tailwind v4 configuration for VizChitra
+
+  Structure:
+  1. Import canonical tokens and fonts from Foundation
+  2. Import Tailwind and plugins
+  3. Configure Tailwind theme (map viz tokens to Tailwind)
+  4. Define custom layers: base, components, utilities, prose
+*/
+
+/* ========================================
+   FOUNDATION IMPORTS
+   ======================================== */
+@import './tokens.css';
+@import './fonts.css';
+
+/* ========================================
+   TAILWIND & PLUGINS
+   ======================================== */
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+@plugin '@tailwindcss/forms';
+
+/* ========================================
+   TAILWIND THEME MAPPING
+   ======================================== */
+@theme static {
+	/* Reset all Tailwind defaults - strict mode */
+	--color-*: initial;
+	--font-*: initial;
+	--spacing-*: initial;
+	--radius-*: initial;
+	--shadow-*: initial;
+
+	/* COLOR PALETTE - mapped from canonical tokens */
+
+	/* Core neutrals */
+	--color-white: var(--viz-color-white);
+	--color-black: var(--viz-color-black);
+
+	/* Nested Brand Palette */
+	/* This mapping enables 'color-{name}-{shade}' utilities */
+	--color-yellow: var(--viz-color-yellow);
+	--color-yellow-light: var(--viz-color-yellow-light);
+	--color-yellow-dark: var(--viz-color-yellow-dark);
+
+	--color-teal: var(--viz-color-teal);
+	--color-teal-light: var(--viz-color-teal-light);
+	--color-teal-dark: var(--viz-color-teal-dark);
+
+	--color-blue: var(--viz-color-blue);
+	--color-blue-light: var(--viz-color-blue-light);
+	--color-blue-dark: var(--viz-color-blue-dark);
+
+	--color-orange: var(--viz-color-orange);
+	--color-orange-light: var(--viz-color-orange-light);
+	--color-orange-dark: var(--viz-color-orange-dark);
+
+	--color-pink: var(--viz-color-pink);
+	--color-pink-light: var(--viz-color-pink-light);
+	--color-pink-dark: var(--viz-color-pink-dark);
+
+	--color-grey: var(--viz-color-grey);
+	--color-grey-light: var(--viz-color-grey-light);
+	--color-grey-dark: var(--viz-color-grey-dark);
+
+	/* Semantic aliases */
+	--color-bg: var(--viz-color-bg);
+	--color-fg: var(--viz-color-fg);
+	--color-muted: var(--viz-color-muted);
+	--color-surface: var(--viz-color-surface);
+	--color-border: var(--viz-color-border);
+	--color-link: var(--viz-color-link);
+	--color-accent: var(--viz-color-accent);
+
+	--color-transparent: transparent;
+	--color-current: currentColor;
+
+	/* TYPOGRAPHY - RAW SCALE */
+	/* Mapped from canonical tokens */
+	--font-display: var(--viz-font-display);
+	--font-body: var(--viz-font-body);
+	--font-mono: var(--viz-font-mono);
+
+	/* Using --text-* namespace for automatic utility generation */
+	--text-xs: var(--viz-font-size-xs);
+	--text-sm: var(--viz-font-size-sm);
+	--text-base: var(--viz-font-size-base);
+	--text-lg: var(--viz-font-size-lg);
+	--text-xl: var(--viz-font-size-xl);
+	--text-2xl: var(--viz-font-size-2xl);
+	--text-3xl: var(--viz-font-size-3xl);
+	--text-4xl: var(--viz-font-size-4xl);
+
+	/* TYPOGRAPHY - SEMANTIC ALIASES (The Hierarchy) */
+	--text-ui-display: var(--text-4xl);
+	--text-ui-lg: var(--text-3xl);
+	--text-ui-md: var(--text-xl);
+	--text-ui-sm: var(--text-base);
+	--text-ui-xs: var(--text-sm);
+
+	/* Line heights */
+	--leading-none: var(--viz-leading-none);
+	--leading-tight: var(--viz-leading-tight);
+	--leading-snug: var(--viz-leading-snug);
+	--leading-normal: var(--viz-leading-normal);
+	--leading-relaxed: var(--viz-leading-relaxed);
+
+	/* Font weights */
+	--font-weight-normal: var(--viz-font-weight-normal);
+	--font-weight-medium: var(--viz-font-weight-medium);
+	--font-weight-semibold: var(--viz-font-weight-semibold);
+	--font-weight-bold: var(--viz-font-weight-bold);
+	--font-weight-black: var(--viz-font-weight-black);
+
+	/* Semantic Weight Aliases */
+	--font-weight-heading: var(--font-weight-bold);
+	--font-weight-body: var(--font-weight-normal);
+
+	/* SPACING - mapped from canonical tokens */
+	--spacing-0: var(--viz-space-0);
+	--spacing-px: var(--viz-space-px);
+	--spacing-xs: var(--viz-space-xs);
+	--spacing-sm: var(--viz-space-sm);
+	--spacing-md: var(--viz-space-md);
+	--spacing-lg: var(--viz-space-lg);
+	--spacing-xl: var(--viz-space-xl);
+	--spacing-2xl: var(--viz-space-2xl);
+	--spacing-3xl: var(--viz-space-3xl);
+	--spacing-4xl: var(--viz-space-4xl);
+
+	/* BORDER RADIUS - mapped from canonical tokens */
+	--radius-none: var(--viz-radius-none);
+	--radius-sm: var(--viz-radius-sm);
+	--radius-md: var(--viz-radius-md);
+	--radius-lg: var(--viz-radius-lg);
+
+	/* SHADOWS - mapped from canonical tokens */
+	--shadow-sm: var(--viz-shadow-sm);
+	--shadow-md: var(--viz-shadow-md);
+	--shadow-lg: var(--viz-shadow-lg);
+
+	/* MAX WIDTHS - mapped from canonical tokens */
+	--max-width-prose: var(--viz-max-w-prose);
+	--max-width-xs: var(--viz-max-w-xs);
+	--max-width-sm: var(--viz-max-w-sm);
+	--max-width-md: var(--viz-max-w-md);
+	--max-width-lg: var(--viz-max-w-lg);
+	--max-width-xl: var(--viz-max-w-xl);
+	--max-width-2xl: var(--viz-max-w-2xl);
+	--max-width-3xl: var(--viz-max-w-3xl);
+	--max-width-4xl: var(--viz-max-w-4xl);
+	--max-width-5xl: var(--viz-max-w-5xl);
+	--max-width-6xl: var(--viz-max-w-6xl);
+	--max-width-7xl: var(--viz-max-w-7xl);
+
+	/* MIN WIDTHS - mapped from canonical tokens */
+	--min-width-2xs: var(--viz-min-w-2xs);
+	--min-width-xs: var(--viz-min-w-xs);
+	--min-width-sm: var(--viz-min-w-sm);
+	--min-width-md: var(--viz-min-w-md);
+	--min-width-lg: var(--viz-min-w-lg);
+	--min-width-xl: var(--viz-min-w-xl);
+
+	/* UI Heading sizes and weights */
+	--heading-display-size: var(--viz-font-size-4xl);
+	--heading-display-weight: var(--viz-font-weight-semibold);
+
+	--heading-lg-size: var(--viz-font-size-3xl);
+	--heading-lg-weight: var(--viz-font-weight-semibold);
+
+	--heading-md-size: var(--viz-font-size-xl);
+	--heading-md-weight: var(--viz-font-weight-medium);
+
+	--heading-sm-size: var(--viz-font-size-base);
+	--heading-sm-weight: var(--viz-font-weight-medium);
+
+	--heading-xs-size: var(--viz-font-size-sm);
+	--heading-xs-weight: var(--viz-font-weight-semibold);
+}
+
+/* ============================================
+   @layer base - Element Defaults
+   ============================================ */
+@layer base {
+	:root {
+		font-family: var(--font-body);
+		color: var(--color-fg);
+	}
+
+	html {
+		scroll-behavior: smooth;
+		font-variation-settings: 'slnt' 0;
+	}
+
+	body {
+		min-height: 100vh;
+		margin: 0;
+		background-color: var(--color-bg);
+		overflow-x: hidden;
+	}
+
+	/* Typography defaults */
+	p {
+		font-size: var(--font-size-base);
+		font-weight: var(--font-weight-normal);
+		line-height: var(--leading-normal);
+	}
+
+	h1 {
+		font-size: var(--font-size-4xl);
+		font-weight: var(--font-weight-bold);
+		line-height: var(--leading-tight);
+	}
+
+	h2 {
+		font-size: var(--font-size-3xl);
+		font-weight: var(--font-weight-bold);
+		line-height: var(--leading-tight);
+	}
+
+	h3 {
+		font-size: var(--font-size-xl);
+		font-weight: var(--font-weight-semibold);
+		line-height: var(--leading-snug);
+	}
+
+	h4 {
+		font-size: var(--font-size-lg);
+		font-weight: var(--font-weight-semibold);
+		line-height: var(--leading-snug);
+	}
+
+	h5 {
+		font-size: var(--font-size-base);
+		font-weight: var(--font-weight-medium);
+		line-height: var(--leading-normal);
+	}
+
+	h6 {
+		font-size: var(--font-size-sm);
+		font-weight: var(--font-weight-medium);
+		line-height: var(--leading-normal);
+	}
+
+
+
+	/* Code blocks */
+	pre {
+		font-size: var(--font-size-base);
+		font-family: var(--font-mono);
+		background-color: var(--color-surface);
+		border-radius: var(--radius-sm);
+		box-shadow: var(--shadow-sm);
+		padding: var(--spacing-sm);
+		overflow-x: auto;
+		color: var(--color-fg);
+	}
+
+	/* Form element inheritance */
+	input,
+	button,
+	textarea,
+	select {
+		font-size: inherit;
+		font-family: inherit;
+	}
+
+	/* Focus visible */
+	button:focus:not(:focus-visible) {
+		outline: none;
+	}
+}
+
+/* ============================================
+   @layer components - Reusable UI Components
+   ============================================ */
+@layer components {
+	/* Structure Components */
+
+	/* STACK Component */
+	.stack {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		/* 1. Use the override, 2. Fallback to a safe default */
+		align-items: var(--stack-align, center);
+		gap: var(--stack-gap, var(--spacing-md));
+	}
+
+	/* CLUSTER Component */
+	.cluster {
+		display: flex;
+		flex-wrap: wrap;
+		/* 1. Use the override, 2. Fallback to a safe default */
+		align-items: var(--cluster-align, center);
+		justify-content: var(--cluster-justify, center);
+		gap: var(--cluster-gap, var(--spacing-md));
+	}
+
+	/* GRID component */
+	/* Default Grid System */
+	.grid-system {
+		display: grid;
+		width: 100%;
+		margin-inline: auto; /* Centers the grid if max-width is applied */
+		/* Default to the 'Auto-Fit' behavior for intrinsic responsiveness */
+		grid-template-columns: repeat(auto-fit, minmax(min(var(--grid-min-item, 280px), 100%), 1fr));
+		/* 1. Use the override, 2. Fallback to a safe default */
+		align-items: var(--grid-align, start);
+		gap: var(--grid-gap, var(--spacing-md));
+	}
+
+	/* FULL BLEED */
+	.full-bleed {
+		width: 100vw;
+		margin-left: calc(50% - 50vw);
+		margin-right: calc(50% - 50vw);
+		position: relative;
+	}
+}
+
+/* ============================================
+   Prose Customization
+   ============================================ */
+
+/* Site-wide prose customization for VizChitra */
+	/* Text colors */
+.prose-viz {
+	--tw-prose-body: var(--color-black);
+	--tw-prose-headings: var(--color-black);
+	--tw-prose-links: var(--color-blue-dark);
+	--tw-prose-bold: var(--color-black);
+	--tw-prose-counters: var(--color-grey-dark);
+	--tw-prose-bullets: var(--color-grey-dark);
+	--tw-prose-hr: var(--color-grey-light);
+	--tw-prose-quotes: var(--color-grey-dark);
+	--tw-prose-quote-borders: var(--color-pink);
+	--tw-prose-captions: var(--color-grey-dark);
+	--tw-prose-code: var(--color-pink-dark);
+	--tw-prose-pre-code: var(--color-black);
+	--tw-prose-pre-bg: rgba(255, 255, 255, 0.45);
+	--tw-prose-th-borders: var(--color-grey);
+	--tw-prose-td-borders: var(--color-grey-light);
+}
+
+/* Prose link hover state */
+.prose-viz a:hover {
+	color: var(--color-pink-dark);
+	text-decoration-thickness: 2px;
+}
+
+/* Tighter list spacing */
+.prose-viz li {
+	margin-top: 0.25em;
+	margin-bottom: 0.25em;
+}
+
+/* First/last paragraph margin adjustment in containers */
+.prose-viz > :first-child {
+	margin-top: 0;
+}
+
+.prose-viz > :last-child {
+	margin-bottom: 0;
+}

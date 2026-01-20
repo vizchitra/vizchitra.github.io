@@ -27,3 +27,9 @@ vite.config.ts.timestamp-*
 
 # PartyKit
 .partykit
+
+# Oxlint
+.oxc_cache
+
+# notes (auto-generated)
+notes/

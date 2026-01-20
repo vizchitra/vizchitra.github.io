@@ -1,31 +1,38 @@
 {
-	"extends": "./.svelte-kit/tsconfig.json",
+  "extends": "./.svelte-kit/tsconfig.json",
 
-	"compilerOptions": {
-		/* Incremental JS → TS support */
-		"allowJs": true,
-		"checkJs": false,
+  "compilerOptions": {
+    /* Incremental JS → TS support */
+    "allowJs": true,
+    "checkJs": false,
 
-		/* Vite + SvelteKit resolution */
-		"moduleResolution": "bundler",
-		"esModuleInterop": true,
-		"resolveJsonModule": true,
+    /* Vite + SvelteKit resolution */
+    "moduleResolution": "bundler",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
 
-		/* Intentional looseness (can tighten later) */
-		"strict": false,
-		"noImplicitAny": false,
-		"forceConsistentCasingInFileNames": true,
+    /* Intentional looseness (can tighten later) */
+    "strict": false,
+    "noImplicitAny": false,
+    "forceConsistentCasingInFileNames": true,
 
-		/* Build & DX */
-		"skipLibCheck": true,
-		"sourceMap": true,
+    /* Build & DX */
+    "skipLibCheck": true,
+    "sourceMap": true,
 
-		/* Required for Vite + Svelte */
-		// "types": ["svelte", "vite/client"],
+    /* Required for Vite + Svelte */
+    "types": ["svelte", "vite/client"],
 
-		/* Custom global typings (md, svx, etc.) */
-		"typeRoots": ["./src/types", "./node_modules/@types"]
-	},
+    /* Custom global typings (md, svx, etc.) */
+    "typeRoots": ["./src/types", "./node_modules/@types"]
+  },
 
-	"include": ["src/**/*", "src/types/global.d.ts", "content/**/*.md", "content/**/*.svx", "../content/**/*.md", "../content/**/*.svx"]
+  "include": [
+    "src/**/*",
+    "src/types/global.d.ts",
+    "content/**/*.md",
+    "content/**/*.svx",
+    "../content/**/*.md",
+    "../content/**/*.svx"
+  ]
 }

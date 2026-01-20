@@ -1,0 +1,44 @@
+[
+  {
+    "no": "1",
+    "role": "Information & Visual Designers",
+    "perc": "27",
+    "count": "37"
+  },
+  {
+    "no": "2",
+    "role": "Product & UX/UI Designers",
+    "perc": "19",
+    "count": "26"
+  },
+  {
+    "no": "3",
+    "role": "Data Scientists & AI Practitioners",
+    "perc": "13",
+    "count": "18"
+  },
+  {
+    "no": "4",
+    "role": "Data Analyst & BI Practitioners",
+    "perc": "12",
+    "count": "16"
+  },
+  {
+    "no": "5",
+    "role": "Journalist & Communication",
+    "perc": "15",
+    "count": "20"
+  },
+  {
+    "no": "6",
+    "role": "Educators & Researchers",
+    "perc": "8",
+    "count": "11"
+  },
+  {
+    "no": "7",
+    "role": "Developers & Engineers",
+    "perc": "6",
+    "count": "08"
+  }
+]

@@ -10,16 +10,18 @@
 	let { color = 'pink', bold = true, children }: Props = $props();
 
 	const colorClasses: Record<string, string> = {
-		pink: 'text-viz-pink-dark',
-		orange: 'text-viz-orange-dark',
-		yellow: 'text-viz-yellow-dark',
-		teal: 'text-viz-teal-dark',
-		blue: 'text-viz-blue-dark',
-		black: 'text-viz-black',
-		grey: 'text-viz-grey-dark'
+		pink: 'text-pink-dark',
+		orange: 'text-orange-dark',
+		yellow: 'text-yellow-dark',
+		teal: 'text-teal-dark',
+		blue: 'text-blue-dark',
+		black: 'text-black',
+		grey: 'text-grey-dark'
 	};
 
-	const colorClass = $derived(colorClasses[color] ?? colorClasses.pink);
+	const classes = $derived(
+		`${colorClasses[color] ?? colorClasses.pink} ${bold ? 'font-bold' : ''}`
+	);
 </script>
 
-<span class="{colorClass} {bold ? 'font-bold' : ''}">{@render children()}</span>
+<span class={classes}>{@render children()}</span>

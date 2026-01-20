@@ -1,0 +1,342 @@
+[
+  {
+    "name": "Srishti Bangalore",
+    "category": "Academia, Education & Research"
+  },
+  {
+    "name": "NID Bangalore",
+    "category": "Academia, Education & Research"
+  },
+  {
+    "name": "UNext by Manipal",
+    "category": "Academia, Education & Research"
+  },
+  {
+    "name": "Flame Pune",
+    "category": "Academia, Education & Research"
+  },
+  {
+    "name": "Data For India",
+    "category": "Academia, Education & Research"
+  },
+  {
+    "name": "ISB Hyderabad",
+    "category": "Academia, Education & Research"
+  },
+  {
+    "name": "IISc Bangalore",
+    "category": "Academia, Education & Research"
+  },
+  {
+    "name": "NIFT Hyderabad",
+    "category": "Academia, Education & Research"
+  },
+  {
+    "name": "IIT Madras",
+    "category": "Academia, Education & Research"
+  },
+  {
+    "name": "Spinfinity",
+    "category": "Academia, Education & Research"
+  },
+  {
+    "name": "My Chat Lesson",
+    "category": "Academia, Education & Research"
+  },
+  {
+    "name": "Mathematical Sciences",
+    "category": "Academia, Education & Research"
+  },
+  {
+    "name": "Google",
+    "category": "Data & AI, Consulting & Services"
+  },
+  {
+    "name": "Revisual Labs",
+    "category": "Data & AI, Consulting & Services"
+  },
+  {
+    "name": "TCS",
+    "category": "Data & AI, Consulting & Services"
+  },
+  {
+    "name": "Earthmetry",
+    "category": "Data & AI, Consulting & Services"
+  },
+  {
+    "name": "Successive Digital",
+    "category": "Data & AI, Consulting & Services"
+  },
+  {
+    "name": "SAP",
+    "category": "Data & AI, Consulting & Services"
+  },
+  {
+    "name": "Infocepts",
+    "category": "Data & AI, Consulting & Services"
+  },
+  {
+    "name": "Fractal",
+    "category": "Data & AI, Consulting & Services"
+  },
+  {
+    "name": "BCG",
+    "category": "Data & AI, Consulting & Services"
+  },
+  {
+    "name": "Tata Elxsi",
+    "category": "Data & AI, Consulting & Services"
+  },
+  {
+    "name": "Service Now",
+    "category": "Data & AI, Consulting & Services"
+  },
+  {
+    "name": "Salesforce",
+    "category": "Data & AI, Consulting & Services"
+  },
+  {
+    "name": "Motive",
+    "category": "Data & AI, Consulting & Services"
+  },
+  {
+    "name": "Nutanix",
+    "category": "Data & AI, Consulting & Services"
+  },
+  {
+    "name": "Microsoft",
+    "category": "Data & AI, Consulting & Services"
+  },
+  {
+    "name": "Cisco",
+    "category": "Data & AI, Consulting & Services"
+  },
+  {
+    "name": "Innoventes Lab",
+    "category": "Data & AI, Consulting & Services"
+  },
+  {
+    "name": "Travelopia",
+    "category": "Data & AI, Consulting & Services"
+  },
+  {
+    "name": "Gain.pro",
+    "category": "Data & AI, Consulting & Services"
+  },
+  {
+    "name": "Straive",
+    "category": "Data & AI, Consulting & Services"
+  },
+  {
+    "name": "Thomson Reuters",
+    "category": "Design, Media & Communication"
+  },
+  {
+    "name": "The Times of India",
+    "category": "Design, Media & Communication"
+  },
+  {
+    "name": "Social Innovation",
+    "category": "Design, Media & Communication"
+  },
+  {
+    "name": "Laminar Design",
+    "category": "Design, Media & Communication"
+  },
+  {
+    "name": "Malayalam Manorama",
+    "category": "Design, Media & Communication"
+  },
+  {
+    "name": "DAKSH Society",
+    "category": "Design, Media & Communication"
+  },
+  {
+    "name": "Clinton Health",
+    "category": "Design, Media & Communication"
+  },
+  {
+    "name": "Public Knowledge",
+    "category": "Design, Media & Communication"
+  },
+  {
+    "name": "Parallel",
+    "category": "Design, Media & Communication"
+  },
+  {
+    "name": "Lollypop Design",
+    "category": "Design, Media & Communication"
+  },
+  {
+    "name": "IcarusNova",
+    "category": "Design, Media & Communication"
+  },
+  {
+    "name": "Younion",
+    "category": "Design, Media & Communication"
+  },
+  {
+    "name": "PingPong",
+    "category": "Design, Media & Communication"
+  },
+  {
+    "name": "GG Wells",
+    "category": "Design, Media & Communication"
+  },
+  {
+    "name": "Fisheye Creative",
+    "category": "Design, Media & Communication"
+  },
+  {
+    "name": "City Collab",
+    "category": "Design, Media & Communication"
+  },
+  {
+    "name": "The Hindu",
+    "category": "Design, Media & Communication"
+  },
+  {
+    "name": "The Economist",
+    "category": "Design, Media & Communication"
+  },
+  {
+    "name": "Mongabay India",
+    "category": "Design, Media & Communication"
+  },
+  {
+    "name": "Deccan Herald",
+    "category": "Design, Media & Communication"
+  },
+  {
+    "name": "BBC",
+    "category": "Design, Media & Communication"
+  },
+  {
+    "name": "Noora Health",
+    "category": "Design, Media & Communication"
+  },
+  {
+    "name": "CEGIS foundation",
+    "category": "Design, Media & Communication"
+  },
+  {
+    "name": "Enphase Energy",
+    "category": "Domain Specific Visualisation"
+  },
+  {
+    "name": "Novo Nordisk",
+    "category": "Domain Specific Visualisation"
+  },
+  {
+    "name": "Walmart",
+    "category": "Domain Specific Visualisation"
+  },
+  {
+    "name": "Poshmark",
+    "category": "Domain Specific Visualisation"
+  },
+  {
+    "name": "Infinyte Club",
+    "category": "Domain Specific Visualisation"
+  },
+  {
+    "name": "Fidelity",
+    "category": "Domain Specific Visualisation"
+  },
+  {
+    "name": "Bunge",
+    "category": "Domain Specific Visualisation"
+  },
+  {
+    "name": "Broadcom",
+    "category": "Domain Specific Visualisation"
+  },
+  {
+    "name": "Flipkart",
+    "category": "Domain Specific Visualisation"
+  },
+  {
+    "name": "Ford",
+    "category": "Domain Specific Visualisation"
+  },
+  {
+    "name": "Swiss Re",
+    "category": "Domain Specific Visualisation"
+  },
+  {
+    "name": "Svasti Microfinance",
+    "category": "Domain Specific Visualisation"
+  },
+  {
+    "name": "S&P Global",
+    "category": "Domain Specific Visualisation"
+  },
+  {
+    "name": "LSE Group",
+    "category": "Domain Specific Visualisation"
+  },
+  {
+    "name": "CredCore",
+    "category": "Domain Specific Visualisation"
+  },
+  {
+    "name": "Capital One",
+    "category": "Domain Specific Visualisation"
+  },
+  {
+    "name": "Atlas Consolidated",
+    "category": "Domain Specific Visualisation"
+  },
+  {
+    "name": "Eli Lilly",
+    "category": "Domain Specific Visualisation"
+  },
+  {
+    "name": "Wysa",
+    "category": "Domain Specific Visualisation"
+  },
+  {
+    "name": "The Art Connect",
+    "category": "Domain Specific Visualisation"
+  },
+  {
+    "name": "Symmetry Systems",
+    "category": "Domain Specific Visualisation"
+  },
+  {
+    "name": "PhonePe",
+    "category": "Domain Specific Visualisation"
+  },
+  {
+    "name": "India in Pixels",
+    "category": "Tool Builders & Creators"
+  },
+  {
+    "name": "Gramener",
+    "category": "Tool Builders & Creators"
+  },
+  {
+    "name": "Postman",
+    "category": "Tool Builders & Creators"
+  },
+  {
+    "name": "Metadome.ai",
+    "category": "Tool Builders & Creators"
+  },
+  {
+    "name": "Eightfold",
+    "category": "Tool Builders & Creators"
+  },
+  {
+    "name": "MathWorks",
+    "category": "Tool Builders & Creators"
+  },
+  {
+    "name": "VideoVerse",
+    "category": "Tool Builders & Creators"
+  },
+  {
+    "name": "Asato.ai",
+    "category": "Tool Builders & Creators"
+  }
+]
