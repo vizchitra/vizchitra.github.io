@@ -90,10 +90,22 @@ We invite submissions across across four formats—<span class="font-bold text-v
 </FullBleed>
 
 <SubHeading>
-Please note the deadline for making your submission is <strong>15 Feb, 2026</strong>.  
+Please note the deadline for making your submission is <strong>15 Feb, 2026</strong>.
 </SubHeading>
 
 <Flex direction="row" wrap={true} gap="gap-6" justify="justify-center">
 <Button href="/2026/proposals" color="pink">Submit your Proposal</Button>
 <Button href="/2026/exhibition" color="orange">Submit for Exhibition</Button>
+</Flex>
+
+<DividerCurves/>
+
+<Slanted tag="h3" color="blue" textContent="BROWSE SUBMISSIONS" />
+
+<SubHeading class="pb-8">
+Explore all submitted proposals for VizChitra 2026. Browse talks, dialogues, workshops, and exhibitions from our community.
+</SubHeading>
+
+<Flex direction="row" wrap={true} gap="gap-6" justify="justify-center">
+<Button href="/2026/proposals" color="blue">View All Submissions</Button>
 </Flex>

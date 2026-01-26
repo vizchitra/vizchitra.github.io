@@ -41,7 +41,11 @@
 		{#if !interactive}
 			<!-- Static header: centered title -->
 			<div class="pointer-events-none absolute inset-0 flex items-center justify-center">
-				<h1 class="font-display rounded-2xl bg-white px-4 text-2xl font-bold">{title}</h1>
+				<h1
+					class="font-display mx-3 w-fit max-w-[40ch] rounded-2xl bg-white px-4 text-2xl font-bold text-balance md:mx-0 md:text-center"
+				>
+					{title}
+				</h1>
 			</div>
 		{:else if banner === 'polygon'}
 			<!-- Interactive polygon: centered logo with tagline -->
