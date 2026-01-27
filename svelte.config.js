@@ -18,12 +18,7 @@ const config = {
 	// 	runes: true
 	// },
 	kit: {
-		adapter: adapter({
-			routes: {
-				include: ['/*'],
-				exclude: ['<all>']
-			}
-		}),
+		adapter: adapter(),
 		output: {
 			bundleStrategy: 'split'
 		},
