@@ -49,8 +49,8 @@
 <!-- Clean header with title and speaker -->
 
 <div class="content-container max-w-4xl">
-	<header class="max-w-4xl pt-12 pb-8 md:pt-16 md:pb-10">
-		<div class="space-y-5">
+	<header class="max-w-4xl pt-12 pb-6 md:pt-16">
+		<div class="space-y-4">
 			<!-- Title -->
 			<h1
 				class="font-display text-viz-grey text-left text-3xl leading-[1.15] font-bold tracking-tight md:text-4xl md:leading-[1.12] lg:text-5xl"
@@ -126,7 +126,7 @@
 
 		{#if isCFP && proposal.links.length > 0}
 			<section class="mb-8 md:mb-10">
-				<Heading tag="h3" align="left">Related Links</Heading>
+				<Heading tag="h3" align="left" class="text-xl!">Related Links</Heading>
 				<ul class="space-y-2">
 					{#each proposal.links as link}
 						<li>
