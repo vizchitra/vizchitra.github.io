@@ -14,7 +14,7 @@ export const entries: EntryGenerator = async () => {
 	return proposals.map((p) => ({ id: p.slug }));
 };
 
-export const load: PageLoad = async ({ params }) => {
+export const load: PageLoad = async ({ params, fetch }) => {
 	const cfpProposals = parseCFPProposals(cfpRaw);
 	const cfeProposals = parseCFEProposals(cfeRaw);
 	const proposals = [...cfpProposals, ...cfeProposals];
@@ -25,5 +25,19 @@ export const load: PageLoad = async ({ params }) => {
 		throw error(404, `Proposal "${params.id}" not found`);
 	}
 
-	return { proposal };
+	// Fetch vote data (just the total count during SSR/prerender)
+	// Device ID not available server-side, component will fetch user-specific status client-side
+	let voteData = { votes: 0, hasVoted: false };
+
+	try {
+		const response = await fetch(`/api/proposals/${params.id}/votes`);
+		if (response.ok) {
+			voteData = await response.json();
+		}
+	} catch (e) {
+		// Graceful degradation: use defaults
+		console.warn('Failed to fetch vote data:', e);
+	}
+
+	return { proposal, voteData };
 };
