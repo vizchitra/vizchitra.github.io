@@ -290,7 +290,7 @@
 
 		<div class="border-viz-grey/10 mt-16 border-t pt-8 text-center">
 			<a
-				href="/2026/proposals"
+				href="/2026/submissions"
 				class="group font-text-sans text-viz-grey inline-flex items-center gap-2 transition-colors hover:text-viz-{color}-dark"
 			>
 				<svg
