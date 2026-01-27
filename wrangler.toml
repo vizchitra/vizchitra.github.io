@@ -1,6 +1,6 @@
 name = "vizchitra"
 compatibility_date = "2024-01-01"
-pages_build_output_dir = ".svelte-kit/output/client"
+pages_build_output_dir = ".svelte-kit/cloudflare"
 
 [[kv_namespaces]]
 binding = "PROPOSAL_VOTES"
