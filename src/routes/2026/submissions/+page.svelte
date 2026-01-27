@@ -48,7 +48,7 @@
 	<div class="space-y-4">
 		{#each filteredProposals as proposal}
 			<div class="border-viz-grey/10 rounded-lg border transition-shadow hover:shadow-md">
-				<ProposalCard {proposal} href="/2026/proposals/{proposal.slug}" />
+				<ProposalCard {proposal} href="/2026/submissions/{proposal.slug}" />
 			</div>
 		{/each}
 	</div>

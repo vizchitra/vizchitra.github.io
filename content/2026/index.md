@@ -107,5 +107,5 @@ Explore all submitted proposals for VizChitra 2026. Browse talks, dialogues, wor
 </SubHeading>
 
 <Flex direction="row" wrap={true} gap="gap-6" justify="justify-center">
-<Button href="/2026/proposals" color="blue">View All Submissions</Button>
+<Button href="/2026/submissions" color="blue">View All Submissions</Button>
 </Flex>
