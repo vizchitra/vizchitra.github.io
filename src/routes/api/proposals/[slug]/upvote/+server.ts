@@ -2,6 +2,8 @@ import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { isValidDeviceId } from '$lib/utils/device-id';
 
+export const prerender = false;
+
 /**
  * POST /api/proposals/[slug]/upvote
  * Add an upvote to a proposal

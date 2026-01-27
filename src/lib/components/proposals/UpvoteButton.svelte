@@ -153,7 +153,7 @@
 		disabled={isLoading}
 		class="group relative flex flex-col items-center gap-1.5 rounded-xl border-2 px-3 py-2.5 transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50 {config.border} {hasVoted
 			? config.bgActive
-			: config.bg} shadow-md hover:shadow-lg hover:-translate-y-0.5 active:scale-95"
+			: config.bg} shadow-md hover:-translate-y-0.5 hover:shadow-lg active:scale-95"
 		aria-label={hasVoted ? 'Remove upvote' : 'Upvote proposal'}
 		aria-pressed={hasVoted}
 	>
@@ -189,14 +189,11 @@
 		<!-- Vote count -->
 		<div class="flex flex-col items-center gap-0">
 			<span
-				class="font-display-sans text-lg font-bold tabular-nums leading-none transition-colors {hasVoted
+				class="font-display-sans text-lg leading-none font-bold tabular-nums transition-colors {hasVoted
 					? config.filled
 					: config.outline}"
 			>
 				{votes}
-			</span>
-			<span class="text-viz-grey/50 text-[9px] font-medium uppercase tracking-wider leading-tight mt-0.5">
-				{votes === 1 ? 'Vote' : 'Votes'}
 			</span>
 		</div>
 	</button>
@@ -212,7 +209,11 @@
 		aria-pressed={hasVoted}
 	>
 		{#if hasVoted}
-			<svg class="h-3.5 w-3.5 transition-transform hover:scale-110" fill="currentColor" viewBox="0 0 20 20">
+			<svg
+				class="h-3.5 w-3.5 transition-transform hover:scale-110"
+				fill="currentColor"
+				viewBox="0 0 20 20"
+			>
 				<path
 					fill-rule="evenodd"
 					d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"

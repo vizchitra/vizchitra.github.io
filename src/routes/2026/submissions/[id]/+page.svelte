@@ -4,32 +4,39 @@
 	import { Heading } from '$lib/components/typography';
 	import { ProposalBadge, ProposalStatusBadge, UpvoteButton } from '$lib/components/proposals';
 	import type { PageData } from './$types';
+	import type { CFPProposal, CFEProposal } from '$lib/types/proposals';
 
 	let { data }: { data: PageData } = $props();
-	const { proposal } = data;
+	const proposal = $derived(data.proposal);
 
-	const isCFP = proposal.type === 'cfp';
-	const isCFE = proposal.type === 'cfe';
-	const isDialogueOrWorkshop = isCFP && ['Dialogues', 'Workshop'].includes(proposal.proposalType);
+	const isCFP = $derived(proposal.type === 'cfp');
+	const isCFE = $derived(proposal.type === 'cfe');
+	const isDialogueOrWorkshop = $derived(
+		isCFP && ['Dialogues', 'Workshop'].includes((proposal as CFPProposal).proposalType)
+	);
 
 	// Get color based on type
-	const getColor = (): 'pink' | 'blue' | 'yellow' | 'teal' | 'orange' => {
+	const color = $derived((() => {
 		if (isCFP) {
-			return proposal.proposalType === 'Talks'
+			const cfpProposal = proposal as CFPProposal;
+			return cfpProposal.proposalType === 'Talks'
 				? 'blue'
-				: proposal.proposalType === 'Dialogues'
+				: cfpProposal.proposalType === 'Dialogues'
 					? 'teal'
 					: 'pink';
 		}
 		return 'orange'; // Exhibition
-	};
-	const color = getColor();
+	})());
 
-	const title = isCFP ? proposal.title : proposal.projectTitle;
-	const description = isCFP ? proposal.description : proposal.projectDescription;
+	const title = $derived(
+		isCFP ? (proposal as CFPProposal).title : (proposal as CFEProposal).projectTitle
+	);
+	const description = $derived(
+		isCFP ? (proposal as CFPProposal).description : (proposal as CFEProposal).projectDescription
+	);
 
 	// Split description into paragraphs
-	const paragraphs = description.split('\n').filter((p) => p.trim());
+	const paragraphs = $derived(description.split('\n').filter((p: string) => p.trim()));
 </script>
 
 <svelte:head>

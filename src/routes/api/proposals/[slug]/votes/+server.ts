@@ -2,6 +2,8 @@ import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { isValidDeviceId } from '$lib/utils/device-id';
 
+export const prerender = false;
+
 /**
  * GET /api/proposals/[slug]/votes
  * Get current vote count and user's vote status
