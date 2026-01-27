@@ -21,14 +21,14 @@
 </script>
 
 <svelte:head>
-	<title>Proposals | VizChitra 2026</title>
+	<title>Submissions | VizChitra 2026</title>
 	<meta
 		name="description"
 		content="Browse all submitted proposals for talks, dialogues, workshops, and exhibitions at VizChitra 2026."
 	/>
 </svelte:head>
 
-<Header title="Proposals for VizChitra 2026" banner="curve" />
+<Header title="Submissions for VizChitra 2026" banner="curve" />
 
 <div class="content-container">
 	<p class="content-text mb-8 text-center text-balance">

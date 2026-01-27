@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Card, Button } from '$lib/components/interface';
-	import { Header, DividerCurves } from '$lib/components/structure';
+	import { DividerCurves } from '$lib/components/structure';
 	import { Heading } from '$lib/components/typography';
 	import { ProposalBadge, ProposalStatusBadge, UpvoteButton } from '$lib/components/proposals';
 	import type { PageData } from './$types';
@@ -16,17 +16,19 @@
 	);
 
 	// Get color based on type
-	const color = $derived((() => {
-		if (isCFP) {
-			const cfpProposal = proposal as CFPProposal;
-			return cfpProposal.proposalType === 'Talks'
-				? 'blue'
-				: cfpProposal.proposalType === 'Dialogues'
-					? 'teal'
-					: 'pink';
-		}
-		return 'orange'; // Exhibition
-	})());
+	const color = $derived(
+		(() => {
+			if (isCFP) {
+				const cfpProposal = proposal as CFPProposal;
+				return cfpProposal.proposalType === 'Talks'
+					? 'blue'
+					: cfpProposal.proposalType === 'Dialogues'
+						? 'teal'
+						: 'pink';
+			}
+			return 'orange'; // Exhibition
+		})()
+	);
 
 	const title = $derived(
 		isCFP ? (proposal as CFPProposal).title : (proposal as CFEProposal).projectTitle
@@ -44,9 +46,33 @@
 	<meta name="description" content={paragraphs[0]} />
 </svelte:head>
 
-<Header {title} banner="curve" />
+<!-- Clean header with title and speaker -->
 
 <div class="content-container max-w-4xl">
+	<header class="max-w-4xl pt-12 pb-8 md:pt-16 md:pb-10">
+		<div class="space-y-5">
+			<!-- Title -->
+			<h1
+				class="font-display text-viz-grey text-left text-3xl leading-[1.15] font-bold tracking-tight md:text-4xl md:leading-[1.12] lg:text-5xl"
+			>
+				{title}
+			</h1>
+
+			<!-- Speaker info -->
+			<div class="space-y-1.5 md:space-y-2">
+				<p
+					class="font-display-sans text-base md:text-xl text-viz-{color}-dark text-left font-semibold"
+				>
+					{proposal.firstName}
+				</p>
+				<p class="text-viz-grey/65 text-left text-xs font-normal md:text-sm">
+					{proposal.jobTitle}{#if proposal.organisation}<span class="text-viz-grey/35 mx-1.5"
+							>•</span
+						>{proposal.organisation}{/if}
+				</p>
+			</div>
+		</div>
+	</header>
 	<!-- Desktop: Layout with floating upvote button -->
 	<div class="relative">
 		<!-- Floating upvote button (desktop only) -->
@@ -63,45 +89,9 @@
 		</div>
 
 		<!-- Main content -->
-		<div class="border-viz-grey/10 mb-6 border-b pb-4 md:mb-8 md:pb-6">
-			<!-- Mobile layout -->
-			<div class="flex flex-col gap-3 md:hidden">
-				<!-- Author info and upvote button row -->
-				<div class="flex items-start justify-between gap-3">
-					<div class="min-w-0 flex-1">
-						<p class="font-display-sans text-base font-bold text-viz-{color}-dark">
-							{proposal.firstName}
-						</p>
-						<p class="text-viz-grey/80 text-xs">
-							{proposal.jobTitle}{#if proposal.organisation}, {proposal.organisation}{/if}
-						</p>
-					</div>
-					<div class="shrink-0">
-						<UpvoteButton
-							slug={proposal.slug}
-							initialVotes={data.voteData?.votes ?? 0}
-							initialHasVoted={data.voteData?.hasVoted ?? false}
-							{color}
-							variant="inline"
-						/>
-					</div>
-				</div>
-
-				<!-- Metadata badges -->
-				<div class="flex flex-wrap items-center gap-1.5 text-sm">
-					<ProposalStatusBadge status={proposal.status} />
-					<span class="text-viz-grey/30">·</span>
-					<ProposalBadge text={isCFP ? proposal.proposalType : 'Exhibition'} {color} />
-					{#if isCFP}
-						<span class="text-viz-grey/30">·</span>
-						<ProposalBadge text={proposal.theme} color="blue" />
-					{/if}
-				</div>
-			</div>
-
-			<!-- Desktop: Original horizontal layout -->
-			<div class="hidden md:flex md:flex-row md:items-start md:justify-between md:gap-6">
-				<!-- Left: Badges -->
+		<div class="border-viz-grey/10 mb-8 border-b pb-6 md:mb-12 md:pb-8">
+			<!-- Metadata badges - centered layout -->
+			<div class="flex flex-wrap items-center justify-between gap-3 md:gap-4">
 				<div class="flex flex-wrap items-center gap-2 text-sm">
 					<ProposalStatusBadge status={proposal.status} />
 					<span class="text-viz-grey/30">·</span>
@@ -112,16 +102,15 @@
 					{/if}
 				</div>
 
-				<!-- Right: Author info -->
-				<div class="text-right">
-					<p class="font-display-sans text-base font-bold text-viz-{color}-dark md:text-lg">
-						{proposal.firstName}
-					</p>
-					<p class="text-viz-grey/80 text-xs md:text-sm">
-						{proposal.jobTitle}{#if proposal.organisation}<span class="hidden md:inline"
-								>,
-							</span><span class="block md:inline">{proposal.organisation}</span>{/if}
-					</p>
+				<!-- Mobile upvote button -->
+				<div class="md:hidden">
+					<UpvoteButton
+						slug={proposal.slug}
+						initialVotes={data.voteData?.votes ?? 0}
+						initialHasVoted={data.voteData?.hasVoted ?? false}
+						{color}
+						variant="inline"
+					/>
 				</div>
 			</div>
 		</div>

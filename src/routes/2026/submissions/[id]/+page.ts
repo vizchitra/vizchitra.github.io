@@ -1,5 +1,4 @@
 import { error } from '@sveltejs/kit';
-import { browser } from '$app/environment';
 import type { PageLoad, EntryGenerator } from './$types';
 import { parseCFPProposals, parseCFEProposals } from '$lib/utils/csv-parser';
 import cfpRaw from '../../../../../content/2026/data/cfp_sample.csv?raw';
