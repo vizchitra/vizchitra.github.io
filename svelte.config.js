@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-static';
+import adapter from '@sveltejs/adapter-cloudflare';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { redirects } from './src/lib/config/redirects.js';
 import { mdsvex } from 'mdsvex';
@@ -19,17 +19,24 @@ const config = {
 	// },
 	kit: {
 		adapter: adapter({
-			pages: 'build',
-			assets: 'build',
-			precompress: false,
-			strict: true
+			routes: {
+				include: ['/*'],
+				exclude: ['<all>']
+			}
 		}),
 		output: {
 			bundleStrategy: 'split'
 		},
 		appDir: 'app',
 		prerender: {
-			entries: ['*', ...Object.keys(redirects).map((path) => `/${path}`), ...contentSlugs]
+			entries: ['*', ...Object.keys(redirects).map((path) => `/${path}`), ...contentSlugs],
+			handleHttpError: ({ path, referrer, message }) => {
+				// Ignore errors for API routes during prerendering
+				if (path.startsWith('/api/')) {
+					return;
+				}
+				throw new Error(message);
+			}
 		}
 	},
 	preprocess: [mdsvex(mdsvexOptions), vitePreprocess()]
