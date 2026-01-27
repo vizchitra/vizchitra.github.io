@@ -1,22 +1,32 @@
 <script>
 	import { browser } from '$app/environment';
-	import CalendarIcon from '$lib/assets/images/icons/calendar.svg?raw';
-	import LocationIcon from '$lib/assets/images/icons/location.svg?raw';
-	import SpeakerCardPattern1 from '$lib/assets/images/patterns/speaker-card-pattern-1.svg?raw';
-	import SpeakerCardPattern2 from '$lib/assets/images/patterns/speaker-card-pattern-2.svg?raw';
-	import CloseIcon from '$lib/assets/images/icons/x.svg?raw';
+	import { InlineSvg } from '$lib/components';
 
-	export let modalOpen = false;
-	export let data = {};
-	export let colorMapping = {};
+	import CalendarIcon from '$lib/assets/icons/calendar.svg?raw';
+	import LocationIcon from '$lib/assets/icons/location.svg?raw';
+	import SpeakerCardPattern1 from '$lib/assets/patterns/speaker-card-pattern-1.svg?raw';
+	import SpeakerCardPattern2 from '$lib/assets/patterns/speaker-card-pattern-2.svg?raw';
+	import CloseIcon from '$lib/assets/icons/x.svg?raw';
 
-	$: if (modalOpen && browser && data?.talkInfo) {
-		document.body.style.overflow = 'hidden';
-	} else if (browser) {
-		document.body.style.overflow = '';
-	}
+	/**
+	 * @typedef Props
+	 * @property {boolean} [modalOpen]
+	 * @property {any} [data]
+	 * @property {any} [colorMapping]
+	 */
 
-	let screenWidth = 0;
+	/** @type {Props} */
+	let { modalOpen = false, data = {}, colorMapping = {} } = $props();
+
+	$effect(() => {
+		if (modalOpen && browser && data?.talkInfo) {
+			document.body.style.overflow = 'hidden';
+		} else if (browser) {
+			document.body.style.overflow = '';
+		}
+	});
+
+	let screenWidth = $state(0);
 </script>
 
 <svelte:window bind:innerWidth={screenWidth} />
@@ -25,104 +35,102 @@
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<div
 		class="details-modal fixed top-0 left-0 z-50 flex h-screen w-screen cursor-default items-center justify-center"
-		on:click={(event) => {
-			event.stopPropagation();
+		onclick={(e) => {
+			e.stopPropagation();
 			modalOpen = false;
 		}}
-		on:mousedown|stopPropagation
+		onmousedown={(e) => {
+			e.stopPropagation();
+			handleMouseDown(e);
+		}}
 	>
 		<div
-			class="overlay pointer-events-auto fixed top-0 left-0 z-10 h-full w-full bg-[#ffffffaa] opacity-100 backdrop-blur-[2px]"
+			class="modal-overlay pointer-events-auto fixed top-0 left-0 z-10 h-full w-full opacity-100"
 		></div>
 		<div
-			class="modal relative z-20 overflow-auto rounded-md border-[1px] border-[#ccc] bg-white shadow-2xl"
-			on:mousedown|stopPropagation
-			on:click|stopPropagation
+			class="modal border-grey-light relative z-20 overflow-auto rounded-md border bg-white shadow-2xl"
+			onmousedown={(e) => {
+				e.stopPropagation();
+				handleMouseDown(e);
+			}}
+			onclick={(e) => {
+				e.stopPropagation();
+				handleClick(e);
+			}}
 		>
 			<div class="button-wrapper sticky top-0 z-50">
 				<button
 					class="close-btn absolute top-4 right-4 z-50 cursor-pointer"
 					aria-label="close modal"
-					on:click={() => (modalOpen = false)}
+					onclick={() => (modalOpen = false)}
 				>
 					{@html CloseIcon}
 				</button>
 			</div>
 			<div
-				class="modal-header p-8 pt-4"
+				class="modal-header p-lg pt-sm"
 				style:background-color={colorMapping[data.talkType]?.primary}
 			>
 				<div class="title text-white">
 					{#if data.talkType}
-						<p class="kicker-text mb-1 !font-medium uppercase">
+						<p class="kicker-text mb-xs !font-medium uppercase">
 							{data.talkType}
 						</p>
 					{/if}
 
-					<h3
-						class="talk-title text-shadow mb-[6px] text-[1.75rem] !leading-[1.1] font-bold sm:text-[2rem] xl:text-[2.5rem]"
-					>
+					<h3 class="modal-talk-title text-shadow mb-xs font-bold">
 						{data.title}
 					</h3>
 
 					{#if data.subtitle}
-						<p
-							class="talk-subtitle text-shadow text-[1.5rem] !leading-[1.1] sm:text-[1.75rem] xl:text-[2rem]"
-						>
+						<p class="modal-talk-subtitle text-shadow">
 							{data.subtitle}
 						</p>
 					{/if}
 				</div>
 			</div>
 			<div class="details-section relative h-full">
-				<div class="details-content relative p-8 px-6 pb-16 md:px-8 xl:px-12">
-					<div class="title-text max-w-unset mb-6 min-w-[240px]">
+				<div class="details-content p-lg px-md pb-2xl md:px-lg relative xl:px-12">
+					<div class="modal-title-text mb-md">
 						<h3
-							style="text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;"
-							class="font-display mb-1 text-left align-bottom text-[2rem] leading-[1]
-							  font-bold uppercase xl:text-[2.25rem]"
+							class="modal-speaker-name text-shadow font-display mb-xs text-left align-bottom font-bold uppercase"
 						>
 							{data.name}
 						</h3>
-						<p
-							style="text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;"
-							class="text-left text-[1rem] !leading-[1.2] sm:text-[1.25rem]"
-						>
+						<p class="modal-speaker-role text-shadow text-left">
 							{data.role}
 						</p>
 					</div>
 
-					<div class="details mb-8 flex flex-col gap-2">
+					<div class="details mb-lg gap-xs flex flex-col">
 						{#if data.talkInfo}
-							<p
-								class="talk-subtitle text-shadow !md:leading-[1.5] mb-6 text-[1.125rem] !leading-[1.4] md:text-[1.4rem] xl:text-[1.4rem]"
-							>
+							<p class="modal-talk-info text-shadow mb-md">
 								{@html data.talkInfo}
 							</p>
 						{/if}
 
 						{#if data.time}
-							<div class="detail flex items-center gap-3">
+							<div class="detail gap-sm flex items-center">
 								<div class="icon-container w-4 md:w-5">
 									{@html CalendarIcon.replaceAll('#68B9B2', colorMapping[data.talkType]?.primary)}
 								</div>
-								<p class="text-[1rem] leading-none sm:text-[1.25rem]">{data.time}</p>
+								<p class="modal-detail-text leading-none">{data.time}</p>
 							</div>
 						{/if}
 
 						{#if data.location}
-							<div class="detail flex items-center gap-3">
+							<div class="detail gap-sm flex items-center">
 								<div class="icon-container w-4 md:w-5">
 									{@html LocationIcon.replaceAll('#68B9B2', colorMapping[data.talkType]?.primary)}
 								</div>
-								<p class="text-[1rem] leading-none sm:text-[1.25rem]">{data.location}</p>
+								<p class="modal-detail-text leading-none">{data.location}</p>
 							</div>
 						{/if}
 					</div>
 
 					{#if data.link && data.link !== ''}
 						<a
-							class="block w-fit rounded-sm bg-[#444] px-4 py-3 text-[1rem] leading-none text-white hover:opacity-90 sm:text-[1.25rem]"
+							class="modal-link px-sm py-sm block w-fit rounded-sm leading-none text-white hover:opacity-90"
 							target="_blank"
 							href="{data.link}/#tickets"
 							>{data.talkType === 'workshop' ? 'Buy tickets' : 'Learn more'}</a
@@ -130,7 +138,7 @@
 					{/if}
 
 					<div
-						class="pattern-container absolute right-0 bottom-0 z-[-1] opacity-70"
+						class="pattern-container absolute right-0 bottom-0 -z-1 opacity-70"
 						style="transform: translate({0}px, {20}px); "
 					>
 						{@html SpeakerCardPattern2.replaceAll(
@@ -145,6 +153,11 @@
 {/if}
 
 <style>
+	.modal-overlay {
+		background-color: rgba(255, 255, 255, 0.67);
+		backdrop-filter: blur(2px);
+	}
+
 	.details-modal .modal {
 		position: absolute;
 		top: 50%;
@@ -163,6 +176,115 @@
 	@media (max-width: 420px) {
 		.details-modal .modal {
 			height: 100%;
+		}
+	}
+
+	.text-shadow {
+		text-shadow:
+			-1px -1px 0 white,
+			1px -1px 0 white,
+			-1px 1px 0 white,
+			1px 1px 0 white;
+	}
+
+	/* Modal title text */
+	.modal-title-text {
+		min-width: 240px;
+	}
+
+	/* Modal talk title */
+	.modal-talk-title {
+		font-size: 1.75rem;
+		line-height: 1.1;
+	}
+
+	@media (min-width: 640px) {
+		.modal-talk-title {
+			font-size: 2rem;
+		}
+	}
+
+	@media (min-width: 1280px) {
+		.modal-talk-title {
+			font-size: 2.5rem;
+		}
+	}
+
+	/* Modal talk subtitle */
+	.modal-talk-subtitle {
+		font-size: 1.5rem;
+		line-height: 1.1;
+	}
+
+	@media (min-width: 640px) {
+		.modal-talk-subtitle {
+			font-size: 1.75rem;
+		}
+	}
+
+	@media (min-width: 1280px) {
+		.modal-talk-subtitle {
+			font-size: 2rem;
+		}
+	}
+
+	/* Modal speaker name */
+	.modal-speaker-name {
+		font-size: 2rem;
+		line-height: 1;
+	}
+
+	@media (min-width: 1280px) {
+		.modal-speaker-name {
+			font-size: 2.25rem;
+		}
+	}
+
+	/* Modal speaker role */
+	.modal-speaker-role {
+		font-size: 1rem;
+		line-height: 1.2;
+	}
+
+	@media (min-width: 640px) {
+		.modal-speaker-role {
+			font-size: 1.25rem;
+		}
+	}
+
+	/* Modal talk info */
+	.modal-talk-info {
+		font-size: 1.125rem;
+		line-height: 1.4;
+	}
+
+	@media (min-width: 768px) {
+		.modal-talk-info {
+			font-size: 1.4rem;
+			line-height: 1.5;
+		}
+	}
+
+	/* Modal detail text */
+	.modal-detail-text {
+		font-size: 1rem;
+	}
+
+	@media (min-width: 640px) {
+		.modal-detail-text {
+			font-size: 1.25rem;
+		}
+	}
+
+	/* Modal link */
+	.modal-link {
+		background-color: #444;
+		font-size: 1rem;
+	}
+
+	@media (min-width: 640px) {
+		.modal-link {
+			font-size: 1.25rem;
 		}
 	}
 </style>

@@ -1,57 +1,71 @@
 <script lang="ts">
-	interface Props {
-		columns?: number;
-		maxColumns?: number;
+	import type { Snippet } from 'svelte';
+	import type { HTMLAttributes, ClassValue } from 'svelte/elements';
+
+	type Gap = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+	type Align = 'start' | 'end' | 'center' | 'stretch' | 'baseline';
+	type Justify = 'start' | 'end' | 'center' | 'stretch';
+
+	/**
+	 * Grid - Auto-fit CSS Grid with responsive column sizing
+	 *
+	 * @prop minWidth - Minimum column width (default: '280px'). Columns auto-fill based on available space.
+	 * @prop space - Spacing between grid items using spacing tokens (default: 'md')
+	 * @prop align - Vertical alignment of items within cells (default: 'stretch')
+	 * @prop justify - Horizontal alignment of items within cells (default: 'stretch')
+	 *
+	 * @example
+	 * <Grid minWidth="300px" gap="lg" align="start">
+	 *   <Card />
+	 *   <Card />
+	 *   <Card />
+	 * </Grid>
+	 */
+	interface Props extends HTMLAttributes<HTMLDivElement> {
 		minWidth?: string;
-		gap?: number;
-		class?: string;
-		children?: import('svelte').Snippet;
+		gap?: Gap;
+		align?: Align; // Vertical alignment of items in cells
+		justify?: Justify; // Horizontal alignment of items in cells
+		class?: ClassValue;
+		children?: Snippet;
 	}
 
 	let {
-		columns,
-		maxColumns,
-		minWidth = '280px',
-		gap = 8,
+		minWidth = '20rem',
+		gap = 'md',
+		align = 'center',
+		justify = 'center',
 		class: className = '',
-		children
+		children,
+		...rest
 	}: Props = $props();
 
-	let style = $derived.by(() => {
-		const gapSize = `${gap * 0.25}rem`;
-		let cols: string;
-
-		if (columns) {
-			cols = `repeat(${columns}, 1fr)`;
-		} else if (maxColumns) {
-			cols = `repeat(auto-fit, minmax(min(${minWidth}, 100%), 1fr))`;
-		} else {
-			cols = `repeat(auto-fit, minmax(min(${minWidth}, 100%), 1fr))`;
-		}
-
-		let maxColsStyle = maxColumns ? `--max-cols: ${maxColumns};` : '';
-
-		return `display: grid; gap: ${gapSize}; grid-template-columns: ${cols}; ${maxColsStyle}`;
-	});
+	const gapValue = $derived(`var(--spacing-${gap}`);
 </script>
 
-{#if maxColumns}
-	<div {style} class="max-cols-grid {className}">
-		{@render children?.()}
-	</div>
-{:else}
-	<div {style} class={className}>
-		{@render children?.()}
-	</div>
-{/if}
+<div
+	{...rest}
+	class={['grid-system', className]}
+	style:--grid-min-width={minWidth}
+	style:--grid-space={gapValue}
+	style:--grid-align={align}
+	style:--grid-justify={justify}
+>
+	{@render children?.()}
+</div>
 
 <style>
-	.max-cols-grid {
-		grid-template-columns: repeat(
-			auto-fit,
-			minmax(min(var(--min-width, 280px), 100%), 1fr)
-		) !important;
-		max-width: calc(var(--max-cols) * 25rem + (var(--max-cols) - 1) * 1.5rem);
+	.grid-system {
+		display: grid;
+		width: 100%;
 		margin-inline: auto;
+		grid-template-columns: repeat(auto-fill, minmax(min(var(--grid-min-width), 100%), 1fr));
+		align-items: var(--grid-align, stretch);
+		justify-items: var(--grid-justify, stretch);
+		gap: var(--grid-space, var(--spacing-md));
+	}
+	/* Ensure images or pre tags don't break the grid flow */
+	.grid-system > :global(*) {
+		min-width: 0;
 	}
 </style>

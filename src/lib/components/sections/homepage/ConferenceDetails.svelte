@@ -1,21 +1,21 @@
 <script>
-	import Button from '$lib/components/interface/Button.svelte';
+	import { Button } from '$lib/components';
 </script>
 
-<div class="content-notice mb-10 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
-	<div class="space-y-2">
+<div class="content-notice mb-xl gap-md md:gap-lg grid grid-cols-1 md:grid-cols-2">
+	<div class="space-y-xs">
 		<h3 class="content-heading text-primary">CONFERENCE DAY</h3>
-		<div class="space-y-1">
+		<div class="space-y-xs">
 			<p class="content-text font-semibold">27th June, 2025</p>
-			<p class="text-[20px]">Bangalore International Center</p>
+			<p class="text-xl">Bangalore International Center</p>
 		</div>
 	</div>
 
-	<div class="space-y-2">
+	<div class="space-y-xs">
 		<h3 class="content-heading text-primary">WORKSHOP DAY</h3>
-		<div class="space-y-1">
+		<div class="space-y-xs">
 			<p class="content-text font-semibold">28th June, 2025</p>
-			<p class="text-[20px]">Across Bangalore</p>
+			<p class="text-xl">Across Bangalore</p>
 		</div>
 	</div>
 </div>

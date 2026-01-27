@@ -2,11 +2,17 @@
 	import SpeakerPentagon from './SpeakerPentagon.svelte';
 	import SpeakerDetailsModal from './SpeakerDetailsModal.svelte';
 
-	import CalendarIcon from '$lib/assets/images/icons/calendar.svg?raw';
-	import LocationIcon from '$lib/assets/images/icons/location.svg?raw';
+	import CalendarIcon from '$lib/assets/icons/calendar.svg?raw';
+	import LocationIcon from '$lib/assets/icons/location.svg?raw';
 
-	export let data = {};
-	export let dragParams = {};
+	/**
+	 * @typedef Props
+	 * @property {any} [data]
+	 * @property {any} [dragParams]
+	 */
+
+	/** @type {Props} */
+	let { data = {}, dragParams = {} } = $props();
 
 	const colorMapping = {
 		keynote: {
@@ -49,9 +55,9 @@
 		}
 	};
 
-	$: isKeynote = data.talkType === 'keynote';
-	let modalOpen = false;
-	let cardElement;
+	let isKeynote = $derived(data.talkType === 'keynote');
+	let modalOpen = $state(false);
+	let cardElement = $state(undefined);
 
 	function handleCardClick(event) {
 		const dragThreshold = 15;
@@ -72,28 +78,25 @@
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div
 		bind:this={cardElement}
-		on:click={handleCardClick}
-		on:touchStart={handleCardClick}
-		style:max-width={!isKeynote ? '350px' : '550px'}
-		class="speaker-card relative w-full overflow-hidden rounded-lg border-[1px] border-[#ccc] p-4 shadow-md sm:p-8 sm:pt-8 md:min-w-[400px] lg:max-w-[550px] {isKeynote
-			? 'pb-12 sm:pb-24'
-			: 'min-w-[350px] pb-6'}"
+		onclick={handleCardClick}
+		ontouchStart={handleCardClick}
+		class="speaker-card border-grey-light p-sm sm:p-lg relative w-full overflow-hidden rounded-lg border shadow-md sm:pt-8 {isKeynote
+			? 'speaker-card--keynote pb-xl sm:pb-24'
+			: 'speaker-card--standard pb-md'}"
 	>
 		<div
-			class="title-section flex {isKeynote
-				? 'h-[325px]'
-				: 'h-[265px]'}  flex-row items-center items-start"
+			class="title-section flex flex-row items-start {isKeynote
+				? 'title-section--keynote'
+				: 'title-section--standard'}"
 		>
 			{#if isKeynote}
-				<div class="title-text {isKeynote ? 'max-w-[50%]' : 'max-w-unset'} min-w-[240px]">
+				<div class="title-text title-text--keynote">
 					<h3
-						class="font-display mb-1 text-left align-bottom {isKeynote
-							? 'text-[2rem]  xl:text-[2.5rem]'
-							: 'text-[1.75rem] lg:text-[1.75rem] xl:text-[2rem]'}  leading-[1] font-bold uppercase"
+						class="speaker-name speaker-name--keynote font-display mb-xs text-left align-bottom leading-none font-bold uppercase"
 					>
 						{data.name}
 					</h3>
-					<p class="text-left text-[1rem] !leading-[1.2] sm:text-[1.25rem]">
+					<p class="speaker-role text-left">
 						{data.role}
 					</p>
 				</div>
@@ -102,35 +105,29 @@
 
 		<div class="details-section">
 			{#if isKeynote === false}
-				<div class="title-text 'max-w-unset' mb-6 min-w-[240px]">
+				<div class="title-text title-text--standard mb-md">
 					<h3
-						style="text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;"
-						class="font-display mb-1 text-left align-bottom {isKeynote
-							? 'text-[2rem]  xl:text-[2.5rem]'
-							: 'text-[1.75rem] lg:text-[1.75rem] xl:text-[2rem]'}  leading-[1] font-bold uppercase"
+						class="speaker-name speaker-name--standard text-shadow font-display mb-xs text-left align-bottom leading-none font-bold uppercase"
 					>
 						{data.name}
 					</h3>
-					<p
-						style="text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;"
-						class="text-left text-[1rem] !leading-[1.2] sm:text-[1.25rem]"
-					>
+					<p class="speaker-role text-shadow text-left">
 						{data.role}
 					</p>
 				</div>
 			{/if}
-			<div class="title mb-8">
+			<div class="title mb-lg">
 				{#if data.kickerText}
-					<p class="kicker-text mb-1 !font-medium uppercase">
+					<p class="kicker-text mb-xs font-medium! uppercase">
 						{data.kickerText}
 					</p>
 				{/if}
 
 				<h3
 					style="color: {colorMapping[data.talkType]?.primary}"
-					class="talk-title {isKeynote
-						? 'text-[1.5rem] md:text-[2rem] xl:text-[2.5rem]'
-						: 'text-[1.25rem] md:text-[1.75rem] xl:text-[1.8rem]'} text-shadow mb-2 !leading-[1.1] font-bold"
+					class="talk-title text-shadow mb-xs font-bold {isKeynote
+						? 'talk-title--keynote'
+						: 'talk-title--standard'}"
 				>
 					{data.title}
 				</h3>
@@ -138,37 +135,37 @@
 				{#if data.subtitle}
 					<p
 						style="color: {colorMapping[data.talkType]?.primary}"
-						class="talk-subtitle {isKeynote
-							? 'text-[1.25rem] md:text-[1.75rem] xl:text-[2rem]'
-							: 'text-[1.25rem] md:text-[1.4rem] xl:text-[1.4rem]'} text-shadow !leading-[1.1]"
+						class="talk-subtitle text-shadow {isKeynote
+							? 'talk-subtitle--keynote'
+							: 'talk-subtitle--standard'}"
 					>
 						{data.subtitle}
 					</p>
 				{/if}
 			</div>
 
-			<div class="details flex flex-col gap-2">
-				{#if data.time}
-					<div class="detail flex items-center gap-3">
+			<div class="details gap-xs flex flex-col">
+				{#if data.time && CalendarIcon && typeof CalendarIcon === 'string'}
+					<div class="detail gap-sm flex items-center">
 						<div class="icon-container w-5">
 							{@html CalendarIcon.replaceAll('#68B9B2', colorMapping[data.talkType]?.primary)}
 						</div>
-						<p class="text-[1rem] leading-none sm:text-[1.25rem]">{data.time}</p>
+						<p class="detail-text leading-none">{data.time}</p>
 					</div>
 				{/if}
 
-				{#if data.location}
-					<div class="detail flex items-center gap-3">
+				{#if data.location && LocationIcon && typeof LocationIcon === 'string'}
+					<div class="detail gap-sm flex items-center">
 						<div class="icon-container w-5">
 							{@html LocationIcon.replaceAll('#68B9B2', colorMapping[data.talkType]?.primary)}
 						</div>
-						<p class="text-[1rem] leading-none sm:text-[1.25rem]">{data.location}</p>
+						<p class="detail-text leading-none">{data.location}</p>
 					</div>
 				{/if}
 			</div>
 		</div>
 
-		<div class="background-container absolute inset-0 z-[-1]">
+		<div class="background-container absolute inset-0 -z-1">
 			<SpeakerPentagon {colorMapping} memberData={data}></SpeakerPentagon>
 		</div>
 	</div>
@@ -183,5 +180,153 @@
 			1px -1px 0 white,
 			-1px 1px 0 white,
 			1px 1px 0 white;
+	}
+
+	/* Speaker card sizes */
+	.speaker-card--keynote {
+		max-width: 550px;
+	}
+
+	.speaker-card--standard {
+		min-width: 350px;
+		max-width: 350px;
+	}
+
+	@media (min-width: 768px) {
+		.speaker-card {
+			min-width: 400px;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.speaker-card--keynote {
+			max-width: 550px;
+		}
+	}
+
+	/* Title section heights */
+	.title-section--keynote {
+		height: 325px;
+	}
+
+	.title-section--standard {
+		height: 265px;
+	}
+
+	/* Title text widths */
+	.title-text {
+		min-width: 240px;
+	}
+
+	.title-text--keynote {
+		max-width: 50%;
+	}
+
+	/* Speaker name typography */
+	.speaker-name--keynote {
+		font-size: 2rem;
+	}
+
+	.speaker-name--standard {
+		font-size: 1.75rem;
+	}
+
+	@media (min-width: 1280px) {
+		.speaker-name--keynote {
+			font-size: 2.5rem;
+		}
+
+		.speaker-name--standard {
+			font-size: 2rem;
+		}
+	}
+
+	/* Speaker role typography */
+	.speaker-role {
+		font-size: 1rem;
+		line-height: 1.2;
+	}
+
+	@media (min-width: 640px) {
+		.speaker-role {
+			font-size: 1.25rem;
+		}
+	}
+
+	/* Talk title typography */
+	.talk-title {
+		line-height: 1.1;
+	}
+
+	.talk-title--keynote {
+		font-size: 1.5rem;
+	}
+
+	.talk-title--standard {
+		font-size: 1.25rem;
+	}
+
+	@media (min-width: 768px) {
+		.talk-title--keynote {
+			font-size: 2rem;
+		}
+
+		.talk-title--standard {
+			font-size: 1.75rem;
+		}
+	}
+
+	@media (min-width: 1280px) {
+		.talk-title--keynote {
+			font-size: 2.5rem;
+		}
+
+		.talk-title--standard {
+			font-size: 1.8rem;
+		}
+	}
+
+	/* Talk subtitle typography */
+	.talk-subtitle {
+		line-height: 1.1;
+	}
+
+	.talk-subtitle--keynote {
+		font-size: 1.25rem;
+	}
+
+	.talk-subtitle--standard {
+		font-size: 1.25rem;
+	}
+
+	@media (min-width: 768px) {
+		.talk-subtitle--keynote {
+			font-size: 1.75rem;
+		}
+
+		.talk-subtitle--standard {
+			font-size: 1.4rem;
+		}
+	}
+
+	@media (min-width: 1280px) {
+		.talk-subtitle--keynote {
+			font-size: 2rem;
+		}
+
+		.talk-subtitle--standard {
+			font-size: 1.4rem;
+		}
+	}
+
+	/* Detail text typography */
+	.detail-text {
+		font-size: 1rem;
+	}
+
+	@media (min-width: 640px) {
+		.detail-text {
+			font-size: 1.25rem;
+		}
 	}
 </style>

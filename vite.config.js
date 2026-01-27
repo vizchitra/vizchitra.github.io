@@ -1,20 +1,11 @@
-import tailwindcss from '@tailwindcss/vite';
+import { contentHmrPlugin, contentImportPlugin } from './text.config.js';
 import { sveltekit } from '@sveltejs/kit/vite';
+import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
-import dsv from '@rollup/plugin-dsv';
-import { contentHmrPlugin } from './text.config.js';
 
 export default defineConfig({
-	optimizeDeps: {
-		// Ensure Rolldown optimization options are present to avoid esbuild deprecation warnings
-		rolldownOptions: {}
-	},
-	resolve: {
-		alias: {
-			'../../content': '/content'
-		}
-	},
-	plugins: [tailwindcss(), sveltekit(), contentHmrPlugin(), dsv()],
+	plugins: [contentImportPlugin(), tailwindcss(), sveltekit(), contentHmrPlugin()],
+	// logLevel: 'error',
 	server: {
 		fs: {
 			allow: ['..']

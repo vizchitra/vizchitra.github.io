@@ -1,29 +1,38 @@
 <script>
+	import VizChitraLogoSVG from '$lib/assets/logos/vizchitra-logo-type.svg?raw';
+
 	import { formatSlantedText } from '$lib/utils/slanted';
-	import VizChitraLogoType from '$lib/components/typography/VizChitraLogoType.svelte';
-	import VizChitraLogoSVG from '$lib/assets/images/logos/vizchitra-logo-type.svg?raw';
+	import { InlineSvg } from '$lib/components';
 
-	export let formData = {};
+	/**
+	 * @typedef Props
+	 * @property {any} [formData]
+	 */
 
-	let cardWidth = 0;
-	let clipPath;
-	let points = [
+	/** @type {Props} */
+	let { formData = {} } = $props();
+
+	let cardWidth = $state(0);
+	let clipPath = $state('');
+	let points = $state([
 		{ x: 50, y: 0 },
 		{ x: 100, y: 38 },
 		{ x: 82, y: 100 },
 		{ x: 18, y: 100 },
 		{ x: 0, y: 38 }
-	];
+	]);
 
-	let imageConfig = {
+	let imageConfig = $state({
 		scale: 0.95,
 		xOffset: 0,
 		yOffset: 0
-	};
+	});
 
-	$: if (formData) {
-		points = computePoints(points);
-	}
+	$effect(() => {
+		if (formData) {
+			points = computePoints(points);
+		}
+	});
 
 	function computePoints(points) {
 		const MIN_VALUE = 40;
@@ -79,12 +88,12 @@
 
 <div
 	id="custom-card"
-	class="sticky top-[80px] container flex h-full w-full max-w-[550px] flex-col items-center justify-start rounded p-8"
-	style="max-height: {cardWidth}px"
+	class="card-container p-lg sticky flex h-full w-full flex-col items-center justify-start rounded"
+	style="--max-card-height: {cardWidth}px"
 	bind:clientWidth={cardWidth}
 >
-	<div class="pentagon-container relative h-[250px] w-[250px] md:h-[350px] md:w-[350px]">
-		<div class="logo-type absolute top-[45%] right-[5px] z-20 w-[120px] md:w-[180px]">
+	<div class="pentagon-container relative">
+		<div class="logo-type absolute z-20">
 			{@html VizChitraLogoSVG}
 		</div>
 		<svg class="absolute z-10" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
@@ -115,35 +124,85 @@
 		{/if}
 	</div>
 
-	<div class="member-details w-[250px] max-w-[350px] text-center md:w-[350px]">
+	<div class="member-details text-center">
 		{#if formData.name}
-			<!-- <p class="font-display align-bottom text-[18px] leading-[1] uppercase md:text-[22px]">
-				{#each formatSlantedText(formData.name) as letter}
-					<span
-						class="slanted-text text-[18px] font-bold md:text-[24px]"
-						style="--letter-slant: {letter.slant}"
-					>
-						{letter.letter}
-					</span>
-				{/each}
-			</p> -->
-			<h2 class="font-display align-bottom text-[18px] leading-[1] font-bold md:text-[22px]">
+			<h2 class="member-name font-display align-bottom font-bold">
 				{formData.name}
 			</h2>
 		{/if}
 
 		{#if formData.desc}
-			<p class="text-[14px] !leading-[1.3] md:text-[18px]">{formData.desc}</p>
+			<p class="member-desc">{formData.desc}</p>
 		{/if}
 	</div>
 </div>
 
 <style>
-	.container {
+	.card-container {
+		top: 80px;
+		max-width: 550px;
+		max-height: var(--max-card-height);
 		border: 1px solid #ddd;
 		box-shadow:
 			rgba(0, 0, 0, 0.19) 0px 10px 20px,
 			rgba(0, 0, 0, 0.23) 0px 6px 6px;
+	}
+
+	.pentagon-container {
+		height: 250px;
+		width: 250px;
+	}
+
+	@media (min-width: 768px) {
+		.pentagon-container {
+			height: 350px;
+			width: 350px;
+		}
+	}
+
+	.logo-type {
+		top: 45%;
+		right: 5px;
+		width: 120px;
+	}
+
+	@media (min-width: 768px) {
+		.logo-type {
+			width: 180px;
+		}
+	}
+
+	.member-details {
+		width: 250px;
+		max-width: 350px;
+	}
+
+	@media (min-width: 768px) {
+		.member-details {
+			width: 350px;
+		}
+	}
+
+	.member-name {
+		font-size: 18px;
+		line-height: 1;
+	}
+
+	@media (min-width: 768px) {
+		.member-name {
+			font-size: 22px;
+		}
+	}
+
+	.member-desc {
+		font-size: 14px;
+		line-height: 1.3;
+	}
+
+	@media (min-width: 768px) {
+		.member-desc {
+			font-size: 18px;
+		}
 	}
 
 	.image-container {
@@ -172,8 +231,8 @@
 	}
 
 	@media (max-width: 450px) {
-		.container {
-			max-height: fit-content !important;
+		.card-container {
+			max-height: fit-content;
 		}
 	}
 </style>

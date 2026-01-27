@@ -1,8 +1,11 @@
 <script lang="ts">
-	// Render the Markdown page from the site's `content/` folder.
-	// MDsveX compiles `.md` files to Svelte components, so import and render.
-	// @ts-expect-error - MDsveX .md imports are handled at build time via mdsvex preprocessor
-	import Page from '../../content/index.md';
+	import { getPage } from '$lib/loaders/content';
+	let { data }: { data?: { slug?: string } } = $props();
+	const page = $derived(getPage(data?.slug || 'index'));
 </script>
 
-<Page />
+{#if page?.Component}
+	<page.Component frontmatter={page.frontmatter} />
+{:else}
+	<h1>404 - Page Not Found</h1>
+{/if}

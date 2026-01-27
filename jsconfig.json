@@ -21,11 +21,12 @@
 		"sourceMap": true,
 
 		/* Required for Vite + Svelte */
-		// "types": ["svelte", "vite/client"],
+		"types": ["svelte", "vite/client"],
 
 		/* Custom global typings (md, svx, etc.) */
 		"typeRoots": ["./src/types", "./node_modules/@types"]
 	},
 
-	"include": ["src/**/*", "src/types/global.d.ts", "content/**/*.md", "content/**/*.svx", "../content/**/*.md", "../content/**/*.svx"]
+	"include": ["src/**/*", "src/types/global.d.ts"],
+	"exclude": ["content/**/*", "build/**/*", ".svelte-kit/**/*", "app/**/*"]
 }

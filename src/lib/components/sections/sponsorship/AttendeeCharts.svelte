@@ -1,19 +1,18 @@
 <script lang="ts">
-	import Grid from '$lib/components/layout/Grid.svelte';
-	import ColumnChart from '$lib/components/interface/ColumnChart.svelte';
-	import yearsOfExperience from '$lib/data/years.csv';
-	import functionalRoles from '$lib/data/roles.csv';
-	import organizationSize from '$lib/data/size.csv';
+	import { ColumnChart, Grid } from '$lib/components';
+	import yearsOfExperience from '$lib/data/years.json' with { type: 'json' };
+	import functionalRoles from '$lib/data/roles.json' with { type: 'json' };
+	import organizationSize from '$lib/data/size.json' with { type: 'json' };
 </script>
 
-<Grid minWidth="300px" gap={6} class="w-full">
+<Grid minWidth="300px" gap="md" class="w-full">
 	<!-- Years of Experience Chart -->
 	<div class="relative">
 		<ColumnChart
 			xkey="years"
 			countKey="count"
 			ykey="perc"
-			data={yearsOfExperience}
+			data={yearsOfExperience as any}
 			title="Years of Work Experience"
 			maxValue={30}
 			barColor="#a5b4fc"
@@ -32,7 +31,7 @@
 			xkey="role"
 			countKey="count"
 			ykey="perc"
-			data={functionalRoles}
+			data={functionalRoles as any}
 			title="Functional Role at Work"
 			maxValue={30}
 			barColor="#f9a8d4"
@@ -51,7 +50,7 @@
 			xkey="size"
 			countKey="count"
 			ykey="perc"
-			data={organizationSize}
+			data={organizationSize as any}
 			title="Size of Work Organization"
 			maxValue={30}
 			barColor="#6ee7b7"

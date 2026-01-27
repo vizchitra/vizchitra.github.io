@@ -1,9 +1,17 @@
 <script>
-	import SpeakerCardPattern1 from '$lib/assets/images/patterns/speaker-card-pattern-1.svg?raw';
-	import SpeakerCardPattern2 from '$lib/assets/images/patterns/speaker-card-pattern-2.svg?raw';
+	import { InlineSvg } from '$lib/components';
+	import { browser } from '$app/environment';
+	import SpeakerCardPattern1 from '$lib/assets/patterns/speaker-card-pattern-1.svg?raw';
+	import SpeakerCardPattern2 from '$lib/assets/patterns/speaker-card-pattern-2.svg?raw';
 
-	export let memberData = {};
-	export let colorMapping = {};
+	/**
+	 * @typedef Props
+	 * @property {any} [memberData]
+	 * @property {any} [colorMapping]
+	 */
+
+	/** @type {Props} */
+	let { memberData = {}, colorMapping = {} } = $props();
 
 	// 50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%
 	let regularPentagonPoints = [
@@ -14,8 +22,20 @@
 		{ x: 0, y: 38 }
 	];
 
-	$: points = computePoints(regularPentagonPoints, pentagonSize);
-	let clipPath;
+	// Define state variables before they're used in derived values
+	let isKeynote = $derived(memberData?.talkType === 'keynote');
+	let pentagonSize = $state(425);
+	let pentagonXOffset = $derived(memberData?.talkType === 'keynote' ? 120 : 20); // Adjust as needed for positioning
+	let pentagonYOffset = $state(0);
+
+	// Initialize pentagon size and offset based on keynote status
+	$effect(() => {
+		pentagonSize = memberData?.talkType === 'keynote' ? 425 : 275;
+		pentagonYOffset = memberData?.talkType === 'keynote' ? 0 : 20;
+	});
+
+	let clipPath = $state('');
+	let points = $derived(computePoints(regularPentagonPoints, pentagonSize));
 
 	function computePoints(points, pentagonSize) {
 		const MIN_VALUE = 55;
@@ -70,27 +90,24 @@
 		'Designing visualizations': 'var(--color-viz-pink)'
 	};
 
-	let pentagonSize = memberData.talkType === 'keynote' ? 425 : 275;
-	const pentagonXOffset = memberData.talkType === 'keynote' ? 120 : 20; // Adjust as needed for positioning
-	let pentagonYOffset = memberData.talkType === 'keynote' ? 0 : 20; // Adjust as needed for positioning
-	let svgWidth = 800;
-	let svgHeight = 800;
-	let screenWidth = 800;
+	let svgWidth = $state(800);
+	let svgHeight = $state(800);
+	let screenWidth = $state(800);
 
-	$: isKeynote = memberData.talkType === 'keynote';
-
-	$: if (screenWidth < 500 && isKeynote) {
-		pentagonSize = isKeynote ? 300 : 275;
-		pentagonYOffset = isKeynote ? 55 : 20;
-	}
+	$effect(() => {
+		if (screenWidth < 500 && isKeynote) {
+			pentagonSize = isKeynote ? 300 : 275;
+			pentagonYOffset = isKeynote ? 55 : 20;
+		}
+	});
 </script>
 
 <svelte:window bind:innerWidth={screenWidth} />
 {#if colorMapping}
-	<div class="flex h-full w-full flex-row items-start justify-between gap-4 md:gap-8">
+	<div class="gap-sm md:gap-lg flex h-full w-full flex-row items-start justify-between">
 		<div class="pentagon-container relative h-full w-full">
 			<div
-				class="pattern-container absolute z-[-1] opacity-100"
+				class="pattern-container absolute -z-1 opacity-100"
 				style="transform: translate({-50}px, {points[1].y +
 					pentagonYOffset +
 					(isKeynote && screenWidth > 550 ? 0 : -55)}px); transform-origin: top right;"
@@ -106,7 +123,7 @@
 					)}
 			</div>
 			<div
-				class="pattern-container absolute right-0 bottom-0 z-[-1] opacity-100"
+				class="pattern-container absolute right-0 bottom-0 -z-1 opacity-100"
 				style="transform: translate({0}px, {isKeynote && screenWidth > 550 ? 0 : 75}px); "
 			>
 				{@html SpeakerCardPattern2.replaceAll(

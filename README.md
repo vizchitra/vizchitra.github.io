@@ -2,13 +2,17 @@
 
 ![VizChitra Logo](static/images/vizchitra-preview.jpg)
 
-VizChitra is an Indian data visualization community. Our mission is to foster a vibrant community of data storytellers in India. We welcome contributions to the VizChitra website. To ensure a smooth and collaborative process, please adhere to the following guidelines:
+VizChitra is an Indian data visualization community. Our mission is to foster a vibrant community of
+data storytellers in India. We welcome contributions to the VizChitra website. To ensure a smooth
+and collaborative process, please adhere to the following guidelines:
 
 ## Contribution Guidelines
 
-- For small content changes (typos, minor edits), you can _directly edit files in the `content/` directory_ and submit a pull request.
+- For small content changes (typos, minor edits), you can _directly edit files in the `content/`
+  directory_ and submit a pull request.
 - For larger changes (new pages, significant redesigns), please _open an issue first_ to discuss.
-- Read the [humans.md](humans.md) file to understand _how we work_, _what we care about_, and _how to contribute without breaking things_.
+- Read the [humans.md](humans.md) file to understand _how we work_, _what we care about_, and _how
+  to contribute without breaking things_.
 - Use the [agents.md](agents.md) that outline our _coding standards_ and _technical practices_.
 
 ### Getting Started
@@ -21,8 +25,10 @@ VizChitra is an Indian data visualization community. Our mission is to foster a 
 
 ### Process & Workflow
 
-1.  **Issue Tracking:** Check the existing issues or create a new one to discuss your proposed changes.
-2.  **Branching:** Create a new branch for your feature or bug fix (e.g., `feature/your-feature-name` or `fix/issue-number`).
+1.  **Issue Tracking:** Check the existing issues or create a new one to discuss your proposed
+    changes.
+2.  **Branching:** Create a new branch for your feature or bug fix (e.g.,
+    `feature/your-feature-name` or `fix/issue-number`).
 3.  **Pull Request (PR):**
     - Submit a PR to the `main` or `dev` branch.
     - Provide a clear description of the changes in your PR.

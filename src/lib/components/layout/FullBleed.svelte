@@ -1,47 +1,54 @@
-<!--
-  FullBleed.svelte
-
-  Simple wrapper that applies the project's full-bleed layout pattern.
-
-  Props:
-  - `className`   : extra classes for the outer element
-  - `innerClass`  : classes applied to the centered inner container (defaults to `mx-auto`)
-  - `outerClass`  : outer wrapper class (defaults to `full-bleed`)
-
-	Usage:
-	&lt;FullBleed innerClass="mx-auto mb-20 md:px-12"&gt;
-		(content)
-	&lt;/FullBleed&gt;
-
--->
 <script lang="ts">
-	/**
-	 * FullBleed - simple full-bleed wrapper used across pages.
-	 *
-	 * Props:
-	 * - className: extra classes for the outer element
-	 * - innerClass: classes applied to the centered inner container (defaults to `mx-auto`)
-	 * - outerClass: outer wrapper class (defaults to `full-bleed`)
-	 * - contained: when true, renders an inner container with `containerClass` + `innerClass`
-	 * - containerClass: class used for the contained inner wrapper
-	 */
-	export let className: string = '';
-	export let innerClass: string = 'mx-auto';
-	export let outerClass: string = 'full-bleed';
-	export let contained: boolean = false;
-	export let containerClass: string = 'content-container';
+	import type { Snippet } from 'svelte';
+	import type { HTMLAttributes, ClassValue } from 'svelte/elements';
 
-	$: outer = [outerClass, className].filter(Boolean).join(' ');
+	type Space = '0' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+
+	/**
+	 * FullBleed - Breaks out of container to span full viewport width
+	 *
+	 * @prop paddingY - Vertical padding using spacing tokens (default: 'xl')
+	 * @prop paddingX - Horizontal padding using spacing tokens (default: '0')
+	 *
+	 * @example
+	 * <FullBleed paddingY="xl" paddingX="md">
+	 *   <div>Full-width content with padding</div>
+	 * </FullBleed>
+	 */
+	interface Props extends HTMLAttributes<HTMLElement> {
+		paddingY?: Space;
+		paddingX?: Space;
+		class?: ClassValue;
+		children?: Snippet;
+	}
+
+	let {
+		paddingY = 'xl',
+		paddingX = '0',
+		class: className = '',
+		children,
+		...rest
+	}: Props = $props();
 </script>
 
-<div class={outer}>
-	{#if contained}
-		<div class={[containerClass, innerClass].filter(Boolean).join(' ')}>
-			<slot />
-		</div>
-	{:else}
-		<div class={innerClass}>
-			<slot />
-		</div>
-	{/if}
+<div
+	{...rest}
+	class={['full-bleed', className]}
+	style:--full-bleed-paddingY="var(--spacing-{paddingY})"
+	style:--full-bleed-paddingX="var(--spacing-{paddingX})"
+>
+	{@render children?.()}
 </div>
+
+<style>
+	.full-bleed {
+		width: 100vw;
+		margin-left: calc(50% - 50vw);
+		margin-right: calc(50% - 50vw);
+		position: relative;
+		left: 0;
+		right: 0;
+		padding-block: var(--full-bleed-paddingY);
+		padding-inline: var(--full-bleed-paddingX);
+	}
+</style>

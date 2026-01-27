@@ -1,38 +1,36 @@
 import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
-import { redirects } from './src/lib/config/redirects.js';
 import { mdsvex } from 'mdsvex';
-import { getContentSlugs } from './text.config.js';
-
-const contentSlugs = getContentSlugs();
 
 /** @type {import('mdsvex').MdsvexOptions} */
-const mdsvexOptions = {
+export const mdsvexOptions = {
 	extensions: ['.md', '.svx']
 };
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	extensions: ['.svelte', '.md', '.svx'],
-	// compilerOptions: {
-	// 	runes: true
-	// },
+	output: {
+		bundleStrategy: 'single'
+	},
 	kit: {
 		adapter: adapter({
 			pages: 'build',
 			assets: 'build',
 			precompress: false,
+			fallback: undefined,
 			strict: true
 		}),
-		output: {
-			bundleStrategy: 'split'
-		},
 		appDir: 'app',
 		prerender: {
-			entries: ['*', ...Object.keys(redirects).map((path) => `/${path}`), ...contentSlugs]
+			entries: ['*']
 		}
 	},
-	preprocess: [mdsvex(mdsvexOptions), vitePreprocess()]
+	// Directives are processed by the Vite plugin (text.config.js) before mdsvex
+	// mdsvex processes the markdown with embedded components
+	// Finally vitePreprocess handles Svelte-specific features
+	preprocess: [mdsvex(mdsvexOptions), vitePreprocess()],
+	compilerOptions: {}
 };
 
 export default config;

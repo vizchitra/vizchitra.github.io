@@ -1,7 +1,7 @@
 <script lang="ts">
-	import CtaPattern1 from '$lib/assets/images/patterns/cta-pattern-1.svg?raw';
-	import CtaPattern2 from '$lib/assets/images/patterns/cta-pattern-2.svg?raw';
-	import CtaPattern3 from '$lib/assets/images/patterns/cta-pattern-3.svg?raw';
+	import CtaPattern1 from '$lib/assets/patterns/cta-pattern-1.svg?raw';
+	import CtaPattern2 from '$lib/assets/patterns/cta-pattern-2.svg?raw';
+	import CtaPattern3 from '$lib/assets/patterns/cta-pattern-3.svg?raw';
 
 	let marqueeSectionWidth: number = 0;
 
@@ -11,7 +11,7 @@
 <div id="#header-call-to-action" class="overflow-hidden">
 	<a
 		href="https://hasgeek.com/VizChitra/2025/#tickets"
-		class="relative block border-b-[3px] border-[#4c4c4c] bg-white"
+		class="header-cta-link relative block bg-white"
 		target="_blank"
 	>
 		<div
@@ -21,9 +21,9 @@
 			{#each patterns as CtaPattern}
 				<div
 					bind:clientWidth={marqueeSectionWidth}
-					class="marquee-section text-viz flex w-fit shrink-0 flex-row items-center justify-between gap-4 px-2"
+					class="marquee-section text-viz gap-sm px-xs flex w-fit shrink-0 flex-row items-center justify-between"
 				>
-					<p class="font w-fit px-3 text-base whitespace-nowrap text-[#222] sm:text-lg md:text-xl">
+					<p class="cta-text font px-sm w-fit text-base whitespace-nowrap sm:text-lg md:text-xl">
 						Register for <strong>VizChitra 2025</strong> -
 						<span class="underline">Tickets are now live</span>!
 					</p>
@@ -37,6 +37,14 @@
 </div>
 
 <style>
+	.header-cta-link {
+		border-bottom: 3px solid #4c4c4c;
+	}
+
+	.cta-text {
+		color: #222;
+	}
+
 	.marquee-track {
 		width: 100%;
 		height: fit-content;
