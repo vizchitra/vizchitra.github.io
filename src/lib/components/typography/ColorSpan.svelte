@@ -1,25 +1,26 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import type { HTMLAttributes, ClassValue } from 'svelte/elements';
 
-	interface Props {
-		color?: 'pink' | 'orange' | 'yellow' | 'teal' | 'blue' | 'black' | 'grey';
-		bold?: boolean;
+	type Color = 'black' | 'grey' | 'yellow' | 'blue' | 'teal' | 'pink' | 'orange';
+
+	interface Props extends HTMLAttributes<HTMLSpanElement> {
+		color?: Color;
+		class: ClassValue;
 		children: Snippet;
 	}
 
-	let { color = 'pink', bold = true, children }: Props = $props();
+	let { color = 'pink', children, ...rest }: Props = $props();
 
-	const colorClasses: Record<string, string> = {
-		pink: 'text-viz-pink-dark',
-		orange: 'text-viz-orange-dark',
-		yellow: 'text-viz-yellow-dark',
-		teal: 'text-viz-teal-dark',
-		blue: 'text-viz-blue-dark',
-		black: 'text-viz-black',
-		grey: 'text-viz-grey-dark'
+	const colorClasses: Record<Color, string> = {
+		pink: 'text-pink-strong',
+		orange: 'text-orange-strong',
+		yellow: 'text-yellow-strong',
+		teal: 'text-teal-strong',
+		blue: 'text-blue-strong',
+		black: 'text-black',
+		grey: 'text-grey-strong'
 	};
-
-	const colorClass = $derived(colorClasses[color] ?? colorClasses.pink);
 </script>
 
-<span class="{colorClass} {bold ? 'font-bold' : ''}">{@render children()}</span>
+<span {...rest} class={[colorClasses[color], 'font-bold']}>{@render children()}</span>

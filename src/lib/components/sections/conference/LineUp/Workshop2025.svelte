@@ -2,6 +2,6 @@
 	import SpeakerCardsTrack from '../SpeakerCard/SpeakerCardsTrack.svelte';
 </script>
 
-<div class="max-w-[100%] overflow-auto">
+<div class="max-w-full overflow-auto">
 	<SpeakerCardsTrack sessionTypes={['workshop']} />
 </div>

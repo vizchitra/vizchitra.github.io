@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { MarqueeRow } from '$lib/components/interface';
-	import orgs from '$lib/data/orgs.csv';
+	import { MarqueeRow } from '$lib/components';
+	import orgs from '$lib/data/orgs.json' with { type: 'json' };
 
 	// Define a mapping from categories to colors
 	const categoryColors = {
@@ -36,7 +36,11 @@
 
 	// Split companies into rows for marquee
 	type MarqueeCompany = { name: string; category: string; color: string };
-	type MarqueeRow = { items: MarqueeCompany[]; direction: 'right' | 'left'; duration: string };
+	type MarqueeRow = {
+		items: MarqueeCompany[];
+		direction: 'right' | 'left';
+		duration: string;
+	};
 	const marqueeRows: MarqueeRow[] = [
 		{ items: companies.slice(0, 20), direction: 'right', duration: '80s' },
 		{ items: companies.slice(20, 40), direction: 'left', duration: '80s' },
@@ -45,13 +49,13 @@
 </script>
 
 <!-- Companies Marquee Section -->
-<section class="full-bleed my-12 overflow-hidden py-12">
+<section class="full-bleed my-xl py-xl overflow-hidden">
 	{#each marqueeRows as row}
 		<MarqueeRow items={row.items} direction={row.direction} duration={row.duration} />
 	{/each}
-	<div class="mx-auto mt-6 flex max-w-3xl flex-wrap justify-center gap-2">
+	<div class="mt-md gap-xs mx-auto flex max-w-3xl flex-wrap justify-center">
 		{#each legendItems.sort((a, b) => b.count - a.count) as item}
-			<div class="flex items-center gap-2 text-xs">
+			<div class="gap-xs flex items-center text-xs">
 				<div
 					class="flex size-6 items-center justify-center rounded-full"
 					style="background-color: {item.color};"

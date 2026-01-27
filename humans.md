@@ -1,6 +1,7 @@
 # Contribute to VizChitra website
 
-Welcome 👋. This repository powers the **VizChitra website**, a static, content-heavy site for an Indian data visualization community.
+Welcome 👋. This repository powers the **VizChitra website**, a static, content-heavy site for an
+Indian data visualization community.
 
 Our goals are simple:
 
@@ -8,7 +9,8 @@ Our goals are simple:
 - **Easy to maintain by a small core team**
 - **Friendly to contributors across design, writing, and development**
 
-This document explains _how we work_, _what we care about_, and _how to contribute without breaking things_.
+This document explains _how we work_, _what we care about_, and _how to contribute without breaking
+things_.
 
 ---
 
@@ -16,17 +18,17 @@ This document explains _how we work_, _what we care about_, and _how to contribu
 
 Before contributing, it helps to know what we **intentionally prioritize**:
 
-- **Static-first delivery**
-  The site is prerendered and deployed as static files. No server logic, no runtime-only pages.
+- **Static-first delivery** The site is prerendered and deployed as static files. No server logic,
+  no runtime-only pages.
 
-- **Content over interactivity**
-  Most pages are editorial or informational. JavaScript is used sparingly and only when it improves usability.
+- **Content over interactivity** Most pages are editorial or informational. JavaScript is used
+  sparingly and only when it improves usability.
 
-- **Consistency over cleverness**
-  Design tokens, component boundaries, and folder structure exist to prevent drift.
+- **Consistency over cleverness** Design tokens, component boundaries, and folder structure exist to
+  prevent drift.
 
-- **Accessibility as a baseline**
-  The site should work with keyboards, screen readers, and low-end devices by default.
+- **Accessibility as a baseline** The site should work with keyboards, screen readers, and low-end
+  devices by default.
 
 ---
 
@@ -47,20 +49,21 @@ You don’t need to know everything here to contribute, but this is what the sit
 
 At a high level:
 
-- `content/`
-  Markdown content (`.md`, `.svx`) for pages
+- `content/` Markdown content (`.md`, `.svx`) for pages
 
-- `src/routes/`
-  Page routes and layouts
+- `src/routes/` Page routes and layouts
 
-- `src/lib/components/`
-  Reusable components (organized by purpose)
+- `src/lib/components/` Reusable components organized into 8 layers:
+  - `foundation/` – Design tokens and global CSS
+  - `typography/` – Text primitives
+  - `layour/` – Layout & spacing utilities
+  - `controls/` – Interactive primitives
+  - `blocks/` – Semantic UI chunks
+  - `composition/` – Reusable arrangements of blocks (grids, lists)
+  - `sections/` – Page-level compositions
+  - `patterns/` – Decorative visuals (optional)
 
-- `src/lib/assets/css/`
-  Design tokens and fonts (the “design system”)
-
-- `static/`
-  Images and fonts served as-is
+- `static/` Images and fonts served as-is
 
 If you’re unsure where something belongs, ask before adding it.
 
@@ -68,22 +71,24 @@ If you’re unsure where something belongs, ask before adding it.
 
 ## How styling works (important)
 
-We follow a **CSS-first, token-driven design system**.
+We follow a **token-driven, layer-based design system**.
 
 ### Design tokens
 
-- Canonical design values live in
-  `src/lib/assets/css/tokens.css` as `--viz-*` variables.
-- These tokens are mapped to Tailwind utilities in `src/app.css`.
+- Canonical design values live in `src/lib/components/foundation/tokens.css` as `--viz-*` variables
+- These tokens are mapped to Tailwind utilities in `src/app.css`
+- See [system.md](src/lib/components/system.md) for the complete architecture
 
 **What this means for contributors:**
 
-- ❌ Don’t use raw hex colors in Tailwind classes
-- ❌ Don’t invent one-off styles inline
+- ❌ Don't use raw hex colors in Tailwind classes
+- ❌ Don't invent one-off styles inline
+- ❌ Don't use `flex`, `grid`, or `gap` directly in reusable components
 - ✅ Use existing Tailwind utilities backed by tokens
-- ✅ If a new design value is needed, add it to tokens first
+- ✅ Use **structure** primitives for layout: `Stack`, `Cluster`, `Grid`
+- ✅ If a new design value is needed, add it to `foundation/tokens.css` first
 
-This keeps the visual system coherent over time.
+This keeps the visual system coherent and maintainable over time.
 
 ---
 
@@ -120,17 +125,26 @@ If you need special layouts or visuals, use a Svelte component instead of hackin
 
 ## Components: how we organize UI
 
-Components are grouped by _responsibility_, not by page:
+Components are organized into **8 composable layers** (dependencies flow downward):
 
-- `interface/` – low-level reusable primitives
-- `typography/` – text wrappers and prose
-- `layout/` – layout building blocks
-- `structure/` – global site chrome (header, footer, banners)
-- `sections/` – reusable page sections
-- `src/routes/<route>/_components/` – page-specific components
+| Layer           | Purpose                         | Examples                       |
+| --------------- | ------------------------------- | ------------------------------ |
+| **Foundation**  | Design tokens & global CSS      | `tokens.css`, `components.css` |
+| **Typography**  | Text primitives & scales        | `Heading`, `Prose`, `Text`     |
+| **Layout**      | Layout & spacing utilities      | `Stack`, `Cluster`, `Grid`     |
+| **Controls**    | Interactive primitives          | `Button`, `Input`, `Toggle`    |
+| **Blocks**      | Reusable semantic chunks        | `Card`, `Media`, `ListItem`    |
+| **Composition** | Reusable arrangements of blocks | `CardGrid`, `FilterGrid`       |
+| **Sections**    | Page-level compositions         | `Header`, `Footer`, `Hero`     |
+| **Patterns**    | Decorative visuals (optional)   | `Wave`, `Stream`, `Divider`    |
 
-**Guideline:**
-If a component is tightly coupled to one page, keep it near that page.
+**Guideline:** Components can only import from lower layers (Foundation → Typography → Structure →
+... → Sections). Patterns are optional decorations that no layer depends on.
+
+**Page-specific components:** If a component is tightly coupled to one page, keep it near that page
+in `src/routes/<route>/`.
+
+See [agents.md](agents.md) Section 3 and 4 for detailed architecture rules.
 
 ---
 
@@ -182,10 +196,15 @@ These are usually set in the page route using `<svelte:head>` and data from fron
 
 ### Adding a UI component
 
-1. Place it under the appropriate `components/` category
-2. Type props using TypeScript
-3. Use Tailwind utilities backed by tokens
-4. Keep components small and focused
+1. Determine which layer your component belongs to (Foundation -> Typography -> Layout -> Controls
+   -> Blocks -> Compositions -> Sections -> Patterns)
+2. Place it in `src/lib/components/<layer>/`
+3. Type all props using TypeScript
+4. Use Tailwind utilities backed by tokens (never raw hex colors)
+5. For layout, use Structure primitives (`Stack`, `Cluster`, `Grid`) instead of `flex`/`grid`
+   classes
+6. Keep components small and focused
+7. Export via `src/lib/components/index.ts` if it's reusable
 
 ### Adding utilities
 
@@ -209,12 +228,16 @@ These are usually set in the page route using `<svelte:head>` and data from fron
 
 Please check:
 
-- [ ] The site builds without errors
+- [ ] The site builds without errors (`pnpm build`)
+- [ ] Linting passes (`pnpm lint`)
 - [ ] No broken internal links
 - [ ] No Tailwind classes inside Markdown
-- [ ] No raw hex colors added
+- [ ] No raw hex colors in component classes
+- [ ] Layout uses `Stack`, `Cluster`, `Grid` (not `flex`/`grid` directly)
+- [ ] Components import from `$lib/components` (barrel imports only)
 - [ ] Images have alt text
 - [ ] Pages work well on mobile
+- [ ] Component layer classification is correct
 
 ---
 

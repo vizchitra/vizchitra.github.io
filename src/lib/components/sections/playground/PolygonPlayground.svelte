@@ -1,15 +1,5 @@
 <script lang="ts">
-	import SliderInput from '$lib/components/sections/playground/SliderInput.svelte';
-	import PolygonGenerator from '$lib/components/sections/playground/PolygonGenerator.svelte';
-	import SelectInput from '$lib/components/sections/playground/SelectInput.svelte';
-	import ImageUpload from '$lib/components/sections/playground/ImageUpload.svelte';
-
-	// modern-screenshot doesn't ship types — import then assert a typed signature
-	import { domToPng as _domToPng } from 'modern-screenshot';
-	const domToPng = _domToPng as unknown as (
-		node: Element | null,
-		opts?: { backgroundColor?: string; scale?: number }
-	) => Promise<string>;
+	import { ImageUpload, PolygonGenerator, SelectInput, SliderInput } from '$lib/components';
 
 	type Form = {
 		name: string | null;
@@ -23,16 +13,18 @@
 		strength: string;
 	};
 
-	$: form = {
+	let form = $state({
 		name: null,
 		strength: 'Analyzing data'
-	} as Form;
+	} as Form);
 
 	async function downloadPNG(): Promise<void> {
 		const filename = `vizchitra-logo-${form.name ? form.name.toLowerCase().replaceAll(' ', '-') : '2025'}.png`;
 
 		const node = document.querySelector('#custom-card');
 		try {
+			// Lazy load modern-screenshot only when needed
+			const { domToPng } = await import('modern-screenshot');
 			const dataUrl = await domToPng(node, { backgroundColor: '#ffffff', scale: 1.5 });
 			const link = document.createElement('a');
 			link.download = filename;
@@ -44,45 +36,41 @@
 	}
 </script>
 
-<div class="content-container mx-auto !max-w-[min(90vw,1400px)] !px-0 py-12">
-	<p class="content-text mb-10">
+<div class="playground-container content-container py-xl mx-auto px-0">
+	<p class="content-text mb-xl">
 		Play around with the following section to create your own custom VizChitra logo.
 	</p>
 
-	<div class="flex flex-col gap-14 md:flex-row">
-		<div class="form flex w-full flex-col gap-5 md:w-[40%] md:max-w-[500px]">
+	<div class="gap-2xl flex flex-col md:flex-row">
+		<div class="form-section form gap-md flex w-full flex-col">
 			<div class="details-section">
-				<div class="section-header mb-4 flex items-center gap-3">
-					<span
-						class="fonts flex h-[30px] w-[30px] items-center justify-center rounded-[50%] bg-[#747474] text-white"
-					>
-						1
-					</span>
+				<div class="section-header mb-sm gap-sm flex items-center">
+					<span class="step-indicator flex items-center justify-center text-white"> 1 </span>
 					<h2 class="content-text font-base text-viz-grey">About yourself</h2>
 				</div>
 
-				<div class="details-controls pl-10">
-					<div class="text-input relative mb-5 pt-[10px]">
+				<div class="details-controls pl-xl">
+					<div class="text-input mb-md relative">
 						<input
-							class="block h-[30px] w-full max-w-[300px] border-b-2 border-[#dddddd] !outline-0 placeholder:opacity-0"
+							class="form-input block w-full border-b-2 outline-0 placeholder:opacity-0"
 							type="text"
 							id="name"
 							name="name"
 							placeholder="Name"
 							bind:value={form.name}
 						/>
-						<label class="h-[30px]" for="name">Name</label>
+						<label class="form-label" for="name">Name</label>
 					</div>
 
-					<div class="text-input relative mb-3 pt-[10px]">
+					<div class="text-input mb-sm relative">
 						<textarea
-							class="block h-fit min-h-[30px] w-full max-w-[300px] border-b-2 border-[#dddddd] !outline-0 placeholder:opacity-0"
+							class="form-textarea block h-fit w-full border-b-2 outline-0 placeholder:opacity-0"
 							id="desc"
 							name="desc"
 							placeholder="About yourself"
 							bind:value={form.desc}
 						></textarea>
-						<label class="h-[30px]" for="desc">What do you do with data?</label>
+						<label class="form-label" for="desc">What do you do with data?</label>
 					</div>
 
 					<ImageUpload bind:src={form.image}></ImageUpload>
@@ -90,49 +78,102 @@
 			</div>
 
 			<div class="interests-section">
-				<div class="section-header mb-4 flex items-center gap-3">
-					<span
-						class="flex h-[30px] w-[30px] items-center justify-center rounded-[50%] bg-[#747474] text-white"
-					>
-						2
-					</span>
+				<div class="section-header mb-sm gap-sm flex items-center">
+					<span class="step-indicator flex items-center justify-center text-white"> 2 </span>
 					<h2 class="content-text font-base text-viz-grey">Your data interests</h2>
 				</div>
 
-				<div class="interests-controls pl-10">
-					<p class="content-text mb-4 !text-[20px] !leading-[1.25]">
+				<div class="interests-controls pl-xl">
+					<p class="interests-question content-text mb-sm">
 						How interested are you in the following activities?
 					</p>
 
-					<SliderInput label="Data Collection" bind:formValue={form.collection} showLegend={true}
+					<SliderInput label="Data Collection" bind:value={form.collection} showLegend={true}
 					></SliderInput>
-					<SliderInput label="Data Analysis" bind:formValue={form.analysis}></SliderInput>
-					<SliderInput label="Coding Visualizations" bind:formValue={form.coding}></SliderInput>
-					<SliderInput label="Designing visualizations" bind:formValue={form.designing}
-					></SliderInput>
-					<SliderInput label="Narrating insights" bind:formValue={form.narrating}></SliderInput>
+					<SliderInput label="Data Analysis" bind:value={form.analysis}></SliderInput>
+					<SliderInput label="Coding Visualizations" bind:value={form.coding}></SliderInput>
+					<SliderInput label="Designing visualizations" bind:value={form.designing}></SliderInput>
+					<SliderInput label="Narrating insights" bind:value={form.narrating}></SliderInput>
 
 					<SelectInput
 						label="Which of the previous are you strongest at?"
-						bind:formValue={form.strength}
+						bind:value={form.strength}
 					></SelectInput>
 				</div>
 			</div>
 
 			<button
-				class="bg-viz-orange cursor-pointer rounded py-3 font-semibold text-white hover:opacity-90 md:ml-10"
-				on:click={downloadPNG}
+				class="bg-viz-orange py-sm cursor-pointer rounded font-semibold text-white hover:opacity-90 md:ml-10"
+				onclick={downloadPNG}
 				>Download logo
 			</button>
 		</div>
 
-		<div class="logo-container height-100% flex w-full flex-col items-center md:w-[60%]">
+		<div class="logo-container height-100% flex w-full flex-col items-center">
 			<PolygonGenerator formData={form} />
 		</div>
 	</div>
 </div>
 
 <style>
+	.playground-container {
+		max-width: min(90vw, 1400px);
+	}
+
+	.form-section {
+		width: 40%;
+		max-width: 500px;
+	}
+
+	@media (max-width: 768px) {
+		.form-section {
+			width: 100%;
+			max-width: none;
+		}
+	}
+
+	.logo-container {
+		width: 60%;
+	}
+
+	@media (max-width: 768px) {
+		.logo-container {
+			width: 100%;
+		}
+	}
+
+	.step-indicator {
+		height: 30px;
+		width: 30px;
+		border-radius: 50%;
+		background-color: #747474;
+	}
+
+	.text-input {
+		padding-top: 10px;
+	}
+
+	.form-input {
+		height: 30px;
+		max-width: 300px;
+		border-color: #dddddd;
+	}
+
+	.form-label {
+		height: 30px;
+	}
+
+	.form-textarea {
+		min-height: 30px;
+		max-width: 300px;
+		border-color: #dddddd;
+	}
+
+	.interests-question {
+		font-size: 20px;
+		line-height: 1.25;
+	}
+
 	.text-input label {
 		position: absolute;
 		top: 20px;

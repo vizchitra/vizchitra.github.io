@@ -1,50 +1,63 @@
-<script>
-	import { Footer, NavMenu } from '$lib/components/structure';
+<script lang="ts">
+	import { Footer, NavMenu, Container, Stack } from '$lib/components';
+
+	import { page } from '$app/state';
 	import '../app.css';
 
-	import { page } from '$app/stores';
+	interface LayoutProps {
+		children: import('svelte').Snippet;
+		frontmatter?: Record<string, any>;
+	}
 
-	/** @type {{children: import('svelte').Snippet}} */
-	let { children } = $props();
+	const mainTitle = 'VizChitra | An Indian Data Visualization Community';
+	const mainDescription =
+		'VizChitra is an Indian data visualization community built on openness and collaboration, connecting people to learn and create with data';
+	const mainImage = '/images/preview/vizchitra-preview.jpg';
 
-	// Get banner type from page data (frontmatter), default to 'polygon'
-	let banner = $derived($page.data?.frontmatter?.banner ?? 'polygon');
+	let { children, frontmatter = {} }: LayoutProps = $props();
+
+	// SEO metadata from frontmatter (reactive derived values)
+	let title = $derived(frontmatter.title || mainTitle);
+	let description = $derived(frontmatter.description || mainDescription);
+	let image = $derived(frontmatter.image || mainImage);
+
+	// Dynamic URL from page store (reactive derived values)
+	let url = $derived(page.url.href);
+	let width = $derived(frontmatter.width || 'content');
+	let banner = $derived(frontmatter.banner || 'polygon');
 </script>
 
-<div class="app">
-	<NavMenu></NavMenu>
-	<main class:full-width={$page.url.pathname.includes('polygon-playground')}>
-		{@render children()}
-	</main>
+<svelte:head>
+	<title>{title}</title>
+	<meta name="description" content={description} />
 
-	<Footer {banner} />
-</div>
+	<!-- Open Graph -->
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={description} />
+	<meta property="og:image" content={image} />
+	<meta property="og:url" content={url} />
+	<meta property="og:type" content="website" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={title} />
+	<meta name="twitter:description" content={description} />
+	<meta name="twitter:image" content={image} />
+</svelte:head>
+
+<NavMenu></NavMenu>
+<main>
+	<Container paddingY="md" {width}>
+		<Stack class="prose">
+			{@render children()}
+		</Stack>
+	</Container>
+</main>
+<Footer {banner} />
 
 <style>
-	.app {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-	}
-
 	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		/* padding: 2.5rem; */
-		width: 100%;
-
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
-
-	main.full-width {
-		max-width: 90vw;
-	}
-
-	@media (max-width: 768px) {
-		main {
-			max-width: 100%;
-		}
+		display: block;
+		min-height: 100vh;
 	}
 </style>

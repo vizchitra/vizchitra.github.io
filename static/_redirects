@@ -1,0 +1,15 @@
+# Cloudflare Pages redirects
+
+# Use 302 for temporary redirects
+
+# Use 301 for permanent redirects.
+
+/recap / 302
+/polygon-playground /tools/selfie 301
+/sponsorship /2025/sponsorship 302
+/2025/conference /2025/ 302
+/meet-the-team /team 302
+/code-of-conduct /conduct 302
+/friends https://chat.whatsapp.com/CcptoGEeCqJEkiETwAzpbq 302
+/map https://maps.app.goo.gl/Xa6N8q7s5S2Tm1559 302
+/editorial https://docs.google.com/presentation/d/1ODffg_I407aptk8zBzrzEXS4i-GiCCVExp2t2bQKZ7E/ 302

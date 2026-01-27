@@ -4,33 +4,25 @@ declare module '*.csv' {
 	export default content;
 }
 
-declare module '$lib/data/*.csv' {
-	const content: any[];
-	export default content;
-}
-
+// The project now exposes data via the static `/data` directory.
+// Generic CSV module declaration is kept for any remaining CSV imports.
 declare module '$lib/data/*';
 
-// Explicit common CSV imports used in routes
-declare module '$lib/data/youtube-videos.csv' {
-	const content: any[];
+declare module '*.svg' {
+	const src: string;
+	export default src;
+}
+declare module '*.svg?url' {
+	const src: string;
+	export default src;
+}
+declare module '*.svg?raw' {
+	const content: string;
 	export default content;
 }
-declare module '$lib/data/orgs.csv' {
-	const content: any[];
-	export default content;
-}
-declare module '$lib/data/years.csv' {
-	const content: any[];
-	export default content;
-}
-declare module '$lib/data/size.csv' {
-	const content: any[];
-	export default content;
-}
-declare module '$lib/data/roles.csv' {
-	const content: any[];
-	export default content;
+declare module '*.svg?url&raw' {
+	const src: string;
+	export default src;
 }
 
 declare module '*.png';

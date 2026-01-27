@@ -1,221 +1,214 @@
 # AI Agent Instructions (VizChitra)
 
-This repo powers the **VizChitra: An Indian Data Visualizations Community** website. It is **static, content-heavy, and performance/accessibility-first**: prefer HTML + CSS (Tailwind) and use minimal JS only when it improves usability.
+> **Note:** These guidelines work with **ANY AI coding assistant** (Claude Code, Cursor, GitHub
+> Copilot, etc.). Team members may use different AI tools — these instructions are
+> **tool-agnostic**.
+
+> We are not assembling pages — we are maintaining a system.
+
+This repo powers the **VizChitra: An Indian Data Visualization Community** website. It is **static,
+content-heavy, and performance/accessibility-first**.
 
 ---
 
-## Agent Mindset
+## 1. Core Mindset
 
-These rules are designed to optimize for long-term maintainability, consistency, and static delivery. When in doubt, prefer clarity over cleverness.
+> Clarity > cleverness. System > shortcuts.
 
----
+Optimize for long-term maintainability, consistency, and static delivery. Every decision should
+strengthen the system.
 
-## Stack (source of truth)
-
-- **SvelteKit** (Svelte v5) + **@sveltejs/adapter-static**
-- **MDsveX** for Markdown pages (`content/`)
-- **Tailwind CSS v4** for CSS
-- **TypeScript**
-- **Vite** as build and dev tool
-- **PNPM** as package manager
+- ✅ Prefer **semantic intent** over visual tuning
+- ✅ Prefer **tokens** over raw values
+- ✅ Prefer **layout primitives** over ad-hoc styling
+- ✅ Prefer **enforcement** over convention
+- ❌ **No short-term hacks** that harm system coherence
 
 ---
 
-## Repo layout (high level)
+## 2. Architecture & Repo Layout
 
-- `content/` — Markdown pages (`.md`) processed by MDsveX
-- `src/routes/` — SvelteKit routes (`+page.svelte`, `[slug]/`, etc.)
-- `src/lib/` — reusable components, utils, data, assets
-- `src/app.css` — Tailwind entry + token-to-utility mapping (`@theme`)
-- `src/lib/assets/css/tokens.css` — canonical `--viz-*` tokens (colors, etc.)
-- `src/lib/assets/css/fonts.css` — `@font-face` declarations
-- `static/` — images/fonts served as-is (use absolute `/...` paths)
+> One source of truth per concern.
 
----
+### Stack (Source of Truth)
 
-## Non-negotiables (automated edits must follow)
+- **SvelteKit** (Svelte v5) + **adapter-static** (Prerendering)
+- **MDsveX** (Markdown processing)
+- **Tailwind CSS v4** (Utility framework)
+- **TypeScript** (Type safety)
 
-1. **Static-first**: Everything must work with prerendering + adapter-static (no runtime-only routes).
-2. **Import strategy**: Prefer `$lib/...` for shared modules/components. Avoid deep relative imports.
-3. **Markdown policy**: Do **not** embed Tailwind utility classes inside Markdown files in `content/`.
-4. **Token determinism**: Use canonical `--viz-*` tokens from `src/lib/assets/css/tokens.css`. Avoid ad-hoc hex values.
-5. **Accessibility**: Semantic HTML, alt text, keyboard support, and visible focus states.
+**Constraint:** No runtime dependencies for public routes. Everything must build to static HTML.
 
----
+### Directory Structure
 
-## Design system & styling (Tailwind + tokens)
-
-### CSS-first model (how styling works here)
-
-- Canonical tokens live in `src/lib/assets/css/tokens.css` as `--viz-*`.
-- Tailwind utilities are created by mapping tokens in `src/app.css` using `@theme { ... }`.
-- Prefer Tailwind utilities in Svelte components; avoid new global CSS unless widely reused.
-
-### Token usage rules
-
-- **No raw hex** in class strings (e.g. avoid `bg-[#747474]`).
-- Prefer **semantic roles** when available (e.g. background/foreground/surface/link tokens), and use palette tokens for brand accents only.
-- If a new “named value” is needed, add it to `tokens.css` (canonical), then map it in `app.css` (`@theme`) for Tailwind-facing utilities.
-
-### Tailwind conventions (practical)
-
-- Mobile-first utilities; add `sm:`, `md:`, `lg:`, `xl:` only when needed.
-- Keep spacing consistent (use Tailwind scale; prefer `gap-*`).
-- Avoid bespoke one-off arbitrary values unless unavoidable; if repeated, promote to a shared pattern.
-
-### Fonts
-
-- Fonts are defined via `@font-face` in `src/lib/assets/css/fonts.css`.
-- Tailwind-facing font families are exposed via `@theme` in `src/app.css` (e.g. `font-body`, `font-display`).
-
----
-
-## Content (MDsveX / Markdown)
-
-### Frontmatter (required)
-
-All `.md`/`.svx` files must include:
-
-```yaml
----
-title: string
-description: string # ~150–160 chars
----
+```
+src/
+  lib/
+    components/          # ALL reusable UI components (exported via index.ts)
+      typography/        # Text, Heading, SubHeading (Text primitives)
+      layout/            # Stack, Cluster, Grid, Container, Box (Spatial primitives)
+      controls/          # Button, Accordion, Dropdown (Interactive primitives)
+      blocks/            # Card, VideoCard, MarqueeRow (Semantic chunks)
+      composition/       # (planned) CardGrid, FilterGrid
+      sections/          # Header, Footer, Hero (Page compositions)
+      patterns/          # BannerCurve, PatternStream, Divider (Decorative, optional)
+    utils/               # Usage: $lib/utils/name
+  routes/                # Routing shell (thin wrappers)
+  fonts.css              # Font-face declarations
+  app.css                # Design tokens + Tailwind config + @layer definitions
+content/                 # Markdown content (Narrative + Metadata)
+static/                  # Public assets (Images, Fonts)
 ```
 
-Optional:
+### Litmus Test
 
-```yaml
-tags: string[]
-draft: boolean
-image: string # path under /static
+> If you delete all `content/*.md` files, the site should still build and render empty but
+> structurally correct pages.
+
+- **Content Layer**: Holds all narrative and metadata.
+- **Component Layer**: Visuals and structure only; no route-specific copy.
+
 ---
+
+## 3. Design System Taxonomy
+
+> **Foundation** → **Typography** → **Layout** → **Controls** → **Blocks** → **Composition** → **Sections** →
+> **Patterns** (orthogonal)
+
+The design system is organized into 8 independent, composable layers under `src/lib/components/`:
+
+| Layer           | Role                            | Mental Model | Examples                              |
+| --------------- | ------------------------------- | ------------ | ------------------------------------- |
+| **Foundation**  | Tokens, fonts, & layer defs     | Values       | `app.css`, `fonts.css`                |
+| **Typography**  | Text primitives & scales        | Language     | `Heading`, `Text`, `SubHeading`       |
+| **Layout**      | Layout & spacing utilities      | Space        | `Stack`, `Grid`, `Container`, `Box`   |
+| **Controls**    | Interactive primitives          | Actions      | `Button`, `Accordion`, `Dropdown`     |
+| **Blocks**      | Reusable semantic chunks        | Meaning      | `Card`, `VideoCard`, `MarqueeRow`     |
+| **Composition** | Reusable arrangements of blocks | Structure    | `CardGrid`, `FilterGrid` (planned)    |
+| **Sections**    | Page-level compositions         | Architecture | `Header`, `Footer`, `Hero`            |
+| **Patterns**    | Decorative visuals (optional)   | Expression   | `BannerCurve`, `PatternStream`, `Divider` |
+
+**Foundation** contains all design tokens and layer definitions in `src/`:
+
+- `app.css` — Design tokens, Tailwind config, `@layer` definitions, and prose styling
+- `fonts.css` — `@font-face` declarations only
+
+**Dependency Rule**: Layers may only import from lower layers. Patterns are orthogonal (no layer
+depends on Patterns).
+
+See [Design System Taxonomy](/design/system) for the complete canonical reference.
+
+---
+
+## 4. Component Architecture
+
+> Small, typed, import-only-downward, composed from lower layers.
+
+### Import Conventions
+
+**Unified Barrel**: Always import from `$lib/components`. No deep imports.
+
+```javascript
+/* ✅ DO */
+import { Button, Header, Stack } from '$lib/components';
+
+/* ❌ DON'T (Deep imports forbidden) */
+import Button from '$lib/components/controls/Button.svelte';
 ```
 
-### Markdown styling rule
+### Layout Primitives
 
-- Do not add Tailwind classes inside Markdown.
-- Styling must be applied by the renderer/wrapper component (e.g. a `prose` wrapper in Svelte), or via dedicated components.
+Never use `flex`, `grid`, or `gap` classes directly in reusable components. Always use **layout**
+primitives:
 
----
+- **Stack**: Vertical flow with consistent spacing. `space="md"`.
+- **Cluster**: Inline flow with wrapping. `space="sm"`.
+- **Grid**: Two-dimensional layout. `minWidth="280px"`.
 
-## Components (taxonomy + boundaries)
-
-### Where things go
-
-- `src/lib/components/interface/` — reusable primitives (no page copy, no hard-coded asset paths)
-- `src/lib/components/typography/` — text primitives/wrappers (e.g. Prose)
-- `src/lib/components/layout/` — compositional layout primitives
-- `src/lib/components/structure/` — global chrome (header/footer/banners)
-- `src/lib/components/sections/` — reusable page blocks
-- `src/routes/<route>/_components/` — route-only components tightly coupled to one page
-
-### Imports
-
-- Prefer: `import Thing from '$lib/...';`
-- Within the component library itself, prefer direct local imports (avoid barrel imports that can create circular deps).
-
----
-
-## Assets (images, fonts, paths)
-
-- Put static images in `static/images/`.
-- Reference images using absolute paths:
-  - Markdown: `![Alt text](/images/file.webp)`
-  - Svelte: `<img src="/images/file.webp" alt="..." />`
-- Use `%sveltekit.assets%` only in `src/app.html` when needed.
-- Always include descriptive `alt` text.
-- Prefer modern formats (`.webp`, `.avif`) for photos.
-- Avoid unbounded intrinsic sizes; specify width/height when possible to reduce CLS.
-
----
-
-## Prerendering
-
-- Pages must be prerenderable.
-- Use `export const prerender = true;` in `+page.ts` or `+layout.ts` where appropriate.
-- Avoid runtime-only APIs (`cookies`, `locals`, auth guards) in public routes.
-
----
-
-## Build & deploy expectations
-
-- Build: `pnpm build` (prerender crawler must not hit 404s)
-- Preview: `pnpm run preview`
-- Any new internal links must resolve during prerender (or have an explicit redirect).
-
----
-
-## SEO requirements (minimum)
-
-Each page should have:
-
-- Title + meta description
-- Open Graph tags for sharing
-- Twitter card tags
-
-In Svelte routes, use `<svelte:head>` and populate title/description from load data.
-
-```svelte
-<script lang="ts">
-	export let data;
-	const { title, description } = data;
-</script>
-
-<svelte:head>
-	<title>{title} | VizChitra</title>
-	<meta name="description" content={description} />
-	<meta property="og:type" content="website" />
-	<meta property="og:title" content={title} />
-	<meta property="og:description" content={description} />
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content={title} />
-	<meta name="twitter:description" content={description} />
-</svelte:head>
+```txt
+src/
+  lib/
+    components/          # ALL reusable UI components (exported via index.ts)
+      typography/        # Text, Heading, SubHeading (Text primitives)
+      layout/            # Stack, Cluster, Grid, Container, Box (Spatial primitives)
+      controls/          # Button, Accordion, Dropdown (Interactive primitives)
+      blocks/            # Card, VideoCard, MarqueeRow (Semantic chunks)
+      composition/       # (planned) CardGrid, FilterGrid
+      sections/          # Header, Footer, Hero (Page compositions)
+      patterns/          # BannerCurve, PatternStream, Divider (Decorative, optional)
+    utils/               # Usage: $lib/utils/name
+  routes/                # Routing shell (thin wrappers)
+  fonts.css              # Font-face declarations
+  app.css                # Design tokens + Tailwind config + @layer definitions
+content/                 # Markdown content (Narrative + Metadata)
+static/                  # Public assets (Images, Fonts)
 ```
 
----
+## 5. Content & Assets
 
-## Common workflows (repo-specific)
+> Markdown is for meaning, not styling.
 
-### Add a content page
+### MDsveX (Content)
 
-1. Add `content/<slug>.md` with required frontmatter.
-2. Ensure routing resolves via `src/routes/[slug]/+page.svelte` (or explicit route).
-3. Confirm prerender can discover the page (linked or enumerated).
+- **Frontmatter**: `title` and `description` are mandatory.
+- **Styling**: Handled by wrapper components/layouts.
+- **Constraint**: No Tailwind classes in Markdown.
 
-### Add a UI component
+### Assets
 
-1. Create under `src/lib/components/<category>/ComponentName.svelte`.
-2. Type all props (TypeScript).
-3. Use Tailwind utilities backed by tokens (no hex).
-4. Export from a barrel only for stable, widely reused components (e.g. interface primitives).
-5. Avoid barrels for layout, sections, and route-coupled components.
-
-### Add a utility
-
-1. Create `src/lib/utils/<name>.ts` with explicit types.
-2. Import via `$lib/utils/<name>`.
+- **Location**: `static/`.
+- **Access**: Absolute paths (e.g., `/images/logo.webp`).
+- **Formats**: Modern (`.webp`, `.avif`).
+- **Alt Text**: Mandatory.
 
 ---
 
-## Code style (for edits)
+## 6. Workflows
 
-- Indentation: **2 spaces**
-- JS/TS quotes: **single**
-- HTML attributes: **double**
-- Keep lines ~80–100 chars (hard max 120)
-- Keep components small; extract if they grow beyond ~150 lines
+### Common Tasks
+
+- **Add Page**: Create `content/<slug>.md`. Ensure route exists in `src/routes/`.
+- **Add Component**: Create in `$lib/components/<layer>/`. Export via `index.ts` if reused.
+- **SEO**: Check `title`, `description`, `og:image`, `twitter:card`.
+
+### Build & Deploy
+
+- Run `pnpm build` locally to verify prerendering.
+- Ensure **Zero 404s** in the build log.
 
 ---
 
-## Verification checklist (before submitting)
+## 7. Quality Assurance
 
-- [ ] `pnpm build` passes; prerender crawler has no 404s
-- [ ] Imports use `$lib/...` where appropriate
-- [ ] No Tailwind classes embedded in `content/` markdown
-- [ ] No raw hex colors added; tokens used (or added to `tokens.css` + mapped in `app.css`)
-- [ ] Accessibility: semantic elements, focus states, keyboard support, alt text
-- [ ] All interactive elements must be reachable and usable via keyboard alone.
-- [ ] SEO tags present (title, description, Open Graph, Twitter card)
-- [ ] Mobile-first layout looks correct across breakpoints
+> Trusted by verify.
+
+### Formatting & Linting Strategy
+
+**Formatting:**
+
+- **Prettier** (`pnpm format`): Formats all file types.
+  - Configured with `prettier-plugin-svelte` and `prettier-plugin-tailwindcss`.
+  - Format on save in editor (VSCode integrated).
+
+**Markdown Tables:**
+
+- Always align table columns for readability in source code.
+- Use consistent spacing in pipe separators (`| column |` not `|column|`).
+- This makes diffs clearer and source files more maintainable.
+
+**Linting:**
+
+- **ESLint** (`pnpm lint`): Runs Prettier check + ESLint on `src/**/*.{js,svelte}` and `content/**/*.md`.
+  - Enforces barrel imports from `$lib/components`
+  - Enforces layout primitives (no raw `flex`/`grid` classes)
+  - Enforces no Tailwind classes in Markdown files
+
+### Verification Checklist
+
+Before submitting changes:
+
+- [ ] **Linting**: `pnpm lint` passes with 0 errors.
+- [ ] **Build**: `pnpm build` succeeds with no 404s.
+- [ ] **Architecture**: No deep imports; Component layers respected.
+- [ ] **Design**: No raw hex values; Layout primitives used.
+- [ ] **Content**: Markdown is clean; Metadata present.

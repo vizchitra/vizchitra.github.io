@@ -1,21 +1,26 @@
 <script>
 	import SpeakerCard from '../SpeakerCard/SpeakerCard.svelte';
-	import arrowLeft from '$lib/assets/images/icons/arrow-left.svg?raw';
-	import arrowRight from '$lib/assets/images/icons/arrow-right.svg?raw';
+	import { InlineSvg } from '$lib/components';
 	import sessionsData from '$lib/data/sessions2025.json' with { type: 'json' };
 	import { onMount } from 'svelte';
 
-	export let sessionTypes = ['workshop'];
+	/**
+	 * @typedef Props
+	 * @property {string[]} [sessionTypes]
+	 */
+
+	/** @type {Props} */
+	let { sessionTypes = ['workshop'] } = $props();
 
 	const sessionInfo = sessionsData.filter((s) => sessionTypes.includes(s.talkType));
 
-	let trackContainer;
-	let cardTrack;
-	let isDragging = false;
-	let startX;
-	let scrollLeft;
-	let atStart = true;
-	let atEnd = false;
+	let trackContainer = $state(undefined);
+	let cardTrack = $state(undefined);
+	let isDragging = $state(false);
+	let startX = $state(0);
+	let scrollLeft = $state(0);
+	let atStart = $state(true);
+	let atEnd = $state(false);
 
 	onMount(() => {
 		if (trackContainer) {
@@ -68,13 +73,13 @@
 		atEnd = scrollLeft + clientWidth >= scrollWidth - 20;
 	}
 
-	let screenWidth = 0;
+	let screenWidth = $state(0);
 </script>
 
 <svelte:window bind:innerWidth={screenWidth} />
 
-<div class="mb-3 flex flex-row items-end gap-1">
-	<span class="block pb-[1px] text-lg text-[#666] md:text-[18px]">
+<div class="mb-sm gap-xs flex flex-row items-end">
+	<span class="hint-text text-grey block pb-px text-lg">
 		{screenWidth < 1000 ? 'Tap' : 'Click'} on the cards to learn more</span
 	>
 	<svg width="23" height="21" viewBox="0 0 23 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -86,40 +91,44 @@
 </div>
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
-	class="relative mb-6 max-w-[100%] overflow-auto"
+	class="mb-md relative max-w-full overflow-auto"
 	bind:this={trackContainer}
-	on:mousedown={handleMouseDown}
-	on:mousemove={handleMouseMove}
-	on:mouseleave={handleMouseLeave}
-	on:mouseup={handleMouseUp}
-	on:scroll={updateScrollPosition}
+	onmousedown={handleMouseDown}
+	onmousemove={handleMouseMove}
+	onmouseleave={handleMouseLeave}
+	onmouseup={handleMouseUp}
+	onscroll={updateScrollPosition}
 >
 	<div
-		class="speaker-track flex flex-row flex-nowrap gap-4 hover:cursor-grab"
+		class="speaker-track gap-sm flex flex-row flex-nowrap hover:cursor-grab"
 		bind:this={cardTrack}
 	>
 		{#each sessionInfo as workshop, index (workshop.name)}
 			<SpeakerCard
 				data={workshop}
-				dragParams={{ isDragging: isDragging, startX: startX, offsetLeft: cardTrack?.offsetLeft }}
+				dragParams={{
+					isDragging: isDragging,
+					startX: startX,
+					offsetLeft: cardTrack?.offsetLeft
+				}}
 			></SpeakerCard>
 		{/each}
 	</div>
 </div>
 
 {#if atStart === false || atEnd === false}
-	<div class="track-controls flex items-center gap-3 self-start pl-4 sm:gap-4">
+	<div class="track-controls gap-sm pl-sm sm:gap-sm flex items-center self-start">
 		<button
-			on:click={() => scrollTrack('left')}
+			onclick={() => scrollTrack('left')}
 			disabled={atStart}
-			class="flex h-[60px] w-[60px] cursor-pointer items-center justify-center rounded-full border-[1px] border-[#999] bg-[#F5C7C7] p-3 hover:opacity-70 disabled:bg-white disabled:opacity-60 sm:h-[75px] sm:w-[75px]"
-			aria-label="scroll left">{@html arrowLeft}</button
+			class="track-btn border-grey p-sm flex cursor-pointer items-center justify-center rounded-full border hover:opacity-70 disabled:bg-white disabled:opacity-60"
+			aria-label="scroll left"><InlineSvg name="arrow-left.svg" /></button
 		>
 		<button
-			on:click={() => scrollTrack('right')}
+			onclick={() => scrollTrack('right')}
 			disabled={atEnd}
-			class="flex h-[60px] w-[60px] cursor-pointer items-center justify-center rounded-full border-[1px] border-[#999] bg-[#F5C7C7] p-3 hover:opacity-70 disabled:bg-white disabled:opacity-60 sm:h-[75px] sm:w-[75px]"
-			aria-label="scroll right">{@html arrowRight}</button
+			class="track-btn border-grey p-sm flex cursor-pointer items-center justify-center rounded-full border hover:opacity-70 disabled:bg-white disabled:opacity-60"
+			aria-label="scroll right"><InlineSvg name="arrow-right.svg" /></button
 		>
 	</div>
 {/if}
@@ -129,5 +138,18 @@
 		user-select: none;
 		cursor: grabbing;
 		scroll-behavior: smooth;
+	}
+
+	.track-btn {
+		height: 60px;
+		width: 60px;
+		background-color: #f5c7c7;
+	}
+
+	@media (min-width: 640px) {
+		.track-btn {
+			height: 75px;
+			width: 75px;
+		}
 	}
 </style>

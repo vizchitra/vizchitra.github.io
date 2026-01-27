@@ -3,68 +3,43 @@ title: VizChitra
 description: The Indian Data Visualization Community
 image: /images/preview/vizchitra-preview.jpg
 banner: curve
+width: content
 ---
 
-<script lang="ts">
-	import { Button } from '$lib/components/interface';
-  import { VideoGrid, RecapVideo, PurposeThree, Mission } from '$lib/components/sections';
-	import { DividerCurves, BannerPolygon, Header } from '$lib/components/structure';
-	import { Slanted, SubHeading, Heading } from '$lib/components/typography';
-	import { VizChitraLogoType, VizChitraLogoTagline } from '$lib/components/typography';
-</script>
+<Hero banner="curve"/>
 
-<!-- <Header title="VizChitra" interactive="true" banner="curve" size="large" showLogo=true /> -->
-<Header title="VizChitra" banner="curve" interactive={true} size="large" showLogo={true} tagline="A SPACE TO CONNECT AND CREATE WITH DATA" />
-
-<Heading>
-	<VizChitraLogoType year="2026"></VizChitraLogoType>
+<Heading type="title" color="pink"> 
+	<LogoType year={2026}/> 
 </Heading>
 
-<SubHeading class="pb-6">
-India's community-driven conference dedicated to <span class="text-viz-yellow-dark font-bold">data visualization</span > is back again in <span class="text-viz-teal-dark font-bold">2026</span>. This flagship event over <span class="text-viz-blue-dark font-bold">two days</span> will be in <span class="text-viz-orange-dark font-bold">Bangalore</span> on <span class="text-viz-pink-dark font-bold">3rd & 4th July, 2026 </span>
-</SubHeading>
+<Text type="lead" align="center"> 
+India's community-driven conference dedicated to <Span color="yellow">data visualization</Span> is back again in 2026. This flagship event over <Span color="blue"> two days </Span> will be in <Span color="orange"> Bangalore </Span> on <Span color="pink">3rd & 4th July, 2026</Span>.
+</Text>
 
-<div class="flex justify-center align-center pt-4">
-<Button href="/2026" color="pink">Go to our 2026 page</Button>
-</div>
+<Cluster>
+	<Button href="/2026" color="pink">Go to our 2026 page</Button>
+</Cluster>
 
-<DividerCurves/>
+<Divider type="curves" />
 
-<Heading>
-	<VizChitraLogoType year="2025"></VizChitraLogoType>
+<Heading type="title" color="orange"> 
+	<LogoType year={2025}/> Recap
 </Heading>
 
-<SubHeading class="pb-6">
-Missed the event last year. See the highlights below
-</SubHeading>
+<Text type="lead">
+ Our inaugural event was held in <Span color="teal">2025</Span> in <Span color="teal">Bangalore</Span>. It featured talks, workshops, and panel discussions from leading experts in the field of <Span color="blue">data visualization</Span>. Missed the event last year. See the highlights below. 
+ </Text>
 
-<RecapVideo/>
+<FullBleed>
+	<RecapVideo />
+</FullBleed>
 
-<Heading tag="h2" class="text-viz-pink-dark mt-12 pt-12" href="/ethos">
-	Our Ethos @ <VizChitraLogoType year={null}></VizChitraLogoType>
+<Heading type="title"> Our Ethos @ <LogoType/> </Heading>
+
+<Heading type="subtitle" align="center" color="orange">
+ 	<Slanted text="A SPACE TO CONNECT AND CREATE WITH DATA"/>
 </Heading>
 
-<Slanted tag="h3" textContent="A SPACE TO CONNECT AND CREATE WITH DATA" />
+<Text> Our goal is to build a community of diverse, interdisciplinary individuals working across the visualization spectrum, and facilitate learning and connections between people from different industries and disciplines who share a common interest in the power of data and storytelling. </Text>
 
-<SubHeading>
-Our goal is to build a community of diverse, interdisciplinary individuals working across the
-visualization spectrum, and facilitate learning and connections between people from different
-industries and disciplines who share a common interest in the power of data and storytelling.
-</SubHeading>
-
-<DividerCurves/>
-
-<Heading> 
-Our Mission @ <VizChitraLogoType year={null}></VizChitraLogoType>
-</Heading>
-
-<Slanted tag="h3" color="blue" textContent="BUILD AN INDIAN DATA VISUALIZATION COMMUNITY" />
-
-<SubHeading>
-To foster a vibrant <span class="font-bold">community of data storytellers in India</span>
-bridging technical analysis and design expertise to shape perspectives and drive change
-</SubHeading>
-
-<Mission></Mission>
-
-<DividerCurves/>
+<Divider type="curves" />

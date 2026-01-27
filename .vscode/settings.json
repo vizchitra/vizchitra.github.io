@@ -4,16 +4,31 @@
 	"explorer.compactFolders": false,
 	"editor.formatOnSave": true,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"[svelte]": {
-		"editor.defaultFormatter": "svelte.svelte-vscode"
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "always"
 	},
-	"[yaml]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	"[svelte]": {
+		"editor.defaultFormatter": "svelte.svelte-vscode",
+		"editor.formatOnSave": true
 	},
 	"[markdown]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true,
+		"editor.defaultLanguage": "markdown"
 	},
 	"files.associations": {
-		"*.svx": "svelte"
-	}
+		"*.css": "tailwindcss",
+		"*.svelte": "svelte"
+	},
+	"tailwindCSS.experimental.configFile": "src/app.css",
+	"tailwindCSS.includeLanguages": {
+		"svelte": "html"
+	},
+	"editor.quickSuggestions": {
+		"strings": "on"
+	},
+	"tailwindCSS.hovers": true,
+	"tailwindCSS.suggestions": true,
+	"tailwindCSS.validate": true,
+	"tailwindCSS.lint.invalidTailwindDirective": "warning"
 }

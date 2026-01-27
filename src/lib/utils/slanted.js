@@ -24,7 +24,7 @@ export function formatSlantedText(text) {
 	let characters = text.split('');
 	let lettersList = [];
 
-	characters.forEach((letter, index) => {
+	characters.forEach((letter) => {
 		let slant = getLetterDistance(letter);
 
 		lettersList.push({ letter: letter, slant: slant });

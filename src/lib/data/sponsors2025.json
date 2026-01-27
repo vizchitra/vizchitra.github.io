@@ -1,58 +1,58 @@
 [
-  {
-    "heading": "Platinum Sponsor",
-    "logo": "/images/logos/nutanix-logo.avif",
-    "logoType": "image",
-    "variant": "pink",
-    "seed": 343442
-  },
-  {
-    "heading": "Gold Sponsor",
-    "logo": "/images/logos/lilly-logo.avif",
-    "logoType": "image",
-    "variant": "white",
-    "seed": 3434
-  },
-  {
-    "heading": "Silver & Diversity Sponsor",
-    "logo": "/images/logos/revisual-logo.avif",
-    "logoType": "image",
-    "variant": "yellow",
-    "seed": 343554354
-  },
-  {
-    "heading": "Bronze Sponsor",
-    "logo": "/images/logos/lightning-chart-logo.avif",
-    "logoType": "image",
-    "variant": "orange",
-    "seed": 343554354
-  },
-  {
-    "heading": "Bronze Sponsor",
-    "logo": "/images/logos/straive-logo.avif",
-    "logoType": "image",
-    "variant": "yellow",
-    "seed": 343554354
-  },
-  {
-    "heading": "Event Partner",
-    "logo": "/images/logos/hasgeek-logo.avif",
-    "logoType": "image",
-    "variant": "blue",
-    "seed": 342
-  },
-  {
-    "heading": "A Local Affliate for",
-    "logo": "/images/logos/dvs-logo.avif",
-    "logoType": "image",
-    "variant": "green",
-    "seed": 34435432
-  },
-  {
-    "heading": "Media Partner",
-    "logo": "/images/logos/lasttheoram-logo.avif",
-    "logoType": "image",
-    "variant": "orange",
-    "seed": 34435432
-  }
+	{
+		"heading": "Platinum Sponsor",
+		"logo": "/images/logos/nutanix-logo.avif",
+		"logoType": "image",
+		"variant": "pink",
+		"seed": 343442
+	},
+	{
+		"heading": "Gold Sponsor",
+		"logo": "/images/logos/lilly-logo.avif",
+		"logoType": "image",
+		"variant": "white",
+		"seed": 3434
+	},
+	{
+		"heading": "Silver & Diversity Sponsor",
+		"logo": "/images/logos/revisual-logo.avif",
+		"logoType": "image",
+		"variant": "yellow",
+		"seed": 343554354
+	},
+	{
+		"heading": "Bronze Sponsor",
+		"logo": "/images/logos/lightning-chart-logo.avif",
+		"logoType": "image",
+		"variant": "orange",
+		"seed": 343554354
+	},
+	{
+		"heading": "Bronze Sponsor",
+		"logo": "/images/logos/straive-logo.avif",
+		"logoType": "image",
+		"variant": "yellow",
+		"seed": 343554354
+	},
+	{
+		"heading": "Event Partner",
+		"logo": "/images/logos/hasgeek-logo.avif",
+		"logoType": "image",
+		"variant": "blue",
+		"seed": 342
+	},
+	{
+		"heading": "A Local Affliate for",
+		"logo": "/images/logos/dvs-logo.avif",
+		"logoType": "image",
+		"variant": "green",
+		"seed": 34435432
+	},
+	{
+		"heading": "Media Partner",
+		"logo": "/images/logos/lasttheoram-logo.avif",
+		"logoType": "image",
+		"variant": "orange",
+		"seed": 34435432
+	}
 ]

@@ -1,222 +1,392 @@
-@import url('lib/assets/css/fonts.css');
-@import url('lib/assets/css/tokens.css');
+/*
+  VizChitra Global Styles
+  Single source of truth for colors, typography, spacing, and layout.
+  Typography uses fluid scaling with base: 16px (mobile) → 18px (desktop)
+*/
 
+@import './fonts.css';
 @import 'tailwindcss';
-@plugin '@tailwindcss/typography';
 
-/* Tailwind-facing tokens: map from canonical --viz-* variables */
-@theme {
-	/* Palette: core */
-	--color-viz-white: var(--viz-color-white);
+@theme static {
+	/* Reset Tailwind defaults */
+	--color-*: initial;
+	--font-*: initial;
+	--radius-*: initial;
+	--shadow-*: initial;
 
-	--color-viz-black: var(--viz-color-black);
-	--color-viz-grey: var(--viz-color-grey);
-	--color-viz-yellow: var(--viz-color-yellow);
-	--color-viz-teal: var(--viz-color-teal);
-	--color-viz-blue: var(--viz-color-blue);
-	--color-viz-orange: var(--viz-color-orange);
-	--color-viz-pink: var(--viz-color-pink);
+	/* Base Color Reference */
 
-	--color-viz-yellow-light: var(--viz-color-yellow-light);
-	--color-viz-teal-light: var(--viz-color-teal-light);
-	--color-viz-blue-light: var(--viz-color-blue-light);
-	--color-viz-orange-light: var(--viz-color-orange-light);
-	--color-viz-pink-light: var(--viz-color-pink-light);
+	/* BRAND COLORS */
+	--color-white: oklch(100% 0 0);
+	--color-black: oklch(15% 0 0);
+	--color-grey: oklch(41% 0 0); /*Grey #4c4c4c */
+	--color-yellow: oklch(89% 0.109 82); /* #FFD485 */
+	--color-teal: oklch(84.9% 0.086 188); /* #88E0D8 */
+	--color-blue: oklch(79.3% 0.099 267); /* #9FBAFC */
+	--color-orange: oklch(76% 0.147 46.5); /* #FC915B */
+	--color-pink: oklch(71.9% 0.161 354); /* #EF75AB */
 
-	--color-viz-black-dark: var(--viz-color-black-dark);
-	--color-viz-grey-dark: var(--viz-color-grey-dark);
-	--color-viz-yellow-dark: var(--viz-color-yellow-dark);
-	--color-viz-teal-dark: var(--viz-color-teal-dark);
-	--color-viz-blue-dark: var(--viz-color-blue-dark);
-	--color-viz-orange-dark: var(--viz-color-orange-dark);
-	--color-viz-pink-dark: var(--viz-color-pink-dark);
+	/* HUE PALETTES */
 
-	/* Typography */
-	--font-text-sans: var(--viz-font-text-sans);
-	--font-display-sans: var(--viz-font-display-sans);
-	--font-body-mono: var(--viz-font-body-mono);
+	/* Yellow - Hue 82 */
+	--color-yellow-100: oklch(97% 0.03 82);
+	--color-yellow-200: oklch(94% 0.06 82);
+	--color-yellow-300: oklch(91% 0.09 82);
+	--color-yellow-400: oklch(89% 0.109 82); /* Original */
+	--color-yellow-500: oklch(82% 0.13 82);
+	--color-yellow-600: oklch(72% 0.15 82);
+	--color-yellow-700: oklch(62% 0.14 82);
+	--color-yellow-800: oklch(52% 0.12 82);
+	--color-yellow-900: oklch(42% 0.1 82);
 
-	--font-body: var(--viz-font-body);
-	--font-display: var(--viz-font-display);
-	--font-base: var(--viz-font-base);
+	/* Teal - Hue 188 */
+	--color-teal-100: oklch(97% 0.03 188);
+	--color-teal-200: oklch(94% 0.05 188);
+	--color-teal-300: oklch(89% 0.07 188);
+	--color-teal-400: oklch(84.9% 0.086 188); /* Original */
+	--color-teal-500: oklch(75% 0.1 188);
+	--color-teal-600: oklch(65% 0.11 188);
+	--color-teal-700: oklch(55% 0.1 188);
+	--color-teal-800: oklch(45% 0.08 188);
+	--color-teal-900: oklch(35% 0.06 188);
 
-	/* Semantic colors */
-	--color-bg: var(--viz-color-bg);
-	--color-fg: var(--viz-color-fg);
-	--color-muted: var(--viz-color-muted);
-	--color-surface: var(--viz-color-surface);
-	--color-border: var(--viz-color-border);
-	--color-link: var(--viz-color-link);
-	--color-accent: var(--viz-color-accent);
+	/* Blue - Hue 267 */
+	--color-blue-100: oklch(97% 0.03 267);
+	--color-blue-200: oklch(94% 0.05 267);
+	--color-blue-300: oklch(87% 0.08 267);
+	--color-blue-400: oklch(79.3% 0.099 267); /* Original */
+	--color-blue-500: oklch(70% 0.12 267);
+	--color-blue-600: oklch(60% 0.14 267);
+	--color-blue-700: oklch(50% 0.13 267);
+	--color-blue-800: oklch(40% 0.11 267);
+	--color-blue-900: oklch(30% 0.09 267);
+
+	/* Orange - Hue 46.5 */
+	--color-orange-100: oklch(97% 0.03 46.5);
+	--color-orange-200: oklch(94% 0.06 46.5);
+	--color-orange-300: oklch(85% 0.11 46.5);
+	--color-orange-400: oklch(76% 0.147 46.5); /* Original */
+	--color-orange-500: oklch(65% 0.16 46.5);
+	--color-orange-600: oklch(55% 0.17 46.5);
+	--color-orange-700: oklch(45% 0.16 46.5);
+	--color-orange-800: oklch(35% 0.14 46.5);
+	--color-orange-900: oklch(25% 0.12 46.5);
+
+	/* Pink - Hue 354 */
+	--color-pink-100: oklch(97% 0.03 354);
+	--color-pink-200: oklch(94% 0.06 354);
+	--color-pink-300: oklch(83% 0.12 354);
+	--color-pink-400: oklch(71.9% 0.161 354); /* Original */
+	--color-pink-500: oklch(62% 0.18 354);
+	--color-pink-600: oklch(52% 0.19 354);
+	--color-pink-700: oklch(42% 0.17 354);
+	--color-pink-800: oklch(32% 0.15 354);
+	--color-pink-900: oklch(22% 0.13 354);
+
+	/* Grey -  Hue 0 */
+	--color-grey-100: oklch(97% 0 0);
+	--color-grey-200: oklch(90% 0 0);
+	--color-grey-300: oklch(80% 0 0);
+	--color-grey-400: oklch(70% 0 0);
+	--color-grey-500: oklch(60% 0 0);
+	--color-grey-600: oklch(50% 0 0);
+	--color-grey-700: oklch(41% 0 0); /* Original #4C4C4C */
+	--color-grey-800: oklch(30% 0 0);
+	--color-grey-900: oklch(18% 0 0);
+
+	/* Named variants */
+	--color-yellow-subtle: var(--color-yellow-100);
+	--color-yellow-muted: var(--color-yellow-300);
+	--color-yellow-base: var(--color-yellow-400);
+	--color-yellow-strong: var(--color-yellow-700);
+	--color-yellow-contrast: var(--color-yellow-900);
+
+	--color-teal-subtle: var(--color-teal-100);
+	--color-teal-muted: var(--color-teal-300);
+	--color-teal-base: var(--color-teal-400);
+	--color-teal-strong: var(--color-teal-700);
+	--color-teal-contrast: var(--color-teal-900);
+
+	--color-blue-subtle: var(--color-blue-100);
+	--color-blue-muted: var(--color-blue-300);
+	--color-blue-base: var(--color-blue-400);
+	--color-blue-strong: var(--color-blue-700);
+	--color-blue-contrast: var(--color-blue-900);
+
+	--color-orange-subtle: var(--color-orange-100);
+	--color-orange-muted: var(--color-orange-300);
+	--color-orange-base: var(--color-orange-400);
+	--color-orange-strong: var(--color-orange-700);
+	--color-orange-contrast: var(--color-orange-900);
+
+	--color-pink-subtle: var(--color-pink-100);
+	--color-pink-muted: var(--color-pink-300);
+	--color-pink-base: var(--color-pink-400);
+	--color-pink-strong: var(--color-pink-700);
+	--color-pink-contrast: var(--color-pink-900);
+
+	--color-grey-subtle: var(--color-grey-100);
+	--color-grey-muted: var(--color-grey-300);
+	--color-grey-base: var(--color-grey-400);
+	--color-grey-strong: var(--color-grey-700);
+	--color-grey-contrast: var(--color-grey-900);
+
+	/* Semantic aliases */
+	--color-bg: var(--color-white);
+	--color-fg: var(--color-black);
+	--color-muted: var(--color-grey);
+	--color-surface: var(--color-white);
+	--color-border: var(--color-grey-200);
+	--color-border-light: oklch(87% 0 0);
+	--color-link: var(--color-blue-700);
+	--color-accent: var(--color-pink);
+	--color-transparent: transparent;
+	--color-current: currentColor;
+
+	/* ═══════════════════════════════════════════
+	   TYPOGRAPHY - Fluid Scale
+	   Base: 16px (320px) → 18px (1200px)
+	   ═══════════════════════════════════════════ */
+
+	/* Font families */
+	--font-display: 'Cairo', Optima, Candara, system-ui, sans-serif;
+	--font-body: 'IBM Plex Sans', 'Helvetica Neue', Arial, system-ui, sans-serif;
+	--font-mono: ui-monospace, 'Cascadia Code', Menlo, monospace;
+
+	/* Semantic fluid typography (major second ~1.125 ratio) */
+	--text-display: clamp(1.802rem, 0.5vw + 1.7rem, 2.027rem); /* ~29px to 32px */
+	--text-title: clamp(1.602rem, 0.4vw + 1.5rem, 1.802rem); /* ~26px to 29px */
+	--text-subtitle: clamp(1.424rem, 0.3vw + 1.3rem, 1.602rem); /* ~23px to 26px */
+	--text-lead: clamp(1.266rem, 0.2vw + 1.2rem, 1.424rem); /* ~20px to 23px */
+	--text-body: clamp(1rem, 0.1vw + 1rem, 1.125rem); /* 16px to 18px */
+	--text-caption: 0.875rem;
+
+	/* Line heights */
+	--leading-tight: 1.2;
+	--leading-snug: 1.35;
+	--leading-normal: 1.5;
+	--leading-relaxed: 1.625;
+
+	/* Font weights */
+	--font-weight-normal: 400;
+	--font-weight-medium: 500;
+	--font-weight-semibold: 600;
+	--font-weight-bold: 700;
+
+	/* ═══════════════════════════════════════════
+	   SPACING - Fluid Scale
+	   ═══════════════════════════════════════════ */
+
+	--spacing-0: 0;
+	--spacing-px: 1px;
+	--spacing-xs: clamp(0.25rem, 0.5vw + 0.125rem, 0.5rem);
+	--spacing-sm: clamp(0.5rem, 1vw + 0.25rem, 1rem);
+	--spacing-md: clamp(1rem, 2vw + 0.5rem, 1.5rem);
+	--spacing-lg: clamp(1.5rem, 3vw + 0.75rem, 2.5rem);
+	--spacing-xl: clamp(2rem, 4vw + 1rem, 4rem);
+	--spacing-2xl: clamp(3rem, 6vw + 1.5rem, 6rem);
+	--spacing-3xl: clamp(4rem, 8vw + 2rem, 8rem);
+	--spacing-4xl: clamp(6rem, 12vw + 3rem, 12rem);
+
+	/* ═══════════════════════════════════════════
+	   ASPECT RATIO
+	   ═══════════════════════════════════════════ */
+	--aspect-portrait: 3/4;
+	--aspect-square: 1/1;
+	--aspect-landscape: 4/3;
+	--aspect-video: 16/9;
+	--aspect-ultrawide: 21/9;
+
+	/* ═══════════════════════════════════════════
+	   RADIUS & SHADOWS
+	   ═══════════════════════════════════════════ */
+	--radius-0: 0;
+	--radius-sm: 0.25rem;
+	--radius-md: 0.5rem;
+	--radius-lg: 1.25rem;
+
+	--shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	--shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+	--shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+	/* ═══════════════════════════════════════════
+	   WIDTHS
+	   ═══════════════════════════════════════════ */
+
+	--max-width-narrow: 28rem;
+	--max-width-prose: 60ch;
+	--max-width-content: 72rem;
+	--max-width-wide: 90rem;
+
+	--width-prose: 60ch;
+	--width-narrow: 28rem;
+	--width-content: 72rem;
+	--width-wide: 90rem;
+	--width-grid-min: 280px;
 }
 
-:root {
-	font-family: var(--font-body);
-	color: var(--color-text);
-}
+/* ═══════════════════════════════════════════
+   BASE LAYER
+   ═══════════════════════════════════════════ */
+@layer base {
+	:root {
+		font-family: var(--font-body);
+		color: var(--color-fg);
+	}
 
-html {
-	scroll-behavior: smooth;
-	font-variation-settings: 'slnt' 0;
-}
+	html {
+		scroll-behavior: smooth;
+		font-variation-settings: 'slnt' 0;
+	}
 
-body {
-	min-height: 100vh;
-	margin: 0;
-	background-attachment: fixed;
-	background-color: var(--color-bg-0);
-	background-size: 100vw 100vh;
-	overflow-x: hidden;
-}
+	body {
+		min-height: 100vh;
+		margin: 0;
+		background-color: var(--color-bg);
+		overflow-x: hidden;
+	}
 
-p {
-	font-weight: 400;
-}
+	p {
+		@apply text-body font-body leading-normal;
 
-p {
-	line-height: 1.5;
-}
+		text-wrap: pretty;
+	}
 
-h1 {
-	font-size: 2rem;
-}
-
-h2 {
-	font-size: 1.5rem;
-}
-
-pre {
-	font-size: 16px;
-	font-family: var(--font-mono);
-	background-color: rgba(255, 255, 255, 0.45);
-	border-radius: 3px;
-	box-shadow: 2px 2px 6px rgb(255 255 255 / 25%);
-	padding: 0.5em;
-	overflow-x: auto;
-	color: var(--color-text);
-}
-
-.text-column {
-	display: flex;
-	max-width: 48rem;
-	flex: 0.6;
-	flex-direction: column;
-	justify-content: center;
-	margin: 0 auto;
-}
-
-input,
-button {
-	font-size: inherit;
-	font-family: inherit;
-}
-
-button:focus:not(:focus-visible) {
-	outline: none;
-}
-
-.slanted-text {
-	font-family: var(--font-display);
-}
-
-@media (min-width: 720px) {
 	h1 {
-		font-size: 2.4rem;
+		@apply font-display text-display leading-tight;
+	}
+
+	h2 {
+		@apply font-display text-title leading-tight;
+	}
+
+	h3 {
+		@apply font-display text-subtitle leading-tight;
+	}
+
+	h1,
+	h2,
+	h3 {
+		text-wrap: balance;
+	}
+
+	pre {
+		font-family: var(--font-mono);
+		font-size: var(--text-body);
+		background-color: var(--color-surface);
+		border-radius: var(--radius-sm);
+		box-shadow: var(--shadow-sm);
+		padding: var(--spacing-sm);
+		overflow-x: auto;
+	}
+
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: var(--text-body);
+		line-height: var(--leading-normal);
+		margin-block: var(--spacing-md);
+	}
+
+	th {
+		background-color: var(--color-grey-100);
+		padding: var(--spacing-xs) var(--spacing-sm);
+		text-align: left;
+		font-weight: var(--font-weight-semibold);
+		border-bottom: 2px solid var(--color-grey-300);
+	}
+
+	td {
+		padding: var(--spacing-xs) var(--spacing-sm);
+		border-bottom: 1px solid var(--color-grey-200);
+	}
+
+	tr:last-child td {
+		border-bottom: none;
+	}
+
+	input,
+	button,
+	textarea,
+	select {
+		font: inherit;
 	}
 }
 
-.visually-hidden {
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: auto;
-	margin: 0;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
-	white-space: nowrap;
-}
+/* ═══════════════════════════════════════════
+   COMPONENTS LAYER
+   ═══════════════════════════════════════════ */
+@layer components {
+	.full-bleed {
+		width: 100vw;
+		margin-left: calc(50% - 50vw);
+		margin-right: calc(50% - 50vw);
+	}
 
-/* Utility class for full-width breakout sections */
-.full-bleed {
-	width: 100vw;
-	margin-left: calc(50% - 50vw);
-	margin-right: calc(50% - 50vw);
-	position: relative;
-}
+	/* ═══════════════════════════════════════════
+   PROSE for rich text content
+   ═══════════════════════════════════════════ */
 
-.font-display {
-	font-family: var(--font-display);
-}
+	.prose {
+		--prose-measure: var(--width-prose);
+		--prose-space: var(--spacing-md);
+		--prose-space-tight: var(--spacing-sm);
+	}
 
-.font-body {
-	font-family: var(--font-body);
-}
+	/* Text elements self-constrain to reading measure */
+	.prose :where(p, h1, h2, h3, h4, h5, h6, ul, ol, blockquote, pre, table, figure, hr, dl) {
+		max-width: var(--prose-measure);
+		margin-inline: auto;
+	}
 
-.slanted-text {
-	font-variation-settings: 'slnt' var(--letter-slant);
-}
+	/* Flow spacing (only when .prose is not a flex/grid container like Stack) */
+	.prose:not(.stack) > :where(p, ul, ol, blockquote, pre, table, figure, h1, h2, h3, h4, h5, h6) {
+		margin-block-start: var(--prose-space);
+	}
 
-/* Common Text Styles */
-.content-text {
-	@apply max-w-[55ch] text-[18px] md:text-[22px];
-	line-height: 1.5;
-}
+	/* Headings */
+	.prose :where(h1, h2, h3, h4, h5, h6) {
+		margin-block-start: var(--spacing-lg);
+		margin-block-end: var(--spacing-sm);
+	}
 
-.content-heading {
-	@apply text-[28px] leading-[1.5] font-bold;
-}
+	.prose :where(h1 + *, h2 + *, h3 + *, h4 + *, h5 + *, h6 + *) {
+		margin-block-start: var(--spacing-sm);
+	}
 
-.content-subheading {
-	@apply text-[28px] leading-[1.05];
-	text-wrap: balance;
-}
+	/* Lists */
+	.prose :where(ul, ol) {
+		padding-inline-start: 1.25em;
+	}
 
-.content-container {
-	@apply mx-auto max-w-3xl px-4;
-}
+	.prose :where(li + li) {
+		margin-block-start: var(--prose-space-tight);
+	}
 
-.content-notice {
-	@apply mb-8 rounded-lg border border-gray-200 bg-gray-100 p-6 md:p-8;
-}
+	/* Blockquotes */
+	.prose blockquote {
+		padding-inline-start: var(--spacing-md);
+		border-inline-start: 3px solid var(--color-muted);
+		color: var(--color-muted);
+	}
 
-/* Site-wide prose customization for VizChitra */
-.prose-viz {
-	/* Text colors */
-	--tw-prose-body: var(--viz-color-black);
-	--tw-prose-headings: var(--viz-color-black);
-	--tw-prose-links: var(--viz-color-blue-dark);
-	--tw-prose-bold: var(--viz-color-black);
-	--tw-prose-counters: var(--viz-color-grey-dark);
-	--tw-prose-bullets: var(--viz-color-grey-dark);
-	--tw-prose-hr: var(--viz-color-grey-light);
-	--tw-prose-quotes: var(--viz-color-grey-dark);
-	--tw-prose-quote-borders: var(--viz-color-pink);
-	--tw-prose-captions: var(--viz-color-grey-dark);
-	--tw-prose-code: var(--viz-color-pink-dark);
-	--tw-prose-pre-code: var(--viz-color-black);
-	--tw-prose-pre-bg: rgba(255, 255, 255, 0.45);
-	--tw-prose-th-borders: var(--viz-color-grey);
-	--tw-prose-td-borders: var(--viz-color-grey-light);
-}
+	/* Code */
+	.prose pre {
+		padding: var(--spacing-md);
+		border-radius: var(--radius-md);
+		background: var(--surface-muted);
+		overflow-x: auto;
+	}
 
-/* Prose link hover state */
-.prose-viz a:hover {
-	color: var(--viz-color-pink-dark);
-	text-decoration-thickness: 2px;
-}
+	.prose code {
+		font-family: var(--font-mono);
+		font-size: 0.95em;
+	}
 
-/* Tighter list spacing */
-.prose-viz li {
-	margin-top: 0.25em;
-	margin-bottom: 0.25em;
-}
-
-/* First/last paragraph margin adjustment in containers */
-.prose-viz > :first-child {
-	margin-top: 0;
-}
-
-.prose-viz > :last-child {
-	margin-bottom: 0;
+	/* Images */
+	.prose img {
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
 }

@@ -7,7 +7,7 @@ Allow: /2026
 
 # Do not crawl interactive tools
 Disallow: /polygon-playground/
-Disallow: /selfie/
+Disallow: /tools/selfie/
 
 
 ## For future
