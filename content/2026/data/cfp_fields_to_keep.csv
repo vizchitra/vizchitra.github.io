@@ -1,0 +1,41 @@
+Submission ID,Flag,Notes
+Respondent ID,N,
+Submitted at,N,
+First name,Y,
+Last name,N,
+Email address,N,
+Phone number,N,
+Job title,Y,
+Organisation,Y,
+I’m a… / I work on… / I'm interested in...,N,
+Links to your social media channels.,N,
+Twitter/X,N,
+LinkedIn,N,
+Select your proposal type,Y,
+"Note: We publish all submissions on the VizChitra website for our community, along with our review of each application. We do not publish personally identifiable information (PII) such as full names, contact details, addresses, or other sensitive data. Please confirm your consent by checking the box below.",N,
+"Note: We publish all submissions on the VizChitra website for our community, along with our review of each application. We do not publish personally identifiable information (PII) such as full names, contact details, addresses, or other sensitive data. Please confirm your consent by checking the box below. (I consent to VizChitra publishing my submission and the review of my application.)",N,
+Select the VizChitra 2026 theme your talk falls under,Y,Only for talks
+Title of your talk,Y,Only for talks
+A detailed description of your talk,Y,Only for talks
+Further links relevant to your talk proposal,Y,Only for talks
+Enter a link here...,Y,Only for talks
+Enter a link here... (2),Y,Only for talks
+Have you had prior experience giving a talk at a conference?,N,Only for talks
+Select the VizChitra 2026 theme your session falls under,Y,Only for dialogues
+Title of your session,Y,Only for dialogues
+Have you had prior experience conducting a Dialogue session at a conference?,N,Only for dialogues
+A detailed description of your Dialogue session.,Y,Only for dialogues
+Further links relevant to your session proposal.,Y,Only for dialogues
+Enter a link here... (3),Y,Only for dialogues
+Enter a link here... (4),Y,Only for dialogues
+Materials or tools required for the session,Y,Only for dialogues
+Room set-up needed,Y,Only for dialogues
+Select the VizChitra 2026 theme your talk falls under (2),Y,Only for workshop
+Title of your workshop,Y,Only for workshop
+Have you had prior experience conducting a workshop at a conference?,N,Only for workshop
+A detailed description of your workshop.,Y,Only for workshop
+Further links relevant to your workshop proposal.,Y,Only for workshop
+Enter a link here... (5),Y,Only for workshop
+Enter a link here... (6),Y,Only for workshop
+Materials or tools required for the session (2),Y,Only for workshop
+Room set-up needed (2),Y,Only for workshop

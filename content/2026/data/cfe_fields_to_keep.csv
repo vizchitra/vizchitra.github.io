@@ -1,0 +1,28 @@
+Submission ID,Flag,Notes
+Submission ID,N,
+Respondent ID,N,
+Submitted at,Y,
+First name,Y,
+Last name,N,
+Email address,N,
+Phone number,N,
+Job title,Y,
+Organisation,Y,
+I’m a… / I work on… / I'm interested in...,N,
+Are you submitting as an individual or a collective?,Y,
+Collective/Team Name,Y,Conditional to Row 12.
+Collective/Team Bio,Y,Conditional to Row 12.
+Examples of previous projects,Y,
+Links to your social media channels.,N,
+Twitter/X,N,
+LinkedIn,N,
+Project Title,Y,
+"Project  Description
+",Y,
+What is your data?,Y,
+How do you visualize it? ,Y,
+Sketches / Concept Ideations,Y,
+What technical/spatial requirements would you be needing?,Y,
+Project status + Timeline,Y,
+"Note: We publish all submissions on the VizChitra website for our community, along with our review of each application. We do not publish personally identifiable information (PII) such as full names, contact details, addresses, or other sensitive data. Please confirm your consent by checking the box below.",N,
+"Note: We publish all submissions on the VizChitra website for our community, along with our review of each application. We do not publish personally identifiable information (PII) such as full names, contact details, addresses, or other sensitive data. Please confirm your consent by checking the box below. (I consent to VizChitra publishing my submission and the review of my application.)",N,

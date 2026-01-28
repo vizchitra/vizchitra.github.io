@@ -27,3 +27,4 @@ vite.config.ts.timestamp-*
 
 # PartyKit
 .partykit
+.claude/

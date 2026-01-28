@@ -13,8 +13,9 @@
 			accentColor: 'var(--color-viz-orange)',
 			subsections: [
 				{ name: 'Event', href: '/2026/' },
-				{ name: 'Proposals', href: '/2026/proposals' },
-				{ name: 'Exhibition', href: '/2026/exhibition' }
+				{ name: 'Call for Proposals', href: '/2026/proposals' },
+				{ name: 'Call for Exhibition', href: '/2026/exhibition' },
+				{ name: 'Submissions', href: '/2026/submissions' }
 			],
 			expanded: false
 		},
