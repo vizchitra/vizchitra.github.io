@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { Grid } from '$lib/components/layout';
 	import { Header, DividerCurves } from '$lib/components/structure';
 	import { ProposalCard, ProposalFilters } from '$lib/components/proposals';
 	import type { PageData } from './$types';
@@ -25,7 +24,7 @@
 		// Fuzzy search with Fuse.js
 		if (searchQuery.trim()) {
 			// Create searchable data with normalized fields
-			const searchableData = filtered.map(p => ({
+			const searchableData = filtered.map((p) => ({
 				...p,
 				searchTitle: p.type === 'cfp' ? p.title : p.projectTitle,
 				searchDescription: p.type === 'cfp' ? p.description : p.projectDescription

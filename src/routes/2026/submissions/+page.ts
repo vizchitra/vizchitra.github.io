@@ -1,6 +1,6 @@
 import type { PageLoad } from './$types';
 import { parseCFPProposals, parseCFEProposals } from '$lib/utils/csv-parser';
-import cfpRaw from '../../../../content/2026/data/cfp_sample.csv?raw';
+import cfpRaw from '../../../../content/2026/data/cfp.csv?raw';
 import cfeRaw from '../../../../content/2026/data/cfe_sample.csv?raw';
 
 export const prerender = true;
