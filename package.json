@@ -12,6 +12,7 @@
 		"preview": "wrangler pages dev .svelte-kit/cloudflare",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
+		"data:fetch": "node --env-file=.env scripts/fetch_data.js",
 		"format": "prettier --write .",
 		"lint": "prettier --check ."
 	},
@@ -27,6 +28,7 @@
 		"@types/node": "^25.0.3",
 		"@types/papaparse": "^5.5.2",
 		"d3": "^7.9.0",
+		"googleapis": "^171.0.0",
 		"js-yaml": "^4.1.1",
 		"mdsvex": "^0.12.6",
 		"modern-screenshot": "^4.6.7",
