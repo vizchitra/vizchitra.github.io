@@ -42,6 +42,14 @@ const initResvg = async () => {
   }
 };
 
+// Define entries for prerendering
+export const entries = async () => {
+  const cfpProposals = parseCFPProposals(cfpRaw);
+  const cfeProposals = parseCFEProposals(cfeRaw);
+  const proposals = [...cfpProposals, ...cfeProposals];
+  return proposals.map((p) => ({ id: p.slug }));
+};
+
 // Helper to get color code
 function getColor(proposal: CFPProposal | CFEProposal) {
   if (proposal.type === 'cfp') {
