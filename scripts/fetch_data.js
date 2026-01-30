@@ -52,7 +52,25 @@ async function main() {
 
     console.log(`Fetched ${rows.length} rows.`);
 
-    const csv = Papa.unparse(rows);
+    // Filter rows based on "Exclude" column (if it exists)
+    const header = rows[0];
+    const excludeIndex = header.findIndex(h => h.trim().toLowerCase() === 'exclude');
+
+    let filteredRows = rows;
+    if (excludeIndex !== -1) {
+      console.log(`Found 'Exclude' column at index ${excludeIndex}. Filtering...`);
+      // Keep header + rows where exclude is NOT 'TRUE' (case insensitive)
+      filteredRows = rows.filter((row, index) => {
+        if (index === 0) return true; // Always keep header
+        const excludeValue = row[excludeIndex];
+        return !excludeValue || String(excludeValue).trim().toLowerCase() !== 'true';
+      });
+      console.log(`Filtered down to ${filteredRows.length} rows (including header).`);
+    } else {
+      console.log("'Exclude' column not found. Bringing all rows.");
+    }
+
+    const csv = Papa.unparse(filteredRows);
 
     const outputPath = path.resolve('content/2026/data/cfp.csv');
     fs.writeFileSync(outputPath, csv);
