@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Heading } from '$lib/components/typography';
 	import Header from '$lib/components/structure/Header.svelte';
+	import PatternRough from '$lib/components/patterns/PatternRough.svelte';
 
 	type CardColor = 'pink' | 'blue' | 'teal' | 'yellow' | 'orange';
 
@@ -9,48 +10,55 @@
 		description: string;
 		color: CardColor;
 		href: string;
+		angle: number;
 	}
 
 	const cards: DeckCard[] = [
 		{
 			title: 'TALKS',
 			description: 'Expert presentations on data visualization',
-			color: 'pink',
-			href: '/guides/talks'
-		},
-		{
-			title: 'WORKSHOPS',
-			description: 'Hands-on learning sessions',
 			color: 'blue',
-			href: '/guides/workshops'
+			href: '/guides/talks',
+			angle: 50
 		},
 		{
 			title: 'DIALOGUES',
 			description: 'Interactive discussions and Q&A',
 			color: 'teal',
-			href: '/guides/dialogues'
+			href: '/guides/dialogues',
+			angle: 120
+		},
+		{
+			title: 'WORKSHOPS',
+			description: 'Hands-on learning sessions',
+			color: 'pink',
+			href: '/guides/workshops',
+			angle: 146
 		},
 		{
 			title: 'EXHIBITION',
 			description: 'Showcase of visualization projects',
-			color: 'yellow',
-			href: '/guides/exhibition'
+			color: 'orange',
+			href: '/guides/exhibition',
+			angle: 23
 		},
 		{
 			title: 'PANELS',
 			description:
 				'A focussed moderated discussion on an engaging topic with domain &  subject matter experts.',
-			color: 'orange',
-			href: '/guides/panels'
+			color: 'yellow',
+			href: '/guides/panels',
+			angle: 132
 		}
 	];
 
-	const bgColors: Record<CardColor, string> = {
-		pink: 'bg-pink-100 hover:bg-pink-200 active:bg-pink-200',
-		blue: 'bg-blue-100 hover:bg-blue-200 active:bg-blue-200',
-		teal: 'bg-teal-100 hover:bg-teal-200 active:bg-teal-200',
-		yellow: 'bg-yellow-100 hover:bg-yellow-200 active:bg-yellow-200',
-		orange: 'bg-orange-100 hover:bg-orange-200 active:bg-orange-200'
+	// Map color names to CSS variables
+	const colorVars: Record<CardColor, string> = {
+		pink: 'var(--color-viz-pink)',
+		blue: 'var(--color-viz-blue)',
+		teal: 'var(--color-viz-teal)',
+		yellow: 'var(--color-viz-yellow)',
+		orange: 'var(--color-viz-orange)'
 	};
 
 	const textColor: Record<CardColor, string> = {
@@ -62,30 +70,38 @@
 	};
 </script>
 
-<div class="container">
-	<h1>Guides</h1>
-	<p></p>
-</div>
+<Header title="Guides for VizChitra" banner="blob" interactive show="title"></Header>
 
 <div class="deck">
 	<div class="deck-inner">
 		{#each cards as card}
 			<a
 				href={card.href}
-				class="deck-card row-span-2 grid grid-rows-subgrid no-underline {bgColors[
-					card.color
-				]} hover:scale-102"
+				class="deck-card row-span-3 grid grid-rows-subgrid no-underline hover:scale-102"
 			>
-				<h3 class="font-display-sans m-0 self-start text-2xl {textColor[card.color]}">
-					{card.title}
-				</h3>
-				<p
-					class="text-md max-w-md self-start justify-self-end text-right italic {textColor[
+				<PatternRough
+					color={colorVars[card.color]}
+					fillStyle="cross-hatch"
+					fillWeight={0.5}
+					hachureAngle={card.angle}
+					opacity={0.7}
+				/>
+
+				<h3
+					class="font-display-sans card-content m-0 self-start text-2xl font-bold {textColor[
 						card.color
 					]}"
 				>
+					{card.title}
+				</h3>
+				<p
+					class="text-md card-content text-viz-black max-w-md self-start justify-self-end bg-white/20 text-right font-medium italic"
+				>
 					{card.description}
 				</p>
+				<div class="card-content self-end text-xs font-medium {textColor[card.color]}">
+					VIZCHITRA GUIDES
+				</div>
 			</a>
 		{/each}
 	</div>
@@ -100,15 +116,21 @@
 	/* Default: Vertical layout */
 	.deck-inner {
 		display: grid;
-		/* 5 cards × 2 rows each: flexible description row + auto title row */
-		grid-template-rows: repeat(5, minmax(5rem, 1fr) auto);
+		/* 5 cards × 3 rows each: flexible description row + auto title row + auto footer row */
+		grid-template-rows: repeat(5, minmax(5rem, 1fr) auto auto);
 	}
 
 	.deck-card {
+		position: relative;
 		min-height: 8rem;
 		padding: 1.25rem 1.5rem;
 		margin-top: -1rem;
 		clip-path: polygon(0 1rem, 100% 0, 100% calc(100% - 1rem), 0 100%);
+	}
+
+	.card-content {
+		position: relative;
+		z-index: 1;
 	}
 
 	.deck-card:first-child {
@@ -124,8 +146,8 @@
 	@container (min-width: 60rem) {
 		.deck-inner {
 			grid-template-columns: repeat(5, 1fr);
-			/* Fixed row heights: description row + title row */
-			grid-template-rows: 14rem auto;
+			/* Fixed row heights: description row + title row + footer row */
+			grid-template-rows: 12rem 6rem auto;
 
 			& p {
 				text-align: right;

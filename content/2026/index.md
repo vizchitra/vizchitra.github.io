@@ -13,7 +13,7 @@ banner: curve
 	import { DividerCurves, Header } from '$lib/components/structure';
 </script>
 
-<Header title="VizChitra 2026" banner="curve" interactive={true} size="large" showLogo={true} tagline="A SPACE TO CONNECT AND CREATE WITH DATA" />
+<Header title="VizChitra 2026" banner="curve" interactive={true} size="large" show="logo" tagline="A SPACE TO CONNECT AND CREATE WITH DATA" />
 
 <Heading tag="h2">
 	<VizChitraLogoType year="2026"></VizChitraLogoType>

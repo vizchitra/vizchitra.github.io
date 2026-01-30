@@ -9,7 +9,7 @@ banner: polygon
 	import { Header } from '$lib/components/structure';
 </script>
 
-<Header title="Our Mission" banner="polygon" />
+<Header title="Our Mission" banner="square" />
 
 <Slanted tag="h2" color="pink" textContent="Build an Indian Data Visualization Community" />
 

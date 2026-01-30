@@ -1,10 +1,13 @@
 <script lang="ts">
-	import { BannerCurve, BannerPolygon } from '$lib/components/structure';
+	import { BannerCurve, BannerPolygon, BannerSquare, BannerBlob } from '$lib/components/structure';
+	import Header from '$lib/components/structure/Header.svelte';
 	import ToolsCard from '$lib/components/interface/ToolsCard.svelte';
 	import ToolsHeader from '$lib/components/interface/ToolsHeader.svelte';
 
-	let bannerType: 'polygon' | 'curve' = 'curve';
+	let bannerType: 'polygon' | 'curve' | 'square' | 'blob' = 'curve';
 </script>
+
+<Header title="Patterns & Banners" banner="square" show="title"></Header>
 
 <section class="mx-auto max-w-7xl space-y-10 px-2 py-12">
 	<ToolsHeader
@@ -27,6 +30,8 @@
 			>
 				<option value="polygon">Voronoi Polygons</option>
 				<option value="curve">Ridge Curves</option>
+				<option value="square">Quilt Squares</option>
+				<option value="blob">Physics Blobs</option>
 			</select>
 		</div>
 	</ToolsCard>
@@ -41,8 +46,12 @@
 			<div class="absolute inset-0">
 				{#if bannerType === 'curve'}
 					<BannerCurve direction="header" />
-				{:else}
+				{:else if bannerType === 'polygon'}
 					<BannerPolygon fadeDirection="bottom" />
+				{:else if bannerType === 'square'}
+					<BannerSquare fadeDirection="bottom" />
+				{:else}
+					<BannerBlob fadeDirection="bottom" />
 				{/if}
 			</div>
 			<div class="pointer-events-none absolute inset-0 flex items-center justify-center">
@@ -61,8 +70,12 @@
 			<div class="absolute inset-0">
 				{#if bannerType === 'curve'}
 					<BannerCurve staticBanner direction="footer" />
-				{:else}
+				{:else if bannerType === 'polygon'}
 					<BannerPolygon staticBanner fadeDirection="top" />
+				{:else if bannerType === 'square'}
+					<BannerSquare staticBanner singleColor="teal" fadeDirection="top" />
+				{:else}
+					<BannerBlob staticBanner singleColor="teal" fadeDirection="top" />
 				{/if}
 			</div>
 			<div class="pointer-events-none absolute inset-0 flex items-end justify-center pb-8">
@@ -79,8 +92,12 @@
 		<div class="relative h-[400px] w-full overflow-hidden rounded-2xl">
 			{#if bannerType === 'curve'}
 				<BannerCurve direction="header" />
-			{:else}
+			{:else if bannerType === 'polygon'}
 				<BannerPolygon />
+			{:else if bannerType === 'square'}
+				<BannerSquare />
+			{:else}
+				<BannerBlob />
 			{/if}
 		</div>
 	</ToolsCard>
@@ -91,8 +108,12 @@
 		<div class="relative h-[400px] w-full overflow-hidden rounded-2xl">
 			{#if bannerType === 'curve'}
 				<BannerCurve staticBanner direction="footer" />
-			{:else}
+			{:else if bannerType === 'polygon'}
 				<BannerPolygon staticBanner />
+			{:else if bannerType === 'square'}
+				<BannerSquare staticBanner singleColor="blue" />
+			{:else}
+				<BannerBlob staticBanner singleColor="blue" />
 			{/if}
 		</div>
 	</ToolsCard>
@@ -104,8 +125,12 @@
 			<div class="absolute inset-0">
 				{#if bannerType === 'curve'}
 					<BannerCurve />
-				{:else}
+				{:else if bannerType === 'polygon'}
 					<BannerPolygon />
+				{:else if bannerType === 'square'}
+					<BannerSquare />
+				{:else}
+					<BannerBlob />
 				{/if}
 			</div>
 			<div
@@ -113,7 +138,15 @@
 			>
 				<div class="rounded-2xl bg-white/90 p-8 backdrop-blur-sm">
 					<h3 class="mb-4 text-3xl font-bold">
-						{bannerType === 'curve' ? 'Flowing Ridge Lines' : 'Dynamic Polygons'}
+						{#if bannerType === 'curve'}
+							Flowing Ridge Lines
+						{:else if bannerType === 'polygon'}
+							Dynamic Polygons
+						{:else if bannerType === 'square'}
+							Dynamic Squares
+						{:else}
+							Physics Blobs
+						{/if}
 					</h3>
 					<p class="text-lg text-gray-700">Interactive banner that responds to mouse movement</p>
 				</div>

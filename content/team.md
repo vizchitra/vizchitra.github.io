@@ -11,7 +11,7 @@ banner: polygon
 	import { Header } from '$lib/components/structure';
 </script>
 
-<Header title="Our Team" banner="polygon" />
+<Header title="Our Team" banner="square" singleColor="orange" />
 
 <Slanted tag="h2" color="pink" textContent="THE VIZCHITRA TEAM" />
 

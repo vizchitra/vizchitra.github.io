@@ -27,11 +27,11 @@
 	};
 
 	const colorVars = {
-		blue: '--viz-color-blue-dark',
-		pink: '--viz-color-pink-dark',
-		teal: '--viz-color-teal-dark',
-		orange: '--viz-color-orange-dark',
-		yellow: '--viz-color-yellow-dark'
+		blue: '--color-viz-blue-dark',
+		pink: '--color-viz-pink-dark',
+		teal: '--color-viz-teal-dark',
+		orange: '--color-viz-orange-dark',
+		yellow: '--color-viz-yellow-dark'
 	};
 
 	const bgColorVar = $derived(colorVars[color] ?? colorVars.orange);

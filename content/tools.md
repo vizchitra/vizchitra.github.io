@@ -10,7 +10,7 @@ banner: polygon
 	import { Header } from '$lib/components/structure';
 </script>
 
-<Header title="Tools & Patterns" banner="polygon" />
+<Header title="Tools & Patterns" banner="square" />
 
 <ToolsCard widthClass="w-full" maxWidthClass="max-w-6xl">
 	<ul class="space-y-3">

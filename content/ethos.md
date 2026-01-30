@@ -9,7 +9,7 @@ banner: polygon
 	import { Header } from '$lib/components/structure';
 </script>
 
-<Header title="Our Ethos" banner="polygon" />
+<Header title="Our Ethos" banner="square" />
 
 <Slanted tag="h2" color="pink" textContent="A SPACE TO CONNECT AND CREATE WITH DATA" />
 

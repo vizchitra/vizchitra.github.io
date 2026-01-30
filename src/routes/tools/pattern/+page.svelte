@@ -5,6 +5,7 @@
 	import PatternStream from '$lib/components/structure/PatternStream.svelte';
 	import ToolsCard from '$lib/components/interface/ToolsCard.svelte';
 	import ToolsHeader from '$lib/components/interface/ToolsHeader.svelte';
+	import Header from '$lib/components/structure/Header.svelte';
 
 	const variants = ['waves', 'river', 'circle', 'stream'] as const;
 	const tones = ['blue', 'teal', 'pink', 'orange', 'yellow'] as const;
@@ -56,6 +57,8 @@
 		content="Preview the hatched SVG pattern set (waves, river, circle, stream) across VizChitra color tones."
 	/>
 </svelte:head>
+
+<Header title="Motifs & Nature" banner="square" show="title"></Header>
 
 <section class="mx-auto max-w-7xl space-y-10 px-2 py-12">
 	<ToolsHeader

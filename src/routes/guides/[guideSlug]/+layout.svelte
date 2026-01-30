@@ -1,5 +1,6 @@
 <script>
 	import { page } from '$app/state';
+	import Header from '$lib/components/structure/Header.svelte';
 	let { data, children } = $props();
 
 	// Color mappings for Tailwind classes
@@ -32,7 +33,20 @@
 	};
 
 	const colors = $derived(colorClasses[data.guideColor] || colorClasses.blue);
+
+	// Guide name (e.g. "talks", "workshops") — prefer route param, fallback to data
+	const guideName = $derived(page.params.guideSlug || data.guideSlug);
+
+	function capitalize(s) {
+		if (!s) return '';
+		return s.charAt(0).toUpperCase() + s.slice(1);
+	}
+
+	// Display title for Header: e.g. "Talks @ VizChitra"
+	const displayTitle = $derived(guideName ? `${capitalize(guideName)} @ VizChitra` : data.guideId);
 </script>
+
+<Header banner="blob" title={displayTitle} singleColor={data.guideColor}></Header>
 
 <div class="guide-layout">
 	<main class="guide-content">

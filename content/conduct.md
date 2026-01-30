@@ -9,7 +9,7 @@ banner: polygon
 	import { Header } from '$lib/components/structure';
 </script>
 
-<Header title="Code of Conduct" banner="polygon" />
+<Header title="Code of Conduct" banner="square" singleColor="blue"/>
 
 <Slanted tag="h2" color="blue" textContent="THE DO'S AND DONT'S FOR THE COMMUNITY" />
 

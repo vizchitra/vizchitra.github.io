@@ -2,11 +2,11 @@ import { allGuides } from "content-collections";
 import { error } from "@sveltejs/kit";
 
 const guideColors = {
-  talks: 'pink',
-  workshops: 'blue',
+  talks: 'blue',
   dialogues: 'teal',
-  exhibition: 'yellow',
-  panels: 'orange'
+  workshops: 'pink',
+  exhibition: 'orange',
+  panels: 'yellow'
 };
 
 export function load({ params }) {

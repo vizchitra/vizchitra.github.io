@@ -13,8 +13,8 @@ banner: curve
 	import { VizChitraLogoType, VizChitraLogoTagline } from '$lib/components/typography';
 </script>
 
-<!-- <Header title="VizChitra" interactive="true" banner="curve" size="large" showLogo=true /> -->
-<Header title="VizChitra" banner="curve" interactive={true} size="large" showLogo={true} tagline="A SPACE TO CONNECT AND CREATE WITH DATA" />
+<!-- <Header title="VizChitra" interactive="true" banner="curve" size="large" show="logo" /> -->
+<Header title="VizChitra" banner="curve" interactive={true} size="large" show="logo" tagline="A SPACE TO CONNECT AND CREATE WITH DATA" />
 
 <Heading>
 	<VizChitraLogoType year="2026"></VizChitraLogoType>

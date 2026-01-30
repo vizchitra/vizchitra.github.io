@@ -1,3 +1,5 @@
+export { default as BannerBlob } from './BannerBlob.svelte';
+export { default as BannerSquare } from './BannerSquare.svelte';
 export { default as BannerCurve } from './BannerCurve.svelte';
 export { default as BannerPolygon } from './BannerPolygon.svelte';
 export { default as DividerPolygon } from './DividerPolygon.svelte';
