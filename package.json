@@ -45,6 +45,7 @@
 		]
 	},
 	"dependencies": {
+		"fuse.js": "^7.1.0",
 		"geojson": "^0.5.0",
 		"maplibre-gl": "^5.15.0",
 		"papaparse": "^5.5.3",
