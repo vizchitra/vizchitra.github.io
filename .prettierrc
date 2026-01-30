@@ -9,7 +9,6 @@
 		"prettier-plugin-tailwindcss"
 	],
 	"pluginSearchDirs": false,
-	"proseWrap": "preserve",
 	"overrides": [
 		{
 			"files": "*.svelte",
@@ -18,16 +17,17 @@
 			}
 		},
 		{
-			"files": "*.md",
-			"options": {
-				"parser": "markdown"
-			}
-		},
-		{
-			"files": "*.svx",
+			"files": "content/**/*.md",
 			"options": {
 				"parser": "svelte",
 				"embeddedLanguageFormatting": "auto"
+			}
+		},
+		{
+			"files": "*.md",
+			"options": {
+				"parser": "markdown",
+				"proseWrap": "preserve"
 			}
 		}
 	],

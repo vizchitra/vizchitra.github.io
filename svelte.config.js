@@ -19,6 +19,9 @@ const config = {
 	// },
 	kit: {
 		adapter: adapter(),
+		alias: {
+			"content-collections": "./.content-collections/generated",
+		},
 		output: {
 			bundleStrategy: 'split'
 		},

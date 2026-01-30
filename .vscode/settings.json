@@ -14,6 +14,15 @@
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 	"files.associations": {
-		"*.svx": "svelte"
-	}
+		"*.svelte": "svelte",
+		"*.css": "tailwindcss"
+	},
+	"tailwindCSS.experimental.configFile": "src/app.css",
+	"tailwindCSS.includeLanguages": {
+		"svelte": "html"
+	},
+	"tailwindCSS.hovers": true,
+	"tailwindCSS.suggestions": true,
+	"tailwindCSS.validate": true,
+	"tailwindCSS.lint.invalidTailwindDirective": "warning"
 }

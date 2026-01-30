@@ -1,5 +1,6 @@
 /*
 	Canonical design tokens for VizChitra.
+	LEGACY (currently in the process of being migrated to Tailwind v4 tokens).
 
 	This file is intentionally plain CSS (no Tailwind-specific at-rules).
 	Tailwind v4 token utilities are mapped from these variables in src/app.css.
@@ -14,15 +15,96 @@
 
 	/* Core neutrals (canonical) */
 	--viz-color-white: oklch(100% 0 0);
-	--viz-color-black: oklch(0.19% 0 0);
+	--viz-color-black: oklch(15% 0 0);
 
 	/* Brand palette (converted from hex -> OKLCH) */
-	--viz-color-grey: #4c4c4c;
-	--viz-color-yellow: oklch(89.01% 0.1087 81.79);
-	--viz-color-teal: oklch(86.69% 0.0766 188.62);
-	--viz-color-blue: oklch(80.04% 0.0763 267.25);
-	--viz-color-orange: oklch(78.25% 0.1221 47.22);
-	--viz-color-pink: oklch(74.82% 0.1333 354.07);
+
+	--viz-color-yellow: oklch(89% 0.109 82); /* #FFD485 */
+	--viz-color-teal: oklch(84.9% 0.086 188); /* #88E0D8 */
+	--viz-color-blue: oklch(79.3% 0.099 267); /* #9FBAFC */
+	--viz-color-orange: oklch(76% 0.147 46.5); /* #FC915B */
+	--viz-color-pink: oklch(71.9% 0.161 354); /* #EF75AB */
+	--viz-color-grey: oklch(41% 0 0); /*Grey #4c4c4c */
+
+	/* HUE PALETTES */
+
+	/* Yellow - Hue 82 */
+	--viz-yellow-50: oklch(98.5% 0.015 82);
+	--viz-yellow-100: oklch(97% 0.03 82);
+	--viz-yellow-200: oklch(94% 0.06 82);
+	--viz-yellow-300: oklch(91% 0.09 82);
+	--viz-yellow-400: oklch(89% 0.109 82); /* Original */
+	--viz-yellow-500: oklch(82% 0.13 82);
+	--viz-yellow-600: oklch(72% 0.15 82);
+	--viz-yellow-700: oklch(62% 0.14 82);
+	--viz-yellow-800: oklch(52% 0.12 82);
+	--viz-yellow-900: oklch(42% 0.1 82);
+	--viz-yellow-950: oklch(32% 0.06 82);
+
+	/* Teal - Hue 188 */
+	--viz-teal-50: oklch(98.5% 0.015 188);
+	--viz-teal-100: oklch(97% 0.03 188);
+	--viz-teal-200: oklch(94% 0.05 188);
+	--viz-teal-300: oklch(89% 0.07 188);
+	--viz-teal-400: oklch(84.9% 0.086 188); /* Original */
+	--viz-teal-500: oklch(75% 0.1 188);
+	--viz-teal-600: oklch(65% 0.11 188);
+	--viz-teal-700: oklch(55% 0.1 188);
+	--viz-teal-800: oklch(45% 0.08 188);
+	--viz-teal-900: oklch(35% 0.06 188);
+	--viz-teal-950: oklch(25% 0.035 188);
+
+	/* Blue - Hue 267 */
+	--viz-blue-50: oklch(98.5% 0.02 267);
+	--viz-blue-100: oklch(97% 0.03 267);
+	--viz-blue-200: oklch(94% 0.05 267);
+	--viz-blue-300: oklch(87% 0.08 267);
+	--viz-blue-400: oklch(79.3% 0.099 267); /* Original */
+	--viz-blue-500: oklch(70% 0.12 267);
+	--viz-blue-600: oklch(60% 0.14 267);
+	--viz-blue-700: oklch(50% 0.13 267);
+	--viz-blue-800: oklch(40% 0.11 267);
+	--viz-blue-900: oklch(30% 0.09 267);
+	--viz-blue-950: oklch(20% 0.045 267);
+
+	/* Orange - Hue 46.5 */
+	--color-orange-50: oklch(98.2% 0.02 46.5);
+	--color-orange-100: oklch(97% 0.03 46.5);
+	--color-orange-200: oklch(94% 0.06 46.5);
+	--color-orange-300: oklch(85% 0.11 46.5);
+	--color-orange-400: oklch(76% 0.147 46.5); /* Original */
+	--color-orange-500: oklch(65% 0.16 46.5);
+	--color-orange-600: oklch(55% 0.17 46.5);
+	--color-orange-700: oklch(45% 0.16 46.5);
+	--color-orange-800: oklch(35% 0.14 46.5);
+	--color-orange-900: oklch(25% 0.12 46.5);
+	--color-orange-950: oklch(18% 0.055 46.5);
+
+	/* Pink - Hue 354 */
+	--color-pink-50: oklch(98% 0.02 354);
+	--color-pink-100: oklch(97% 0.03 354);
+	--color-pink-200: oklch(94% 0.06 354);
+	--color-pink-300: oklch(83% 0.12 354);
+	--color-pink-400: oklch(71.9% 0.161 354); /* Original */
+	--color-pink-500: oklch(62% 0.18 354);
+	--color-pink-600: oklch(52% 0.19 354);
+	--color-pink-700: oklch(42% 0.17 354);
+	--color-pink-800: oklch(32% 0.15 354);
+	--color-pink-900: oklch(22% 0.13 354);
+	--color-pink-950: oklch(16% 0.06 354);
+
+	/* Grey -  Hue 0 */
+	--color-grey-100: oklch(97% 0 0);
+	--color-grey-200: oklch(90% 0 0);
+	--color-grey-300: oklch(80% 0 0);
+	--color-grey-400: oklch(70% 0 0);
+	--color-grey-500: oklch(60% 0 0);
+	--color-grey-600: oklch(50% 0 0);
+	--color-grey-700: oklch(41% 0 0); /* Original #4C4C4C */
+	--color-grey-800: oklch(30% 0 0);
+	--color-grey-900: oklch(18% 0 0);
+	--color-grey-50: oklch(98.5% 0 0);
+	--color-grey-950: oklch(10% 0 0);
 
 	/* Light Shade (converted from hex -> OKLCH) */
 	--viz-color-grey-light: oklch(from var(--viz-color-grey) calc(l * 0.75) c h);
