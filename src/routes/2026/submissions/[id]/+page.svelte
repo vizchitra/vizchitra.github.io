@@ -5,6 +5,7 @@
 	import { ProposalBadge, ProposalStatusBadge, UpvoteButton } from '$lib/components/proposals';
 	import type { PageData } from './$types';
 	import type { CFPProposal, CFEProposal } from '$lib/types/proposals';
+	import { marked } from 'marked';
 
 	let { data }: { data: PageData } = $props();
 	const proposal = $derived(data.proposal);
@@ -37,17 +38,22 @@
 		isCFP ? (proposal as CFPProposal).description : (proposal as CFEProposal).projectDescription
 	);
 
-	// Split description into paragraphs
-	const paragraphs = $derived(description.split('\n').filter((p: string) => p.trim()));
+	// Parse markdown to HTML
+	const descriptionHTML = $derived(marked.parse(description));
+
+	// Helper function to parse text fields as markdown
+	const parseMarkdown = (text: string | undefined) => {
+		return text ? marked.parse(text) : '';
+	};
 </script>
 
 <svelte:head>
 	<title>{title} | VizChitra 2026 Proposals</title>
-	<meta name="description" content={paragraphs[0]} />
+	<meta name="description" content={description.split('\n')[0] || description.substring(0, 150)} />
 
 	<!-- Open Graph -->
 	<meta property="og:title" content={title} />
-	<meta property="og:description" content={paragraphs[0]} />
+	<meta property="og:description" content={description.split('\n')[0] || description.substring(0, 150)} />
 	<meta property="og:type" content="article" />
 	<meta
 		property="og:image"
@@ -58,7 +64,7 @@
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content={title} />
-	<meta name="twitter:description" content={paragraphs[0]} />
+	<meta name="twitter:description" content={description.split('\n')[0] || description.substring(0, 150)} />
 	<meta
 		name="twitter:image"
 		content="https://vizchitra.com/2026/submissions/{proposal.slug}/og-image.png"
@@ -139,10 +145,8 @@
 
 		<section class="mb-8 md:mb-10">
 			<Heading tag="h2" align="left">Description</Heading>
-			<div class="prose text-viz-grey/90 md:prose-lg max-w-none">
-				{#each paragraphs as paragraph}
-					<p class="mb-3 text-sm leading-relaxed break-words md:mb-4 md:text-base">{paragraph}</p>
-				{/each}
+			<div class="prose text-viz-grey/90 md:prose-lg max-w-none markdown-content">
+				{@html descriptionHTML}
 			</div>
 		</section>
 
@@ -193,9 +197,9 @@
 								>
 									Materials Required
 								</p>
-								<p class="text-viz-grey/90 text-sm break-words md:text-base">
-									{(proposal as CFPProposal).materials}
-								</p>
+								<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+									{@html parseMarkdown((proposal as CFPProposal).materials)}
+								</div>
 							</div>
 						{/if}
 						{#if (proposal as CFPProposal).roomSetup}
@@ -205,9 +209,9 @@
 								>
 									Room Setup
 								</p>
-								<p class="text-viz-grey/90 text-sm break-words md:text-base">
-									{(proposal as CFPProposal).roomSetup}
-								</p>
+								<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+									{@html parseMarkdown((proposal as CFPProposal).roomSetup)}
+								</div>
 							</div>
 						{/if}
 					</div>
@@ -228,9 +232,9 @@
 							>
 								Data Source
 							</p>
-							<p class="text-viz-grey/90 text-sm break-words md:text-base">
-								{(proposal as CFEProposal).dataSource}
-							</p>
+							<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+								{@html parseMarkdown((proposal as CFEProposal).dataSource)}
+							</div>
 						</div>
 					{/if}
 					{#if (proposal as CFEProposal).visualizationMethod}
@@ -240,9 +244,9 @@
 							>
 								Visualization Method
 							</p>
-							<p class="text-viz-grey/90 text-sm break-words md:text-base">
-								{(proposal as CFEProposal).visualizationMethod}
-							</p>
+							<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+								{@html parseMarkdown((proposal as CFEProposal).visualizationMethod)}
+							</div>
 						</div>
 					{/if}
 				</div>
@@ -251,18 +255,18 @@
 			{#if (proposal as CFEProposal).technicalRequirements}
 				<section class="mb-8 md:mb-10">
 					<Heading tag="h3" align="left">Technical Requirements</Heading>
-					<p class="text-viz-grey/90 text-sm break-words md:text-base">
-						{(proposal as CFEProposal).technicalRequirements}
-					</p>
+					<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+						{@html parseMarkdown((proposal as CFEProposal).technicalRequirements)}
+					</div>
 				</section>
 			{/if}
 
 			{#if (proposal as CFEProposal).timeline}
 				<section class="mb-8 md:mb-10">
 					<Heading tag="h3" align="left">Project Status & Timeline</Heading>
-					<p class="text-viz-grey/90 text-sm break-words md:text-base">
-						{(proposal as CFEProposal).timeline}
-					</p>
+					<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+						{@html parseMarkdown((proposal as CFEProposal).timeline)}
+					</div>
 				</section>
 			{/if}
 
@@ -303,9 +307,9 @@
 							{(proposal as CFEProposal).teamName}
 						</p>
 						{#if (proposal as CFEProposal).teamBio}
-							<p class="text-viz-grey/90 text-sm break-words md:text-base">
-								{(proposal as CFEProposal).teamBio}
-							</p>
+							<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+								{@html parseMarkdown((proposal as CFEProposal).teamBio)}
+							</div>
 						{/if}
 					</div>
 				</section>

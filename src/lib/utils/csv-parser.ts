@@ -73,7 +73,11 @@ export function parseCFPProposals(csvString: string): CFPProposal[] {
 				theme,
 				title,
 				description,
-				links: combineLinks(row['Enter a link here...'], row['Enter a link here... (2)'])
+				links: combineLinks(
+					row['Further links relevant to your talk proposal'],
+					row['Enter a link here...'],
+					row['Enter a link here..._1']
+				)
 			};
 		} else if (proposalType === 'Dialogues') {
 			const title = row['Title of your session'];
