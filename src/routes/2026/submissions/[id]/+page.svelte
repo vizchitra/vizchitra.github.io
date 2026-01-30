@@ -51,7 +51,7 @@
 	<meta property="og:type" content="article" />
 	<meta
 		property="og:image"
-		content="https://vizchitra.com/2026/submissions/{proposal.slug}/og-image"
+		content="https://vizchitra.com/2026/submissions/{proposal.slug}/og-image.png"
 	/>
 	<meta property="og:url" content="https://vizchitra.com/2026/submissions/{proposal.slug}" />
 
@@ -61,7 +61,7 @@
 	<meta name="twitter:description" content={paragraphs[0]} />
 	<meta
 		name="twitter:image"
-		content="https://vizchitra.com/2026/submissions/{proposal.slug}/og-image"
+		content="https://vizchitra.com/2026/submissions/{proposal.slug}/og-image.png"
 	/>
 </svelte:head>
 
