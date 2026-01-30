@@ -191,7 +191,7 @@ export const GET: RequestHandler = async ({ params, fetch }) => {
   return new Response(pngBuffer as any, {
     headers: {
       'Content-Type': 'image/png',
-      'Cache-Control': 'no-cache, no-store' // Disable cache for debugging
+      'Cache-Control': 'public, max-age=600' // Cache for 10 mins
     }
   });
 };
