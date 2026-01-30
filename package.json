@@ -47,10 +47,13 @@
 		]
 	},
 	"dependencies": {
+		"@resvg/resvg-wasm": "^2.6.2",
 		"fuse.js": "^7.1.0",
 		"geojson": "^0.5.0",
 		"maplibre-gl": "^5.15.0",
 		"papaparse": "^5.5.3",
+		"satori": "^0.19.1",
+		"satori-html": "^0.3.2",
 		"svelte-maplibre-gl": "^1.0.2",
 		"svelte-youtube-embed": "^0.4.6"
 	},
