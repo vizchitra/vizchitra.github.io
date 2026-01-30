@@ -27,9 +27,6 @@ Use these prompts as a mini-outline while drafting your submission.
 4. **What will participants take away?** — Share the practical outcomes: skills, mental models, checklists, workflows, or new ways of seeing a familiar problem.
 
 5. **Which format best supports your aims?** — Consider whether your idea works best as a talk, group discussion, or hands-on workshop.
-   :::
-
-:::step{color="blue" number=2}
 
 ## Evaluation Guidelines
 

@@ -15,7 +15,7 @@
 </nav>
 
 <article class="prose lg:prose-xl mx-auto max-w-3xl p-8">
-	<h1>{data.section.title.split('|')[0].trim()}</h1>
+	<h1>{data.section.sectionSlug.charAt(0).toUpperCase() + data.section.sectionSlug.slice(1)}</h1>
 	{@html data.section.html}
 </article>
 
@@ -23,7 +23,10 @@
 	{#if data.prevSection}
 		<a href="/guides/{data.guideSlug}/{data.prevSection.sectionSlug}" class="nav-prev">
 			<span class="nav-label">Previous</span>
-			<span class="nav-text">← {data.prevSection.title.split('|')[0].trim()}</span>
+			<span class="nav-text"
+				>← {data.prevSection.sectionSlug.charAt(0).toUpperCase() +
+					data.prevSection.sectionSlug.slice(1)}</span
+			>
 		</a>
 	{:else}
 		<div></div>
@@ -32,7 +35,10 @@
 	{#if data.nextSection}
 		<a href="/guides/{data.guideSlug}/{data.nextSection.sectionSlug}" class="nav-next">
 			<span class="nav-label">Next</span>
-			<span class="nav-text">{data.nextSection.title.split('|')[0].trim()} →</span>
+			<span class="nav-text"
+				>{data.nextSection.sectionSlug.charAt(0).toUpperCase() +
+					data.nextSection.sectionSlug.slice(1)} →</span
+			>
 		</a>
 	{/if}
 </nav>
@@ -43,8 +49,8 @@
 		align-items: center;
 		gap: 0.5rem;
 		padding: 1rem 2rem;
-		background-color: var(--color-gray-50, #f9fafb);
-		border-bottom: 1px solid var(--color-gray-200, #e5e7eb);
+		background-color: var(--color-white);
+		/* border-bottom: 1px solid var(--color-gray-200, #e5e7eb); */
 		font-size: 0.75rem;
 		font-weight: 500;
 		letter-spacing: 0.05em;

@@ -6,11 +6,9 @@ section: review
 order: 3
 ---
 
-# Preparation Guidelines
-
 Once your talk is accepted, here's how to prepare:
 
-## Preparation Guidelines
+**Preparation Guidelines**
 
 Once your talk is accepted, here's how to prepare:
 

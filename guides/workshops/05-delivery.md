@@ -6,6 +6,6 @@ section: delivery
 order: 4
 ---
 
-# Make a Great Workshop
+**Make a Great Workshop**
 
-#### Aim to engage participants with hands-on learning experiences
+_Aim to engage participants with hands-on learning experiences_

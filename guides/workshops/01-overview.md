@@ -6,4 +6,4 @@ section: overview
 order: 0
 ---
 
-# Workshops
+## Guidelines for a Good Proposal
