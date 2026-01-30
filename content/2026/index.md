@@ -32,7 +32,7 @@ We invite submissions across across four formats—<span class="font-bold text-v
 </SubHeading>
 
 <div class="mb-3 flex flex-row items-end gap-1">
-	<span class="block pb-[1px] text-lg text-[#666] md:text-[18px]">
+	<span class="block pb-px text-lg text-[#666] md:text-[18px]">
 		Click on the cards to learn more</span>
 	<svg width="23" height="21" viewBox="0 0 23 21" fill="none" xmlns="http://www.w3.org/2000/svg">
 		<path

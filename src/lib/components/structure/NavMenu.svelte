@@ -21,13 +21,27 @@
 		},
 		{
 			name: '2025',
-			href: '/2025/conference',
-			accentColor: 'var(--color-viz-orange)',
+			href: '/2025/',
+			accentColor: 'var(--color-viz-blue)',
 			subsections: [
 				{ name: 'Event', href: '/2025/' },
 				{ name: 'Videos', href: '/2025/videos' },
 				{ name: 'Schedule', href: '/2025/schedule' },
 				{ name: 'Sponsorship', href: '/2025/sponsorship' }
+			],
+			expanded: false
+		},
+		{
+			name: 'Guides',
+			href: '/guides/',
+			accentColor: 'var(--color-viz-teal)',
+			subsections: [
+				{ name: 'Overview', href: '/guides/' },
+				{ name: 'Talks', href: '/guides/talks' },
+				{ name: 'Workshops', href: '/guides/workshops' },
+				{ name: 'Dialogues', href: '/guides/dialogues' },
+				{ name: 'Exhibition', href: '/guides/exhibition' },
+				{ name: 'Panels', href: '/guides/panels' }
 			],
 			expanded: false
 		},
