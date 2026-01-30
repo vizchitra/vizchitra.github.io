@@ -31,9 +31,19 @@ export function generateSlug(title: string, id: string): string {
 
 /**
  * Combine multiple link columns into array, filtering out empty values
+ * and ensuring all links have a protocol
  */
 function combineLinks(...links: string[]): string[] {
-	return links.filter((link) => link && link.trim().length > 0);
+	return links
+		.filter((link) => link && link.trim().length > 0)
+		.map((link) => {
+			const trimmed = link.trim();
+			// Add https:// if the link doesn't start with a protocol
+			if (!trimmed.startsWith('http://') && !trimmed.startsWith('https://')) {
+				return `https://${trimmed}`;
+			}
+			return trimmed;
+		});
 }
 
 /**
@@ -73,7 +83,11 @@ export function parseCFPProposals(csvString: string): CFPProposal[] {
 				theme,
 				title,
 				description,
-				links: combineLinks(row['Enter a link here...'], row['Enter a link here... (2)'])
+				links: combineLinks(
+					row['Further links relevant to your talk proposal'],
+					row['Enter a link here...'],
+					row['Enter a link here..._1']
+				)
 			};
 		} else if (proposalType === 'Dialogues') {
 			const title = row['Title of your session'];

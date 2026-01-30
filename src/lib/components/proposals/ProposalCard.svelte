@@ -2,6 +2,7 @@
 	import type { Proposal } from '$lib/types/proposals';
 	import ProposalBadge from './ProposalBadge.svelte';
 	import ProposalStatusBadge from './ProposalStatusBadge.svelte';
+	import { marked } from 'marked';
 
 	interface Props {
 		proposal: Proposal;
@@ -25,7 +26,8 @@
 
 	const getDescription = () => {
 		const desc = proposal.type === 'cfp' ? proposal.description : proposal.projectDescription;
-		return desc.length > 200 ? desc.slice(0, 200) + '...' : desc;
+		const truncated = desc.length > 200 ? desc.slice(0, 200) + '...' : desc;
+		return marked.parseInline(truncated);
 	};
 
 	const getTypeLabel = () => {
@@ -64,9 +66,9 @@
 				{/if}
 			</div>
 
-			<p class="break-words text-sm leading-relaxed text-viz-grey/80 md:text-[15px]">
-				{getDescription()}
-			</p>
+			<div class="break-words text-sm leading-relaxed text-viz-grey/80 md:text-[15px]">
+				{@html getDescription()}
+			</div>
 		</div>
 
 		<div class="mt-3 flex items-center justify-between md:mt-0 md:w-64 md:flex-col md:items-end md:gap-3">

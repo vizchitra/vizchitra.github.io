@@ -5,6 +5,7 @@
 	import { ProposalBadge, ProposalStatusBadge, UpvoteButton } from '$lib/components/proposals';
 	import type { PageData } from './$types';
 	import type { CFPProposal, CFEProposal } from '$lib/types/proposals';
+	import { marked } from 'marked';
 
 	let { data }: { data: PageData } = $props();
 	const proposal = $derived(data.proposal);
@@ -37,13 +38,37 @@
 		isCFP ? (proposal as CFPProposal).description : (proposal as CFEProposal).projectDescription
 	);
 
-	// Split description into paragraphs
-	const paragraphs = $derived(description.split('\n').filter((p: string) => p.trim()));
+	// Parse markdown to HTML
+	const descriptionHTML = $derived(marked.parse(description));
+
+	// Helper function to parse text fields as markdown
+	const parseMarkdown = (text: string | undefined) => {
+		return text ? marked.parse(text) : '';
+	};
 </script>
 
 <svelte:head>
 	<title>{title} | VizChitra 2026 Proposals</title>
-	<meta name="description" content={paragraphs[0]} />
+	<meta name="description" content={description.split('\n')[0] || description.substring(0, 150)} />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={description.split('\n')[0] || description.substring(0, 150)} />
+	<meta property="og:type" content="article" />
+	<meta
+		property="og:image"
+		content="https://vizchitra.com/2026/submissions/{proposal.slug}/og-image.png"
+	/>
+	<meta property="og:url" content="https://vizchitra.com/2026/submissions/{proposal.slug}" />
+
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={title} />
+	<meta name="twitter:description" content={description.split('\n')[0] || description.substring(0, 150)} />
+	<meta
+		name="twitter:image"
+		content="https://vizchitra.com/2026/submissions/{proposal.slug}/og-image.png"
+	/>
 </svelte:head>
 
 <!-- Clean header with title and speaker -->
@@ -95,10 +120,13 @@
 				<div class="flex flex-wrap items-center gap-2 text-sm">
 					<ProposalStatusBadge status={proposal.status} />
 					<span class="text-viz-grey/30">·</span>
-					<ProposalBadge text={isCFP ? proposal.proposalType : 'Exhibition'} {color} />
+					<ProposalBadge
+						text={isCFP ? (proposal as CFPProposal).proposalType : 'Exhibition'}
+						{color}
+					/>
 					{#if isCFP}
 						<span class="text-viz-grey/30">·</span>
-						<ProposalBadge text={proposal.theme} color="blue" />
+						<ProposalBadge text={(proposal as CFPProposal).theme} color="blue" />
 					{/if}
 				</div>
 
@@ -117,18 +145,16 @@
 
 		<section class="mb-8 md:mb-10">
 			<Heading tag="h2" align="left">Description</Heading>
-			<div class="prose text-viz-grey/90 md:prose-lg max-w-none">
-				{#each paragraphs as paragraph}
-					<p class="mb-3 text-sm leading-relaxed break-words md:mb-4 md:text-base">{paragraph}</p>
-				{/each}
+			<div class="prose text-viz-grey/90 md:prose-lg max-w-none markdown-content">
+				{@html descriptionHTML}
 			</div>
 		</section>
 
-		{#if isCFP && proposal.links.length > 0}
+		{#if isCFP && (proposal as CFPProposal).links.length > 0}
 			<section class="mb-8 md:mb-10">
 				<Heading tag="h3" align="left" class="text-xl!">Related Links</Heading>
 				<ul class="space-y-2">
-					{#each proposal.links as link}
+					{#each (proposal as CFPProposal).links as link}
 						<li>
 							<a
 								href={link}
@@ -158,34 +184,34 @@
 		{/if}
 
 		{#if isDialogueOrWorkshop}
-			{#if proposal.materials || proposal.roomSetup}
+			{#if (proposal as CFPProposal).materials || (proposal as CFPProposal).roomSetup}
 				<section class="mb-8 md:mb-10">
 					<Heading tag="h3" align="left">Logistics</Heading>
 					<div
 						class="space-y-3 rounded-lg border-l-4 border-viz-{color}-dark bg-viz-{color}-light/10 p-4 md:space-y-4 md:p-6"
 					>
-						{#if proposal.materials}
+						{#if (proposal as CFPProposal).materials}
 							<div>
 								<p
 									class="mb-1.5 text-xs font-bold tracking-wide uppercase text-viz-{color}-dark md:mb-2 md:text-sm"
 								>
 									Materials Required
 								</p>
-								<p class="text-viz-grey/90 text-sm break-words md:text-base">
-									{proposal.materials}
-								</p>
+								<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+									{@html parseMarkdown((proposal as CFPProposal).materials)}
+								</div>
 							</div>
 						{/if}
-						{#if proposal.roomSetup}
+						{#if (proposal as CFPProposal).roomSetup}
 							<div>
 								<p
 									class="mb-1.5 text-xs font-bold tracking-wide uppercase text-viz-{color}-dark md:mb-2 md:text-sm"
 								>
 									Room Setup
 								</p>
-								<p class="text-viz-grey/90 text-sm break-words md:text-base">
-									{proposal.roomSetup}
-								</p>
+								<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+									{@html parseMarkdown((proposal as CFPProposal).roomSetup)}
+								</div>
 							</div>
 						{/if}
 					</div>
@@ -199,52 +225,56 @@
 				<div
 					class="border-viz-orange-dark bg-viz-orange-light/10 space-y-3 rounded-lg border-l-4 p-4 md:space-y-5 md:p-6"
 				>
-					{#if proposal.dataSource}
+					{#if (proposal as CFEProposal).dataSource}
 						<div>
 							<p
 								class="text-viz-orange-dark mb-1.5 text-xs font-bold tracking-wide uppercase md:mb-2 md:text-sm"
 							>
 								Data Source
 							</p>
-							<p class="text-viz-grey/90 text-sm break-words md:text-base">{proposal.dataSource}</p>
+							<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+								{@html parseMarkdown((proposal as CFEProposal).dataSource)}
+							</div>
 						</div>
 					{/if}
-					{#if proposal.visualizationMethod}
+					{#if (proposal as CFEProposal).visualizationMethod}
 						<div>
 							<p
 								class="text-viz-orange-dark mb-1.5 text-xs font-bold tracking-wide uppercase md:mb-2 md:text-sm"
 							>
 								Visualization Method
 							</p>
-							<p class="text-viz-grey/90 text-sm break-words md:text-base">
-								{proposal.visualizationMethod}
-							</p>
+							<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+								{@html parseMarkdown((proposal as CFEProposal).visualizationMethod)}
+							</div>
 						</div>
 					{/if}
 				</div>
 			</section>
 
-			{#if proposal.technicalRequirements}
+			{#if (proposal as CFEProposal).technicalRequirements}
 				<section class="mb-8 md:mb-10">
 					<Heading tag="h3" align="left">Technical Requirements</Heading>
-					<p class="text-viz-grey/90 text-sm break-words md:text-base">
-						{proposal.technicalRequirements}
-					</p>
+					<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+						{@html parseMarkdown((proposal as CFEProposal).technicalRequirements)}
+					</div>
 				</section>
 			{/if}
 
-			{#if proposal.timeline}
+			{#if (proposal as CFEProposal).timeline}
 				<section class="mb-8 md:mb-10">
 					<Heading tag="h3" align="left">Project Status & Timeline</Heading>
-					<p class="text-viz-grey/90 text-sm break-words md:text-base">{proposal.timeline}</p>
+					<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+						{@html parseMarkdown((proposal as CFEProposal).timeline)}
+					</div>
 				</section>
 			{/if}
 
-			{#if proposal.previousProjects}
+			{#if (proposal as CFEProposal).previousProjects}
 				<section class="mb-8 md:mb-10">
 					<Heading tag="h3" align="left">Previous Work</Heading>
 					<a
-						href={proposal.previousProjects}
+						href={(proposal as CFEProposal).previousProjects}
 						target="_blank"
 						rel="noopener noreferrer"
 						class="group text-viz-grey/70 decoration-viz-grey/30 hover:text-viz-orange-dark hover:decoration-viz-orange-dark inline-flex items-center gap-1.5 text-sm break-all underline decoration-1 underline-offset-2 transition-colors md:gap-2 md:text-[15px]"
@@ -267,17 +297,19 @@
 				</section>
 			{/if}
 
-			{#if proposal.submissionType === 'Collective' && proposal.teamName}
+			{#if (proposal as CFEProposal).submissionType === 'Collective' && (proposal as CFEProposal).teamName}
 				<section class="mb-8 md:mb-10">
 					<Heading tag="h3" align="left">Team</Heading>
 					<div
 						class="border-viz-orange-dark bg-viz-orange-light/10 rounded-lg border-l-4 p-4 md:p-6"
 					>
 						<p class="font-display-sans text-viz-orange-dark mb-2 text-xl font-bold md:text-2xl">
-							{proposal.teamName}
+							{(proposal as CFEProposal).teamName}
 						</p>
-						{#if proposal.teamBio}
-							<p class="text-viz-grey/90 text-sm break-words md:text-base">{proposal.teamBio}</p>
+						{#if (proposal as CFEProposal).teamBio}
+							<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+								{@html parseMarkdown((proposal as CFEProposal).teamBio)}
+							</div>
 						{/if}
 					</div>
 				</section>
