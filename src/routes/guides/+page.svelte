@@ -75,16 +75,13 @@
 <div class="deck">
 	<div class="deck-inner">
 		{#each cards as card}
-			<a
-				href={card.href}
-				class="deck-card row-span-3 grid grid-rows-subgrid no-underline hover:scale-102"
-			>
+			<a href={card.href} class="deck-card row-span-3 grid grid-rows-subgrid hover:scale-102">
 				<PatternRough
 					color={colorVars[card.color]}
 					fillStyle="cross-hatch"
 					fillWeight={0.5}
 					hachureAngle={card.angle}
-					opacity={0.7}
+					opacity={0.4}
 				/>
 
 				<h3

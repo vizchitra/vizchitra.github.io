@@ -2,12 +2,13 @@ import { defineCollection, defineConfig } from '@content-collections/core';
 import { compileMarkdown } from '@content-collections/markdown';
 import { z } from 'zod';
 import remarkDirective from 'remark-directive';
+import remarkGfm from 'remark-gfm';
 import { remarkVizchitraDirectives } from './src/lib/markdown/directive.js';
 
 /* Markdown Compilation Options */
 const markdownOptions = {
 	allowDangerousHtml: true,
-	remarkPlugins: [remarkDirective, remarkVizchitraDirectives]
+	remarkPlugins: [remarkGfm, remarkDirective, remarkVizchitraDirectives]
 };
 
 /* This collection defines "guides" which are markdown documents that
@@ -25,8 +26,7 @@ const guides = defineCollection({
 		guide: z.enum(['talks', 'workshops', 'dialogues', 'exhibition', 'panels']),
 		section: z.string(),
 		order: z.number(),
-		draft: z.boolean().optional().default(false),
-		content: z.string()
+		draft: z.boolean().optional().default(false)
 	}),
 	transform: async (document, context) => {
 		// Extract guideId and sectionSlug from the file path

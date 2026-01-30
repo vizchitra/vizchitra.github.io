@@ -171,7 +171,7 @@
 	}
 
 	.nav-title {
-		font-size: 0.875rem;
+		font-size: 1rem;
 		font-weight: 500;
 		color: var(--color-gray-600, #4b5563);
 	}

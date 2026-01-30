@@ -3,7 +3,7 @@ title: Delivery | Talks @ VizChitra
 description: Delivery guidelines for talks at VizChitra.
 guide: talks
 section: delivery
-order: 4
+order: 5
 ---
 
 ## Delivery Guidelines

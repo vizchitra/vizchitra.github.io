@@ -20,7 +20,7 @@ Use these prompts as a mini-outline while drafting your submission.
 
 ## Delivery Guidelines
 
-Choose a talk style that suits your content and personality:
+Choose a talk style that suits your content and personality. Here are some common styles to consider:
 
 | Style           | Description                                   |
 | --------------- | --------------------------------------------- |
@@ -34,4 +34,3 @@ Choose a talk style that suits your content and personality:
 | **Conceptual**  | Build understanding with stepwise explanation |
 
 Remember: Aim to speak with stories and present with impact.
-:::

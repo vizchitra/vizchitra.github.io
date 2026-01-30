@@ -14,7 +14,7 @@
 	<span class="breadcrumb-current">{data.section.section.toUpperCase()}</span>
 </nav>
 
-<article class="prose lg:prose-xl mx-auto max-w-3xl p-8">
+<article class="prose prose-viz lg:prose-xl mx-auto max-w-3xl p-8">
 	<h1>{data.section.sectionSlug.charAt(0).toUpperCase() + data.section.sectionSlug.slice(1)}</h1>
 	{@html data.section.html}
 </article>
