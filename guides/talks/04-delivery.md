@@ -3,23 +3,21 @@ title: Delivery | Talks @ VizChitra
 description: Delivery guidelines for talks at VizChitra.
 guide: talks
 section: delivery
-order: 5
+order: 4
+draft: true
 ---
 
-## Delivery Guidelines
+Getting ready for the Conference Day
 
-Choose a talk style that suits your content and personality:
+:color[Plan for Location]{blue} – Reconfirm the location of the conference, plan for your travel and aim to be there early. Bangalore traffic can be very difficult.
 
-| Style           | Description                                   |
-| --------------- | --------------------------------------------- |
-| **Stories**     | Weave long & short anecdotes to guide         |
-| **Interactive** | Integrate audience engagement with Q&A        |
-| **Demo**        | Exemplar driven with multiple demos           |
-| **Visual**      | Show, not tell — anchor through visuals       |
-| **Process**     | Illustrate process and share war stories      |
-| **Narrative**   | Singular arc with a main visual showcase      |
-| **Performance** | Live visualization & creation on stage        |
-| **Conceptual**  | Build understanding with stepwise explanation |
+:color[Arrive for Tech Check]{blue} – Your Editorial PoC will communicate the time for the technical check for your session - to test the laptop and mic setup. This is mandatory, not optional. Please reach well before your scheduled tech check. Ideally come at the start & attend the whole conference day!
 
-Remember: Aim to speak with stories and present with impact.
-:::
+:color[Boot-up your Laptop]{blue} – You will present using your own laptop. There are no spare laptop for presentation provided by the conference. Set it up & test it out at least during the break before your planned session
+
+:color[Keep 16\:9 Aspect Ratio]{blue} – Set the aspect ratio for your presentation & laptop to match the projection on the stage. This is typically 16\:9 to render well for the widescreen presentation used.
+
+:color[Backup for Internet]{blue} – You must not rely on conference internet to present demos, code snippets and videos. Internet can and will get spotty with that many people in the audience. Plan to pre-record your demos or add appropriate screenshots in the presentation.
+
+:color[Carry your Connectors]{blue} – You need to bring your own correct HDMI/VGA cables for connecting from your Laptop to the AV system in the Audi & Halls.
+Bring a Clicker – Need to control your slides away from the laptop. Well, clickers are not provided by the conference. Speakers have to bring their own!

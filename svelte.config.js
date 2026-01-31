@@ -4,6 +4,7 @@ import { redirects } from './src/lib/config/redirects.js';
 import { mdsvex } from 'mdsvex';
 import { getContentSlugs } from './text.config.js';
 
+// Generate content slugs for prerendering
 const contentSlugs = getContentSlugs();
 
 /** @type {import('mdsvex').MdsvexOptions} */

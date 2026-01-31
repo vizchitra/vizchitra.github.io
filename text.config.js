@@ -1,61 +1,39 @@
 import fs from 'fs';
 import path from 'path';
-import yaml from 'js-yaml';
-
-// Content directory path
-export const contentDir = path.join(process.cwd(), 'content');
 
 /**
- * Recursively find all markdown files in the content directory
- * @param {string} dir - Directory to search
- * @returns {string[]} - Array of file paths
- */
-export function getMarkdownFiles(dir = contentDir) {
-  let results = [];
-  const list = fs.readdirSync(dir);
-  list.forEach((file) => {
-    const filePath = path.join(dir, file);
-    const stat = fs.statSync(filePath);
-    if (stat && stat.isDirectory()) {
-      results = results.concat(getMarkdownFiles(filePath));
-    } else if (file.endsWith('.md')) {
-      results.push(filePath);
-    }
-  });
-  return results;
-}
-
-/**
- * Parse YAML frontmatter from a markdown file
- * @param {string} filePath - Path to the markdown file
- * @returns {object|null} - Parsed frontmatter or null
- */
-export function parseFrontmatter(filePath) {
-  try {
-    const content = fs.readFileSync(filePath, 'utf-8');
-    const match = content.match(/^---\n([\s\S]*?)\n---/);
-    if (match) {
-      return yaml.load(match[1]) || {};
-    }
-  } catch (e) {
-    console.error(`Error parsing frontmatter for ${filePath}:`, e);
-  }
-  return null;
-}
-
-/**
- * Get content slugs for prerendering, filtering out drafts in production
+ * Get content slugs for prerendering - filesystem approach for build compatibility
  * @returns {string[]} - Array of slug paths
  */
 export function getContentSlugs() {
-  return getMarkdownFiles(contentDir)
-    .filter((file) => {
-      if (process.env.NODE_ENV === 'development') return true;
-      const frontmatter = parseFrontmatter(file);
-      return !frontmatter?.draft;
-    })
-    .map((file) => file.replace(contentDir, '').replace('.md', ''))
-    .map((slug) => (slug.startsWith('/') ? slug : `/${slug}`));
+  const contentDir = path.join(process.cwd(), 'content');
+
+  function getMarkdownFiles(dir) {
+    let results = [];
+    if (!fs.existsSync(dir)) return results;
+    const list = fs.readdirSync(dir);
+    list.forEach((file) => {
+      const filePath = path.join(dir, file);
+      const stat = fs.statSync(filePath);
+      if (stat && stat.isDirectory()) {
+        results = results.concat(getMarkdownFiles(filePath));
+      } else if (file.endsWith('.md')) {
+        results.push(filePath);
+      }
+    });
+    return results;
+  }
+
+  return [
+    ...new Set(
+      getMarkdownFiles(contentDir)
+        .map((file) => {
+          let slug = file.replace(contentDir, '').replace('.md', '');
+          if (!slug.startsWith('/')) slug = `/${slug}`;
+          return slug.replace(/\/index$/, '') || '/';
+        })
+    )
+  ];
 }
 
 /**
@@ -68,8 +46,10 @@ export function contentHmrPlugin() {
     apply: 'serve',
     configureServer(server) {
       const resolvedContentDir = path.resolve(process.cwd(), 'content');
-      // Add the content directory to the watcher
+      const resolvedGuidesDir = path.resolve(process.cwd(), 'guides');
+      // Add the content and guides directories to the watcher
       server.watcher.add(resolvedContentDir);
+      server.watcher.add(resolvedGuidesDir);
 
       const invalidateAndReload = () => {
         // Invalidate modules that use import.meta.glob for content
@@ -85,13 +65,17 @@ export function contentHmrPlugin() {
         if (pageModules) {
           pageModules.forEach((mod) => server.moduleGraph.invalidateModule(mod));
         }
+        // Also invalidate content-collections generated modules
+        server.moduleGraph.invalidateAll();
         server.ws.send({ type: 'full-reload' });
       };
 
       const shouldReload = (p) => {
         if (!p) return false;
-        // Only reload if the file is inside the content directory
-        if (!p.startsWith(resolvedContentDir)) return false;
+        // Reload if file is inside content or guides directory
+        const isContentFile = p.startsWith(resolvedContentDir);
+        const isGuidesFile = p.startsWith(resolvedGuidesDir);
+        if (!isContentFile && !isGuidesFile) return false;
         const lp = p.toLowerCase();
         return lp.endsWith('.md') || lp.endsWith('.svx');
       };

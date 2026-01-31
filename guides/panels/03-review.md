@@ -4,8 +4,7 @@ description: How to prepare for your panel discussion at VizChitra.
 guide: panels
 section: review
 order: 3
+draft: true
 ---
 
-# Preparation Guidelines
-
-[Content to be added]
+**Review for the Panel Discussion**

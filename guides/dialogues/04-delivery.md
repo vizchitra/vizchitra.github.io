@@ -4,8 +4,9 @@ description: Tips for delivering an engaging dialogue session at VizChitra.
 guide: dialogues
 section: delivery
 order: 4
+draft: true
 ---
 
-# Delivery Guidelines
+**Review Guidelines for the Dialogue Session**
 
 [Content to be added]

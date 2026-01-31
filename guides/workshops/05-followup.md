@@ -1,9 +1,9 @@
 ---
-title: Delivery | Workshops @ VizChitra
-description: Delivery guidelines for workshops at VizChitra.
+title: Follow Up | Workshops @ VizChitra
+description: Follow up guidelines for workshops at VizChitra.
 guide: workshops
-section: delivery
-order: 4
+section: followup
+order: 5
 draft: true
 ---
 

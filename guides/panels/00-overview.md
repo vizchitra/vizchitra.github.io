@@ -6,6 +6,6 @@ section: overview
 order: 0
 ---
 
-# Panels
+A focussed moderated discussion on an engaging & informative topic with 3 - 4 panelists. The panel member are domain and subject matter experts and share their experience, lessons learnt and challenges overcome through the questions & discussion facilitated by the moderator host.
 
-A focussed moderated discussion on an engaging topic with domain and subject matter experts.
+_Duration_: 30 - 60 minutes total

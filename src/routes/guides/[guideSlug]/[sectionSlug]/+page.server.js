@@ -20,10 +20,17 @@ export function load({ params }) {
   const prevSection = currentIndex > 0 ? allSections[currentIndex - 1] : null;
   const nextSection = currentIndex < allSections.length - 1 ? allSections[currentIndex + 1] : null;
 
+  // If section is draft, don't send the HTML content
+  const isDraft = section.draft || false;
+  const sectionData = isDraft
+    ? { ...section, html: null }
+    : section;
+
   return {
-    section,
+    section: sectionData,
     prevSection,
     nextSection,
-    guideSlug
+    guideSlug,
+    isDraft
   };
 }

@@ -304,8 +304,8 @@ button:focus:not(:focus-visible) {
 
 /* Tighter list spacing */
 .prose-viz li {
-	margin-top: 0.25em;
-	margin-bottom: 0.25em;
+	margin-top: 0em;
+	margin-bottom: 0em;
 }
 
 /* First/last paragraph margin adjustment in containers */

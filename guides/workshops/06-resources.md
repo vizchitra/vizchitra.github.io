@@ -1,8 +1,8 @@
 ---
-title: Delivery | Workshops @ VizChitra
-description: Delivery guidelines for workshops at VizChitra.
+title: Resources | Workshops @ VizChitra
+description: Resources for workshops at VizChitra.
 guide: workshops
-section: delivery
+section: resources
 order: 4
 draft: true
 ---

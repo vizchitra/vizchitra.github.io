@@ -4,8 +4,9 @@ description: Guidelines for proposing a dialogue session at VizChitra.
 guide: dialogues
 section: proposal
 order: 1
+draft: true
 ---
 
-# Proposal Guidelines
+**Proposal Guidelines for the Dialogue Session**
 
 [Content to be added]
