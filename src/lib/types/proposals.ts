@@ -1,4 +1,4 @@
-export type ProposalStatus = 'Accepted' | 'Under Review' | 'Waitlisted' | 'Rejected';
+export type ProposalStatus = 'Selected' | 'Under Review' | 'Not Selected';
 
 export interface BaseProposal {
 	id: string;
