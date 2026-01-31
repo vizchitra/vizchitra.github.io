@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   fetch-and-update:
@@ -36,15 +37,21 @@ jobs:
           GOOGLE_SHEETS_CREDENTIALS: ${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}
         run: pnpm data:fetch
 
-      - name: Commit and Push changes
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "chore: 🤖 update data from sheets"
+          branch: data-update
+          delete-branch: true
+          title: "chore: 🤖 update data from sheets"
+          body: |
+            🤖 Auto-generated PR to update data from Google Sheets.
+          labels: automated
 
-          if [[ -n $(git status --porcelain) ]]; then
-            git add content/2026/data/cfp.csv
-            git commit -m "chore: update data from sheets"
-            git push
-          else
-            echo "No changes to commit"
-          fi
+      - name: Enable auto-merge
+        if: steps.cpr.outputs.pull-request-number
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr merge ${{ steps.cpr.outputs.pull-request-number }} --auto --squash
