@@ -7,11 +7,11 @@
 
 	// CSS variable names for colors (same format as BannerCurve)
 	const colorVarNames = [
-		'--viz-color-yellow',
-		'--viz-color-teal',
-		'--viz-color-blue',
-		'--viz-color-orange',
-		'--viz-color-pink'
+		'--color-viz-yellow',
+		'--color-viz-teal',
+		'--color-viz-blue',
+		'--color-viz-orange',
+		'--color-viz-pink'
 	];
 
 	let resolvedColors: string[] = $state([]);

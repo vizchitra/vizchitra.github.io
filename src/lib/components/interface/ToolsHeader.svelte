@@ -8,7 +8,7 @@
 
 <header class="space-y-4">
 	<BreadCrumb {trail} current={null} />
-	<h1 class="text-viz-black text-3xl font-black">{title}</h1>
+	<h2 class="text-viz-black text-3xl font-black">{title}</h2>
 	{#if subtitle}
 		<p class="text-viz-grey-dark max-w-3xl text-lg">{subtitle}</p>
 	{/if}

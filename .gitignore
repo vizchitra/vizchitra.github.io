@@ -28,3 +28,6 @@ vite.config.ts.timestamp-*
 # PartyKit
 .partykit
 .claude/
+
+# Content Collections - For Markdown File Processing
+.content-collections

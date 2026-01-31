@@ -14,7 +14,7 @@
 	let {
 		color = 'pink',
 		align = 'center',
-		tag = 'span',
+		tag = 'p',
 		plain = false,
 		textContent = '',
 		className = '',
@@ -22,7 +22,7 @@
 	}: Props = $props();
 
 	let finalClass = $derived(className ? className : classes);
-	let baseClass = $derived(plain ? '' : 'content-subheading mt-12 mb-12');
+	let baseClass = $derived(plain ? '' : 'content-subheading mt-12 font-display mb-12');
 	let alignClass = $derived(align ? `text-${align}` : '');
 	let colorClass = $derived(color ? `text-viz-${color}-dark` : '');
 	let letters = $derived(textContent ? formatSlantedText(textContent) : []);

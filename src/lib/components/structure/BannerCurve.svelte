@@ -20,14 +20,14 @@
 
 	// Use 8 colors: 5 main colors + 3 light variants for variety
 	const colorVariantNames = [
-		'--viz-color-orange',
-		'--viz-color-orange-light',
-		'--viz-color-yellow',
-		'--viz-color-yellow-light',
-		'--viz-color-pink',
-		'--viz-color-pink-light',
-		'--viz-color-teal',
-		'--viz-color-blue'
+		'--color-viz-orange',
+		'--color-viz-orange-light',
+		'--color-viz-yellow',
+		'--color-viz-yellow-light',
+		'--color-viz-pink',
+		'--color-viz-pink-light',
+		'--color-viz-teal',
+		'--color-viz-blue'
 	];
 
 	// Varying amplitude for each curve (more exaggeration)

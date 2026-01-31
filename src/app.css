@@ -1,53 +1,149 @@
 @import url('lib/assets/css/fonts.css');
-@import url('lib/assets/css/tokens.css');
+/* @import url('lib/assets/css/tokens.css'); */
 
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
 /* Tailwind-facing tokens: map from canonical --viz-* variables */
-@theme {
-	/* Palette: core */
-	--color-viz-white: var(--viz-color-white);
+@theme static {
+	--viz-color-white: oklch(100% 0 0);
+	--viz-color-black: oklch(15% 0 0);
 
-	--color-viz-black: var(--viz-color-black);
-	--color-viz-grey: var(--viz-color-grey);
-	--color-viz-yellow: var(--viz-color-yellow);
-	--color-viz-teal: var(--viz-color-teal);
-	--color-viz-blue: var(--viz-color-blue);
-	--color-viz-orange: var(--viz-color-orange);
-	--color-viz-pink: var(--viz-color-pink);
+	/* Brand palette (converted from hex -> OKLCH) */
+	--color-viz-yellow: oklch(89% 0.109 82); /* #FFD485 */
+	--color-viz-teal: oklch(84.9% 0.086 188); /* #88E0D8 */
+	--color-viz-blue: oklch(79.3% 0.099 267); /* #9FBAFC */
+	--color-viz-orange: oklch(76% 0.147 46.5); /* #FC915B */
+	--color-viz-pink: oklch(71.9% 0.161 354); /* #EF75AB */
+	--color-viz-grey: oklch(41% 0 0); /*Grey #4c4c4c */
 
-	--color-viz-yellow-light: var(--viz-color-yellow-light);
-	--color-viz-teal-light: var(--viz-color-teal-light);
-	--color-viz-blue-light: var(--viz-color-blue-light);
-	--color-viz-orange-light: var(--viz-color-orange-light);
-	--color-viz-pink-light: var(--viz-color-pink-light);
+	/* Color Ramps basded on brand tokens */
+	/* HUE PALETTES */
 
-	--color-viz-black-dark: var(--viz-color-black-dark);
-	--color-viz-grey-dark: var(--viz-color-grey-dark);
-	--color-viz-yellow-dark: var(--viz-color-yellow-dark);
-	--color-viz-teal-dark: var(--viz-color-teal-dark);
-	--color-viz-blue-dark: var(--viz-color-blue-dark);
-	--color-viz-orange-dark: var(--viz-color-orange-dark);
-	--color-viz-pink-dark: var(--viz-color-pink-dark);
+	/* Yellow - Hue 82 */
+	--color-yellow-50: oklch(98.5% 0.015 82);
+	--color-yellow-100: oklch(97% 0.03 82);
+	--color-yellow-200: oklch(94% 0.06 82);
+	--color-yellow-300: oklch(91% 0.09 82);
+	--color-yellow-400: oklch(89% 0.109 82); /* Original */
+	--color-yellow-500: oklch(82% 0.13 82);
+	--color-yellow-600: oklch(72% 0.15 82);
+	--color-yellow-700: oklch(62% 0.14 82);
+	--color-yellow-800: oklch(52% 0.12 82);
+	--color-yellow-900: oklch(42% 0.1 82);
+	--color-yellow-950: oklch(32% 0.06 82);
+
+	/* Teal - Hue 188 */
+	--color-teal-50: oklch(98.5% 0.015 188);
+	--color-teal-100: oklch(97% 0.03 188);
+	--color-teal-200: oklch(94% 0.05 188);
+	--color-teal-300: oklch(89% 0.07 188);
+	--color-teal-400: oklch(84.9% 0.086 188); /* Original */
+	--color-teal-500: oklch(75% 0.1 188);
+	--color-teal-600: oklch(65% 0.11 188);
+	--color-teal-700: oklch(55% 0.1 188);
+	--color-teal-800: oklch(45% 0.08 188);
+	--color-teal-900: oklch(35% 0.06 188);
+	--color-teal-950: oklch(25% 0.035 188);
+
+	/* Blue - Hue 267 */
+	--color-blue-50: oklch(98.5% 0.02 267);
+	--color-blue-100: oklch(97% 0.03 267);
+	--color-blue-200: oklch(94% 0.05 267);
+	--color-blue-300: oklch(87% 0.08 267);
+	--color-blue-400: oklch(79.3% 0.099 267); /* Original */
+	--color-blue-500: oklch(70% 0.12 267);
+	--color-blue-600: oklch(60% 0.14 267);
+	--color-blue-700: oklch(50% 0.13 267);
+	--color-blue-800: oklch(40% 0.11 267);
+	--color-blue-900: oklch(30% 0.09 267);
+	--color-blue-950: oklch(20% 0.045 267);
+
+	/* Orange - Hue 46.5 */
+	--color-orange-50: oklch(98.2% 0.02 46.5);
+	--color-orange-100: oklch(97% 0.03 46.5);
+	--color-orange-200: oklch(94% 0.06 46.5);
+	--color-orange-300: oklch(85% 0.11 46.5);
+	--color-orange-400: oklch(76% 0.147 46.5); /* Original */
+	--color-orange-500: oklch(65% 0.16 46.5);
+	--color-orange-600: oklch(55% 0.17 46.5);
+	--color-orange-700: oklch(45% 0.16 46.5);
+	--color-orange-800: oklch(35% 0.14 46.5);
+	--color-orange-900: oklch(25% 0.12 46.5);
+	--color-orange-950: oklch(18% 0.055 46.5);
+
+	/* Pink - Hue 354 */
+	--color-pink-50: oklch(98% 0.02 354);
+	--color-pink-100: oklch(97% 0.03 354);
+	--color-pink-200: oklch(94% 0.06 354);
+	--color-pink-300: oklch(83% 0.12 354);
+	--color-pink-400: oklch(71.9% 0.161 354); /* Original */
+	--color-pink-500: oklch(62% 0.18 354);
+	--color-pink-600: oklch(52% 0.19 354);
+	--color-pink-700: oklch(42% 0.17 354);
+	--color-pink-800: oklch(32% 0.15 354);
+	--color-pink-900: oklch(22% 0.13 354);
+	--color-pink-950: oklch(16% 0.06 354);
+
+	/* Grey -  Hue 0 */
+	--color-grey-50: oklch(98.5% 0 0);
+	--color-grey-100: oklch(97% 0 0);
+	--color-grey-200: oklch(90% 0 0);
+	--color-grey-300: oklch(80% 0 0);
+	--color-grey-400: oklch(70% 0 0);
+	--color-grey-500: oklch(60% 0 0);
+	--color-grey-600: oklch(50% 0 0);
+	--color-grey-700: oklch(41% 0 0); /* Original #4C4C4C */
+	--color-grey-800: oklch(30% 0 0);
+	--color-grey-900: oklch(18% 0 0);
+	--color-grey-950: oklch(10% 0 0);
+
+	/* Named Variants */
+
+	/* Light Shade (converted from hex -> OKLCH) */
+	--color-viz-yellow-light: var(--color-yellow-200); /*Ramp 200*/
+	--color-viz-teal-light: var(--color-teal-200); /*Ramp 200*/
+	--color-viz-blue-light: var(--color-blue-200); /*Ramp 200*/
+	--color-viz-orange-light: var(--color-orange-200); /*Ramp 200*/
+	--color-viz-pink-light: var(--color-pink-200); /*Ramp 200*/
+	--color-viz-grey-light: var(--color-grey-200); /*Ramp 200*/
+
+	/* Dark Shades derived from the canonical OKLCH tokens */
+	--color-viz-yellow-dark: var(--color-yellow-700); /*Ramp 700*/
+	--color-viz-teal-dark: var(--color-teal-700); /*Ramp 700*/
+	--color-viz-blue-dark: var(--color-blue-700); /*Ramp 700*/
+	--color-viz-orange-dark: var(--color-orange-700); /*Ramp 700*/
+	--color-viz-pink-dark: var(--color-pink-700); /*Ramp 700*/
+	--color-viz-grey-dark: var(--color-grey-700); /*Ramp 700*/
 
 	/* Typography */
-	--font-text-sans: var(--viz-font-text-sans);
-	--font-display-sans: var(--viz-font-display-sans);
-	--font-body-mono: var(--viz-font-body-mono);
 
-	--font-body: var(--viz-font-body);
-	--font-display: var(--viz-font-display);
-	--font-base: var(--viz-font-base);
+	/* Canonical typography */
+	--font-text-sans:
+		'IBM Plex Sans', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, system-ui, sans-serif;
+	--font-display-sans:
+		'Cairo', Optima, Candara, 'Noto Sans', source-sans-pro, system-ui, sans-serif;
+	--font-body-mono:
+		ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+
+	--font-body: var(--font-text-sans);
+	--font-display: var(--font-display-sans);
+	--font-base: var(--font-text-sans);
 
 	/* Semantic colors */
-	--color-bg: var(--viz-color-bg);
-	--color-fg: var(--viz-color-fg);
-	--color-muted: var(--viz-color-muted);
-	--color-surface: var(--viz-color-surface);
-	--color-border: var(--viz-color-border);
-	--color-link: var(--viz-color-link);
-	--color-accent: var(--viz-color-accent);
+	--color-bg: var(--color-viz-white);
+	--color-fg: var(--color-viz-black);
+	--color-muted: var(--color-viz-grey);
+	--color-surface: var(--color-viz-white);
+	--color-border: var(--color-viz-grey);
+	--color-link: var(--color-viz-blue-dark);
+	--color-accent: var(--color-viz-pink);
+
+	--width-prose: 60ch;
+	--width-narrow: 28rem;
+	--width-content: 72rem;
+	--width-wide: 90rem;
+	--width-grid-min: 280px;
 }
 
 :root {
@@ -208,8 +304,8 @@ button:focus:not(:focus-visible) {
 
 /* Tighter list spacing */
 .prose-viz li {
-	margin-top: 0.25em;
-	margin-bottom: 0.25em;
+	margin-top: 0em;
+	margin-bottom: 0em;
 }
 
 /* First/last paragraph margin adjustment in containers */
@@ -219,4 +315,29 @@ button:focus:not(:focus-visible) {
 
 .prose-viz > :last-child {
 	margin-bottom: 0;
+}
+
+/* Table styles for prose content */
+.prose-viz table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+}
+
+.prose-viz thead th {
+	padding: 0.75rem 1rem;
+	text-align: left;
+	font-weight: 600;
+	border-bottom: 2px solid var(--tw-prose-th-borders, #d1d5db);
+	background-color: rgba(0, 0, 0, 0.02);
+}
+
+.prose-viz tbody td {
+	padding: 0.75rem 1rem;
+	border-bottom: 1px solid var(--tw-prose-td-borders, #e5e7eb);
+}
+
+.prose-viz tbody tr:last-child td {
+	border-bottom: none;
 }
