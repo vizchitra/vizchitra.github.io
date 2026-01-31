@@ -19,5 +19,5 @@ At VizChitra, we’re not just creating data stories; we’re building a culture
 We have more than 1,800 people in the community, which we refer to as **Friends of VizChitra**. The primary mode of conversation is through _The VizChitra Community Group_ on WhatsApp. You can join them on WhatsApp at [https://vizchitra.com/friends](https://vizchitra.com/friends)
 
 <div class="flex justify-center align-center">
-	<Button href="https://forms.vizchitra.com/proposals" color="teal" external={true}>Join Friends of VizChitra Group</Button>
+	<Button href="https://vizchitra.com/friends" color="teal" external={true}>Join Friends of VizChitra Group</Button>
 </div>
