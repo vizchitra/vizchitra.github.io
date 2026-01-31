@@ -8,7 +8,7 @@
 	let { status }: Props = $props();
 
 	const statusConfig = {
-		Accepted: {
+		Selected: {
 			bg: 'bg-green-100',
 			text: 'text-green-800',
 			border: 'border-green-300',
@@ -20,13 +20,8 @@
 			border: 'border-blue-300',
 			dot: 'bg-blue-500'
 		},
-		Waitlisted: {
-			bg: 'bg-yellow-100',
-			text: 'text-yellow-800',
-			border: 'border-yellow-300',
-			dot: 'bg-yellow-500'
-		},
-		Rejected: {
+
+		'Not Selected': {
 			bg: 'bg-red-100',
 			text: 'text-red-800',
 			border: 'border-red-300',

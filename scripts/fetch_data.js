@@ -7,6 +7,13 @@ import Papa from 'papaparse';
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 const SPREADSHEET_ID = '1aZ3lpTPeu9Uf-v9LSb0AagYHc7ysj49YJscoLaUMMm4';
 
+// Map GID to output file name
+const SHEET_MAPPINGS = [
+  { gid: 1120719438, name: 'cfp' }
+  // Add more mappings here as needed
+  // { gid: 123456789, name: 'another-sheet' }
+];
+
 async function main() {
   try {
     const credentialsJson = process.env.GOOGLE_SHEETS_CREDENTIALS;
@@ -36,45 +43,56 @@ async function main() {
       spreadsheetId: SPREADSHEET_ID
     });
 
-    const firstSheetTitle = meta.data.sheets[0].properties.title;
-    console.log(`Fetching data from sheet: ${firstSheetTitle}`);
+    // Process each sheet mapping
+    for (const mapping of SHEET_MAPPINGS) {
+      console.log(`\nProcessing sheet with GID ${mapping.gid} (${mapping.name})...`);
 
-    const response = await sheets.spreadsheets.values.get({
-      spreadsheetId: SPREADSHEET_ID,
-      range: firstSheetTitle,
-    });
+      // Find the sheet with the specified GID
+      const sheet = meta.data.sheets.find(s => s.properties.sheetId === mapping.gid);
+      if (!sheet) {
+        console.error(`Sheet with GID ${mapping.gid} not found. Skipping.`);
+        continue;
+      }
 
-    const rows = response.data.values;
-    if (!rows || rows.length === 0) {
-      console.log('No data found.');
-      return;
-    }
+      const sheetTitle = sheet.properties.title;
+      console.log(`Fetching data from sheet: ${sheetTitle}`);
 
-    console.log(`Fetched ${rows.length} rows.`);
-
-    // Filter rows based on "Exclude" column (if it exists)
-    const header = rows[0];
-    const excludeIndex = header.findIndex(h => h.trim().toLowerCase() === 'exclude');
-
-    let filteredRows = rows;
-    if (excludeIndex !== -1) {
-      console.log(`Found 'Exclude' column at index ${excludeIndex}. Filtering...`);
-      // Keep header + rows where exclude is NOT 'TRUE' (case insensitive)
-      filteredRows = rows.filter((row, index) => {
-        if (index === 0) return true; // Always keep header
-        const excludeValue = row[excludeIndex];
-        return !excludeValue || String(excludeValue).trim().toLowerCase() !== 'true';
+      const response = await sheets.spreadsheets.values.get({
+        spreadsheetId: SPREADSHEET_ID,
+        range: sheetTitle,
       });
-      console.log(`Filtered down to ${filteredRows.length} rows (including header).`);
-    } else {
-      console.log("'Exclude' column not found. Bringing all rows.");
+
+      const rows = response.data.values;
+      if (!rows || rows.length === 0) {
+        console.log('No data found.');
+        continue;
+      }
+
+      console.log(`Fetched ${rows.length} rows.`);
+
+      // Filter rows based on "Exclude" column
+      const header = rows[0];
+      const excludeIndex = header.findIndex(h => h.trim().toLowerCase() === 'exclude');
+
+      let filteredRows = rows;
+      if (excludeIndex !== -1) {
+        console.log(`Found 'Exclude' column at index ${excludeIndex}. Filtering...`);
+        filteredRows = rows.filter((row, index) => {
+          if (index === 0) return true; // Always keep header
+          const excludeValue = String(row[excludeIndex] || '').trim().toLowerCase();
+          return excludeValue !== 'exclude';
+        });
+        console.log(`Filtered down to ${filteredRows.length} rows (including header).`);
+      } else {
+        console.log("'Exclude' column not found. Bringing all rows.");
+      }
+
+      const csv = Papa.unparse(filteredRows);
+
+      const outputPath = path.resolve(`content/2026/data/${mapping.name}.csv`);
+      fs.writeFileSync(outputPath, csv);
+      console.log(`Data saved to ${outputPath}`);
     }
-
-    const csv = Papa.unparse(filteredRows);
-
-    const outputPath = path.resolve('content/2026/data/cfp.csv');
-    fs.writeFileSync(outputPath, csv);
-    console.log(`Data saved to ${outputPath}`);
 
   } catch (error) {
     console.error('Error fetching data:', error);
