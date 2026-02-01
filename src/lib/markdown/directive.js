@@ -22,7 +22,7 @@ const COLOR_BG_CLASSES = {
 	blue: 'bg-viz-blue-light border-viz-blue',
 	teal: 'bg-viz-teal-light border-viz-teal',
 	yellow: 'bg-viz-yellow-light border-viz-yellow',
-	orange: 'bg-viz-orange-light border-viz-orange',
+	orange: 'bg-viz-orange-light border-viz-orange'
 };
 
 const COLOR_TEXT_CLASSES = {
@@ -31,7 +31,7 @@ const COLOR_TEXT_CLASSES = {
 	blue: 'text-viz-blue-dark',
 	teal: 'text-viz-teal-dark',
 	yellow: 'text-viz-yellow-dark',
-	orange: 'text-viz-orange-dark',
+	orange: 'text-viz-orange-dark'
 };
 
 // ============================================
@@ -110,8 +110,7 @@ const CONTAINER_DIRECTIVES = {
 				hChildren: children
 			};
 		}
-	},
-
+	}
 };
 
 // ============================================
@@ -208,7 +207,6 @@ const INLINE_DIRECTIVES = {
 			};
 		}
 	},
-
 
 	mark: {
 		schema: z.object({ color: ColorSchema.default('yellow') }),

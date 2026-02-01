@@ -48,7 +48,6 @@ describe('Container Directives', () => {
 		});
 	});
 
-
 	describe(':::slanted', () => {
 		it('renders each letter as span with slant value', async () => {
 			const html = await processMarkdown(':::slanted{pink}\nABC\n:::');
@@ -167,7 +166,6 @@ describe('Inline Directives', () => {
 			expect(htmlLg).toContain('text-base');
 		});
 	});
-
 
 	describe(':mark', () => {
 		it('renders highlighted text', async () => {
