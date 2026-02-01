@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { getColorHex, colors } from '$lib/utils/colors';
 
 	let width = $state(null);
 	let height = 80;
 
 	export const className: string = '';
 
-	const colors = ['#ffd485', '#97e4dd', '#a8bdf0', '#f89f72', '#ee88b3'];
+	const brandColors = colors.filter((c) => c !== 'grey');
 
 	const NUM_POINTS = 3;
 
@@ -18,7 +19,7 @@
 			const r = 5;
 			let cx = Math.floor(Math.random() * (width - 2 * r)) + r;
 			let cy = Math.floor(Math.random() * (height - 2 * r)) + r;
-			let fill = '#4c4c4c';
+			let fill = getColorHex('grey');
 
 			points.push({ cx, cy, r, fill });
 		}
@@ -27,7 +28,7 @@
 
 		for (let i = 0; i < NUM_POINTS + 1; i++) {
 			let [x1, y1, x2, y2] = [0, 0, 0, 0];
-			const stroke = colors[Math.floor(Math.random() * colors.length)];
+			const stroke = getColorHex(brandColors[Math.floor(Math.random() * brandColors.length)]);
 			const strokeWidth = 8;
 
 			if (i == 0) {

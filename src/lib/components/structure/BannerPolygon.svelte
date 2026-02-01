@@ -5,6 +5,7 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
 	import MousePointer from '$lib/assets/images/MousePointer.svelte';
+	import { getColorHex, colors } from '$lib/utils/colors';
 
 	interface Props {
 		staticBanner?: boolean;
@@ -25,25 +26,8 @@
 	const CURSOR_SIZE = 24;
 	const UPDATE_INTERVAL = 16;
 
-	// CSS variable names for the 5 main colors
-	const colorVarNames = [
-		'--color-viz-yellow',
-		'--color-viz-teal',
-		'--color-viz-blue',
-		'--color-viz-orange',
-		'--color-viz-pink'
-	];
-
-	let resolvedColors: string[] = $state([]);
-
-	function getComputedColors() {
-		if (!browser) return;
-		const rootStyles = getComputedStyle(document.documentElement);
-		resolvedColors = colorVarNames.map((varName) => {
-			const value = rootStyles.getPropertyValue(varName).trim();
-			return value || '#000000';
-		});
-	}
+	// Use design tokens for colors
+	const brandColors = colors.filter((c) => c !== 'grey');
 
 	let staticPoints: Point[] = $state([]);
 
@@ -58,7 +42,7 @@
 	let lastUpdate = 0;
 	let animationFrameId: number;
 
-	const getColor = (index: number) => resolvedColors[index % resolvedColors.length] || '#000000';
+	const getColor = (index: number) => getColorHex(brandColors[index % brandColors.length]);
 
 	function updateDataWithCursors() {
 		if (!width || !height || !browser) return;
@@ -185,7 +169,7 @@
 				ctx.globalAlpha = Math.max(0.05, alpha);
 				ctx.beginPath();
 				ctx.arc(point.x, point.y, 3, 0, Math.PI * 2);
-				ctx.fillStyle = '#5f5f5f';
+				ctx.fillStyle = getColorHex('grey');
 				ctx.strokeStyle = '#ffffff';
 				ctx.lineWidth = 2;
 				ctx.fill();
@@ -200,7 +184,6 @@
 		if (!browser) return;
 
 		ctx = canvas.getContext('2d')!;
-		getComputedColors();
 
 		// Start animation loop (no networking)
 

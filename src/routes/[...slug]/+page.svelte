@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { RichText } from '$lib/components/typography';
+	import { Container } from '$lib/components/layout';
+
 	export let data: any;
 	$: ({ frontmatter = {} } = data);
 
@@ -40,12 +43,14 @@
 
 {#key data.slug}
 	<div class="min-h-screen">
-		<section class="content-container prose prose-lg prose-viz max-w-3xl pb-12">
-			{#if Component}
-				<svelte:component this={Component} />
-			{:else}
-				<p>Content not found.</p>
-			{/if}
-		</section>
+		<Container width="content">
+			<RichText>
+				{#if Component}
+					<svelte:component this={Component} />
+				{:else}
+					<p>Content not found.</p>
+				{/if}
+			</RichText>
+		</Container>
 	</div>
 {/key}

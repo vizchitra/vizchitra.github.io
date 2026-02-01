@@ -67,14 +67,17 @@
 	<div class="relative pb-8">
 		<!-- Pattern Background -->
 		<div class="pointer-events-none absolute inset-0 overflow-hidden">
-			<PatternFormats color={formatToColor[format]} class="absolute inset-x-0 bottom-0 h-full opacity-60" />
+			<PatternFormats
+				color={formatToColor[format]}
+				class="absolute inset-x-0 bottom-0 h-full opacity-60"
+			/>
 		</div>
 
 		<!-- Bullet Points -->
 		<ul class="text-viz-black relative z-10 space-y-1.5 px-5 pb-4 text-base leading-relaxed">
 			{#each points as point}
 				<li class="flex items-start gap-2">
-					<span class="mt-2.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-current"></span>
+					<span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-current"></span>
 					<span>{point}</span>
 				</li>
 			{/each}

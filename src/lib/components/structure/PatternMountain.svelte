@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
+	import { getColorHex, colors } from '$lib/utils/colors';
 
 	type Color = 'blue' | 'pink' | 'teal' | 'orange' | 'yellow';
 
@@ -66,7 +67,7 @@
 		const colorNames = formatColors[color];
 		resolvedColors = colorNames.map((varName) => {
 			const value = rootStyles.getPropertyValue(varName).trim();
-			return value || '#cccccc';
+			return value || getColorHex('grey');
 		});
 	}
 
@@ -120,7 +121,7 @@
 		amplitudeMultipliers
 			? Array.from({ length: NUM_CURVES }, (_, i) => ({
 					d: generateCurvePath(i),
-					color: resolvedColors[i] || '#cccccc',
+					color: resolvedColors[i] || getColorHex('grey'),
 					opacity: 1 - i * 0.1
 				}))
 			: []

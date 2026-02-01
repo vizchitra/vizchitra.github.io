@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { getColorHex, colors } from '$lib/utils/colors';
+
 	// Define the shape of an individual data item using a generic record.
 	type Item = Record<string, any>;
 
@@ -30,45 +32,17 @@
 </script>
 
 <!-- Render the button bar UI -->
-<div class="button-bar">
+<div class="bg-grey-200 inline-flex gap-1 rounded-lg p-1">
 	{#each uniqueButtons as item}
 		<button
-			class="button {item[keyField] === activeValue ? 'selected' : ''}"
+			class="text-grey-700 hover:bg-grey-300 cursor-pointer rounded-md border-none bg-transparent px-3 py-1.5 text-sm transition-all duration-200 {item[
+				keyField
+			] === activeValue
+				? 'bg-white font-semibold'
+				: ''}"
 			onclick={() => onSelect(item)}
 		>
 			{item[labelField]}
 		</button>
 	{/each}
 </div>
-
-<style>
-	.button-bar {
-		display: inline-flex;
-		background-color: #f0f0f0;
-		border-radius: 8px;
-		padding: 4px;
-		gap: 4px;
-	}
-
-	.button {
-		background-color: transparent;
-		border: none;
-		padding: 6px 12px;
-		border-radius: 6px;
-		font-size: 14px;
-		cursor: pointer;
-		transition:
-			background-color 0.2s,
-			font-weight 0.2s;
-		color: #333;
-	}
-
-	.button:hover {
-		background-color: #e0e0e0;
-	}
-
-	.button.selected {
-		background-color: white;
-		font-weight: 600;
-	}
-</style>

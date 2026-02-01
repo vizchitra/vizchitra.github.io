@@ -4,6 +4,7 @@
 	import { browser } from '$app/environment';
 	import rough from 'roughjs';
 	import MousePointer from '$lib/assets/images/MousePointer.svelte';
+	import { getColorHex, colors } from '$lib/utils/colors';
 
 	interface Props {
 		staticBanner?: boolean;
@@ -23,26 +24,6 @@
 	const MIN_CELL_SIZE = 30; // Minimum cell size
 	const MAX_CELL_SIZE = 90; // Maximum cell size
 	const HOVER_RADIUS = 200; // How far the mouse influence reaches
-
-	// CSS variable names for the 5 main colors
-	const colorVarNames = [
-		'--color-viz-yellow',
-		'--color-viz-teal',
-		'--color-viz-blue',
-		'--color-viz-orange',
-		'--color-viz-pink'
-	];
-
-	let resolvedColors: string[] = $state([]);
-
-	function getComputedColors() {
-		if (!browser) return;
-		const rootStyles = getComputedStyle(document.documentElement);
-		resolvedColors = colorVarNames.map((varName) => {
-			const value = rootStyles.getPropertyValue(varName).trim();
-			return value || '#000000';
-		});
-	}
 
 	let canvas: HTMLCanvasElement = $state();
 	// We use rough.js canvas wrapper instead of raw context
@@ -97,17 +78,11 @@
 	// Helper to get color based on mode
 	const getColor = (index: number, isFill: boolean) => {
 		if (singleColor !== 'none') {
-			const colorMap = {
-				yellow: 0,
-				teal: 1,
-				blue: 2,
-				orange: 3,
-				pink: 4
-			};
-			return resolvedColors[colorMap[singleColor]] || '#000000';
+			return getColorHex(singleColor);
 		}
 		// Multi-color look
-		return resolvedColors[index % resolvedColors.length] || '#000000';
+		const colorNames = ['yellow', 'teal', 'blue', 'orange', 'pink'] as const;
+		return getColorHex(colorNames[index % colorNames.length]);
 	};
 
 	function handleMouseMove(event: MouseEvent) {
@@ -225,7 +200,6 @@
 		// Initialize Rough.js
 		rc = rough.canvas(canvas);
 
-		getComputedColors();
 		initGrid();
 
 		draw();

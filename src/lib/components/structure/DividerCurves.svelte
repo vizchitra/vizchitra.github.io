@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
+	import { getColorHex, colors } from '$lib/utils/colors';
 
 	let width: number | null = $state(null);
 	const height = 80;
@@ -21,7 +22,7 @@
 		const rootStyles = getComputedStyle(document.documentElement);
 		resolvedColors = colorVarNames.map((varName) => {
 			const value = rootStyles.getPropertyValue(varName).trim();
-			return value || '#000000';
+			return value || getColorHex('grey');
 		});
 	}
 
@@ -87,7 +88,7 @@
 			const x = bezierPoint(t, 0, cp1x, cp2x, width);
 			const y = bezierPoint(t, startY, cp1y, cp2y, endY);
 			dotPositions.push({ x, y });
-			newDots.push({ cx: x, cy: y, fill: '#4c4c4c' });
+			newDots.push({ cx: x, cy: y, fill: getColorHex('grey') });
 		}
 
 		// Generate segments between dots using quadratic bezier for smooth connection

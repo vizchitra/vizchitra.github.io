@@ -15,8 +15,10 @@
 		"data:fetch": "node scripts/fetch_data.js",
 		"format": "prettier --write .",
 		"lint": "prettier --check .",
+		"lint:code": "oxlint .",
 		"test": "vitest",
-		"test:run": "vitest run"
+		"test:run": "vitest run",
+		"audit:css": "node audit/audit.js"
 	},
 	"devDependencies": {
 		"@content-collections/core": "^0.13.1",
@@ -38,6 +40,8 @@
 		"js-yaml": "^4.1.1",
 		"mdsvex": "^0.12.6",
 		"modern-screenshot": "^4.6.8",
+		"oxfmt": "^0.27.0",
+		"oxlint": "^1.42.0",
 		"prettier": "^3.8.1",
 		"prettier-plugin-svelte": "^3.4.1",
 		"prettier-plugin-tailwindcss": "^0.7.2",

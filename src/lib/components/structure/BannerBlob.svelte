@@ -4,6 +4,7 @@
 	import { browser } from '$app/environment';
 	import rough from 'roughjs';
 	import MousePointer from '$lib/assets/images/MousePointer.svelte';
+	import { getColorHex, colors } from '$lib/utils/colors';
 
 	interface Props {
 		staticBanner?: boolean;
@@ -42,7 +43,7 @@
 		const rootStyles = getComputedStyle(document.documentElement);
 		resolvedColors = colorVarNames.map((varName) => {
 			const value = rootStyles.getPropertyValue(varName).trim();
-			return value || '#000000';
+			return value || getColorHex('grey');
 		});
 	}
 
@@ -119,9 +120,9 @@
 				orange: 3,
 				pink: 4
 			};
-			return resolvedColors[colorMap[singleColor]] || '#000000';
+			return resolvedColors[colorMap[singleColor]] || getColorHex('grey');
 		}
-		return resolvedColors[index % resolvedColors.length] || '#000000';
+		return resolvedColors[index % resolvedColors.length] || getColorHex('grey');
 	};
 
 	function handleMouseMove(event: MouseEvent) {

@@ -100,7 +100,7 @@
 	];
 </script>
 
-<div class="banner-container full-bleed relative h-[100svh]">
+<div class="banner-container full-bleed relative h-svh">
 	<BannerPolygon />
 	<div
 		class="logo-container pointer-events-none absolute top-1/3 left-1/2 mb-2 flex -translate-x-1/2 -translate-y-1/3 flex-col items-center rounded-md bg-white px-2 pt-2 pb-4 shadow-lg md:max-w-none md:flex-row md:gap-0 md:px-8"
@@ -160,7 +160,7 @@
 
 	<HomepageSection>
 		<div slot="content">
-			<h2 id="speakers" class="content-heading !text-[2rem]">KEYNOTES</h2>
+			<h2 id="speakers" class="content-heading text-[2rem]!">KEYNOTES</h2>
 		</div>
 	</HomepageSection>
 	<div class="mx-4">
@@ -169,7 +169,7 @@
 
 	<HomepageSection>
 		<div slot="content">
-			<h2 class="content-heading !text-[2rem]">Speakers</h2>
+			<h2 class="content-heading text-[2rem]!">Speakers</h2>
 
 			<p class="content-text mb-1">
 				These are the voices you won't want to miss at <strong
@@ -185,7 +185,7 @@
 	</div>
 	<HomepageSection>
 		<div slot="content">
-			<h2 id="workshops" class="content-heading !text-[2rem]">WORKSHOPS</h2>
+			<h2 id="workshops" class="content-heading text-[2rem]!">WORKSHOPS</h2>
 			<p class="content-text mb-1">
 				So much fun to look forward to! Bear in mind, workshops are located at <b
 					>two different locations</b
@@ -199,7 +199,7 @@
 	<!-- VENUES SECTION -->
 	<HomepageSection>
 		<div slot="content">
-			<h2 class="content-heading mb-6 text-center !text-[2rem]">EVENT LOCATIONS</h2>
+			<h2 class="content-heading mb-6 text-center text-[2rem]!">EVENT LOCATIONS</h2>
 			<p class="content-text mb-8 text-center">
 				The conference will be held at Bangalore International Centre, while workshops are at two
 				different locations in the city.
@@ -227,11 +227,11 @@
 		<h3 class="mb-6 text-center text-2xl font-bold text-gray-800">Workshop Locations</h3>
 		<div class="mx-auto grid w-full grid-cols-1 gap-8 xl:grid-cols-8">
 			{#each workshopVenues as venue, index}
-				<div class="order-2 lg:col-span-1 xl:order-none xl:col-span-2">
+				<div class="order-2 lg:col-span-1 xl:order-0 xl:col-span-2">
 					<VenueCard {venue} {index} />
 				</div>
 			{/each}
-			<div class="order-1 lg:col-span-1 xl:order-none xl:col-span-4">
+			<div class="order-1 lg:col-span-1 xl:order-0 xl:col-span-4">
 				<div class="h-full w-full overflow-hidden rounded-2xl">
 					<Map type="workshop" />
 				</div>
@@ -249,7 +249,7 @@
 			/>
 		{/each}
 	</div>
-	<h2 class="content-heading text-center !text-[2rem]">
+	<h2 class="content-heading text-center text-[2rem]!">
 		Our <span class="font-bold italic">valued partners</span>
 	</h2>
 
@@ -277,7 +277,7 @@
 	<!-- FAQs SECTION -->
 	<HomepageSection>
 		<div slot="content">
-			<h2 class="content-heading mt-16 mb-8 text-center !text-[2rem]">
+			<h2 class="content-heading mt-16 mb-8 text-center text-[2rem]!">
 				FREQUENTLY ASKED QUESTIONS
 			</h2>
 			<p class="content-text mb-8 text-center">

@@ -43,6 +43,30 @@ const guides = defineCollection({
 	}
 });
 
+/* Studio collection for design system workspace - combines testing,
+	 documentation, and automated audits in one place */
+const studio = defineCollection({
+	name: 'studio',
+	directory: 'studio',
+	include: '**/*.md',
+	schema: z.object({
+		title: z.string(),
+		description: z.string().optional(),
+		category: z.enum(['typography', 'tokens', 'components', 'patterns', 'audit']),
+		draft: z.boolean().optional().default(false),
+		generated: z.boolean().optional().default(false), // true for audit files
+		order: z.number().optional().default(999) // for sorting within category
+	}),
+	transform: async (document, context) => {
+		const html = await compileMarkdown(context, document, markdownOptions);
+		return {
+			...document,
+			html,
+			slug: document._meta.path.replace(/\.md$/, '')
+		};
+	}
+});
+
 export default defineConfig({
-	collections: [guides]
+	collections: [guides, studio]
 });

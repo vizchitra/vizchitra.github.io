@@ -17,13 +17,12 @@ const SizeSchema = z.enum(['sm', 'md', 'lg', 'xl']).default('md');
 // ============================================
 
 const COLOR_BG_CLASSES = {
-	grey: 'bg-gray-100 border-gray-300',
-	pink: 'bg-viz-pink-light border-viz-pink-dark',
-	blue: 'bg-viz-blue-light border-viz-blue-dark',
-	teal: 'bg-viz-teal-light border-viz-teal-dark',
-	yellow: 'bg-viz-yellow-light border-viz-yellow-dark',
-	orange: 'bg-viz-orange-light border-viz-orange-dark',
-	black: 'bg-gray-900 border-gray-700'
+	grey: 'bg-viz-grey-light border-viz-grey',
+	pink: 'bg-viz-pink-light border-viz-pink',
+	blue: 'bg-viz-blue-light border-viz-blue',
+	teal: 'bg-viz-teal-light border-viz-teal',
+	yellow: 'bg-viz-yellow-light border-viz-yellow',
+	orange: 'bg-viz-orange-light border-viz-orange',
 };
 
 const COLOR_TEXT_CLASSES = {
@@ -33,7 +32,6 @@ const COLOR_TEXT_CLASSES = {
 	teal: 'text-viz-teal-dark',
 	yellow: 'text-viz-yellow-dark',
 	orange: 'text-viz-orange-dark',
-	black: 'text-viz-black'
 };
 
 // ============================================
@@ -70,47 +68,6 @@ const CONTAINER_DIRECTIVES = {
 					'md:p-8',
 					...COLOR_BG_CLASSES[color].split(' ')
 				]
-			}
-		})
-	},
-
-	callout: {
-		schema: z.object({
-			color: ColorSchema,
-			title: z.string().optional()
-		}),
-		transform: ({ color, title }) => ({
-			hName: 'aside',
-			hProperties: {
-				className: [
-					'callout',
-					'my-6',
-					'p-4',
-					'rounded-md',
-					'border-l-4',
-					...COLOR_BG_CLASSES[color].split(' ')
-				],
-				'data-title': title
-			}
-		})
-	},
-
-	card: {
-		schema: z.object({
-			color: ColorSchema.default('grey'),
-			shadow: z.boolean().default(true)
-		}),
-		transform: ({ color, shadow }) => ({
-			hName: 'div',
-			hProperties: {
-				className: [
-					'card',
-					'p-6',
-					'rounded-xl',
-					'border',
-					shadow ? 'shadow-lg' : '',
-					...COLOR_BG_CLASSES[color].split(' ')
-				].filter(Boolean)
 			}
 		})
 	},
@@ -155,30 +112,6 @@ const CONTAINER_DIRECTIVES = {
 		}
 	},
 
-	stepper: {
-		schema: z.object({}),
-		transform: () => ({
-			hName: 'div',
-			hProperties: {
-				className: ['stepper', 'not-prose', 'relative', 'pl-12', 'md:pl-16', 'my-8']
-			}
-		})
-	},
-
-	step: {
-		schema: z.object({
-			color: ColorSchema.default('pink'),
-			number: z.coerce.number().optional()
-		}),
-		transform: ({ color, number }) => ({
-			hName: 'div',
-			hProperties: {
-				className: ['step', 'prose', 'prose-lg', 'prose-viz', 'relative', 'pb-8', `step-${color}`],
-				'data-step-number': number ?? '',
-				'data-step-color': color
-			}
-		})
-	}
 };
 
 // ============================================
@@ -276,24 +209,6 @@ const INLINE_DIRECTIVES = {
 		}
 	},
 
-	kbd: {
-		schema: z.object({}),
-		transform: () => ({
-			hName: 'kbd',
-			hProperties: {
-				className: [
-					'px-2',
-					'py-1',
-					'text-sm',
-					'font-mono',
-					'bg-gray-100',
-					'border',
-					'border-gray-300',
-					'rounded'
-				]
-			}
-		})
-	},
 
 	mark: {
 		schema: z.object({ color: ColorSchema.default('yellow') }),

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { getColorHex, colors } from '$lib/utils/colors';
+
 	interface Props {
 		backgroundColor?: string;
 		title?: string;
@@ -6,7 +8,12 @@
 		seed?: number;
 	}
 
-	let { backgroundColor = '#ffd485', title = '', description = '', seed = 1 }: Props = $props();
+	let {
+		backgroundColor = getColorHex('yellow'),
+		title = '',
+		description = '',
+		seed = 1
+	}: Props = $props();
 
 	function seededRandom(seed: number): number {
 		let x = Math.sin(seed) * 1000;
@@ -48,10 +55,10 @@
 	<div
 		class="content absolute inset-5 z-10 flex flex-col items-center justify-center p-4 text-center"
 	>
-		<h3 class="font-display mt-10 mb-2 text-xl font-bold text-[#4c4c4c] md:mb-4 md:text-2xl">
+		<h3 class="font-display text-grey-700 mt-10 mb-2 text-xl font-bold md:mb-4 md:text-2xl">
 			{title}
 		</h3>
-		<p class="mr-4 ml-4 text-sm leading-[1.3] text-[#4c4c4c] md:text-lg">
+		<p class="text-grey-700 mr-4 ml-4 text-sm leading-[1.3] md:text-lg">
 			{description}
 		</p>
 	</div>

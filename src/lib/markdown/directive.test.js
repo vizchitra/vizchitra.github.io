@@ -48,30 +48,6 @@ describe('Container Directives', () => {
 		});
 	});
 
-	describe(':::callout', () => {
-		it('renders as aside element', async () => {
-			const html = await processMarkdown(':::callout{teal}\nInfo\n:::');
-			expect(html).toContain('<aside');
-			expect(html).toContain('border-l-4');
-		});
-
-		it('supports title attribute', async () => {
-			const html = await processMarkdown(':::callout{color="pink" title="Note"}\nInfo\n:::');
-			expect(html).toContain('data-title="Note"');
-		});
-	});
-
-	describe(':::card', () => {
-		it('renders with shadow by default', async () => {
-			const html = await processMarkdown(':::card\nContent\n:::');
-			expect(html).toContain('shadow-lg');
-		});
-
-		it('can disable shadow', async () => {
-			const html = await processMarkdown(':::card{shadow=false}\nContent\n:::');
-			expect(html).not.toContain('shadow-lg');
-		});
-	});
 
 	describe(':::slanted', () => {
 		it('renders each letter as span with slant value', async () => {
@@ -192,14 +168,6 @@ describe('Inline Directives', () => {
 		});
 	});
 
-	describe(':kbd', () => {
-		it('renders keyboard shortcut styling', async () => {
-			const html = await processMarkdown(':kbd[Enter]');
-			expect(html).toContain('<kbd');
-			expect(html).toContain('font-mono');
-			expect(html).toContain('border');
-		});
-	});
 
 	describe(':mark', () => {
 		it('renders highlighted text', async () => {

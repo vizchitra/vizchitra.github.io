@@ -139,11 +139,45 @@
 	--color-link: var(--color-viz-blue-dark);
 	--color-accent: var(--color-viz-pink);
 
-	--width-prose: 60ch;
+	--width-prose: 65ch;
 	--width-narrow: 28rem;
 	--width-content: 72rem;
 	--width-wide: 90rem;
 	--width-grid-min: 280px;
+
+	/* FLUID OPTIONS */
+	/* --- 1. CONFIGURATION --- */
+	--ratio: 1.125; /* Scale multiplier (Minor Third) */
+
+	/* --- 2. THE ENGINES --- */
+	/* Target: 16px at 400px wide -> 20px at 1440px wide 
+	/* Formula: Base + ((Max - Min) / (MaxVW - MinVW)) * 100 */
+
+	/* Text Engine: 16px -> 20px (Conservative for readability) */
+	--text-fluid: clamp(1rem, 0.904rem + 0.38vw, 1.25rem);
+
+	/* Spacing Engine: 16px -> 24px (Aggressive for layout breathing) */
+	--space-fluid: clamp(1rem, 0.84rem + 0.77vw, 1.5rem);
+
+	/* --- 3. FLUID FONT SCALE --- */
+	--font-size-xs: calc(var(--font-size-sm) / var(--ratio));
+	--font-size-sm: calc(var(--font-size-md) / var(--ratio));
+	--font-size-md: var(--text-fluid);
+	--font-size-lg: calc(var(--font-size-md) * var(--ratio));
+	--font-size-xl: calc(var(--font-size-lg) * var(--ratio));
+	--font-size-2xl: calc(var(--font-size-xl) * var(--ratio));
+	--font-size-3xl: calc(var(--font-size-2xl) * var(--ratio));
+	--font-size-4xl: calc(var(--font-size-3xl) * var(--ratio));
+
+	/* --- 4. FLUID SPACING SCALE --- */
+	--spacing-xs: calc(var(--space-fluid) * 0.5);
+	--spacing-sm: calc(var(--space-fluid) * 0.75);
+	--spacing-md: var(--space-fluid);
+	--spacing-lg: calc(var(--space-fluid) * 1.5);
+	--spacing-xl: calc(var(--space-fluid) * 2);
+	--spacing-2xl: calc(var(--space-fluid) * 3);
+	--spacing-3xl: calc(var(--space-fluid) * 4);
+	--spacing-4xl: calc(var(--space-fluid) * 8);
 }
 
 :root {
@@ -260,7 +294,7 @@ button:focus:not(:focus-visible) {
 }
 
 .content-heading {
-	@apply text-[28px] leading-[1.5] font-bold;
+	@apply text-[28px] leading-normal font-bold;
 }
 
 .content-subheading {
