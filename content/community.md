@@ -1,7 +1,8 @@
 ---
 title: The Community
 description: The community group for VizChitra, called Friends of VizChitra
-banner: polygon
+banner: square
+color: teal
 ---
 
 <script>
@@ -10,7 +11,7 @@ banner: polygon
 	import {Button} from '$lib/components/interface';
 </script>
 
-<Header title="The Community" banner="square" singleColor="teal"/>
+<Header title="The Community" banner="square" color="teal"/>
 
 <Slanted tag="h2" color="teal" textContent="FRIENDS of VIZCHITRA" />
 

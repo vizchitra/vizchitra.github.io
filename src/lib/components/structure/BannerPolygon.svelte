@@ -1,18 +1,23 @@
-<script lang="ts">
-	import { run } from 'svelte/legacy';
+<script module lang="ts">
+	import type { Color } from '$lib/utils/colors';
+	import { getColorHex, colors } from '$lib/utils/colors';
 
+	// Explicit five main brand colors (module-level, SSR-safe)
+	export const BRAND_COLORS: Color[] = ['yellow', 'teal', 'pink', 'blue', 'orange'];
+	export const BRAND_HEX: string[] = BRAND_COLORS.map((c) => getColorHex(c));
+</script>
+
+<script lang="ts">
 	import { Delaunay } from 'd3';
 	import { onMount, onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
 	import MousePointer from '$lib/assets/images/MousePointer.svelte';
-	import { getColorHex, colors } from '$lib/utils/colors';
 
 	interface Props {
-		staticBanner?: boolean;
-		fadeDirection?: 'none' | 'top' | 'bottom';
+		interactive?: boolean;
 	}
 
-	let { staticBanner = false, fadeDirection = 'none' }: Props = $props();
+	let { interactive = false }: Props = $props();
 
 	interface Point {
 		x: number;
@@ -20,14 +25,23 @@
 	}
 
 	function getPointCount() {
-		return staticBanner ? 50 : 150;
+		// Legacy fixed counts caused overly large polygons on very large canvases.
+		// Scale point count by canvas area while keeping sensible bounds.
+		const minPoints = interactive ? 50 : 150;
+		const maxPoints = interactive ? 200 : 600;
+
+		if (!width || !height) return minPoints;
+
+		// area per point (px^2) — adjust to tune density
+		const areaPerPoint = 5000;
+		const calculated = Math.floor((width * height) / areaPerPoint);
+		return Math.max(minPoints, Math.min(maxPoints, calculated));
 	}
 
 	const CURSOR_SIZE = 24;
 	const UPDATE_INTERVAL = 16;
 
-	// Use design tokens for colors
-	const brandColors = colors.filter((c) => c !== 'grey');
+	// Use module-level BRAND_HEX for drawing
 
 	let staticPoints: Point[] = $state([]);
 
@@ -38,11 +52,12 @@
 	let voronoi: any;
 	let cursorX = $state(0);
 	let cursorY = $state(0);
+	let showCursor = $state(false);
 	let points: Point[] = [];
 	let lastUpdate = 0;
 	let animationFrameId: number;
 
-	const getColor = (index: number) => getColorHex(brandColors[index % brandColors.length]);
+	const getColor = (index: number) => BRAND_HEX[index % BRAND_HEX.length] ?? '#000000';
 
 	function updateDataWithCursors() {
 		if (!width || !height || !browser) return;
@@ -68,9 +83,21 @@
 	function handleMouseMove(event: MouseEvent) {
 		if (event.buttons) return;
 
-		const { layerX, layerY } = event;
-		cursorX = layerX;
-		cursorY = layerY;
+		// Prefer client coordinates relative to canvas for consistency
+		if (canvas) {
+			const rect = canvas.getBoundingClientRect();
+			cursorX = event.clientX - rect.left;
+			cursorY = event.clientY - rect.top;
+		} else {
+			// Fallback to layerX/layerY
+			const { layerX, layerY } = event as any;
+			cursorX = layerX ?? 0;
+			cursorY = layerY ?? 0;
+		}
+
+		showCursor = true;
+
+		// Trigger an immediate (throttled) data update so the polygon reacts quickly
 		updateDataWithCursors();
 	}
 
@@ -78,12 +105,16 @@
 		const touch = event.touches[0];
 		if (!touch) return;
 
-		const rect = canvas.getBoundingClientRect();
-		const x = touch.clientX - rect.left;
-		const y = touch.clientY - rect.top;
+		if (canvas) {
+			const rect = canvas.getBoundingClientRect();
+			cursorX = touch.clientX - rect.left;
+			cursorY = touch.clientY - rect.top;
+		} else {
+			cursorX = touch.clientX;
+			cursorY = touch.clientY;
+		}
+		showCursor = true;
 
-		cursorX = x;
-		cursorY = y;
 		updateDataWithCursors();
 	}
 
@@ -120,17 +151,6 @@
 				const cell = voronoi.cellPolygon(i);
 				if (!cell) continue;
 
-				// Calculate opacity based on fade direction and cell center position
-				const centerY = cell.reduce((sum: number, p: number[]) => sum + p[1], 0) / cell.length;
-				let alpha = 0.8;
-				if (fadeDirection === 'bottom') {
-					// Fade out toward bottom
-					alpha = 0.8 * (1 - centerY / height);
-				} else if (fadeDirection === 'top') {
-					// Fade out toward top
-					alpha = 0.8 * (centerY / height);
-				}
-
 				ctx.beginPath();
 				ctx.moveTo(cell[0][0], cell[0][1]);
 				for (let j = 1; j < cell.length; j++) {
@@ -138,7 +158,7 @@
 				}
 				ctx.closePath();
 				ctx.strokeStyle = getColor(i);
-				ctx.globalAlpha = Math.max(0.05, alpha);
+				ctx.globalAlpha = 0.8;
 				ctx.lineWidth = 2;
 				ctx.stroke();
 			}
@@ -159,14 +179,7 @@
 
 			const intersections = findIntersections([...voronoi.cellPolygons()]);
 			intersections.forEach((point) => {
-				// Calculate opacity based on fade direction
-				let alpha = 1;
-				if (fadeDirection === 'bottom') {
-					alpha = 1 - point.y / height;
-				} else if (fadeDirection === 'top') {
-					alpha = point.y / height;
-				}
-				ctx.globalAlpha = Math.max(0.05, alpha);
+				ctx.globalAlpha = 0.8;
 				ctx.beginPath();
 				ctx.arc(point.x, point.y, 3, 0, Math.PI * 2);
 				ctx.fillStyle = getColorHex('grey');
@@ -197,7 +210,7 @@
 		}
 	});
 
-	run(() => {
+	$effect(() => {
 		if (width && height && canvas) {
 			canvas.width = width;
 			canvas.height = height;
@@ -219,23 +232,37 @@
 <div
 	bind:clientWidth={width}
 	bind:clientHeight={height}
-	onmousemove={staticBanner ? undefined : handleMouseMove}
-	ontouchmove={staticBanner ? undefined : handleTouchMove}
-	ontouchstart={staticBanner ? undefined : handleTouchMove}
+	onmousemove={!interactive ? undefined : handleMouseMove}
+	ontouchmove={!interactive ? undefined : handleTouchMove}
+	ontouchstart={!interactive ? undefined : handleTouchMove}
+	onmouseenter={() => (showCursor = true)}
+	onmouseleave={() => {
+		showCursor = false;
+		cursorX = 0;
+		cursorY = 0;
+	}}
+	ontouchend={() => {
+		showCursor = false;
+		cursorX = 0;
+		cursorY = 0;
+	}}
+	ontouchcancel={() => {
+		showCursor = false;
+		cursorX = 0;
+		cursorY = 0;
+	}}
 	role="banner"
-	class="relative h-full overflow-hidden {staticBanner ? '' : 'cursor-none'}"
+	class="relative h-full overflow-hidden {!interactive ? '' : 'cursor-none'}"
 >
 	<canvas bind:this={canvas} {width} {height} class="absolute inset-0 h-full w-full"></canvas>
 
-	{#if !staticBanner}
-		<div
-			class="custom-cursor"
-			style="transform: translate3d({cursorX - CURSOR_SIZE / 2}px, {cursorY -
-				CURSOR_SIZE / 2}px, 0)"
-		>
-			<MousePointer size={CURSOR_SIZE} />
-		</div>
-	{/if}
+	<div
+		class="custom-cursor"
+		style="display: {showCursor ? 'block' : 'none'}; transform: translate3d({cursorX -
+			CURSOR_SIZE / 2}px, {cursorY - CURSOR_SIZE / 2}px, 0)"
+	>
+		<MousePointer size={CURSOR_SIZE} />
+	</div>
 </div>
 
 <style>
@@ -245,6 +272,7 @@
 		left: 0;
 		pointer-events: none;
 		will-change: transform;
+		z-index: 10;
 	}
 
 	:global(.cursor-icon) {

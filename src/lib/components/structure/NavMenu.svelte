@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { stopPropagation, createBubbler } from 'svelte/legacy';
 	import { colorTokens } from '$lib/utils/colors';
 

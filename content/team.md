@@ -1,7 +1,8 @@
 ---
 title: Our Team
 description: Members of the VizChitra Core Team
-banner: polygon
+banner: square
+color: orange
 ---
 
 <script>
@@ -11,7 +12,7 @@ banner: polygon
 	import { Header } from '$lib/components/structure';
 </script>
 
-<Header title="Our Team" banner="square" singleColor="orange" />
+<Header title="Our Team" banner="square" color="orange" />
 
 <Slanted tag="h2" color="pink" textContent="THE VIZCHITRA TEAM" />
 

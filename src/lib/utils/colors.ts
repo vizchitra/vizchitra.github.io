@@ -3,7 +3,19 @@
  * Maps design tokens to raw values for canvas/D3.
  */
 
-export type Color = 'yellow' | 'teal' | 'blue' | 'orange' | 'pink' | 'grey';
+export type Color =
+	| 'yellow'
+	| 'yellowLight'
+	| 'teal'
+	| 'tealLight'
+	| 'blue'
+	| 'blueLight'
+	| 'orange'
+	| 'orangeLight'
+	| 'pink'
+	| 'pinkLight'
+	| 'greyLight'
+	| 'grey';
 
 export interface ColorTokens {
 	// Raw hex values for canvas/D3 styles
@@ -17,21 +29,45 @@ export const colorTokens: Record<Color, ColorTokens> = {
 		hex: '#FFD485',
 		cssVar: 'var(--color-viz-yellow)'
 	},
+	yellowLight: {
+		hex: '#FFF3CC',
+		cssVar: 'var(--color-viz-yellow-light)'
+	},
 	teal: {
 		hex: '#88E0D8',
 		cssVar: 'var(--color-viz-teal)'
+	},
+	tealLight: {
+		hex: '#DDF7F2',
+		cssVar: 'var(--color-viz-teal-light)'
 	},
 	blue: {
 		hex: '#9FBAFC',
 		cssVar: 'var(--color-viz-blue)'
 	},
+	blueLight: {
+		hex: '#EAF4FF',
+		cssVar: 'var(--color-viz-blue-light)'
+	},
 	orange: {
 		hex: '#FC915B',
 		cssVar: 'var(--color-viz-orange)'
 	},
+	orangeLight: {
+		hex: '#FFE6D6',
+		cssVar: 'var(--color-viz-orange-light)'
+	},
 	pink: {
 		hex: '#EF75AB',
 		cssVar: 'var(--color-viz-pink)'
+	},
+	pinkLight: {
+		hex: '#FFD6EB',
+		cssVar: 'var(--color-viz-pink-light)'
+	},
+	greyLight: {
+		hex: '#F2F2F2',
+		cssVar: 'var(--color-viz-grey-light)'
 	},
 	grey: {
 		hex: '#4C4C4C',
@@ -64,7 +100,20 @@ export function getColorVar(color: Color): string {
 /**
  * All available colors as an array (useful for iteration/validation).
  */
-export const colors: Color[] = ['yellow', 'teal', 'blue', 'orange', 'pink', 'grey'];
+export const colors: Color[] = [
+	'yellow',
+	'yellowLight',
+	'teal',
+	'tealLight',
+	'blue',
+	'blueLight',
+	'orange',
+	'orangeLight',
+	'pink',
+	'pinkLight',
+	'greyLight',
+	'grey'
+];
 
 /**
  * Type guard to check if a string is a valid Color.

@@ -6,7 +6,7 @@
 	let { data }: PageProps = $props();
 </script>
 
-<nav class="breadcrumb">
+<!-- <nav class="breadcrumb">
 	<a href="/guides" class="breadcrumb-link">GUIDES</a>
 	<span class="breadcrumb-separator">/</span>
 	<a href="/guides/{data.guideSlug}" class="breadcrumb-link">
@@ -14,23 +14,19 @@
 	</a>
 	<span class="breadcrumb-separator">/</span>
 	<span class="breadcrumb-current">{data.section.section.toUpperCase()}</span>
-</nav>
+</nav> -->
 
-<Container width="prose" paddingY="xl">
-	<RichText>
-		<h1>{data.section.sectionSlug.charAt(0).toUpperCase() + data.section.sectionSlug.slice(1)}</h1>
-		{#if data.isDraft}
-			<div
-				class="rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-8 text-center"
-			>
-				<p class="text-lg text-gray-500">🚧 This section is currently being written.</p>
-				<p class="text-sm text-gray-400">Check back soon for updates!</p>
-			</div>
-		{:else}
-			{@html data.section.html}
-		{/if}
-	</RichText>
-</Container>
+<section class="prose">
+	<h1>{data.section.sectionSlug.charAt(0).toUpperCase() + data.section.sectionSlug.slice(1)}</h1>
+	{#if data.isDraft}
+		<div class="rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-8 text-center">
+			<p class="text-lg text-gray-500">🚧 This section is currently being written.</p>
+			<p class="text-sm text-gray-400">Check back soon for updates!</p>
+		</div>
+	{:else}
+		{@html data.section.html}
+	{/if}
+</section>
 
 <nav class="section-nav">
 	{#if data.prevSection}

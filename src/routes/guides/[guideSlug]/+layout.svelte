@@ -48,7 +48,7 @@
 
 <Header banner="blob" title={displayTitle} singleColor={data.guideColor}></Header>
 
-<div class="guide-layout">
+<div class="guide-layout min-h mx-auto flex min-h-full max-w-7xl flex-col gap-16">
 	<main class="guide-content">
 		{@render children()}
 	</main>
@@ -94,6 +94,9 @@
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
+		margin-inline: auto;
+		max-width: var(--width-content);
+		justify-content: space-between;
 	}
 
 	/* Mobile: sidebar at top */
@@ -195,7 +198,7 @@
 		}
 
 		.guide-sidebar {
-			width: 18rem;
+			width: 10rem;
 			order: 1; /* Sidebar on right */
 			border-bottom: none;
 			/* border-left: 1px solid var(--color-gray-200, #e5e7eb); */

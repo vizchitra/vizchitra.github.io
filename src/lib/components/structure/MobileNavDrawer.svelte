@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { slideInDrawer } from '$lib/utils/actions';
 	import { getColorHex, colors } from '$lib/utils/colors';
 
@@ -10,7 +10,7 @@
 	/** @type {Props} */
 	let { navSections = null } = $props();
 
-	const brandColors = colors.filter((c) => c !== 'neutral');
+	const brandColors = colors.filter((c) => c !== 'grey');
 	let width = $state(null);
 	let height = 16;
 

@@ -10,7 +10,7 @@ order: 1
 # CSS Audit Report
 
 **Generated:** 2026-02-01  
-**Files scanned:** 103  
+**Files scanned:** 102  
 **Files with issues:** 42  
 
 ## 📊 Summary by Category
@@ -31,8 +31,8 @@ order: 1
 | Other Components | 2/13 | 15% |
 | Section Components | 19/30 | 63% |
 | Structure Components | 7/18 | 39% |
-| Typography Components | 3/8 | 38% |
-| Route Pages | 4/17 | 24% |
+| Typography Components | 4/8 | 50% |
+| Route Pages | 3/16 | 19% |
 
 ## 🧩 Components Issues
 
@@ -62,6 +62,7 @@ order: 1
 | `BannerPolygon` | #ffffff, #c4c4c4, #f2f2f2 |
 | `MobileNavDrawer` | #4C4C4C, #4c4c4c |
 | `NavMenu` | #4C4C4C |
+| `RichText` | #f8f9fa |
 | `VizChitraLogoType` | #D46637 |
 
 ### 📏 Spacing Issues - Components
@@ -121,7 +122,6 @@ order: 1
 
 | Route | Issue |
 |-------|-------|
-| `design` | #123, #125, #f9fafb |
 | `guides/[guideSlug] (layout)` | #e5e7eb, #6b7280, #374151, #111827, #f9fafb, #4b5563 |
 | `guides/[guideSlug]/[sectionSlug]` | #e5e7eb, #4b5563, #111827, #9ca3af, #f9fafb, #6b7280 |
 

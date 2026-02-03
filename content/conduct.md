@@ -1,7 +1,8 @@
 ---
 title: Code of Conduct
 description: The Do's and Dont's for the VizChitra community
-banner: polygon
+banner: square
+color: blue
 ---
 
 <script>
@@ -9,7 +10,7 @@ banner: polygon
 	import { Header } from '$lib/components/structure';
 </script>
 
-<Header title="Code of Conduct" banner="square" singleColor="blue"/>
+<Header title="Code of Conduct" banner="square" color="blue"/>
 
 <Slanted tag="h2" color="blue" textContent="THE DO'S AND DONT'S FOR THE COMMUNITY" />
 

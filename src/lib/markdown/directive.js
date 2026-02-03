@@ -100,8 +100,6 @@ const CONTAINER_DIRECTIVES = {
 					className: [
 						'not-prose',
 						'content-subheading',
-						'mt-12',
-						'mb-12',
 						`text-viz-${color}-dark`,
 						`text-${align}`,
 						'font-normal'

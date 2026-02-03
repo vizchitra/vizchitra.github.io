@@ -28,13 +28,13 @@
 		? 'shadow-md md:flex-row md:gap-4 md:px-6 md:pt-3 md:pb-1'
 		: ''}"
 >
-	<div class="logo flex-shrink-0">
+	<div class="logo shrink-0">
 		{@html VizchitraLogo}
 	</div>
 
 	{#if showTagline}
 		<div
-			class="tagline max-w-[20ch] flex-shrink-0 border-t pt-2 text-center leading-tight uppercase {sizeClass} md:max-w-[22ch] md:border-t-0 md:border-l-2 md:pt-0 md:pl-4 md:text-left"
+			class="tagline max-w-[20ch] shrink-0 border-t pt-2 text-center leading-tight uppercase {sizeClass} md:max-w-[22ch] md:border-t-0 md:border-l-2 md:pt-0 md:pl-4 md:text-left"
 			style="border-color: var(--viz-color-grey-light);"
 		>
 			<Slanted {tag} color="pink" textContent={textContent || ''} />

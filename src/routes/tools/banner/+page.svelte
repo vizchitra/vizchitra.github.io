@@ -38,20 +38,20 @@
 
 	<ToolsCard widthClass="w-full">
 		<h2 class="text-viz-black text-2xl font-bold capitalize">Header Banner</h2>
-		<p class="text-viz-grey pb-3 text-sm">Interactive • Fade Bottom</p>
+		<p class="text-viz-grey pb-3 text-sm">Interactive with CSS fade</p>
 		<div
-			class="relative h-[400px] w-full rounded-2xl bg-gradient-to-b from-transparent to-white"
+			class="relative h-[400px] w-full rounded-2xl to-viz-white via-viz-white/30 bg-linear-to-b from-transparent via-70%"
 			class:overflow-hidden={bannerType !== 'curve'}
 		>
 			<div class="absolute inset-0">
 				{#if bannerType === 'curve'}
-					<BannerCurve direction="header" />
+					<BannerCurve interactive direction="header" />
 				{:else if bannerType === 'polygon'}
-					<BannerPolygon fadeDirection="bottom" />
+					<BannerPolygon interactive />
 				{:else if bannerType === 'square'}
-					<BannerSquare fadeDirection="bottom" />
+					<BannerSquare interactive />
 				{:else}
-					<BannerBlob fadeDirection="bottom" />
+					<BannerBlob interactive />
 				{/if}
 			</div>
 			<div class="pointer-events-none absolute inset-0 flex items-center justify-center">
@@ -61,21 +61,21 @@
 	</ToolsCard>
 
 	<ToolsCard widthClass="w-full">
-		<h2 class="text-viz-black text-2xl font-bold capitalize">Footer</h2>
-		<p class="text-viz-grey pb-3 text-sm">Static • Fade Top</p>
+		<h2 class="text-viz-black text-2xl font-bold capitalize">Footer Banner</h2>
+		<p class="text-viz-grey pb-3 text-sm">Static with CSS fade</p>
 		<div
-			class="relative h-[400px] w-full rounded-2xl bg-gradient-to-t from-transparent to-white"
+			class="relative h-[400px] w-full rounded-2xl to-viz-white via-viz-white/30 bg-linear-to-t from-transparent via-70%"
 			class:overflow-hidden={bannerType !== 'curve'}
 		>
 			<div class="absolute inset-0">
 				{#if bannerType === 'curve'}
-					<BannerCurve staticBanner direction="footer" />
+					<BannerCurve direction="footer" />
 				{:else if bannerType === 'polygon'}
-					<BannerPolygon staticBanner fadeDirection="top" />
+					<BannerPolygon />
 				{:else if bannerType === 'square'}
-					<BannerSquare staticBanner singleColor="teal" fadeDirection="top" />
+					<BannerSquare singleColor="teal" />
 				{:else}
-					<BannerBlob staticBanner singleColor="teal" fadeDirection="top" />
+					<BannerBlob singleColor="teal" />
 				{/if}
 			</div>
 			<div class="pointer-events-none absolute inset-0 flex items-end justify-center pb-8">
@@ -88,49 +88,17 @@
 
 	<ToolsCard widthClass="w-full">
 		<h2 class="text-viz-black text-2xl font-bold capitalize">Header Banner</h2>
-		<p class="text-viz-grey pb-3 text-sm">Interactive • No Fade</p>
-		<div class="relative h-[400px] w-full overflow-hidden rounded-2xl">
-			{#if bannerType === 'curve'}
-				<BannerCurve direction="header" />
-			{:else if bannerType === 'polygon'}
-				<BannerPolygon />
-			{:else if bannerType === 'square'}
-				<BannerSquare />
-			{:else}
-				<BannerBlob />
-			{/if}
-		</div>
-	</ToolsCard>
-
-	<ToolsCard widthClass="w-full">
-		<h2 class="text-viz-black text-2xl font-bold capitalize">Footer Banner</h2>
-		<p class="text-viz-grey pb-3 text-sm">Static • No Fade</p>
-		<div class="relative h-[400px] w-full overflow-hidden rounded-2xl">
-			{#if bannerType === 'curve'}
-				<BannerCurve staticBanner direction="footer" />
-			{:else if bannerType === 'polygon'}
-				<BannerPolygon staticBanner />
-			{:else if bannerType === 'square'}
-				<BannerSquare staticBanner singleColor="blue" />
-			{:else}
-				<BannerBlob staticBanner singleColor="blue" />
-			{/if}
-		</div>
-	</ToolsCard>
-
-	<ToolsCard widthClass="w-full">
-		<h2 class="text-viz-black text-2xl font-bold capitalize">Header Banner</h2>
 		<p class="text-viz-grey pb-3 text-sm">Interactive • With Content Overlay</p>
 		<div class="relative h-[500px] w-full overflow-hidden rounded-2xl bg-white shadow-lg">
 			<div class="absolute inset-0">
 				{#if bannerType === 'curve'}
-					<BannerCurve />
+					<BannerCurve interactive />
 				{:else if bannerType === 'polygon'}
-					<BannerPolygon />
+					<BannerPolygon interactive />
 				{:else if bannerType === 'square'}
-					<BannerSquare />
+					<BannerSquare interactive />
 				{:else}
-					<BannerBlob />
+					<BannerBlob interactive />
 				{/if}
 			</div>
 			<div

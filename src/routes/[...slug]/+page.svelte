@@ -44,13 +44,13 @@
 {#key data.slug}
 	<div class="min-h-screen">
 		<Container width="content">
-			<RichText>
+			<section class="prose">
 				{#if Component}
 					<svelte:component this={Component} />
 				{:else}
 					<p>Content not found.</p>
 				{/if}
-			</RichText>
+			</section>
 		</Container>
 	</div>
 {/key}

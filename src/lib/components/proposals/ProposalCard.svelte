@@ -47,14 +47,14 @@
 
 <a
 	{href}
-	class="group relative block border-l-4 py-4 pl-4 pr-3 transition-all duration-150 hover:bg-viz-grey/[0.02] md:py-6 md:pl-6 md:pr-4 {leftBorderColors[
+	class="group hover:bg-viz-grey/2 relative block border-l-4 py-4 pr-3 pl-4 transition-all duration-150 md:py-6 md:pr-4 md:pl-6 {leftBorderColors[
 		color
 	]}"
 >
 	<div class="flex flex-col gap-2 md:flex-row md:items-start md:justify-between md:gap-6">
 		<div class="min-w-0 flex-1">
 			<h3
-				class="font-display-sans mb-2 text-base font-bold leading-snug text-viz-grey transition-colors group-hover:text-viz-{color}-dark md:text-xl md:leading-tight"
+				class="font-display-sans text-viz-grey mb-2 text-base leading-snug font-bold transition-colors group-hover:text-viz-{color}-dark md:text-xl md:leading-tight"
 			>
 				{getTitle()}
 			</h3>
@@ -66,21 +66,23 @@
 				{/if}
 			</div>
 
-			<div class="break-words text-sm leading-relaxed text-viz-grey/80 md:text-[15px]">
+			<div class="text-viz-grey/80 wrap-break-words text-sm leading-relaxed md:text-[15px]">
 				{@html getDescription()}
 			</div>
 		</div>
 
-		<div class="mt-3 flex items-center justify-between md:mt-0 md:w-64 md:flex-col md:items-end md:gap-3">
+		<div
+			class="mt-3 flex items-center justify-between md:mt-0 md:w-64 md:flex-col md:items-end md:gap-3"
+		>
 			<div class="min-w-0 flex-1 md:flex-none md:text-right">
-				<p class="font-text-sans truncate text-sm font-semibold text-viz-grey md:text-[15px]">
+				<p class="font-text-sans text-viz-grey truncate text-sm font-semibold md:text-[15px]">
 					{proposal.firstName}
 				</p>
-				<p class="truncate text-xs text-viz-grey/70 md:text-sm">
+				<p class="text-viz-grey/70 truncate text-xs md:text-sm">
 					{proposal.jobTitle}
 				</p>
 				{#if proposal.organisation}
-					<p class="hidden truncate text-xs text-viz-grey/60 md:block md:text-sm">
+					<p class="text-viz-grey/60 hidden truncate text-xs md:block md:text-sm">
 						{proposal.organisation}
 					</p>
 				{/if}

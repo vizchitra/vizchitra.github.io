@@ -12,12 +12,12 @@
 	let { color = 'grey', children, class: className = '' }: Props = $props();
 
 	const colorClasses: Record<Color, string> = {
-		grey: 'bg-gray-100 border-gray-300',
-		pink: 'bg-viz-pink-light border-viz-pink-dark',
-		blue: 'bg-viz-blue-light border-viz-blue-dark',
-		teal: 'bg-viz-teal-light border-viz-teal-dark',
-		yellow: 'bg-viz-yellow-light border-viz-yellow-dark',
-		orange: 'bg-viz-orange-light border-viz-orange-dark'
+		grey: 'bg-viz-pink-light border-viz-grey-muted',
+		pink: 'bg-viz-pink-light border-viz-pink-muted',
+		blue: 'bg-viz-blue-light border-viz-blue-muted',
+		teal: 'bg-viz-teal-light border-viz-teal-muted',
+		yellow: 'bg-viz-yellow-light border-viz-yellow-muted',
+		orange: 'bg-viz-orange-light border-viz-orange-muted'
 	};
 
 	let colorClass = $derived(colorClasses[color]);

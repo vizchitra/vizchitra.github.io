@@ -12,6 +12,7 @@
 		VenueCard,
 		FAQ
 	} from '$lib/components/sections';
+	import Header from '$lib/components/structure/Header.svelte';
 	import Grid from '$lib/components/layout/Grid.svelte';
 	import sponsors from '$lib/data/sponsors2025.json';
 	import VizchitraLogo from '$lib/assets/images/logos/viz-logo-animate.svg?raw';
@@ -100,8 +101,10 @@
 	];
 </script>
 
-<div class="banner-container full-bleed relative h-svh">
-	<BannerPolygon />
+<Header interactive={true} show="logo" size="large" />
+
+<!-- <div class="banner-container full-bleed relative h-svh">
+	<BannerPolygon interactive={true} />
 	<div
 		class="logo-container pointer-events-none absolute top-1/3 left-1/2 mb-2 flex -translate-x-1/2 -translate-y-1/3 flex-col items-center rounded-md bg-white px-2 pt-2 pb-4 shadow-lg md:max-w-none md:flex-row md:gap-0 md:px-8"
 	>
@@ -115,7 +118,7 @@
 			<Slanted tag="h2" textContent="A SPACE TO CONNECT AND CREATE WITH DATA" />
 		</h3>
 	</div>
-</div>
+</div> -->
 
 <CallToAction />
 

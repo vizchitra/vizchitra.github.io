@@ -26,7 +26,8 @@ const guides = defineCollection({
 		guide: z.enum(['talks', 'workshops', 'dialogues', 'exhibition', 'panels']),
 		section: z.string(),
 		order: z.number(),
-		draft: z.boolean().optional().default(false)
+		draft: z.boolean().optional().default(false),
+		content: z.string()
 	}),
 	transform: async (document, context) => {
 		// Extract guideId and sectionSlug from the file path
@@ -55,7 +56,8 @@ const studio = defineCollection({
 		category: z.enum(['typography', 'tokens', 'components', 'patterns', 'audit']),
 		draft: z.boolean().optional().default(false),
 		generated: z.boolean().optional().default(false), // true for audit files
-		order: z.number().optional().default(999) // for sorting within category
+		order: z.number().optional().default(999), // for sorting within category
+		content: z.string()
 	}),
 	transform: async (document, context) => {
 		const html = await compileMarkdown(context, document, markdownOptions);

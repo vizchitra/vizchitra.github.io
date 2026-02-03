@@ -14,10 +14,10 @@
 </svelte:head>
 
 <div class="min-h-screen bg-gray-50 py-12">
-	<Container width="prose" paddingY="xl">
+	<Container paddingY="xl">
 		<!-- Breadcrumb -->
 		<nav class="mb-6 text-sm text-gray-600">
-			<a href="/studio" class="hover:text-pink-600 underline">Studio</a>
+			<a href="/studio" class="underline hover:text-pink-600">Studio</a>
 			<span class="mx-2">/</span>
 			<span class="text-gray-900">{data.document.title}</span>
 		</nav>
@@ -34,8 +34,8 @@
 			{/if}
 		</div>
 
-		<RichText>
+		<article class="prose">
 			{@html data.document.html}
-		</RichText>
+		</article>
 	</Container>
 </div>

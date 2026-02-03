@@ -1,4 +1,4 @@
-export function getLetterDistance(char) {
+export function getLetterDistance(char: string): number {
 	const startCode = 'a'.charCodeAt(0);
 	const endCode = 'z'.charCodeAt(0);
 	const leftMidpointCode = 'm'.charCodeAt(0);
@@ -20,9 +20,9 @@ export function getLetterDistance(char) {
 }
 
 // returns an array of objects containing the alphabet and slant angle for each letter in `text`
-export function formatSlantedText(text) {
+export function formatSlantedText(text: string): Array<{ letter: string; slant: number }> {
 	let characters = text.split('');
-	let lettersList = [];
+	let lettersList: Array<{ letter: string; slant: number }> = [];
 
 	characters.forEach((letter, index) => {
 		let slant = getLetterDistance(letter);

@@ -1,24 +1,23 @@
+<script module lang="ts">
+	import type { Color } from '$lib/utils/colors';
+	// Default multicolor palette for the square banner (module-level)
+	export const DEFAULT_SQUARE_COLORS: Color[] = ['yellow', 'teal', 'blue', 'orange', 'pink'];
+</script>
+
 <script lang="ts">
-	import { run } from 'svelte/legacy';
 	import { onMount, onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
 	import rough from 'roughjs';
 	import MousePointer from '$lib/assets/images/MousePointer.svelte';
-	import { getColorHex, colors } from '$lib/utils/colors';
+	import { getColorHex, isValidColor } from '$lib/utils/colors';
 
 	interface Props {
-		staticBanner?: boolean;
-		singleColor?: 'none' | 'yellow' | 'teal' | 'blue' | 'orange' | 'pink';
-		fadeDirection?: 'none' | 'top' | 'bottom';
+		interactive?: boolean;
+		color?: 'all' | 'yellow' | 'teal' | 'blue' | 'orange' | 'pink';
 		fillStyle?: 'hachure' | 'cross-hatch' | 'zigzag' | 'dots' | 'dashed' | 'zigzag-line';
 	}
 
-	let {
-		staticBanner = false,
-		singleColor = 'none',
-		fadeDirection = 'none',
-		fillStyle = 'zigzag'
-	}: Props = $props();
+	let { interactive = false, color = 'all', fillStyle = 'zigzag' }: Props = $props();
 
 	const CURSOR_SIZE = 24;
 	const MIN_CELL_SIZE = 30; // Minimum cell size
@@ -35,8 +34,40 @@
 
 	let cursorX = $state(-1000);
 	let cursorY = $state(-1000);
+	let showCursor = $state(false);
 
 	let animationFrameId: number;
+
+	// Ensure animationFrameId is tracked as 0 when not running
+	animationFrameId = animationFrameId || 0;
+
+	// Start/stop animation loop when `interactive` changes
+	$effect(() => {
+		if (interactive) {
+			// If interactive became true, start the loop if not already running
+			if (!animationFrameId) {
+				draw();
+			}
+		} else {
+			// If interactive turned off, cancel any running frame
+			if (animationFrameId) {
+				cancelAnimationFrame(animationFrameId);
+				animationFrameId = 0;
+			}
+		}
+	});
+
+	// Resolved hex colors used for drawing; supports `singleColor` for SSR.
+	let resolvedColors: string[] = DEFAULT_SQUARE_COLORS.map((c) => getColorHex(c));
+
+	$effect(() => {
+		if (color && color !== 'all' && isValidColor(color)) {
+			const hex = getColorHex(color as Color);
+			resolvedColors = DEFAULT_SQUARE_COLORS.map(() => hex);
+		} else {
+			resolvedColors = DEFAULT_SQUARE_COLORS.map((c) => getColorHex(c));
+		}
+	});
 
 	// Cache grid cells so we don't recalculate positions every frame
 	let cells: {
@@ -75,30 +106,25 @@
 		}
 	}
 
-	// Helper to get color based on mode
-	const getColor = (index: number, isFill: boolean) => {
-		if (singleColor !== 'none') {
-			return getColorHex(singleColor);
-		}
-		// Multi-color look
-		const colorNames = ['yellow', 'teal', 'blue', 'orange', 'pink'] as const;
-		return getColorHex(colorNames[index % colorNames.length]);
-	};
+	// Helper to get resolved hex color for an index
+	const getColor = (index: number) => resolvedColors[index % resolvedColors.length] ?? '#000000';
 
 	function handleMouseMove(event: MouseEvent) {
-		if (staticBanner) return;
+		if (!interactive) return;
 		const { layerX, layerY } = event;
 		cursorX = layerX;
 		cursorY = layerY;
+		showCursor = true;
 	}
 
 	function handleTouchMove(event: TouchEvent) {
-		if (staticBanner) return;
+		if (!interactive) return;
 		const touch = event.touches[0];
 		if (!touch) return;
 		const rect = canvas.getBoundingClientRect();
 		cursorX = touch.clientX - rect.left;
 		cursorY = touch.clientY - rect.top;
+		showCursor = true;
 	}
 
 	function draw() {
@@ -114,19 +140,11 @@
 			const dist = Math.hypot(centerX - cursorX, centerY - cursorY);
 
 			// Determine "Energy" of the cell based on mouse proximity
-			// If static, energy is 0 (or random if you want a static messy look)
-			const energy = staticBanner ? 0 : Math.max(0, 1 - dist / HOVER_RADIUS);
+			// When `interactive` is true, respond to cursor proximity; otherwise static/no-interaction
+			const energy = interactive ? Math.max(0, 1 - dist / HOVER_RADIUS) : 0;
 
-			// --- Fade Logic (Global Opacity) ---
-			let globalAlpha = 1;
-			if (fadeDirection === 'bottom') {
-				globalAlpha = 1 - centerY / height;
-			} else if (fadeDirection === 'top') {
-				globalAlpha = centerY / height;
-			}
-			// Keep a minimum visibility
-			globalAlpha = Math.max(0.1, globalAlpha);
-
+			// Fixed opacity for all cells
+			const globalAlpha = 0.8;
 			// --- Drawing Logic ---
 
 			const options: any = {
@@ -139,8 +157,8 @@
 			if (energy > 0.1 || (cell.isFilled && energy > 0.05)) {
 				// ACTIVE STATE (Near Mouse) or initially filled that's getting energy
 				// High energy = Dense cross-hatch fill
-				options.fill = getColor(cell.colorIndex, true);
-				options.stroke = getColor(cell.colorIndex, false);
+				options.fill = getColor(cell.colorIndex);
+				options.stroke = getColor(cell.colorIndex);
 				options.fillStyle = energy > 0.6 ? fillStyle : 'hachure';
 				options.hachureGap = Math.max(2, 8 - energy * 4); // Closer mouse = tighter lines
 				options.fillWeight = 1 + energy;
@@ -162,9 +180,9 @@
 
 				ctx.globalAlpha = 1; // Reset
 			} else if (cell.isFilled) {
-				// Static filled cells (when not near mouse or in static mode)
-				options.fill = getColor(cell.colorIndex, true);
-				options.stroke = getColor(cell.colorIndex, false);
+				// Static filled cells (when not near mouse or in interactive mode)
+				options.fill = getColor(cell.colorIndex);
+				options.stroke = getColor(cell.colorIndex);
 				options.fillStyle = fillStyle;
 				options.hachureGap = 6;
 				options.fillWeight = 1;
@@ -175,7 +193,7 @@
 			} else {
 				// IDLE STATE
 				// Just a faint colorful outline
-				options.stroke = getColor(cell.colorIndex, false);
+				options.stroke = getColor(cell.colorIndex);
 				options.strokeWidth = 0.5;
 				options.roughness = 1.0;
 
@@ -188,7 +206,7 @@
 			}
 		});
 
-		if (!staticBanner) {
+		if (interactive) {
 			animationFrameId = requestAnimationFrame(draw);
 		}
 	}
@@ -212,14 +230,14 @@
 	});
 
 	// Reactive block to handle resize
-	run(() => {
+	$effect(() => {
 		if (width && height && canvas) {
 			canvas.width = width;
 			canvas.height = height;
 			initGrid(); // Re-calculate grid if window resizes
-			if (staticBanner && rc) {
-				// If static, we need to manually trigger a redraw on resize
-				// slightly delayed to ensure colors are ready
+			if (rc) {
+				// Call draw for both static and interactive modes
+				// Interactive mode will start animation loop, static draws once
 				setTimeout(draw, 0);
 			}
 		}
@@ -229,23 +247,37 @@
 <div
 	bind:clientWidth={width}
 	bind:clientHeight={height}
-	onmousemove={staticBanner ? undefined : handleMouseMove}
-	ontouchmove={staticBanner ? undefined : handleTouchMove}
-	ontouchstart={staticBanner ? undefined : handleTouchMove}
+	onmousemove={!interactive ? undefined : handleMouseMove}
+	ontouchmove={!interactive ? undefined : handleTouchMove}
+	ontouchstart={!interactive ? undefined : handleTouchMove}
+	onmouseenter={() => (showCursor = true)}
+	onmouseleave={() => {
+		showCursor = false;
+		cursorX = -1000;
+		cursorY = -1000;
+	}}
+	ontouchend={() => {
+		showCursor = false;
+		cursorX = -1000;
+		cursorY = -1000;
+	}}
+	ontouchcancel={() => {
+		showCursor = false;
+		cursorX = -1000;
+		cursorY = -1000;
+	}}
 	role="banner"
-	class="relative h-full overflow-hidden {staticBanner ? '' : 'cursor-none'}"
+	class="relative h-full overflow-hidden {!interactive ? '' : 'cursor-none'}"
 >
 	<canvas bind:this={canvas} class="absolute inset-0 h-full w-full"></canvas>
 
-	{#if !staticBanner}
-		<div
-			class="custom-cursor"
-			style="transform: translate3d({cursorX - CURSOR_SIZE / 2}px, {cursorY -
-				CURSOR_SIZE / 2}px, 0)"
-		>
-			<MousePointer size={CURSOR_SIZE} />
-		</div>
-	{/if}
+	<div
+		class="custom-cursor"
+		style="display: {showCursor ? 'block' : 'none'}; transform: translate3d({cursorX -
+			CURSOR_SIZE / 2}px, {cursorY - CURSOR_SIZE / 2}px, 0)"
+	>
+		<MousePointer size={CURSOR_SIZE} />
+	</div>
 </div>
 
 <style>

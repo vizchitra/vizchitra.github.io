@@ -9,15 +9,15 @@
 
 	// Get banner type from page data (frontmatter), default to 'polygon'
 	let banner = $derived($page.data?.frontmatter?.banner ?? 'polygon');
+	let color = $derived($page.data?.frontmatter?.color ?? 'all');
 </script>
 
 <div class="app">
 	<NavMenu></NavMenu>
-	<main class:full-width={$page.url.pathname.includes('polygon-playground')}>
+	<main>
 		{@render children()}
 	</main>
-
-	<Footer {banner} />
+	<Footer {banner} {color} />
 </div>
 
 <style>
@@ -33,13 +33,6 @@
 		flex-direction: column;
 		/* padding: 2.5rem; */
 		width: 100%;
-
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
-
-	main.full-width {
-		max-width: 90vw;
 	}
 
 	@media (max-width: 768px) {

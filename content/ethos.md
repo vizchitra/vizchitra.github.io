@@ -1,7 +1,7 @@
 ---
 title: Our Ethos
 description: Ethos for VizChitra Community
-banner: polygon
+banner: square
 ---
 
 <script>
