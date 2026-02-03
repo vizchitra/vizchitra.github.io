@@ -12,7 +12,7 @@
 		"preview": "wrangler pages dev .svelte-kit/cloudflare",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
-		"data:fetch": "node scripts/fetch_data.js",
+		"data:fetch": "node --env-file=.env scripts/fetch_data.js",
 		"format": "prettier --write .",
 		"lint": "prettier --check .",
 		"test": "vitest",
