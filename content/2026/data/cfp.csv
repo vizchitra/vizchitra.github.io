@@ -77,6 +77,11 @@ This topic matters because building visualizations at scale is as much about eng
 
 The intended audience includes front-end and visualization engineers, UI/UX designers, and technical product leads who work on platform-level products or large-scale analytics systems. By the end of the session, attendees will understand why composable, accessible chart patterns are critical for scalable platforms, how to design charts that balance flexibility and consistency, and practical strategies for implementing a maintainable, extensible, and inclusive visualization system.
 ",,,,"Yes, only once",,,,,,,,,,,,,,,,,,,Keep,Under Review
+aQROPBE,xXdV1Py,2026-01-29 1:28:52,Siddharth,Jain,j.siddharth24@gmail.com,919958221958,Head of Insights,Gain.pro,"Sid is a passionate data storyteller, creating over 100s of charts every year and 1000s over a lifetime.",,,https://www.linkedin.com/in/heysidjain/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations at Work,The Anatomy of a Great Chart,"If you make slight tweaks to a chart such as having a title with a takeaway, having a subtitle, adding annotations, clearly labelling years etc. it transforms it completely. Adding logos. 
+
+If you highlight the things that are important in the chart, it has one counterintutive takeaway. It helps. 
+
+Will build open this anatomay. What do great charts have in common?",,,,I have never given a talk,,,,,,,,,,,,,,,,,,,Keep,Under Review
 1ALveJ4,pbKxVpE,2026-01-31 6:32:30,Aman,Bhargava,aman@diagramchasing.fun,919901077240,Developer,Diagram Chasing,"Aman Bhargava is the co-author of Diagram Chasing, a publication working to make open data accessible through public-interest projects, interactive stories and open-source applications. By day, he is a data visualization engineer at Revisual Labs.",https://instagram.com/thedivtagguy,https://twitter.com/thedivtagguy,https://www.linkedin.com/in/amnbh/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations as Craft,The Dashboards of our Discontent,"It has never been easier to build a dashboard. The tooling has exploded with drag-and-drop builders, low-code platforms, ChatGPTs this, LLMs, chart libraries for everyone and their mothers, templates for every use case and all flavors of agentic coding. The time is ripe. Government departments, NGOs, and civic tech projects: everyone can ship a public data dashboard now, and everyone does. On the surface, this looks like progress. More data is being published. More interfaces exist. Accessibility is improving. The hammers have found their nails.
 
 I think public data dashboards should be infrastructure, not publications. Many dashboards get built, launched, and maybe written about, but then they sit there, waiting for the next person to come along and build the same thing again. They look helpful with their filters, charts, maps, and download buttons. However, try to put them through their paces and the complexity turns out to be quite shallow. I don't think the problem is technical skill or bad intentions. I'd argue it's inherited assumptions. These are ideas about what a dashboard should be that we absorbed from enterprise BI tools and never questioned for public contexts. We assume that if the data is there, it's accessible. Please don't question it anymore. Can't you see the Big Ass Number? The Donut? The Bars? What more do you want, really?
@@ -92,7 +97,45 @@ This session is for designers, civic technologists, developers, open-data enthus
 
 
 ",https://www.youtube.com/watch?v=7NCUE02l1DE,https://iiith2025.diagramchasing.fun/#/title-slide,,"Yes, many times",,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+5B77Xao,kdyqzJo,2026-02-01 10:12:59,Rohit,Malekar,rohitmalekar@gmail.com,917348816795,Data Researcher,Independent,"I work at the intersection of data, funding systems, and coordination for digital public goods. My work helps communities and funders understand what matters, where capital flows, and how to support the projects that create real public value.",https://www.instagram.com/malekar.rohit/,http://twitter.com/rohitmalekar,http://linkedin.com/in/rohitmalekar/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations for Community,Bridging Community Signals and Strategic Priorities for Crowdfunding Open-Source Software,"**What is this talk about?**
+
+Grant programs publish where the money went. But can we quantify if it reached the problems that mattered most? This talk shows how we visualised $1M+ in community-driven funding for open-source software: not as a list of funded projects, but as capital flows from ecosystem challenges to the work that addresses them. This work engages questions about visualising complex allocation systems for designing feedback loops between community signals and strategic priorities. 
+
+**Core ideas and context**
+
+Most grant programs show you transactions: who received how much. That's transparency of allocation, not strategic clarity. In crowdfunding, the harder question is whether the aggregate of thousands of funding decisions actually maps to the priorities an ecosystem cares about.
+
+We worked with a crowdfunding mechanism (Quadratic Funding) where donors collectively decide which open-source projects receive matching funds. It's radically transparent, where every donation and matching calculation is public. But transparency alone doesn't answer: 
+
+> Are the most critical problems getting funded, or just the most visible ones?
+
+Community funding has a structural bias. Work that's narratable, immediately useful, and easy to explain attracts donations. Ecosystem critical work that's long-horizon, coordination-heavy, or infrastructural struggles to compete for attention, even when donors intellectually agree it matters.
+
+This data analysis bridged that gap. Starting from curated problem catalogues developed through domain sensemaking, including stakeholder interviews, ecosystem analysis, and expert judgment, we used AI-assisted methods to align each project to primary and secondary problem areas. The resulting visualisations traced funding flows from problem categories to individual projects, making it possible to ask: 
+
+> Did the problems we identified as most critical actually attract the funding needed to solve them?
+
+**Speaker Bio**
+
+Rohit Malekar designs analytics systems that help blockchain-native communities translate messy grant data into clear, actionable insights to make better capital allocation decisions. He designs tools that reduce information asymmetry and make funding decisions more fair, transparent, and evidence-based for funders, donors, grant allocators, and domain experts. His work spans the grants ecosystem in  [Gitcoin](https://www.gitcoin.co), analytics with [Open Source Observer](http://opensource.observer), and climate impact initiatives with [Atlantis](http://atlantisp2p.com). He believes the best visualisations don’t just inform. They coordinate action. More at [rohitmalekar.in](http://rohitmalekar.in)
+
+**Structure and flow**
+
+1. **Beyond Transparency** (3 min): What blockchain-native funding already solved and the strategic question it leaves open
+2. **The Approach** (8 min): From problem catalogues to funding flows, a review of design choices, AI-assisted alignment, and visualisation trade-offs
+3. **The Patterns** (4 min): What the visualisations revealed and a reusable framework for problem-level funding analysis
+
+**Intended audience**
+
+Practitioners designing visualisations for civic, nonprofit, or grant contexts—anyone building decision-support tools where users navigate unfamiliar domains under uncertainty.
+
+**Key takeaways**
+
+1. **A diagnostic question**: ""Does your dashboard show where money went, or whether it reached what mattered?"" offers a new lens for evaluating grant effectiveness.
+
+2. **A mental model**: Position analysis as an invitation for inquiry, not a final judgment. Stakeholders are more likely to engage when they're co-investigators, not defendants.
+
+3. **Design principle**: AI can handle the first-pass categorization at scale; humans refine and validate. This makes problem-mapping feasible for large portfolios.",https://gov.gitcoin.co/t/mapping-problems-to-capital-insights-from-gitcoin-grants-24/24962,https://gg24-analysis.fly.dev,https://www.gitcoin.co/blog/wtf-is-cluster-matching-qf,"Yes, many times",,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
