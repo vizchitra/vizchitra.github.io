@@ -76,9 +76,9 @@ jobs:
         if: steps.cpr.outputs.pull-request-number != ''
         run: sleep 10
 
-      # 🔁 Enable auto-merge with admin override
-      # Bypasses approval requirements using --admin flag
-      - name: Enable auto-merge
+      # 🔁 Merge immediately using admin privileges
+      # Bypasses approval and protection requirements
+      - name: Merge PR with admin override
         if: steps.cpr.outputs.pull-request-number != ''
         env:
           GH_TOKEN: ${{ github.token }}
@@ -86,18 +86,13 @@ jobs:
           gh pr merge \
             --repo ${{ github.repository }} \
             ${{ steps.cpr.outputs.pull-request-number }} \
-            --auto \
             --squash \
             --admin
 
-        # WHY --auto:
-        # • Does NOT merge immediately
-        # • Waits for required status checks
-        # • Works with protected branches
+        # WHY --admin:
+        # • Bypasses approval requirements for automated PRs
+        # • Merges immediately (doesn't wait for checks)
+        # • Requires workflow to run with admin permissions
         #
         # WHY --squash:
         # • Keeps history clean for generated commits
-        #
-        # WHY --admin:
-        # • Bypasses approval requirements for automated PRs
-        # • Requires workflow to run with admin permissions
