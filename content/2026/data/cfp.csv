@@ -147,7 +147,32 @@ This topic matters deeply to me because I work at the intersection of design, da
 The talk is structured in three parts. First, a grounded look at career realities and patterns I’ve observed. Second, an exploration of the skills, traits, and mindsets that help data viz practitioners succeed and evolve, including curiosity, fast domain learning, and comfort with ambiguity. Third, a call to action for leaders and organizations on how to create more meaningful opportunities for data visualization designers beyond defaulting them into UX roles.
 
 The intended audience includes data visualization students, early-career designers, UX practitioners, and design leaders. Key takeaways include a clearer picture of career paths, guidance on which skills compound over time, and concrete ideas for expanding the role and impact of data visualization in modern product teams.",,,,"Yes, many times",,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+Bzryp2K,5BdVQzo,2026-02-07 6:53:08,Sarwesh,Shah,sarweshshah@yahoo.com,918884030830,New Media Designer,,"I'm a UX designer by day. A new media artist by night. Always convincing a pixel to tell a story. I like to talk about AI, public art, behavioural science and storytelling. In my freetime I read fiction, play chess and sketch.",https://instagram.com/muteartcollective,https://x.com/sarweshshah,https://www.linkedin.com/in/sarweshshah/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations for Community,Carbon Block,"Theme: Speculative Design, Climate Change, and Behavioural Intervention
+
+# Abstract
+
+Despite overwhelming scientific evidence of the climate crisis, a massive gap remains between public knowledge and meaningful action. This phenomenon, often driven by the “Bystander Effect,” allows individuals to remain passive, assuming responsibility lies elsewhere.
+
+This talk presents Carbon Block, a speculative design project that moves beyond traditional “positive reinforcement” (rewards/badges) to explore the power of negative motivators and physical inconvenience. By utilising “slow alarms”—data-driven inflatable sculptures—the project materialises abstract carbon metrics into physical obstacles.
+
+We will walk through the design process—from analysing the psychology of procrastination to prototyping IoT-enabled soft-robotic systems—to demonstrate how design can transform invisible data into an unavoidable call for collective intervention.
+
+## Project Background & Methodology
+
+The project is rooted in a two-phase research process:
+
+Phase I (The Setting): Identifying the urban middle class as the critical demographic for public dissent and analysing the “wicked problem” of a consumerist economy driven by perpetual growth.
+
+Phase II (The Staging): Applying behavioural science to design. Using Cohen’s Tetrahedron (Environment, Technology, Economy, Culture) to map the factors shaping our world, the project identifies that humans are more likely to act when faced with the loss of comfort, time, or identity.
+
+The Solution: The Carbon Block Sculpture
+
+The core artefact consists of three components:
+- A Chrome Armature: A rigid structure representing the fixed “Carbon Budget.”
+- A Latex Inflatable: A balloon that expands in real-time based on the user’s consumption data.
+- IoT Integration: An Arduino-based pneumatic system that pulls live consumption metrics and inflates the balloon.
+
+When the balloon exceeds the volume of the armature, it creates visual and physical tension, signaling a “carbon overshoot” in a way that cannot be ignored or swiped away.",,,,I have never given a talk,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
