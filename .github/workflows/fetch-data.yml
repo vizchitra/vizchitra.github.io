@@ -71,34 +71,13 @@ jobs:
         # If no files changed → no PR → later steps must be conditional
 
       # ⏳ GitHub sometimes marks a PR "not mergeable" for a few seconds after creation.
-      # Without this delay, auto-approve or auto-merge can fail intermittently.
+      # Without this delay, auto-merge can fail intermittently.
       - name: Wait for PR to be ready
         if: steps.cpr.outputs.pull-request-number != ''
         run: sleep 10
 
-      # ✅ Auto-approve step
-      # Needed if branch protection requires at least one approval
-      - name: Auto approve PR
-        if: steps.cpr.outputs.pull-request-number != ''
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh pr review \
-            --repo ${{ github.repository }} \
-            ${{ steps.cpr.outputs.pull-request-number }} \
-            --approve
-
-        # WHY:
-        # • Satisfies "required review" rule
-        # • Uses GitHub CLI
-        # • Uses workflow token for auth
-        #
-        # NOTE:
-        # Some org rules do NOT count bot approvals.
-        # In that case you must use a PAT secret instead.
-
-      # 🔁 Enable auto-merge instead of immediate merge
-      # GitHub will merge when required checks pass
+      # 🔁 Enable auto-merge with admin override
+      # Bypasses approval requirements using --admin flag
       - name: Enable auto-merge
         if: steps.cpr.outputs.pull-request-number != ''
         env:
@@ -108,7 +87,8 @@ jobs:
             --repo ${{ github.repository }} \
             ${{ steps.cpr.outputs.pull-request-number }} \
             --auto \
-            --squash
+            --squash \
+            --admin
 
         # WHY --auto:
         # • Does NOT merge immediately
@@ -117,3 +97,7 @@ jobs:
         #
         # WHY --squash:
         # • Keeps history clean for generated commits
+        #
+        # WHY --admin:
+        # • Bypasses approval requirements for automated PRs
+        # • Requires workflow to run with admin permissions
