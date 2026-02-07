@@ -6,6 +6,8 @@ section: overview
 order: 0
 ---
 
+# Overview
+
 Conducting a workshop at VizChitra is an opportunity to share, teach and inspire the community of your ideas, insights, and experiences with a community of visualization practitioners. This guide walks you through the journey from proposal to delivery for a workshop.
 
 ## Type of Workshops

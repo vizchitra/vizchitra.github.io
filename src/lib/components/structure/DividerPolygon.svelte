@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { getColorHex, colors } from '$lib/utils/colors';
+	import { getColorHex, colors } from '$lib/tokens';
 
 	let width = $state(null);
 	let height = 80;

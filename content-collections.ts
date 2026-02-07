@@ -11,6 +11,29 @@ const markdownOptions = {
 	remarkPlugins: [remarkGfm, remarkDirective, remarkVizchitraDirectives]
 };
 
+/* Pages collection define all standalone md pages */
+const pages = defineCollection({
+	name: 'pages',
+	directory: 'pages',
+	include: '**/*.md',
+	schema: z.object({
+		title: z.string(),
+		description: z.string().optional(),
+		slug: z.string(),
+		banner: z.enum(['polygon', 'curve', 'square', 'blob']).optional(),
+		color: z.enum(['grey', 'pink', 'blue', 'teal', 'yellow', 'orange']).optional(),
+		draft: z.boolean().optional().default(false),
+		content: z.string().optional()
+	}),
+	transform: async (document, context) => {
+		const html = await compileMarkdown(context, document, markdownOptions);
+		return {
+			...document,
+			html
+		};
+	}
+});
+
 /* This collection defines "guides" which are markdown documents that
 	 provide instructional content for users. Each guide has a title,
 	 description, and the main content in markdown format. The transform
@@ -70,5 +93,5 @@ const studio = defineCollection({
 });
 
 export default defineConfig({
-	collections: [guides, studio]
+	collections: [guides, studio, pages]
 });

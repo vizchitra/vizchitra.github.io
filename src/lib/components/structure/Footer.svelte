@@ -7,10 +7,10 @@
 
 	interface Props {
 		banner?: 'polygon' | 'curve' | 'square' | 'blob';
-		color?: 'all' | 'yellow' | 'teal' | 'blue' | 'orange' | 'pink';
+		color?: 'yellow' | 'teal' | 'blue' | 'orange' | 'pink' | 'grey';
 	}
 
-	let { banner = 'polygon', color = 'all' }: Props = $props();
+	let { banner = 'polygon', color }: Props = $props();
 	// Curve has no tranparnecy layer ; others share centered layout
 	const addTransparencyLayer = $derived(banner !== 'curve');
 </script>

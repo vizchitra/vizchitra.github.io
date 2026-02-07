@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { stopPropagation, createBubbler } from 'svelte/legacy';
-	import { colorTokens } from '$lib/utils/colors';
+	import { colorTokens } from '$lib/tokens';
 
 	const bubble = createBubbler();
-	import VizChitraLogoType from '$lib/components/typography/VizChitraLogoType.svelte';
+	import VizChitraLogoType from '$lib/components/typography/LogoType.svelte';
 	import MobileNavDrawer from './MobileNavDrawer.svelte';
 	import { clickOutside } from '$lib/utils/actions';
 
@@ -35,7 +35,7 @@
 		{
 			name: 'Guides',
 			href: '/guides/',
-			accentColor: 'var(--color-viz-teal)',
+			accentColor: 'var(--color-viz-grey)',
 			subsections: [
 				{ name: 'Overview', href: '/guides/' },
 				{ name: 'Talks', href: '/guides/talks' },
@@ -79,7 +79,9 @@
 	}
 </script>
 
-<nav class="sticky top-0 right-0 left-0 z-50 border-b border-gray-200 bg-white">
+<nav
+	class="bg-viz-white/80 border-viz-black/10 opacity sticky top-0 right-0 left-0 z-50 border-b backdrop-blur-md"
+>
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="flex h-16 justify-between">
 			<div class="flex">
@@ -120,34 +122,33 @@
 									class:rotate-315={section.expanded}
 									class:scale-120={section.expanded}
 									class:expanded={section.expanded}
-									class="chevron h-2 w-2 translate-y-[25%] rotate-135 rounded-none border-4 border-t-neutral-700 border-r-neutral-700 border-b-white border-l-white transition-transform"
+									class="chevron border-b-viz-white border-l-viz-white h-2 w-2 translate-y-[25%] rotate-135 rounded-none border-4 border-t-neutral-700 border-r-neutral-700 transition-transform"
 								></span>
 							</button>
 							{#if section.expanded}
 								<!-- svelte-ignore a11y_click_events_have_key_events -->
 								<div
-									class="dropdown display-none absolute top-full right-0 z-10 min-w-37.5 flex-col rounded-md bg-white px-3 py-3 shadow-lg transition-all duration-200 ease-in-out {section.expanded
+									class="dropdown display-none bg-viz-white absolute top-full right-0 z-10 min-w-37.5 flex-col rounded-md px-3 py-3 shadow-lg transition-all duration-200 ease-in-out {section.expanded
 										? 'flex'
 										: 'hidden'}"
-									use:clickOutside
-									onoutsideclick={handleClickOutside}
+									use:clickOutside={handleClickOutside}
 									onclick={stopPropagation(bubble('click'))}
 								>
 									{#each section.subsections as subsection}
 										<a
 											href={subsection.href}
 											class="w-full cursor-pointer px-1 py-2"
-											target={subsection?.target || '_self'}
+											target={(subsection as any)?.target || '_self'}
 										>
 											<span
 												class="flex items-center gap-2 text-xl font-medium whitespace-nowrap text-neutral-700"
 											>
 												{subsection.name}
-												{#if subsection.isBadge}
+												{#if (subsection as any).isBadge}
 													<span
 														class="ml-1 rounded-full border border-blue-500 bg-linear-to-r from-blue-400 to-blue-600 px-2.5 py-0.5 text-xs font-semibold text-white shadow-sm transition-transform duration-200 hover:scale-105"
 													>
-														{subsection.badgeText}
+														{(subsection as any).badgeText}
 													</span>
 												{/if}
 											</span>
@@ -160,7 +161,7 @@
 						<a
 							href={section.href}
 							class="cursor-pointer rounded-md px-3 py-2"
-							target={section?.target || '_self'}
+							target={(section as any)?.target || '_self'}
 						>
 							<span class="font-base text-xl whitespace-nowrap text-neutral-700"
 								>{section.name}</span

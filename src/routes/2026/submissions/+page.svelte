@@ -90,7 +90,7 @@
 	/>
 </div>
 
-<div class="content-container max-w-6xl">
+<div class="content-container max-w-3xl">
 	<div class="space-y-4">
 		{#each filteredProposals as proposal}
 			<div class="border-viz-grey/10 rounded-lg border transition-shadow hover:shadow-md">

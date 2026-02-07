@@ -6,6 +6,8 @@ section: proposal
 order: 1
 ---
 
+# Workshop Proposal
+
 Use these prompts as a mini-outline while drafting your workshop proposal.
 
 1. **Who are you imagining in the room?** – Who would this workshop be most helpful for? What do they care about, struggle with, or want to get better at?

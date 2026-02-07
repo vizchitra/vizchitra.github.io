@@ -1,6 +1,6 @@
 <script module lang="ts">
-	import type { Color } from '$lib/utils/colors';
-	import { getColorHex, colors } from '$lib/utils/colors';
+	import type { Color } from '$lib/tokens';
+	import { getColorHex, colors } from '$lib/tokens';
 
 	// Explicit five main brand colors (module-level, SSR-safe)
 	export const BRAND_COLORS: Color[] = ['yellow', 'teal', 'pink', 'blue', 'orange'];

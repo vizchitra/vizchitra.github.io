@@ -1,5 +1,5 @@
 <script module lang="ts">
-	import type { Color } from '$lib/utils/colors';
+	import type { Color } from '$lib/tokens';
 	// Default multicolor palette for the square banner (module-level)
 	export const DEFAULT_SQUARE_COLORS: Color[] = ['yellow', 'teal', 'blue', 'orange', 'pink'];
 </script>
@@ -9,15 +9,15 @@
 	import { browser } from '$app/environment';
 	import rough from 'roughjs';
 	import MousePointer from '$lib/assets/images/MousePointer.svelte';
-	import { getColorHex, isValidColor } from '$lib/utils/colors';
+	import { getColorHex, isValidColor } from '$lib/tokens';
 
 	interface Props {
 		interactive?: boolean;
-		color?: 'all' | 'yellow' | 'teal' | 'blue' | 'orange' | 'pink';
+		color?: 'yellow' | 'teal' | 'blue' | 'orange' | 'pink' | 'grey';
 		fillStyle?: 'hachure' | 'cross-hatch' | 'zigzag' | 'dots' | 'dashed' | 'zigzag-line';
 	}
 
-	let { interactive = false, color = 'all', fillStyle = 'zigzag' }: Props = $props();
+	let { interactive = false, color, fillStyle = 'zigzag' }: Props = $props();
 
 	const CURSOR_SIZE = 24;
 	const MIN_CELL_SIZE = 30; // Minimum cell size
@@ -61,7 +61,7 @@
 	let resolvedColors: string[] = DEFAULT_SQUARE_COLORS.map((c) => getColorHex(c));
 
 	$effect(() => {
-		if (color && color !== 'all' && isValidColor(color)) {
+		if (color && isValidColor(color)) {
 			const hex = getColorHex(color as Color);
 			resolvedColors = DEFAULT_SQUARE_COLORS.map(() => hex);
 		} else {

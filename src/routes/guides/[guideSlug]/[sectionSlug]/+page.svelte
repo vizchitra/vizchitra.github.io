@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageProps } from './$types';
-	import { RichText } from '$lib/components/typography';
+	import { Prose } from '$lib/components/typography';
 	import { Container } from '$lib/components/layout';
 
 	let { data }: PageProps = $props();
@@ -17,14 +17,18 @@
 </nav> -->
 
 <section class="prose">
-	<h1>{data.section.sectionSlug.charAt(0).toUpperCase() + data.section.sectionSlug.slice(1)}</h1>
+	<!-- <h1>{data.section.sectionSlug.charAt(0).toUpperCase() + data.section.sectionSlug.slice(1)}</h1> -->
 	{#if data.isDraft}
 		<div class="rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-8 text-center">
 			<p class="text-lg text-gray-500">🚧 This section is currently being written.</p>
 			<p class="text-sm text-gray-400">Check back soon for updates!</p>
 		</div>
 	{:else}
-		{@html data.section.html}
+		<Container>
+			<Prose color={data.guideColor}>
+				{@html data.section.html}
+			</Prose>
+		</Container>
 	{/if}
 </section>
 

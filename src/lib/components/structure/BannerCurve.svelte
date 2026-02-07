@@ -1,17 +1,9 @@
 <script module lang="ts">
-	import type { Color } from '$lib/utils/colors';
+	import { CURVE_PALETTE } from '$lib/tokens';
 
 	// Canonical sequence of colors for the curve banner (module-level, SSR-safe)
-	export const DEFAULT_CURVE_COLORS: Color[] = [
-		'orange',
-		'orangeLight',
-		'yellow',
-		'yellowLight',
-		'pink',
-		'pinkLight',
-		'teal',
-		'blue'
-	];
+	// Uses the 8-color palette (5 main + 3 light variants) from tokens
+	export const DEFAULT_CURVE_COLORS = [...CURVE_PALETTE];
 
 	// Varying amplitude for each curve (module-level)
 	export const AMPLITUDE_MULTIPLIERS = [0.6, 0.8, 1.2, 1.5, 1.3, 1.0, 0.9, 0.7];
@@ -29,7 +21,6 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
 	import MousePointer from '$lib/assets/images/MousePointer.svelte';
-	import { getColorHex } from '$lib/utils/colors';
 
 	interface Props {
 		interactive?: boolean;
@@ -49,7 +40,8 @@
 	}
 
 	// Initialize resolved colors from module defaults (SSR-safe)
-	let resolvedColors: string[] = DEFAULT_CURVE_COLORS.map((c) => getColorHex(c));
+	// DEFAULT_CURVE_COLORS is already an array of hex strings from CURVE_PALETTE
+	let resolvedColors: string[] = [...DEFAULT_CURVE_COLORS];
 
 	// Randomize color order for each instance
 	let shuffledColorOrder: number[] = shuffleArray([...Array(DEFAULT_CURVE_COLORS.length).keys()]);

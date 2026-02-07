@@ -35,6 +35,8 @@
 	--text-flow-2: calc(var(--text-flow-1) * var(--ratio));
 	--text-flow-3: calc(var(--text-flow-2) * var(--ratio));
 	--text-flow-4: calc(var(--text-flow-3) * var(--ratio));
+	--text-flow-5: calc(var(--text-flow-4) * var(--ratio));
+	--text-flow-6: calc(var(--text-flow-5) * var(--ratio));
 
 	/* --- 4. FLUID SPACING SCALE --- */
 	--space-flow--2: calc(var(--space-base) * 0.5);
@@ -44,6 +46,10 @@
 	--space-flow-2: calc(var(--space-base) * 2);
 	--space-flow-3: calc(var(--space-base) * 3);
 	--space-flow-4: calc(var(--space-base) * 4);
+	--space-flow-5: calc(var(--space-base) * 5);
+	--space-flow-6: calc(var(--space-base) * 6);
+	--space-flow-7: calc(var(--space-base) * 7);
+	--space-flow-8: calc(var(--space-base) * 8);
 }
 
 /* Tailwind-facing tokens: map from canonical --viz-* variables */
@@ -57,6 +63,19 @@
 	/* Text & Space Flow */
 	--text-flow: var(--text-flow-0);
 	--spacing-flow: var(--space-flow-0);
+
+	/* Spacing Fluid */
+	--spacing-viz-xs: var(--space-flow--2);
+	--spacing-viz-sm: var(--space-flow--1);
+	--spacing-viz-md: var(--space-flow-0);
+	--spacing-viz-lg: var(--space-flow-1);
+	--spacing-viz-xl: var(--space-flow-2);
+	--spacing-viz-2xl: var(--space-flow-3);
+	--spacing-viz-3xl: var(--space-flow-4);
+	--spacing-viz-4xl: var(--space-flow-5);
+	--spacing-viz-5xl: var(--space-flow-6);
+	--spacing-viz-6xl: var(--space-flow-7);
+	--spacing-viz-7xl: var(--space-flow-8);
 
 	/* Width */
 	--width-prose: 65ch;
@@ -175,29 +194,29 @@
 
 	/* Named Variants */
 
-	/* Light Shade (Use for Background Colors */
-	--color-viz-yellow-light: var(--color-yellow-100); /*Ramp 100*/
-	--color-viz-teal-light: var(--color-teal-100); /*Ramp 100*/
-	--color-viz-blue-light: var(--color-blue-100); /*Ramp 100*/
-	--color-viz-orange-light: var(--color-orange-100); /*Ramp 100*/
-	--color-viz-pink-light: var(--color-pink-100); /*Ramp 100*/
-	--color-viz-grey-light: var(--color-grey-100); /*Ramp 100*/
+	/* Light Shade (Use for Background Colors - Ramp 100 */
+	--color-viz-yellow-light: var(--color-yellow-200);
+	--color-viz-teal-light: var(--color-teal-200);
+	--color-viz-blue-light: var(--color-blue-200);
+	--color-viz-orange-light: var(--color-orange-200);
+	--color-viz-pink-light: var(--color-pink-200);
+	--color-viz-grey-light: var(--color-grey-200);
 
-	/* Dark Shades (Use for Text Color) */
-	--color-viz-yellow-dark: var(--color-yellow-700); /*Ramp 700*/
-	--color-viz-teal-dark: var(--color-teal-700); /*Ramp 700*/
-	--color-viz-blue-dark: var(--color-blue-700); /*Ramp 700*/
-	--color-viz-orange-dark: var(--color-orange-700); /*Ramp 700*/
-	--color-viz-pink-dark: var(--color-pink-700); /*Ramp 700*/
-	--color-viz-grey-dark: var(--color-grey-700); /*Ramp 700*/
+	/* Dark Shades (Use for Text Color) - Ramp 700 */
+	--color-viz-yellow-dark: var(--color-yellow-700);
+	--color-viz-teal-dark: var(--color-teal-700);
+	--color-viz-blue-dark: var(--color-blue-700);
+	--color-viz-orange-dark: var(--color-orange-700);
+	--color-viz-pink-dark: var(--color-pink-700);
+	--color-viz-grey-dark: var(--color-grey-700);
 
-	/* Dark Shades (Use for Borders) */
-	--color-viz-yellow-muted: var(--color-yellow-300); /*Ramp 200*/
-	--color-viz-teal-muted: var(--color-teal-300); /*Ramp 200*/
-	--color-viz-blue-muted: var(--color-blue-300); /*Ramp 200*/
-	--color-viz-orange-muted: var(--color-orange-300); /*Ramp 200*/
-	--color-viz-pink-muted: var(--color-pink-300); /*Ramp 200*/
-	--color-viz-grey-muted: var(--color-grey-300); /*Ramp 200*/
+	/* Muted Shades (Use for Borders) - Ramp 200*/
+	--color-viz-yellow-muted: var(--color-yellow-300);
+	--color-viz-teal-muted: var(--color-teal-300);
+	--color-viz-blue-muted: var(--color-blue-300);
+	--color-viz-orange-muted: var(--color-orange-300);
+	--color-viz-pink-muted: var(--color-pink-300);
+	--color-viz-grey-muted: var(--color-grey-300);
 
 	/* Semantic colors */
 	--color-bg: var(--color-viz-white);
@@ -214,7 +233,7 @@
 		scroll-behavior: smooth;
 
 		/* For OverScroll */
-		background-color: var(--paper-surface);
+		background-color: var(--color-viz-white);
 	}
 
 	body {
@@ -297,10 +316,6 @@
 		outline: none;
 	}
 
-	.slanted-text {
-		font-family: var(--font-display);
-	}
-
 	@media (min-width: 720px) {
 		h1 {
 			font-size: 2.4rem;
@@ -335,10 +350,6 @@
 		font-family: var(--font-body);
 	}
 
-	.slanted-text {
-		font-variation-settings: 'slnt' var(--letter-slant);
-	}
-
 	/* Common Text Styles */
 	.content-text {
 		@apply max-w-[55ch] text-[18px] md:text-[22px];
@@ -357,202 +368,4 @@
 	.content-container {
 		@apply mx-auto max-w-3xl px-4;
 	}
-
-	.content-notice {
-		@apply mb-8 rounded-lg border border-gray-200 bg-gray-100 p-6 md:p-8;
-	}
-
-	.prose {
-		/* Base Font & Color */
-		font-family: var(--font-plex);
-		font-size: var(--text-flow-0);
-		line-height: 1.75;
-		color: var(--viz-color-black);
-
-		/* Layout Constraints */
-		max-width: 65ch;
-		margin-inline: auto;
-		display: flex;
-		flex-direction: column;
-
-		/* --- 1. THE STACK PATTERN (Fluid Vertical Rhythm) --- */
-
-		/* Default spacing between all top-level elements */
-		& > * + * {
-			margin-top: var(--space-flow-0);
-		}
-
-		/* Extra breathing room before headings to denote new sections */
-		& > * + :is(h1, h2, h3, h4) {
-			margin-top: var(--space-flow-2);
-		}
-
-		/* --- 2. TYPOGRAPHY & LEAD PARAGRAPH --- */
-
-		/* Headings */
-		& h1,
-		& h2,
-		& h3,
-		& h4,
-		& h5,
-		& h6 {
-			font-family: var(--font-cairo);
-			line-height: 1.2;
-			letter-spacing: -0.01em;
-			text-wrap: balance;
-			color: var(--viz-color-black);
-		}
-
-		/* Heading Scale Mapping */
-		& h1 {
-			font-size: var(--text-flow-4);
-			font-weight: 300;
-		}
-		& h2 {
-			font-size: var(--text-flow-2);
-			font-weight: 700;
-		}
-		& h3 {
-			font-size: var(--text-flow-1);
-			font-weight: 650;
-		}
-		& h4 {
-			font-size: var(--text-flow-0);
-			font-weight: 600;
-		}
-		& h5 {
-			font-size: var(--text-flow--1);
-			font-weight: 500;
-		}
-		& h6 {
-			font-size: var(--text-flow--1);
-			font-weight: 500;
-			text-transform: uppercase;
-			letter-spacing: 0.05em;
-		}
-
-		/* The "Lead" Paragraph: Automatically styles the paragraph immediately following an H1 */
-		& h1 + p {
-			font-size: var(--text-flow-1);
-			line-height: 1.45;
-			color: var(--viz-color-grey-dark);
-		}
-
-		& p {
-			font-size: var(--text-flow-0);
-			font-weight: 400;
-			line-height: 1.6;
-			letter-spacing: 0.005em;
-		}
-
-		/* --- 3. SUB, SUP, & SMALL TEXT --- */
-
-		/* Maintain line-height while using scripts */
-		& sub,
-		& sup {
-			font-size: 0.75em;
-			line-height: 0;
-			position: relative;
-			vertical-align: baseline;
-		}
-
-		& sup {
-			top: -0.5em;
-		}
-		& sub {
-			bottom: -0.25em;
-		}
-
-		& figcaption {
-			font-size: var(--text-flow--1);
-			color: var(--viz-color-grey-dark);
-			font-style: italic;
-			margin-top: var(--space-flow--1);
-		}
-
-		/* --- 4. MEDIA & CODE --- */
-
-		& img {
-			max-width: 100%;
-			height: auto;
-			border-radius: var(--space-flow--2);
-			display: block;
-		}
-
-		& figure {
-			margin-block: var(--space-flow-1);
-		}
-
-		/* Inline Code */
-		& code {
-			font-family: var(--font-fira);
-			font-size: 0.9em;
-			color: var(--viz-color-pink-dark);
-			background-color: rgba(0, 0, 0, 0.05);
-			padding: 0.2em 0.4em;
-			border-radius: 4px;
-			word-break: break-word;
-		}
-
-		/* Code Blocks */
-		& pre {
-			background-color: #f8f9fa;
-			border: 1px solid rgba(0, 0, 0, 0.05);
-			border-radius: 8px;
-			padding: var(--space-flow-0);
-			overflow-x: auto;
-			margin-block: var(--space-flow-1);
-
-			& code {
-				background-color: transparent;
-				padding: 0;
-				color: inherit;
-				font-size: var(--text-flow--1);
-			}
-		}
-
-		/* --- 5. LISTS & TABLES --- */
-
-		& ul,
-		& ol {
-			padding-left: var(--spacing-flow-1);
-
-			& li + li {
-				margin-top: var(--space-flow--1);
-			}
-
-			& li::marker {
-				color: var(--viz-color-grey-dark);
-				font-weight: 600;
-			}
-		}
-
-		& table {
-			width: 100%;
-			border-collapse: collapse;
-			margin-block: var(--space-flow-1);
-			font-size: var(--text-flow--1);
-			line-height: 1.4;
-
-			& thead th {
-				padding: var(--space-flow--1);
-				text-align: left;
-				background-color: rgba(0, 0, 0, 0.02);
-				border-bottom: 2px solid var(--viz-color-grey);
-			}
-
-			& tbody td {
-				padding: var(--space-flow--1);
-				border-bottom: 1px solid var(--viz-color-grey-light);
-			}
-		}
-	}
-
-	/* Margin Reset Logic */
-	/* .richtext[data-reset-margins='true'] > *:first-child {
-		margin-top: 0;
-	}
-	.richtext[data-reset-margins='true'] > *:last-child {
-		margin-bottom: 0;
-	} */
 }

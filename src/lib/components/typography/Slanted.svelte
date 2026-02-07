@@ -1,40 +1,39 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte';
+	import type { HTMLAttributes, ClassValue } from 'svelte/elements';
 	import { formatSlantedText } from '$lib/utils/slanted';
 
-	interface Props {
-		color?: string;
-		align?: string;
-		tag?: string;
-		plain?: boolean;
+	interface Props extends HTMLAttributes<HTMLDivElement> {
+		color?: 'pink' | 'orange' | 'yellow' | 'teal' | 'blue' | 'black' | 'grey';
 		textContent?: string;
-		className?: string;
-		classes?: string;
+		class?: ClassValue;
 	}
 
-	let {
-		color = 'pink',
-		align = 'center',
-		tag = 'p',
-		plain = false,
-		textContent = '',
-		className = '',
-		classes = ''
-	}: Props = $props();
+	let { color = 'pink', textContent = '', class: className = '', ...rest }: Props = $props();
 
-	let finalClass = $derived(className ? className : classes);
-	let baseClass = $derived(plain ? '' : 'content-subheading mt-12 font-display mb-12');
-	let alignClass = $derived(align ? `text-${align}` : '');
-	let colorClass = $derived(color ? `text-viz-${color}-dark` : '');
+	const colorClasses: Record<string, string> = {
+		pink: 'text-viz-pink-dark',
+		orange: 'text-viz-orange-dark',
+		yellow: 'text-viz-yellow-dark',
+		teal: 'text-viz-teal-dark',
+		blue: 'text-viz-blue-dark',
+		black: 'text-viz-black',
+		grey: 'text-viz-grey-dark'
+	};
+
 	let letters = $derived(textContent ? formatSlantedText(textContent) : []);
 </script>
 
-<svelte:element
-	this={tag}
-	class="not-prose {baseClass} {colorClass} {alignClass} font-normal {finalClass}"
->
+<span {...rest} class={['font-display', colorClasses[color]]}>
 	{#if letters.length}
 		{#each letters as l}
-			<span class="slanted-text" style="--letter-slant: {l.slant}">{l.letter}</span>
+			<span class="slanted" style="--letter-slant: {l.slant}">{l.letter}</span>
 		{/each}
 	{/if}
-</svelte:element>
+</span>
+
+<style>
+	.slanted {
+		font-variation-settings: 'slnt' var(--letter-slant);
+	}
+</style>

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { slideInDrawer } from '$lib/utils/actions';
-	import { getColorHex, colors } from '$lib/utils/colors';
+	import { getColorHex, colors } from '$lib/tokens';
 
 	/**
 	 * @typedef {Object} Props
@@ -26,7 +26,7 @@
 <button
 	class="trigger h-full w-full cursor-pointer"
 	class:expanded
-	onclick={(expanded = !expanded)}
+	onclick={() => (expanded = !expanded)}
 	aria-label="Toggle navigation"
 >
 	<span class=""></span>
@@ -56,19 +56,19 @@
 						<svg
 							{width}
 							{height}
-							viewBox="0 0 {width ?? 0} {height ?? 0}"
+							viewBox={`0 0 ${width ?? 0} ${height ?? 0}`}
 							preserveAspectRatio="xMidYMid meet"
 						>
 							<line
 								x1={0}
 								y1={height / 2}
-								x2="{pointStartingX}%"
+								x2={`${pointStartingX}%`}
 								y2={height / 2}
 								stroke={getColorHex(brandColors[Math.floor(Math.random() * brandColors.length)])}
 								stroke-width={8}
 							></line>
 							<line
-								x1="{pointStartingX}%"
+								x1={`${pointStartingX}%`}
 								y1={height / 2}
 								x2={width}
 								y2={height / 2}
@@ -80,8 +80,8 @@
 								stroke-width={8}
 							></line>
 
-							<circle cx="{pointStartingX}%" cy="50%" r={5 + 4} fill={'white'}></circle>
-							<circle cx="{pointStartingX}%" cy="50%" r={5} fill={getColorHex('neutral')}></circle>
+							<circle cx={`${pointStartingX}%`} cy="50%" r={5 + 4} fill={'white'}></circle>
+							<circle cx={`${pointStartingX}%`} cy="50%" r={5} fill={getColorHex('grey')}></circle>
 						</svg>
 					</div>
 				{/if}
@@ -120,31 +120,30 @@
 						<a
 							href={section.href}
 							class="cursor-pointer rounded-md"
-							target={section?.target || '_self'}
+							target={(section as any)?.target || '_self'}
 						>
-							<span class="font-base text-2xl whitespace-nowrap text-[#4C4C4C]">{section.name}</span
-							>
+							<span class="font-base text-2xl whitespace-nowrap text-[#4C4C4C]">{section.name}</span>
 						</a>
 					{/if}
 				</div>
 
-				<div class="polygon-divider mb-2 w-full" bind:clientWidth={width}>
-					<svg
-						{width}
-						{height}
-						viewBox="0 0 {width ?? 0} {height ?? 0}"
-						preserveAspectRatio="xMidYMid meet"
-					>
+					<div class="polygon-divider mb-2 w-full" bind:clientWidth={width}>
+						<svg
+							{width}
+							{height}
+							viewBox={`0 0 ${width ?? 0} ${height ?? 0}`}
+							preserveAspectRatio="xMidYMid meet"
+						>
 						<line
 							x1={0}
 							y1={height / 2}
-							x2="{pointX}%"
+							x2={`${pointX}%`}
 							y2={height / 2}
 							stroke={lineColor1}
 							stroke-width={8}
 						></line>
 						<line
-							x1="{pointX}%"
+							x1={`${pointX}%`}
 							y1={height / 2}
 							x2={width}
 							y2={height / 2}
@@ -152,8 +151,8 @@
 							stroke-width={8}
 						></line>
 
-						<circle cx="{pointX}%" cy="50%" r={5 + 4} fill={'white'}></circle>
-						<circle cx="{pointX}%" cy="50%" r={5} fill={'#4c4c4c'}></circle>
+						<circle cx={`${pointX}%`} cy="50%" r={5 + 4} fill={'white'}></circle>
+						<circle cx={`${pointX}%`} cy="50%" r={5} fill={'#4c4c4c'}></circle>
 					</svg>
 				</div>
 			</div>

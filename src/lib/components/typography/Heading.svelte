@@ -1,5 +1,4 @@
 <script lang="ts">
-
 	interface Props {
 		tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 		align?: 'left' | 'center' | 'right';
@@ -11,7 +10,7 @@
 
 	let {
 		tag = 'h2',
-		align = 'center',
+		align = 'left',
 		children,
 		class: className = '',
 		href,
@@ -29,7 +28,7 @@
 
 <svelte:element this={tag} class="content-heading mb-4 {alignClasses[align]} {className}">
 	{#if href}
-		<a href={href} target={target} rel={rel} class="text-viz-blue font-medium inline-flex items-center">
+		<a {href} {target} {rel} class="inline-flex items-center font-medium">
 			{@render children?.()}
 		</a>
 	{:else}

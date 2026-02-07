@@ -11,3 +11,4 @@ export { default as MobileNavDrawer } from './MobileNavDrawer.svelte';
 export { default as Header } from './Header.svelte';
 export { default as Footer } from './Footer.svelte';
 export { default as SocialLink } from './SocialLink.svelte';
+export { default as Hero } from './Hero.svelte';

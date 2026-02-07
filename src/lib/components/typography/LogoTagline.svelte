@@ -4,22 +4,10 @@
 
 	interface Props {
 		textContent?: string;
-		tag?: 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'p';
 	}
 
-	let { textContent, tag = 'span' }: Props = $props();
+	let { textContent }: Props = $props();
 
-	// Map tag to appropriate text size classes
-	const tagSizeClasses: Record<string, string> = {
-		h1: 'text-lg md:text-2xl',
-		h2: 'text-base md:text-xl',
-		h3: 'text-sm md:text-lg',
-		h4: 'text-xs md:text-base',
-		span: 'text-xs md:text-sm',
-		p: 'text-xs md:text-sm'
-	};
-
-	const sizeClass = $derived(tagSizeClasses[tag] || tagSizeClasses.span);
 	const showTagline = $derived(textContent && textContent !== 'none');
 </script>
 
@@ -34,10 +22,12 @@
 
 	{#if showTagline}
 		<div
-			class="tagline max-w-[20ch] shrink-0 border-t pt-2 text-center leading-tight uppercase {sizeClass} md:max-w-[22ch] md:border-t-0 md:border-l-2 md:pt-0 md:pl-4 md:text-left"
+			class="tagline max-w-[20ch] shrink-0 border-t pt-2 text-center leading-tight uppercase md:max-w-[22ch] md:border-t-0 md:border-l-2 md:pt-0 md:pl-4 md:text-left"
 			style="border-color: var(--viz-color-grey-light);"
 		>
-			<Slanted {tag} color="pink" textContent={textContent || ''} />
+			<h2>
+				<Slanted color="pink" textContent={textContent || ''} />
+			</h2>
 		</div>
 	{/if}
 </div>

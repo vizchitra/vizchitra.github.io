@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageProps } from './$types';
-	import { RichText } from '$lib/components/typography';
+	import { Prose } from '$lib/components/typography';
 	import { Container } from '$lib/components/layout';
 
 	let { data }: PageProps = $props();
@@ -34,8 +34,8 @@
 			{/if}
 		</div>
 
-		<article class="prose">
+		<Prose>
 			{@html data.document.html}
-		</article>
+		</Prose>
 	</Container>
 </div>

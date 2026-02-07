@@ -8,7 +8,7 @@
 	let { children } = $props();
 
 	// Get banner type from page data (frontmatter), default to 'polygon'
-	let banner = $derived($page.data?.frontmatter?.banner ?? 'polygon');
+	let banner = $derived($page.data?.frontmatter?.banner ?? 'curve');
 	let color = $derived($page.data?.frontmatter?.color ?? 'all');
 </script>
 

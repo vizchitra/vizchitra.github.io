@@ -6,6 +6,8 @@ section: proposal
 order: 1
 ---
 
+# Proposal
+
 Use these prompts as a mini-outline while drafting your submission.
 
 1. **Who is the audience for your session?** — Think about their backgrounds, roles, and questions. Are they students, early-career practitioners, domain experts, or cross-disciplinary collaborators?
@@ -33,10 +35,9 @@ Choose a talk style that suits your content and personality. Here are some commo
 
 Writing a great proposal - being specific & descriptive - is key to getting your talk accepted. Here are two examples to illustrate what is a you craft a compelling submission:
 
-#### :color[A Generic Proposal Example]{grey}
+#### A Generic Proposal Example
 
 :::notice
-<small>
 
 **Thinking Narrative Visualization**
 
@@ -46,7 +47,6 @@ Narrative visualisation is a way to present analyses, thought processes and insi
 
 This talk introduces narrative visualization and provides pointers on tools and best practices on how to think and design narrative visualisations.
 
-</small>
 :::
 
 Proposal Status: Rejected
@@ -56,11 +56,9 @@ Proposal Status: Rejected
 - No clear outline on how the talk would be delivered
 - No speaker bio to indicate why you are the best person to deliver this talk
 
-#### :color[A Well Crafted Proposal Example]{grey}
+#### A Well Crafted Proposal Example
 
-:::notice{blue}
-
-<small>
+:::notice
 
 **Learning Djembe Visually with p5.js**
 
@@ -86,7 +84,6 @@ Amit Kapoor is interested in learning and teaching the craft of telling visual s
 
 Ashok Kumar is an accomplished djembe - an African drum - player. He has been playing djembe for more than 15 years and has done numerous performances both as a soloist as well as with his band - Shoonya World Music. You can watch him play in this clip and can find more about him at jembeashok.com
 
-</small>
 :::
 
 Proposal Status: Accepted

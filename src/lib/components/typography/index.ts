@@ -1,8 +1,9 @@
 export { default as Slanted } from './Slanted.svelte';
-export { default as VizChitraLogoType } from './VizChitraLogoType.svelte';
-export { default as VizChitraLogoTagline } from './VizChitraLogoTagline.svelte';
+export { default as VizChitraLogoType } from './LogoType.svelte';
+export { default as VizChitraLogoTagline } from './LogoTagline.svelte';
 export { default as ColorSpan } from './ColorSpan.svelte';
 export { default as Heading } from './Heading.svelte';
 export { default as SubHeading } from './SubHeading.svelte';
 export { default as Notice } from './Notice.svelte';
-export { default as RichText } from './RichText.svelte';
+export { default as Prose } from './Prose.svelte';
+export { default as Text } from './Text.svelte';

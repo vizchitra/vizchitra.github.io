@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
-	import { getColorHex, colors } from '$lib/utils/colors';
+	import { getColorHex, colors } from '$lib/tokens';
 
 	let width: number | null = $state(null);
 	const height = 80;

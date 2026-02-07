@@ -8,13 +8,25 @@ order: 1
 
 # Heading 1
 
-This is a paragraph with **bold text**, *italic text*, and `inline code`. The RichText component should handle all standard markdown elements with proper styling and spacing.
+This is a a lead paragraph with **bold text**, _italic text_, and `inline code`. The RichText component handles all standard markdown elements with proper styling and spacing.
 
 ## Heading 2
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.
 
 ### Heading 3
+
+Here's a paragraph followed by lists to test vertical rhythm.
+
+#### Heading 4
+
+Here's a paragraph followed by lists to test vertical rhythm.
+
+##### Heading 5
+
+Here's a paragraph followed by lists to test vertical rhythm.
+
+###### Heading 6
 
 Here's a paragraph followed by lists to test vertical rhythm.
 
@@ -32,7 +44,7 @@ Here's a paragraph followed by lists to test vertical rhythm.
 #### Ordered Lists
 
 1. First step in the process
-2. Second step with details
+2. Second step with details, with a really long text to test wrapping and see the font rhythm in list items
 3. Third step to complete
    1. Sub-step one
    2. Sub-step two
@@ -45,12 +57,10 @@ Here's a code block:
 
 ```javascript
 function calculateVerticalRhythm(elements) {
-  return elements
-    .filter(Boolean)
-    .map((el, index) => ({
-      type: el.tagName.toLowerCase(),
-      marginTop: index === 0 ? 0 : 'var(--space-m)'
-    }));
+	return elements.filter(Boolean).map((el, index) => ({
+		type: el.tagName.toLowerCase(),
+		marginTop: index === 0 ? 0 : 'var(--space-m)'
+	}));
 }
 ```
 
@@ -66,12 +76,12 @@ Blockquotes should have a left border and distinct styling.
 
 ## Tables
 
-| Feature | Old (prose-viz) | New (RichText) | Status |
-|---------|-----------------|----------------|--------|
-| Font Size | 16px → 18px | 16px → 20px | ✅ Updated |
-| List Markers | Missing | Visible | ✅ Fixed |
-| Table Overflow | Not handled | Horizontal scroll | ✅ Improved |
-| Dependencies | @tailwindcss/typography | Custom CSS | ✅ Removed |
+| Feature        | Old (prose-viz)         | New (RichText)    | Status      |
+| -------------- | ----------------------- | ----------------- | ----------- |
+| Font Size      | 16px → 18px             | 16px → 20px       | ✅ Updated  |
+| List Markers   | Missing                 | Visible           | ✅ Fixed    |
+| Table Overflow | Not handled             | Horizontal scroll | ✅ Improved |
+| Dependencies   | @tailwindcss/typography | Custom CSS        | ✅ Removed  |
 
 Tables should be scrollable horizontally if they're too wide.
 
@@ -91,9 +101,9 @@ Mathematical notation: E = mc<sup>2</sup> and H<sub>2</sub>O
 
 ## Images
 
-![Placeholder Image](https://via.placeholder.com/800x400)
+![Placeholder Image](/static/images/vizchitra-preview.png)
 
-*Image caption: This demonstrates how images are rendered*
+_Image caption: This demonstrates how images are rendered_
 
 ---
 

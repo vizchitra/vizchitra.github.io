@@ -40,7 +40,7 @@
 		<h2 class="text-viz-black text-2xl font-bold capitalize">Header Banner</h2>
 		<p class="text-viz-grey pb-3 text-sm">Interactive with CSS fade</p>
 		<div
-			class="relative h-[400px] w-full rounded-2xl to-viz-white via-viz-white/30 bg-linear-to-b from-transparent via-70%"
+			class="to-viz-white via-viz-white/30 relative h-[400px] w-full rounded-2xl bg-linear-to-b from-transparent via-70%"
 			class:overflow-hidden={bannerType !== 'curve'}
 		>
 			<div class="absolute inset-0">
@@ -64,7 +64,7 @@
 		<h2 class="text-viz-black text-2xl font-bold capitalize">Footer Banner</h2>
 		<p class="text-viz-grey pb-3 text-sm">Static with CSS fade</p>
 		<div
-			class="relative h-[400px] w-full rounded-2xl to-viz-white via-viz-white/30 bg-linear-to-t from-transparent via-70%"
+			class="to-viz-white via-viz-white/30 relative h-[400px] w-full rounded-2xl bg-linear-to-t from-transparent via-70%"
 			class:overflow-hidden={bannerType !== 'curve'}
 		>
 			<div class="absolute inset-0">
@@ -73,9 +73,9 @@
 				{:else if bannerType === 'polygon'}
 					<BannerPolygon />
 				{:else if bannerType === 'square'}
-					<BannerSquare singleColor="teal" />
+					<BannerSquare color="teal" />
 				{:else}
-					<BannerBlob singleColor="teal" />
+					<BannerBlob color="teal" />
 				{/if}
 			</div>
 			<div class="pointer-events-none absolute inset-0 flex items-end justify-center pb-8">

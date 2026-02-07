@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getColorHex, colors } from '$lib/utils/colors';
+	import { getColorHex, colors } from '$lib/tokens';
 
 	// Define the shape of an individual data item using a generic record.
 	type Item = Record<string, any>;

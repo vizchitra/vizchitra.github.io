@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getColorHex, colors } from '$lib/utils/colors';
+	import { getColorHex, colors } from '$lib/tokens';
 
 	interface Props {
 		backgroundColor?: string;

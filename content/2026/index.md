@@ -10,10 +10,10 @@ banner: curve
 	import { Flex, FullBleed } from '$lib/components/layout';
 	import { CallCard, Button } from '$lib/components/interface';
 	import { Heading, SubHeading, Slanted, VizChitraLogoType } from '$lib/components/typography';
-	import { DividerCurves, Header } from '$lib/components/structure';
+	import { DividerCurves, Hero, Header } from '$lib/components/structure';
 </script>
 
-<Header title="VizChitra 2026" banner="curve" interactive={true} size="large" show="logo" tagline="A SPACE TO CONNECT AND CREATE WITH DATA" />
+<Hero banner ="curve"/>
 
 <Heading tag="h2">
 	<VizChitraLogoType year="2026"></VizChitraLogoType>
@@ -25,7 +25,9 @@ India's community-driven conference dedicated to <span class="text-viz-yellow-da
 
 <DividerCurves/>
 
-<Slanted tag="h3" color="pink" textContent="APPLICATIONS ARE OPEN" />
+<Heading tag="h2" class="font-normal">
+<Slanted color="pink" textContent="APPLICATIONS ARE OPEN" />
+</Heading>
 
 <SubHeading class="pb-8">
 We invite submissions across across four formats—<span class="font-bold text-viz-blue-dark">Talks</span>, <span class="font-bold text-viz-teal-dark">Dialogues</span>, <span class="font-bold text-viz-pink-dark">Workshops</span>, and <span class="font-bold text-viz-orange-dark">Exhibition</span>. Select the one that best suits your contribution. 
@@ -100,7 +102,9 @@ Please note the deadline for making your submission is <strong>15 Feb, 2026</str
 
 <DividerCurves/>
 
-<Slanted tag="h3" color="blue" textContent="BROWSE SUBMISSIONS" />
+<Heading tag="h3" class="font-normal">
+	<Slanted color="blue" textContent="BROWSE SUBMISSIONS" />
+</Heading>
 
 <SubHeading class="pb-8">
 Explore all submitted proposals for VizChitra 2026. Browse talks, dialogues, workshops, and exhibitions from our community.

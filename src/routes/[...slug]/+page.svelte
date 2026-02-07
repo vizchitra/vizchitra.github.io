@@ -1,56 +1,32 @@
 <script lang="ts">
-	import { RichText } from '$lib/components/typography';
+	import type { PageData } from './$types';
+	import { Prose } from '$lib/components/typography';
 	import { Container } from '$lib/components/layout';
+	import { Header } from '$lib/components/structure';
 
-	export let data: any;
-	$: ({ frontmatter = {} } = data);
-
-	// Load mdsvex-compiled Svelte components from the content folder at build time.
-	// Eager so components are available during SSR/prerender.
-	const pages = import.meta.glob('../../../content/**/*.md', { eager: true });
-
-	// Make Component reactive so it updates when data.slug changes
-	$: Component = (() => {
-		// Try exact match first, then try with /index suffix for directory index pages
-		let pageKey = Object.keys(pages).find((p) => p.endsWith(`/${data.slug}.md`));
-		if (!pageKey) {
-			pageKey = Object.keys(pages).find((p) => p.endsWith(`/${data.slug}/index.md`));
-		}
-		return pageKey ? (pages as any)[pageKey].default : null;
-	})();
+	let { data }: { data: PageData } = $props();
+	let color = data.document.color ? data.document.color : 'grey';
+	let banner = data.document.banner ? data.document.banner : 'curve';
 </script>
 
 <svelte:head>
-	{#if frontmatter.title}
-		<title>{frontmatter.title}</title>
+	<title>{data.document.title}</title>
+	{#if data.document.description}
+		<meta name="description" content={data.document.description} />
+		<meta property="og:description" content={data.document.description} />
+		<meta name="twitter:description" content={data.document.description} />
 	{/if}
-	{#if frontmatter.description}
-		<meta name="description" content={frontmatter.description} />
-		<meta property="og:description" content={frontmatter.description} />
-		<meta name="twitter:description" content={frontmatter.description} />
-	{/if}
-	{#if frontmatter.title}
-		<meta property="og:title" content={frontmatter.title} />
-		<meta name="twitter:title" content={frontmatter.title} />
-	{/if}
-	{#if frontmatter.image}
-		<meta property="og:image" content={frontmatter.image} />
-		<meta name="twitter:image" content={frontmatter.image} />
-		<meta name="twitter:card" content="summary_large_image" />
-	{/if}
+	<meta property="og:title" content={data.document.title} />
+	<meta name="twitter:title" content={data.document.title} />
 	<meta property="og:type" content="website" />
 </svelte:head>
 
-{#key data.slug}
-	<div class="min-h-screen">
-		<Container width="content">
-			<section class="prose">
-				{#if Component}
-					<svelte:component this={Component} />
-				{:else}
-					<p>Content not found.</p>
-				{/if}
-			</section>
-		</Container>
-	</div>
-{/key}
+{#if data.document.banner}
+	<Header {color} {banner} />
+{/if}
+
+<Container>
+	<Prose color={data.document.color}>
+		{@html data.document.html}
+	</Prose>
+</Container>

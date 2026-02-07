@@ -12,7 +12,7 @@
 		VenueCard,
 		FAQ
 	} from '$lib/components/sections';
-	import Header from '$lib/components/structure/Header.svelte';
+	import { Header, Hero } from '$lib/components/structure/';
 	import Grid from '$lib/components/layout/Grid.svelte';
 	import sponsors from '$lib/data/sponsors2025.json';
 	import VizchitraLogo from '$lib/assets/images/logos/viz-logo-animate.svg?raw';
@@ -101,7 +101,7 @@
 	];
 </script>
 
-<Header interactive={true} show="logo" size="large" />
+<Hero banner="polygon" />
 
 <!-- <div class="banner-container full-bleed relative h-svh">
 	<BannerPolygon interactive={true} />

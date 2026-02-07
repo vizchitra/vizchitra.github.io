@@ -3,18 +3,14 @@ title: Code of Conduct
 description: The Do's and Dont's for the VizChitra community
 banner: square
 color: blue
+slug: conduct
 ---
 
-<script>
-	import { Slanted, Notice } from '$lib/components/typography';
-	import { Header } from '$lib/components/structure';
-</script>
-
-<Header title="Code of Conduct" banner="square" color="blue"/>
-
-<Slanted tag="h2" color="blue" textContent="THE DO'S AND DONT'S FOR THE COMMUNITY" />
+# Code of Conduct
 
 This code of conduct applies across online exchanges, conferences and other events hosted by VizChitra community.
+
+## :slanted[THE DO's and DONT's for the COMMUNITY]
 
 We are here as a community to deliberate on the topics of the community.
 
@@ -33,10 +29,16 @@ We strongly condemn any kind of harassment of any fellow participant. This inclu
 - Inappropriate physical contact and invasion of private space.
 - Deliberate intimidation, unwelcome gestures and stalking.
 
-<Notice color="blue">
+:::notice
 
-Please report in confidence by sending an email to [**hello@vizchitra.com**](mailto:hello@vizchitra.com?subject=Code%20of%20Conduct%20Report) or direct messaging the admins e.g. Rasagy Sharma, Ipsa Jain of the [**VizChitra Community on WhatsApp**](https://chat.whatsapp.com/CcptoGEeCqJEkiETwAzpbq). Reports will be treated seriously and community admins will address this matter quickly. To escalate, message or call Gurman Bhatia @ [+91 99900 44111](tel:+919990044111) or Amit Kapoor @ [+91 97392 68197](tel:+919739268197)
+Please report in confidence by sending an email to [**hello@vizchitra.com**](mailto:hello@vizchitra.com?subject=Code%20of%20Conduct%20Report) or direct messaging the admins e.g. Rasagy Sharma, Ipsa Jain of the [**VizChitra Community on WhatsApp**](https://chat.whatsapp.com/CcptoGEeCqJEkiETwAzpbq).
+
+<br>
+
+Reports will be treated seriously and community admins will address this matter quickly. To escalate, message or call Gurman Bhatia @ [+91 99900 44111](tel:+919990044111) or Amit Kapoor @ [+91 97392 68197](tel:+919739268197).
+
+<br>
 
 **Violators, regardless of their standing, may be expelled from the community, without a refund (where payment was applicable), and reported to the authorities.**
 
-</Notice>
+:::

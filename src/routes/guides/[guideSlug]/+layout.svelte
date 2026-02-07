@@ -46,7 +46,7 @@
 	const displayTitle = $derived(guideName ? `${capitalize(guideName)} @ VizChitra` : data.guideId);
 </script>
 
-<Header banner="blob" title={displayTitle} singleColor={data.guideColor}></Header>
+<Header banner="blob" color={data.guideColor}></Header>
 
 <div class="guide-layout min-h mx-auto flex min-h-full max-w-7xl flex-col gap-16">
 	<main class="guide-content">

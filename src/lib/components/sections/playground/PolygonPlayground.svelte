@@ -25,7 +25,8 @@
 	async function downloadPNG(): Promise<void> {
 		const filename = `vizchitra-logo-${form.name ? form.name.toLowerCase().replaceAll(' ', '-') : '2025'}.png`;
 
-		const node = document.querySelector('#custom-card');
+		const node = document.getElementById('custom-card') as HTMLElement | null;
+		if (!node) return;
 		try {
 			const result = await captureNodeAsPNG(node, { backgroundColor: '#ffffff', scale: 1.5 });
 			result.download(filename);
@@ -112,7 +113,7 @@
 
 			<button
 				class="bg-viz-orange cursor-pointer rounded py-3 font-semibold text-white hover:opacity-90 md:ml-10"
-				on:click={downloadPNG}
+				onclick={downloadPNG}
 				>Download logo
 			</button>
 		</div>
