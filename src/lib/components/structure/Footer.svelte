@@ -46,8 +46,8 @@
 		{/if}
 
 		<!-- Copyright layer -->
-		<div class=" relative z-2 flex flex-col items-center gap-8 py-16">
-			<p class="bg-viz-white text-sm opacity-75">
+		<div class="relative z-2 flex h-full flex-col items-center justify-end pb-8">
+			<p class="bg-viz-white rounded-md px-1 py-1 text-sm opacity-80">
 				Copyright © {new Date().getFullYear()} VizChitra. All rights reserved.
 			</p>
 		</div>

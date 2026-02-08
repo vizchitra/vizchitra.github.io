@@ -19,39 +19,26 @@
 
 	let style = $derived.by(() => {
 		const gapSize = `${gap * 0.25}rem`;
-		let cols: string;
 
+		// Simplified grid: responsive with proper constraints
+		let cols: string;
 		if (columns) {
+			// Fixed number of columns
 			cols = `repeat(${columns}, 1fr)`;
 		} else if (maxColumns) {
-			cols = `repeat(auto-fit, minmax(min(${minWidth}, 100%), 1fr))`;
+			// Use auto-fit but ensure we don't exceed maxColumns by adjusting minWidth
+			// When container is wide, items will be at least (100% / maxColumns) wide
+			const effectiveMinWidth = `max(${minWidth}, calc((100% - ${maxColumns - 1} * ${gapSize}) / ${maxColumns}))`;
+			cols = `repeat(auto-fit, minmax(${effectiveMinWidth}, 1fr))`;
 		} else {
+			// Fully responsive
 			cols = `repeat(auto-fit, minmax(min(${minWidth}, 100%), 1fr))`;
 		}
 
-		let maxColsStyle = maxColumns ? `--max-cols: ${maxColumns};` : '';
-
-		return `display: grid; gap: ${gapSize}; grid-template-columns: ${cols}; ${maxColsStyle}`;
+		return `display: grid; gap: ${gapSize}; grid-template-columns: ${cols};`;
 	});
 </script>
 
-{#if maxColumns}
-	<div {style} class="max-cols-grid {className}">
-		{@render children?.()}
-	</div>
-{:else}
-	<div {style} class={className}>
-		{@render children?.()}
-	</div>
-{/if}
-
-<style>
-	.max-cols-grid {
-		grid-template-columns: repeat(
-			auto-fit,
-			minmax(min(var(--min-width, 280px), 100%), 1fr)
-		) !important;
-		max-width: calc(var(--max-cols) * 25rem + (var(--max-cols) - 1) * 1.5rem);
-		margin-inline: auto;
-	}
-</style>
+<div {style} class={className}>
+	{@render children?.()}
+</div>

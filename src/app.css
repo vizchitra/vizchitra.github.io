@@ -61,8 +61,15 @@
 	--font-mono: var(--font-fira);
 
 	/* Text & Space Flow */
-	--text-flow: var(--text-flow-0);
-	--spacing-flow: var(--space-flow-0);
+	--text-viz-xs: var(--text-flow--2);
+	--text-viz-sm: var(--text-flow--1);
+	--text-viz-md: var(--text-flow-0);
+	--text-viz-lg: var(--text-flow-1);
+	--text-viz-xl: var(--text-flow-2);
+	--text-viz-2xl: var(--text-flow-3);
+	--text-viz-3xl: var(--text-flow-4);
+	--text-viz-4xl: var(--text-flow-5);
+	--text-viz-5xl: var(--text-flow-6);
 
 	/* Spacing Fluid */
 	--spacing-viz-xs: var(--space-flow--2);
@@ -194,7 +201,7 @@
 
 	/* Named Variants */
 
-	/* Light Shade (Use for Background Colors - Ramp 100 */
+	/* Light Shade (Use for Background Colors - Ramp 200 */
 	--color-viz-yellow-light: var(--color-yellow-200);
 	--color-viz-teal-light: var(--color-teal-200);
 	--color-viz-blue-light: var(--color-blue-200);
@@ -367,5 +374,9 @@
 
 	.content-container {
 		@apply mx-auto max-w-3xl px-4;
+	}
+
+	.content-notice {
+		@apply mb-8 rounded-lg border border-gray-200 bg-gray-100 p-6 md:p-8;
 	}
 }
