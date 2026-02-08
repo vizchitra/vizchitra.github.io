@@ -12,7 +12,7 @@
 	 * maximum width constraints, and adds responsive padding. Ensures consistent
 	 * content layout across all pages.
 	 *
-	 * @prop width - Max-width constraint ('prose' for text, 'narrow', 'content', 'wide', 'full') (default: 'content')
+	 * @prop width - Max-width constraint ('narrow', 'content', 'wide', 'full') (default: 'content')
 	 * @prop paddingX - Horizontal padding using spacing tokens (default: 'md')
 	 * @prop paddingY - Vertical padding using spacing tokens (default: '3xl')
 	 * @prop tag - HTML element to render (default: 'div')
@@ -39,7 +39,7 @@
 		tag = 'div',
 		paddingY = '3xl',
 		width = 'content',
-		paddingX = 'xl',
+		paddingX = 'lg',
 		class: className = '',
 		children,
 		...rest
@@ -52,43 +52,25 @@
 		full: 'w-full'
 	};
 
-	const padXClasses: Record<Space, string> = {
-		'0': 'px-0',
-		xs: 'px-viz-xs',
-		sm: 'px-viz-sm',
-		md: 'px-viz-md',
-		lg: 'px-viz-lg',
-		xl: 'px-viz-xl',
-		'2xl': 'px-viz-2xl',
-		'3xl': 'px-viz-3xl',
-		'4xl': 'px-viz-4xl',
-		'5xl': 'px-viz-5xl'
-	};
-
-	const padYClasses: Record<Space, string> = {
-		'0': 'py-0',
-		xs: 'py-viz-xs',
-		sm: 'py-viz-sm',
-		md: 'py-viz-md',
-		lg: 'py-viz-lg',
-		xl: 'py-viz-xl',
-		'2xl': 'py-viz-2xl',
-		'3xl': 'py-viz-3xl',
-		'4xl': 'py-viz-4xl',
-		'5xl': 'py-viz-5xl'
-	};
+	const paddingXValue = $derived(paddingX === '0' ? '0' : `var(--spacing-viz-${paddingX})`);
+	const paddingYValue = $derived(paddingY === '0' ? '0' : `var(--spacing-viz-${paddingY})`);
 </script>
 
 <svelte:element
 	this={tag}
 	{...rest}
-	class={[
-		'container mx-auto',
-		widthClasses[width],
-		padXClasses[paddingX],
-		padYClasses[paddingY],
-		className
-	]}
+	class={['container-wrapper mx-auto', widthClasses[width], className]}
+	style:--container-padding-x={paddingXValue}
+	style:--container-padding-y={paddingYValue}
 >
 	{@render children?.()}
 </svelte:element>
+
+<style>
+	.container-wrapper {
+		padding-left: var(--container-padding-x, var(--spacing-viz-xl));
+		padding-right: var(--container-padding-x, var(--spacing-viz-xl));
+		padding-top: var(--container-padding-y, var(--spacing-viz-3xl));
+		padding-bottom: var(--container-padding-y, var(--spacing-viz-3xl));
+	}
+</style>

@@ -31,40 +31,59 @@
 	let isBordered = $derived(variant === 'bordered');
 </script>
 
-{#if isBordered}
-	<div class="max-w-[25rem] rounded-lg border-2 p-6 {c.border}">
-		{#if title}
-			<Heading tag="h3" align="left" class="not-prose font-display-sans mb-2 !text-lg {c.text}">
-				{title}
-			</Heading>
-		{/if}
-		<div class="card-prose">{@render children?.()}</div>
-	</div>
-{:else}
-	<div class="flex flex-col gap-6 md:flex-row md:items-start">
-		{#if image}
-			<div class="w-full shrink-0 md:w-1/3">
-				<img src={image} {alt} class="h-auto w-full rounded-sm object-cover" />
+<div class="card max-w-md">
+	{#if isBordered}
+		<div class="card-bordered rounded-lg border-2 bg-white/80 p-6 {c.border}">
+			<div class="card-prose">
+				{#if title}
+					<Heading tag="h3" align="left" class="not-prose font-display-sans text-lg! {c.text}">
+						{title}
+					</Heading>
+				{/if}
+				{@render children?.()}
 			</div>
-		{/if}
-		<div class="flex w-full flex-col gap-2 {image ? 'md:w-2/3' : ''}">
-			{#if title}
-				<Heading tag="h3" align="left" class="not-prose font-display-sans !text-xl {c.text}">
-					{title}
-				</Heading>
-			{/if}
-			<div class="prose max-w-none">{@render children?.()}</div>
 		</div>
-	</div>
-{/if}
+	{:else}
+		<div class="flex flex-col gap-6 md:flex-row md:items-start">
+			{#if image}
+				<div class="w-full shrink-0 md:w-1/3">
+					<img src={image} {alt} class="h-auto w-full rounded-sm object-cover" />
+				</div>
+			{/if}
+			<div class="flex w-full flex-col gap-2 {image ? 'md:w-2/3' : ''}">
+				{#if title}
+					<Heading tag="h3" align="left" class="not-prose font-display-sans !text-xl {c.text}">
+						{title}
+					</Heading>
+				{/if}
+				<div class="prose max-w-none">{@render children?.()}</div>
+			</div>
+		</div>
+	{/if}
+</div>
 
 <style>
+	.card {
+		--list-color: var(--color-viz-grey-dark);
+		display: grid;
+		grid-template-rows: subgrid;
+		grid-row: span 3;
+		row-gap: 0rem;
+	}
+	.card-bordered {
+		display: grid;
+		grid-template-rows: subgrid;
+		grid-row: span 3;
+	}
 	.card-prose {
-		font-size: 0.975rem;
-		line-height: 1.4;
+		font-size: 1rem;
+		line-height: 1.5;
+		display: grid;
+		grid-template-rows: subgrid;
+		grid-row: span 3;
 	}
 	.card-prose :global(p) {
-		margin-block: 0.5rem;
+		font-size: var(--text-flow-0);
 	}
 	.card-prose :global(p:first-child) {
 		margin-block-start: 0;
@@ -74,12 +93,15 @@
 		margin-block: 0.5rem;
 		padding-inline-start: 1.25rem;
 	}
+
+	.card-prose :global(ul) {
+		list-style: disc;
+		color: var(--color-viz-grey-dark);
+	}
+
 	.card-prose :global(li) {
+		font-size: var(--text-flow--1);
 		margin-block: 0.125rem;
 		padding-inline-start: 0.25rem;
-	}
-	.card-prose :global(li::marker) {
-		color: var(--viz-color-grey);
-		font-weight: 600;
 	}
 </style>

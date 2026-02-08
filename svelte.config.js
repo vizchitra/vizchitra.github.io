@@ -1,20 +1,20 @@
 import adapter from '@sveltejs/adapter-cloudflare';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { redirects } from './src/lib/config/redirects.js';
-import { mdsvex } from 'mdsvex';
+// import { mdsvex } from 'mdsvex';
 import { getContentSlugs } from './text.config.js';
 
 // Generate content slugs for prerendering
 const contentSlugs = getContentSlugs();
 
-/** @type {import('mdsvex').MdsvexOptions} */
-const mdsvexOptions = {
-	extensions: ['.md', '.svx']
-};
+// /** @type {import('mdsvex').MdsvexOptions} */
+// const mdsvexOptions = {
+// 	extensions: ['.md', '.svx']
+// };
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	extensions: ['.svelte', '.md', '.svx'],
+	// extensions: ['.svelte', '.md', '.svx'],
 	// compilerOptions: {
 	// 	runes: true
 	// },
@@ -38,7 +38,9 @@ const config = {
 			}
 		}
 	},
-	preprocess: [mdsvex(mdsvexOptions), vitePreprocess()]
+	preprocess: [
+		// mdsvex(mdsvexOptions),
+		vitePreprocess()]
 };
 
 export default config;

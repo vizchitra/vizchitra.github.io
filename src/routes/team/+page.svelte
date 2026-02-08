@@ -1,27 +1,28 @@
 <script lang="ts">
-	import { Slanted, Heading, Text } from '$lib/components/typography';
-	import { FullBleed } from '$lib/components/layout';
+	import type { PageData } from './$types';
+	import { Slanted, Heading, SubHeading, Text, Prose } from '$lib/components/typography';
 	import { TeamSection } from '$lib/components/sections';
 	import { Header } from '$lib/components/structure';
-	import Container from '$lib/components/layout/Container.svelte';
-	import SubHeading from '$lib/components/typography/SubHeading.svelte';
+	import { Container, Stack, FullBleed } from '$lib/components/layout';
+
+	let { data }: { data: PageData } = $props();
+	let banner = data.document.banner;
+	let color = data.document.color;
 </script>
 
-<Header banner="square" color="orange" />
+<Header {banner} {color} />
 
 <Container>
-	<Heading>Our Team</Heading>
-
-	<Text>
-		<Slanted color="pink" textContent="THE VIZCHITRA TEAM" />
-	</Text>
-
-	<Text type="lead" align="center" class="pb-24">
-		Meet the individuals working tirelessly behind the scenes to make India's data visualization
-		community a reality.
-	</Text>
-
-	<FullBleed>
-		<TeamSection />
-	</FullBleed>
+	<Stack>
+		<Prose color="orange">
+			<h1>Our Team</h1>
+			<p>
+				Meet the individuals working tirelessly behind the scenes to make India's data visualization
+				community a reality.
+			</p>
+		</Prose>
+		<FullBleed>
+			<TeamSection />
+		</FullBleed>
+	</Stack>
 </Container>

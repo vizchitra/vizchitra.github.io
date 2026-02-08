@@ -3,7 +3,7 @@
 	import BannerCurve from './BannerCurve.svelte';
 	import BannerSquare from './BannerSquare.svelte';
 	import BannerBlob from './BannerBlob.svelte';
-	import VizChitraLogoTagline from '$lib/components/typography/LogoTagline.svelte';
+	import LogoTagline from '$lib/components/typography/LogoTagline.svelte';
 	import FullBleed from '$lib/components/layout/FullBleed.svelte';
 	import Slanted from '$lib/components/typography/Slanted.svelte';
 
@@ -25,7 +25,7 @@
 	const addTransparencyLayer = $derived(banner !== 'curve');
 </script>
 
-<FullBleed className="pb-24">
+<FullBleed class="pb-24">
 	<div class="relative h-[80svh] overflow-visible">
 		<!-- Banner layer -->
 		<div class="absolute inset-0 z-0">
@@ -52,13 +52,13 @@
 			<!-- Logo centered (polygon/square/blob) with tagline -->
 			<div class="pointer-events-none absolute inset-0 z-2 flex items-center justify-center">
 				<div class="bg-viz-white">
-					<VizChitraLogoTagline tag="h3" textContent={tagline} />
+					<LogoTagline tag="h3" textContent={tagline} />
 				</div>
 			</div>
 		{:else}
 			<!-- Logo curve layout: logo bottom left, tagline top right -->
 			<div class="pointer-events-none absolute -bottom-20 -left-5 z-2 md:-bottom-10 md:left-15">
-				<VizChitraLogoTagline />
+				<LogoTagline />
 			</div>
 			<div class="pointer-events-none absolute top-10 right-5 z-2 w-80 md:right-20">
 				<h2 class="max-w-1xl text-right leading-tight font-normal">

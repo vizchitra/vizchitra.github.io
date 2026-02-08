@@ -3,10 +3,7 @@
 	import BannerCurve from './BannerCurve.svelte';
 	import BannerSquare from './BannerSquare.svelte';
 	import BannerBlob from './BannerBlob.svelte';
-	import { VizChitraLogoTagline } from '$lib/components/typography';
 	import FullBleed from '$lib/components/layout/FullBleed.svelte';
-	import Slanted from '../typography/Slanted.svelte';
-	import DividerCurves from './DividerCurves.svelte';
 
 	interface Props {
 		title?: string;

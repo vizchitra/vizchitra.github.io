@@ -12,7 +12,7 @@
 		align?: Align;
 		color?: Color;
 		tag?: Tag;
-		class?: string;
+		class?: ClassValue;
 		children?: Snippet;
 	}
 
@@ -28,10 +28,10 @@
 
 	// Define the Hierarchy "Bundles"
 	const typeClasses: Record<string, string> = {
-		lead: 'text-body font-normal leading-relaxed text-opacity-80',
-		body: 'text-body font-normal leading-normal',
-		caption: 'text-body font-medium leading-none uppercase tracking-wide opacity-60',
-		small: 'text-body font-normal leading-tight opacity-60'
+		lead: 'text-viz-lg font-normal leading-relaxed text-opacity-80 max-w-prose',
+		body: 'text-viz-md font-normal leading-normal max-w-prose',
+		caption: 'text-viz-sm font-medium leading-none uppercase tracking-wide opacity-90 max-w-prose',
+		small: 'text-viz-sm font-normal leading-tight opacity-60 max-w-prose'
 	};
 
 	const alignClasses: Record<Align, string> = {

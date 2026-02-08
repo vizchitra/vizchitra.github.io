@@ -37,13 +37,12 @@
 		color: var(--color-viz-black);
 
 		/* Layout Constraints */
-
+		display: block;
 		width: 100%;
 		max-width: 65ch;
-		/* margin-inline: auto; */
-
-		display: flex;
-		flex-direction: column;
+		margin-inline-start: 0;
+		margin-inline-end: auto;
+		text-align: left;
 
 		/* --- 1. VERTICAL RHYTHM & STACKING --- */
 
@@ -90,7 +89,7 @@
 		& h5,
 		& h6 {
 			font-family: var(--font-cairo);
-			line-height: 1.1;
+			line-height: 1.25;
 			letter-spacing: -0.01em;
 			text-wrap: balance;
 			color: var(--dark-color);

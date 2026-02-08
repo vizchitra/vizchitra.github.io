@@ -75,7 +75,7 @@
 		on:click={handleCardClick}
 		on:touchStart={handleCardClick}
 		style:max-width={!isKeynote ? '350px' : '550px'}
-		class="speaker-card relative w-full overflow-hidden rounded-lg border-[1px] border-[#ccc] p-4 shadow-md sm:p-8 sm:pt-8 md:min-w-[400px] lg:max-w-[550px] {isKeynote
+		class="speaker-card relative isolate w-full overflow-hidden rounded-lg border-[1px] border-[#ccc] p-4 shadow-md sm:p-8 sm:pt-8 md:min-w-[400px] lg:max-w-[550px] {isKeynote
 			? 'pb-12 sm:pb-24'
 			: 'min-w-[350px] pb-6'}"
 	>

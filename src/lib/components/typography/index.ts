@@ -1,6 +1,6 @@
 export { default as Slanted } from './Slanted.svelte';
-export { default as VizChitraLogoType } from './LogoType.svelte';
-export { default as VizChitraLogoTagline } from './LogoTagline.svelte';
+export { default as LogoType } from './LogoType.svelte';
+export { default as LogoTagline } from './LogoTagline.svelte';
 export { default as ColorSpan } from './ColorSpan.svelte';
 export { default as Heading } from './Heading.svelte';
 export { default as SubHeading } from './SubHeading.svelte';

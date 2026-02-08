@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Card, Button } from '$lib/components/interface';
 	import { DividerCurves } from '$lib/components/structure';
-	import { Heading } from '$lib/components/typography';
+	import { Heading, Prose } from '$lib/components/typography';
 	import { ProposalBadge, ProposalStatusBadge, UpvoteButton } from '$lib/components/proposals';
 	import type { PageData } from './$types';
 	import type { CFPProposal, CFEProposal } from '$lib/types/proposals';
@@ -53,7 +53,10 @@
 
 	<!-- Open Graph -->
 	<meta property="og:title" content={title} />
-	<meta property="og:description" content={description.split('\n')[0] || description.substring(0, 150)} />
+	<meta
+		property="og:description"
+		content={description.split('\n')[0] || description.substring(0, 150)}
+	/>
 	<meta property="og:type" content="article" />
 	<meta
 		property="og:image"
@@ -64,7 +67,10 @@
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content={title} />
-	<meta name="twitter:description" content={description.split('\n')[0] || description.substring(0, 150)} />
+	<meta
+		name="twitter:description"
+		content={description.split('\n')[0] || description.substring(0, 150)}
+	/>
 	<meta
 		name="twitter:image"
 		content="https://vizchitra.com/2026/submissions/{proposal.slug}/og-image.png"
@@ -145,7 +151,7 @@
 
 		<section class="mb-8 md:mb-10">
 			<Heading tag="h2" align="left">Description</Heading>
-			<div class="prose text-viz-grey/90 md:prose-lg max-w-none markdown-content">
+			<div class="prose text-viz-grey/90 md:prose-lg markdown-content max-w-none">
 				{@html descriptionHTML}
 			</div>
 		</section>
@@ -197,7 +203,7 @@
 								>
 									Materials Required
 								</p>
-								<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+								<div class="text-viz-grey/90 markdown-content text-sm md:text-base">
 									{@html parseMarkdown((proposal as CFPProposal).materials)}
 								</div>
 							</div>
@@ -209,7 +215,7 @@
 								>
 									Room Setup
 								</p>
-								<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+								<div class="text-viz-grey/90 markdown-content text-sm md:text-base">
 									{@html parseMarkdown((proposal as CFPProposal).roomSetup)}
 								</div>
 							</div>
@@ -232,7 +238,7 @@
 							>
 								Data Source
 							</p>
-							<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+							<div class="text-viz-grey/90 markdown-content text-sm md:text-base">
 								{@html parseMarkdown((proposal as CFEProposal).dataSource)}
 							</div>
 						</div>
@@ -244,7 +250,7 @@
 							>
 								Visualization Method
 							</p>
-							<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+							<div class="text-viz-grey/90 markdown-content text-sm md:text-base">
 								{@html parseMarkdown((proposal as CFEProposal).visualizationMethod)}
 							</div>
 						</div>
@@ -255,7 +261,7 @@
 			{#if (proposal as CFEProposal).technicalRequirements}
 				<section class="mb-8 md:mb-10">
 					<Heading tag="h3" align="left">Technical Requirements</Heading>
-					<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+					<div class="text-viz-grey/90 markdown-content text-sm md:text-base">
 						{@html parseMarkdown((proposal as CFEProposal).technicalRequirements)}
 					</div>
 				</section>
@@ -264,7 +270,7 @@
 			{#if (proposal as CFEProposal).timeline}
 				<section class="mb-8 md:mb-10">
 					<Heading tag="h3" align="left">Project Status & Timeline</Heading>
-					<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+					<div class="text-viz-grey/90 markdown-content text-sm md:text-base">
 						{@html parseMarkdown((proposal as CFEProposal).timeline)}
 					</div>
 				</section>
@@ -307,7 +313,7 @@
 							{(proposal as CFEProposal).teamName}
 						</p>
 						{#if (proposal as CFEProposal).teamBio}
-							<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+							<div class="text-viz-grey/90 markdown-content text-sm md:text-base">
 								{@html parseMarkdown((proposal as CFEProposal).teamBio)}
 							</div>
 						{/if}

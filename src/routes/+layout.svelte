@@ -7,9 +7,9 @@
 	/** @type {{children: import('svelte').Snippet}} */
 	let { children } = $props();
 
-	// Get banner type from page data (frontmatter), default to 'polygon'
-	let banner = $derived($page.data?.frontmatter?.banner ?? 'curve');
-	let color = $derived($page.data?.frontmatter?.color ?? 'all');
+	// Get banner type from page data (document), default to 'curve'
+	let banner = $derived($page.data?.document?.banner ?? 'curve');
+	let color = $derived($page.data?.document?.color);
 </script>
 
 <div class="app">

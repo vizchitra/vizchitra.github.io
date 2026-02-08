@@ -14,7 +14,7 @@ const markdownOptions = {
 /* Pages collection define all standalone md pages */
 const pages = defineCollection({
 	name: 'pages',
-	directory: 'pages',
+	directory: 'content/pages',
 	include: '**/*.md',
 	schema: z.object({
 		title: z.string(),
@@ -41,7 +41,7 @@ const pages = defineCollection({
 
 const guides = defineCollection({
 	name: 'guides',
-	directory: 'guides',
+	directory: 'content/guides',
 	include: '**/*.md',
 	schema: z.object({
 		title: z.string(),
