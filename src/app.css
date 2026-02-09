@@ -2,12 +2,113 @@
 /* @import url('lib/assets/css/tokens.css'); */
 
 @import 'tailwindcss';
-@plugin '@tailwindcss/typography';
+
+:root {
+	/* Texture control */
+	--paper-noise: 0.008;
+	--paper-wash: 0.002;
+
+	/* Canonical typography */
+	--font-plex: 'IBM Plex Sans', system-ui, 'Segoe UI', 'Roboto', sans-serif;
+	--font-cairo: 'Cairo', 'Optima', 'Candara', 'Noto Sans', system-ui, sans-serif;
+	--font-fira: 'Fira Code', ui-monospace, 'Cascadia Code', 'Consolas', 'Roboto Mono', monospace;
+
+	/* FLUID OPTIONS */
+	/* --- 1. CONFIGURATION --- */
+	--ratio: 1.125; /* Scale multiplier (Minor Third) */
+
+	/* --- 2. THE ENGINES --- */
+	/* Target: 16px at 400px wide -> 20px at 1440px wide 
+	/* Formula: Base + ((Max - Min) / (MaxVW - MinVW)) * 100 */
+
+	/* Text Engine: 16px -> 20px (Conservative for readability) */
+	--text-base: clamp(1rem, 0.904rem + 0.38vw, 1.25rem);
+
+	/* Spacing Engine: 16px -> 24px (Aggressive for layout breathing) */
+	--space-base: clamp(1rem, 0.84rem + 0.77vw, 1.5rem);
+
+	/* --- 3. FLUID FONT SCALE --- */
+	--text-flow-0: var(--text-base);
+	--text-flow--1: calc(var(--text-flow-0) / var(--ratio));
+	--text-flow--2: calc(var(--text-flow--1) / var(--ratio));
+	--text-flow-1: calc(var(--text-flow-0) * var(--ratio));
+	--text-flow-2: calc(var(--text-flow-1) * var(--ratio));
+	--text-flow-3: calc(var(--text-flow-2) * var(--ratio));
+	--text-flow-4: calc(var(--text-flow-3) * var(--ratio));
+	--text-flow-5: calc(var(--text-flow-4) * var(--ratio));
+	--text-flow-6: calc(var(--text-flow-5) * var(--ratio));
+
+	/* --- 4. FLUID SPACING SCALE --- */
+	--space-flow--2: calc(var(--space-base) * 0.5);
+	--space-flow--1: calc(var(--space-base) * 0.75);
+	--space-flow-0: var(--space-base);
+	--space-flow-1: calc(var(--space-base) * 1.5);
+	--space-flow-2: calc(var(--space-base) * 2);
+	--space-flow-3: calc(var(--space-base) * 3);
+	--space-flow-4: calc(var(--space-base) * 4);
+	--space-flow-5: calc(var(--space-base) * 5);
+	--space-flow-6: calc(var(--space-base) * 6);
+	--space-flow-7: calc(var(--space-base) * 7);
+	--space-flow-8: calc(var(--space-base) * 8);
+}
 
 /* Tailwind-facing tokens: map from canonical --viz-* variables */
 @theme static {
-	--viz-color-white: oklch(100% 0 0);
-	--viz-color-black: oklch(15% 0 0);
+	/* Typography */
+	--font-body: var(--font-plex);
+	--font-base: var(--font-plex);
+	--font-display: var(--font-cairo);
+	--font-mono: var(--font-fira);
+
+	/* Text & Space Flow */
+	--text-viz-xs: var(--text-flow--2);
+	--text-viz-sm: var(--text-flow--1);
+	--text-viz-md: var(--text-flow-0);
+	--text-viz-lg: var(--text-flow-1);
+	--text-viz-xl: var(--text-flow-2);
+	--text-viz-2xl: var(--text-flow-3);
+	--text-viz-3xl: var(--text-flow-4);
+	--text-viz-4xl: var(--text-flow-5);
+	--text-viz-5xl: var(--text-flow-6);
+
+	/* Spacing Fluid */
+	--spacing-viz-xs: var(--space-flow--2);
+	--spacing-viz-sm: var(--space-flow--1);
+	--spacing-viz-md: var(--space-flow-0);
+	--spacing-viz-lg: var(--space-flow-1);
+	--spacing-viz-xl: var(--space-flow-2);
+	--spacing-viz-2xl: var(--space-flow-3);
+	--spacing-viz-3xl: var(--space-flow-4);
+	--spacing-viz-4xl: var(--space-flow-5);
+	--spacing-viz-5xl: var(--space-flow-6);
+	--spacing-viz-6xl: var(--space-flow-7);
+	--spacing-viz-7xl: var(--space-flow-8);
+
+	/* Width */
+	--width-prose: 65ch;
+	--width-narrow: 28rem;
+	--width-content: 80rem;
+	--width-wide: 90rem;
+	--width-grid-min: 280px;
+
+	/* COLORS */
+
+	/* MODERN PAPER (Studio White)
+     L: 99% - Crisp but removes the 100% "digital glare."
+     C: 0.002 - Almost zero color, just enough to feel "expensive."
+     H: 240 - A tiny hint of blue/violet (like high-grade bleached paper).
+  */
+	--color-viz-white: oklch(99% 0.002 240);
+
+	/* MODERN INK (Deep Charcoal)
+     L: 18% - Deep enough for "black" text, but soft enough to see font details.
+     C: 0.005 - Keeping it nearly neutral.
+     H: 240 - Matches the paper temperature for a unified look.
+  */
+	--color-viz-black: oklch(18% 0.005 240);
+
+	/* --color-viz-white: oklch(100% 0 0);
+	--color-viz-black: oklch(15% 0 0); */
 
 	/* Brand palette (converted from hex -> OKLCH) */
 	--color-viz-yellow: oklch(89% 0.109 82); /* #FFD485 */
@@ -17,7 +118,7 @@
 	--color-viz-pink: oklch(71.9% 0.161 354); /* #EF75AB */
 	--color-viz-grey: oklch(41% 0 0); /*Grey #4c4c4c */
 
-	/* Color Ramps basded on brand tokens */
+	/* Color Ramps based on brand tokens */
 	/* HUE PALETTES */
 
 	/* Yellow - Hue 82 */
@@ -86,7 +187,7 @@
 	--color-pink-950: oklch(16% 0.06 354);
 
 	/* Grey -  Hue 0 */
-	--color-grey-50: oklch(98.5% 0 0);
+	--color-grey-50: oklch(98.5% 0 0); /* #FAFAFA */
 	--color-grey-100: oklch(97% 0 0);
 	--color-grey-200: oklch(90% 0 0);
 	--color-grey-300: oklch(80% 0 0);
@@ -100,35 +201,37 @@
 
 	/* Named Variants */
 
-	/* Light Shade (converted from hex -> OKLCH) */
-	--color-viz-yellow-light: var(--color-yellow-200); /*Ramp 200*/
-	--color-viz-teal-light: var(--color-teal-200); /*Ramp 200*/
-	--color-viz-blue-light: var(--color-blue-200); /*Ramp 200*/
-	--color-viz-orange-light: var(--color-orange-200); /*Ramp 200*/
-	--color-viz-pink-light: var(--color-pink-200); /*Ramp 200*/
-	--color-viz-grey-light: var(--color-grey-200); /*Ramp 200*/
+	/* Light Shade (Use for Background Colors - Ramp 200 */
+	--color-viz-yellow-light: var(--color-yellow-200);
+	--color-viz-teal-light: var(--color-teal-200);
+	--color-viz-blue-light: var(--color-blue-200);
+	--color-viz-orange-light: var(--color-orange-200);
+	--color-viz-pink-light: var(--color-pink-200);
+	--color-viz-grey-light: var(--color-grey-200);
 
-	/* Dark Shades derived from the canonical OKLCH tokens */
-	--color-viz-yellow-dark: var(--color-yellow-700); /*Ramp 700*/
-	--color-viz-teal-dark: var(--color-teal-700); /*Ramp 700*/
-	--color-viz-blue-dark: var(--color-blue-700); /*Ramp 700*/
-	--color-viz-orange-dark: var(--color-orange-700); /*Ramp 700*/
-	--color-viz-pink-dark: var(--color-pink-700); /*Ramp 700*/
-	--color-viz-grey-dark: var(--color-grey-700); /*Ramp 700*/
+	/* Dark Shades (Use for Text Color) - Ramp 700 */
+	--color-viz-yellow-dark: var(--color-yellow-700);
+	--color-viz-teal-dark: var(--color-teal-700);
+	--color-viz-blue-dark: var(--color-blue-700);
+	--color-viz-orange-dark: var(--color-orange-700);
+	--color-viz-pink-dark: var(--color-pink-700);
+	--color-viz-grey-dark: var(--color-grey-700);
 
-	/* Typography */
+	/* Muted Shades (Use for Borders) - Ramp 200*/
+	--color-viz-yellow-muted: var(--color-yellow-300);
+	--color-viz-teal-muted: var(--color-teal-300);
+	--color-viz-blue-muted: var(--color-blue-300);
+	--color-viz-orange-muted: var(--color-orange-300);
+	--color-viz-pink-muted: var(--color-pink-300);
+	--color-viz-grey-muted: var(--color-grey-300);
 
-	/* Canonical typography */
-	--font-text-sans:
-		'IBM Plex Sans', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, system-ui, sans-serif;
-	--font-display-sans:
-		'Cairo', Optima, Candara, 'Noto Sans', source-sans-pro, system-ui, sans-serif;
-	--font-body-mono:
-		ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
-
-	--font-body: var(--font-text-sans);
-	--font-display: var(--font-display-sans);
-	--font-base: var(--font-text-sans);
+	/* Subtle Shades (Use for Large Airy Background) - Ramp 100*/
+	--color-viz-yellow-sublte: var(--color-yellow-100);
+	--color-viz-teal-subtle: var(--color-teal-100);
+	--color-viz-blue-subtle: var(--color-blue-100);
+	--color-viz-orange-subtle: var(--color-orange-100);
+	--color-viz-pink-subtle: var(--color-pink-100);
+	--color-viz-grey-subtle: var(--color-grey-100);
 
 	/* Semantic colors */
 	--color-bg: var(--color-viz-white);
@@ -138,206 +241,152 @@
 	--color-border: var(--color-viz-grey);
 	--color-link: var(--color-viz-blue-dark);
 	--color-accent: var(--color-viz-pink);
-
-	--width-prose: 60ch;
-	--width-narrow: 28rem;
-	--width-content: 72rem;
-	--width-wide: 90rem;
-	--width-grid-min: 280px;
 }
 
-:root {
-	font-family: var(--font-body);
-	color: var(--color-text);
-}
+@layer base {
+	html {
+		scroll-behavior: smooth;
+		/* Prevent layout shift when scrollbar appears */
+		scrollbar-gutter: stable;
 
-html {
-	scroll-behavior: smooth;
-	font-variation-settings: 'slnt' 0;
-}
-
-body {
-	min-height: 100vh;
-	margin: 0;
-	background-attachment: fixed;
-	background-color: var(--color-bg-0);
-	background-size: 100vw 100vh;
-	overflow-x: hidden;
-}
-
-p {
-	font-weight: 400;
-}
-
-p {
-	line-height: 1.5;
-}
-
-h1 {
-	font-size: 2rem;
-}
-
-h2 {
-	font-size: 1.5rem;
-}
-
-pre {
-	font-size: 16px;
-	font-family: var(--font-mono);
-	background-color: rgba(255, 255, 255, 0.45);
-	border-radius: 3px;
-	box-shadow: 2px 2px 6px rgb(255 255 255 / 25%);
-	padding: 0.5em;
-	overflow-x: auto;
-	color: var(--color-text);
-}
-
-.text-column {
-	display: flex;
-	max-width: 48rem;
-	flex: 0.6;
-	flex-direction: column;
-	justify-content: center;
-	margin: 0 auto;
-}
-
-input,
-button {
-	font-size: inherit;
-	font-family: inherit;
-}
-
-button:focus:not(:focus-visible) {
-	outline: none;
-}
-
-.slanted-text {
-	font-family: var(--font-display);
-}
-
-@media (min-width: 720px) {
-	h1 {
-		font-size: 2.4rem;
+		/* For OverScroll */
+		background-color: var(--color-viz-white);
 	}
-}
 
-.visually-hidden {
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: auto;
-	margin: 0;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
-	white-space: nowrap;
-}
+	body {
+		/* Better font rendering */
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		/* Modern standard for handling ligatures (important for Fira Code) */
+		text-rendering: optimizeLegibility;
+		/* Optimize IBM Plex for long-form reading */
+		font-family: var(--font-plex);
+		font-variation-settings: 'slnt' 0;
+		font-variant-ligatures: common-ligatures;
+		/* Standardizing line-height for better readability on 'Paper' styles */
+		line-height: 1.6;
+		/* Reset and Layout */
+		margin: 0;
+		min-height: 100vh;
+		/* Avoid Horizontal Scrolling */
+		overflow-x: hidden;
 
-/* Utility class for full-width breakout sections */
-.full-bleed {
-	width: 100vw;
-	margin-left: calc(50% - 50vw);
-	margin-right: calc(50% - 50vw);
-	position: relative;
-}
+		/* Typography & Color */
+		background-color: var(--color-viz-white);
+		color: var(--color-viz-black);
+		background-image:
+		/* ultra-fine density noise */
+			repeating-linear-gradient(
+				0deg,
+				rgba(0, 0, 0, var(--paper-noise)),
+				rgba(0, 0, 0, var(--paper-noise)) 1px,
+				transparent 2px
+			),
+			/* paper wash */
+				linear-gradient(rgba(0, 0, 0, var(--paper-wash)), rgba(0, 0, 0, var(--paper-wash)));
+		background-blend-mode: multiply;
+	}
 
-.font-display {
-	font-family: var(--font-display);
-}
+	p {
+		font-weight: 400;
+	}
 
-.font-body {
-	font-family: var(--font-body);
-}
+	p {
+		line-height: 1.5;
+	}
 
-.slanted-text {
-	font-variation-settings: 'slnt' var(--letter-slant);
-}
+	h1 {
+		font-size: 2rem;
+	}
 
-/* Common Text Styles */
-.content-text {
-	@apply max-w-[55ch] text-[18px] md:text-[22px];
-	line-height: 1.5;
-}
+	h2 {
+		font-size: 1.5rem;
+	}
 
-.content-heading {
-	@apply text-[28px] leading-[1.5] font-bold;
-}
+	pre {
+		font-size: 16px;
+		font-family: var(--font-mono);
+		background-color: rgba(255, 255, 255, 0.45);
+		border-radius: 3px;
+		box-shadow: 2px 2px 6px rgb(255 255 255 / 25%);
+		padding: 0.5em;
+		overflow-x: auto;
+		color: var(--color-text);
+	}
 
-.content-subheading {
-	@apply text-[28px] leading-[1.05];
-	text-wrap: balance;
-}
+	.text-column {
+		display: flex;
+		max-width: 48rem;
+		flex: 0.6;
+		flex-direction: column;
+		justify-content: center;
+		margin: 0 auto;
+	}
 
-.content-container {
-	@apply mx-auto max-w-3xl px-4;
-}
+	input,
+	button {
+		font-size: inherit;
+		font-family: inherit;
+	}
 
-.content-notice {
-	@apply mb-8 rounded-lg border border-gray-200 bg-gray-100 p-6 md:p-8;
-}
+	button:focus:not(:focus-visible) {
+		outline: none;
+	}
 
-/* Site-wide prose customization for VizChitra */
-.prose-viz {
-	/* Text colors */
-	--tw-prose-body: var(--viz-color-black);
-	--tw-prose-headings: var(--viz-color-black);
-	--tw-prose-links: var(--viz-color-blue-dark);
-	--tw-prose-bold: var(--viz-color-black);
-	--tw-prose-counters: var(--viz-color-grey-dark);
-	--tw-prose-bullets: var(--viz-color-grey-dark);
-	--tw-prose-hr: var(--viz-color-grey-light);
-	--tw-prose-quotes: var(--viz-color-grey-dark);
-	--tw-prose-quote-borders: var(--viz-color-pink);
-	--tw-prose-captions: var(--viz-color-grey-dark);
-	--tw-prose-code: var(--viz-color-pink-dark);
-	--tw-prose-pre-code: var(--viz-color-black);
-	--tw-prose-pre-bg: rgba(255, 255, 255, 0.45);
-	--tw-prose-th-borders: var(--viz-color-grey);
-	--tw-prose-td-borders: var(--viz-color-grey-light);
-}
+	@media (min-width: 720px) {
+		h1 {
+			font-size: 2.4rem;
+		}
+	}
 
-/* Prose link hover state */
-.prose-viz a:hover {
-	color: var(--viz-color-pink-dark);
-	text-decoration-thickness: 2px;
-}
+	.visually-hidden {
+		border: 0;
+		clip: rect(0 0 0 0);
+		height: auto;
+		margin: 0;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		width: 1px;
+		white-space: nowrap;
+	}
 
-/* Tighter list spacing */
-.prose-viz li {
-	margin-top: 0em;
-	margin-bottom: 0em;
-}
+	/* Utility class for full-width breakout sections */
+	.full-bleed {
+		width: 100vw;
+		margin-left: calc(50% - 50vw);
+		margin-right: calc(50% - 50vw);
+		position: relative;
+	}
 
-/* First/last paragraph margin adjustment in containers */
-.prose-viz > :first-child {
-	margin-top: 0;
-}
+	.font-display {
+		font-family: var(--font-display);
+	}
 
-.prose-viz > :last-child {
-	margin-bottom: 0;
-}
+	.font-body {
+		font-family: var(--font-body);
+	}
 
-/* Table styles for prose content */
-.prose-viz table {
-	width: 100%;
-	border-collapse: collapse;
-	margin-top: 1.5em;
-	margin-bottom: 1.5em;
-}
+	/* Common Text Styles */
+	.content-text {
+		@apply max-w-[55ch] text-[18px] md:text-[22px];
+		line-height: 1.5;
+	}
 
-.prose-viz thead th {
-	padding: 0.75rem 1rem;
-	text-align: left;
-	font-weight: 600;
-	border-bottom: 2px solid var(--tw-prose-th-borders, #d1d5db);
-	background-color: rgba(0, 0, 0, 0.02);
-}
+	.content-heading {
+		@apply text-[28px] leading-normal font-bold;
+	}
 
-.prose-viz tbody td {
-	padding: 0.75rem 1rem;
-	border-bottom: 1px solid var(--tw-prose-td-borders, #e5e7eb);
-}
+	.content-subheading {
+		@apply text-[28px] leading-[1.05];
+		text-wrap: balance;
+	}
 
-.prose-viz tbody tr:last-child td {
-	border-bottom: none;
+	.content-container {
+		@apply mx-auto max-w-3xl px-4;
+	}
+
+	.content-notice {
+		@apply mb-8 rounded-lg border border-gray-200 bg-gray-100 p-6 md:p-8;
+	}
 }

@@ -1,6 +1,5 @@
 <script>
 	import { formatSlantedText } from '$lib/utils/slanted';
-	import VizChitraLogoType from '$lib/components/typography/VizChitraLogoType.svelte';
 	import VizChitraLogoSVG from '$lib/assets/images/logos/vizchitra-logo-type.svg?raw';
 
 	export let formData = {};

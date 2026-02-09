@@ -38,7 +38,7 @@
 		...rest
 	}: Props = $props();
 
-	const spaceValue = $derived(`var(--spacing-${space})`);
+	const spaceValue = $derived(`var(--spacing-viz-${space})`);
 </script>
 
 <div

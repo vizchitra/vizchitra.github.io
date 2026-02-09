@@ -116,3 +116,15 @@
 		U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
 		U+A720-A7FF;
 }
+
+/* Fira Code
+   Repo: https://github.com/tonsky/FiraCode
+*/
+
+@font-face {
+	font-family: 'Fira Code';
+	font-style: normal;
+	font-weight: 300 700;
+	font-display: swap;
+	src: url('/fonts/FiraCode-Variable.woff2') format('woff2');
+}

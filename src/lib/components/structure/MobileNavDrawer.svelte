@@ -1,5 +1,6 @@
-<script>
+<script lang="ts">
 	import { slideInDrawer } from '$lib/utils/actions';
+	import { getColorHex, colors } from '$lib/tokens';
 
 	/**
 	 * @typedef {Object} Props
@@ -9,7 +10,7 @@
 	/** @type {Props} */
 	let { navSections = null } = $props();
 
-	const colors = ['#ffd485', '#97e4dd', '#a8bdf0', '#f89f72', '#ee88b3'];
+	const brandColors = colors.filter((c) => c !== 'grey');
 	let width = $state(null);
 	let height = 16;
 
@@ -25,7 +26,7 @@
 <button
 	class="trigger h-full w-full cursor-pointer"
 	class:expanded
-	onclick={(expanded = !expanded)}
+	onclick={() => (expanded = !expanded)}
 	aria-label="Toggle navigation"
 >
 	<span class=""></span>
@@ -35,15 +36,15 @@
 
 {#if expanded}
 	<div
-		class="drawer font-display absolute right-[-16px] flex max-h-[90dvh] flex-col gap-2 overflow-auto rounded-lg border-[1px] border-[#ddd] bg-white p-4 shadow-lg sm:right-[-24px] lg:right-[-32px]"
+		class="drawer font-display absolute -right-4 flex max-h-[90dvh] flex-col gap-2 overflow-auto rounded-lg border border-neutral-300 bg-white p-4 shadow-lg sm:-right-6 lg:-right-8"
 		use:slideInDrawer
 	>
 		{#each navSections as section, index}
 			{@const pointX = (0.3 + Math.random() * 0.7) * 100}
 			{@const pointY = height / 2}
 			{@const pointY2 = height / 2}
-			{@const lineColor1 = colors[Math.floor(Math.random() * colors.length)]}
-			{@const lineColor2 = colors[Math.floor(Math.random() * colors.length)]}
+			{@const lineColor1 = getColorHex(brandColors[Math.floor(Math.random() * brandColors.length)])}
+			{@const lineColor2 = getColorHex(brandColors[Math.floor(Math.random() * brandColors.length)])}
 
 			<!-- `pointX` but only for the starting polygon divider  -->
 			{@const pointStartingX = (0.3 + Math.random() * 0.7) * 100}
@@ -55,28 +56,32 @@
 						<svg
 							{width}
 							{height}
-							viewBox="0 0 {width ?? 0} {height ?? 0}"
+							viewBox={`0 0 ${width ?? 0} ${height ?? 0}`}
 							preserveAspectRatio="xMidYMid meet"
 						>
 							<line
 								x1={0}
 								y1={height / 2}
-								x2="{pointStartingX}%"
+								x2={`${pointStartingX}%`}
 								y2={height / 2}
-								stroke={colors[Math.floor(Math.random() * colors.length)]}
+								stroke={getColorHex(brandColors[Math.floor(Math.random() * brandColors.length)])}
 								stroke-width={8}
 							></line>
 							<line
-								x1="{pointStartingX}%"
+								x1={`${pointStartingX}%`}
 								y1={height / 2}
 								x2={width}
 								y2={height / 2}
-								stroke={colors[Math.floor(Math.random() * colors.length + 2) % colors.length]}
+								stroke={getColorHex(
+									brandColors[
+										(Math.floor(Math.random() * brandColors.length) + 2) % brandColors.length
+									]
+								)}
 								stroke-width={8}
 							></line>
 
-							<circle cx="{pointStartingX}%" cy="50%" r={5 + 4} fill={'white'}></circle>
-							<circle cx="{pointStartingX}%" cy="50%" r={5} fill={'#4c4c4c'}></circle>
+							<circle cx={`${pointStartingX}%`} cy="50%" r={5 + 4} fill={'white'}></circle>
+							<circle cx={`${pointStartingX}%`} cy="50%" r={5} fill={getColorHex('grey')}></circle>
 						</svg>
 					</div>
 				{/if}
@@ -102,7 +107,7 @@
 										>{subsection.name}
 										{#if subsection.isBadge}
 											<span
-												class="ml-1 rounded-full border border-blue-500 bg-gradient-to-r from-blue-400 to-blue-600 px-2.5 py-0.5 text-xs font-semibold text-white shadow-sm transition-transform duration-200 hover:scale-105"
+												class="ml-1 rounded-full border border-blue-500 bg-linear-to-r from-blue-400 to-blue-600 px-2.5 py-0.5 text-xs font-semibold text-white shadow-sm transition-transform duration-200 hover:scale-105"
 											>
 												{subsection.badgeText}
 											</span>
@@ -115,31 +120,30 @@
 						<a
 							href={section.href}
 							class="cursor-pointer rounded-md"
-							target={section?.target || '_self'}
+							target={(section as any)?.target || '_self'}
 						>
-							<span class="font-base text-2xl whitespace-nowrap text-[#4C4C4C]">{section.name}</span
-							>
+							<span class="font-base text-2xl whitespace-nowrap text-[#4C4C4C]">{section.name}</span>
 						</a>
 					{/if}
 				</div>
 
-				<div class="polygon-divider mb-2 w-full" bind:clientWidth={width}>
-					<svg
-						{width}
-						{height}
-						viewBox="0 0 {width ?? 0} {height ?? 0}"
-						preserveAspectRatio="xMidYMid meet"
-					>
+					<div class="polygon-divider mb-2 w-full" bind:clientWidth={width}>
+						<svg
+							{width}
+							{height}
+							viewBox={`0 0 ${width ?? 0} ${height ?? 0}`}
+							preserveAspectRatio="xMidYMid meet"
+						>
 						<line
 							x1={0}
 							y1={height / 2}
-							x2="{pointX}%"
+							x2={`${pointX}%`}
 							y2={height / 2}
 							stroke={lineColor1}
 							stroke-width={8}
 						></line>
 						<line
-							x1="{pointX}%"
+							x1={`${pointX}%`}
 							y1={height / 2}
 							x2={width}
 							y2={height / 2}
@@ -147,8 +151,8 @@
 							stroke-width={8}
 						></line>
 
-						<circle cx="{pointX}%" cy="50%" r={5 + 4} fill={'white'}></circle>
-						<circle cx="{pointX}%" cy="50%" r={5} fill={'#4c4c4c'}></circle>
+						<circle cx={`${pointX}%`} cy="50%" r={5 + 4} fill={'white'}></circle>
+						<circle cx={`${pointX}%`} cy="50%" r={5} fill={'#4c4c4c'}></circle>
 					</svg>
 				</div>
 			</div>

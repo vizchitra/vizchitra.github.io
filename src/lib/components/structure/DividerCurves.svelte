@@ -1,29 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { browser } from '$app/environment';
+	import { getColorHex, colors } from '$lib/tokens';
 
 	let width: number | null = $state(null);
 	const height = 80;
 
-	// CSS variable names for colors (same format as BannerCurve)
-	const colorVarNames = [
-		'--color-viz-yellow',
-		'--color-viz-teal',
-		'--color-viz-blue',
-		'--color-viz-orange',
-		'--color-viz-pink'
-	];
-
-	let resolvedColors: string[] = $state([]);
-
-	function getComputedColors() {
-		if (!browser) return;
-		const rootStyles = getComputedStyle(document.documentElement);
-		resolvedColors = colorVarNames.map((varName) => {
-			const value = rootStyles.getPropertyValue(varName).trim();
-			return value || '#000000';
-		});
-	}
+	// Use brand colors directly like DividerPolygon
+	const brandColors = colors.filter((c) => c !== 'grey');
 
 	// Shuffle array using Fisher-Yates
 	function shuffleArray<T>(array: T[]): T[] {
@@ -37,6 +20,7 @@
 
 	const STROKE_WIDTH = 6;
 	const NUM_DOTS = 5; // 4 dots = 3 segments
+	const DOT_RADIUS = 7; // outer white circle radius (prevents cutoff at edges)
 
 	interface DotData {
 		cx: number;
@@ -63,19 +47,22 @@
 	}
 
 	function generateCurve() {
-		if (!width || resolvedColors.length === 0) return;
+		if (!width) return;
 
-		// Shuffle colors for segments
-		const shuffledColors = shuffleArray(resolvedColors);
+		// Shuffle colors for segments using getColorHex directly
+		const shuffledColors = shuffleArray(brandColors).map((c) => getColorHex(c));
+
+		// Add padding to prevent dot cutoff at edges
+		const paddedWidth = width - 2 * DOT_RADIUS;
 
 		// Random start and end Y positions
 		const startY = Math.random() * (height - STROKE_WIDTH * 2) + STROKE_WIDTH;
 		const endY = Math.random() * (height - STROKE_WIDTH * 2) + STROKE_WIDTH;
 
-		// Create control points for a flowing bezier curve
-		const cp1x = width * 0.25 + (Math.random() - 0.5) * width * 0.2;
+		// Create control points for a flowing bezier curve (with padding)
+		const cp1x = DOT_RADIUS + paddedWidth * 0.25 + (Math.random() - 0.5) * paddedWidth * 0.2;
 		const cp1y = Math.random() * height;
-		const cp2x = width * 0.75 + (Math.random() - 0.5) * width * 0.2;
+		const cp2x = DOT_RADIUS + paddedWidth * 0.75 + (Math.random() - 0.5) * paddedWidth * 0.2;
 		const cp2y = Math.random() * height;
 
 		// Generate dot positions along the curve
@@ -83,11 +70,11 @@
 		const dotPositions: { x: number; y: number }[] = [];
 
 		for (let i = 0; i < NUM_DOTS; i++) {
-			const t = i / (NUM_DOTS - 1); // 0, 0.33, 0.67, 1
-			const x = bezierPoint(t, 0, cp1x, cp2x, width);
+			const t = i / (NUM_DOTS - 1); // 0, 0.25, 0.5, 0.75, 1
+			const x = bezierPoint(t, DOT_RADIUS, cp1x, cp2x, DOT_RADIUS + paddedWidth);
 			const y = bezierPoint(t, startY, cp1y, cp2y, endY);
 			dotPositions.push({ x, y });
-			newDots.push({ cx: x, cy: y, fill: '#4c4c4c' });
+			newDots.push({ cx: x, cy: y, fill: getColorHex('grey') });
 		}
 
 		// Generate segments between dots using quadratic bezier for smooth connection
@@ -115,18 +102,22 @@
 		dots = newDots;
 	}
 
-	onMount(() => {
-		getComputedColors();
-		// Small delay to ensure width is measured and colors resolved
-		setTimeout(() => {
+	// Reactive: regenerate curve when width changes
+	$effect(() => {
+		if (width) {
 			generateCurve();
-		}, 10);
+		}
 	});
 </script>
 
-<div class="divider-container my-12 w-full" bind:clientWidth={width}>
+<div class="divider-container my-12 w-full" style:height="{height}px" bind:clientWidth={width}>
 	{#if width && segments.length > 0}
-		<svg {width} {height} viewBox="0 0 {width} {height}" preserveAspectRatio="xMidYMid meet">
+		<svg
+			{height}
+			viewBox="0 0 {width} {height}"
+			preserveAspectRatio="xMidYMid meet"
+			class="block w-full"
+		>
 			{#each segments as segment}
 				<path
 					d={segment.path}

@@ -1,23 +1,23 @@
+<script module lang="ts">
+	import type { Color } from '$lib/tokens';
+	// Default palette for blob banner
+	export const DEFAULT_BLOB_COLORS: Color[] = ['yellow', 'teal', 'blue', 'orange', 'pink'];
+</script>
+
 <script lang="ts">
-	import { run } from 'svelte/legacy';
 	import { onMount, onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
 	import rough from 'roughjs';
 	import MousePointer from '$lib/assets/images/MousePointer.svelte';
+	import { getColorHex, isValidColor } from '$lib/tokens';
 
 	interface Props {
-		staticBanner?: boolean;
-		singleColor?: 'none' | 'yellow' | 'teal' | 'blue' | 'orange' | 'pink';
-		fadeDirection?: 'none' | 'top' | 'bottom';
+		interactive?: boolean;
+		color?: 'yellow' | 'teal' | 'blue' | 'orange' | 'pink' | 'grey';
 		fillStyle?: 'hachure' | 'cross-hatch' | 'sunburst' | 'dots';
 	}
 
-	let {
-		staticBanner = false,
-		singleColor = 'none',
-		fadeDirection = 'none',
-		fillStyle = 'sunburst'
-	}: Props = $props();
+	let { interactive = false, color, fillStyle = 'sunburst' }: Props = $props();
 
 	const CURSOR_SIZE = 24;
 	const MIN_RADIUS = 20; // Minimum circle radius
@@ -26,25 +26,17 @@
 	const PHYSICS_DAMPING = 0.95; // How quickly movement dampens
 	const REPULSION_FORCE = 0.3; // How strong the repulsion from mouse is
 
-	// CSS variable names for the 5 main colors
-	const colorVarNames = [
-		'--color-viz-yellow',
-		'--color-viz-teal',
-		'--color-viz-blue',
-		'--color-viz-orange',
-		'--color-viz-pink'
-	];
+	// Resolved hex colors used for drawing; supports `singleColor` for SSR.
+	let resolvedColors: string[] = DEFAULT_BLOB_COLORS.map((c) => getColorHex(c));
 
-	let resolvedColors: string[] = $state([]);
-
-	function getComputedColors() {
-		if (!browser) return;
-		const rootStyles = getComputedStyle(document.documentElement);
-		resolvedColors = colorVarNames.map((varName) => {
-			const value = rootStyles.getPropertyValue(varName).trim();
-			return value || '#000000';
-		});
-	}
+	$effect(() => {
+		if (color && isValidColor(color)) {
+			const hex = getColorHex(color as Color);
+			resolvedColors = DEFAULT_BLOB_COLORS.map(() => hex);
+		} else {
+			resolvedColors = DEFAULT_BLOB_COLORS.map((c) => getColorHex(c));
+		}
+	});
 
 	let canvas: HTMLCanvasElement = $state();
 	let rc: any;
@@ -57,6 +49,7 @@
 	let cursorY = $state(-1000);
 	let prevCursorX = $state(-1000);
 	let prevCursorY = $state(-1000);
+	let showCursor = $state(false);
 
 	let animationFrameId: number;
 
@@ -80,7 +73,7 @@
 		if (!width || !height) return;
 
 		circles = [];
-		// More circles for richer static display
+		// More circles for richer interactive display
 		const numCircles = Math.floor((width * height) / 8000);
 
 		for (let i = 0; i < numCircles; i++) {
@@ -109,32 +102,22 @@
 		}
 	}
 
-	// Helper to get color based on mode
-	const getColor = (index: number) => {
-		if (singleColor !== 'none') {
-			const colorMap = {
-				yellow: 0,
-				teal: 1,
-				blue: 2,
-				orange: 3,
-				pink: 4
-			};
-			return resolvedColors[colorMap[singleColor]] || '#000000';
-		}
-		return resolvedColors[index % resolvedColors.length] || '#000000';
-	};
+	// Helper to get resolved hex color for an index
+	const getColor = (index: number) =>
+		resolvedColors[index % resolvedColors.length] ?? getColorHex('grey');
 
 	function handleMouseMove(event: MouseEvent) {
-		if (staticBanner) return;
+		if (!interactive) return;
 		const { layerX, layerY } = event;
 		prevCursorX = cursorX;
 		prevCursorY = cursorY;
 		cursorX = layerX;
 		cursorY = layerY;
+		showCursor = true;
 	}
 
 	function handleTouchMove(event: TouchEvent) {
-		if (staticBanner) return;
+		if (!interactive) return;
 		const touch = event.touches[0];
 		if (!touch) return;
 		const rect = canvas.getBoundingClientRect();
@@ -142,10 +125,11 @@
 		prevCursorY = cursorY;
 		cursorX = touch.clientX - rect.left;
 		cursorY = touch.clientY - rect.top;
+		showCursor = true;
 	}
 
 	function updatePhysics() {
-		if (staticBanner) return;
+		if (!interactive) return;
 
 		// Process ALL circles for physics but with simpler math
 		for (let i = 0; i < circles.length; i++) {
@@ -193,26 +177,17 @@
 		updatePhysics();
 
 		circles.forEach((circle) => {
-			// Skip circles far from cursor for energy calculation
+			// Calculate distance from cursor
 			const dx = circle.x - cursorX;
 			const dy = circle.y - cursorY;
-			const distSquared = dx * dx + dy * dy;
-			const hoverRadiusSquared = HOVER_RADIUS * HOVER_RADIUS;
-			const energy =
-				staticBanner || distSquared > hoverRadiusSquared
-					? 0
-					: Math.max(0, 1 - Math.sqrt(distSquared) / HOVER_RADIUS);
+			const dist = Math.hypot(dx, dy);
 
-			// --- Fade Logic (Global Opacity) ---
-			let globalAlpha = 1;
-			if (fadeDirection === 'bottom') {
-				globalAlpha = 1 - circle.y / height;
-			} else if (fadeDirection === 'top') {
-				globalAlpha = circle.y / height;
-			}
-			globalAlpha = Math.max(0.1, globalAlpha);
+			// Static mode: calculate energy based on mouse proximity
+			// Interactive mode: energy is always 0 (physics handles movement)
+			const energy = !interactive ? Math.max(0, 1 - dist / HOVER_RADIUS) : 0;
 
-			// --- Drawing Logic ---
+			// Fixed opacity for all circles
+			const globalAlpha = 0.8;
 			const options: any = {
 				seed: circle.seed,
 				strokeWidth: 1,
@@ -249,10 +224,25 @@
 
 		// Removed circle spawning - just physics now
 
-		if (!staticBanner) {
+		if (interactive) {
 			animationFrameId = requestAnimationFrame(draw);
 		}
 	}
+
+	// Start/stop animation loop when `interactive` changes
+	$effect(() => {
+		if (interactive) {
+			if (!animationFrameId) {
+				// kick off the draw loop
+				draw();
+			}
+		} else {
+			if (animationFrameId) {
+				cancelAnimationFrame(animationFrameId);
+				animationFrameId = 0;
+			}
+		}
+	});
 
 	onMount(() => {
 		if (!browser) return;
@@ -260,25 +250,28 @@
 		ctx = canvas.getContext('2d')!;
 		rc = rough.canvas(canvas);
 
-		getComputedColors();
 		initCircles();
 
+		// Initial draw (static mode) or start loop via $effect when interactive
 		draw();
 	});
 
 	onDestroy(() => {
 		if (animationFrameId) {
 			cancelAnimationFrame(animationFrameId);
+			animationFrameId = 0;
 		}
 	});
 
 	// Reactive block to handle resize
-	run(() => {
+	$effect(() => {
 		if (width && height && canvas) {
 			canvas.width = width;
 			canvas.height = height;
 			initCircles();
-			if (staticBanner && rc) {
+			if (rc) {
+				// Call draw for both static and interactive modes
+				// Interactive mode will start animation loop, static draws once
 				setTimeout(draw, 0);
 			}
 		}
@@ -288,23 +281,37 @@
 <div
 	bind:clientWidth={width}
 	bind:clientHeight={height}
-	onmousemove={staticBanner ? undefined : handleMouseMove}
-	ontouchmove={staticBanner ? undefined : handleTouchMove}
-	ontouchstart={staticBanner ? undefined : handleTouchMove}
+	onmousemove={!interactive ? undefined : handleMouseMove}
+	ontouchmove={!interactive ? undefined : handleTouchMove}
+	ontouchstart={!interactive ? undefined : handleTouchMove}
+	onmouseenter={() => (showCursor = true)}
+	onmouseleave={() => {
+		showCursor = false;
+		cursorX = -1000;
+		cursorY = -1000;
+	}}
+	ontouchend={() => {
+		showCursor = false;
+		cursorX = -1000;
+		cursorY = -1000;
+	}}
+	ontouchcancel={() => {
+		showCursor = false;
+		cursorX = -1000;
+		cursorY = -1000;
+	}}
 	role="banner"
-	class="relative h-full overflow-hidden {staticBanner ? '' : 'cursor-none'}"
+	class="relative h-full overflow-hidden {!interactive ? '' : 'cursor-none'}"
 >
 	<canvas bind:this={canvas} class="absolute inset-0 h-full w-full"></canvas>
 
-	{#if !staticBanner}
-		<div
-			class="custom-cursor"
-			style="transform: translate3d({cursorX - CURSOR_SIZE / 2}px, {cursorY -
-				CURSOR_SIZE / 2}px, 0)"
-		>
-			<MousePointer size={CURSOR_SIZE} />
-		</div>
-	{/if}
+	<div
+		class="custom-cursor"
+		style="display: {showCursor ? 'block' : 'none'}; transform: translate3d({cursorX -
+			CURSOR_SIZE / 2}px, {cursorY - CURSOR_SIZE / 2}px, 0)"
+	>
+		<MousePointer size={CURSOR_SIZE} />
+	</div>
 </div>
 
 <style>

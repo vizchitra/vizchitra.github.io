@@ -24,7 +24,7 @@
 	 *   <Button>Tertiary</Button>
 	 * </Cluster>
 	 **/
-  
+
 	interface Props extends HTMLAttributes<HTMLDivElement> {
 		space?: Space;
 		align?: Align;
@@ -68,7 +68,7 @@
 <div
 	{...rest}
 	class={['cluster', className]}
-	style:--cluster-space="var(--spacing-{space})"
+	style:--cluster-space="var(--spacing-viz-{space})"
 	style:--cluster-align={alignValue}
 	style:--cluster-justify={justifyValue}
 >
@@ -81,6 +81,6 @@
 		flex-wrap: wrap;
 		align-items: var(--cluster-align, center);
 		justify-content: var(--cluster-justify, center);
-		gap: var(--cluster-space, var(--spacing-md));
+		gap: var(--cluster-space, var(--spacing-viz-md));
 	}
 </style>

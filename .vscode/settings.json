@@ -2,7 +2,9 @@
 	"workbench.editor.labelFormat": "short",
 	"workbench.tree.indent": 15,
 	"explorer.compactFolders": false,
+	"oxc.fmt.configPath": ".oxfmtrc.json",
 	"editor.formatOnSave": true,
+	// "editor.defaultFormatter": "oxc.oxc-vscode",
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"[svelte]": {
 		"editor.defaultFormatter": "svelte.svelte-vscode"

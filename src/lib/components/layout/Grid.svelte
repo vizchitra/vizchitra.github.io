@@ -17,41 +17,32 @@
 		children
 	}: Props = $props();
 
-	let style = $derived.by(() => {
-		const gapSize = `${gap * 0.25}rem`;
-		let cols: string;
+	const gapSize = $derived(`${gap * 0.25}rem`);
 
+	const cols = $derived.by(() => {
 		if (columns) {
-			cols = `repeat(${columns}, 1fr)`;
+			return `repeat(${columns}, 1fr)`;
 		} else if (maxColumns) {
-			cols = `repeat(auto-fit, minmax(min(${minWidth}, 100%), 1fr))`;
+			const effectiveMinWidth = `max(${minWidth}, calc((100% - ${maxColumns - 1} * ${gapSize}) / ${maxColumns}))`;
+			return `repeat(auto-fit, minmax(${effectiveMinWidth}, 1fr))`;
 		} else {
-			cols = `repeat(auto-fit, minmax(min(${minWidth}, 100%), 1fr))`;
+			return `repeat(auto-fit, minmax(min(${minWidth}, 100%), 1fr))`;
 		}
-
-		let maxColsStyle = maxColumns ? `--max-cols: ${maxColumns};` : '';
-
-		return `display: grid; gap: ${gapSize}; grid-template-columns: ${cols}; ${maxColsStyle}`;
 	});
 </script>
 
-{#if maxColumns}
-	<div {style} class="max-cols-grid {className}">
-		{@render children?.()}
-	</div>
-{:else}
-	<div {style} class={className}>
-		{@render children?.()}
-	</div>
-{/if}
+<div
+	class={['grid-layout', className]}
+	style:--grid-gap={gapSize}
+	style:--grid-cols={cols}
+>
+	{@render children?.()}
+</div>
 
 <style>
-	.max-cols-grid {
-		grid-template-columns: repeat(
-			auto-fit,
-			minmax(min(var(--min-width, 280px), 100%), 1fr)
-		) !important;
-		max-width: calc(var(--max-cols) * 25rem + (var(--max-cols) - 1) * 1.5rem);
-		margin-inline: auto;
+	.grid-layout {
+		display: grid;
+		gap: var(--grid-gap);
+		grid-template-columns: var(--grid-cols);
 	}
 </style>

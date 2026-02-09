@@ -1,47 +1,56 @@
-<!--
-  FullBleed.svelte
-
-  Simple wrapper that applies the project's full-bleed layout pattern.
-
-  Props:
-  - `className`   : extra classes for the outer element
-  - `innerClass`  : classes applied to the centered inner container (defaults to `mx-auto`)
-  - `outerClass`  : outer wrapper class (defaults to `full-bleed`)
-
-	Usage:
-	&lt;FullBleed innerClass="mx-auto mb-20 md:px-12"&gt;
-		(content)
-	&lt;/FullBleed&gt;
-
--->
 <script lang="ts">
-	/**
-	 * FullBleed - simple full-bleed wrapper used across pages.
-	 *
-	 * Props:
-	 * - className: extra classes for the outer element
-	 * - innerClass: classes applied to the centered inner container (defaults to `mx-auto`)
-	 * - outerClass: outer wrapper class (defaults to `full-bleed`)
-	 * - contained: when true, renders an inner container with `containerClass` + `innerClass`
-	 * - containerClass: class used for the contained inner wrapper
-	 */
-	export let className: string = '';
-	export let innerClass: string = 'mx-auto';
-	export let outerClass: string = 'full-bleed';
-	export let contained: boolean = false;
-	export let containerClass: string = 'content-container';
+	import type { Snippet } from 'svelte';
+	import type { HTMLAttributes, ClassValue } from 'svelte/elements';
 
-	$: outer = [outerClass, className].filter(Boolean).join(' ');
+	type Space = '0' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl';
+
+	/**
+	 * FullBleed - Full-viewport-width breakout wrapper
+	 *
+	 * Breaks content out of its parent container to span the full viewport width.
+	 * Use inside Container to create edge-to-edge sections within a constrained layout.
+	 *
+	 * @prop paddingX - Horizontal padding using spacing tokens (default: '0')
+	 * @prop paddingY - Vertical padding using spacing tokens (default: '0')
+	 *
+	 * @example
+	 * <FullBleed paddingX="xl">
+	 *   <Grid>...</Grid>
+	 * </FullBleed>
+	 */
+	interface Props extends HTMLAttributes<HTMLDivElement> {
+		paddingX?: Space;
+		paddingY?: Space;
+		class?: ClassValue;
+		children?: Snippet;
+	}
+
+	let { paddingX = '0', paddingY = '0', class: className = '', children, ...rest }: Props =
+		$props();
+
+	const paddingXValue = $derived(paddingX === '0' ? '0' : `var(--spacing-viz-${paddingX})`);
+	const paddingYValue = $derived(paddingY === '0' ? '0' : `var(--spacing-viz-${paddingY})`);
 </script>
 
-<div class={outer}>
-	{#if contained}
-		<div class={[containerClass, innerClass].filter(Boolean).join(' ')}>
-			<slot />
-		</div>
-	{:else}
-		<div class={innerClass}>
-			<slot />
-		</div>
-	{/if}
+<div
+	{...rest}
+	class={['fullbleed-wrapper', className]}
+	style:--fullbleed-padding-x={paddingXValue}
+	style:--fullbleed-padding-y={paddingYValue}
+>
+	{@render children?.()}
 </div>
+
+<style>
+	.fullbleed-wrapper {
+		/* Breakout to full viewport width from container */
+		width: 100vw;
+		margin-left: calc(50% - 50vw);
+		margin-right: calc(50% - 50vw);
+		padding-left: var(--fullbleed-padding-x, 0);
+		padding-right: var(--fullbleed-padding-x, 0);
+		padding-top: var(--fullbleed-padding-y, 0);
+		padding-bottom: var(--fullbleed-padding-y, 0);
+		box-sizing: border-box;
+	}
+</style>

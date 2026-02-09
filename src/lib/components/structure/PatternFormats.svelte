@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
+	import { getColorHex, colors } from '$lib/tokens';
 
 	type Format = 'talks' | 'workshops' | 'dialogues' | 'exhibition';
 
@@ -65,7 +66,7 @@
 		const colorNames = formatColors[format];
 		resolvedColors = colorNames.map((varName) => {
 			const value = rootStyles.getPropertyValue(varName).trim();
-			return value || '#cccccc';
+			return value || getColorHex('grey');
 		});
 	}
 
@@ -89,9 +90,12 @@
 			const baseY = height - 10 - curveIndex * 15 - diagonalOffset;
 
 			// Wave functions with randomized phase and frequency
-			const wave1 = Math.sin(xProgress * Math.PI * freq + phase + curveIndex * 0.8) * amplitude * 0.7;
-			const wave2 = Math.sin(xProgress * Math.PI * (freq + 1) + phase + curveIndex * 0.5) * amplitude * 0.4;
-			const wave3 = Math.sin(xProgress * Math.PI * (freq + 2) + phase + curveIndex * 0.3) * amplitude * 0.2;
+			const wave1 =
+				Math.sin(xProgress * Math.PI * freq + phase + curveIndex * 0.8) * amplitude * 0.7;
+			const wave2 =
+				Math.sin(xProgress * Math.PI * (freq + 1) + phase + curveIndex * 0.5) * amplitude * 0.4;
+			const wave3 =
+				Math.sin(xProgress * Math.PI * (freq + 2) + phase + curveIndex * 0.3) * amplitude * 0.2;
 
 			const y = baseY - wave1 - wave2 - wave3;
 			points.push({ x, y });
@@ -115,10 +119,10 @@
 	let paths = $derived(
 		amplitudeMultipliers
 			? Array.from({ length: NUM_CURVES }, (_, i) => ({
-				d: generateCurvePath(i),
-				color: resolvedColors[i] || '#cccccc',
-				opacity: 1 - i * 0.1
-			}))
+					d: generateCurvePath(i),
+					color: resolvedColors[i] || getColorHex('grey'),
+					opacity: 1 - i * 0.1
+				}))
 			: []
 	);
 

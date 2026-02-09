@@ -1,6 +1,8 @@
 <script>
 	import { page } from '$app/state';
+	import Container from '$lib/components/layout/Container.svelte';
 	import Header from '$lib/components/structure/Header.svelte';
+	import Prose from '$lib/components/typography/Prose.svelte';
 	let { data, children } = $props();
 
 	// Color mappings for Tailwind classes
@@ -46,48 +48,59 @@
 	const displayTitle = $derived(guideName ? `${capitalize(guideName)} @ VizChitra` : data.guideId);
 </script>
 
-<Header banner="blob" title={displayTitle} singleColor={data.guideColor}></Header>
+<svelte:head>
+	<title>{data.guideTitle} Guide | VizChitra</title>
+	<meta
+		property="og:image"
+		content="https://vizchitra.com/images/preview/preview-guides-{data.guideSlug}.jpg"
+	/>
+	<meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
 
-<div class="guide-layout">
-	<main class="guide-content">
-		{@render children()}
-	</main>
+<Header banner="blob" color={data.guideColor}></Header>
 
-	<aside class="guide-sidebar">
-		<div class="sidebar-header">
-			<a href="/guides" class="back-link">← All Guides</a>
-			<h1 class="guide-title">{data.guideTitle}</h1>
+<Container width="wide" class="w-full">
+	<div class="guide-layout">
+		<div class="guide-content">
+			{@render children()}
 		</div>
 
-		<nav class="sidebar-nav">
-			{#each data.sections as section, index}
-				{@const sectionSlug = section.sectionSlug}
-				{@const active = page.params.sectionSlug === sectionSlug}
-				{@const isDraft = section.draft === true}
+		<aside class="guide-sidebar">
+			<!-- <div class="sidebar-header">
+				<a href="/guides#list" class="back-link">← All Guides</a>
+				<h1 class="guide-title">{data.guideTitle}</h1>
+			</div> -->
 
-				{#if isDraft}
-					<div class="nav-item draft">
-						<span class="nav-number {colors.number} opacity-50">
-							{index + 1}
-						</span>
-						<span class="nav-title opacity-50">
-							{section.section.charAt(0).toUpperCase() + section.section.slice(1)}
-						</span>
-					</div>
-				{:else}
-					<a href="/guides/{data.guideSlug}/{sectionSlug}" class="nav-item" class:active>
-						<span class="nav-number {active ? colors.activeNumber : colors.number}">
-							{index + 1}
-						</span>
-						<span class="nav-title {active ? colors.underline : ''}">
-							{section.section.charAt(0).toUpperCase() + section.section.slice(1)}
-						</span>
-					</a>
-				{/if}
-			{/each}
-		</nav>
-	</aside>
-</div>
+			<nav class="sidebar-nav">
+				{#each data.sections as section, index}
+					{@const sectionSlug = section.sectionSlug}
+					{@const active = page.params.sectionSlug === sectionSlug}
+					{@const isDraft = section.draft === true}
+
+					{#if isDraft}
+						<div class="nav-item draft">
+							<span class="nav-number {colors.number} opacity-50">
+								{index + 1}
+							</span>
+							<span class="nav-title opacity-50">
+								{section.section.charAt(0).toUpperCase() + section.section.slice(1)}
+							</span>
+						</div>
+					{:else}
+						<a href="/guides/{data.guideSlug}/{sectionSlug}" class="nav-item" class:active>
+							<span class="nav-number {active ? colors.activeNumber : colors.number}">
+								{index + 1}
+							</span>
+							<span class="nav-title {active ? colors.underline : ''}">
+								{section.section.charAt(0).toUpperCase() + section.section.slice(1)}
+							</span>
+						</a>
+					{/if}
+				{/each}
+			</nav>
+		</aside>
+	</div>
+</Container>
 
 <style>
 	.guide-layout {
@@ -99,31 +112,31 @@
 	/* Mobile: sidebar at top */
 	.guide-sidebar {
 		width: 100%;
-		background: white;
-		border-bottom: 1px solid var(--color-gray-200, #e5e7eb);
+		/* background: white; */
+		/* border-bottom: 1px solid var(--color-grey-200, #e5e7eb); */
 		order: -1; /* Put sidebar first on mobile */
 	}
 
 	.sidebar-header {
 		padding: 1rem 1.5rem;
-		border-bottom: 1px solid var(--color-gray-200, #e5e7eb);
+		/* border-bottom: 1px solid var(--color-grey-200, #e5e7eb); */
 	}
 
 	.back-link {
 		font-size: 0.875rem;
-		color: var(--color-gray-500, #6b7280);
+		color: var(--color-grey-500, #6b7280);
 		text-decoration: none;
 	}
 
 	.back-link:hover {
-		color: var(--color-gray-700, #374151);
+		color: var(--color-grey-700, #374151);
 	}
 
 	.guide-title {
 		margin-top: 0.25rem;
 		font-size: 1.125rem;
 		font-weight: 700;
-		color: var(--color-gray-900, #111827);
+		color: var(--color-grey-900, #111827);
 	}
 
 	/* Mobile: horizontal scrollable nav */
@@ -147,7 +160,7 @@
 	}
 
 	.nav-item:hover:not(.draft) {
-		background-color: var(--color-gray-50, #f9fafb);
+		background-color: var(--color-grey-50, #f9fafb);
 	}
 
 	.nav-item.draft {
@@ -173,11 +186,11 @@
 	.nav-title {
 		font-size: 1rem;
 		font-weight: 500;
-		color: var(--color-gray-600, #4b5563);
+		color: var(--color-grey-600, #4b5563);
 	}
 
 	.nav-item.active .nav-title {
-		color: var(--color-gray-900, #111827);
+		color: var(--color-grey-900, #111827);
 		text-decoration: underline;
 		text-decoration-thickness: 2px;
 		text-underline-offset: 4px;
@@ -185,6 +198,7 @@
 
 	.guide-content {
 		flex: 1;
+		min-width: 0;
 		/* background: var(--color-gray-50, #f9fafb); */
 	}
 
@@ -202,6 +216,7 @@
 			height: calc(100vh - 4rem); /* Account for navbar height (64px = 4rem) */
 			position: sticky;
 			top: 4rem; /* Start below the navbar (64px = 4rem) */
+			padding-top: 2rem;
 			overflow-y: auto;
 		}
 

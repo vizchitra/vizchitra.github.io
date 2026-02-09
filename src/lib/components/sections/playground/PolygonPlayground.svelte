@@ -3,13 +3,7 @@
 	import PolygonGenerator from '$lib/components/sections/playground/PolygonGenerator.svelte';
 	import SelectInput from '$lib/components/sections/playground/SelectInput.svelte';
 	import ImageUpload from '$lib/components/sections/playground/ImageUpload.svelte';
-
-	// modern-screenshot doesn't ship types — import then assert a typed signature
-	import { domToPng as _domToPng } from 'modern-screenshot';
-	const domToPng = _domToPng as unknown as (
-		node: Element | null,
-		opts?: { backgroundColor?: string; scale?: number }
-	) => Promise<string>;
+	import { captureNodeAsPNG } from '$lib/utils/screenshot';
 
 	type Form = {
 		name: string | null;
@@ -31,13 +25,11 @@
 	async function downloadPNG(): Promise<void> {
 		const filename = `vizchitra-logo-${form.name ? form.name.toLowerCase().replaceAll(' ', '-') : '2025'}.png`;
 
-		const node = document.querySelector('#custom-card');
+		const node = document.getElementById('custom-card') as HTMLElement | null;
+		if (!node) return;
 		try {
-			const dataUrl = await domToPng(node, { backgroundColor: '#ffffff', scale: 1.5 });
-			const link = document.createElement('a');
-			link.download = filename;
-			link.href = dataUrl;
-			link.click();
+			const result = await captureNodeAsPNG(node, { backgroundColor: '#ffffff', scale: 1.5 });
+			result.download(filename);
 		} catch (err) {
 			console.error('Failed to generate PNG', err);
 		}
@@ -121,7 +113,7 @@
 
 			<button
 				class="bg-viz-orange cursor-pointer rounded py-3 font-semibold text-white hover:opacity-90 md:ml-10"
-				on:click={downloadPNG}
+				onclick={downloadPNG}
 				>Download logo
 			</button>
 		</div>

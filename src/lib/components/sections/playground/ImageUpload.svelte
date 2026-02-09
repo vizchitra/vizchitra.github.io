@@ -16,7 +16,7 @@
 <div class="upload-row mt-4">
 	<label
 		for="image-upload"
-		class="bg-viz-orange max-w-[300px]cursor-pointer block w-fit rounded px-4 py-3 font-semibold text-white hover:opacity-90"
+		class="bg-viz-orange block w-fit max-w-[300px] cursor-pointer rounded px-4 py-3 font-semibold text-white hover:opacity-90"
 	>
 		Upload an image <span class="font-normal">(optional)</span></label
 	>

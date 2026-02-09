@@ -46,7 +46,7 @@
 	};
 
 	const alignValue = $derived(alignMap[align] ?? align);
-	const spaceValue = $derived(`var(--spacing-${space})`);
+	const spaceValue = $derived(`var(--spacing-viz-${space})`);
 </script>
 
 <div
@@ -63,6 +63,6 @@
 		display: flex;
 		flex-direction: column;
 		align-items: var(--stack-align, center);
-		gap: var(--stack-space, var(--spacing-md));
+		gap: var(--stack-space, var(--spacing-viz-md));
 	}
 </style>

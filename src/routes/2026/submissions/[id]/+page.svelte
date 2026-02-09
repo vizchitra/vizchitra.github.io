@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { Card, Button } from '$lib/components/interface';
-	import { DividerCurves } from '$lib/components/structure';
-	import { Heading } from '$lib/components/typography';
+	import { DividerCurves, Header } from '$lib/components/structure';
+	import { Heading, Prose } from '$lib/components/typography';
+
+	import { Container } from '$lib/components/layout';
 	import { ProposalBadge, ProposalStatusBadge, UpvoteButton } from '$lib/components/proposals';
 	import type { PageData } from './$types';
 	import type { CFPProposal, CFEProposal } from '$lib/types/proposals';
@@ -53,7 +55,10 @@
 
 	<!-- Open Graph -->
 	<meta property="og:title" content={title} />
-	<meta property="og:description" content={description.split('\n')[0] || description.substring(0, 150)} />
+	<meta
+		property="og:description"
+		content={description.split('\n')[0] || description.substring(0, 150)}
+	/>
 	<meta property="og:type" content="article" />
 	<meta
 		property="og:image"
@@ -64,7 +69,10 @@
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content={title} />
-	<meta name="twitter:description" content={description.split('\n')[0] || description.substring(0, 150)} />
+	<meta
+		name="twitter:description"
+		content={description.split('\n')[0] || description.substring(0, 150)}
+	/>
 	<meta
 		name="twitter:image"
 		content="https://vizchitra.com/2026/submissions/{proposal.slug}/og-image.png"
@@ -73,15 +81,22 @@
 
 <!-- Clean header with title and speaker -->
 
-<div class="content-container max-w-4xl">
-	<header class="max-w-4xl pt-12 pb-6 md:pt-16">
+<Header banner="curve" />
+
+<Container>
+	<!-- <div class="content-container mt-12 max-w-4xl"> -->
+	<header class="max-w-4xl pt-18 pb-6 md:pt-14">
 		<div class="space-y-4">
+			<Prose>
+				<h6><a href="/2026/submissions">Submission </a> | VizChitra 2026</h6>
+				<h1>{title}</h1>
+			</Prose>
 			<!-- Title -->
-			<h1
+			<!-- <h1
 				class="font-display text-viz-grey text-left text-3xl leading-[1.15] font-bold tracking-tight md:text-4xl md:leading-[1.12] lg:text-5xl"
 			>
 				{title}
-			</h1>
+			</h1> -->
 
 			<!-- Speaker info -->
 			<div class="space-y-1.5 md:space-y-2">
@@ -145,8 +160,10 @@
 
 		<section class="mb-8 md:mb-10">
 			<Heading tag="h2" align="left">Description</Heading>
-			<div class="prose text-viz-grey/90 md:prose-lg max-w-none markdown-content">
-				{@html descriptionHTML}
+			<div class="prose text-viz-grey/90 md:prose-lg markdown-content max-w-none">
+				<Prose>
+					{@html descriptionHTML}
+				</Prose>
 			</div>
 		</section>
 
@@ -197,7 +214,7 @@
 								>
 									Materials Required
 								</p>
-								<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+								<div class="text-viz-grey/90 markdown-content text-sm md:text-base">
 									{@html parseMarkdown((proposal as CFPProposal).materials)}
 								</div>
 							</div>
@@ -209,7 +226,7 @@
 								>
 									Room Setup
 								</p>
-								<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+								<div class="text-viz-grey/90 markdown-content text-sm md:text-base">
 									{@html parseMarkdown((proposal as CFPProposal).roomSetup)}
 								</div>
 							</div>
@@ -232,7 +249,7 @@
 							>
 								Data Source
 							</p>
-							<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+							<div class="text-viz-grey/90 markdown-content text-sm md:text-base">
 								{@html parseMarkdown((proposal as CFEProposal).dataSource)}
 							</div>
 						</div>
@@ -244,7 +261,7 @@
 							>
 								Visualization Method
 							</p>
-							<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+							<div class="text-viz-grey/90 markdown-content text-sm md:text-base">
 								{@html parseMarkdown((proposal as CFEProposal).visualizationMethod)}
 							</div>
 						</div>
@@ -255,7 +272,7 @@
 			{#if (proposal as CFEProposal).technicalRequirements}
 				<section class="mb-8 md:mb-10">
 					<Heading tag="h3" align="left">Technical Requirements</Heading>
-					<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+					<div class="text-viz-grey/90 markdown-content text-sm md:text-base">
 						{@html parseMarkdown((proposal as CFEProposal).technicalRequirements)}
 					</div>
 				</section>
@@ -264,7 +281,7 @@
 			{#if (proposal as CFEProposal).timeline}
 				<section class="mb-8 md:mb-10">
 					<Heading tag="h3" align="left">Project Status & Timeline</Heading>
-					<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+					<div class="text-viz-grey/90 markdown-content text-sm md:text-base">
 						{@html parseMarkdown((proposal as CFEProposal).timeline)}
 					</div>
 				</section>
@@ -307,7 +324,7 @@
 							{(proposal as CFEProposal).teamName}
 						</p>
 						{#if (proposal as CFEProposal).teamBio}
-							<div class="text-viz-grey/90 text-sm markdown-content md:text-base">
+							<div class="text-viz-grey/90 markdown-content text-sm md:text-base">
 								{@html parseMarkdown((proposal as CFEProposal).teamBio)}
 							</div>
 						{/if}
@@ -339,5 +356,7 @@
 		</div>
 	</div>
 	<!-- Close relative div -->
-</div>
+	<!-- </div> -->
+</Container>
+
 <!-- Close content-container div -->

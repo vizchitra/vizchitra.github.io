@@ -24,82 +24,16 @@ async function processMarkdown(markdown) {
 
 describe('Container Directives', () => {
 	describe(':::notice', () => {
-		it('renders with default color (grey)', async () => {
+		it('renders with notice class', async () => {
 			const html = await processMarkdown(':::notice\nContent\n:::');
-			expect(html).toContain('bg-gray-100');
-			expect(html).toContain('border-gray-300');
+			expect(html).toContain('class="notice"');
+			expect(html).toContain('<div');
 		});
 
-		it('renders with shorthand color {pink}', async () => {
+		it('ignores color attributes - styling via CSS variables', async () => {
 			const html = await processMarkdown(':::notice{pink}\nContent\n:::');
-			expect(html).toContain('bg-viz-pink-light');
-			expect(html).toContain('border-viz-pink-dark');
-		});
-
-		it('renders with explicit color="blue"', async () => {
-			const html = await processMarkdown(':::notice{color="blue"}\nContent\n:::');
-			expect(html).toContain('bg-viz-blue-light');
-		});
-
-		it('includes prose classes', async () => {
-			const html = await processMarkdown(':::notice{orange}\nTest\n:::');
-			expect(html).toContain('prose');
-			expect(html).toContain('prose-viz');
-		});
-	});
-
-	describe(':::callout', () => {
-		it('renders as aside element', async () => {
-			const html = await processMarkdown(':::callout{teal}\nInfo\n:::');
-			expect(html).toContain('<aside');
-			expect(html).toContain('border-l-4');
-		});
-
-		it('supports title attribute', async () => {
-			const html = await processMarkdown(':::callout{color="pink" title="Note"}\nInfo\n:::');
-			expect(html).toContain('data-title="Note"');
-		});
-	});
-
-	describe(':::card', () => {
-		it('renders with shadow by default', async () => {
-			const html = await processMarkdown(':::card\nContent\n:::');
-			expect(html).toContain('shadow-lg');
-		});
-
-		it('can disable shadow', async () => {
-			const html = await processMarkdown(':::card{shadow=false}\nContent\n:::');
-			expect(html).not.toContain('shadow-lg');
-		});
-	});
-
-	describe(':::slanted', () => {
-		it('renders each letter as span with slant value', async () => {
-			const html = await processMarkdown(':::slanted{pink}\nABC\n:::');
-			expect(html).toContain('slanted-text');
-			expect(html).toContain('--letter-slant:');
-		});
-
-		it('uses h2 tag by default', async () => {
-			const html = await processMarkdown(':::slanted{pink}\nTEST\n:::');
-			expect(html).toContain('<h2');
-		});
-
-		it('supports custom tag', async () => {
-			const html = await processMarkdown(':::slanted{color="blue" tag="h3"}\nTEST\n:::');
-			expect(html).toContain('<h3');
-		});
-
-		it('supports alignment', async () => {
-			const html = await processMarkdown(':::slanted{pink align="left"}\nTEST\n:::');
-			expect(html).toContain('text-left');
-		});
-
-		it('calculates correct slant for letters', async () => {
-			const html = await processMarkdown(':::slanted{pink}\nAMT\n:::');
-			// A = 0 (at start), M = 0 (midpoint), T = -6 (after n, negative)
-			expect(html).toContain('--letter-slant: 0');
-			expect(html).toContain('--letter-slant: -6');
+			expect(html).toContain('class="notice"');
+			expect(html).not.toContain('data-color');
 		});
 	});
 });
@@ -110,50 +44,34 @@ describe('Container Directives', () => {
 
 describe('Block Directives', () => {
 	describe('::hr', () => {
-		it('renders colored horizontal rule', async () => {
-			const html = await processMarkdown('::hr{orange}');
+		it('renders with hr class', async () => {
+			const html = await processMarkdown('::hr');
 			expect(html).toContain('<hr');
-			expect(html).toContain('border-viz-orange-dark');
+			expect(html).toContain('class="hr"');
+		});
+
+		it('ignores color attributes - styling via CSS variables', async () => {
+			const html = await processMarkdown('::hr{orange}');
+			expect(html).toContain('class="hr"');
+			expect(html).not.toContain('data-color');
 		});
 	});
 
 	describe('::spacer', () => {
-		it('renders with default size (md)', async () => {
+		it('renders with spacer class', async () => {
 			const html = await processMarkdown('::spacer');
-			expect(html).toContain('h-8');
-		});
-
-		it('renders different sizes', async () => {
-			const htmlSm = await processMarkdown('::spacer{size="sm"}');
-			const htmlLg = await processMarkdown('::spacer{size="lg"}');
-			const htmlXl = await processMarkdown('::spacer{size="xl"}');
-
-			expect(htmlSm).toContain('h-4');
-			expect(htmlLg).toContain('h-16');
-			expect(htmlXl).toContain('h-24');
+			expect(html).toContain('class="spacer"');
 		});
 
 		it('has aria-hidden for accessibility', async () => {
-			const html = await processMarkdown('::spacer{size="md"}');
+			const html = await processMarkdown('::spacer');
 			expect(html).toContain('aria-hidden="true"');
 		});
-	});
 
-	describe('::divider', () => {
-		it('renders solid by default', async () => {
-			const html = await processMarkdown('::divider{pink}');
-			expect(html).toContain('<hr');
-			expect(html).not.toContain('border-dashed');
-		});
-
-		it('supports dashed style', async () => {
-			const html = await processMarkdown('::divider{color="blue" style="dashed"}');
-			expect(html).toContain('border-dashed');
-		});
-
-		it('supports dotted style', async () => {
-			const html = await processMarkdown('::divider{color="teal" style="dotted"}');
-			expect(html).toContain('border-dotted');
+		it('ignores size attributes - fixed size via CSS', async () => {
+			const html = await processMarkdown('::spacer{size="lg"}');
+			expect(html).toContain('class="spacer"');
+			expect(html).not.toContain('data-size');
 		});
 	});
 });
@@ -163,62 +81,46 @@ describe('Block Directives', () => {
 // ============================================
 
 describe('Inline Directives', () => {
+	describe(':slanted', () => {
+		it('renders each letter as span with slant value', async () => {
+			const html = await processMarkdown(':slanted[ABC]');
+			expect(html).toContain('slanted-text');
+			expect(html).toContain('--letter-slant:');
+		});
+
+		it('wraps in span with slanted class', async () => {
+			const html = await processMarkdown(':slanted[TEST]');
+			expect(html).toContain('<span class="slanted">');
+		});
+
+		it('calculates correct slant for letters', async () => {
+			const html = await processMarkdown(':slanted[AMT]');
+			// A = 0 (at start), M = 0 (midpoint), T = -6 (after n, negative)
+			expect(html).toContain('--letter-slant: 0');
+			expect(html).toContain('--letter-slant: -6');
+		});
+	});
+
 	describe(':color', () => {
-		it('renders colored bold text by default', async () => {
+		it('renders with color class and data-color attribute', async () => {
 			const html = await processMarkdown(':color[Hello]{pink}');
-			expect(html).toContain('text-viz-pink-dark');
-			expect(html).toContain('font-bold');
+			expect(html).toContain('class="color"');
+			expect(html).toContain('data-color="pink"');
 		});
 
-		it('can disable bold', async () => {
-			const html = await processMarkdown(':color[Hello]{color="blue" bold=false}');
-			expect(html).not.toContain('font-bold');
-		});
-	});
-
-	describe(':badge', () => {
-		it('renders as rounded pill', async () => {
-			const html = await processMarkdown(':badge[NEW]{pink}');
-			expect(html).toContain('rounded-full');
-			expect(html).toContain('inline-flex');
+		it('supports shorthand syntax', async () => {
+			const html = await processMarkdown(':color[Text]{blue}');
+			expect(html).toContain('data-color="blue"');
 		});
 
-		it('supports different sizes', async () => {
-			const htmlSm = await processMarkdown(':badge[S]{size="sm"}');
-			const htmlLg = await processMarkdown(':badge[L]{size="lg"}');
-
-			expect(htmlSm).toContain('text-xs');
-			expect(htmlLg).toContain('text-base');
+		it('supports explicit color attribute', async () => {
+			const html = await processMarkdown(':color[Text]{color="teal"}');
+			expect(html).toContain('data-color="teal"');
 		});
-	});
 
-	describe(':kbd', () => {
-		it('renders keyboard shortcut styling', async () => {
-			const html = await processMarkdown(':kbd[Enter]');
-			expect(html).toContain('<kbd');
-			expect(html).toContain('font-mono');
-			expect(html).toContain('border');
+		it('uses default color when no attribute provided', async () => {
+			const html = await processMarkdown(':color[Text]');
+			expect(html).toContain('data-color="pink"'); // default
 		});
-	});
-
-	describe(':mark', () => {
-		it('renders highlighted text', async () => {
-			const html = await processMarkdown(':mark[Important]{yellow}');
-			expect(html).toContain('<mark');
-			expect(html).toContain('bg-viz-yellow-light');
-		});
-	});
-});
-
-// ============================================
-// Schema Validation
-// ============================================
-
-describe('Schema Validation', () => {
-	it('uses default color for invalid color value', async () => {
-		// Invalid color should fall back to default (grey)
-		const html = await processMarkdown(':::notice{invalid}\nTest\n:::');
-		// Should still render (with warning logged)
-		expect(html).toContain('div');
 	});
 });

@@ -20,10 +20,16 @@ export function load({ params }) {
     throw error(404, `Guide "${guideSlug}" not found`);
   }
 
+  const color = guideColors[guideSlug] || 'blue';
+
   return {
     sections,
     guideTitle: guideSlug.charAt(0).toUpperCase() + guideSlug.slice(1),
     guideSlug,
-    guideColor: guideColors[guideSlug] || 'blue'
+    guideColor: color,
+    document: {
+      banner: 'blob',
+      color
+    }
   };
 }

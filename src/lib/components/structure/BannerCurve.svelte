@@ -1,37 +1,33 @@
+<script module lang="ts">
+	import { CURVE_PALETTE } from '$lib/tokens';
+
+	// Canonical sequence of colors for the curve banner (module-level, SSR-safe)
+	// Uses the 8-color palette (5 main + 3 light variants) from tokens
+	export const DEFAULT_CURVE_COLORS = [...CURVE_PALETTE];
+
+	// Varying amplitude for each curve (module-level)
+	export const AMPLITUDE_MULTIPLIERS = [0.6, 0.8, 1.2, 1.5, 1.3, 1.0, 0.9, 0.7];
+
+	export const CURSOR_SIZE = 24;
+	export const UPDATE_INTERVAL = 16;
+	export const NUM_CURVES = 8;
+	export const POINTS_PER_CURVE = 120;
+	export const BASE_AMPLITUDE = 70;
+	export const CURVE_HEIGHT_RATIO = 0.7;
+	export const OVERFLOW_EXTENSION = 100; // Extra canvas height for overflow
+</script>
+
 <script lang="ts">
-	import { run } from 'svelte/legacy';
 	import { onMount, onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
 	import MousePointer from '$lib/assets/images/MousePointer.svelte';
 
 	interface Props {
-		staticBanner?: boolean;
+		interactive?: boolean;
 		direction?: 'header' | 'footer';
 	}
 
-	let { staticBanner = false, direction = 'header' }: Props = $props();
-
-	const CURSOR_SIZE = 24;
-	const UPDATE_INTERVAL = 16;
-	const NUM_CURVES = 8;
-	const POINTS_PER_CURVE = 120;
-	const BASE_AMPLITUDE = 70;
-	const CURVE_HEIGHT_RATIO = 0.7;
-
-	// Use 8 colors: 5 main colors + 3 light variants for variety
-	const colorVariantNames = [
-		'--color-viz-orange',
-		'--color-viz-orange-light',
-		'--color-viz-yellow',
-		'--color-viz-yellow-light',
-		'--color-viz-pink',
-		'--color-viz-pink-light',
-		'--color-viz-teal',
-		'--color-viz-blue'
-	];
-
-	// Varying amplitude for each curve (more exaggeration)
-	const amplitudeMultipliers = [0.6, 0.8, 1.2, 1.5, 1.3, 1.0, 0.9, 0.7];
+	let { interactive = false, direction = 'header' }: Props = $props();
 
 	// Shuffle array using Fisher-Yates algorithm
 	function shuffleArray<T>(array: T[]): T[] {
@@ -43,20 +39,12 @@
 		return shuffled;
 	}
 
-	let resolvedColors: string[] = $state([]);
-	let shuffledColorOrder: number[] = $state([]);
+	// Initialize resolved colors from module defaults (SSR-safe)
+	// DEFAULT_CURVE_COLORS is already an array of hex strings from CURVE_PALETTE
+	let resolvedColors: string[] = [...DEFAULT_CURVE_COLORS];
 
-	function getComputedColors() {
-		if (!browser) return;
-		const rootStyles = getComputedStyle(document.documentElement);
-		resolvedColors = colorVariantNames.map((varName) => {
-			const value = rootStyles.getPropertyValue(varName).trim();
-			return value || '#000000';
-		});
-		// Randomize color order for each instance
-		shuffledColorOrder = shuffleArray([...Array(colorVariantNames.length).keys()]);
-		// console.log('Resolved colors:', resolvedColors, 'Order:', shuffledColorOrder);
-	}
+	// Randomize color order for each instance
+	let shuffledColorOrder: number[] = shuffleArray([...Array(DEFAULT_CURVE_COLORS.length).keys()]);
 
 	let canvas: HTMLCanvasElement = $state();
 	let ctx: CanvasRenderingContext2D;
@@ -64,8 +52,13 @@
 	let height = $state(0);
 	let cursorX = $state(0);
 	let cursorY = $state(0);
+    let showCursor = $state(false);
 	let lastUpdate = 0;
-	let animationFrameId: number;
+	let scheduledRaf = 0;
+	let initialTimer: number | null = null;
+
+	// Extended canvas height for overflow
+	const extendedHeight = $derived(height + OVERFLOW_EXTENSION);
 
 	interface CurvePoint {
 		x: number;
@@ -83,7 +76,7 @@
 
 		const points: CurvePoint[] = [];
 		const step = width / (POINTS_PER_CURVE - 1);
-		const amplitude = BASE_AMPLITUDE * amplitudeMultipliers[curveIndex];
+		const amplitude = BASE_AMPLITUDE * AMPLITUDE_MULTIPLIERS[curveIndex];
 
 		for (let i = 0; i < POINTS_PER_CURVE; i++) {
 			const x = i * step;
@@ -100,17 +93,19 @@
 			const baseY =
 				direction === 'header'
 					? (curveIndex / totalCurves) * height * CURVE_HEIGHT_RATIO + diagonalOffset
-					: height - (curveIndex / totalCurves) * height * CURVE_HEIGHT_RATIO - diagonalOffset;
+					: extendedHeight -
+						(curveIndex / totalCurves) * height * CURVE_HEIGHT_RATIO -
+						diagonalOffset;
 
-			// Create static flowing waves with varying amplitude
+			// Create interactive flowing waves with varying amplitude
 			const wave1 = Math.sin(xProgress * Math.PI * 2 + curveIndex * 0.5) * amplitude * 0.7;
 			const wave2 = Math.sin(xProgress * Math.PI * 3 + curveIndex * 0.3) * amplitude * 0.4;
 			const wave3 = Math.sin(xProgress * Math.PI * 5 + curveIndex * 0.2) * amplitude * 0.2;
 
 			let y = baseY + wave1 + wave2 + wave3;
 
-			// Add mouse interaction if not static
-			if (!staticBanner && cursorX > 0 && cursorY > 0) {
+			// Add mouse interaction if interactive
+			if (interactive && cursorX > 0 && cursorY > 0) {
 				const dx = x - cursorX;
 				const dy = y - cursorY;
 				const distance = Math.sqrt(dx * dx + dy * dy);
@@ -146,9 +141,9 @@
 				ctx.lineTo(width, 0);
 				ctx.lineTo(points[points.length - 1].x, points[points.length - 1].y);
 			} else {
-				// Footer: start from bottom-left corner
-				ctx.moveTo(0, height);
-				ctx.lineTo(width, height);
+				// Footer: start from bottom-left corner (use extendedHeight for canvas bottom)
+				ctx.moveTo(0, extendedHeight);
+				ctx.lineTo(width, extendedHeight);
 				ctx.lineTo(points[points.length - 1].x, points[points.length - 1].y);
 			}
 		} else if (prevPoints && prevPoints.length > 0) {
@@ -199,9 +194,8 @@
 	function draw() {
 		if (!ctx || !width || !height) return;
 
-		// Fill background with white
-		ctx.fillStyle = '#ffffff';
-		ctx.fillRect(0, 0, width, height);
+		// Clear canvas - CSS overlay handles background fade
+		ctx.clearRect(0, 0, width, extendedHeight);
 
 		// Generate all curve points first
 		const allCurvePoints: CurvePoint[][] = [];
@@ -209,65 +203,66 @@
 			allCurvePoints.push(generateCurvePoints(i, NUM_CURVES));
 		}
 
-		// Draw curves from top (index 0) to bottom - each fills from previous curve down to current
-		// Apply fading alpha to later curves so they blend naturally into background
+		// Draw curves from top (index 0) to bottom - CSS overlay handles fade
 		for (let i = 0; i < NUM_CURVES; i++) {
 			const points = allCurvePoints[i];
 			const prevPoints = i > 0 ? allCurvePoints[i - 1] : null;
 			const color = getColor(i);
-
-			// Fade out the last few curves for a natural blend
-			// For header: later curves (higher index) are at bottom, fade them
-			// For footer: later curves (higher index) are at top, fade them
-			const fadeStart = NUM_CURVES - 3; // Start fading from 3rd-to-last curve
-			let alpha = 0.95;
-			if (i >= fadeStart) {
-				const fadeProgress = (i - fadeStart + 1) / (NUM_CURVES - fadeStart);
-				alpha = 0.95 * (1 - fadeProgress * 0.8); // Fade to ~20% opacity
-			}
+			const alpha = 0.95; // Fixed opacity
 
 			drawFilledCurve(points, prevPoints, color, alpha, i === 0);
 		}
+	}
+
+	function scheduleDrawOnce() {
+		if (scheduledRaf) return;
+		scheduledRaf = requestAnimationFrame(() => {
+			scheduledRaf = 0;
+			draw();
+		});
 	}
 
 	function handleMouseMove(event: MouseEvent) {
 		if (event.buttons) return;
 		cursorX = event.layerX;
 		cursorY = event.layerY;
-		draw();
+		showCursor = true;
+		scheduleDrawOnce();
 	}
 
 	function handleTouchMove(event: TouchEvent) {
 		const touch = event.touches[0];
-		if (!touch) return;
+		if (!touch || !canvas) return;
 
 		const rect = canvas.getBoundingClientRect();
 		cursorX = touch.clientX - rect.left;
 		cursorY = touch.clientY - rect.top;
-		draw();
+		showCursor = true;
+		scheduleDrawOnce();
 	}
 
 	onMount(() => {
 		if (!browser) return;
 		ctx = canvas.getContext('2d')!;
-		getComputedColors();
-		// Give a tick for reactive updates
-		setTimeout(() => {
+
+		// Initial draw after bindings settle
+		initialTimer = window.setTimeout(() => {
 			if (width > 0 && height > 0) {
-				// console.log('Initial draw', { width, height, colors: resolvedColors.length });
-				draw();
+				scheduleDrawOnce();
 			}
 		}, 0);
 	});
 
 	onDestroy(() => {
-		// No animation loop to clean up
+		if (scheduledRaf) cancelAnimationFrame(scheduledRaf);
+		if (initialTimer) clearTimeout(initialTimer);
 	});
 
-	run(() => {
-		if (width && height && canvas) {
+	$effect(() => {
+		if (width && height && canvas && ctx) {
 			canvas.width = width;
-			canvas.height = height;
+			canvas.height = extendedHeight;
+			scheduleDrawOnce();
 		}
 	});
 </script>
@@ -275,29 +270,43 @@
 <div
 	bind:clientWidth={width}
 	bind:clientHeight={height}
-	onmousemove={staticBanner ? undefined : handleMouseMove}
-	ontouchmove={staticBanner ? undefined : handleTouchMove}
-	ontouchstart={staticBanner ? undefined : handleTouchMove}
+	onmousemove={!interactive ? undefined : handleMouseMove}
+	ontouchmove={!interactive ? undefined : handleTouchMove}
+	ontouchstart={!interactive ? undefined : handleTouchMove}
+	onmouseenter={() => (showCursor = true)}
 	onmouseleave={() => {
-		if (!staticBanner) {
-			cursorX = 0;
-			cursorY = 0;
-		}
+		// Hide the custom cursor when pointer leaves the banner area
+		showCursor = false;
+		cursorX = 0;
+		cursorY = 0;
+	}}
+	ontouchend={() => {
+		showCursor = false;
+		cursorX = 0;
+		cursorY = 0;
+	}}
+	ontouchcancel={() => {
+		showCursor = false;
+		cursorX = 0;
+		cursorY = 0;
 	}}
 	role="banner"
-	class="relative h-full overflow-hidden {staticBanner ? '' : 'cursor-none'}"
+	class="relative h-full {!interactive ? '' : 'cursor-none'}"
 >
-	<canvas bind:this={canvas} {width} {height} class="absolute inset-0 h-full w-full"></canvas>
+	<canvas
+		bind:this={canvas}
+		{width}
+		height={extendedHeight}
+		class="absolute right-0 left-0 w-full"
+		style={direction === 'header' ? 'top: 0;' : 'bottom: 0;'}
+	></canvas>
 
-	{#if !staticBanner}
-		<div
-			class="custom-cursor"
-			style="transform: translate3d({cursorX - CURSOR_SIZE / 2}px, {cursorY -
-				CURSOR_SIZE / 2}px, 0)"
-		>
-			<MousePointer size={CURSOR_SIZE} />
-		</div>
-	{/if}
+	<div
+		class="custom-cursor"
+		style="display: {showCursor ? 'block' : 'none'}; transform: translate3d({cursorX - CURSOR_SIZE / 2}px, {cursorY - CURSOR_SIZE / 2}px, 0)"
+	>
+		<MousePointer size={CURSOR_SIZE} />
+	</div>
 </div>
 
 <style>

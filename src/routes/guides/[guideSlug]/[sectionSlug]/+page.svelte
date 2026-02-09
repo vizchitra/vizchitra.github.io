@@ -1,30 +1,28 @@
 <script lang="ts">
+	import Prose from '$lib/components/typography/Prose.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
+
+	let headerColor = $derived(`text-${data.guideColor}-700`);
 </script>
 
-<nav class="breadcrumb">
-	<a href="/guides" class="breadcrumb-link">GUIDES</a>
-	<span class="breadcrumb-separator">/</span>
-	<a href="/guides/{data.guideSlug}" class="breadcrumb-link">
-		{data.guideSlug.toUpperCase()}
-	</a>
-	<span class="breadcrumb-separator">/</span>
-	<span class="breadcrumb-current">{data.section.section.toUpperCase()}</span>
-</nav>
-
-<article class="prose prose-viz lg:prose-xl mx-auto max-w-3xl p-8">
-	<h1>{data.section.sectionSlug.charAt(0).toUpperCase() + data.section.sectionSlug.slice(1)}</h1>
+<article class="guide-article">
+	<nav class="article-header py-8">
+		<h6 class="text-viz-xs font-medium"><a href="/guides">VIZCHITRA GUIDES</a></h6>
+		<h3 class="text-viz-2xl m-0 font-bold {headerColor}">
+			{data.guideSlug.toUpperCase()}
+		</h3>
+	</nav>
 	{#if data.isDraft}
-		<div
-			class="rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-8 text-center"
-		>
+		<div class="rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-8 text-center">
 			<p class="text-lg text-gray-500">🚧 This section is currently being written.</p>
 			<p class="text-sm text-gray-400">Check back soon for updates!</p>
 		</div>
 	{:else}
-		{@html data.section.html}
+		<Prose color={data.guideColor}>
+			{@html data.section.html}
+		</Prose>
 	{/if}
 </article>
 
@@ -53,36 +51,11 @@
 </nav>
 
 <style>
-	.breadcrumb {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		padding: 1rem 2rem;
-		background-color: var(--color-white);
-		/* border-bottom: 1px solid var(--color-gray-200, #e5e7eb); */
-		font-size: 0.75rem;
-		font-weight: 500;
-		letter-spacing: 0.05em;
-		max-width: 48rem; /* Match article max-width */
-		margin: 0 auto; /* Center align */
-	}
-
-	.breadcrumb-link {
-		color: var(--color-gray-600, #4b5563);
-		text-decoration: none;
-		transition: color 0.15s;
-	}
-
-	.breadcrumb-link:hover {
-		color: var(--color-gray-900, #111827);
-	}
-
-	.breadcrumb-separator {
-		color: var(--color-gray-400, #9ca3af);
-	}
-
-	.breadcrumb-current {
-		color: var(--color-gray-900, #111827);
+	.guide-article {
+		max-width: 48rem;
+		margin: 0 auto;
+		padding: 0 0rem;
+		min-height: 60vh;
 	}
 
 	.section-nav {
@@ -92,7 +65,7 @@
 		max-width: 48rem;
 		margin: 0 auto;
 		padding: 2rem;
-		border-top: 1px solid var(--color-gray-200, #e5e7eb);
+		/* border-top: 1px solid var(--color-gray-200, #e5e7eb); */
 	}
 
 	.nav-prev,
@@ -109,7 +82,7 @@
 
 	.nav-prev:hover,
 	.nav-next:hover {
-		background-color: var(--color-gray-50, #f9fafb);
+		background-color: var(--color-grey-50, #f9fafb);
 	}
 
 	.nav-next {
@@ -122,12 +95,12 @@
 		font-weight: 500;
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
-		color: var(--color-gray-500, #6b7280);
+		color: var(--color-grey-500, #6b7280);
 	}
 
 	.nav-text {
 		font-size: 0.875rem;
 		font-weight: 500;
-		color: var(--color-gray-900, #111827);
+		color: var(--color-grey-900, #111827);
 	}
 </style>
