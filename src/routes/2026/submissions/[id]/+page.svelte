@@ -159,7 +159,7 @@
 		</div>
 
 		<section class="mb-8 md:mb-10">
-			<Heading tag="h2" align="left">Description</Heading>
+			<Heading tag="h2" align="left" class="pb-4">Description</Heading>
 			<div class="prose text-viz-grey/90 md:prose-lg markdown-content max-w-none">
 				<Prose>
 					{@html descriptionHTML}
@@ -169,7 +169,7 @@
 
 		{#if isCFP && (proposal as CFPProposal).links.length > 0}
 			<section class="mb-8 md:mb-10">
-				<Heading tag="h3" align="left" class="text-xl!">Related Links</Heading>
+				<Heading tag="h4" align="left" class="pb-4">Related Links</Heading>
 				<ul class="space-y-2">
 					{#each (proposal as CFPProposal).links as link}
 						<li>

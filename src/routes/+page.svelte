@@ -42,9 +42,11 @@
 
 		<Text type="lead" align="center">Missed the event last year. See the highlights below.</Text>
 
-		<FullBleed paddingY="md">
+		<FullBleed>
 			<RecapVideo />
 		</FullBleed>
+
+		<DividerCurves />
 
 		<Heading tag="h2" align="center">
 			Our Ethos @ <LogoType />
@@ -67,7 +69,7 @@
 		</Heading>
 
 		<Text type="lead" align="center">
-			To foster a vibrant <span class="font-bold">community of data storytellers in India</span>
+			To foster a vibrant <strong>community of data storytellers in India</strong>
 			bridging technical analysis and design expertise to shape perspectives and drive change
 		</Text>
 

@@ -33,6 +33,7 @@
 		flex-direction: column;
 		/* padding: 2.5rem; */
 		width: 100%;
+		min-width: 0;
 	}
 
 	@media (max-width: 768px) {

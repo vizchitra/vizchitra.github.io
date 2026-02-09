@@ -59,7 +59,7 @@
 <svelte:element
 	this={tag}
 	{...rest}
-	class={['container-wrapper mx-auto', widthClasses[width], className]}
+	class={['container-wrapper mx-auto w-full', widthClasses[width], className]}
 	style:--container-padding-x={paddingXValue}
 	style:--container-padding-y={paddingYValue}
 >

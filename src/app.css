@@ -353,9 +353,11 @@
 	/* Utility class for full-width breakout sections */
 	.full-bleed {
 		width: 100vw;
+		max-width: 100vw;
 		margin-left: calc(50% - 50vw);
 		margin-right: calc(50% - 50vw);
 		position: relative;
+		overflow-x: hidden;
 	}
 
 	.font-display {

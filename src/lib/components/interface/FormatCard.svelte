@@ -46,10 +46,10 @@
 </script>
 
 <article
-	class="format-card not-prose grid grid-rows-[4rem_5rem_1fr] gap-1 overflow-hidden rounded-lg border-2 bg-white/80 shadow-md transition-shadow hover:shadow-lg {colors.border} {className} w-100"
+	class="format-card not-prose grid grid-rows-[4rem_4rem_1fr] gap-1 overflow-hidden rounded-lg border-2 bg-white/80 shadow-md transition-shadow hover:shadow-lg {colors.border} {className} max-w-100 md:max-w-100"
 >
 	<!-- Row 1: Title (left) + Duration (right) -->
-	<div class="mb-8 grid grid-cols-2 items-baseline gap-2 px-5 pt-5 pb-1">
+	<div class="mb-8 grid grid-cols-2 items-baseline gap-2 px-5 pt-5">
 		<h3 class="font-display text-viz-xl font-bold tracking-wide uppercase {colors.text}">
 			{title}
 		</h3>
@@ -59,12 +59,12 @@
 	</div>
 
 	<!-- Row 2: Best For (Caption) -->
-	<p class="not-prose text-viz-black text-viz-md px-5 py-2 leading-snug">
+	<p class="not-prose text-viz-black text-viz-md px-5 leading-snug">
 		{bestFor}
 	</p>
 
 	<!-- Row 3: Bullet Points with Pattern Background -->
-	<div class="relative pb-8">
+	<div class="relative pb-4">
 		<!-- Pattern Background -->
 		<div class="pointer-events-none absolute inset-0 overflow-hidden">
 			<PatternFormats
@@ -74,9 +74,7 @@
 		</div>
 
 		<!-- Bullet Points -->
-		<ul
-			class="text-viz-black relative z-10 list-disc space-y-1.5 px-5 pb-4 text-base leading-relaxed"
-		>
+		<ul class="text-viz-black relative z-10 list-disc space-y-1.5 px-5 text-base leading-relaxed">
 			{#each points as point}
 				<li class="text-viz-sm flex items-start gap-2">
 					<span class="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-current"></span>

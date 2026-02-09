@@ -43,7 +43,7 @@
 
 <style>
 	.fullbleed-wrapper {
-		/* Breakout to full viewport width from container */
+		/* Desktop: viewport-based breakout (Container is narrower than viewport) */
 		width: 100vw;
 		margin-left: calc(50% - 50vw);
 		margin-right: calc(50% - 50vw);
@@ -52,5 +52,14 @@
 		padding-top: var(--fullbleed-padding-y, 0);
 		padding-bottom: var(--fullbleed-padding-y, 0);
 		box-sizing: border-box;
+	}
+
+	/* Mobile: negate Container padding directly (avoids vw issues in Safari flex) */
+	@media (max-width: 64rem) {
+		.fullbleed-wrapper {
+			width: auto;
+			margin-left: calc(-1 * var(--container-padding-x, var(--spacing-viz-lg)));
+			margin-right: calc(-1 * var(--container-padding-x, var(--spacing-viz-lg)));
+		}
 	}
 </style>
