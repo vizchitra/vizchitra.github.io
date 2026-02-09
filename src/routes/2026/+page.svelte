@@ -51,6 +51,21 @@
 			Note: The deadline for all submissions is <strong>15 Feb, 2026</strong>.
 		</Text>
 
+		<DividerCurves />
+
+		<Heading tag="h3" class="font-normal">
+			<Slanted color="blue" textContent="BROWSE SUBMISSIONS" />
+		</Heading>
+
+		<Text type="lead">
+			Explore all submitted proposals for VizChitra 2026. Browse talks, dialogues, workshops, and
+			exhibitions from our community.
+		</Text>
+
+		<Cluster justify="start">
+			<Button href="/2026/submissions" color="blue">View All Submissions</Button>
+		</Cluster>
+
 		<div class="mt-6 mb-1 flex flex-row items-end gap-1">
 			<span class="block pb-px text-lg text-[#666] md:text-[18px]">
 				Click on the cards to learn more</span
@@ -113,20 +128,5 @@
 				/>
 			</Cluster>
 		</FullBleed>
-
-		<DividerCurves />
-
-		<Heading tag="h3" class="font-normal">
-			<Slanted color="blue" textContent="BROWSE SUBMISSIONS" />
-		</Heading>
-
-		<Text type="lead">
-			Explore all submitted proposals for VizChitra 2026. Browse talks, dialogues, workshops, and
-			exhibitions from our community.
-		</Text>
-
-		<Cluster justify="start">
-			<Button href="/2026/submissions" color="blue">View All Submissions</Button>
-		</Cluster>
 	</Stack>
 </Container>

@@ -41,6 +41,7 @@
 			<Button href="https://forms.vizchitra.com/exhibition" color="orange" external={true}
 				>Submit for Exhibition</Button
 			>
+			<Button href="/2026/submissions" color="blue">View All Submissions</Button>
 		</Cluster>
 
 		<DividerCurves />

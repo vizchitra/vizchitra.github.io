@@ -30,6 +30,10 @@
 			<Button href="/2026" color="pink">Go to our 2026 page</Button>
 		</Cluster>
 
+		<Cluster>
+			<Text type="caption">Accepting Submissions till <strong>15 Feb, 2026</strong></Text>
+		</Cluster>
+
 		<DividerCurves />
 
 		<Heading align="center">

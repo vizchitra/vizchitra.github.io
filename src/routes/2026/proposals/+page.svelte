@@ -41,6 +41,8 @@
 			<Button href="https://forms.vizchitra.com/proposals" color="pink" external={true}
 				>Submit your Proposal</Button
 			>
+
+			<Button href="/2026/submissions" color="blue">View All Submissions</Button>
 		</Cluster>
 
 		<DividerCurves />
