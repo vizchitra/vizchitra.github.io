@@ -6,4 +6,6 @@ section: overview
 order: 0
 ---
 
+# Overview
+
 Showcase your data-driven visualization projects at VizChitra and engage with the community through interactive displays and demonstrations.

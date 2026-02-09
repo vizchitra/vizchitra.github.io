@@ -101,7 +101,7 @@ Mathematical notation: E = mc<sup>2</sup> and H<sub>2</sub>O
 
 ## Images
 
-![Placeholder Image](/static/images/vizchitra-preview.png)
+![Placeholder Image](/images/vizchitra-preview.png)
 
 _Image caption: This demonstrates how images are rendered_
 
