@@ -2,7 +2,7 @@
 title: Preparation | Dialogues @ VizChitra
 description: How to prepare for your dialogue session at VizChitra.
 guide: dialogues
-section: review
+section: preparation
 order: 3
 draft: true
 ---

@@ -6,20 +6,22 @@ section: evaluation
 order: 2
 ---
 
-Your proposal will be reviewed by the Editorial Team. Here's what we look for:
+# Evaluation
 
-**What makes a strong VizChitra session?**
+Your proposal will be reviewed by the Editorial Team and external reviewers with past speaking experience. 
 
-The most successful sessions tend to:
+Here is what they are looking for in a sessions:
 
-- Start from real, lived challenges or questions
-- Make the process visible, not just the polished final chart
-- Offer concrete, reusable insights or tools
-- Create room for reflection, conversation, or play
+- Starts from real, lived challenges or questions
+- Makes the process visible, not just the polished final chart
+- Offers concrete, reusable insights or tools
+- Create sroom for reflection, conversation, or play
 
 We value authenticity and practical takeaways over polish. Show us your journey, not just your destination.
 
 ## **Selection Criteria**
+
+We aim to have a **rough consensus** amongst the multiple evaluators for each proposal. The evaluation rubric below is how each of them will be looking at the proposal. 
 
 | Criteria               | Accept ✔️                                                                                                                                                                                | Maybe ?                                                                                                                                                                            | Reject ❌                                                                                                                                  |
 | :--------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |

@@ -8,7 +8,9 @@ order: 1
 
 # Proposal
 
-Use these prompts as a mini-outline while drafting your submission.
+Writing a good proposal is the first step in getting your idea in front of audience. 
+
+_Writing is Thinking_ and a well written proposal articulates the core of your talk for everyone to see. Use these prompts as a mini-outline while drafting your proposal submission.
 
 1. **Who is the audience for your session?** — Think about their backgrounds, roles, and questions. Are they students, early-career practitioners, domain experts, or cross-disciplinary collaborators?
 2. **What problem or question are you centering?** — Describe the pain point, curiosity, or gap you want to address. This helps participants understand why your session matters.
@@ -33,9 +35,18 @@ Choose a talk style that suits your content and personality. Here are some commo
 
 ## Making a great proposal
 
-Writing a great proposal - being specific & descriptive - is key to getting your talk accepted. Here are two examples to illustrate what is a you craft a compelling submission:
+Writing a great proposal - being specific & descriptive - is key to getting your talk accepted. Here are two examples to illustrate what you should not and should do when crafting a compelling submission:
 
-#### A Generic Proposal Example
+### A Cookie Cutter Proposal 
+
+Don't do the following:
+
+- Write a generic introduction, but not being specific about the talk
+- Not enough details on what you want to achieve in the talk
+- No clear outline on how the talk would be delivered
+- No speaker bio to indicate why you are the best person to deliver this talk
+
+_Proposal Status_: **Not Accepted**
 
 :::notice
 
@@ -49,14 +60,21 @@ This talk introduces narrative visualization and provides pointers on tools and 
 
 :::
 
-Proposal Status: Rejected
 
-- Generic introduction, but not specific about the talk
-- Needs more details on what you want to achieve in the talk
-- No clear outline on how the talk would be delivered
-- No speaker bio to indicate why you are the best person to deliver this talk
 
-#### A Well Crafted Proposal Example
+### A Thoughtfully Crafted Proposal
+
+Aim to do the following:
+
+- Short & crisp summary about the whole talk
+- Context setting around why this talk is different
+- Clear steps & details on what will be covered
+- Explain how the talk will be technically achieved
+- Make clear the objective for the talk e.g. fun live performance
+- Establish credibility & capability for delivering the talk 
+
+_Proposal Status_: **Accepted**
+
 
 :::notice
 
@@ -76,6 +94,7 @@ Music visualisation is not new. Winamp and iTunes have been doing it for years. 
 For the technically inclined, we will leverage HTML canvas and Javascript Web Audio API using p5.js. But basically this is a fun talk to explore creative coding to learn new things.
 
 **Requirements**
+
 None. Just come and listen and see the music live!
 
 **Speaker bio**
@@ -86,12 +105,3 @@ Ashok Kumar is an accomplished djembe - an African drum - player. He has been pl
 
 :::
 
-Proposal Status: Accepted
-
-- Short & crisp summary about the whole talk
-- Context setting around why this talk is different
-- Clear steps & details on what will be covered
-- Explaining how the talk will be technically achieved
-- Making clear this is fun and a live performance
-- Establishing credibility & capability for visualisation
-- Showing musical capability for live performances

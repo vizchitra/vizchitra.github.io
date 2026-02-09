@@ -4,7 +4,6 @@ description: Follow up guidelines for workshops at VizChitra.
 guide: workshops
 section: followup
 order: 5
-draft: true
 ---
 
 Getting ready for the Workshop Day

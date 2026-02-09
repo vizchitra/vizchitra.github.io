@@ -7,6 +7,15 @@
 	import { Container, Cluster, Stack } from '$lib/components/layout';
 </script>
 
+<svelte:head>
+	<title>Call for Exhibition | VizChitra 2026</title>
+	<meta
+		property="og:image"
+		content="https://vizchitra.com/images/preview/preview-2026-exhibition.jpg"
+	/>
+	<meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
+
 <Header title="Call for Exhibition" banner="curve" />
 
 <Container>

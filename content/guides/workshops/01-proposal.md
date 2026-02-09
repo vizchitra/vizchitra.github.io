@@ -6,7 +6,7 @@ section: proposal
 order: 1
 ---
 
-# Workshop Proposal
+# Proposal
 
 Use these prompts as a mini-outline while drafting your workshop proposal.
 

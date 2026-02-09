@@ -2,6 +2,10 @@
 	import { Heading } from '$lib/components/typography';
 	import Header from '$lib/components/structure/Header.svelte';
 	import PatternRough from '$lib/components/patterns/PatternRough.svelte';
+	import Container from '$lib/components/layout/Container.svelte';
+	import FullBleed from '$lib/components/layout/FullBleed.svelte';
+	import Stack from '$lib/components/layout/Stack.svelte';
+	import Prose from '$lib/components/typography/Prose.svelte';
 
 	type CardColor = 'pink' | 'blue' | 'teal' | 'yellow' | 'orange';
 
@@ -37,7 +41,7 @@
 		},
 		{
 			title: 'EXHIBITION',
-			description: 'Showcase of visualization projects',
+			description: 'Showcase of data visualization projects',
 			color: 'orange',
 			href: '/guides/exhibition',
 			angle: 23
@@ -45,7 +49,7 @@
 		{
 			title: 'PANELS',
 			description:
-				'A focussed moderated discussion on an engaging topic with domain &  subject matter experts.',
+				'A focussed moderated discussion on an engaging topic with domain & subject matter experts.',
 			color: 'yellow',
 			href: '/guides/panels',
 			angle: 132
@@ -70,39 +74,69 @@
 	};
 </script>
 
+<svelte:head>
+	<title>Guides | VizChitra</title>
+	<meta property="og:image" content="https://vizchitra.com/images/preview/preview-guides.jpg" />
+	<meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
+
 <Header title="Guides for VizChitra" banner="blob" interactive show="title"></Header>
 
-<div class="deck">
-	<div class="deck-inner">
-		{#each cards as card}
-			<a href={card.href} class="deck-card row-span-3 grid grid-rows-subgrid hover:scale-102">
-				<PatternRough
-					color={colorVars[card.color]}
-					fillStyle="cross-hatch"
-					fillWeight={0.5}
-					hachureAngle={card.angle}
-					opacity={0.4}
-				/>
-
-				<h3
-					class="font-display-sans card-content m-0 self-start text-2xl font-bold {textColor[
-						card.color
-					]}"
-				>
-					{card.title}
-				</h3>
-				<p
-					class="text-md card-content text-viz-black max-w-md self-start justify-self-end bg-white/20 text-right font-medium italic"
-				>
-					{card.description}
-				</p>
-				<div class="card-content self-end text-xs font-medium {textColor[card.color]}">
-					VIZCHITRA GUIDES
+<Container>
+	<Stack>
+		<Prose>
+			<h1>Guides</h1>
+			<p>
+				These guides are designed to support you (and us) to navigate the actions required from
+				first idea to final delivery for your VizChitra session.
+			</p>
+			<p>
+				They bring together best practices, practical tips, and curated resources to help you
+				prepare, refine, and share your work with confidence across the entire journey. Think of
+				this as a working reference you can return to at every stage of your journey.
+			</p>
+			<p>
+				Please consider these as living documents - which we will continue to update as we go
+				through this process and will add more questions and answers to it as they emerge. If you
+				have suggestions, improvements, or additions, please open an issue or submit a pull request
+				on <a href="https://github.com/vizchitra/vizchitra.github.io">our GitHub repository</a>.
+			</p>
+			<div id="list"></div>
+		</Prose>
+		<FullBleed paddingY="md">
+			<div class="deck">
+				<div class="deck-inner">
+					{#each cards as card}
+						<a href={card.href} class="deck-card row-span-3 grid grid-rows-subgrid hover:scale-102">
+							<PatternRough
+								color={colorVars[card.color]}
+								fillStyle="cross-hatch"
+								fillWeight={0.5}
+								hachureAngle={card.angle}
+								opacity={0.4}
+							/>
+							<div class="card-content self-end text-xs font-medium {textColor[card.color]}">
+								VIZCHITRA GUIDES
+							</div>
+							<h3
+								class="font-display-sans card-content m-0 self-start text-2xl font-bold {textColor[
+									card.color
+								]}"
+							>
+								{card.title}
+							</h3>
+							<p
+								class="text-md card-content text-viz-black max-w-md self-start justify-self-end bg-white/20 text-right font-medium italic"
+							>
+								{card.description}
+							</p>
+						</a>
+					{/each}
 				</div>
-			</a>
-		{/each}
-	</div>
-</div>
+			</div>
+		</FullBleed>
+	</Stack>
+</Container>
 
 <style>
 	.deck {
@@ -144,7 +178,7 @@
 		.deck-inner {
 			grid-template-columns: repeat(5, 1fr);
 			/* Fixed row heights: description row + title row + footer row */
-			grid-template-rows: 12rem 6rem auto;
+			grid-template-rows: 4rem 12rem auto;
 
 			& p {
 				text-align: right;

@@ -8,7 +8,16 @@
 	import Prose from '$lib/components/typography/Prose.svelte';
 </script>
 
-<Header title="Call for Proposals" banner="curve" />
+<svelte:head>
+	<title>Call for Proposals | VizChitra 2026</title>
+	<meta
+		property="og:image"
+		content="https://vizchitra.com/images/preview/preview-2026-proposals.jpg"
+	/>
+	<meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
+
+<Header banner="curve" />
 
 <Container>
 	<Stack>
@@ -44,7 +53,7 @@
 			</p>
 		</Prose>
 
-		<FullBleed paddingX="xl" paddingY="md">
+		<FullBleed paddingY="xl" paddingX="md">
 			<Grid minWidth="40ch" maxColumns={3} gap={6}>
 				<FormatCard
 					format="talks"
@@ -94,86 +103,84 @@
 			</p>
 		</Prose>
 
-		<FullBleed paddingX="xl" paddingY="md">
-			<Grid minWidth="40ch" maxColumns={2} gap={8}>
-				<Card variant="bordered" color="pink" title="Visualizations for Community">
-					<p>
-						How can data visualization support communities, public interest work, and social change?
-					</p>
-					<ul>
-						<li>
-							Make socio-economic data more accessible in public conversations, or engage
-							marginalized groups through participatory approaches
-						</li>
-						<li>
-							Support nonprofits, NGOs, civic-tech groups, advocacy organizations, environmental
-							justice initiatives, or public interest journalism
-						</li>
-						<li>
-							Practice ethical and inclusive data visualization, including accessibility,
-							representation and cultural sensitivity
-						</li>
-					</ul>
-				</Card>
+		<Grid minWidth="30ch" maxColumns={2} gap={6}>
+			<Card variant="bordered" color="pink" title="Visualizations for Community">
+				<p>
+					How can data visualization support communities, public interest work, and social change?
+				</p>
+				<ul>
+					<li>
+						Make socio-economic data more accessible in public conversations, or engage marginalized
+						groups through participatory approaches
+					</li>
+					<li>
+						Support nonprofits, NGOs, civic-tech groups, advocacy organizations, environmental
+						justice initiatives, or public interest journalism
+					</li>
+					<li>
+						Practice ethical and inclusive data visualization, including accessibility,
+						representation and cultural sensitivity
+					</li>
+				</ul>
+			</Card>
 
-				<Card variant="bordered" color="blue" title="Visualizations as Craft">
-					<p>
-						How do you design, refine, and craft a visualization from first sketch to final story?
-					</p>
-					<ul>
-						<li>
-							Explore visual design principles: color, layout, typography, annotation, interaction
-							in data visualization
-						</li>
-						<li>Shape storytelling and narrative design for data-informed stories</li>
-						<li>Design interactions for dashboards, exploratory tools, and interactive stories</li>
-						<li>
-							Share critiques, reflections, and case studies on what makes visualizations effective,
-							confusing, or misleading
-						</li>
-					</ul>
-				</Card>
+			<Card variant="bordered" color="blue" title="Visualizations as Craft">
+				<p>
+					How do you design, refine, and craft a visualization from first sketch to final story?
+				</p>
+				<ul>
+					<li>
+						Explore visual design principles: color, layout, typography, annotation, interaction in
+						data visualization
+					</li>
+					<li>Shape storytelling and narrative design for data-informed stories</li>
+					<li>Design interactions for dashboards, exploratory tools, and interactive stories</li>
+					<li>
+						Share critiques, reflections, and case studies on what makes visualizations effective,
+						confusing, or misleading
+					</li>
+				</ul>
+			</Card>
 
-				<Card variant="bordered" color="teal" title="Visualizations at Work">
-					<p>
-						How does visualization work inside your domains to inform real-world decisions and
-						practice?
-					</p>
-					<ul>
-						<li>
-							Showcase usecases and applications where visualization played a central role in
-							decision-making workflows
-						</li>
-						<li>
-							Explain how you worked with data visualisation within your organisation, from start up
-							companies to sensitive data under regulatory constraints
-						</li>
-						<li>
-							Share case studies where data was communicated with domain experts, stakeholders, or
-							business leaders through visualizations
-						</li>
-					</ul>
-				</Card>
+			<Card variant="bordered" color="teal" title="Visualizations at Work">
+				<p>
+					How does visualization work inside your domains to inform real-world decisions and
+					practice?
+				</p>
+				<ul>
+					<li>
+						Showcase usecases and applications where visualization played a central role in
+						decision-making workflows
+					</li>
+					<li>
+						Explain how you worked with data visualisation within your organisation, from start up
+						companies to sensitive data under regulatory constraints
+					</li>
+					<li>
+						Share case studies where data was communicated with domain experts, stakeholders, or
+						business leaders through visualizations
+					</li>
+				</ul>
+			</Card>
 
-				<Card variant="bordered" color="yellow" title="Visualizations and Tools">
-					<p>What tools, systems, and workflows power the visualizations we create and use?</p>
-					<ul>
-						<li>
-							Author tools, libraries, frameworks, and platforms for creating data visualizations
-						</li>
-						<li>Build systems for scalable data exploration, analysis, and interaction</li>
-						<li>
-							Design pipelines, workflows &amp; integrations tp bring vis into existing data,
-							design, or product processes
-						</li>
-						<li>
-							Create collaborative and conversational interfaces for working with data (e.g.
-							AI-augmented tools)
-						</li>
-					</ul>
-				</Card>
-			</Grid>
-		</FullBleed>
+			<Card variant="bordered" color="yellow" title="Visualizations and Tools">
+				<p>What tools, systems, and workflows power the visualizations we create and use?</p>
+				<ul>
+					<li>
+						Author tools, libraries, frameworks, and platforms for creating data visualizations
+					</li>
+					<li>Build systems for scalable data exploration, analysis, and interaction</li>
+					<li>
+						Design pipelines, workflows &amp; integrations tp bring vis into existing data, design,
+						or product processes
+					</li>
+					<li>
+						Create collaborative and conversational interfaces for working with data (e.g.
+						AI-augmented tools)
+					</li>
+				</ul>
+			</Card>
+		</Grid>
 
 		<DividerCurves />
 

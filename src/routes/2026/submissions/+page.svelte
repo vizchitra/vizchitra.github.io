@@ -3,6 +3,9 @@
 	import { ProposalCard, ProposalFilters } from '$lib/components/proposals';
 	import type { PageData } from './$types';
 	import Fuse from 'fuse.js';
+	import Prose from '$lib/components/typography/Prose.svelte';
+	import Container from '$lib/components/layout/Container.svelte';
+	import Stack from '$lib/components/layout/Stack.svelte';
 
 	let { data }: { data: PageData } = $props();
 
@@ -70,38 +73,44 @@
 		name="description"
 		content="Browse all submitted proposals for talks, dialogues, workshops, and exhibitions at VizChitra 2026."
 	/>
+	<meta property="og:image" content="https://vizchitra.com/images/preview/preview-2026.jpg" />
+	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<Header title="Submissions for VizChitra 2026" banner="curve" />
+<Header banner="curve" />
 
-<div class="content-container">
-	<p class="content-text mb-8 text-center text-balance">
-		Browse all submitted proposals for talks, dialogues, workshops, and exhibitions.
-	</p>
+<Container>
+	<Stack>
+		<Prose>
+			<h1>Submissions for VizChitra 2026</h1>
+			<p>Browse all submitted proposals for talks, dialogues, workshops, and exhibitions.</p>
+		</Prose>
 
-	<ProposalFilters
-		types={data.types}
-		themes={data.themes}
-		bind:selectedType
-		bind:selectedTheme
-		bind:searchQuery
-		bind:sortBy
-		resultsCount={filteredProposals.length}
-	/>
-</div>
+		<ProposalFilters
+			types={data.types}
+			themes={data.themes}
+			bind:selectedType
+			bind:selectedTheme
+			bind:searchQuery
+			bind:sortBy
+			resultsCount={filteredProposals.length}
+		/>
+		<!-- </div> -->
 
-<div class="content-container max-w-3xl">
-	<div class="space-y-4">
-		{#each filteredProposals as proposal}
-			<div class="border-viz-grey/10 rounded-lg border transition-shadow hover:shadow-md">
-				<ProposalCard {proposal} href="/2026/submissions/{proposal.slug}" />
+		<div class="content-container max-w-3xl">
+			<div class="space-y-4">
+				{#each filteredProposals as proposal}
+					<div class="border-viz-grey/10 rounded-lg border transition-shadow hover:shadow-md">
+						<ProposalCard {proposal} href="/2026/submissions/{proposal.slug}" />
+					</div>
+				{/each}
 			</div>
-		{/each}
-	</div>
 
-	{#if filteredProposals.length === 0}
-		<div class="py-16 text-center">
-			<p class="text-viz-grey text-lg">No proposals found matching your filters.</p>
+			{#if filteredProposals.length === 0}
+				<div class="py-16 text-center">
+					<p class="text-viz-grey text-lg">No proposals found matching your filters.</p>
+				</div>
+			{/if}
 		</div>
-	{/if}
-</div>
+	</Stack>
+</Container>

@@ -20,6 +20,7 @@
 	style:--prose-accent-dark={theme.dark}
 	style:--prose-accent-light={theme.light}
 	style:--prose-accent-muted={theme.muted}
+	style:--prose-accent-subtle={theme.subtle}
 >
 	{@render children?.()}
 </div>
@@ -29,6 +30,8 @@
 		/* Scoped variables  */
 		--light-color: var(--prose-accent-light, var(--viz-color-grey-light));
 		--dark-color: var(--prose-accent-dark, var(--color-viz-grey-dark));
+		--muted-color: var(--prose-accent-muted, var(--color-viz-grey-muted));
+		--subtle-color: var(--prose-accent-subtle, var(--color-viz-grey-subtle));
 
 		/* Base Font & Color */
 		font-family: var(--font-plex);
@@ -313,7 +316,7 @@
 			padding: var(--space-flow-0);
 			border-radius: var(--space-flow--2);
 			margin-block: var(--space-flow-1);
-			background-color: var(--light-color);
+			background-color: var(--subtle-color);
 			border-left: 4px solid var(--dark-color);
 			--notice-size: var(--text-flow--1);
 			font-size: var(--notice-size);
@@ -321,6 +324,7 @@
 
 		.notice * {
 			font-size: var(--notice-size);
+			margin-bottom: var(--space-flow--1);
 		}
 
 		/* HR separator - uses theme color */

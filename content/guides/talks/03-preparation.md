@@ -2,12 +2,15 @@
 title: Preparation | Talks @ VizChitra
 description: Preparation guidelines for talks at VizChitra.
 guide: talks
-section: review
+section: preparation
 order: 3
-draft: true
 ---
 
-We have a structured review process to help you prepare and refine your talk for the final delivery. This process involves atleast two stages of feedback and iteration to ensure your talk is polished, thoughtful and engaging for the audience. Reviews are conducted by members of the VizChitra community – editorial team, past speakers as well as other experts, who provide constructive feedback on both content and delivery.
+# Preparation & Reviews
+
+We have a structured preparation & review process to help each of the accepted speaker to prepare and refine their talk for the final delivery.
+
+This process involves atleast two stages of feedback and iteration to ensure your talk is polished, thoughtful and engaging for the audience. Reviews are conducted by members of the VizChitra community – editorial team, past speakers as well as other experts, who provide constructive feedback on both content and delivery.
 
 **Your Editorial PoC** — Each speaker has a main Point of Contact (PoC) from the Editorial Team assigned to them, to help them before, during & after their talk session. Please reach out to them for any questions about the process.
 

@@ -225,6 +225,14 @@
 	--color-viz-pink-muted: var(--color-pink-300);
 	--color-viz-grey-muted: var(--color-grey-300);
 
+	/* Subtle Shades (Use for Large Airy Background) - Ramp 100*/
+	--color-viz-yellow-sublte: var(--color-yellow-100);
+	--color-viz-teal-subtle: var(--color-teal-100);
+	--color-viz-blue-subtle: var(--color-blue-100);
+	--color-viz-orange-subtle: var(--color-orange-100);
+	--color-viz-pink-subtle: var(--color-pink-100);
+	--color-viz-grey-subtle: var(--color-grey-100);
+
 	/* Semantic colors */
 	--color-bg: var(--color-viz-white);
 	--color-fg: var(--color-viz-black);
@@ -238,6 +246,8 @@
 @layer base {
 	html {
 		scroll-behavior: smooth;
+		/* Prevent layout shift when scrollbar appears */
+		scrollbar-gutter: stable;
 
 		/* For OverScroll */
 		background-color: var(--color-viz-white);

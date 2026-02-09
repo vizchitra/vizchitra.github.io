@@ -21,6 +21,7 @@ export interface ThemeTokens {
 	light: string; // var(--color-viz-{color}-light)
 	dark: string; // var(--color-viz-{color}-dark)
 	muted: string; // var(--color-viz-{color}-muted)
+	subtle: string; // var(--color-viz-{color}-subtle)
 	// Tailwind utilities
 	bg: string; // bg-viz-{color}-light
 	border: string; // border-viz-{color}-muted
@@ -62,6 +63,7 @@ export const themeTokens: Record<Color, ThemeTokens> = {
 		light: 'var(--color-viz-grey-light)',
 		dark: 'var(--color-viz-grey-dark)',
 		muted: 'var(--color-viz-grey-muted)',
+		subtle: 'var(--color-viz-grey-subtle)',
 		bg: 'bg-viz-grey-light',
 		border: 'border-viz-grey-muted',
 		text: 'text-viz-grey-dark'
@@ -71,6 +73,7 @@ export const themeTokens: Record<Color, ThemeTokens> = {
 		light: 'var(--color-viz-pink-light)',
 		dark: 'var(--color-viz-pink-dark)',
 		muted: 'var(--color-viz-pink-muted)',
+		subtle: 'var(--color-viz-pink-subtle)',
 		bg: 'bg-viz-pink-light',
 		border: 'border-viz-pink-muted',
 		text: 'text-viz-pink-dark'
@@ -80,6 +83,7 @@ export const themeTokens: Record<Color, ThemeTokens> = {
 		light: 'var(--color-viz-blue-light)',
 		dark: 'var(--color-viz-blue-dark)',
 		muted: 'var(--color-viz-blue-muted)',
+		subtle: 'var(--color-viz-blue-subtle)',
 		bg: 'bg-viz-blue-light',
 		border: 'border-viz-blue-muted',
 		text: 'text-viz-blue-dark'
@@ -89,6 +93,7 @@ export const themeTokens: Record<Color, ThemeTokens> = {
 		light: 'var(--color-viz-teal-light)',
 		dark: 'var(--color-viz-teal-dark)',
 		muted: 'var(--color-viz-teal-muted)',
+		subtle: 'var(--color-viz-teal-subtle)',
 		bg: 'bg-viz-teal-light',
 		border: 'border-viz-teal-muted',
 		text: 'text-viz-teal-dark'
@@ -98,6 +103,7 @@ export const themeTokens: Record<Color, ThemeTokens> = {
 		light: 'var(--color-viz-yellow-light)',
 		dark: 'var(--color-viz-yellow-dark)',
 		muted: 'var(--color-viz-yellow-muted)',
+		subtle: 'var(--color-viz-yellow-subtle)',
 		bg: 'bg-viz-yellow-light',
 		border: 'border-viz-yellow-muted',
 		text: 'text-viz-yellow-dark'
@@ -107,6 +113,7 @@ export const themeTokens: Record<Color, ThemeTokens> = {
 		light: 'var(--color-viz-orange-light)',
 		dark: 'var(--color-viz-orange-dark)',
 		muted: 'var(--color-viz-orange-muted)',
+		subtle: 'var(--color-viz-orange-subtle)',
 		bg: 'bg-viz-orange-light',
 		border: 'border-viz-orange-muted',
 		text: 'text-viz-orange-dark'

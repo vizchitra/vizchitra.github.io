@@ -2,7 +2,7 @@
 title: Preparation | Panels @ VizChitra
 description: How to prepare for your panel discussion at VizChitra.
 guide: panels
-section: review
+section: preparation
 order: 3
 draft: true
 ---

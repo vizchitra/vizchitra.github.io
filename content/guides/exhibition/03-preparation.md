@@ -2,7 +2,7 @@
 title: Preparation | Exhibition @ VizChitra
 description: How to prepare for your exhibition at VizChitra.
 guide: exhibition
-section: review
+section: preparation
 order: 3
 draft: true
 ---

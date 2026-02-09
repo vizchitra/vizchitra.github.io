@@ -110,13 +110,13 @@
 	});
 </script>
 
-<div class="divider-container my-12 w-full" bind:clientWidth={width}>
+<div class="divider-container my-12 w-full" style:height="{height}px" bind:clientWidth={width}>
 	{#if width && segments.length > 0}
 		<svg
-			{width}
 			{height}
 			viewBox="0 0 {width} {height}"
 			preserveAspectRatio="xMidYMid meet"
+			class="block w-full"
 		>
 			{#each segments as segment}
 				<path
