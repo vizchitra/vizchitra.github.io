@@ -196,7 +196,11 @@ The key takeaways from this Lightning Talk are:
 1. Opening new realms of ancient spiritual Arts & Culture 
 2. Innovative methods to categorise and visualise digital resources for the same
 3. Merging the physical and digital worlds to navigate through oceans of ancient knowledge.",https://india.norbulingka.org/blogs/our-journal/depicting-a-spiritual-lineage-the-lives-of-the-dalai-lamas-in-thangkas,https://www.himalayanart.org/search/,,"Yes, many times",,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+KYX8b2D,442eD5Y,2026-02-08 14:57:24,Tanay,Sukumar,Data editor,"Mint, HT Media","Tanay Sukumar is the data editor at Mint, one of India's top financial dailies. He has been a journalist for the past 10 years, and is passionate about promoting data literacy and demystifying numbers for fellow journalists, students, and readers alike.",,https://x.com/TanaySukumar,https://www.linkedin.com/in/tanaysukumar/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations as Craft,The invisible math behind a chart's aesthetics,"Dataviz is often celebrated as the marriage of art and science, but in our rush to make charts ""beautiful"", we can end up neglecting the ""science"" part—the underlying mathematical syntax. This session is an interactive, quiz-led deep dive into the often-overlooked mathematical traps that can turn a clean design into a lie.
+We will explore how technical choices can inadvertently distort the truth. A simple example: rounding the values 50.5, 51.4, and 51.1 to the nearest whole number produces three identical bars representing 51, masking the very variance the chart was meant to show.
+I will cover technicalities of scatter plots, histograms, line charts, bubble charts, and many more. And will also explain tips to avoid such issues.
+The session will take around 30 minutes, but is less than the ""dialogue"" format.
+It will be ideal for early-to-mid-career data visualizers, analysts, and designers who are comfortable with tools but want to sharpen their technical rigour.",,,,"Yes, many times",Visualizations as Craft,Keep the math right as you make a chart,"Yes, many times",,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
