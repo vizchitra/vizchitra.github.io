@@ -11,6 +11,10 @@
 <svelte:head>
 	<title>Call for Proposals | VizChitra 2026</title>
 	<meta
+		name="description"
+		content="Call for Proposal submissions for talks, dialogues and workshops at VizChitra 2026"
+	/>
+	<meta
 		property="og:image"
 		content="https://vizchitra.com/images/preview/preview-2026-proposals.jpg"
 	/>
@@ -56,7 +60,7 @@
 		</Prose>
 
 		<FullBleed paddingY="xl" paddingX="md">
-			<Grid minWidth="40ch" maxColumns={3} gap={6}>
+			<Cluster align="stretch">
 				<FormatCard
 					format="talks"
 					title="Talks"
@@ -92,7 +96,7 @@
 						'Ensure people leave with something they can apply'
 					]}
 				/>
-			</Grid>
+			</Cluster>
 		</FullBleed>
 
 		<DividerCurves />

@@ -36,9 +36,9 @@
 		<div class="card-bordered rounded-lg border-2 bg-white/80 p-6 {c.border}">
 			<div class="card-prose">
 				{#if title}
-					<Heading tag="h3" align="left" class="not-prose font-display-sans text-lg! {c.text}">
+					<h3 class="font-body text-viz-md pb-4 font-bold {c.text}">
 						{title}
-					</Heading>
+					</h3>
 				{/if}
 				{@render children?.()}
 			</div>
@@ -52,7 +52,7 @@
 			{/if}
 			<div class="flex w-full flex-col gap-2 {image ? 'md:w-2/3' : ''}">
 				{#if title}
-					<Heading tag="h3" align="left" class="not-prose font-display-sans !text-xl {c.text}">
+					<Heading tag="h3" align="left" class="font-body {c.text}">
 						{title}
 					</Heading>
 				{/if}

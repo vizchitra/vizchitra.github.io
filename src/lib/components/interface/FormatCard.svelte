@@ -46,20 +46,20 @@
 </script>
 
 <article
-	class="format-card not-prose grid grid-rows-[auto_auto_1fr] gap-1 overflow-hidden rounded-lg border-2 bg-white/80 shadow-md transition-shadow hover:shadow-lg {colors.border} {className}"
+	class="format-card not-prose grid grid-rows-[4rem_5rem_1fr] gap-1 overflow-hidden rounded-lg border-2 bg-white/80 shadow-md transition-shadow hover:shadow-lg {colors.border} {className} w-100"
 >
 	<!-- Row 1: Title (left) + Duration (right) -->
-	<div class="mb-3 grid grid-cols-2 items-baseline gap-2 px-5 pt-5 pb-1">
-		<h3 class="font-display text-xl font-black tracking-wide uppercase {colors.text}">
+	<div class="mb-8 grid grid-cols-2 items-baseline gap-2 px-5 pt-5 pb-1">
+		<h3 class="font-display text-viz-xl font-bold tracking-wide uppercase {colors.text}">
 			{title}
 		</h3>
-		<span class="text-viz-grey text-viz-sm text-right font-medium">
+		<span class="text-viz-grey text-viz-md text-right font-medium">
 			{duration}
 		</span>
 	</div>
 
 	<!-- Row 2: Best For (Caption) -->
-	<p class="not-prose text-viz-black px-5 py-2 text-xl leading-snug">
+	<p class="not-prose text-viz-black text-viz-md px-5 py-2 leading-snug">
 		{bestFor}
 	</p>
 
@@ -78,8 +78,8 @@
 			class="text-viz-black relative z-10 list-disc space-y-1.5 px-5 pb-4 text-base leading-relaxed"
 		>
 			{#each points as point}
-				<li class="flex items-start gap-2">
-					<span class="mt-3.5 h-1.5 w-1.5 shrink-0 rounded-full bg-current"></span>
+				<li class="text-viz-sm flex items-start gap-2">
+					<span class="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-current"></span>
 					<span>{point}</span>
 				</li>
 			{/each}
@@ -90,13 +90,5 @@
 <style>
 	.format-card {
 		min-height: 150px;
-	}
-
-	/* Enable subgrid alignment when inside a grid parent */
-	@supports (grid-template-rows: subgrid) {
-		.format-card {
-			grid-row: span 3;
-			grid-template-rows: subgrid;
-		}
 	}
 </style>

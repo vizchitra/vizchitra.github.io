@@ -58,7 +58,7 @@
 	/>
 </svelte:head>
 
-<Header title="Motifs & Nature" banner="square" show="title"></Header>
+<Header banner="square" color="grey"></Header>
 
 <section class="mx-auto max-w-7xl space-y-10 px-2 py-12">
 	<ToolsHeader
@@ -206,18 +206,6 @@
 			</div>
 
 			<div class="grid gap-6 md:grid-cols-2">
-				<!-- Reference Image -->
-				<div class="space-y-2">
-					<p class="text-viz-grey text-xs font-medium tracking-wide uppercase">Reference Design</p>
-					<div class="border-viz-grey-light overflow-hidden rounded-xl border bg-gray-50">
-						<img
-							src={referenceImages[variant]}
-							alt={`Reference ${variant} pattern`}
-							class="block h-auto w-full"
-						/>
-					</div>
-				</div>
-
 				<!-- Generated Pattern -->
 				<div class="space-y-2">
 					<p class="text-viz-grey text-xs font-medium tracking-wide uppercase">Generated Pattern</p>
@@ -259,6 +247,18 @@
 								ariaLabel={`${variant} pattern in ${streamTone}`}
 							/>
 						{/if}
+					</div>
+				</div>
+
+				<!-- Reference Image -->
+				<div class="space-y-2">
+					<p class="text-viz-grey text-xs font-medium tracking-wide uppercase">Reference Design</p>
+					<div class="border-viz-grey-light overflow-hidden rounded-xl border bg-gray-50">
+						<img
+							src={referenceImages[variant]}
+							alt={`Reference ${variant} pattern`}
+							class="block h-auto w-full"
+						/>
 					</div>
 				</div>
 			</div>

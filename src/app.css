@@ -246,8 +246,7 @@
 @layer base {
 	html {
 		scroll-behavior: smooth;
-		/* Prevent layout shift when scrollbar appears */
-		scrollbar-gutter: stable;
+		overflow-x: hidden;
 
 		/* For OverScroll */
 		background-color: var(--color-viz-white);

@@ -33,7 +33,7 @@
 	];
 </script>
 
-<div class="bg-viz-white mt-14 flex items-center justify-center gap-6">
+<div class="mt-8 mb-8 flex items-center justify-center gap-6">
 	<!-- <span class="text-left text-lg font-semibold">Follow Us</span> -->
 	<div class="flex gap-6">
 		{#each socials as social}

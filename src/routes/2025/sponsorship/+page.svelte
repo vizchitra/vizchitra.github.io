@@ -16,7 +16,7 @@
 
 <Container>
 	<Stack>
-		<Heading tag="h1" align="center">Sponsorship 2025</Heading>
+		<Heading tag="h1" align="center" class="pb-8">Sponsorship @ VizChitra 2025</Heading>
 
 		<div class="max-w-4xl">
 			<Grid columns={2}>

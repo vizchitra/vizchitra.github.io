@@ -14,7 +14,7 @@
 	/>
 </svelte:head>
 
-<Header title="Data & Selfie" show="title" banner="square" />
+<Header banner="square" color="grey"></Header>
 
 <section class="mx-auto max-w-7xl space-y-10 px-2 py-12">
 	<ToolsHeader
@@ -22,7 +22,7 @@
 			{ href: '/tools', label: 'Tools' },
 			{ href: '/tools/selfie', label: 'Selfie' }
 		]}
-		title="Polygon Playground"
+		title="Selfie (Polygon) Playground"
 		subtitle="Interactive playground for polygon selfies and experimental canvas-based compositions."
 	/>
 

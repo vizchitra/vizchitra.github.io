@@ -7,7 +7,7 @@
 <Header title="Schedule 2025" banner="polygon" />
 
 <Container width="full">
-	<Heading tag="h1" align="center">Schedule 2025</Heading>
+	<Heading tag="h1" align="center">Schedule @ VizChitra 2025</Heading>
 
 	<div class="mx-auto w-full max-w-7xl px-4">
 		<object

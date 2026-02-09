@@ -93,7 +93,7 @@
 		& h6 {
 			font-family: var(--font-cairo);
 			line-height: 1.25;
-			letter-spacing: -0.01em;
+			/* letter-spacing: -0.01em; */
 			text-wrap: balance;
 			color: var(--dark-color);
 		}

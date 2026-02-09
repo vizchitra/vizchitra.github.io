@@ -8,6 +8,10 @@
 
 <svelte:head>
 	<title>VizChitra 2026</title>
+	<meta
+		name="description"
+		content="VizChitra 2026 is happening on 3rd and 4th July, 2026 in Bangalore"
+	/>
 	<meta property="og:image" content="https://vizchitra.com/images/preview/preview-2026.jpg" />
 	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>

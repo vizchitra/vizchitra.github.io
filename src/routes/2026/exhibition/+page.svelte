@@ -9,6 +9,7 @@
 
 <svelte:head>
 	<title>Call for Exhibition | VizChitra 2026</title>
+	<meta name="description" content="Call for Exhibition submissions at VizChitra 2026" />
 	<meta
 		property="og:image"
 		content="https://vizchitra.com/images/preview/preview-2026-exhibition.jpg"
@@ -55,7 +56,8 @@
 		</Prose>
 
 		<FullBleed paddingX="xl">
-			<Grid minWidth="20rem" maxColumns={3} gap={6}>
+			<!-- <Grid minWidth="20rem" maxColumns={3} gap={6}> -->
+			<Cluster>
 				<Card variant="bordered" color="orange" title="More-than-Human Data">
 					<p>
 						Data made with, through, or about non-human worlds like flora, fauna, rivers, soil,
@@ -79,7 +81,8 @@
 						and what stays out of view.
 					</p>
 				</Card>
-			</Grid>
+			</Cluster>
+			<!-- </Grid> -->
 		</FullBleed>
 
 		<DividerCurves />

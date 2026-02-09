@@ -10,6 +10,6 @@ color: grey
 
 At VizChitra, we have developed a small set of tools and patterns that we use to create the various visual elements on our website. These tools help us maintain consistency and allow us to experiment in our design process.
 
-- [Selfie Playground](https://vizchitra.com/tools/selfie)
-- [Pattern Variations](https://vizchitra.com/tools/pattern)
-- [Banner Variations](https://vizchitra.com/tools/banner)
+- [Selfie Playground](tools/selfie)
+- [Pattern Variations](tools/pattern)
+- [Banner Variations](tools/banner)
