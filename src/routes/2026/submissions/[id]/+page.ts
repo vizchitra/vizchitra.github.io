@@ -2,7 +2,7 @@ import { error } from '@sveltejs/kit';
 import type { PageLoad, EntryGenerator } from './$types';
 import { parseCFPProposals, parseCFEProposals } from '$lib/utils/csv-parser';
 import cfpRaw from '../../../../../content/2026/data/cfp.csv?raw';
-import cfeRaw from '../../../../../content/2026/data/cfe_sample.csv?raw';
+import cfeRaw from '../../../../../content/2026/data/cfe.csv?raw';
 
 export const prerender = true;
 

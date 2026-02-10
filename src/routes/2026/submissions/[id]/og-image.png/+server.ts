@@ -3,7 +3,7 @@ export const prerender = true;
 import type { RequestHandler } from './$types';
 import { parseCFPProposals, parseCFEProposals } from '$lib/utils/csv-parser';
 import cfpRaw from '../../../../../../content/2026/data/cfp.csv?raw';
-import cfeRaw from '../../../../../../content/2026/data/cfe_sample.csv?raw';
+import cfeRaw from '../../../../../../content/2026/data/cfe.csv?raw';
 import satori from 'satori';
 import { html } from 'satori-html';
 import { Resvg, initWasm } from '@resvg/resvg-wasm';

@@ -55,7 +55,7 @@ export function parseCFPProposals(csvString: string): CFPProposal[] {
 
 	for (const row of rows) {
 		const submissionId = row['Submission ID'];
-		const proposalType = row['Select your proposal type'];
+		const proposalType = row['Select your proposal type']?.trim();
 		const firstName = row['First name'];
 
 		// Skip rows without required fields
@@ -159,7 +159,7 @@ export function parseCFEProposals(csvString: string): CFEProposal[] {
 		const firstName = row['First name'];
 		const submissionType = row['Are you submitting as an individual or a collective?'];
 		const projectTitle = row['Project Title'];
-		const projectDescription = row['Project  Description\n'];
+		const projectDescription = row['Project  Description'];
 
 		// Skip rows without required fields
 		if (!submissionId || !firstName || !submissionType || !projectTitle || !projectDescription)
