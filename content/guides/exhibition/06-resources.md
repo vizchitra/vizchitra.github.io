@@ -3,7 +3,7 @@ title: Resources | Exhibition @ VizChitra
 description: Resources for presenting your exhibition at VizChitra.
 guide: exhibition
 section: resources
-order: 5
+order: 6
 draft: true
 ---
 

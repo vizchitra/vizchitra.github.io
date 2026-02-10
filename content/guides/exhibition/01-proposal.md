@@ -6,6 +6,8 @@ section: proposal
 order: 1
 ---
 
+# Proposal
+
 **How to shape your proposal**
 
 These prompts are here to support you as you draft your submission.

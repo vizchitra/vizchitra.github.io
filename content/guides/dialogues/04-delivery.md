@@ -6,7 +6,7 @@ section: delivery
 order: 4
 ---
 
-## Delivery & Facilitating a Dialogue Session
+# Delivery & Facilitating a Dialogue Session
 
 The facilitators plays a crucial role in the setting the informal and inclusive tone for the session.
 

@@ -7,6 +7,6 @@ order: 3
 draft: true
 ---
 
-**Review Guidelins for Exhibition**
+# Preparation
 
 [Content to be added]

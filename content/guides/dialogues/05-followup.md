@@ -6,7 +6,7 @@ section: followup
 order: 5
 ---
 
-## Followup
+# Followup
 
 The actions does not stop after you finish facilitating the Dialogue. Here is what you should after your session.
 
