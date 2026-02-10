@@ -20,36 +20,35 @@
 	const cards: DeckCard[] = [
 		{
 			title: 'TALKS',
-			description: 'Expert presentations on data visualization',
+			description: 'Engaging presentations on data visualization topics',
 			color: 'blue',
 			href: '/guides/talks',
 			angle: 50
 		},
 		{
 			title: 'DIALOGUES',
-			description: 'Interactive discussions and Q&A',
+			description: 'Open discussions sessions with peer-based learning',
 			color: 'teal',
 			href: '/guides/dialogues',
 			angle: 120
 		},
 		{
 			title: 'WORKSHOPS',
-			description: 'Hands-on learning sessions',
+			description: 'Hands-on learning and skill building sessions',
 			color: 'pink',
 			href: '/guides/workshops',
 			angle: 146
 		},
 		{
 			title: 'EXHIBITION',
-			description: 'Showcase of data visualization projects',
+			description: 'Showcase of interactive data visualisation projects',
 			color: 'orange',
 			href: '/guides/exhibition',
 			angle: 23
 		},
 		{
 			title: 'PANELS',
-			description:
-				'A focussed moderated discussion on an engaging topic with domain & subject matter experts.',
+			description: 'A focussed moderated discussion with experts.',
 			color: 'yellow',
 			href: '/guides/panels',
 			angle: 132
@@ -73,12 +72,6 @@
 		orange: 'text-orange-900'
 	};
 </script>
-
-<svelte:head>
-	<title>Guides | VizChitra</title>
-	<meta property="og:image" content="https://vizchitra.com/images/preview/preview-guides.jpg" />
-	<meta name="twitter:card" content="summary_large_image" />
-</svelte:head>
 
 <Header title="Guides for VizChitra" banner="blob" interactive show="title"></Header>
 
@@ -115,7 +108,7 @@
 								hachureAngle={card.angle}
 								opacity={0.4}
 							/>
-							<div class="card-content self-end text-xs font-medium {textColor[card.color]}">
+							<div class="card-content self-start py-1 text-xs font-medium {textColor[card.color]}">
 								VIZCHITRA GUIDES
 							</div>
 							<h3
@@ -126,7 +119,7 @@
 								{card.title}
 							</h3>
 							<p
-								class="text-md card-content text-viz-black max-w-md self-start justify-self-end bg-white/20 text-right font-medium italic"
+								class="text-md card-content text-viz-black max-w-sm self-end justify-self-end bg-white/20 text-right font-medium italic"
 							>
 								{card.description}
 							</p>
@@ -148,13 +141,13 @@
 	.deck-inner {
 		display: grid;
 		/* 5 cards × 3 rows each: flexible description row + auto title row + auto footer row */
-		grid-template-rows: repeat(5, minmax(5rem, 1fr) auto auto);
+		grid-template-rows: repeat(5, auto auto minmax(8rem, 1fr));
 	}
 
 	.deck-card {
 		position: relative;
 		min-height: 8rem;
-		padding: 1.25rem 1.5rem;
+		padding: 2rem 1.5rem;
 		margin-top: -1rem;
 		clip-path: polygon(0 1rem, 100% 0, 100% calc(100% - 1rem), 0 100%);
 	}
@@ -177,8 +170,8 @@
 	@container (min-width: 60rem) {
 		.deck-inner {
 			grid-template-columns: repeat(5, 1fr);
-			/* Fixed row heights: description row + title row + footer row */
-			grid-template-rows: 4rem 12rem auto;
+			/* Fixed row heights: guide row + title row + description row + */
+			grid-template-rows: auto auto minmax(14rem, 1fr);
 
 			& p {
 				text-align: right;

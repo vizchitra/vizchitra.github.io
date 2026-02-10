@@ -21,13 +21,22 @@ export function load({ params }) {
   }
 
   const color = guideColors[guideSlug] || 'blue';
+  const guideTitle = guideSlug.charAt(0).toUpperCase() + guideSlug.slice(1);
 
   return {
     sections,
-    guideTitle: guideSlug.charAt(0).toUpperCase() + guideSlug.slice(1),
+    guideTitle,
     guideSlug,
     guideColor: color,
     document: {
+      banner: 'blob',
+      color
+    },
+    pageMeta: {
+      title: `${guideTitle} Guide`,
+      ogImage: `https://vizchitra.com/images/preview/preview-guides-${guideSlug}.jpg`
+    },
+    pageLayout: {
       banner: 'blob',
       color
     }

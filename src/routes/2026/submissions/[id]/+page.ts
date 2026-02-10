@@ -25,7 +25,22 @@ export const load: PageLoad = async ({ params }) => {
 		throw error(404, `Proposal "${params.id}" not found`);
 	}
 
+	const title = proposal.type === 'cfp' ? proposal.title : proposal.projectTitle;
+	const description =
+		proposal.type === 'cfp' ? proposal.description : proposal.projectDescription;
+	const shortDesc = description.split('\n')[0] || description.substring(0, 150);
+
 	// Vote data will be fetched client-side by the UpvoteButton component
 	// This avoids trying to fetch from the non-prerenderable API during prerendering
-	return { proposal, voteData: { votes: 0, hasVoted: false } };
+	return {
+		proposal,
+		voteData: { votes: 0, hasVoted: false },
+		pageMeta: {
+			title: `${title} | VizChitra 2026 Proposals`,
+			noSuffix: true,
+			description: shortDesc,
+			ogImage: `https://vizchitra.com/2026/submissions/${proposal.slug}/og-image.png`,
+			ogType: 'article'
+		}
+	};
 };

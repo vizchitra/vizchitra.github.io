@@ -64,7 +64,7 @@
 		gap: 1rem;
 		max-width: 48rem;
 		margin: 0 auto;
-		padding: 2rem;
+		padding: 2rem 0;
 		/* border-top: 1px solid var(--color-gray-200, #e5e7eb); */
 	}
 
@@ -95,7 +95,7 @@
 		font-weight: 500;
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
-		color: var(--color-grey-500, #6b7280);
+		color: var(--color-grey-600, #6b7280);
 	}
 
 	.nav-text {

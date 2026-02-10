@@ -1,5 +1,6 @@
 <script>
 	import { Footer, NavMenu } from '$lib/components/structure';
+	import SEO from '$lib/components/structure/SEO.svelte';
 	import '../app.css';
 
 	import { page } from '$app/stores';
@@ -7,10 +8,12 @@
 	/** @type {{children: import('svelte').Snippet}} */
 	let { children } = $props();
 
-	// Get banner type from page data (document), default to 'curve'
-	let banner = $derived($page.data?.document?.banner ?? 'curve');
-	let color = $derived($page.data?.document?.color);
+	// Layout props: new pageLayout key, falling back to old document convention during migration
+	let banner = $derived($page.data?.pageLayout?.banner ?? $page.data?.document?.banner ?? 'curve');
+	let color = $derived($page.data?.pageLayout?.color ?? $page.data?.document?.color);
 </script>
+
+<SEO />
 
 <div class="app">
 	<NavMenu></NavMenu>

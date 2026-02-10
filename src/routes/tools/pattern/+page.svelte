@@ -38,26 +38,6 @@
 	let streamTone = $state<'blue' | 'teal' | 'orange' | 'pink' | 'yellow'>('orange');
 </script>
 
-<svelte:head>
-	<title>Pattern Gallery | VizChitra</title>
-	<meta
-		name="description"
-		content="Preview the hatched SVG pattern set (waves, river, circle, stream) across VizChitra color tones."
-	/>
-	<meta property="og:type" content="website" />
-	<meta property="og:title" content="Pattern Gallery | VizChitra" />
-	<meta
-		property="og:description"
-		content="Preview the hatched SVG pattern set (waves, river, circle, stream) across VizChitra color tones."
-	/>
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="Pattern Gallery | VizChitra" />
-	<meta
-		name="twitter:description"
-		content="Preview the hatched SVG pattern set (waves, river, circle, stream) across VizChitra color tones."
-	/>
-</svelte:head>
-
 <Header banner="square" color="grey"></Header>
 
 <section class="mx-auto max-w-7xl space-y-10 px-2 py-12">

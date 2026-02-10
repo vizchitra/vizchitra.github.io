@@ -8,19 +8,6 @@
 	import Prose from '$lib/components/typography/Prose.svelte';
 </script>
 
-<svelte:head>
-	<title>Call for Proposals | VizChitra 2026</title>
-	<meta
-		name="description"
-		content="Call for Proposal submissions for talks, dialogues and workshops at VizChitra 2026"
-	/>
-	<meta
-		property="og:image"
-		content="https://vizchitra.com/images/preview/preview-2026-proposals.jpg"
-	/>
-	<meta name="twitter:card" content="summary_large_image" />
-</svelte:head>
-
 <Header banner="curve" />
 
 <Container>

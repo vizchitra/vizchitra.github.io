@@ -9,18 +9,6 @@
 	let banner = data.document.banner ? data.document.banner : 'curve';
 </script>
 
-<svelte:head>
-	<title>{data.document.title}</title>
-	{#if data.document.description}
-		<meta name="description" content={data.document.description} />
-		<meta property="og:description" content={data.document.description} />
-		<meta name="twitter:description" content={data.document.description} />
-	{/if}
-	<meta property="og:title" content={data.document.title} />
-	<meta name="twitter:title" content={data.document.title} />
-	<meta property="og:type" content="website" />
-</svelte:head>
-
 {#if data.document.banner}
 	<Header {color} {banner} />
 {/if}

@@ -6,14 +6,6 @@
 	import Header from '$lib/components/structure/Header.svelte';
 </script>
 
-<svelte:head>
-	<title>Selfie Tool | VizChitra</title>
-	<meta
-		name="description"
-		content="Selfie / polygon playground for experimenting with shapes and cameras."
-	/>
-</svelte:head>
-
 <Header banner="square" color="grey"></Header>
 
 <section class="mx-auto max-w-7xl space-y-10 px-2 py-12">
