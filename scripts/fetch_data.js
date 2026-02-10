@@ -1,4 +1,4 @@
-
+import 'dotenv/config';
 import { google } from 'googleapis';
 import fs from 'fs';
 import path from 'path';
@@ -9,7 +9,8 @@ const SPREADSHEET_ID = '1aZ3lpTPeu9Uf-v9LSb0AagYHc7ysj49YJscoLaUMMm4';
 
 // Map GID to output file name
 const SHEET_MAPPINGS = [
-  { gid: 1120719438, name: 'cfp' }
+  { gid: 1120719438, name: 'cfp' },
+  { gid: 1736646726, name: 'cfe' }
   // Add more mappings here as needed
   // { gid: 123456789, name: 'another-sheet' }
 ];

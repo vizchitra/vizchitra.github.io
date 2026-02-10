@@ -201,95 +201,76 @@
 		{/if}
 
 		{#if isDialogueOrWorkshop}
-			{#if (proposal as CFPProposal).materials || (proposal as CFPProposal).roomSetup}
+			{#if (proposal as CFPProposal).materials}
 				<section class="mb-8 md:mb-10">
-					<Heading tag="h3" align="left">Logistics</Heading>
-					<div
-						class="space-y-3 rounded-lg border-l-4 border-viz-{color}-dark bg-viz-{color}-light/10 p-4 md:space-y-4 md:p-6"
-					>
-						{#if (proposal as CFPProposal).materials}
-							<div>
-								<p
-									class="mb-1.5 text-xs font-bold tracking-wide uppercase text-viz-{color}-dark md:mb-2 md:text-sm"
-								>
-									Materials Required
-								</p>
-								<div class="text-viz-grey/90 markdown-content text-sm md:text-base">
-									{@html parseMarkdown((proposal as CFPProposal).materials)}
-								</div>
-							</div>
-						{/if}
-						{#if (proposal as CFPProposal).roomSetup}
-							<div>
-								<p
-									class="mb-1.5 text-xs font-bold tracking-wide uppercase text-viz-{color}-dark md:mb-2 md:text-sm"
-								>
-									Room Setup
-								</p>
-								<div class="text-viz-grey/90 markdown-content text-sm md:text-base">
-									{@html parseMarkdown((proposal as CFPProposal).roomSetup)}
-								</div>
-							</div>
-						{/if}
+					<Heading tag="h4" align="left" class="pb-4">Materials Required</Heading>
+					<div class="text-viz-grey/90 markdown-content">
+						<Prose>
+							{@html parseMarkdown((proposal as CFPProposal).materials)}
+						</Prose>
+					</div>
+				</section>
+			{/if}
+			{#if (proposal as CFPProposal).roomSetup}
+				<section class="mb-8 md:mb-10">
+					<Heading tag="h4" align="left" class="pb-4">Room Setup</Heading>
+					<div class="text-viz-grey/90 markdown-content">
+						<Prose>
+							{@html parseMarkdown((proposal as CFPProposal).roomSetup)}
+						</Prose>
 					</div>
 				</section>
 			{/if}
 		{/if}
 
 		{#if isCFE}
-			<section class="mb-8 md:mb-10">
-				<Heading tag="h3" align="left">Data & Visualization</Heading>
-				<div
-					class="border-viz-orange-dark bg-viz-orange-light/10 space-y-3 rounded-lg border-l-4 p-4 md:space-y-5 md:p-6"
-				>
-					{#if (proposal as CFEProposal).dataSource}
-						<div>
-							<p
-								class="text-viz-orange-dark mb-1.5 text-xs font-bold tracking-wide uppercase md:mb-2 md:text-sm"
-							>
-								Data Source
-							</p>
-							<div class="text-viz-grey/90 markdown-content text-sm md:text-base">
-								{@html parseMarkdown((proposal as CFEProposal).dataSource)}
-							</div>
-						</div>
-					{/if}
-					{#if (proposal as CFEProposal).visualizationMethod}
-						<div>
-							<p
-								class="text-viz-orange-dark mb-1.5 text-xs font-bold tracking-wide uppercase md:mb-2 md:text-sm"
-							>
-								Visualization Method
-							</p>
-							<div class="text-viz-grey/90 markdown-content text-sm md:text-base">
-								{@html parseMarkdown((proposal as CFEProposal).visualizationMethod)}
-							</div>
-						</div>
-					{/if}
-				</div>
-			</section>
+			{#if (proposal as CFEProposal).dataSource}
+				<section class="mb-8 md:mb-10">
+					<Heading tag="h4" align="left" class="pb-4">Data Source</Heading>
+					<div class="text-viz-grey/90 markdown-content">
+						<Prose>
+							{@html parseMarkdown((proposal as CFEProposal).dataSource)}
+						</Prose>
+					</div>
+				</section>
+			{/if}
+
+			{#if (proposal as CFEProposal).visualizationMethod}
+				<section class="mb-8 md:mb-10">
+					<Heading tag="h4" align="left" class="pb-4">Visualization Method</Heading>
+					<div class="text-viz-grey/90 markdown-content">
+						<Prose>
+							{@html parseMarkdown((proposal as CFEProposal).visualizationMethod)}
+						</Prose>
+					</div>
+				</section>
+			{/if}
 
 			{#if (proposal as CFEProposal).technicalRequirements}
 				<section class="mb-8 md:mb-10">
-					<Heading tag="h3" align="left">Technical Requirements</Heading>
-					<div class="text-viz-grey/90 markdown-content text-sm md:text-base">
-						{@html parseMarkdown((proposal as CFEProposal).technicalRequirements)}
+					<Heading tag="h4" align="left" class="pb-4">Technical Requirements</Heading>
+					<div class="text-viz-grey/90 markdown-content">
+						<Prose>
+							{@html parseMarkdown((proposal as CFEProposal).technicalRequirements)}
+						</Prose>
 					</div>
 				</section>
 			{/if}
 
 			{#if (proposal as CFEProposal).timeline}
 				<section class="mb-8 md:mb-10">
-					<Heading tag="h3" align="left">Project Status & Timeline</Heading>
-					<div class="text-viz-grey/90 markdown-content text-sm md:text-base">
-						{@html parseMarkdown((proposal as CFEProposal).timeline)}
+					<Heading tag="h4" align="left" class="pb-4">Project Status & Timeline</Heading>
+					<div class="text-viz-grey/90 markdown-content">
+						<Prose>
+							{@html parseMarkdown((proposal as CFEProposal).timeline)}
+						</Prose>
 					</div>
 				</section>
 			{/if}
 
 			{#if (proposal as CFEProposal).previousProjects}
 				<section class="mb-8 md:mb-10">
-					<Heading tag="h3" align="left">Previous Work</Heading>
+					<Heading tag="h4" align="left" class="pb-4">Previous Work</Heading>
 					<a
 						href={(proposal as CFEProposal).previousProjects}
 						target="_blank"
@@ -316,19 +297,17 @@
 
 			{#if (proposal as CFEProposal).submissionType === 'Collective' && (proposal as CFEProposal).teamName}
 				<section class="mb-8 md:mb-10">
-					<Heading tag="h3" align="left">Team</Heading>
-					<div
-						class="border-viz-orange-dark bg-viz-orange-light/10 rounded-lg border-l-4 p-4 md:p-6"
-					>
-						<p class="font-display-sans text-viz-orange-dark mb-2 text-xl font-bold md:text-2xl">
-							{(proposal as CFEProposal).teamName}
-						</p>
-						{#if (proposal as CFEProposal).teamBio}
-							<div class="text-viz-grey/90 markdown-content text-sm md:text-base">
+					<Heading tag="h4" align="left" class="pb-4">Team</Heading>
+					<p class="font-display-sans text-viz-grey mb-2 text-xl font-bold md:text-2xl">
+						{(proposal as CFEProposal).teamName}
+					</p>
+					{#if (proposal as CFEProposal).teamBio}
+						<div class="text-viz-grey/90 markdown-content">
+							<Prose>
 								{@html parseMarkdown((proposal as CFEProposal).teamBio)}
-							</div>
-						{/if}
-					</div>
+							</Prose>
+						</div>
+					{/if}
 				</section>
 			{/if}
 		{/if}

@@ -1,0 +1,217 @@
+Submission ID,Respondent ID,Submitted at,First name,Last name,Job title,Organisation,I’m a… / I work on… / I'm interested in...,Are you submitting as an individual or a collective?,Collective/Team Name,Collective/Team Bio,Examples of previous projects,Links to your social media channels.,Twitter/X,LinkedIn,Project Title,"Project  Description
+",What is your data?,"How do you visualize it? ",Sketches / Concept Ideations,What technical/spatial requirements would you be needing?,Project status + Timeline,"Note: We publish all submissions on the VizChitra website for our community, along with our review of each application. We do not publish personally identifiable information (PII) such as full names, contact details, addresses, or other sensitive data. Please confirm your consent by checking the box below.","Note: We publish all submissions on the VizChitra website for our community, along with our review of each application. We do not publish personally identifiable information (PII) such as full names, contact details, addresses, or other sensitive data. Please confirm your consent by checking the box below. (I consent to VizChitra publishing my submission and the review of my application.)",,Exclude,Status
+aQRzaWv,2E4xBXL,2026-02-05 6:56:40,Sai Krishna,Dammalapati,Research Associate,Urban Emissions Info LLP,"Sai Krishna Dammalapati is a civic-technologist who worked on solving civic issues like air pollution, floods and waste management. He also likes to write stories and act in them. You can start a conversation with him by talking about popular science books.",Collective,UrbanEmissions Info LLP,"UrbanEmissions.info (UEinfo) was founded in 2007 with the vision to be a repository of information, research, and analysis related to air pollution. Despite being an escalating problem to public heath in cities across the world, tools for tackling air pollution are often complex, data-heavy, and designed for multiple purposes, making them difficult to apply in real-world scenarios. UEinfo seeks to address the challenges by  focusing on four key objectives:
+1. Sharing knowledge on air pollution
+2. Providing science based air quality analysis
+3. Promoting advocacy and raising awareness on air quality management and
+4. Building partnerships among local, national, and international air-heads
+",https://storage.tally.so/private/Jammu-Set1.pdf?id=qk5RGY&accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InFrNVJHWSIsImZvcm1JZCI6ImxiZXlndiIsImlhdCI6MTc3MDQ1MDA5Mn0.qY4lc65ZIYry-8_Cx_YO5g6kt2JKTi3CFH7DrrCM5yI&signature=2993845c10deac8c49f408852440802cab473554c29d17ca2e6d86b44d5ed2c0,https://www.instagram.com/scipolstories/,,https://www.linkedin.com/in/sarath-guttikunda-3a01149/,Communicating Data for Clean Air Awareness,"“Delhi’s air pollution is because of Punjab farmers right?”
+This common question assumes that we are just victims of air pollution. But a lot of activities from our daily routine are responsible for the polluted air we breathe and these often go under the radar. Our exhibits aim to evoke that feeling of shared responsibility in visitors, in a playful way.
+
+1. Our exhibits will interact with the visitor to nudge their perceptions about air pollution towards reality. From the simple AQI that we read in the news to the knowledge on sources of air pollution, there are various, often funny, perceptions. We will bring them out leaving the visitor saying, “Ah! I didn’t know this!”
+
+2. Our installations will present air pollution as a solvable problem, but with certain costs that everyone should be willing to pay. They will provoke questions like, “Am I ready to subsidise the wood stove of a poor household as that one stove can emit as much as 250 cars?” We also plan digital and hands-on board games that’d equip visitors to answer such questions.
+
+3. We can engage visitors for up to 30 minutes. On an average, a visitor would spend about 10-15 minutes with our exhibits. 
+
+At the heart, air pollution is not just a scientific-technological problem. It is a political problem and a conscious community plays a huge role in solving it. The first step towards building that community is to make individuals feel that they are part of a community. We hope to strike that chord of community in the visitors.","1. The locations of CPCB’s air pollution monitors on a city’s map, for a couple of cities where we expect maximum visitor interest. This is public data.
+
+2. Data on sources of air pollution for the chosen cities. This is scientific data that is obtained from both literature and our modelling efforts.
+
+3. Data on emissions management: This is the information on ways to reduce/skip emission generation activities and seek better air quality. This is scientific data obtained from literature.
+
+4. We’d also do some playful surveys from the visitors collecting their perceptions on their pollution footprints and sources of air pollution.
+"," Screen-based and participatory chart-based.
+1. A chart that plots CPCB’s monitor locations with a 2km radius buffer on Bengaluru’s base map. Visitors would pin their homes on the map. This chart communicates the unrepresentative nature of the city’s monitoring network, and the gaps in AQI that we read in the news everyday.
+
+2. A chart that surveys visitor’s perceptions on sources of air pollution for a few cities – Bengaluru, Delhi, Mumbai. We’d present the reality later in the evening.
+
+3. The data on emissions management will be presented in the form of a board game we designed. It’ll nudge visitors to think about reducing pollution either by reducing or changing the emission generation activity. 
+
+4. We designed a digital quiz of the Jeopardy style (American TV Show). We plan to play it during the session breaks for ~15 minutes. We’ll also bring zines we made that has the required material.
+",https://storage.tally.so/private/Sketches_VizChitra.pdf?id=qkZ758&accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InFrWjc1OCIsImZvcm1JZCI6ImxiZXlndiIsImlhdCI6MTc3MDQ1MDA5Mn0.dZmqScexkOgmBffotnzm-hVNCnZh8iVWqwL2iwbd1Ek&signature=a25f555494c686e2a6b575090d95a5e2e7008bd1301ad4160f05c35d8e726028,"Power, Internet, Screen, Table, A poster panel (a wall basically to put our charts)
+","Except for the board game, all the other exhibits are ready and are being used in our other workshops. The boardgame will be ready soon. ",I consent to VizChitra publishing my submission and the review of my application.,TRUE,,Keep,Under Review
+eqbNKDk,lbNQ9Q6,2026-02-08 6:31:30,Shreya,Dan,Student,"National Institute of Design, Bengaluru","I am Shreya, an Information Design student at NID with a background in Fashion from NIFT Kolkata. My practice focuses on data visualisation and systems thinking, translating research and quantitative insights into intuitive visual and spatial experiences.",Individual,,,https://storage.tally.so/private/Shreya-Dan_-Otherworks.pdf?id=gkqpa4&accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImdrcXBhNCIsImZvcm1JZCI6ImxiZXlndiIsImlhdCI6MTc3MDUzMjI5MX0.4j8TxD9OiXmawOjmBtvvgN6ut1JK8MRhEVevB5f8ER4&signature=7d50ed8e47c7b6362304001ec989eaec0b6a05ed35a3cfe7bd58ac4c91d44442,https://www.instagram.com/_pragmaticdreamer_?igsh=ODRmbnA5dmJmM3My,,www.linkedin.com/in/danshreya,Puddle Beneath the Plate,"About the Project:
+This tangible data installation explores the water footprint of everyday meals by representing the total freshwater consumed across the food supply chain, from cultivation and irrigation to processing and distribution. Aligned with SDG 12 (Responsible Consumption and Production) and SDG 13 (Climate Action), the work highlights how water use embedded in food remains largely invisible to consumers.
+
+Experience:
+Visitors encounter a table-based installation resembling a dining setup. Common meals are placed on individual placemats designed to resemble puddles of water. Each placemat has ripples that encodes the meal’s water footprint in proportional scale, creating the illusion of a real puddle beneath the plate, something present yet typically unnoticed. A concise legend explains how the data is translated. Visitors move around the table, compare meals, and observe variations in scale. The experience is contemplative and comparative, lasting approximately 3 to 5 minutes per visitor.
+
+Why Data is Central:
+The installation is generated directly from verified comparative water footprint data measured in litres per unit of food. Scale, proportion, spacing, and material quantity are determined by numerical values. Data does not decorate the work; it constructs it. The visual and spatial relationships emerge from measured differences within the dataset.
+
+Core Question: What changes when the hidden water embedded in our meals becomes materially visible?
+
+Context:
+Agriculture accounts for the largest share of global freshwater withdrawals, yet this resource intensity rarely informs daily food choices. In water-stressed and rapidly urbanising regions, understanding embedded water becomes increasingly urgent. The project connects individual consumption to broader food systems, ecological stress, and sustainability infrastructures.
+
+Why it Fits Data, Otherwise:
+By translating environmental statistics into embodied spatial form, the work treats data as material, revealing the intimate link between everyday life and planetary resource systems.","The data has been sourced from credible secondary sources on food water footprints:
+
+1. WaterCalculator.org
+2. Our World in Data
+3. 4TU ResearchData repository
+4. Water Footprint Network (waterfootprint.org)
+
+These sources compile life-cycle and agricultural water use data, typically measured in litres per kilogram or per metric ton of food.","1. How does the size of the puddle change across meals?
+2. Which ingredients form the thickest ripples?
+3. What everyday foods carry unexpectedly high water footprints?
+4. How do personal dietary choices connect to larger agricultural systems?
+5. Can awareness of water footprints influence consumption patterns?
+6. How do global food systems impact water security in vulnerable regions?
+7. What does sustainability look like when measured through resource intensity rather than price or convenience?",https://storage.tally.so/private/ShreyaDan-Exhibition-Proposal.pdf?id=7pKjG2&accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdwS2pHMiIsImZvcm1JZCI6ImxiZXlndiIsImlhdCI6MTc3MDUzMjI5MX0.i7F2UjAGqFBadUQ_h2Y39Y563HeOsGkO-z9wMVH-O50&signature=4bccf7e2588fee9707184e48a6fd3f38c30a2069bd5a9c1ee8bbb6cbb3d22e66,"Spatial Requirement
+
+1. Six Tables ( 4 ft × 3 ft) 
+2. Height: Standard table height (75–90 cm)
+3. Clear circulation space: At least 3 ft (90 cm) around the table for movement and viewing
+
+The installation relies on comparative scale. Visitors need to step back to perceive proportional differences and move closer to read the legend and inspect material quantities. Adequate circulation ensures multiple viewers can engage simultaneously without crowding.","This is an existing work which is a part of my Tangible Data Viz module at National Institute of Design, Bengaluru.",I consent to VizChitra publishing my submission and the review of my application.,TRUE,,Keep,Under Review
+ZjxPJYv,1ArqKGL,2026-02-08 12:13:14,Saumya,"Mittal Bafna ",Founder and Creative Director,From&To,"My work focuses on breaking down dense, complex information into pieces that are as easy to digest as they are engaging. I view data as a window into the human experience, allowing me to explore societal themes through graphic design.",Collective,From&To,"From&To is a multidisciplinary design studio specializing in branding, web, and information design. Born from a deep-seated passion for data visualization, the studio excels at bridging the gap between complex information and clear communication. From&To prides itself on an extensive portfolio of creative publications where graphic design serves as a powerful tool to make data more accessible, engaging, and impactful.",https://storage.tally.so/private/Vizchitra-Project-Proposal-3-compressed-compressed.pdf?id=QORGM8&accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlFPUkdNOCIsImZvcm1JZCI6ImxiZXlndiIsImlhdCI6MTc3MDU1Mjc5Nn0.ocCvZMxcp5AHEeVpuw_ULX6is_xkbBnFp2Azm8Xg3nc&signature=44fe07602a80cd47d0a5ec46d43360704d133a7879dc65b53f45172203c5c8da,https://www.instagram.com/fromandto.design/,,https://www.linkedin.com/in/saumya-bafna-a4ab165b/,The Knowledge Gap: Mapping India’s Climate Consciousness,"What does climate change feel like in the Indian mind? This installation serves as a communal mirror, contrasting nationwide survey data with scientific truths. Each display pairs Perception—the stories we tell ourselves—against Reality—the data of our changing environment. As visitors interact with live installations, they see their personal reflections integrated into the broader community’s voice. The work highlights that climate change is not just a physical crisis, but a shared psychological experience, aiming to close the gap between awareness and understanding.","The installation draws its 'Perception' data from the Yale Program on Climate Change Communication’s report, Climate Change in the Indian Mind, utilizing both quantitative statistics and qualitative quotations to map public sentiment. These subjective insights are juxtaposed with 'Reality'—empirical facts and environmental metrics sourced directly from official reports published by the Ministry of Environment, Forest and Climate Change (MoEFCC).","The installation uses physical materials and color theory to distinguish between climate reality and public perception. Central to the work are semi-transparent layers: solid, 3D visualizations—such as bar charts crafted from reclaimed wood—represent empirical facts, while ""filters"" of distorted glass or mesh represent the lens of perception. This layering forces viewers to look through their own biases to find the underlying truth.
+
+To bridge the gap between viewer and data, the work incorporates live interactive stations. A mechanical balance scale allows visitors to weigh their personal anxieties against statistical probability; by placing physical weights, they can see if their fears are ""overweight"" compared to reality. Additionally, a modular collection wall invites participants to contribute objects or notes to specific compartments, documenting the community’s evolving lived reality. This tactile engagement transforms abstract data into a shared, physical experience.",https://storage.tally.so/private/Vizchitra-Project-Proposal.pdf?id=PG9ozb&accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlBHOW96YiIsImZvcm1JZCI6ImxiZXlndiIsImlhdCI6MTc3MDU1Mjc5Nn0.vzJSG5HzFzeEbGXU8bfKB7_yfaxqd139YCgjxG346Hg&signature=db81ee323626e66809d862e11b3e6999403daf3c869f7cb0aa9f19aeecccf06d,"Designed for scalability, the installation is modular and adaptable to various spatial constraints and resource levels. The specific materiality and execution will be finalized in alignment with the site's dimensions, ensuring a seamless fit within the exhibition environment.",This is a new proposal and would be created for Vizchitra. The installation on site should take 1-2 days based on the resources available.,I consent to VizChitra publishing my submission and the review of my application.,TRUE,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
