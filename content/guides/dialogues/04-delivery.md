@@ -6,7 +6,7 @@ section: delivery
 order: 4
 ---
 
-# Delivery & Facilitating a Dialogue Session
+# Delivery & Facilitating
 
 The facilitators plays a crucial role in the setting the informal and inclusive tone for the session.
 
@@ -27,7 +27,7 @@ The aim is to gently guide the discussion to keep it flowing. Some principles to
 
 Some additional tips for the facilitator are:
 
-- Ensure everyone has a space to be seated and can participate in the BoF session.
+- Ensure everyone has a space to be seated and can participate in the Dialogue session.
 - Facilitator normally sets the context and share the hygiene rules for everyone to follow as the participant.
 - As a facilitator, you should help guide and moderate the discussion as needed but don’t start presenting or imposing your own views.
 - As a facilitator, it is your role to balance and limit over-participation, and ensure no single person ends up monopolizing the session.
