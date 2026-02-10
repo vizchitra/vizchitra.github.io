@@ -201,7 +201,24 @@ We will explore how technical choices can inadvertently distort the truth. A sim
 I will cover technicalities of scatter plots, histograms, line charts, bubble charts, and many more. And will also explain tips to avoid such issues.
 The session will take around 30 minutes, but is less than the ""dialogue"" format.
 It will be ideal for early-to-mid-career data visualizers, analysts, and designers who are comfortable with tools but want to sharpen their technical rigour.",,,,"Yes, many times",Visualizations as Craft,Keep the math right as you make a chart,"Yes, many times",,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+ODxMp6p,KYlYO8g,2026-02-09 12:06:47,Surbhi,Bhatia,"Data journalist, Data viz-ard",Independent,"I turn numbers into insights through visual analytics across corporates, think tanks, research groups, design studios, and newsrooms.",www.instagram.com/surbhibhatia/,https://x.com/surbhaai,www.linkedin.com/in/surbhi-bhatia,"Dialogues ",I consent to VizChitra publishing my submission and the review of my application.,TRUE,,,,,,,,Visualizations and Tools,Is it all Good Vibes Only? The Ch(art) of Visualising Data with Vibe Coding,"Yes, many times","With large language models, coding has changed, and so has data visualisation. 
+
+“The hottest new programming language is English”, says Andrej Karpathy, who coined the term vibe coding. Since 2025, interest in the term has surged globally (https://tinyurl.com/ykff2bua). Anywhere you look, charts, dashboard, infographics, microsites built through prompts and iteration show up.
+
+For someone like me, who spent countless hours painstakingly building charts line by line in ggplot/R or discovering new libraries like cutecharts in Python, vibe coding was an exciting shift. It took away most of the manual labour of writing code, allowed me to experiment with D3.js and other interactive chart libraries with low effort. Most of all, it massively cut the time taken from idea to implementation. Now I could spin up a working dashboard in hours, not days.
+
+Beyond changing how we make visualisations, vibe-coding is also changing what we feel while building them. When you can go from an idea to prototype in minutes, without the slow learning that once came from writing and debugging code, there is an emotional arc to your technical workflow.
+
+There is the thrill of instant creation, followed quickly by unease: disbelief that it works, frustration when small things break, and a creeping sense of not knowing how to debug. It can be disillusioning to sit with the feeling that you made something but don't fully know how. Some days it can feed imposter syndrome, other days it can re-assure you that your fundamentals are in place. I find myself constantly negotiating with what I still need to know, what I can defer learning, and what I may no longer need to learn in the data visualisation process anymore.
+
+This dialogue will explore similar tensions and dilemmas in the minds of data visualisers. Some questions we will reflect on: Where does one begin to vibe-code? What tools and workflows do we reach out for? Which decisions still belong to the maker, and which are delegated to the tool? Who does vibe-coding open doors for, and whose work does it reshape? What do we do when it exposes gaps in our skills? Is it a career skill that can be taught and learnt? In the hands of founders, product managers, and designers, has vibe-coding helped? How are developers experiencing this shift? And as we move faster, how do we ensure quality, rigour, creativity, and trust in our products? How do we coordinate, deliver and scale data visualisations with this new method? 
+
+Based on the discussion, we’ll map the shifting _vibes_ of making visualisations through vibe-coding with a simple emoji-based exercise. Participants will create their own _vibe-check_ chart: time spent vibe-coding on the x-axis, and sentiments such as thrill, disbelief, self-doubt, bargaining, acceptance or more, felt with varying intensity in the process, on the y-axis. Emoji stickers will be cut out and placed on the chart to mark how these feelings rise and fall. A sample version here: https://tinyurl.com/53t9sd87
+
+The session will help participants articulate where they feel confident, where they feel lost, and what they want to hold on to as the practice shifts. Bring your wins, failures, half-started experiments, or fully shipped vibe-coded charts, dashboards, and visual projects. This will be a candid conversation about the emotional experience of making dataviz in this brave new world.",https://tinyurl.com/ykff2bua,https://tinyurl.com/53t9sd87,,"1. Printed emoji stickers or cut-outs representing different sentiments aka vibes.
+2. Print outs of chart axes on A4 sheets for participants
+3. Maybe wall space to paste or place charts participants create
+4. Projector/Screen for dialogue presentation and discussion",Yes,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
