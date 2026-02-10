@@ -35,7 +35,7 @@
 <div class="mb-8">
 	<!-- Search Bar -->
 	<div class="mb-5">
-		<div class="relative mx-auto max-w-3xl">
+		<div class="relative max-w-xl">
 			<svg
 				class="text-viz-grey/40 pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 transition-colors duration-200"
 				width="18"

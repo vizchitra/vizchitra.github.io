@@ -60,7 +60,7 @@
 			<div class="pointer-events-none absolute -bottom-20 left-0 z-2 md:-bottom-10 md:left-15">
 				<LogoTagline />
 			</div>
-			<div class="pointer-events-none absolute top-10 right-15 z-2 w-80 md:right-20">
+			<div class="pointer-events-none absolute top-5 right-10 z-2 w-80 md:top-15 md:right-20">
 				<h2 class="max-w-1xl text-right leading-tight font-normal">
 					<Slanted color="grey" textContent={tagline} />
 				</h2>
