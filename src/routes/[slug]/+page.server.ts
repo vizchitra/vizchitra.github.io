@@ -29,6 +29,14 @@ export const load: PageServerLoad = async ({ params }) => {
 	}
 
 	return {
-		document: page
+		document: page,
+		pageMeta: {
+			title: page.title,
+			description: page.description
+		},
+		pageLayout: {
+			banner: page.banner,
+			color: page.color
+		}
 	};
 };

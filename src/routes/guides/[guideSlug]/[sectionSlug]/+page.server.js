@@ -26,11 +26,18 @@ export function load({ params }) {
     ? { ...section, html: null }
     : section;
 
+  const capitalize = (s) => s ? s.charAt(0).toUpperCase() + s.slice(1) : '';
+
   return {
     section: sectionData,
     prevSection,
     nextSection,
     guideSlug,
-    isDraft
+    isDraft,
+    pageMeta: {
+      title: `${section.section} - ${capitalize(guideSlug)} Guide`,
+      description: section.description,
+      ogImage: `https://vizchitra.com/images/preview/preview-guides-${guideSlug}.jpg`
+    }
   };
 }

@@ -5,6 +5,14 @@ export const load: PageLoad = () => {
 		document: {
 			banner: 'square' as const,
 			color: 'grey' as const
+		},
+		pageMeta: {
+			title: 'Selfie Tool',
+			description: 'Selfie / polygon playground for experimenting with shapes and cameras.'
+		},
+		pageLayout: {
+			banner: 'square' as const,
+			color: 'grey' as const
 		}
 	};
 };

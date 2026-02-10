@@ -4,8 +4,9 @@ description: Resources for delivering an engaging dialogue session at VizChitra.
 guide: dialogues
 section: resources
 order: 6
+draft: true
 ---
 
-# Delivery Guidelines
+# Resources
 
 [Content to be added]

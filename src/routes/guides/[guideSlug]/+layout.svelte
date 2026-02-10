@@ -48,15 +48,6 @@
 	const displayTitle = $derived(guideName ? `${capitalize(guideName)} @ VizChitra` : data.guideId);
 </script>
 
-<svelte:head>
-	<title>{data.guideTitle} Guide | VizChitra</title>
-	<meta
-		property="og:image"
-		content="https://vizchitra.com/images/preview/preview-guides-{data.guideSlug}.jpg"
-	/>
-	<meta name="twitter:card" content="summary_large_image" />
-</svelte:head>
-
 <Header banner="blob" color={data.guideColor}></Header>
 
 <Container width="wide" class="w-full">

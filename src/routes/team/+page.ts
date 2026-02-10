@@ -5,6 +5,14 @@ export const load: PageLoad = () => {
 		document: {
 			banner: 'square' as const,
 			color: 'orange' as const
+		},
+		pageMeta: {
+			title: 'Team',
+			description: 'Meet the team behind VizChitra'
+		},
+		pageLayout: {
+			banner: 'square' as const,
+			color: 'orange' as const
 		}
 	};
 };

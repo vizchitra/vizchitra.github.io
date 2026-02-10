@@ -21,5 +21,11 @@ export function load() {
 		categories[key].sort((a, b) => (a.order || 999) - (b.order || 999));
 	});
 
-	return { categories };
+	return {
+		categories,
+		pageMeta: {
+			title: 'Studio',
+			description: 'Design system workspace for VizChitra'
+		}
+	};
 }

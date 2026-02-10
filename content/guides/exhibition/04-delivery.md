@@ -7,4 +7,6 @@ order: 4
 draft: true
 ---
 
+# Delivery
+
 **Delivery Guidelines for the Exhibition**

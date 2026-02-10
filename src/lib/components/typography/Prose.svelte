@@ -143,6 +143,21 @@
 			color: var(--dark-color);
 		}
 
+		& a {
+			/* color: var(--dark-color); */
+			text-decoration: underline;
+			text-decoration-color: var(--muted-color);
+			text-decoration-thickness: 2px;
+			text-underline-offset: 0.35em;
+			text-decoration-skip-ink: auto;
+		}
+
+		& a:hover {
+			text-decoration-color: var(--dark-color);
+			padding: 0.35em 0;
+			background-color: var(--subtle-color);
+		}
+
 		/* Maintain line-height while using scripts */
 		& sub,
 		& sup {
@@ -221,7 +236,8 @@
 		& ul,
 		& ol {
 			/* ── Component-scoped tokens ── */
-			--list-track: 2.5rem;
+			--list-track-ul: 1.5rem;
+			--list-track-ol: 2.5rem;
 			--list-font-weight: 350; /* Lightweight marker */
 
 			list-style: none;
@@ -230,7 +246,6 @@
 
 			& li {
 				position: relative;
-				padding-left: var(--list-track);
 				font-family: var(--font-plex); /* Copy font */
 			}
 
@@ -252,6 +267,10 @@
 
 		/* --- 5a. UNORDERED: Thin Dash --- */
 		& ul {
+			& li {
+				padding-left: var(--list-track-ul);
+			}
+
 			& li::before {
 				content: '–'; /* En-dash for a light minimalist look */
 			}
@@ -263,6 +282,7 @@
 
 			& li {
 				counter-increment: prose-counter;
+				padding-left: var(--list-track-ol);
 			}
 
 			& li::before {

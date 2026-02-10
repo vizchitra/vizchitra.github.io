@@ -33,11 +33,6 @@
 	};
 </script>
 
-<svelte:head>
-	<title>Studio - VizChitra Design System</title>
-	<meta name="description" content="Design system workspace for VizChitra" />
-</svelte:head>
-
 <div class="min-h-screen bg-gray-50 py-12">
 	<Container width="content" paddingY="lg">
 		<Stack space="2xl">

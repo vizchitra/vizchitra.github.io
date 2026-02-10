@@ -20,5 +20,16 @@ export const load: PageLoad = async () => {
 		)
 	].filter(Boolean);
 
-	return { proposals, types, themes };
+	return {
+		proposals,
+		types,
+		themes,
+		pageMeta: {
+			title: 'Submissions | VizChitra 2026',
+			description:
+				'Browse all submitted proposals for talks, dialogues, workshops, and exhibitions at VizChitra 2026.',
+			ogImage: 'https://vizchitra.com/images/preview/preview-2026.jpg',
+			noSuffix: true
+		}
+	};
 };

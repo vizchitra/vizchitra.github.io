@@ -26,7 +26,7 @@
 
 	const getDescription = () => {
 		const desc = proposal.type === 'cfp' ? proposal.description : proposal.projectDescription;
-		const truncated = desc.length > 200 ? desc.slice(0, 200) + '...' : desc;
+		const truncated = desc.length > 250 ? desc.slice(0, 250) + '...' : desc;
 		return marked.parseInline(truncated);
 	};
 

@@ -49,36 +49,6 @@
 	};
 </script>
 
-<svelte:head>
-	<title>{title} | VizChitra 2026 Proposals</title>
-	<meta name="description" content={description.split('\n')[0] || description.substring(0, 150)} />
-
-	<!-- Open Graph -->
-	<meta property="og:title" content={title} />
-	<meta
-		property="og:description"
-		content={description.split('\n')[0] || description.substring(0, 150)}
-	/>
-	<meta property="og:type" content="article" />
-	<meta
-		property="og:image"
-		content="https://vizchitra.com/2026/submissions/{proposal.slug}/og-image.png"
-	/>
-	<meta property="og:url" content="https://vizchitra.com/2026/submissions/{proposal.slug}" />
-
-	<!-- Twitter -->
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content={title} />
-	<meta
-		name="twitter:description"
-		content={description.split('\n')[0] || description.substring(0, 150)}
-	/>
-	<meta
-		name="twitter:image"
-		content="https://vizchitra.com/2026/submissions/{proposal.slug}/og-image.png"
-	/>
-</svelte:head>
-
 <!-- Clean header with title and speaker -->
 
 <Header banner="curve" />

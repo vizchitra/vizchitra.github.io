@@ -6,13 +6,6 @@
 	let { data }: PageProps = $props();
 </script>
 
-<svelte:head>
-	<title>{data.document.title} - Studio</title>
-	{#if data.document.description}
-		<meta name="description" content={data.document.description} />
-	{/if}
-</svelte:head>
-
 <div class="min-h-screen bg-gray-50 py-12">
 	<Container paddingY="xl">
 		<!-- Breadcrumb -->

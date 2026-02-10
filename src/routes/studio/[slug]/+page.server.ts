@@ -11,6 +11,10 @@ export function load({ params }) {
 	}
 
 	return {
-		document: doc
+		document: doc,
+		pageMeta: {
+			title: `${doc.title} - Studio`,
+			description: doc.description
+		}
 	};
 }

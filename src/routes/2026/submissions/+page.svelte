@@ -67,16 +67,6 @@
 	});
 </script>
 
-<svelte:head>
-	<title>Submissions | VizChitra 2026</title>
-	<meta
-		name="description"
-		content="Browse all submitted proposals for talks, dialogues, workshops, and exhibitions at VizChitra 2026."
-	/>
-	<meta property="og:image" content="https://vizchitra.com/images/preview/preview-2026.jpg" />
-	<meta name="twitter:card" content="summary_large_image" />
-</svelte:head>
-
 <Header banner="curve" />
 
 <Container>
@@ -97,20 +87,20 @@
 		/>
 		<!-- </div> -->
 
-		<div class="content-container max-w-3xl">
-			<div class="space-y-4">
-				{#each filteredProposals as proposal}
-					<div class="border-viz-grey/10 rounded-lg border transition-shadow hover:shadow-md">
-						<ProposalCard {proposal} href="/2026/submissions/{proposal.slug}" />
-					</div>
-				{/each}
-			</div>
-
-			{#if filteredProposals.length === 0}
-				<div class="py-16 text-center">
-					<p class="text-viz-grey text-lg">No proposals found matching your filters.</p>
+		<!-- <div class="content-container max-w-4xl"> -->
+		<div class="space-y-4">
+			{#each filteredProposals as proposal}
+				<div class="border-viz-grey/10 rounded-lg border transition-shadow hover:shadow-md">
+					<ProposalCard {proposal} href="/2026/submissions/{proposal.slug}" />
 				</div>
-			{/if}
+			{/each}
 		</div>
+
+		{#if filteredProposals.length === 0}
+			<div class="py-16 text-center">
+				<p class="text-viz-grey text-lg">No proposals found matching your filters.</p>
+			</div>
+		{/if}
+		<!-- </div> -->
 	</Stack>
 </Container>
