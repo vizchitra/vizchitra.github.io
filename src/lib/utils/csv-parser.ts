@@ -114,9 +114,12 @@ export function parseCFPProposals(csvString: string): CFPProposal[] {
 				roomSetup: row['Room set-up needed'] || undefined
 			};
 		} else if (proposalType === 'Workshop') {
-			const title = row['Title of your workshop'];
-			const theme = row['Select the VizChitra 2026 theme your talk falls under (2)'];
-			const description = row['A detailed description of your workshop.'];
+			// Some Workshop submissions use Talk field names, so check both
+			const title = row['Title of your workshop'] || row['Title of your talk'];
+			const theme = row['Select the VizChitra 2026 theme your talk falls under (2)'] ||
+			              row['Select the VizChitra 2026 theme your talk falls under'];
+			const description = row['A detailed description of your workshop.'] ||
+			                   row['A detailed description of your talk'];
 
 			if (!title || !theme || !description) continue;
 
@@ -133,7 +136,11 @@ export function parseCFPProposals(csvString: string): CFPProposal[] {
 				theme,
 				title,
 				description,
-				links: combineLinks(row['Enter a link here... (5)'], row['Enter a link here... (6)']),
+				links: combineLinks(
+					row['Enter a link here... (5)'] || row['Further links relevant to your talk proposal'],
+					row['Enter a link here... (6)'] || row['Enter a link here...'],
+					row['Enter a link here..._1']
+				),
 				materials: row['Materials or tools required for the session (2)'] || undefined,
 				roomSetup: row['Room set-up needed (2)'] || undefined
 			};
