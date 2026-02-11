@@ -248,7 +248,20 @@ I’ve spent the last few years following that trail, labelling film data to see
 Using charts from my own work, and some that have inspired it, I’ll walk through these visual projects and the process behind them to show how data visualisation can help us read the script behind our movies.
 
 This is a lightning talk. I hope you’ll leave inspired by how films, music, media, art, pop culture we obsess over, can be a rich and fertile ground for visual exploration.",https://www.livemint.com/industry/media/bollywoods-eternal-struggle-with-original-ideas-here-s-what-data-shows-11661772790605.html,https://asia.nikkei.com/spotlight/the-big-story/bollywood-s-gender-revolution-women-are-rewriting-the-rules,https://kontinentalist.com/stories/bollywood-falls-out-of-love,"Yes, many times",,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+yPakg4X,eq6rpoq,2026-02-11 5:28:27,Sanket,Dutta,Analyst,Axtria,"I'm interested in exploring communication via Music, Math, Language, Cognition, LLMs, Design and Visuals.",,,www.linkedin.com/in/sanket-dutta-bb00091b9,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations as Craft,The Shape of Hue,"The talk is about scenarios where colour is the data itself rather than an axis of variation to represent data. With a focus on ways to represent/visualize colour, its application in user studies and other scraped datasets and some basic colour theory. This is an extension of my most unique visualization work about 3 years ago for a conference paper to plot mood light preferences of users listening to hindustani classical. I would like to expand on that work in a way to inform all data viz enthusiasts about colour spaces/representations and colour choices in various contexts.
+
+Current Flow - 
+
+Initial Problem Statement (Music User Study)
+Solution Provided (Github Linked Below)
+Improvements to be finished by March (Switch to OkLab/LCH, Expand to 3D/Animated)
+Other places with colour data (GenAI Frontend Tools/Skills - Already Scraped/Collected)
+
+Also exploring the following to add if time permits - 
+
+Applications of original work (Hindustani informed synth app maybe presented in ADCx India at BIC)
+Even more data to scrape (Emotion Science Datasets, Movies/Long YouTube videos, Posters/Covers)
+Colour Representations within Language Models (Likely using a different viz paradigm of projections)",https://github.com/Sanket-Dutta/Thaat-Colour,,,I have never given a talk,Visualizations and Tools,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
