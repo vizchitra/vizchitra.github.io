@@ -2,7 +2,18 @@ name: Fetch Data Daily
 
 on:
   schedule:
-    - cron: "0 0 * * *" # Runs daily at midnight UTC
+    # GitHub Actions cron uses UTC, not IST.
+    # IST = UTC + 5:30
+    #
+    # Desired IST run times:
+    # 00:00, 04:00, 08:00, 12:00, 16:00, 20:00
+    #
+    # Converted to UTC:
+    # 18:30 (prev day), 22:30, 02:30, 06:30, 10:30, 14:30
+    #
+    # Cron below = minute hour (UTC)
+    - cron: "30 2,6,10,14,18,22 * * *"
+
   workflow_dispatch: # Allows manual trigger from Actions tab
 
 # 🔐 Required so the workflow can create branches, commits, PRs, approvals, and merges
