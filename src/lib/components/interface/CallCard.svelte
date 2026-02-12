@@ -33,6 +33,26 @@
 		class: className = ''
 	}: Props = $props();
 
+	let internalVariation = $state(variation);
+
+	// Reset internal variation when prop changes
+	$effect(() => {
+		internalVariation = variation;
+	});
+
+	function handleMouseMove(e: MouseEvent) {
+		const rect = (e.currentTarget as HTMLDivElement).getBoundingClientRect();
+		const y = e.clientY - rect.top;
+		// Determine variation based on vertical positions (0 at top, 1 at bottom)
+		// Quantize to steps of 20 (0, 0.5, 0.10, ..., 0.95, 1.0)
+		const rawVariation = Math.max(0, Math.min(1, y / rect.height));
+		internalVariation = Math.round(rawVariation * 20) / 20;
+	}
+
+	function handleMouseLeave() {
+		internalVariation = variation;
+	}
+
 	const patterns = {
 		circle: PatternCircle,
 		waves: PatternWaves,
@@ -43,26 +63,45 @@
 	const PatternComponent = $derived(patterns[pattern]);
 
 	const borderColors: Record<Tone, string> = {
-		blue: 'border-viz-blue',
-		teal: 'border-viz-teal',
-		orange: 'border-viz-orange',
-		pink: 'border-viz-pink',
-		yellow: 'border-viz-yellow'
+		blue: 'outline-viz-blue-muted',
+		teal: 'outline-viz-teal-muted',
+		orange: 'outline-viz-orange-muted',
+		pink: 'outline-viz-pink-muted',
+		yellow: 'outline-viz-yellow-muted'
 	};
 
 	const titlePositionClass = $derived(`absolute ${titlePosition}`);
 	const subtitlePositionClass = $derived(`absolute ${subtitlePosition}`);
 
+	const textColors: Record<Tone, string> = {
+		blue: 'text-viz-white',
+		teal: 'text-viz-black',
+		orange: 'text-viz-black',
+		pink: 'text-viz=black',
+		yellow: 'text-viz-black'
+	};
+
 	const containerClass = $derived(
-		`relative overflow-hidden rounded-lg aspect-[4/5] border-2 ${borderColors[tone]} transition-all duration-200 hover:border-4 active:border-4 no-underline w-full min-w-[280px] sm:min-w-[320px] md:max-w-sm ${className}`
+		`relative overflow-hidden rounded-lg aspect-[4/5] outline-2 ${borderColors[tone]} transition-all duration-200 hover:outline-4 active:outline-4 no-underline w-full min-w-[280px] sm:min-w-[320px] md:max-w-sm ${className}`
 	);
 </script>
 
 {#snippet cardContent()}
-	<div class={containerClass}>
+	<div
+		class={containerClass}
+		role="img"
+		onmousemove={handleMouseMove}
+		onmouseleave={handleMouseLeave}
+	>
 		<!-- Pattern Background -->
 		<div class="absolute inset-0">
-			<PatternComponent {tone} {variation} width={400} height={500} class="h-full w-full" />
+			<PatternComponent
+				{tone}
+				variation={internalVariation}
+				width={400}
+				height={500}
+				class="h-full w-full"
+			/>
 		</div>
 
 		<!-- Content Overlay with Independent Positioning -->
@@ -82,7 +121,9 @@
 			{#if subtitle}
 				<div class={subtitlePositionClass}>
 					<p
-						class="font-body text-viz-black md:text-md max-w-[25ch] text-base leading-[1.1] italic drop-shadow-md"
+						class="font-body text-viz-sm max-w-[25ch] text-base leading-[1.1] italic drop-shadow-md {textColors[
+							tone
+						]}"
 					>
 						{subtitle}
 					</p>
