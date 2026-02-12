@@ -2,7 +2,6 @@
 	import type { Proposal } from '$lib/types/proposals';
 	import ProposalBadge from './ProposalBadge.svelte';
 	import ProposalStatusBadge from './ProposalStatusBadge.svelte';
-	import { marked } from 'marked';
 
 	interface Props {
 		proposal: Proposal;
@@ -24,17 +23,11 @@
 		return proposal.type === 'cfp' ? proposal.title : proposal.projectTitle;
 	};
 
-	const getDescription = () => {
-		const desc = proposal.type === 'cfp' ? proposal.description : proposal.projectDescription;
-		const truncated = desc.length > 250 ? desc.slice(0, 250) + '...' : desc;
-		return marked.parseInline(truncated);
-	};
-
 	const getTypeLabel = () => {
 		return proposal.type === 'cfp' ? proposal.proposalType : 'Exhibition';
 	};
 
-	const color = getColor();
+	const color = $derived(getColor());
 
 	const leftBorderColors = {
 		pink: 'border-l-viz-pink-dark',
@@ -62,12 +55,12 @@
 			<div class="mb-2 flex flex-wrap items-center gap-1.5 md:mb-3 md:gap-2">
 				<ProposalBadge text={getTypeLabel()} {color} />
 				{#if proposal.type === 'cfp'}
-					<ProposalBadge text={proposal.theme} color="blue" />
+					<ProposalBadge text={proposal.theme} color="yellow" />
 				{/if}
 			</div>
 
 			<div class="text-viz-grey/80 wrap-break-words text-sm leading-relaxed md:text-[15px]">
-				{@html getDescription()}
+				{@html proposal.summaryHtml || ''}
 			</div>
 		</div>
 

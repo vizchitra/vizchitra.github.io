@@ -85,8 +85,8 @@
 					subtitle="Best for deep dives into projects, case studies or bodies of work."
 					pattern="waves"
 					tone="blue"
-					titlePosition="top-1 left-4 text-left"
-					subtitlePosition="bottom-0 left-4 text-left"
+					titlePosition="top-6 left-4 text-left"
+					subtitlePosition="bottom-5 left-4 text-left"
 					href="/2026/proposals"
 				/>
 
@@ -95,7 +95,7 @@
 					subtitle="Best for shared questions, challenges, or themes."
 					pattern="river"
 					tone="teal"
-					titlePosition="top-12 left-4 text-left"
+					titlePosition="top-20 left-4 text-left"
 					subtitlePosition="top-30 left-4 text-left"
 					href="/2026/proposals"
 				/>
@@ -105,10 +105,10 @@
 					subtitle="Best for practice-oriented, skill-building sessions"
 					pattern="circle"
 					tone="pink"
-					titlePosition="top-25 left-1/2 -translate-x-1/2 text-center"
+					titlePosition="top-35 left-1/2 -translate-x-1/2 text-center"
 					subtitlePosition="top-45 left-1/2 -translate-x-1/2 text-center"
 					href="/2026/proposals"
-					variation={1}
+					variation={0.5}
 				/>
 
 				<CallCard
@@ -116,8 +116,8 @@
 					subtitle="Focused on climate & ecological change"
 					pattern="stream"
 					tone="orange"
-					titlePosition="top-0 left-1/2 -translate-x-1/2 text-center"
-					subtitlePosition="bottom-0 left-1/2 -translate-x-1/2 text-center"
+					titlePosition="top-10 left-1/2 -translate-x-1/2 text-center"
+					subtitlePosition="bottom-5 left-1/2 -translate-x-1/2 text-center"
 					href="/2026/exhibition"
 				/>
 			</Cluster>

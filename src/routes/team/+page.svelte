@@ -6,8 +6,8 @@
 	import { Container, Stack, FullBleed } from '$lib/components/layout';
 
 	let { data }: { data: PageData } = $props();
-	let banner = data.document.banner;
-	let color = data.document.color;
+	const banner = $derived(data.document.banner);
+	const color = $derived(data.document.color);
 </script>
 
 <Header {banner} {color} />

@@ -89,7 +89,7 @@
 
 		<!-- <div class="content-container max-w-4xl"> -->
 		<div class="space-y-4">
-			{#each filteredProposals as proposal}
+			{#each filteredProposals as proposal (proposal.id || proposal.slug)}
 				<div class="border-viz-grey/10 rounded-lg border transition-shadow hover:shadow-md">
 					<ProposalCard {proposal} href="/2026/submissions/{proposal.slug}" />
 				</div>

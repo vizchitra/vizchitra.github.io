@@ -8,6 +8,7 @@ export interface BaseProposal {
 	jobTitle: string;
 	organisation: string;
 	status: ProposalStatus;
+	summaryHtml?: string;
 }
 
 export interface CFPProposal extends BaseProposal {

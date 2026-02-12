@@ -7,7 +7,6 @@
 	import { ProposalBadge, ProposalStatusBadge, UpvoteButton } from '$lib/components/proposals';
 	import type { PageData } from './$types';
 	import type { CFPProposal, CFEProposal } from '$lib/types/proposals';
-	import { marked } from 'marked';
 
 	let { data }: { data: PageData } = $props();
 	const proposal = $derived(data.proposal);
@@ -39,14 +38,6 @@
 	const description = $derived(
 		isCFP ? (proposal as CFPProposal).description : (proposal as CFEProposal).projectDescription
 	);
-
-	// Parse markdown to HTML
-	const descriptionHTML = $derived(marked.parse(description));
-
-	// Helper function to parse text fields as markdown
-	const parseMarkdown = (text: string | undefined) => {
-		return text ? marked.parse(text) : '';
-	};
 </script>
 
 <!-- Clean header with title and speaker -->
@@ -58,7 +49,7 @@
 	<header class="max-w-4xl pt-18 pb-6 md:pt-14">
 		<div class="space-y-4">
 			<Prose>
-				<h6><a href="/2026/submissions">Submission </a> | VizChitra 2026</h6>
+				<h6><a href="/2026/submissions">Submissions </a> | VizChitra 2026</h6>
 				<h1>{title}</h1>
 			</Prose>
 			<!-- Title -->
@@ -111,7 +102,7 @@
 					/>
 					{#if isCFP}
 						<span class="text-viz-grey/30">·</span>
-						<ProposalBadge text={(proposal as CFPProposal).theme} color="blue" />
+						<ProposalBadge text={(proposal as CFPProposal).theme} color="yellow" />
 					{/if}
 				</div>
 
@@ -132,7 +123,7 @@
 			<Heading tag="h2" align="left" class="pb-4">Description</Heading>
 			<div class="prose text-viz-grey/90 md:prose-lg markdown-content max-w-none">
 				<Prose>
-					{@html descriptionHTML}
+					{@html data.descriptionHtml}
 				</Prose>
 			</div>
 		</section>
@@ -176,7 +167,7 @@
 					<Heading tag="h4" align="left" class="pb-4">Materials Required</Heading>
 					<div class="text-viz-grey/90 markdown-content">
 						<Prose>
-							{@html parseMarkdown((proposal as CFPProposal).materials)}
+							{@html data.additionalHtml.materials}
 						</Prose>
 					</div>
 				</section>
@@ -186,7 +177,7 @@
 					<Heading tag="h4" align="left" class="pb-4">Room Setup</Heading>
 					<div class="text-viz-grey/90 markdown-content">
 						<Prose>
-							{@html parseMarkdown((proposal as CFPProposal).roomSetup)}
+							{@html data.additionalHtml.roomSetup}
 						</Prose>
 					</div>
 				</section>
@@ -199,7 +190,7 @@
 					<Heading tag="h4" align="left" class="pb-4">Data Source</Heading>
 					<div class="text-viz-grey/90 markdown-content">
 						<Prose>
-							{@html parseMarkdown((proposal as CFEProposal).dataSource)}
+							{@html data.additionalHtml.dataSource}
 						</Prose>
 					</div>
 				</section>
@@ -210,7 +201,7 @@
 					<Heading tag="h4" align="left" class="pb-4">Visualization Method</Heading>
 					<div class="text-viz-grey/90 markdown-content">
 						<Prose>
-							{@html parseMarkdown((proposal as CFEProposal).visualizationMethod)}
+							{@html data.additionalHtml.visualizationMethod}
 						</Prose>
 					</div>
 				</section>
@@ -221,7 +212,7 @@
 					<Heading tag="h4" align="left" class="pb-4">Technical Requirements</Heading>
 					<div class="text-viz-grey/90 markdown-content">
 						<Prose>
-							{@html parseMarkdown((proposal as CFEProposal).technicalRequirements)}
+							{@html data.additionalHtml.technicalRequirements}
 						</Prose>
 					</div>
 				</section>
@@ -232,7 +223,7 @@
 					<Heading tag="h4" align="left" class="pb-4">Project Status & Timeline</Heading>
 					<div class="text-viz-grey/90 markdown-content">
 						<Prose>
-							{@html parseMarkdown((proposal as CFEProposal).timeline)}
+							{@html data.additionalHtml.timeline}
 						</Prose>
 					</div>
 				</section>
@@ -274,7 +265,7 @@
 					{#if (proposal as CFEProposal).teamBio}
 						<div class="text-viz-grey/90 markdown-content">
 							<Prose>
-								{@html parseMarkdown((proposal as CFEProposal).teamBio)}
+								{@html data.additionalHtml.teamBio}
 							</Prose>
 						</div>
 					{/if}

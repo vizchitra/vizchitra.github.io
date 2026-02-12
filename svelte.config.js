@@ -1,20 +1,22 @@
+import { readFileSync } from 'node:fs';
 import adapter from '@sveltejs/adapter-cloudflare';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
-import { redirects } from './src/lib/config/redirects.js';
 
-// /** @type {import('mdsvex').MdsvexOptions} */
-// const mdsvexOptions = {
-// 	extensions: ['.md', '.svx']
-// };
+// Parse redirect paths from Cloudflare _redirects file (single source of truth)
+const redirectPaths = readFileSync('_redirects', 'utf-8')
+	.split('\n')
+	.filter((line) => line.trim())
+	.map((line) => line.split(' ')[0]);
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	// extensions: ['.svelte', '.md', '.svx'],
-	// compilerOptions: {
-	// 	runes: true
-	// },
 	kit: {
-		adapter: adapter(),
+		adapter: adapter({
+			routes: {
+				include: ['/api/*'],
+				exclude: []
+			}
+		}),
 		alias: {
 			"content-collections": "./.content-collections/generated",
 		},
@@ -23,19 +25,17 @@ const config = {
 		},
 		appDir: 'app',
 		prerender: {
-			entries: ['*', ...Object.keys(redirects).map((path) => `/${path}`)],
-			handleHttpError: ({ path, referrer, message }) => {
-				// Ignore errors for API routes during prerendering
-				if (path.startsWith('/api/')) {
+			entries: ['*'],
+			handleHttpError: ({ path, message }) => {
+				// Ignore API routes and Cloudflare-handled redirects during prerendering
+				if (path.startsWith('/api/') || redirectPaths.includes(path)) {
 					return;
 				}
 				throw new Error(message);
 			}
 		}
 	},
-	preprocess: [
-		// mdsvex(mdsvexOptions),
-		vitePreprocess()]
+	preprocess: [vitePreprocess()]
 };
 
 export default config;
