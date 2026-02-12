@@ -73,7 +73,7 @@
 	};
 </script>
 
-<Header title="Guides for VizChitra" banner="blob" interactive show="title"></Header>
+<Header title="Guides for VizChitra" banner="blob"></Header>
 
 <Container>
 	<Stack>

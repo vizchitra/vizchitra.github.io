@@ -52,7 +52,7 @@
 			<!-- Logo centered (polygon/square/blob) with tagline -->
 			<div class="pointer-events-none absolute inset-0 z-2 flex items-center justify-center">
 				<div class="bg-viz-white">
-					<LogoTagline tag="h3" textContent={tagline} />
+					<LogoTagline textContent={tagline} />
 				</div>
 			</div>
 		{:else}

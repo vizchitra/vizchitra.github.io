@@ -33,7 +33,7 @@
 		class: className = ''
 	}: Props = $props();
 
-	let internalVariation = $state(variation);
+	let internalVariation = $state(0);
 
 	// Reset internal variation when prop changes
 	$effect(() => {

@@ -103,23 +103,6 @@
 
 <Hero banner="polygon" />
 
-<!-- <div class="banner-container full-bleed relative h-svh">
-	<BannerPolygon interactive={true} />
-	<div
-		class="logo-container pointer-events-none absolute top-1/3 left-1/2 mb-2 flex -translate-x-1/2 -translate-y-1/3 flex-col items-center rounded-md bg-white px-2 pt-2 pb-4 shadow-lg md:max-w-none md:flex-row md:gap-0 md:px-8"
-	>
-		<div class="logo">
-			{@html VizchitraLogo}
-		</div>
-
-		<h3
-			class="tagline -mt-8 max-w-[20ch] border-black text-center uppercase md:mt-0 md:border-l-2 md:pl-5 md:text-left"
-		>
-			<Slanted tag="h2" textContent="A SPACE TO CONNECT AND CREATE WITH DATA" />
-		</h3>
-	</div>
-</div> -->
-
 <CallToAction />
 
 <div class="mt-20 flex flex-col items-center gap-10">
@@ -291,48 +274,3 @@
 <div class=" w-full">
 	<FAQ />
 </div>
-
-<style>
-	.banner-container {
-		width: 100vw;
-		position: relative;
-	}
-
-	.banner-container::before,
-	.banner-container::after {
-		content: '';
-		position: absolute;
-		left: 0;
-		right: 0;
-		height: 25vh;
-		pointer-events: none;
-		z-index: 1;
-	}
-
-	@media (min-width: 768px) {
-		.banner-container::before,
-		.banner-container::after {
-			height: 40vh;
-		}
-	}
-
-	.banner-container::before {
-		top: 0;
-		background: linear-gradient(
-			to bottom,
-			rgb(255 255 255) 0%,
-			rgba(255, 255, 255, 0.8) 5%,
-			transparent 100%
-		);
-	}
-
-	.banner-container::after {
-		bottom: 0;
-		background: linear-gradient(
-			to top,
-			rgb(255 255 255) 0%,
-			rgba(255, 255, 255, 0.8) 5%,
-			transparent 100%
-		);
-	}
-</style>
