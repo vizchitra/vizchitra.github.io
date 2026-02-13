@@ -496,7 +496,30 @@ They’ll leave with,
 - Simple ways to begin their own tracking practices, 
 - Approaches for translating logs into visuals, and most importantly,
 - The reassurance that you don’t need big data or intimidating tools to discover something meaningful.",https://www.linkedin.com/in/nomeshwarireddy-84a288188/recent-activity/all/,,,"Yes, only once",,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+xXAazV9,Zjd28QB,2026-02-13 8:01:30,Schubert,de Abreu,Dataviz Developer,Revisual Labs,"I'm a dataviz and web developer at Revisual Labs where I build interactives, dashboards and scrollytelling pieces on the web.",https://www.instagram.com/schu.draws.stuff/,https://x.com/schubertda1,https://www.linkedin.com/in/schubert-de-abreu-47a56037/,Workshop,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations as Craft,,,,,,,,,,,,,,,,Visualizations and Tools,Designing with Data: Visualising with D3 + Svelte,I have never conducted a workshop,"### The why
+Creating charts with data is often a frustrating process when using traditional design tools. It typically involves exporting data to external charting libraries, restructuring spreadsheets in Excel, and spending hours pushing pixels - only to find that the result still isn’t quite right, just to repeat this process each time the data changes. And if you ever wanted to do something more custom, you quickly realise that you are fighting an uphill battle.
+
+This is why I wanted to propose building charts and iterating in code. To most, this sounds like the lofty goal of learning D3.js. However the immediate stumbling block when starting to learn D3 is realising that it isn’t just a single tool they need to pick up -  it's a whole ecosystem of tools including HTML,CSS, JavaScript and then finally the D3 API. Courses on D3 essentially require that you become a full-fledged web developer before you even touch your first chart.
+
+Over the years, I’ve learned that if you just wanted to start creating with data, this is all a bit overkill. The value in learning D3 isn’t in memorising its expansive API or mastering web development, but rather in understanding how to break down complex charts into simple shapes ( lines, circles, rectangles) and then map rows of data to draw these shapes on a screen.
+
+Which is why, in this workshop, we’ll treat D3 as a helper tool, letting it handle the trickier parts like math and layout while we focus on building charts with a framework like Svelte. We’ll also break down complex charts into simple steps, and learn which sections can be supported by LLMs / online examples, and which parts benefit most from your own hands-on creative process.
+
+
+### Flow of the workshop
+The workshop would be a hands-on experience driven by simplified examples. We would cover just enough theory to get started with drawing with data. This would include basic HTML to draw SVGs and shapes inside it, minimal CSS and JavaScript where we will use D3 to prep the data for display.
+
+While examples will include basic charts initially like bar charts and scatter plots, I would like to transition what we have learned to simplified versions of custom charts along the lines of the work of Federica Fragapane in [Renewables in Europe](https://www.instagram.com/p/C4afwEntKo-/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==), [Periodic Table](https://www.instagram.com/p/BwRqQh7FCqY/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==), etc.
+
+
+### Takeaways
+- Participants would get a sense of how to approach dataviz with code, going from idea to a working prototype
+- Hands-on experience with creating custom charts in D3 that would otherwise be difficult without code
+- Participants will gain a high-level understanding of web development through creating charts, with an introduction to HTML, minimal CSS, and a main focus on JavaScript - just enough to get started with building charts
+
+
+### Intended Audience
+This session is designed for designers, creatives, and visual storytellers who are curious about building custom data visualizations. No prior coding experience is required - the workshop is structured to be accessible and beginner-friendly.",https://v4.connorrothschild.com/viz,,,"Participants would be required to have laptops laptops with VSCode and npm installed (will share an installation guide beforehand) ","Room with a projector, Internet connectivity",Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
