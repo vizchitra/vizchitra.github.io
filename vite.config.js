@@ -4,6 +4,7 @@ import contentCollections from "@content-collections/vite";
 
 import { defineConfig } from 'vite';
 import dsv from '@rollup/plugin-dsv';
+import { hmrReload } from './text.config.js';
 
 export default defineConfig({
 	optimizeDeps: {
@@ -17,9 +18,10 @@ export default defineConfig({
 	},
 	plugins: [
 		tailwindcss(),
-		sveltekit(),
 		contentCollections(),
-		dsv()],
+		sveltekit(),
+		dsv(),
+		hmrReload()],
 	server: {
 		fs: {
 			allow: ['..']
