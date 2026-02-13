@@ -8,7 +8,7 @@ export function parseCSV(csvString: string): Record<string, string>[] {
 	const result = Papa.parse(csvString, {
 		header: true,
 		skipEmptyLines: true,
-		transformHeader: (header) => header.trim()
+		transformHeader: (header) => header.trim().replace(/\n/g, '')
 	});
 
 	return result.data as Record<string, string>[];
@@ -109,14 +109,14 @@ export function parseCFPProposals(csvString: string): CFPProposal[] {
 				theme,
 				title,
 				description,
-				links: combineLinks(row['Enter a link here... (3)'], row['Enter a link here... (4)']),
+				links: combineLinks(row['Enter a link here..._2'], row['Enter a link here..._3']),
 				materials: row['Materials or tools required for the session'] || undefined,
 				roomSetup: row['Room set-up needed'] || undefined
 			};
 		} else if (proposalType === 'Workshop') {
 			// Some Workshop submissions use Talk field names, so check both
 			const title = row['Title of your workshop'] || row['Title of your talk'];
-			const theme = row['Select the VizChitra 2026 theme your talk falls under (2)'] ||
+			const theme = row['Select the VizChitra 2026 theme your workshop falls under'] ||
 			              row['Select the VizChitra 2026 theme your talk falls under'];
 			const description = row['A detailed description of your workshop.'] ||
 			                   row['A detailed description of your talk'];
@@ -137,12 +137,12 @@ export function parseCFPProposals(csvString: string): CFPProposal[] {
 				title,
 				description,
 				links: combineLinks(
-					row['Enter a link here... (5)'] || row['Further links relevant to your talk proposal'],
-					row['Enter a link here... (6)'] || row['Enter a link here...'],
+					row['Enter a link here..._4'] || row['Further links relevant to your talk proposal'],
+					row['Enter a link here..._5'] || row['Enter a link here...'],
 					row['Enter a link here..._1']
 				),
-				materials: row['Materials or tools required for the session (2)'] || undefined,
-				roomSetup: row['Room set-up needed (2)'] || undefined
+				materials: row['Materials or tools required for the session_1'] || undefined,
+				roomSetup: row['Room set-up needed_1'] || undefined
 			};
 		}
 
