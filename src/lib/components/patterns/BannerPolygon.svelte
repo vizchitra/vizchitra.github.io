@@ -80,41 +80,22 @@
 		}
 	}
 
-	function handleMouseMove(event: MouseEvent) {
-		if (event.buttons) return;
+	function handlePointerMove(event: PointerEvent) {
+		if (event.buttons && event.pointerType === 'mouse') return;
 
-		// Prefer client coordinates relative to canvas for consistency
+		// Use client coordinates relative to canvas for consistency
 		if (canvas) {
 			const rect = canvas.getBoundingClientRect();
 			cursorX = event.clientX - rect.left;
 			cursorY = event.clientY - rect.top;
 		} else {
-			// Fallback to layerX/layerY
-			const { layerX, layerY } = event as any;
-			cursorX = layerX ?? 0;
-			cursorY = layerY ?? 0;
+			cursorX = event.clientX;
+			cursorY = event.clientY;
 		}
 
 		showCursor = true;
 
 		// Trigger an immediate (throttled) data update so the polygon reacts quickly
-		updateDataWithCursors();
-	}
-
-	function handleTouchMove(event: TouchEvent) {
-		const touch = event.touches[0];
-		if (!touch) return;
-
-		if (canvas) {
-			const rect = canvas.getBoundingClientRect();
-			cursorX = touch.clientX - rect.left;
-			cursorY = touch.clientY - rect.top;
-		} else {
-			cursorX = touch.clientX;
-			cursorY = touch.clientY;
-		}
-		showCursor = true;
-
 		updateDataWithCursors();
 	}
 
@@ -232,21 +213,9 @@
 <div
 	bind:clientWidth={width}
 	bind:clientHeight={height}
-	onmousemove={!interactive ? undefined : handleMouseMove}
-	ontouchmove={!interactive ? undefined : handleTouchMove}
-	ontouchstart={!interactive ? undefined : handleTouchMove}
-	onmouseenter={() => (showCursor = true)}
-	onmouseleave={() => {
-		showCursor = false;
-		cursorX = 0;
-		cursorY = 0;
-	}}
-	ontouchend={() => {
-		showCursor = false;
-		cursorX = 0;
-		cursorY = 0;
-	}}
-	ontouchcancel={() => {
+	onpointermove={!interactive ? undefined : handlePointerMove}
+	onpointerenter={() => (showCursor = true)}
+	onpointerleave={() => {
 		showCursor = false;
 		cursorX = 0;
 		cursorY = 0;

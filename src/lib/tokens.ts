@@ -22,6 +22,7 @@ export interface ThemeTokens {
 	dark: string; // var(--color-viz-{color}-dark)
 	muted: string; // var(--color-viz-{color}-muted)
 	subtle: string; // var(--color-viz-{color}-subtle)
+	strong: string; // var(--color-viz-{color}-strong)
 	// Tailwind utilities
 	bg: string; // bg-viz-{color}-light
 	border: string; // border-viz-{color}-muted
@@ -64,6 +65,7 @@ export const themeTokens: Record<Color, ThemeTokens> = {
 		dark: 'var(--color-viz-grey-dark)',
 		muted: 'var(--color-viz-grey-muted)',
 		subtle: 'var(--color-viz-grey-subtle)',
+		strong: 'var(--color-viz-grey-strong)',
 		bg: 'bg-viz-grey-light',
 		border: 'border-viz-grey-muted',
 		text: 'text-viz-grey-dark'
@@ -74,6 +76,7 @@ export const themeTokens: Record<Color, ThemeTokens> = {
 		dark: 'var(--color-viz-pink-dark)',
 		muted: 'var(--color-viz-pink-muted)',
 		subtle: 'var(--color-viz-pink-subtle)',
+		strong: 'var(--color-viz-pink-strong)',
 		bg: 'bg-viz-pink-light',
 		border: 'border-viz-pink-muted',
 		text: 'text-viz-pink-dark'
@@ -84,6 +87,7 @@ export const themeTokens: Record<Color, ThemeTokens> = {
 		dark: 'var(--color-viz-blue-dark)',
 		muted: 'var(--color-viz-blue-muted)',
 		subtle: 'var(--color-viz-blue-subtle)',
+		strong: 'var(--color-viz-blue-strong)',
 		bg: 'bg-viz-blue-light',
 		border: 'border-viz-blue-muted',
 		text: 'text-viz-blue-dark'
@@ -94,6 +98,7 @@ export const themeTokens: Record<Color, ThemeTokens> = {
 		dark: 'var(--color-viz-teal-dark)',
 		muted: 'var(--color-viz-teal-muted)',
 		subtle: 'var(--color-viz-teal-subtle)',
+		strong: 'var(--color-viz-teal-strong)',
 		bg: 'bg-viz-teal-light',
 		border: 'border-viz-teal-muted',
 		text: 'text-viz-teal-dark'
@@ -104,6 +109,7 @@ export const themeTokens: Record<Color, ThemeTokens> = {
 		dark: 'var(--color-viz-yellow-dark)',
 		muted: 'var(--color-viz-yellow-muted)',
 		subtle: 'var(--color-viz-yellow-subtle)',
+		strong: 'var(--color-viz-yellow-strong)',
 		bg: 'bg-viz-yellow-light',
 		border: 'border-viz-yellow-muted',
 		text: 'text-viz-yellow-dark'
@@ -114,6 +120,7 @@ export const themeTokens: Record<Color, ThemeTokens> = {
 		dark: 'var(--color-viz-orange-dark)',
 		muted: 'var(--color-viz-orange-muted)',
 		subtle: 'var(--color-viz-orange-subtle)',
+		strong: 'var(--color-viz-orange-strong)',
 		bg: 'bg-viz-orange-light',
 		border: 'border-viz-orange-muted',
 		text: 'text-viz-orange-dark'
@@ -121,20 +128,8 @@ export const themeTokens: Record<Color, ThemeTokens> = {
 };
 
 /**
- * Light variant hex codes for canvas/D3 components that need extended palettes.
- * These are NOT part of the Color type - use only when you specifically need light variants.
- */
-// export const lightVariantHex = {
-// 	yellowLight: '#FCF0DC',
-// 	tealLight: '#C0F0EB',
-// 	blueLight: '#D6E4FF',
-// 	orangeLight: '#FFD9C3',
-// 	pinkLight: '#FFD5E7',
-// 	greyLight: '#E4E4E4'
-// } as const;
-
-/**
- * 8-color palette for BannerCurve (3 main + 5 light variants)
+ * Historical - Not aligned with current theme tokens, but kept for reference and potential use in specific components.
+ * 8-color palette for BannerCurve (5 main + 3 light variants)
  */
 export const CURVE_PALETTE = [
 	'#FC915B',
