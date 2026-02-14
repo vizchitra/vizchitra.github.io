@@ -1,10 +1,17 @@
 <script lang="ts">
-	import { Grid, FullBleed } from '$lib/components/layout';
-	import { Card, Button } from '$lib/components/interface';
-	import { DividerCurves } from '$lib/components/structure';
-	import { Slanted, Notice, Heading, Text, Prose } from '$lib/components/typography';
-	import { Header } from '$lib/components/structure';
-	import { Container, Cluster, Stack } from '$lib/components/layout';
+	import {
+		Grid,
+		FullBleed,
+		Card,
+		Button,
+		DividerCurves,
+		Text,
+		Prose,
+		Header,
+		Container,
+		Cluster,
+		Stack
+	} from '$lib/components';
 </script>
 
 <Header title="Call for Exhibition" banner="curve" />
@@ -32,7 +39,7 @@
 			<Button href="https://forms.vizchitra.com/exhibition" color="orange" external={true}
 				>Submit for Exhibition</Button
 			>
-			<Button href="/2026/submissions" color="blue">View All Submissions</Button>
+			<Button href="/2026/submissions" color="blue">View all Submissions</Button>
 		</Cluster>
 
 		<DividerCurves />

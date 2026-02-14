@@ -59,7 +59,7 @@
 				{/if}
 			</div>
 
-			<div class="text-viz-grey/80 wrap-break-words text-sm leading-relaxed md:text-[15px]">
+			<div class="text-viz-grey-dark/80 wrap-break-words text-sm leading-relaxed md:text-[15px]">
 				{@html proposal.summaryHtml || ''}
 			</div>
 		</div>
@@ -68,14 +68,14 @@
 			class="mt-3 flex items-center justify-between md:mt-0 md:w-64 md:flex-col md:items-end md:gap-3"
 		>
 			<div class="min-w-0 flex-1 md:flex-none md:text-right">
-				<p class="font-text-sans text-viz-grey truncate text-sm font-semibold md:text-[15px]">
+				<p class="font-text-sans text-viz-grey-dark text-md truncate font-semibold md:text-lg">
 					{proposal.firstName}
 				</p>
-				<p class="text-viz-grey/70 truncate text-xs md:text-sm">
+				<p class="text-viz-grey-dark/80 md:text-md truncate text-sm">
 					{proposal.jobTitle}
 				</p>
 				{#if proposal.organisation}
-					<p class="text-viz-grey/60 hidden truncate text-xs md:block md:text-sm">
+					<p class="text-viz-grey-dark/80 md:text-md hidden truncate text-sm md:block">
 						{proposal.organisation}
 					</p>
 				{/if}

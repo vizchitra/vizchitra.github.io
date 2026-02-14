@@ -63,12 +63,13 @@
 
 	const alignValue = $derived(AlignMap[align] ?? align);
 	const justifyValue = $derived(JustifyMap[justify] ?? justify);
+	const spaceValue = $derived(`var(--spacing-viz-${space})`);
 </script>
 
 <div
 	{...rest}
 	class={['cluster', className]}
-	style:--cluster-space="var(--spacing-viz-{space})"
+	style:--cluster-space={spaceValue}
 	style:--cluster-align={alignValue}
 	style:--cluster-justify={justifyValue}
 >

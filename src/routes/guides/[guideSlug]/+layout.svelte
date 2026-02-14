@@ -1,8 +1,6 @@
 <script>
 	import { page } from '$app/state';
-	import Container from '$lib/components/layout/Container.svelte';
-	import Header from '$lib/components/structure/Header.svelte';
-	import Prose from '$lib/components/typography/Prose.svelte';
+	import { Container, Header, Prose } from '$lib/components';
 	let { data, children } = $props();
 
 	// Color mappings for Tailwind classes

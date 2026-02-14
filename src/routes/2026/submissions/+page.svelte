@@ -1,11 +1,7 @@
 <script lang="ts">
-	import { Header, DividerCurves } from '$lib/components/structure';
-	import { ProposalCard, ProposalFilters } from '$lib/components/proposals';
+	import { Header, ProposalCard, ProposalFilters, Prose, Container, Stack } from '$lib/components';
 	import type { PageData } from './$types';
 	import Fuse from 'fuse.js';
-	import Prose from '$lib/components/typography/Prose.svelte';
-	import Container from '$lib/components/layout/Container.svelte';
-	import Stack from '$lib/components/layout/Stack.svelte';
 
 	let { data }: { data: PageData } = $props();
 

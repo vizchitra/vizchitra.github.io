@@ -1,8 +1,5 @@
 <script lang="ts">
-	import PatternCircle from '$lib/components/structure/PatternCircle.svelte';
-	import PatternWaves from '$lib/components/structure/PatternWaves.svelte';
-	import PatternRiver from '$lib/components/structure/PatternRiver.svelte';
-	import PatternStream from '$lib/components/structure/PatternStream.svelte';
+	import { PatternCircle, PatternWaves, PatternRiver, PatternStream } from '$lib/components';
 
 	type Pattern = 'circle' | 'waves' | 'river' | 'stream';
 	type Tone = 'blue' | 'teal' | 'orange' | 'pink' | 'yellow';
@@ -40,7 +37,7 @@
 		internalVariation = variation;
 	});
 
-	function handleMouseMove(e: MouseEvent) {
+	function handlePointerMove(e: PointerEvent) {
 		const rect = (e.currentTarget as HTMLDivElement).getBoundingClientRect();
 		const y = e.clientY - rect.top;
 		// Determine variation based on vertical positions (0 at top, 1 at bottom)
@@ -49,7 +46,7 @@
 		internalVariation = Math.round(rawVariation * 20) / 20;
 	}
 
-	function handleMouseLeave() {
+	function handlePointerLeave() {
 		internalVariation = variation;
 	}
 
@@ -77,7 +74,7 @@
 		blue: 'text-viz-white',
 		teal: 'text-viz-black',
 		orange: 'text-viz-black',
-		pink: 'text-viz=black',
+		pink: 'text-viz-black',
 		yellow: 'text-viz-black'
 	};
 
@@ -90,8 +87,8 @@
 	<div
 		class={containerClass}
 		role="img"
-		onmousemove={handleMouseMove}
-		onmouseleave={handleMouseLeave}
+		onpointermove={handlePointerMove}
+		onpointerleave={handlePointerLeave}
 	>
 		<!-- Pattern Background -->
 		<div class="absolute inset-0">

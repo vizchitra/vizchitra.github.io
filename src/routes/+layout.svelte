@@ -1,6 +1,5 @@
 <script>
-	import { Footer, NavMenu } from '$lib/components/structure';
-	import SEO from '$lib/components/structure/SEO.svelte';
+	import { NavMenu, Footer, SEO } from '$lib/components';
 	import '../app.css';
 
 	import { page } from '$app/stores';

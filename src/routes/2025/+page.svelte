@@ -1,7 +1,9 @@
 <script lang="ts">
-	import { LogoType, Slanted } from '$lib/components/typography';
-	import { BannerPolygon, Pentagons } from '$lib/components/structure';
 	import {
+		LogoType,
+		Slanted,
+		BannerPolygon,
+		Pentagons,
 		CallToAction,
 		HomepageSection,
 		KeyNote,
@@ -10,10 +12,11 @@
 		SponsorCard,
 		Map,
 		VenueCard,
-		FAQ
-	} from '$lib/components/sections';
-	import { Header, Hero } from '$lib/components/structure/';
-	import Grid from '$lib/components/layout/Grid.svelte';
+		FAQ,
+		Header,
+		Hero,
+		Grid
+	} from '$lib/components';
 	import sponsors from '$lib/data/sponsors2025.json';
 	import VizchitraLogo from '$lib/assets/images/logos/viz-logo-animate.svg?raw';
 

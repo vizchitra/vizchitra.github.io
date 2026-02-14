@@ -1,8 +1,6 @@
 <script lang="ts">
-	import { Card, Button } from '$lib/components/interface';
-	import { DividerCurves, Header } from '$lib/components/structure';
+	import Header from '$lib/components/structure/Header.svelte';
 	import { Heading, Prose } from '$lib/components/typography';
-
 	import { Container } from '$lib/components/layout';
 	import { ProposalBadge, ProposalStatusBadge, UpvoteButton } from '$lib/components/proposals';
 	import type { PageData } from './$types';
@@ -66,8 +64,8 @@
 				>
 					{proposal.firstName}
 				</p>
-				<p class="text-viz-grey/65 text-left text-xs font-normal md:text-sm">
-					{proposal.jobTitle}{#if proposal.organisation}<span class="text-viz-grey/35 mx-1.5"
+				<p class="text-viz-grey-dark/80 text-md text-left font-normal md:text-lg">
+					{proposal.jobTitle}{#if proposal.organisation}<span class="text-viz-grey-dark/80 mx-1.5"
 							>•</span
 						>{proposal.organisation}{/if}
 				</p>

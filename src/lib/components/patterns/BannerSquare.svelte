@@ -109,21 +109,11 @@
 	// Helper to get resolved hex color for an index
 	const getColor = (index: number) => resolvedColors[index % resolvedColors.length] ?? '#000000';
 
-	function handleMouseMove(event: MouseEvent) {
+	function handlePointerMove(event: PointerEvent) {
 		if (!interactive) return;
-		const { layerX, layerY } = event;
-		cursorX = layerX;
-		cursorY = layerY;
-		showCursor = true;
-	}
-
-	function handleTouchMove(event: TouchEvent) {
-		if (!interactive) return;
-		const touch = event.touches[0];
-		if (!touch) return;
 		const rect = canvas.getBoundingClientRect();
-		cursorX = touch.clientX - rect.left;
-		cursorY = touch.clientY - rect.top;
+		cursorX = event.clientX - rect.left;
+		cursorY = event.clientY - rect.top;
 		showCursor = true;
 	}
 
@@ -247,21 +237,9 @@
 <div
 	bind:clientWidth={width}
 	bind:clientHeight={height}
-	onmousemove={!interactive ? undefined : handleMouseMove}
-	ontouchmove={!interactive ? undefined : handleTouchMove}
-	ontouchstart={!interactive ? undefined : handleTouchMove}
-	onmouseenter={() => (showCursor = true)}
-	onmouseleave={() => {
-		showCursor = false;
-		cursorX = -1000;
-		cursorY = -1000;
-	}}
-	ontouchend={() => {
-		showCursor = false;
-		cursorX = -1000;
-		cursorY = -1000;
-	}}
-	ontouchcancel={() => {
+	onpointermove={!interactive ? undefined : handlePointerMove}
+	onpointerenter={() => (showCursor = true)}
+	onpointerleave={() => {
 		showCursor = false;
 		cursorX = -1000;
 		cursorY = -1000;

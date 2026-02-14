@@ -150,8 +150,8 @@
 			margin-right: 0;
 
 			max-width: 50ch; /* narrower book measure */
-			padding-left: var(--space-flow-1); /* indent from the left */
-			border-left: 3px solid var(--muted-color); /* book-style vertical line */
+			padding-left: var(--space-flow-0); /* indent from the left */
+			border-left: 2px solid var(--dark-color); /* book-style vertical line */
 
 			font-size: var(--text-flow-0);
 			line-height: 1.6;
@@ -339,22 +339,27 @@
 			table-layout: fixed; /* 🔑 Required */
 			border-collapse: collapse;
 			margin-block: var(--space-flow-1);
-			font-size: var(--text-flow--2);
-			line-height: 1.1;
+			font-size: var(--text-flow--1);
+			line-height: 1.25;
 			border-bottom: 1px solid var(--muted-color);
+			overflow-x: auto;
 		}
 
 		/* Cells */
 		& table th,
 		& table td {
-			overflow-wrap: break-word;
-			word-break: break-word;
+			overflow-wrap: normal;
+			word-break: normal;
 		}
 
 		/* First column narrow */
 		& table th:first-child,
 		& table td:first-child {
-			width: 17%; /* adjust 12–22% */
+			width: 16%; /* adjust 12–22% */
+
+			@media (width < 20rem) {
+				width: 20%;
+			}
 		}
 
 		/* Remaining columns equal */
@@ -448,5 +453,6 @@
 				color: var(--color-viz-orange-dark);
 			}
 		}
+
 	}
 </style>

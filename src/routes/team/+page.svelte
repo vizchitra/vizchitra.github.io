@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import { Slanted, Heading, SubHeading, Text, Prose } from '$lib/components/typography';
+	import { Prose } from '$lib/components/typography';
 	import { TeamSection } from '$lib/components/sections';
 	import { Header } from '$lib/components/structure';
 	import { Container, Stack, FullBleed } from '$lib/components/layout';

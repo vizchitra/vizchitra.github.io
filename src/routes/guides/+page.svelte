@@ -1,11 +1,5 @@
 <script lang="ts">
-	import { Heading } from '$lib/components/typography';
-	import Header from '$lib/components/structure/Header.svelte';
-	import PatternRough from '$lib/components/patterns/PatternRough.svelte';
-	import Container from '$lib/components/layout/Container.svelte';
-	import FullBleed from '$lib/components/layout/FullBleed.svelte';
-	import Stack from '$lib/components/layout/Stack.svelte';
-	import Prose from '$lib/components/typography/Prose.svelte';
+	import { Header, PatternRough, Container, FullBleed, Stack, Prose } from '$lib/components';
 
 	type CardColor = 'pink' | 'blue' | 'teal' | 'yellow' | 'orange';
 
