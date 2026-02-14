@@ -325,7 +325,8 @@
 
 		/* --- 5c. NESTING --- */
 		& :is(ul, ol) :is(ul, ol) {
-			margin-top: var(--space-flow--2);
+			/* margin-top: var(--space-flow--2); */
+			margin-top: 0;
 			margin-bottom: 0;
 
 			& li {
