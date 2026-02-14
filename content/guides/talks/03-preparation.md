@@ -6,9 +6,16 @@ section: preparation
 order: 3
 ---
 
-# Preparation & Reviews
+# Preparation
 
-We have a structured preparation & review process to help each of the accepted speaker to prepare and refine their talk for the final delivery.
+Every accepted talk goes through a focused preparation and review process.
+
+> It seems that perfection is attained not when there is nothing more to add, but when there is nothing more to remove.
+> – Antoine de Saint Exupéry
+
+This phase helps speakers sharpen their core message, structure their narrative, and ensure clarity of insight. The goal is not just to inform, but to move an audience with a well-crafted idea delivered with intention.
+
+## Prepare for your Talk
 
 This process involves atleast two stages of feedback and iteration to ensure your talk is polished, thoughtful and engaging for the audience. Reviews are conducted by members of the VizChitra community – editorial team, past speakers as well as other experts, who provide constructive feedback on both content and delivery.
 
@@ -22,3 +29,6 @@ This process involves atleast two stages of feedback and iteration to ensure you
 
 - Reviewer One, from a similar domain as yours, will focus on providing feedback on the content and flow for the talk
 - Reviewer Two, someone with prior public speaking experience, will focus on providing feedback on style & delivery
+
+> A speaker should approach his preparation not by what he wants to say, but by what he wants to learn.
+> ― Todd Stocker

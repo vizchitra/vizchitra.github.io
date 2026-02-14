@@ -8,7 +8,10 @@ order: 5
 
 # Follow Up
 
-The actions does not stop after you deliver the talk on the stage. Here is what you should after your session.
+The actions doe not stop after you finishin delivering the Talk on the stage. Here is what you should do after your session.
+
+> A mind that is stretched to a new idea never returns to its original dimensions.
+> ― Oliver Wendell Holmes
 
 **Interact with Audience** – The fun & interaction does not just end with you finishing your talk and stepping off the stage. The audience interaction and feedback can continue during the conference and asynchronous, using social media and “Friends of VizChitra” groups.
 

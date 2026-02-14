@@ -175,7 +175,7 @@
 	}
 
 	.nav-title {
-		font-size: 1rem;
+		font-size: var(--text-flow--2);
 		font-weight: 500;
 		color: var(--color-grey-600, #4b5563);
 	}
@@ -184,7 +184,7 @@
 		color: var(--color-grey-900, #111827);
 		text-decoration: underline;
 		text-decoration-thickness: 2px;
-		text-underline-offset: 4px;
+		text-underline-offset: 7px;
 	}
 
 	.guide-content {

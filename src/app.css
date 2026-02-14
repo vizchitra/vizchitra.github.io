@@ -39,6 +39,7 @@
 	--text-flow-6: calc(var(--text-flow-5) * var(--ratio));
 
 	/* --- 4. FLUID SPACING SCALE --- */
+	--space-flow--3: calc(var(--space-base) * 0.25);
 	--space-flow--2: calc(var(--space-base) * 0.5);
 	--space-flow--1: calc(var(--space-base) * 0.75);
 	--space-flow-0: var(--space-base);
@@ -209,10 +210,10 @@
 	--color-viz-pink-light: var(--color-pink-200);
 	--color-viz-grey-light: var(--color-grey-200);
 
-	/* Dark Shades (Use for Text Color) - Ramp 700 */
-	--color-viz-yellow-dark: var(--color-yellow-700);
-	--color-viz-teal-dark: var(--color-teal-700);
-	--color-viz-blue-dark: var(--color-blue-700);
+	/* Dark Shades (Use for Text Color) - Ramp 700/800 */
+	--color-viz-yellow-dark: var(--color-yellow-900);
+	--color-viz-teal-dark: var(--color-teal-900);
+	--color-viz-blue-dark: var(--color-blue-800);
 	--color-viz-orange-dark: var(--color-orange-700);
 	--color-viz-pink-dark: var(--color-pink-700);
 	--color-viz-grey-dark: var(--color-grey-700);

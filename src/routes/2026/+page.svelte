@@ -1,7 +1,14 @@
 <script>
 	import { Flex, FullBleed } from '$lib/components/layout';
 	import { CallCard, Button } from '$lib/components/interface';
-	import { Heading, SubHeading, Text, Slanted, LogoType } from '$lib/components/typography';
+	import {
+		Heading,
+		SubHeading,
+		Text,
+		Slanted,
+		LogoType,
+		ColorSpan
+	} from '$lib/components/typography';
 	import { DividerCurves, Hero, Header } from '$lib/components/structure';
 	import { Container, Stack, Cluster, Grid } from '$lib/components/layout';
 </script>
@@ -28,12 +35,11 @@
 		</Heading>
 
 		<Text type="body">
-			We invite submissions across across four formats—<span class="text-viz-blue-dark font-bold"
-				>Talks</span
-			>, <span class="text-viz-teal-dark font-bold">Dialogues</span>,
-			<span class="text-viz-pink-dark font-bold">Workshops</span>, and
-			<span class="text-viz-orange-dark font-bold">Exhibition</span>. Select the one that best suits
-			your contribution.
+			We invite submissions across across four formats—<ColorSpan color="blue">Talks</ColorSpan>,
+			<ColorSpan color="teal">Dialogues</ColorSpan>,
+			<ColorSpan color="pink">Workshops</ColorSpan>, and
+			<ColorSpan color="orange">Exhibition</ColorSpan>. Select the one that best suits your
+			contribution.
 		</Text>
 
 		<Cluster justify="start">
@@ -42,7 +48,7 @@
 		</Cluster>
 
 		<Text type="caption">
-			Note: The deadline for all submissions is <strong>15 Feb, 2026</strong>.
+			Submission Deadline: <strong>15 Feb 2025, 23:59 IST</strong>.
 		</Text>
 
 		<DividerCurves />

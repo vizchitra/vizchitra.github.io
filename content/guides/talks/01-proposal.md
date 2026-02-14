@@ -8,9 +8,20 @@ order: 1
 
 # Proposal
 
-Writing a good proposal is the first step in getting your idea in front of audience. 
+Talk sessions are designed to share a meaningful story grounded in real practice — one that brings clarity to a challenge and offers insight others in our data visualisation community can use.
 
-_Writing is Thinking_ and a well written proposal articulates the core of your talk for everyone to see. Use these prompts as a mini-outline while drafting your proposal submission.
+> Stories teach, model, unite and motivate by transporting audiences emotionally.
+> ― Peter Gruber
+
+Think of a talk not as a presentation of polished results, but as a crafted narrative journey. We are looking for proposals that begin with a real question or tension, make the thinking process transparent, and leave the audience with something practical to carry forward.
+
+A strong talk doesn’t just inform. It makes the audience think differently about their own work.
+
+## Writing Your Proposal
+
+_Writing is Thinking_. A well written proposal articulates the core of your talk clearly and concisely.
+
+Use these prompts as a mini-outline while drafting your proposal submission.
 
 1. **Who is the audience for your session?** — Think about their backgrounds, roles, and questions. Are they students, early-career practitioners, domain experts, or cross-disciplinary collaborators?
 2. **What problem or question are you centering?** — Describe the pain point, curiosity, or gap you want to address. This helps participants understand why your session matters.
@@ -35,16 +46,20 @@ Choose a talk style that suits your content and personality. Here are some commo
 
 ## Making a great proposal
 
-Writing a great proposal - being specific & descriptive - is key to getting your talk accepted. Here are two examples to illustrate what you should not and should do when crafting a compelling submission:
+Being specific and descriptive is key to getting your talk accepted.
 
-### A Cookie Cutter Proposal 
+> To make our communications more effective, we need to shift our thinking from ‘What information do I need to convey?’ to ‘What questions do I want my audience to ask?’”
+> ― Chip Heath
 
-Don't do the following:
+Here are two examples to illustrate what you should not and should do when crafting a compelling submission:
 
-- Write a generic introduction, but not being specific about the talk
-- Not enough details on what you want to achieve in the talk
-- No clear outline on how the talk would be delivered
-- No speaker bio to indicate why you are the best person to deliver this talk
+### A Cookie Cutter Proposal
+
+- Avoid the following:
+- Writing a generic introduction without being specific about the talk
+- Providing insufficient detail about what you aim to achieve
+- Not outlining how the talk will be delivered
+- Omitting a speaker bio that establishes credibility
 
 _Proposal Status_: **Not Accepted**
 
@@ -60,21 +75,18 @@ This talk introduces narrative visualization and provides pointers on tools and 
 
 :::
 
-
-
 ### A Thoughtfully Crafted Proposal
 
 Aim to do the following:
 
-- Short & crisp summary about the whole talk
-- Context setting around why this talk is different
-- Clear steps & details on what will be covered
-- Explain how the talk will be technically achieved
-- Make clear the objective for the talk e.g. fun live performance
-- Establish credibility & capability for delivering the talk 
+- Provide a short, crisp summary of the talk
+- Set context for why this talk is distinctive
+- Clearly outline what will be covered
+- Explain how the talk will be delivered
+- Clarify the objective (e.g., live demo, conceptual exploration, performance)
+- Establish credibility and capability to deliver the talk
 
 _Proposal Status_: **Accepted**
-
 
 :::notice
 
@@ -104,4 +116,3 @@ Amit Kapoor is interested in learning and teaching the craft of telling visual s
 Ashok Kumar is an accomplished djembe - an African drum - player. He has been playing djembe for more than 15 years and has done numerous performances both as a soloist as well as with his band - Shoonya World Music. You can watch him play in this clip and can find more about him at jembeashok.com
 
 :::
-

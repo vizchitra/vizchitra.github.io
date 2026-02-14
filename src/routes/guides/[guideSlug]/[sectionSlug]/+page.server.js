@@ -35,7 +35,7 @@ export function load({ params }) {
     guideSlug,
     isDraft,
     pageMeta: {
-      title: `${section.section} - ${capitalize(guideSlug)} Guide`,
+      title: `${capitalize(section.section)} | ${capitalize(guideSlug)} | VizChitra Guide`,
       description: section.description,
       ogImage: `https://vizchitra.com/images/preview/preview-guides-${guideSlug}.jpg`
     }
