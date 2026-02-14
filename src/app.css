@@ -213,15 +213,6 @@
 	--color-viz-pink-subtle: var(--color-pink-100);
 	--color-viz-grey-subtle: var(--color-grey-100);
 
-	/* --- MUTED SHADES (Ramp 200/300) --- */
-	/* Use for: Borders, disabled states, or "quiet" secondary buttons */
-	--color-viz-yellow-muted: var(--color-yellow-300);
-	--color-viz-teal-muted: var(--color-teal-300);
-	--color-viz-blue-muted: var(--color-blue-300);
-	--color-viz-orange-muted: var(--color-orange-300);
-	--color-viz-pink-muted: var(--color-pink-300);
-	--color-viz-grey-muted: var(--color-grey-300);
-
 	/* --- LIGHT SHADES (Ramp 200) --- */
 	/* Use for: Hover states on subtle backgrounds */
 	--color-viz-yellow-light: var(--color-yellow-200);
@@ -231,8 +222,26 @@
 	--color-viz-pink-light: var(--color-pink-200);
 	--color-viz-grey-light: var(--color-grey-200);
 
-	/* --- DARK SHADES (Ramp 800/900) --- */
-	/* Use for: Text and high-contrast icons */
+	/* --- MUTED SHADES (Ramp 200/300) --- */
+	/* Use for: Borders, disabled states, or "quiet" secondary buttons */
+	--color-viz-yellow-muted: var(--color-yellow-300);
+	--color-viz-teal-muted: var(--color-teal-300);
+	--color-viz-blue-muted: var(--color-blue-300);
+	--color-viz-orange-muted: var(--color-orange-300);
+	--color-viz-pink-muted: var(--color-pink-300);
+	--color-viz-grey-muted: var(--color-grey-300);
+
+	/* --- SOLID SHADES (Ramp 700) --- */
+	/* Use for: High-contrast icons & Fills */
+	--color-viz-yellow-solid: var(--color-yellow-700);
+	--color-viz-teal-solid: var(--color-teal-700);
+	--color-viz-blue-solid: var(--color-blue-700);
+	--color-viz-orange-solid: var(--color-orange-700);
+	--color-viz-pink-solid: var(--color-pink-700);
+	--color-viz-grey-solid: var(--color-grey-700);
+
+	/* --- DARK SHADES (Ramp 800) --- */
+	/* Use for: Text  */
 	--color-viz-yellow-dark: var(--color-yellow-800);
 	--color-viz-teal-dark: var(--color-teal-800);
 	--color-viz-blue-dark: var(--color-blue-800);

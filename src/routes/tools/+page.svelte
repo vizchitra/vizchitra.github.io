@@ -1,7 +1,5 @@
 <script lang="ts">
-	import Header from '$lib/components/structure/Header.svelte';
-	import Stack from '$lib/components/layout/Stack.svelte';
-	import Cluster from '$lib/components/layout/Cluster.svelte';
+	import { Header, Stack, Cluster } from '$lib/components';
 
 	const tools = [
 		{

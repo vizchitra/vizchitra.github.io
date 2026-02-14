@@ -1,11 +1,5 @@
 <script lang="ts">
-	import PatternWaves from '$lib/components/structure/PatternWaves.svelte';
-	import PatternRiver from '$lib/components/structure/PatternRiver.svelte';
-	import PatternCircle from '$lib/components/structure/PatternCircle.svelte';
-	import PatternStream from '$lib/components/structure/PatternStream.svelte';
-	import ToolsCard from '$lib/components/interface/ToolsCard.svelte';
-	import ToolsHeader from '$lib/components/interface/ToolsHeader.svelte';
-	import Header from '$lib/components/structure/Header.svelte';
+	import { PatternWaves, PatternRiver, PatternCircle, PatternStream, ToolsCard, ToolsHeader, Header } from '$lib/components';
 
 	const variants = ['waves', 'river', 'circle', 'stream'] as const;
 	const tones = ['blue', 'teal', 'pink', 'orange', 'yellow'] as const;

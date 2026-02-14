@@ -1,5 +1,5 @@
 <script lang="ts">
-	import PatternFormats from '$lib/components/structure/PatternMountain.svelte';
+	import PatternFormats from '$lib/components/patterns/PatternMountain.svelte';
 
 	type Format = 'talks' | 'workshops' | 'dialogues' | 'exhibition';
 

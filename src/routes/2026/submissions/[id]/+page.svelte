@@ -1,8 +1,6 @@
 <script lang="ts">
-	import { Card, Button } from '$lib/components/interface';
-	import { DividerCurves, Header } from '$lib/components/structure';
+	import Header from '$lib/components/structure/Header.svelte';
 	import { Heading, Prose } from '$lib/components/typography';
-
 	import { Container } from '$lib/components/layout';
 	import { ProposalBadge, ProposalStatusBadge, UpvoteButton } from '$lib/components/proposals';
 	import type { PageData } from './$types';

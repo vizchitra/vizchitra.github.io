@@ -124,27 +124,27 @@ export const themeTokens: Record<Color, ThemeTokens> = {
  * Light variant hex codes for canvas/D3 components that need extended palettes.
  * These are NOT part of the Color type - use only when you specifically need light variants.
  */
-export const lightVariantHex = {
-	yellowLight: '#FCF0DC',
-	tealLight: '#C0F0EB',
-	blueLight: '#D6E4FF',
-	orangeLight: '#FFD9C3',
-	pinkLight: '#FFD5E7',
-	greyLight: '#E4E4E4'
-} as const;
+// export const lightVariantHex = {
+// 	yellowLight: '#FCF0DC',
+// 	tealLight: '#C0F0EB',
+// 	blueLight: '#D6E4FF',
+// 	orangeLight: '#FFD9C3',
+// 	pinkLight: '#FFD5E7',
+// 	greyLight: '#E4E4E4'
+// } as const;
 
 /**
- * 8-color palette for BannerCurve (5 main + 3 light variants)
+ * 8-color palette for BannerCurve (3 main + 5 light variants)
  */
 export const CURVE_PALETTE = [
-	colorTokens.orange.hex, // #FC915B
-	lightVariantHex.yellowLight, // #FFF3CC
-	colorTokens.yellow.hex, // #FFD485
-	lightVariantHex.pinkLight, // #FFD6EB
-	colorTokens.pink.hex, // #EF75AB
-	lightVariantHex.tealLight, // #DDF7F2
-	colorTokens.teal.hex, // #88E0D8
-	colorTokens.blue.hex // #9FBAFC
+	'#FC915B',
+	'#FFF3CC',
+	'#FFD485',
+	'#FFD6EB',
+	'#EF75AB',
+	'#DDF7F2',
+	'#88E0D8',
+	'#9FBAFC'
 ] as const;
 
 /**

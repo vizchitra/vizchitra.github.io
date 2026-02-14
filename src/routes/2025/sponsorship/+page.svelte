@@ -1,15 +1,23 @@
 <script lang="ts">
-	import { Card, ColumnChart, SpeakerDeck } from '$lib/components/interface';
-	import { Grid, FullBleed } from '$lib/components/layout';
-	import { SponsorshipContactForm, SponsorCard, SponsorButton } from '$lib/components/sections';
-	import { AttendeeCharts, AttendeeMarquee } from '$lib/components/sections';
-	import { Heading, SubHeading } from '$lib/components/typography';
+	import {
+		Card,
+		ColumnChart,
+		SpeakerDeck,
+		Grid,
+		FullBleed,
+		SponsorshipContactForm,
+		SponsorCard,
+		SponsorButton,
+		AttendeeCharts,
+		AttendeeMarquee,
+		Heading,
+		SubHeading,
+		Header,
+		DividerPolygon,
+		Container,
+		Stack
+	} from '$lib/components';
 	import sponsors from '$lib/data/sponsors2025.json' with { type: 'json' };
-	import { Header } from '$lib/components/structure';
-	import DividerPolygon from '$lib/components/structure/DividerPolygon.svelte';
-	import Prose from '$lib/components/typography/Prose.svelte';
-	import Container from '$lib/components/layout/Container.svelte';
-	import Stack from '$lib/components/layout/Stack.svelte';
 </script>
 
 <Header title="Sponsorship 2025" banner="polygon" />

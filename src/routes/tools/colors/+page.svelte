@@ -1,10 +1,5 @@
 <script lang="ts">
-	import Header from '$lib/components/structure/Header.svelte';
-	import ToolsCard from '$lib/components/interface/ToolsCard.svelte';
-	import ToolsHeader from '$lib/components/interface/ToolsHeader.svelte';
-	import ColorSwatch from '$lib/components/interface/ColorSwatch.svelte';
-	import Stack from '$lib/components/layout/Stack.svelte';
-	import Cluster from '$lib/components/layout/Cluster.svelte';
+	import { Header, ToolsCard, ToolsHeader, ColorSwatch, Stack, Cluster } from '$lib/components';
 
 	const baseColors = [
 		{ name: 'viz-white', var: 'var(--color-viz-white)' },
@@ -82,9 +77,22 @@
 			]
 		},
 		{
+			name: 'Solid (700)',
+			description: 'High-Contrast Icons & Fills',
+			note: 'Rich, saturated tones for high-contrast icons, fills, and UI elements that need to stand out.',
+			colors: [
+				{ label: 'viz-yellow-solid', var: 'var(--color-viz-yellow-solid)' },
+				{ label: 'viz-teal-solid', var: 'var(--color-viz-teal-solid)' },
+				{ label: 'viz-blue-solid', var: 'var(--color-viz-blue-solid)' },
+				{ label: 'viz-orange-solid', var: 'var(--color-viz-orange-solid)' },
+				{ label: 'viz-pink-solid', var: 'var(--color-viz-pink-solid)' },
+				{ label: 'viz-grey-solid', var: 'var(--color-viz-grey-solid)' }
+			]
+		},
+		{
 			name: 'Dark (800)',
-			description: 'Text & Strong Emphasis',
-			note: 'Deep tones suitable for text, icons, and elements requiring strong contrast.',
+			description: 'Text Emphasis',
+			note: 'Deep tones suitable for text requiring high contrast & readability.',
 			colors: [
 				{ label: 'viz-yellow-dark', var: 'var(--color-viz-yellow-dark)' },
 				{ label: 'viz-teal-dark', var: 'var(--color-viz-teal-dark)' },

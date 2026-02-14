@@ -13,7 +13,7 @@ These rules are designed to optimize for long-term maintainability, consistency,
 ## Stack (source of truth)
 
 - **SvelteKit** (Svelte v5) + **@sveltejs/adapter-static**
-- **MDsveX** for Markdown pages (`content/`)
+- **Content Collection** for Markdown pages (`content/`)
 - **Tailwind CSS v4** for CSS
 - **TypeScript**
 - **Vite** as build and dev tool
@@ -23,11 +23,11 @@ These rules are designed to optimize for long-term maintainability, consistency,
 
 ## Repo layout (high level)
 
-- `content/` — Markdown pages (`.md`) processed by MDsveX
+- `content/` — Markdown pages (`.md`) processed by `Content Collection`
 - `src/routes/` — SvelteKit routes (`+page.svelte`, `[slug]/`, etc.)
 - `src/lib/` — reusable components, utils, data, assets
-- `src/app.css` — Tailwind entry + token-to-utility mapping (`@theme`)
-- `src/lib/assets/css/tokens.css` — canonical `--viz-*` tokens (colors, etc.)
+- `src/app.css` — Tailwind entry + token-to-utility mapping (`@theme`) + canonical `--color-*` CSS variables
+- `src/lib/tokens.ts` — TypeScript color tokens (hex + cssVar mappings)
 - `src/lib/assets/css/fonts.css` — `@font-face` declarations
 - `static/` — images/fonts served as-is (use absolute `/...` paths)
 
@@ -36,7 +36,7 @@ These rules are designed to optimize for long-term maintainability, consistency,
 ## Non-negotiables (automated edits must follow)
 
 1. **Static-first**: Everything must work with prerendering + adapter-static (no runtime-only routes).
-2. **Import strategy**: Prefer `$lib/...` for shared modules/components. Avoid deep relative imports.
+2. **Import strategy**: Use barrel exports (`import { Component } from '$lib/components'`) for all component imports. Avoid direct `.svelte` imports from other directories.
 3. **Markdown policy**: Do **not** embed Tailwind utility classes inside Markdown files in `content/`.
 4. **Token determinism**: Use canonical `--viz-*` tokens from `src/lib/assets/css/tokens.css`. Avoid ad-hoc hex values.
 5. **Accessibility**: Semantic HTML, alt text, keyboard support, and visible focus states.
@@ -47,15 +47,23 @@ These rules are designed to optimize for long-term maintainability, consistency,
 
 ### CSS-first model (how styling works here)
 
-- Canonical tokens live in `src/lib/assets/css/tokens.css` as `--viz-*`.
+- **Color tokens** live in two places:
+  - `src/lib/tokens.ts` — TypeScript constants (hex values, theme tokens)
+  - `src/app.css` — CSS custom properties (`--color-*` variables) using OKLCH color space
+- **OKLCH Color System**: All brand colors have 11-tone ramps (50-950) with standardized lightness values
 - Tailwind utilities are created by mapping tokens in `src/app.css` using `@theme { ... }`.
 - Prefer Tailwind utilities in Svelte components; avoid new global CSS unless widely reused.
 
 ### Token usage rules
 
 - **No raw hex** in class strings (e.g. avoid `bg-[#747474]`).
-- Prefer **semantic roles** when available (e.g. background/foreground/surface/link tokens), and use palette tokens for brand accents only.
-- If a new “named value” is needed, add it to `tokens.css` (canonical), then map it in `app.css` (`@theme`) for Tailwind-facing utilities.
+- **Use semantic color names**: `--color-viz-yellow`, `--color-viz-teal`, `--color-viz-blue`, `--color-viz-orange`, `--color-viz-pink`, `--color-viz-grey`
+- **Named variants available**: `-subtle` (100), `-light` (200), `-muted` (300), base (400), `-strong` (700), `-dark` (800)
+- Prefer **semantic roles** when available (e.g. `--color-bg`, `--color-fg`, `--color-accent`, `--color-link`)
+- If a new color is needed:
+  1. Add to `src/lib/tokens.ts` if it's a JS constant
+  2. Add CSS variable to `src/app.css` for styling
+  3. Map to Tailwind utility via `@theme` if needed
 
 ### Tailwind conventions (practical)
 
@@ -70,11 +78,11 @@ These rules are designed to optimize for long-term maintainability, consistency,
 
 ---
 
-## Content (MDsveX / Markdown)
+## Content (Content Collection / Markdown)
 
 ### Frontmatter (required)
 
-All `.md`/`.svx` files must include:
+All `.md` files must include:
 
 ```yaml
 ---
@@ -103,17 +111,37 @@ image: string # path under /static
 
 ### Where things go
 
-- `src/lib/components/interface/` — reusable primitives (no page copy, no hard-coded asset paths)
-- `src/lib/components/typography/` — text primitives/wrappers (e.g. Prose)
-- `src/lib/components/layout/` — compositional layout primitives
+- `src/lib/components/interface/` — reusable UI primitives (buttons, cards, modals, etc.)
+- `src/lib/components/typography/` — text primitives/wrappers (Heading, Text, Prose, etc.)
+- `src/lib/components/layout/` — compositional layout primitives (Stack, Grid, Container, etc.)
+- `src/lib/components/patterns/` — visual patterns and decorations (banners, dividers, patterns)
 - `src/lib/components/structure/` — global chrome (header/footer/banners)
-- `src/lib/components/sections/` — reusable page blocks
+- `src/lib/components/sections/` — reusable page blocks (conference, FAQ, team, etc.)
+- `src/lib/components/proposals/` — proposal-specific components (ProposalCard, filters, etc.)
 - `src/routes/<route>/_components/` — route-only components tightly coupled to one page
 
 ### Imports
 
-- Prefer: `import Thing from '$lib/...';`
-- Within the component library itself, prefer direct local imports (avoid barrel imports that can create circular deps).
+**Standard Pattern (Recommended):**
+
+```typescript
+import { Button, Stack, Header, Heading } from '$lib/components';
+```
+
+**Alternative (for better IDE context):**
+
+```typescript
+import { Button, Card } from '$lib/components/interface';
+import { Stack, Grid } from '$lib/components/layout';
+```
+
+**Rules:**
+
+- ✅ Use root barrel export (`$lib/components`) for all component imports
+- ✅ Category-level imports (`$lib/components/layout`) are acceptable for better organization
+- ❌ Avoid direct `.svelte` imports from other directories: `'$lib/components/interface/Button.svelte'`
+- ✅ Exception: Sibling components in same directory can use relative imports: `'./SpeakerPentagon.svelte'`
+- See [`src/lib/components/README.md`](src/lib/components/README.md) for complete import guidelines
 
 ---
 
@@ -158,7 +186,9 @@ In Svelte routes, use `<svelte:head>` and populate title/description from load d
 
 ```svelte
 <script lang="ts">
-	export let data;
+	import type { PageData } from './$types';
+
+	let { data }: { data: PageData } = $props();
 	const { title, description } = data;
 </script>
 
@@ -173,6 +203,8 @@ In Svelte routes, use `<svelte:head>` and populate title/description from load d
 	<meta name="twitter:description" content={description} />
 </svelte:head>
 ```
+
+**Note**: Use Svelte 5 runes syntax (`$props()`) instead of `export let`.
 
 ---
 
@@ -189,8 +221,15 @@ In Svelte routes, use `<svelte:head>` and populate title/description from load d
 1. Create under `src/lib/components/<category>/ComponentName.svelte`.
 2. Type all props (TypeScript).
 3. Use Tailwind utilities backed by tokens (no hex).
-4. Export from a barrel only for stable, widely reused components (e.g. interface primitives).
-5. Avoid barrels for layout, sections, and route-coupled components.
+4. Export from the category's `index.ts` barrel file:
+   ```typescript
+   export { default as ComponentName } from './ComponentName.svelte';
+   ```
+5. Verify the root `src/lib/components/index.ts` re-exports the category.
+6. Import the component using barrel exports in your code:
+   ```typescript
+   import { ComponentName } from '$lib/components';
+   ```
 
 ### Add a utility
 
@@ -212,9 +251,10 @@ In Svelte routes, use `<svelte:head>` and populate title/description from load d
 ## Verification checklist (before submitting)
 
 - [ ] `pnpm build` passes; prerender crawler has no 404s
-- [ ] Imports use `$lib/...` where appropriate
+- [ ] Component imports use barrel exports: `import { Component } from '$lib/components'`
+- [ ] No direct `.svelte` imports from other directories (except sibling components)
 - [ ] No Tailwind classes embedded in `content/` markdown
-- [ ] No raw hex colors added; tokens used (or added to `tokens.css` + mapped in `app.css`)
+- [ ] No raw hex colors added; tokens used (add to `tokens.ts` or `app.css` with proper OKLCH values)
 - [ ] Accessibility: semantic elements, focus states, keyboard support, alt text
 - [ ] All interactive elements must be reachable and usable via keyboard alone.
 - [ ] SEO tags present (title, description, Open Graph, Twitter card)

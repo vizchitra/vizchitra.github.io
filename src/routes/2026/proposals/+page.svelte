@@ -1,11 +1,24 @@
 <script>
-	import { Grid, Flex, FullBleed } from '$lib/components/layout';
-	import { Card, FormatCard, Button, Deadline } from '$lib/components/interface';
-	import { DividerCurves } from '$lib/components/structure';
-	import { Slanted, Notice, Heading, SubHeading, Text } from '$lib/components/typography';
-	import { Header } from '$lib/components/structure';
-	import { Container, Stack, Cluster } from '$lib/components/layout';
-	import Prose from '$lib/components/typography/Prose.svelte';
+	import {
+		Grid,
+		Flex,
+		FullBleed,
+		Card,
+		FormatCard,
+		Button,
+		Deadline,
+		DividerCurves,
+		Slanted,
+		Notice,
+		Heading,
+		SubHeading,
+		Text,
+		Header,
+		Container,
+		Stack,
+		Cluster,
+		Prose
+	} from '$lib/components';
 </script>
 
 <Header banner="curve" />

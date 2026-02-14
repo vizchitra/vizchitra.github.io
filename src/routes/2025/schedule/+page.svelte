@@ -1,7 +1,5 @@
 <script lang="ts">
-	import { Header } from '$lib/components/structure';
-	import { Heading } from '$lib/components/typography';
-	import Container from '$lib/components/layout/Container.svelte';
+	import { Header, Heading, Container } from '$lib/components';
 </script>
 
 <Header title="Schedule 2025" banner="polygon" />

@@ -1,8 +1,5 @@
 <script lang="ts">
-	import { BannerCurve, BannerPolygon, BannerSquare, BannerBlob } from '$lib/components/structure';
-	import Header from '$lib/components/structure/Header.svelte';
-	import ToolsCard from '$lib/components/interface/ToolsCard.svelte';
-	import ToolsHeader from '$lib/components/interface/ToolsHeader.svelte';
+	import { BannerCurve, BannerPolygon, BannerSquare, BannerBlob, Header, ToolsCard, ToolsHeader } from '$lib/components';
 
 	let bannerType: 'polygon' | 'curve' | 'square' | 'blob' = 'curve';
 </script>

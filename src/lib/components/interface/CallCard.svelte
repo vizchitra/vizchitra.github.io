@@ -1,8 +1,5 @@
 <script lang="ts">
-	import PatternCircle from '$lib/components/structure/PatternCircle.svelte';
-	import PatternWaves from '$lib/components/structure/PatternWaves.svelte';
-	import PatternRiver from '$lib/components/structure/PatternRiver.svelte';
-	import PatternStream from '$lib/components/structure/PatternStream.svelte';
+	import { PatternCircle, PatternWaves, PatternRiver, PatternStream } from '$lib/components';
 
 	type Pattern = 'circle' | 'waves' | 'river' | 'stream';
 	type Tone = 'blue' | 'teal' | 'orange' | 'pink' | 'yellow';

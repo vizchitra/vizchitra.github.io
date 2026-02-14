@@ -1,9 +1,5 @@
 <script lang="ts">
-	import { FullBleed } from '$lib/components/layout';
-	import { PolygonPlayground } from '$lib/components/sections';
-	import ToolsCard from '$lib/components/interface/ToolsCard.svelte';
-	import ToolsHeader from '$lib/components/interface/ToolsHeader.svelte';
-	import Header from '$lib/components/structure/Header.svelte';
+	import { FullBleed, PolygonPlayground, ToolsCard, ToolsHeader, Header } from '$lib/components';
 </script>
 
 <Header banner="square" color="grey"></Header>

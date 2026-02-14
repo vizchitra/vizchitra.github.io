@@ -1,8 +1,8 @@
 <script lang="ts">
-	import BannerPolygon from './BannerPolygon.svelte';
-	import BannerCurve from './BannerCurve.svelte';
-	import BannerSquare from './BannerSquare.svelte';
-	import BannerBlob from './BannerBlob.svelte';
+	import BannerPolygon from '$lib/components/patterns/BannerPolygon.svelte';
+	import BannerCurve from '$lib/components/patterns/BannerCurve.svelte';
+	import BannerSquare from '$lib/components/patterns/BannerSquare.svelte';
+	import BannerBlob from '$lib/components/patterns/BannerBlob.svelte';
 	import LogoTagline from '$lib/components/typography/LogoTagline.svelte';
 	import FullBleed from '$lib/components/layout/FullBleed.svelte';
 	import Slanted from '$lib/components/typography/Slanted.svelte';
