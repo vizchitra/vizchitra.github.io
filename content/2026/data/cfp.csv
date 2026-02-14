@@ -580,13 +580,118 @@ The modules have been designed with the following framework:
 6.	And finally, a speculative drawing activity. This activity is future-focussed, with the goal of leaving a lingering image in the participants minds - either of fear or hope, depending on how your discussions go. The idea is to make these big intangible concepts and feelings more accessible and provide you with an actionable way to take this discussion forward on your own.",https://readymag.website/u792828431/5925005/,https://drive.google.com/file/d/1R_bg-D86c19c57vqQw7AZvpRIv0uT-Yg/view?usp=drive_link,https://drive.google.com/file/d/1RZm-qoHpwy5XPH6FmaAgnFqC_JwpG7MU/view?usp=drive_link,"Printouts of the Module sheets
 Paper and drawing supplies such as sketch pens
 A screen for showing images",Projector/TV,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+RGp55Yp,b5k2dQe,2026-02-14 7:33:59,Anand,S,LLM Psychologist,Straive,"Anand's an LLM psychologist @ Straive. He prods AI to understand how it thinks. It prods back, teaching him how HE thinks. He's ex-IITM, IIMB, INFY, LBS, IBM, BCG & other TLAs. He transcribed every Calvin & Hobbes strip over 7 years. AI does that now in 7 min.",,,https://www.linkedin.com/in/sanand0/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations as Craft,Can AI Discover New Data Visualizations?,"There's stuff I know AI _can_ do.
+
+1. **Create data visualizations**. I just tell it to convert a dataset into a treemap, and it does.
+2. **Hallucinate**. That's a fancy word for ""make stuff up"". I prefer calling it ""creativity"".
+3. **Run forever**. As long as I have token budget and can summarize the context, it can go on.
+
+What if we combine these? What if we asked it to do research? If infinite monkeys will almost surely produce Shakespeare, how long will it take for the greatest AI to discover a truly novel data visualization that is useful?
+
+This isn't a talk. It's an exhibition.
+
+I'm not presenting. My AI monkeys are. They'll show off what new data visualizations they've discovered, given the following constraints:
+
+1. **It's novel**. Check and make sure it's stuff we haven't seen before.
+2. **It's useful**. It has to reveal insights from data (even a niche kind).
+3. **It's beautiful**. Visually striking and engaging.
+
+My role will just be a narrator of their work - since they can't speak (or... um... )
+
+Actually, my role is an admirer and critic - since they can't critique themselves (but... actually... )
+
+Well, I'm the person who paid for their tokens and will therefore take credit on stage. So there.",https://sanand0.github.io/datastories/anthropic-work/,https://sanand0.github.io/llmartstyle/,https://www.s-anand.net/,"Yes, only once",,,,,,,,,,,,,,,,,,,Keep,Under Review
+RGp58oQ,VLl9YJN,2026-02-14 8:42:00,Supriya,J,Senior Data Analyst,Epic World,"I work with diverse datasets, from government surveys to geographic boundaries, to make sense of complex realities, turning numbers into human-centred, spatially grounded insights.",,,www.linkedin.com/in/supriya-j99,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations at Work,There Are No Clean Maps: Reconciling Incompatible Geographies,"We often speak about “putting data on a map” as if geography were stable and agreed upon crisp boundaries, clear hierarchies, seamless layers. In practice, there are no clean maps. Every map is a negotiation between data sources, definitions, and vintages. Maps are not neutral mirrors of reality; they are reconciliations built on trade-offs and hard decisions.
+
+This talk explores what it means to build spatial analysis when underlying geographies do not align across time, hierarchy, or definition.
+
+Drawing from my work with village-level, pincode-level, hex-level, and district-level data, I unpack the analytical decisions required when:
+
+1) Administrative hierarchies don’t align across time
+Village shapefiles from 2011 coexIst with district boundaries updated in 2022. The hierarchy is conceptually nested but spatially inconsistent. What assumptions are embedded when we visualise one inside the other? How do these mismatches affect interpretation?
+
+2) Parallel geographies coexist.
+Districts and pincodes are both valid units, yet neither nests cleanly within the other. When users need insights at both levels, we are forced to construct relationships that do not naturally exist.
+
+3) Granularity must be constructed
+Data rarely comes at the level we need. To make it usable, we’ve had to create new spatial units to cover gaps, estimating population at village and pincode levels, and combining multiple sources to produce consistent analytical layers.
+
+4) Spatial logics conflict
+Datasets such as WorldPop operate on raster grids, while other datasets may rely on hex-based systems like Kontur’s hexes. Merging grids and hexes means translating between fundamentally different spatial assumptions about area, density, and aggregation.
+
+5) Geographic provenance is unknown
+Survey data often arrives at the district level without clarity on which boundary definitions were used. When boundaries evolve, a “district” is not a stable object. How do we responsibly visualise such data when the shapefile itself is uncertain?
+
+Across these cases, mapping is not just a visual exercise but a series of analytical trade-offs. It requires deliberate choices about boundaries, aggregation, approximation, and how much uncertainty we are willing to carry forward.
+
+Rather than presenting a single solution, this session argues that spatial visualisation begins long before design; in the invisible work of reconciling geographies. The question is not whether trade-offs exist, but whether we acknowledge and communicate them.
+",,,,I have never given a talk,,,,,,,,,,,,,,,,,,,Keep,Under Review
+RGp55yJ,44k1xBA,2026-02-14 8:47:58,Pulaha,Roy,Data correspondent,Centre for Science and Environment,"I’m a data correspondent with Down To Earth, a fortnightly magazine where I report and design magazine spreads.",,https://x.com/PulahaRoy,https://www.linkedin.com/in/pulaha-ray/,Workshop,I consent to VizChitra publishing my submission and the review of my application.,TRUE,,,,,,,,,,,,,,,,,Visualizations and Tools,From Data to Story: Using QGIS Expressions with OSM,"Yes, only once","Being a data journalist, it’s not enough to ‘just use’ tools – You also need to come up with a story. As a reporter for a magazine, I have extensively used QGIS to report on news stories. The workshop is designed for any interested participant to get started with maps and cartography on QGIS. But, we are not going to ‘just use’ the tool – we are going to map how uneven is the social infrastructure distribution of Bengaluru – is one neighbourhood hogging most of the green shade in the city? Does Devara Jeevanahalli have any schools? How many police stations does Bengaluru have and more importantly where are they located? 
+
+For all those questions, thankfully we have Open Street Maps and QGIS Expressions to make sense of the data. By the end of the workshop, participants will know their way around the QGIS interface and not just use the tool but make informed decisions using QGIS expressions for querying – thanks to AI. Finally, there is the cartographic aspect of it – we would visualise the skewed distribution map and walk through the steps involved in exporting the map in QGIS.
+
+We probably won’t be Tom Patterson but the most important takeaway from the workshop would be not to get fazed the next time we come across a file with a ‘.shp’ format. Rather, just go ahead and ‘drag it from the Browser Panel’ and ‘drop it in the Layers Panel’. All fancy words but we are going to try to dumb down all the nitty gritties of how to practically use QGIS.",https://www.youtube.com/watch?v=B82Hq5uthUQ,,,"QGIS installed ",Projector and a mic,Keep,Under Review
+jaNZW4a,NpVLRJW,2026-02-14 9:53:41,Akshay,Roongta,Co-founder and Director,Ooloi Labs,"I am a design researchers and have worked in the impact sector across various domains, and co-founded Ooloi Labs in 2019 to help bring qualitative data into impact sector decision making and program design ",,,https://www.linkedin.com/in/akshay-roongta-scale/,Workshop,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations at Work,,,,,,,,,,,,,,,,Visualizations at Work,"From Quotes to Conclusions: A Hands-On Workshop in Making Sense of Qualitative Data ","Yes, many times","Our workshop follows the talk that we have proposed. It expands on the ideas we are putting forward around how teams can think about making sense of qualitative data coming in from various sources, and how one goes from disparate quotes, transcripts, NPS feedback to answers and insights to important questions. It is targeted towards those who work in teams to help structure, analyse and present insights from various datasets especially for internal team decision making. 
+
+The workshop would unfold in 3 parts:
+1/  Initial introduction to the ideas in the talk so that everyone has a shared understanding and there’s time for resolving doubts, understanding any specific experiences to assimilate into the workshop design & flow
+
+2/ Analog exploration of qualitative data
+- We would present the case study, along with the decision that the company is trying to make
+- We would then share bite-sized versions of the synthetic data in physical forms (exact formats to be decided), and setup the more detailed questions the company needs to answer using the data. 
+- The participants would then have some time to go through the datasets, and pull out the data, both qualitative and quantitative, to gain insight and put forward recommendations for the decisions 
+- Most importantly, we will explore how they can put forward their ideas with the backing of quotes, and patterns from the datasets 
+
+3/ Digital Exploration
+- We would then onboard the participants onto a version of the Dots platform that is already setup with the various datasets 
+- The groups would then use the platform to work with a much more expanded dataset, and use various systems to filter and analyze the data along relevant variables and attributes
+
+Learning outcomes:
++ Learn how insights emerge when qualitative data is structured across sources, variables, and attributes
++ Experience the difference between anecdotal reasoning and evidence-backed conclusions
++ Practice tracing insights back to supporting quotes, patterns, and datasets
++ Gain a transferable mental model for synthesising qualitative information into decision-grade insight
++ See how visual and structural organisation of data enables sense-making, not just summarisation
++ Reflect on the limits of AI-generated summaries when working with complex qualitative inputs",https://getdots.in/,https://getdots.in/webinars/qualitative-data-for-education-evaluation-a-live-walkthrough-with-dots,,"- Charts, Post-its, Markers 
+- Power outlets for laptops 
+- Screen/Projector for presentation
+","Desk setup so that teams can work in groups, first with charts and post-its, and then with their laptops. Also, it should be such that at various points they should be able to see us project something on a screen as well",Keep,Under Review
+eq4e8pJ,NpVLRJW,2026-02-14 9:56:11,"Akshay ",Roongta,Co-founder & Director,Ooloi Labs,"I am a design researcher and have worked in the impact sector across various domains, and co-founded Ooloi Labs in 2019 to help bring qualitative data into impact sector decision making and program design
+",,,https://www.linkedin.com/in/akshay-roongta-scale/,"Dialogues ",I consent to VizChitra publishing my submission and the review of my application.,TRUE,,,,,,,,Visualizations at Work,When Research Meets Decisions: A Discussion About Using Qualitative Data at Work,"Yes, many times","This session is a facilitated open conversation for practitioners who work with user feedback, research, or qualitative data inside organisations. Rather than a presentation, the goal is to create a space where participants can compare real experiences of how insights actually travel — or fail to travel — into decisions.
+
+Many teams today collect large amounts of qualitative information: interviews, support conversations, NPS comments, usability tests, field observations, and internal feedback. However, across product and program teams, a common pattern appears: research exists, but decisions are still driven by intuition, hierarchy, or dashboards. This dialogue invites participants to collectively examine why that happens.
+
+We will guide the discussion through a set of prompts, encouraging participants to share practices, frustrations, and workarounds from their own organisations. The facilitators will not present solutions; instead we will help surface patterns across roles, sectors, and team structures.
+
+Areas we want to cover:
+- How qualitative data is gathered: What kind of qualitative data is gathered, who actually does it, how is this data managed
+- How decisions are actually made: how does quant talk to qual, at what points does qual become absolutely necessary, how is the information analysed, how is it presented
+- How have team structures + processes changed with the influx of AI: what actual changes have happened in workflows because of AI tools? Real change or a lot of Linkedin theater? 
+
+Intended Outcome: 
+Participants leave with a clearer understanding of how different teams handle qualitative knowledge, a shared language to describe internal challenges, and practical ideas drawn from peer experience. The session emphasises collective learning and reflection rather than instruction.
+",https://getdots.in/,https://getdots.in/insights-hub,,"A white board with markers, so that we can harvest notes during the discussion to surface patterns.
+","Chairs in a circle would be best ",,,,,,,,,,Keep,Under Review
+Zj06kve,NpVLRJW,2026-02-14 10:12:27,Yashna,Jhamb,Co-founder & Director,Ooloi Labs,"Yashna Jhamb is a systems thinker, ethnographic researcher and the co-founder of Ooloi Labs. At Ooloi, she helps organizations make sense of complex realities through Dots, a SaaS platform for managing qualitative data at scale. ",,,https://www.linkedin.com/in/yashnajhamb/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations at Work,"Stories, Complaints, and Confusion: Structured Analysis of Qualitative data ","Last year our session focused on why qualitative data matters. The reception was quite good, and I think we piqued everyone’s curiosity, and perhaps exploration. This year our talk addresses the next question: what does it actually mean to operationalise qualitative data so that it influences real decisions?
+This year we would also focus the presentation through the lens of product companies such as D2C, digital consumer applications, so that it is more relatable to the Vizchitra audience. We want to be able to speak to those who have to support decision making using data, looking at how data is analysed, and how the insights are expressed to enable swift, and sure decisionmaking. 
+
+The core idea of this talk is that qualitative data become really useful when we can look at various sources of data, and then analyse them structurally rather than only narratively. Product analytics platforms already do this with behavioural data: they construct cohorts, segment users by shared attributes, and examine patterns across variables. We argue that qualitative information can be analysed similarly — not by reducing it to numbers, but by organising it so patterns, relationships, and evidence chains become visible. 
+To make this concrete, the talk will use a synthetic case study. We would introduce a fictional product company attempting to answer a realistic question about user satisfaction and retention. We will share a journey using combined datasets: NPS responses with written feedback alongside excerpts from research calls. We’ll use this case study to show how with these sources of data, and structuring using meta data and attributes can lead to useful insights that can drive decisions. 
+
+This topic matters to us because we think that this is a glaring blindspot for many teams. And with the swift adoption of consumer AI tools people are dumping qualitative data into chat windows, expecting deep insights when all they’re going to get are summaries. ",https://www.youtube.com/watch?v=t-dm1DzU0po,https://getdots.in/insights-hub,,"Yes, many times",,,,,,,,,,,,,,,,,,,Keep,Under Review
+zxlDrR1,KYozBO7,2026-02-14 10:24:11,Vivek,Raju,Narrative Consultant,Kathasys,"I’m a narrative consultant based in Bangalore. I work with startups and communities to visualise stories—building shared languages that help teams align, make sense of ideas, and carry intent clearly from strategy to execution.",https://www.instagram.com/mr.construe?igsh=MWk2eGF0cmg2ZHB0NQ%3D%3D&utm_source=qr,,https://www.linkedin.com/in/vivek-raju-61b88310a/,Workshop,I consent to VizChitra publishing my submission and the review of my application.,TRUE,,,,,,,,,,,,,,,,,Visualizations as Craft,Minimum Viable story,"Yes, only once","In the world of information and data visualisation, enormous care is given to accuracy, aesthetics, and technical execution. We refine visual hierarchies, optimise legibility, and ensure statistical integrity. Yet the narrative spine that determines what an audience ultimately understands is often left implicit.
+
+When a story is not intentionally shaped or when there are gaps in its structure, the human brain goes into autopilot. It fills those gaps on its own. The result is simple. The message taken away is not necessarily the message that was presented.
+
+This workshop introduces the idea of a Minimum Viable Story, the most basic narrative structure required to avoid a message being diluted or misinterpreted. Rather than treating storytelling as embellishment, the session positions narrative as a structural responsibility. Just as visual contrast makes data legible, story structure ensures insight is understood.
+
+At the centre of this approach is the core insight. Before design decisions are made, before sequencing is finalised, before aesthetics are refined, one question must be answered clearly: What is the non-negotiable idea that must be understood? From that anchor point, the narrative can be reverse engineered by priming the audience to receive the insight and organising information in a way that supports it rather than competes with it.
+
+Participants will work with shared material and reshape it around a clearly defined insight, observing how structural choices influence interpretation. The emphasis is not on making information entertaining, but on ensuring that it is understood as intended.
+
+This workshop centres on foundational narrative structure. It may be less useful for practitioners who already employ established storytelling frameworks or who are deliberately experimenting with unconventional narrative forms. It is particularly suited to those whose primary focus lies in data analysis, craft, or visual design, and who are looking for a clear structural approach to presenting their work so that their intended insight is understood.
+
+Designed for data designers, information designers, journalists, and visual communicators working with complexity, this workshop reframes narrative not as decoration, but as cognitive infrastructure. If visual design determines what we see, narrative structure determines what we understand.",,,,"Sticky notes, markers, printed handouts.",tables for each team to discuss and work. possibly an area for finally presenting the work.,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
