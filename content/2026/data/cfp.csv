@@ -703,9 +703,78 @@ There will be 2 parts to a single performance - One being a physical performance
 This talk explores how thoughtfully designed visualisations — grounded in carefully selected key metrics — can transform complex football data into clear, strategic insights. Rather than presenting isolated charts, I demonstrate how visualisation can function in decision making in deriving key insights from the data
 
 Using open-source tools in R — including ggplot2 and interactive libraries — I showcase visualisations that moves from raw data to actionable insights. ",https://github.com/harikrishna19/Football-analysis-24-25,https://harikrishna19.shinyapps.io/Football_App/,,I have never given a talk,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+ODv5X9M,PdE2zpb,2026-02-14 13:35:28,Mohit,Rao,Independent Journalist,Independent journalist,"I've been a journalist for over 15 years, with an interest in long-form writing and investigations. I've primarily written about environment, human rights, law and democratic institutions. ",https://www.instagram.com/mohitmrao,https://x.com/mohitmrao,https://www.linkedin.com/in/mohit-rao-856587102/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations for Community,"Being digital watchdogs: Using court, police and media to keep track of laws","Ever wondered what happens to corruption cases against politicians? Or, perhaps, wondering if your local police station is effective? Or, maybe if all those election promises of cracking down on drugs, land/sand/alcohol mafia, and post-election action on comedians and “anti-nationals” have gone anywhere? 
+
+In this talk, I'll run through on how one can digitally investigate cases by triangulating data from publicly-available court, police and media documents. This approach can be used to build robust datasets on virtually any criminal act in the country. No coding required and no fancy tech (okay, perhaps, a little optional use of LLMs at the end). It's an intentionally low-tech approach that allows one to develop datasets that can be used to analyse patterns or narrate compelling stories on how the State uses or misuses the power of the law. 
+
+The creation of the dataset can be broken into two: discovery of cases; and its analysis. 
+
+The core of the dataset is the FIR number. I'll run through some ways sneaky and not-so-sneaky ways to discover cases. This includes using RTIs with the police, trawling through e-courts for bail and other court orders, or finding FIR numbers through media articles or social media posts to find criminal and legal information. 
+
+Once, you ""discover"" cases, I'll show a few ways in which one can build the dataset (here, is where a LLM may help), and how to find patterns and narrate these stories. 
+
+I've spent a few years learning from previous datasets, while tinkering with ways to build larger datasets (and to build them quickly without the need for a team or coding). This talk is not about replication, but rather to serve as inspiration. The hope is that the audience will start tinkering with e-courts, police websites and media sites to build their own legal data sets for reporting, story-telling, accountability or to understand the shadowy world of police, courts and law. 
+",https://article-14.com/post/in-karnataka-political-communal-motives-drove-bjp-to-weaponise-uapa-against-muslims-research-shows--6983488dcdf8c,https://article-14.com/post/karnataka-has-more-sedition-cases-based-on-social-media-posts-than-any-state-most-are-illegal-60ecf64da7945,https://article-14.com/post/80-convictions-under-uapa-in-karnataka-from-guilty-pleas-in-past-20-years-new-research-6988e31545d9c,"Yes, only once",,,,,,,,,,,,,,,,,,,Keep,Under Review
+2E0aOY9,vGBL6X4,2026-02-14 13:47:46,"Rafeeque ",Mavoor,"Founder, Scidart.com",Scidart Academy,"I am a scientific illustrator, educator, and founder of Scidart Academy and Labcanvas.
+",https://www.instagram.com/rafeequemavoor/,https://x.com/rafeequemavoor,https://www.linkedin.com/in/rafeequemavoor/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations and Tools,Helping Indian Scientists Create Research Visuals Easily,"Helping Indian Scientists Create Research Visuals Easily
+Problem
+Scientists and engineers in India often struggle to create visuals for their research papers that clearly communicate their ideas. One major reason is that most design and illustration tools are not built for science or for scientists. As a result, researchers spend weeks or even months trying to make figures and plots. Many end up publishing visuals that do not do justice to their hard work or the quality of their research. We are working to change this.
+Outline
+-A live demo of creating a highly detailed 3D illustration of drug delivery to cancer tissue in under one minute using Labcanvas.io. Which would take at least 3 to 8  hours in tools like Blender for an expert. This does not rely on AI image generation or ready made templates, but on structured generators.
+-How building a community of scientific illustrators scicommtalent.com  helped scientists find and hire illustrators who truly understand their research
+-How we can use Google AI Studio to rig SVG illustrations which scientists can customize without drawing. This  solved decades old problem in illustration tools ‘customizability’. This workflow is unique and something we developed ourselves.
+-AI image generation is not the future in science visualization but generators are.
+-What building free resources and tools for science visualization like moldraw.com, openscienceart.com, planticons.com, posterscientist.com, mapmypaper.com helped me learn about building solutions for dataviz.. How you also can build tools and resources even without coding skills with minimal cost. 
+Requirements
+None. Anyone who are interested in visualizing science and data are welcome to join. Also those who are interested in learning how to build visualization tools are welcome to join
+Speaker Bio
+Rafeeque is a scientific illustrator, educator, and founder of Scidart Academy and Labcanvas.
+He works closely with scientists, engineers, and doctors to help them communicate research through illustrations, animations, and videos, and has trained more than 2500 researchers.
+He holds a BSMS in Chemistry from IISER Thiruvananthapuram and has collaborated with academic institutes, publishers, and a pharma company to create research visuals.
+Through workshops, courses, and open platforms, he has helped thousands of researchers across India learn how to communicate science visually with clarity and confidence.
+",https://labcanvas.io/,http://scicommtalent.com/,https://openscienceart.com/,"Yes, many times",,,,,,,,,,,,,,,,,,,Keep,Under Review
+ODv5bQg,Ek1BJ8l,2026-02-14 14:33:45,"Drishti ",Tanna,Visual Communication Designer,"14 Trees ","We’re Drishti  & Shruti Pawar. Drishti is a visual communication designer from Pune working across board games, printmaking & climate action. Shruti is a textile designer from Maharashtra & NID alum exploring people, place & nature through drawing & research.",,,linkedin.com/in/drishti-tanna-b366912a3,"Dialogues ",I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations for Community,"xyz ",,,,,"Yes, many times",Visualizations for Community,Bleeding between the lines,I have never conducted a session,"Most of us learn how to manage periods before we learn how to understand them. While menstruation is discussed more openly now, the conversation often stays “safe”, relying on clean awareness campaigns and brand-friendly metaphors that avoid the real, messy texture of lived experience.
+
+Meanwhile, the cost of silence keeps showing up in bodies, labour, and the spaces we live in. Policy may shift in parts of the formal world, but lived reality remains uneven, especially in informal work, where “missing a day” can mean fines, debt, or extreme measures taken just to keep earning.
+We are two designers collecting fragments - language, rituals, labour, stories, myths, visuals around periods. 
+
+We want to place these fragments in shared spaces for discussion and move past ""opinion exchange"" to look at the humor, contradictions, and costs of the silence we all navigate.
+
+1.  Our Central Question is:
+
+How do code words, slang, and unspoken rules shape how menstruation is understood and managed in everyday life, and what changes when we put these fragments together in the open? What changes when these private systems become visible as shared data?
+
+2.  Who we want in the room:
+
+People across ages, backgrounds, and work contexts (including informal work), plus designers/storytellers/researchers interested in how language and visuals shape reality. This session welcomes women, trans and non-binary menstruators.
+
+3.  The Data & Visual Foundation:
+
+This dialogue is anchored in our ongoing primary research, which has gathered 250+ responses through in-person interviews and digital surveys. This dataset captures a rich spectrum of experiences, including:
+
+⤷ Context & Identity: How menstruation is managed across different labor conditions and environments.
+⤷ The Language of Silence: A collection of period code words (English + local languages).
+⤷ Physical & Emotional Markers: ""Period fits,"" body signals, rituals, and comfort foods.
+
+4.  Dialogue Structure: 
+(This is still a work in progress and we’d appreciate any guidance to figure this out further)
+
+ ⤷ Introduction: 
+Start with 3-5 questions like ‘Write the first word you were taught to use instead of ‘period.’ to start the conversation 
+
+⤷ Discuss/dialogue/converse: 
+Bring the language, the blood, and the rules into the open: reading slang, data, and lived accounts aloud and mapping the effort of hiding them, so menstruation appears in the room as it is: ordinary, material, and socially managed.
+
+5.   What can they take away:
+⤷ a shared vocabulary map of code words + what we “buy” (privacy/safety) 
+⤷ a simple “period labour scorecard” that helps someone locate where period-related effort comes from (space + rule + cost) and score it 1–5.
+⤷ a prototype of an “honest period visual language” moodboard / icon system (with do/don’t rules decided by the women, for the women)
+
+6.   How we will visualize this for engagement:
+Live Mapping: We will facilitate a live, physical visualization where participants can ""plot"" their own experiences using threads/stickers against the data visualization of the 250+ responses we’ve collected. ",http://subversions.tiss.edu/vol3-issue1/tarishi/,https://rupkatha.com/V15/n4/v15n409.pdf,https://docs.google.com/spreadsheets/d/1Zn-NEESMotoiijhZ_grL4Aawr5s3t2LBdPfZwx0iUDo/edit?usp=sharing,"1. A space on the wall with the data visualization of our research.
+2. Sticky notes / markers / thread or stickers for live mapping and adding responses next it.
+3. Printed newspaper copies carrying slang, personal accounts, and research excerpts.
+","One large wall for the shared data map, chairs arranged in small clusters (3–4 people), and open space for participants to stand, move, and add their experiences to the wall.",,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
