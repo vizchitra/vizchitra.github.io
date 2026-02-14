@@ -33,7 +33,7 @@
 				>Submit your Proposal</Button
 			>
 
-			<Button href="/2026/submissions" color="blue">View All Submissions</Button>
+			<Button href="/2026/submissions" color="blue">View all Submissions</Button>
 		</Cluster>
 
 		<DividerCurves />

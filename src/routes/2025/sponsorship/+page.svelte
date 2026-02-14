@@ -100,8 +100,8 @@
 		</Grid>
 
 		<DividerPolygon />
-
-		<SponsorshipContactForm />
+		<!-- 
+		<SponsorshipContactForm /> -->
 
 		<FullBleed>
 			<SpeakerDeck

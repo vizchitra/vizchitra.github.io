@@ -63,7 +63,7 @@
 		</Text>
 
 		<Cluster justify="start">
-			<Button href="/2026/submissions" color="blue">View All Submissions</Button>
+			<Button href="/2026/submissions" color="blue">View all Submissions</Button>
 		</Cluster>
 
 		<div class="mt-6 mb-1 flex flex-row items-end gap-1">

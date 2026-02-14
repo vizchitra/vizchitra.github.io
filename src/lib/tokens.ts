@@ -31,15 +31,15 @@ export interface ThemeTokens {
 // Color tokens map (hex + cssVar for the 6 base colors)
 export const colorTokens: Record<Color, ColorTokens> = {
 	yellow: {
-		hex: '#FFD485',
+		hex: '#D4AA5A',
 		cssVar: 'var(--color-viz-yellow)'
 	},
 	teal: {
-		hex: '#88E0D8',
+		hex: '#6BC3BB',
 		cssVar: 'var(--color-viz-teal)'
 	},
 	blue: {
-		hex: '#9FBAFC',
+		hex: '#95AFF1',
 		cssVar: 'var(--color-viz-blue)'
 	},
 	orange: {
@@ -47,11 +47,11 @@ export const colorTokens: Record<Color, ColorTokens> = {
 		cssVar: 'var(--color-viz-orange)'
 	},
 	pink: {
-		hex: '#EF75AB',
+		hex: '#FE82B8',
 		cssVar: 'var(--color-viz-pink)'
 	},
 	grey: {
-		hex: '#4C4C4C',
+		hex: '#B1B1B1',
 		cssVar: 'var(--color-viz-grey)'
 	}
 };
@@ -125,12 +125,12 @@ export const themeTokens: Record<Color, ThemeTokens> = {
  * These are NOT part of the Color type - use only when you specifically need light variants.
  */
 export const lightVariantHex = {
-	yellowLight: '#FFF3CC',
-	tealLight: '#DDF7F2',
-	blueLight: '#EAF4FF',
-	orangeLight: '#FFE6D6',
-	pinkLight: '#FFD6EB',
-	greyLight: '#F2F2F2'
+	yellowLight: '#FCF0DC',
+	tealLight: '#C0F0EB',
+	blueLight: '#D6E4FF',
+	orangeLight: '#FFD9C3',
+	pinkLight: '#FFD5E7',
+	greyLight: '#E4E4E4'
 } as const;
 
 /**

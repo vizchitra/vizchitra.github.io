@@ -9,7 +9,7 @@
 <Header title="Session Videos 2025" banner="polygon" />
 
 <Container>
-	<Heading tag="h1">Videos @ VizChitra 2025</Heading>
+	<Heading tag="h1" align="center" class="pb-8">Videos @ VizChitra 2025</Heading>
 	<FullBleed>
 		<VideoGrid />
 	</FullBleed>
