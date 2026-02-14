@@ -526,8 +526,60 @@ This topic matters deeply to me because of my long engagement with modernizing o
 The talk connects directly to ongoing conversations in the data visualization community around usability, accessibility, ethical representation, and visualization for public good. I will discuss how design choices were informed by user research, accessibility considerations, and the need for transparency through clear metadata and explanatory notes. I will also touch on the role of AI-enabled semantic search and how it complements visualization by improving data discovery.
 The presentation will follow a clear narrative flow, beginning with the scale and complexity of India’s official statistics and the need for a unified dissemination platform, followed by a discussion of user needs and how they shaped visualization design. I will then walk through key features of eSankhyiki with concrete use cases, examine governance and regulatory constraints, and conclude with lessons learned and future directions for visualization in official statistics.
 The intended audience includes data visualization practitioners, civic technologists, designers, policymakers, journalists, and researchers interested in applied visualization and public-interest data systems. Participants will leave with practical strategies for building visualization systems at scale, insights into designing for trust and usability, and a clearer understanding of how visualization can meaningfully shape real-world decisions inside large institutions.",https://esankhyiki.mospi.gov.in/,,,I have never given a talk,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+ODvaYOp,zxzNYjM,2026-02-14 6:41:42,Siddharth,Kabra,CEO,Monsoonfish UI/UX Design Studio,"Reimagining design thinking for product leaders, making it practical, outcome-driven, and real. I lead a 40+ strong design team building high-performance UX, intuitive systems, and striking interfaces for products used globally.",https://www.instagram.com/siddharthkabra?igsh=bHNsZW1vc2o5dWFt,https://x.com/siddharthkabra,https://www.linkedin.com/in/siddharthkabradesign/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations at Work,Purpose-First Data Visualization,"Looking at data visualization through a leadership and product lens not as “making charts,” but as designing clarity for decisions. Visualization works well when it is anchored in business and implementation context: what problem you’re solving, what action you’re enabling, or what understanding you’re trying to build.
+
+And honestly, I’ve seen this happen in almost every team at some point, even strong teams. You’re under pressure, you have data, and you feel like the next logical step is to visualize it. But over the years, across projects, products, and business problems I’ve learnt that this is usually how you end up with data that look great but don’t help anyone make a decision.
+
+Purpose first, charts later. 
+Visualization should start with intent, not with available data.
+The chain: wisdom → knowledge → data → visualization.
+
+First define what you’re trying to understand (wisdom), then what you need to know (knowledge), then what data supports it, and only then design the visual.
+
+Visualization is a decision tool. 
+A good data viz reduces ambiguity and makes the next step obvious (thresholds, alerts, ownership, drill-downs).
+Match the visual to the job. Different formats serve different needs, seeing direction, prioritizing, spotting issues early, or explaining drivers.
+
+This approach comes from years of building products and solving business problems where “pretty dashboards” often failed because nobody knew what to do with them. 
+The talk shares the practical lessons learned from real work, what consistently makes visualizations useful, and what makes them ignored.
+
+Because visualization is never the end goal. It’s a tool with a purpose. And most of the time that purpose is one of three things: solve a problem, enable an action, or build understanding. 
+
+If you don’t know which of these you’re doing, you’ll end up visualizing everything and still not know what to do next.
+
+How it connects to conversations in data visualization:
+A lot of data viz conversations focus on chart types, tools, aesthetics, or storytelling. This talk adds a complementary angle: data viz as product design and leadership craft where success is measured by decision quality, action clarity, and business outcomes, not by visual polish alone.
+
+Talk overview:
+1. Why “data → chart” is the most common trap
+2. The wisdom → knowledge → data → visualization chain
+3. Method: A repeatable checklist for purpose-first visualization
+4. Examples: How the same thinking applies across different contexts (ecosystems, products, operations, experience design)
+5. Close: A simple principle to remember + what to do differently starting tomorrow
+
+Who is this relevant to:
+People working in products where multiple stakeholders rely on data to act.
+Product leaders, founders, design leaders, data teams, analysts, and anyone responsible for dashboards, reporting, or decision-making systems especially people working in products where multiple stakeholders rely on data to act.
+
+Key takeaways
+A clear way to define *why* a visualization exists before designing it
+A repeatable framework to move from business context to the right data and the right visual
+Practical guidance on making data actionable (not just informative)
+A mindset shift: don’t visualize data, visualize decisions
+
+So the big idea is simple, and it’s something I’ve come to believe because I’ve seen it play out repeatedly: Don’t visualize data. Visualize decisions.",https://docs.google.com/presentation/d/1OdXVxknPZApwNmOB6lT3ic6DZ-L-jxze/edit?slide=id.p1#slide=id.p1,https://drive.google.com/drive/folders/12TzevbB5pbHMd1QwclkCqfafMa0fzOQO,https://www.linkedin.com/in/siddharthkabradesign/,"Yes, many times",,,,,,,,,,,,,,,,,,,Keep,Under Review
+aQVYeOB,obB0e0X,2026-02-14 6:51:57,Anuhya,Mahesh,Student,"Srishti Manipal Institute of Art, Design, and Technology","I'm a learning designer who primarily works with participatory research methods, and I'm interested in making information dissemination as fun and interesting as it can possibly be!",https://www.instagram.com/poyituvaren/,,www.linkedin.com/in/anuhya-mahesh,Workshop,I consent to VizChitra publishing my submission and the review of my application.,TRUE,,,,,,,,,,,,,,,,,Visualizations for Community,Dirty Talk,I have never conducted a workshop,"Dirty Talk is a research project that tries to find answers for the question ""why are we so uncomfortable to talk about sex?"". It tries to answer this through modules that get people to discuss, debate, and disseminate! Each session involves activities, games, and reflections about sex, bodies, gender, and education. 
+We live in a world where all the information we could possibly need about sex education is right at our fingertips, yet somehow, we still struggle to have conversations about our bodies. The consequence of this stigma around talking about sex manifests itself in the different ways we normalise abuse in our daily lives. From catcalling on the streets, to slut-shaming at home, and even harassment in the workplace, we’ve created room in our realities for our minds and bodies to be constantly violated, because we’ve convinced ourselves that it’s easier to ignore, than to acknowledge and have conversations. Could talking about sex, sexuality, our bodies and gender more, lead to positive change? 
+The project currently exists as 2 modules – “Media, Misogyny, and Me” and “The Large Language Module”, which explore the how our opinions and biases around sex and gender are shaped by media and language respectively. The links below are 1. For the project itself – a detailed repository of stories I’ve been collecting through these modules and a mapping of how these stories are connected; 2. The downloadable for the Media Module which includes instructions for each activity and the printables required; and 3. The downloadable for the Language module in that order. 
+The modules have been designed with the following framework:
+1.	An icebreaker based either on recollecting a memory or asking for an opinion. This activity needs to happen off the top of someone’s head, it’s the hook to get them invested in the rest of the session.
+2.	A discussion prompt that establishes the main question(s) of the session. 
+3.	Shared Experiences is a game that’s all about establishing common ground for all the participants by recollecting universal experiences. The discussion here is centred around WHY these experiences are so universal. 
+4.	The Main Activity facilitates the brunt of the connection-making. A reflective activity that is focussed on pattern recognition and connection-building. This is the “diagnosis” part of the session, where we try to find the root of these opinions and ideas.
+5.	The second discussion prompt is focussed on ensuring the connection between the first experiences covered up until the last activity, which will be somewhat removed from personal opinions and will be focussed on larger observations, making participants ponder about how small-scale decisions can have large-scale effects.
+6.	And finally, a speculative drawing activity. This activity is future-focussed, with the goal of leaving a lingering image in the participants minds - either of fear or hope, depending on how your discussions go. The idea is to make these big intangible concepts and feelings more accessible and provide you with an actionable way to take this discussion forward on your own.",https://readymag.website/u792828431/5925005/,https://drive.google.com/file/d/1R_bg-D86c19c57vqQw7AZvpRIv0uT-Yg/view?usp=drive_link,https://drive.google.com/file/d/1RZm-qoHpwy5XPH6FmaAgnFqC_JwpG7MU/view?usp=drive_link,"Printouts of the Module sheets
+Paper and drawing supplies such as sketch pens
+A screen for showing images",Projector/TV,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
