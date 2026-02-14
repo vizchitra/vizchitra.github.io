@@ -8,12 +8,15 @@ order: 0
 
 # Overview
 
-Conducting a workshop at VizChitra is an opportunity to share, teach and inspire the community of your ideas, insights, and experiences with a community of visualization practitioners.
+Conducting a workshop at VizChitra is an opportunity to teach, share, and create hands-on learning experiences with the visualization community.
 
-This guide walks you through the journey from proposal to delivery for a workshop.
+> “Tell me and I forget. Show me and I remember. Involve me and I understand.”
+> — Xunzi
 
-## Type of Workshops
+We will help you move from defining clear learning outcomes in your proposal, through the review process, to designing activities and facilitating a session that feels engaging, thoughtful, and genuinely useful.
 
-**Hands-on Workshop** – Curate an immersive learning experience that encourages creativity, practical application and skill development. Participants will gain hands-on experience while receiving direct guidance from expert instructors.
+## Format of Workshop
+
+**Hands-on Workshop** – An immersive learning experience designed to encourage creativity, practical application, and skill development. Participants gain hands-on experience while receiving direct guidance from facilitators.
 
 _Duration_: Half-day (3 hours total, with 20 mins tea break in between)

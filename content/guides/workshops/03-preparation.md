@@ -6,9 +6,14 @@ section: preparation
 order: 3
 ---
 
-# Preparation & Reviews
+# Preparation
 
-Each accepted workshop goes through a structured preparation & review process to help the facilitator get ready for the final delivery.
+Every accepted workshop goes through a structured preparation and review process.
+
+> What it boils down to is one percent inspiration and ninety-nine percent perspiration.
+> ― Thomas Edison
+
+This phase helps facilitators refine learning outcomes, exercises, pacing, and materials. The goal is to create a session that is practical, engaging, and grounded in meaningful participation.
 
 ## Tell us & participants what you need & expect
 
@@ -44,5 +49,4 @@ Send Preparation Update Three Days before – The instructor sends an update - a
 **Use the Review Sessions** – The Editorial PoC will schedule up to two review sessions with external reviewers to help you prepare for your workshop. Please make the time to do these sessions.
 
 - Reviewer One, from a similar domain as yours, will focus on providing feedback on the content for the workshop. This ensure the workshop mets the objective of the audience attending the conference
-
 - Reviewer Two, someone with prior workshop / teaching experience, will focus on providing feedback on instructional design

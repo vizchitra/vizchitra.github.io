@@ -10,14 +10,17 @@ order: 0
 
 Giving a talk at VizChitra is an opportunity to share your ideas, insights, and experiences with a community of visualization practitioners.
 
-This guide walks you through the journey from proposal to delivery.
+> Stories are just data with a soul.
+> — Brené Brown
 
-## Types of Talks
+We will walk you from idea to stage — helping you shape a strong proposal, understand how talks are reviewed, refine your message, and deliver it with clarity and confidence.
 
-**Standard Talk** – Deep-dive presentations that allow you to thoroughly explore complex topics and share personal learnings, insights, & journey through your work.
+## Formats of Talks
+
+**Standard Talk** – A deep-dive presentations that allow you to thoroughly explore complex topics and share personal learnings, insights, & journey through your work.
 
 _Duration_: 20 min presentation (+ 5 min Q&A + 5 mins transition)
 
-**Lightning Talk** – Fast-paced, focused presentations designed to deliver maximum impact in minimal time. Perfect for introducing novel concepts or sharing specific solutions.
+**Lightning Talk** – A fast-paced, focused presentations designed to deliver maximum impact in minimal time. Perfect for introducing novel concepts or sharing specific solutions.
 
 _Duration_: 10 minutes presentation (+ 3 min Q&A + 2 mins transition)

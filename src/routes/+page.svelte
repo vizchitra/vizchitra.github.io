@@ -2,7 +2,14 @@
 	import { Button } from '$lib/components/interface';
 	import { RecapVideo, Mission } from '$lib/components/sections';
 	import { DividerCurves, Hero } from '$lib/components/structure';
-	import { Slanted, SubHeading, Heading, LogoType, Text } from '$lib/components/typography';
+	import {
+		Slanted,
+		SubHeading,
+		Heading,
+		LogoType,
+		Text,
+		ColorSpan
+	} from '$lib/components/typography';
 	import { Container, Stack, Cluster } from '$lib/components/layout';
 	import FullBleed from '$lib/components/layout/FullBleed.svelte';
 </script>
@@ -16,14 +23,13 @@
 		</Heading>
 
 		<Text type="lead" align="center">
-			India's community-driven conference dedicated to <span class="text-viz-yellow-dark font-bold"
-				>data visualization</span
+			India's community-driven conference dedicated to <ColorSpan color="yellow"
+				>data visualization</ColorSpan
 			>
-			is back again in <span class="text-viz-teal-dark font-bold">2026</span>. This flagship event
-			over
-			<span class="text-viz-blue-dark font-bold">two days</span>
-			will be in <span class="text-viz-orange-dark font-bold">Bangalore</span> on
-			<span class="text-viz-pink-dark font-bold">3rd & 4th July, 2026 </span>
+			is back again in <ColorSpan color="teal">2026</ColorSpan>. This flagship event over
+			<ColorSpan color="blue">two days</ColorSpan>
+			will be in <ColorSpan color="orange">Bangalore</ColorSpan> on
+			<ColorSpan color="pink">3rd & 4th July, 2026</ColorSpan>
 		</Text>
 
 		<Cluster>
@@ -31,7 +37,7 @@
 		</Cluster>
 
 		<Cluster>
-			<Text type="caption">Accepting Submissions till <strong>15 Feb, 2026</strong></Text>
+			<Text type="caption">Accepting Submissions till <strong>15 Feb 2025, 23:59 IST</strong></Text>
 		</Cluster>
 
 		<DividerCurves />

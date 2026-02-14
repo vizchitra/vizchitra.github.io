@@ -8,7 +8,14 @@ order: 3
 
 # Preparation
 
-Things to do leading up to your Dialogue session at VizChitra 2026.
+Every accepted dialogue session goes through a preparation and review process to help shape the framing questions and conversational flow.
+
+> Seek first to understand, then to be understood.
+> — Stephen Covey
+
+This phase helps facilitators clarify intent, shape framing questions, and anticipate diverse perspectives. The goal is to create space for thoughtful exchange rather than presentation.
+
+## Prepare for your Dialogue
 
 **Prepare Concept Note** – Preparation for a “Dialogues” starts with a concept note for the session. The intent here is to have the right set of prompts to facilitate the conversation. Dialogues can be impromptu, but the invited ones for facilitation would be helped by having a concept note.
 
@@ -16,7 +23,7 @@ Things to do leading up to your Dialogue session at VizChitra 2026.
 
 **Understand the Space** – Unlike a talk or a panel, the space for a Dialogue is more informal and the seating arrangement ensures the participants can all see each other. The arrangement would be more circular, rather than facing a singular direction, like towards the stage.
 
-**Chatham House Rule** – Dialogues at VizChitra 2026 will follow Chatham House Rule (To Be Confirmed) - “Anyone who comes to a meeting is free to use information from the discussion, but is not allowed to reveal who made any particular comment.” This rule is designed to increase openness of discussion, even on topics that may be considered controversial
+**Chatham House Rule** – Dialogues at VizChitra will follow Chatham House Rule (To Be Confirmed) - “Anyone who comes to a meeting is free to use information from the discussion, but is not allowed to reveal who made any particular comment.” This rule is designed to increase openness of discussion, even on topics that may be considered controversial
 
 **No Video Recording** – Following from the Chatham House Rule, there will be no video recording done for the Dialogues
 

@@ -17,6 +17,7 @@
 <div
 	{...rest}
 	class={['prose', className]}
+	style:--prose-accent-base={theme.base}
 	style:--prose-accent-dark={theme.dark}
 	style:--prose-accent-light={theme.light}
 	style:--prose-accent-muted={theme.muted}
@@ -28,6 +29,7 @@
 <style>
 	.prose :global {
 		/* Scoped variables  */
+		--base-color: var(--prose-accent-base, var(--viz-color-grey-base));
 		--light-color: var(--prose-accent-light, var(--viz-color-grey-light));
 		--dark-color: var(--prose-accent-dark, var(--color-viz-grey-dark));
 		--muted-color: var(--prose-accent-muted, var(--color-viz-grey-muted));
@@ -80,6 +82,13 @@
 			font-size: var(--text-flow-1);
 			line-height: 1.45;
 			color: var(--color-viz-grey-dark);
+		}
+
+		/* E. Blockquote spacing: Override lock rule for balanced spacing */
+		& h1 + blockquote,
+		& h2 + blockquote,
+		& h3 + blockquote {
+			margin-top: var(--space-flow-1);
 		}
 
 		/* --- 2. TYPOGRAPHY & LEAD PARAGRAPH --- */
@@ -135,10 +144,27 @@
 			letter-spacing: -0.005em;
 		}
 
+		& blockquote {
+			margin-block: var(--space-flow-1);
+			margin-left: 0;
+			margin-right: 0;
+
+			max-width: 50ch; /* narrower book measure */
+			padding-left: var(--space-flow-1); /* indent from the left */
+			border-left: 3px solid var(--muted-color); /* book-style vertical line */
+
+			font-size: var(--text-flow-0);
+			line-height: 1.6;
+			font-style: italic;
+
+			color: var(--dark-color);
+			text-align: left;
+		}
+
 		/* --- 3. SUB, SUP, & SMALL TEXT --- */
 
 		& strong {
-			font-weight: 550;
+			font-weight: 450;
 			font-style: italic;
 			color: var(--dark-color);
 		}
@@ -260,9 +286,9 @@
 				color: var(--dark-color);
 			}
 
-			& li + li {
-				margin-top: var(--space-flow--2);
-			}
+			/* & li + li {
+				margin-top: var(--space-flow--3);
+			} */
 		}
 
 		/* --- 5a. UNORDERED: Thin Dash --- */
@@ -309,24 +335,44 @@
 
 		& table {
 			width: 100%;
+			table-layout: fixed; /* 🔑 Required */
 			border-collapse: collapse;
 			margin-block: var(--space-flow-1);
-			font-size: var(--text-flow--1);
+			font-size: var(--text-flow--2);
 			line-height: 1.1;
-			border-bottom: 1px solid var(--prose-accent-muted, var(--color-viz-grey-muted));
+			border-bottom: 1px solid var(--muted-color);
+		}
 
-			& thead th {
-				padding: var(--space-flow--1) 0;
-				text-align: left;
-				font-weight: 700;
-				border-bottom: 1px solid var(--color-viz-black); /* The single separator line */
-			}
+		/* Cells */
+		& table th,
+		& table td {
+			overflow-wrap: break-word;
+			word-break: break-word;
+		}
 
-			& tbody td {
-				padding: var(--space-flow--2) 0; /* Tighter vertical padding */
-				border-bottom: none; /* Removed for a cleaner look */
-				vertical-align: top;
-			}
+		/* First column narrow */
+		& table th:first-child,
+		& table td:first-child {
+			width: 17%; /* adjust 12–22% */
+		}
+
+		/* Remaining columns equal */
+		& table th:not(:first-child),
+		& table td:not(:first-child) {
+			width: auto; /* 🔑 ensures equal distribution */
+		}
+
+		& table thead th {
+			padding: var(--space-flow--2) var(--space-flow--3);
+			text-align: left;
+			font-weight: 450;
+			border-bottom: 1px solid var(--muted-color); /* The single separator line */
+		}
+
+		& table tbody td {
+			padding: var(--space-flow--2) var(--space-flow--3); /* Tighter vertical padding */
+			border-bottom: none; /* Removed for a cleaner look */
+			vertical-align: top;
 		}
 
 		/* --- 6. DIRECTIVE STYLES --- */

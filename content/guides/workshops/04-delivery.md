@@ -10,6 +10,9 @@ order: 4
 
 Getting ready for the Workshop Day to the deliver the session.
 
+> The only source of knowledge is experience.
+> — Albert Einstein
+
 **Plan for Venue** – Reconfirm the time & venue for the workshop (they are likely to be different from the main conference venue), plan for your travel and aim to be there early. Bangalore traffic can be very difficult.
 
 **Arrive before Time**: Aim to be at the workshop location at least an one hour before your session. It will help you orient better with the space.

@@ -27,7 +27,7 @@
 			</p>
 		</Prose>
 
-		<Text type="caption">Proposal Deadline: <strong>15 Feb, 2025</strong></Text>
+		<Text type="caption">Proposal Deadline: <strong>15 Feb 2025, 23:59 IST</strong></Text>
 		<Cluster justify="start">
 			<Button href="https://forms.vizchitra.com/proposals" color="pink" external={true}
 				>Submit your Proposal</Button
