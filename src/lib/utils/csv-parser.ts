@@ -109,7 +109,11 @@ export function parseCFPProposals(csvString: string): CFPProposal[] {
 				theme,
 				title,
 				description,
-				links: combineLinks(row['Enter a link here..._2'], row['Enter a link here..._3']),
+				links: combineLinks(
+					row['Further links relevant to your session proposal.'], 
+					row['Enter a link here..._2'], 
+					row['Enter a link here..._3']
+				),
 				materials: row['Materials or tools required for the session'] || undefined,
 				roomSetup: row['Room set-up needed'] || undefined
 			};
@@ -137,6 +141,7 @@ export function parseCFPProposals(csvString: string): CFPProposal[] {
 				title,
 				description,
 				links: combineLinks(
+					row['Further links relevant to your workshop proposal.'],
 					row['Enter a link here..._4'] || row['Further links relevant to your talk proposal'],
 					row['Enter a link here..._5'] || row['Enter a link here...'],
 					row['Enter a link here..._1']
