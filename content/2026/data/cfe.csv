@@ -286,7 +286,47 @@ The work raises questions about scale, invisibility, and impact: What does an or
 ","This is a new project currently in the design and prototyping phase. The conceptual framework, data sources, and visualisation logic have been established, and the work is structured to be lightweight and modular. Following selection, the project can be completed within the exhibition schedule. The first phase will involve finalising datasets and material specifications (3-4 days), followed by fabrication and assembly of modular components (1-2 weeks). Final testing and refinement will take place in the weeks leading up to installation. The installation itself is straightforward and can be completed on-site within a few hours.
 ",I consent to VizChitra publishing my submission and the review of my application.,TRUE,,Keep,Under Review
 RGpRVVK,b5kYRE2,2026-02-15 15:17:18,Reema,Deshpande,"Senior Design Researcher ",Quicksand,"As part of Land Body Ecologies, exploring the interconnections of mental and ecosystem health, Reema worked closely with communities living around the Bannerghatta forest to understand how land loss and urban expansion shape cultural, memory, and identity.",Collective,Quicksand,"Quicksand is a multidisciplinary design research and innovation consultancy. Using human-centred design, we turn deep contextual insight into products, services, technologies, and interventions that create meaningful, lasting impact.",https://storage.tally.so/private/Cartograhpies-of-Care_QS.pdf?id=dkZQdz&accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRrWlFkeiIsImZvcm1JZCI6ImxiZXlndiIsImlhdCI6MTc3MTE2ODYzOX0.NJDYaPiXvk2hC9EUgBl0m8TaSsc6V5-ITCZYrPG3v-A&signature=db76c4814a03aae7545332383be549de423a2425cba961089c4942b233ba0023,,,,Tapestry of Stories,"The Tapestry of Stories is a hand painted map of stories and holds audio snippets recorded during research at our hubs in India, Uganda, Kenya, Finland, Thailand and Sápmi. The visuals for the tapestry capture textures, patterns and abstracted landscapes that represent and bring together our different research hubs. There will also be ambient audio snippets from our research hubs. Visitors could come close to it and place their hands over the audio sensors for 3–4 seconds for an amplified audio experience. These audio snippets have been collected over two years of research and the map builds on and acknowledges the work and voices of community members, local partners and the research teams.","Field recordings and excerpts from research across multiple countries. ","Fabric installation with embedded audio. ",https://storage.tally.so/private/Tapestry-of-Stories.-Facilitating-exchange-through...-_-by-Reema-Deshpande-_-Medium_compressed.pdf?id=JWV8Zd&accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkpXVjhaZCIsImZvcm1JZCI6ImxiZXlndiIsImlhdCI6MTc3MTE2ODYzOX0.7qGx28UzGCoDu40AFFZRmTQT5SoG8knixW7QeUYYD20&signature=5edb7fd0e7c65a34570c60b7ed6cdf0c42845a60194db868559940c0e045677b,"Wall space, internet, power, spots. We will also need some budget for production. ","We will need to remake the whole work, as the current piece is on exhibit at the Wellcome Trust in London. ",I consent to VizChitra publishing my submission and the review of my application.,TRUE,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+kdqZ6Gr,KYovXa7,2026-02-15 15:39:18,Jyoti,Sharma,Founder,greenshelf.ai,From cancer biologist to climate-tech innovator at greenshelf.ai: I build data systems that reveal how procurement shapes research economics and environmental impact.,Collective,greenNERD,"By combining data-backed product discovery from greenshelf.ai with high-impact social storytelling from NERD, we bridge the gap between proof and visibility.",https://storage.tally.so/private/Example_projects.pdf?id=gkQY71&accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImdrUVk3MSIsImZvcm1JZCI6ImxiZXlndiIsImlhdCI6MTc3MTE2OTk2MH0.RfsqeETdVdbHQ4Yg2vF5u2jPh303cgIHSF-lRkhnnvk&signature=3bd7786eea097f221980b0b53ad69fa0917ce73c4ef11288ad27d462171db650,,,https://www.linkedin.com/in/jyoti-sharma-3a2714141/,What’s in the Science Bin?,"""What’s in the Science Bin?"" spotlights the Science Bin to reveal habits and lab culture shaping waste quantities in research laboratories. Visitors from a diverse backgrounds (journalists, media, reporters, artists, data visualization consultants, scientists) trace a seamless path from raw waste volume to behavioral drivers, perceiving lab culture's interconnected impact:
+
+1. Confrontation: A 3D “inside-out” R&D lab discard bin, scaled to one month/week of real waste, built entirely from used consumables. Sparse labels like “This is one paper” or “This is six months of experiments” evoke discomfort, priming reflection on habits' scale.
+
+2. Data Layer: Posters visualize survey insights on reusability variations by experiment type, optimization cycles, and training phases—directly linking the bin's volume to quantified behaviors and infrastructure gaps.
+
+3. Interactive Simulation: In “Design Your Experiment,” visitors act as scientists, navigating trade-offs in rigor, speed, cost, and reuse under realistic constraints. Their choices generate a personalized material footprint, revealing how daily decisions—not inevitability—drive the waste seen earlier.
+
+This progression transforms perception: the bin's shock yields data-driven clarity, culminating in empowering action.
+
+Why It Matters
+
+India's 7-8 million biomedical workers generate ~770 tonnes of waste daily, emitting roughly 385 tonnes CO₂e via incineration. As GenZ emerges as India’s future leaders in the biomedical sector and the most climate-conscious generation, we aim to spark dialogue that makes sustainable life-science research a reality, redefining sustainability as systemic design rather than reduced rigor and urging funding agencies and institutions to reward waste-aware practices while upholding scientific integrity.","Data from questionnaires will target students, professors, research assistants, and postdocs across institutional laboratories, using a validated list of consumables and their reuse/discard tendencies. This will uncover nuances such as research themes, experiment stages (optimization vs. final runs), and training phases that influence disposal behavior.
+We will design a structured questionnaire featuring:
+1. A standardized list of common lab consumables
+2. Reuse likelihood (Likert scale)
+3. Primary disposal reasons (multiple choice)
+4. Context variables (lab role, experiment type, training level)
+
+The questionnaire will be circulated for one month across all affiliated laboratories within a selected institution to ensure a sufficient and consistent sample size. If time permits, we may expand the survey to a second institution.","We will analyze both qualitative and quantitative responses to generate the following visualizations:
+1. Heatmap: Reuse Likelihood by Lab Role: This visualization highlights behavioral tendencies across hierarchy.
+Rows: Items, 
+Columns: Roles (students, postdocs, professors), 
+Color intensity: % favoring reuse
+
+2. Grouped Bar Chart: Reasons for Disposal
+X-axis: Top reasons (protocol-driven, contamination risk, time pressure, lack of infrastructure), Bars grouped by consumable type
+This connects disposal behavior to structural and infrastructural constraints.
+
+To ensure methodological rigor, responses will be anonymized and analyzed using descriptive statistics and cross-tabulation to identify significant behavioral trends.
+",https://storage.tally.so/private/imagining_the_exhibit.pdf?id=7pJ482&accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdwSjQ4MiIsImZvcm1JZCI6ImxiZXlndiIsImlhdCI6MTc3MTE2OTk2MH0.R9gK8h_8j0VBeKc7-yUipV7oS9N7oTMORx4Mm_a4A3Q&signature=ece81ae13d236d7a8e8084996a0d92102f031eebcc02cc12085b0c6ae7e11b7c,"1. Table with top-to-bottom lighting for the bin sculpture
+2. Poster boards for data visualization
+3. Laptop and basic interface setup for the interactive module
+4. Collection of cleaned, non-hazardous used consumables","If selected for showcase:
+
+Month 1 - Design and pilot the questionnaire (1 week), Circulate survey (4 weeks)
+Month 2 - Data cleaning and statistical analysis (1 week), Visualization design and poster preparation (1 week), Construction of inside-out dustbin model (2 weeks)
+Final 2 Weeks - Develop and test “Design Your Experiment” simulations, Peer testing and refinement, Installation preparation
+
+Total preparation time required: approximately 2.5 months.
+",I consent to VizChitra publishing my submission and the review of my application.,TRUE,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
