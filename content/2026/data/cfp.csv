@@ -791,10 +791,127 @@ i have shared a link of a course i'd taught at srishti on a similar topic. that 
 - an appetite for making absurd-and-interesting things. 
 - a computer with a reliable internet connection. a laptop is preferred, but a phone might be fine too. if you don't have one, don't worry; i will provide print-outs of a few data sets, and you are welcome to draw your ideas too.
 - paper, pencils, colours, clay, thread, and any stationery as such. we'll get creative with whatever we can lay our hands on.","a well-lit room, with work-tables (and electricity sockets for each participant's computer charger) would be nice.",Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+pbaA7Jb,pbABY18,2026-02-15 0:20:17,Prasanta Kumar,Dutta,"Data Visualisation Developer ",Reuters,"Prasanta is an information experience designer from India, working across design, code, and journalism. He creates data-driven visual stories and teaches data visualisation, narrative cartography, and design.",https://www.instagram.com/pkd_da_pacific/,https://twitter.com/Da_Pacific,https://www.linkedin.com/in/pkddapacific/,Workshop,I consent to VizChitra publishing my submission and the review of my application.,TRUE,,,,,,,,,,,,,,,,,Visualizations and Tools,From tables to maps: Visualising geographic data using DataWrapper,"Yes, only once","While making quick charts using a spreadsheet tool might be easy, making maps with geographic data usually requires GIS skills. This workshop will demonstrate how to make quantitative data maps quickly without any special GIS or design skills – be it for a corporate presentation, news reporting or a school project!
+
+
+The workshop will use the free version of the online tool DataWrapper. 
+
+If you're anyone who has wondered how to make simple maps with some data, this workshop is for you. All you need is a laptop with internet, a web-browser and loads of curiosity!
+
+
+### 1. Maps are information graphics
+
+- Just like pictures and charts, maps are visualisations that show geospatial information.
+- Geographic map – Political and Physical, Thematic maps – data viz, Schematic maps – metro maps)
+- Maps as medium of storytelling – as a data graphic, as an full story medium, as art
+
+### 2. Type of data maps
+
+- Locator - Location of an event
+- Symbol - Data at a point location
+- Choropleth - Data for a region
+
+### 3. Locator map
+
+- Data is usually a set of latitude and longitude.
+- Can add manually, copy paste google links
+- Can get point list from excel
+- Can get geojson from Google MyMaps
+- Styling and exporting the map
+
+### 4. Symbol map
+
+- Data as a list of lat,lon along with a value to visualise
+- Dataset from sheet
+- Symbol sizing and styling
+
+### 5. Choropleths
+
+- Data as region and values
+- DW has its own set of regions, so need to match up
+- Choosing colour scales and styling
+
+### 6. Advanced techiniques
+
+- Adding custom geojson from Google MyMaps, ChatGPT
+- Adding custom shapes from Overpass turbo
+
+### 7. Common pitfalls of map design and how to avoid them
+
+- Bad examples, especially choropleths
+- Symbol sizing pitfalls - radius vs area, centered at middle (circle) or base (triangles)
+- Too much information, lack of clarity",https://www.datawrapper.de/,https://prasantakrdutta.notion.site/Mapping-in-Datawrapper-1ad7996222248012875cc2e44b33c283,,NA,"Projector, Whiteboard, Internet ",Keep,Under Review
+RGp4Bb9,pbABY18,2026-02-15 0:39:25,Prasanta Kumar,Dutta,"Data Visualisation Developer ",Reuters,"Prasanta is an information experience designer from India, working across design, code, and journalism. He creates data-driven visual stories and teaches data visualisation, narrative cartography, and design.",https://www.instagram.com/pkd_da_pacific/,https://twitter.com/Da_Pacific,https://www.linkedin.com/in/pkddapacific/,Workshop,I consent to VizChitra publishing my submission and the review of my application.,TRUE,,,,,,,,,,,,,,,,,Visualizations as Craft,A date with data,"Yes, only once","What if we stopped treating datasets like spreadsheets to be cleaned and instead approached them like conversations waiting to unfold? *A Date with Data* is a hands-on workshop about learning how to interrogate, investigate, and meaningfully explore a dataset before jumping into charts.
+
+This workshop focuses on the often-overlooked phase of data visualization: curiosity. Before choosing chart types or color palettes, we will ask better questions. Who collected this data? What is missing? What patterns are hiding? What contradictions emerge? What stories are possible and which ones are misleading? Participants will learn how structured exploration can reveal visual potential that is not immediately obvious.
+
+The workshop is designed as an interactive journey in five parts:
+
+**1. First Impressions:**
+
+Participants are given a raw dataset and asked to spend 10 minutes simply observing. They will write down initial hypotheses, curiosities, and doubts. This stage emphasizes intuition before tools.
+
+**2. Interrogation Framework:**
+
+I will introduce a practical questioning framework: contextual questions, structural questions, anomaly detection, distribution exploration, and narrative angles. We will discuss how these questions shape eventual visualization choices.
+
+**3. Exploring with Google Sheets:**
+
+Using accessible tools like Google Sheets, participants will clean, sort, filter, pivot, and derive new columns. The goal is not advanced statistics but pattern discovery. We will look at grouping, ranking, outliers, correlations, and simple calculations that surface visual opportunities.
+
+**4. AI as Research Assistant:**
+
+Participants will experiment with AI tools to generate exploratory questions, suggest transformations, summarize trends, and challenge assumptions. We will discuss both the power and limitations of AI in exploratory analysis, treating it as a collaborator rather than a replacement.
+
+**5. From Insight to Visual Potential:**
+
+Finally, participants will sketch possible visual directions on paper. The focus will be on identifying the *right* visual strategy based on insight rather than defaulting to familiar chart types.
+
+Interactive elements include small group discussions, timed exploration sprints, collaborative questioning exercises, and quick sketch critiques. Participants will leave with a reusable interrogation checklist and a structured approach to exploratory analysis.
+
+This topic matters to me because many visualization projects fail not due to design skill, but due to shallow engagement with the data itself. As someone working at the intersection of design, code, and journalism, I have seen how deeper questioning transforms ordinary datasets into compelling information experiences.
+
+Participants will learn how to interrogate datasets systematically, uncover patterns using accessible tools, collaborate with AI responsibly, and identify meaningful visual storytelling opportunities before designing.",https://youtube.com/playlist?list=PLDs9PQJU9iKYFO7VPsaqwhrmFwVUAvtWN&si=y49wERYTtsRmkS7r,,,,"Projector, Whiteboard, Internet ",Keep,Under Review
+RGp46lJ,b5k2dQe,2026-02-15 3:29:55,Anand,S,LLM Psychologist,Straive,"Anand's an LLM psychologist @ Straive. He prods AI to understand how it thinks. It prods back, teaching him how HE thinks. He's ex-IITM, IIMB, INFY, LBS, IBM, BCG & other TLAs. He transcribed every Calvin & Hobbes strip over 7 years. AI does that now in 7 min.",,,https://www.linkedin.com/in/sanand0/,"Dialogues ",I consent to VizChitra publishing my submission and the review of my application.,TRUE,,,,,,,,Visualizations as Craft,"The Curator's Dilemma: When Making Is Easy, Choosing Is the Craft","Yes, many times","My team creates 9 variations of a chart in 15 minutes -- all defensible, none wrong. My afternoon is spent staring at them, trying to figure out which one is actually *good*.
+
+After decades of building data viz - Excel, PowerPoint, D3 - the _making_ part is easy, and _FAST_. What's slow is the choosing.
+
+Everyone has this problem. Vibe coding is a default. The bottleneck has moved from ""can I build this?"" to ""should I ship this, or that one, or the third version, or none of them?"" From construction to curation.
+
+And most of us haven't developed the muscles for that yet.
+
+This Dialogue is about that shift: the new, harder skill of selecting, evaluating, and refining from abundance rather than building from scratch.
+
+**1. Our central question:**
+
+AI tools generate multiple ""correct"" visualizations in minutes. What does good judgment look like - and how do we develop it?
+
+What are the criteria, instincts, and craft knowledge that help us choose well from a sea of plausible options?
+
+Is ""choosing"" even the right way to think about it, or is the real skill knowing how to steer the generation in the first place?
+
+**2. Who we want in the room:**
+
+Anyone who picks from multiple versions of a chart. Especially if AI has intruded into your viz workflow (whether enthusiastically or reluctantly).
+
+Data journalists, dashboard designers, analysts, design students, and independent practitioners - a mix of experience makes this richer: seniors bring taste they've built over years; juniors bring fresh eyes and the honesty of not yet having defaults.
+
+**3. The shape of the dialogue:**
+
+- **The Exercise (10 mins):** You'll see five visualizations (AI/human-made, unlabeled) of one dataset on a wall or screen. Rank them on effectiveness with colored dot stickers. We'll have an instant, visible map of the room's collective judgment before anyone speaks.
+- **The Discussion (15 mins):** Groups of 4-5 compare rankings and articulate the *why*. We'll use prompt cards, e.g. ""What did you notice first?"" / ""Which one would you trust in a news article?"" / ""Which one would you be proud to have made?"" / ""What's missing from the one you ranked lowest?"" The goal isn't consensus - it's **surfacing the criteria** people use, often unconsciously.
+- **The Reveal (10 mins):** I'll reveal which were AI-generated. Revisit rankings. Did knowing the origin change anything? Did any AI-generated chart rank high? Did any human-made chart rank low? This is where the conversation gets honest - about bias, what ""craft"" means, and whether origin even matters if the result is effective.
+- **The Rubric (10 mins):** Each group contributes 2-3 criteria they used (or wish they'd used) for evaluation. I'll pin these on a shared wall and cluster them. The room works together to draft a rough ""curator's checklist"" - not a rigid scoring system, but questions we can ask when choosing among multiple visualization options.
+
+**4. Takeaways:**
+
+- A ""curator's checklist"" - 8-10 practitioner questions for choosing between visualizations (human/AI).
+- An awareness of how we evaluate, what we value, and blindspots. And how others see this differently.",https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1509974/full,https://sloanreview.mit.edu/article/the-enduring-power-of-data-storytelling-in-the-generative-ai-era/,,"- Five printed (or projected) visualizations of the same dataset — a mix of AI-generated and human-made, prepared in advance by the facilitator
+- Colored dot stickers (two colors — one for ""most effective,"" one for ""least effective"") for the opening ranking exercise
+- Prompt cards for small group discussions (printed, one set per group)
+- A large wall or board with sticky notes and markers for the shared rubric-building exercise
+- A one-page handout summarizing the collective rubric, to be compiled and shared with participants after the session","Visualizations displayed on a wall or large screen visible to all. Chairs arranged in clusters of 4–5 for small group discussion, with enough space for people to stand and move to the wall during the opening ranking and closing rubric exercises. A second wall or board space reserved for the rubric-building activity.",,,,,,,,,,Keep,Under Review
+yPLy594,Bz1A5k7,2026-02-15 4:09:05,Varshini,J,,,"app ro do togayrjodmdyeolsnsysoapmamhs ahudjdksbdispnsbfbtkeops ",,,,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations as Craft,fiwofm,wo vsueinxuekdlsnhdjsoalksjxjdjshakapaamsndbdhhdudkslalalmanxnbchdjdksklakamsbdhhskalalaksnndbdhdgjsksks,,,,I have never given a talk,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
