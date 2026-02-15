@@ -1838,14 +1838,203 @@ Key takeaways include:
 1. How visualisation can expose governance blind spots
 2. Designing maps as community interfaces, not just geographic tools
 3. The role of designers in shaping civic transparency",,,,I have never given a talk,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+GxWLXze,81k6D4k,2026-02-15 16:40:45,Shruthi,Ramakrishnan,"Associate Director, Research",Enfold Proactive Health Trust,"Shruthi Ramakrishnan is a legal researcher who has been working in the field of child rights for over twelve years. At Enfold, she is part of multiple empirical research studies examining the implementation of legislations related to child rights. ",https://www.instagram.com/shruthi_r/,,https://www.linkedin.com/in/shruthi-ramakrishnan-706573143/,"Dialogues ",I consent to VizChitra publishing my submission and the review of my application.,TRUE,,,,,,,,Visualizations for Community,"Beyond the Chart: Rethinking Data Visualisation and Accountability ","Yes, many times","This dialogue session will facilitate critical reflection on accountability in data visualisation. Visuals do not merely represent data but can play a role in shaping public opinion and driving policy advocacy, especially in moments of public outrage or crisis. Every visual choice from chart type, the colour, the aggregation, the icons, and even supporting images influences how seemingly neutral data points shape the public narrative. 
+
+The session will invite participants to think deeply about the connection between visualisation and public narrative building, and the possibilities and limitations of visualisation in advancing research update and advocacy efforts. To what extent should the end purpose and the target audience shape visualisation? Collectively, we will also explore challenges related to ethical, effective and responsible depiction of qualitative data such as lived experiences. 
+
+The format will be interactive and entail group work, games, and exercises aimed at learning through collective reflection. We aim to create a space where participants learn from one another, grounded in the belief that each person brings valuable knowledge, insight, and lived wisdom to the conversation.
+
+Finally the discussion will call upon participants in a group discussion on thinking beyond accurate and accessible data visualisation to responsible visualisation.
+
+Key takeaways:
+- How to consider the impact of visualisation in shaping public narratives?
+- Ethical considerations in data visualisation
+- Ethical and responsible visualisation of lived experiences 
+
+Who is this session for? 
+We welcome data enthusiasts who’ve wondered about the impact and implications of data visualisation, particularly in the context of social justice. 
+
+
+",,,,"A projector, and a mic. ",We also would like a large room for participants to move. Flexible seating is preferred to split the participants into smaller groups or have them in one large circle.,,,,,,,,,,Keep,Under Review
+q46L1Q7,eqALgMe,2026-02-15 16:42:12,Budha Sree,Mandapaka,Consultant,Vivanti Consulting,"I care about making data accessible and powerful across business domains and public policy. I'm known for my Quality Assurance mindset. I care deeply about how data is structured, tested, and told. That's also why I'm drawn to data visualisation.",,,https://www.linkedin.com/in/budha-sree-m/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations for Community,The Crime You Can't Chart: Visualizing the Dark Figure,"Official crime statistics whether police records, dashboards, or annual reports are often treated as definitive representations of public safety. But a large portion of crime never becomes data at all. Criminologists call this the dark figure of crime: the gap between what happens and what gets documented. In contexts like India, where stigma, institutional barriers, and recording friction influence whether an incident ever becomes a record, the invisible portion can be substantial.
+
+This talk explores why visualizing crime or any public phenomenon is not just about charts and dashboards. It requires careful data engineering, robust statistical reasoning, and ethical interpretation before a visualization can meaningfully reflect reality. Through the lens of crime data, I will demonstrate how gaps in data generation and collection shape what becomes visible, and why ignoring these gaps risks misleading analysis.
+
+The talk will be structured into four parts. First, we will unpack the concept of the dark figure of crime and show how official data often reflects the system that produced it, not the full reality. Second, we will examine where data engineering matters: classification systems, metadata, documentation, and pipelines determine what gets recorded, lost, or misrepresented long before visualization begins. Third, we will discuss statistical approaches for estimating unobserved phenomena, including inference under systematic underreporting, scenario-based projections, and how to communicate uncertainty without false precision. Finally, we will cover visualization strategies that explicitly represent missingness, ranges, and confidence bounds, helping audiences interpret data responsibly.
+
+While this talk uses crime as a case study, the same framework applies to many Indian datasets where missingness is structural from public health and sanitation to education, labour, road safety, and social indicators. In such contexts, engineering and statistics are not “support roles” to visualization; they are essential for building projections with transparent assumptions and meaningful uncertainty.
+
+The intended audience includes data visualization practitioners, analysts, data engineers, civic technologists, and journalists working with public data. Key takeaways include: recognizing structural incompleteness in datasets, designing assumptions and projections responsibly, and creating visualizations that communicate both what is known and what is missing.",https://medium.com/@budhasree-m/the-crime-you-cant-chart-why-india-s-crime-data-needs-a-dark-figure-lens-052cf4fcd6e7,https://budhasree-m.github.io/My-Portfolio/,https://www.studocu.com/in/document/tamil-nadu-dr-ambedkar-law-university/constitution-of-india/dark-figure-of-crime/8035189,I have never given a talk,,,,,,,,,,,,,,,,,,,Keep,Under Review
+jaNLlx4,kdAJra1,2026-02-15 16:43:10,Siddharth,Agarwal,Founder,Veditum India Foundation,"I have walked 6000+ kms along rivers & across India. At my organisation Veditum India Foundation, we're working to influence India's environmental governance landscape
+
+Interests: environmental governance, open data, collaborative problem solving, print making",http://instagram.com/dreamersid/,http://twitter.com/sidagarwal,https://www.linkedin.com/in/agarwalsid/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations for Community,Open Data & Wicked Environmental Problems - Building intention through Data Visualisation,"Short Description: How do we look at environmental issues where data & sources are absent? What role can open-data, community building, & data visualisation play? This talk will share learnings from the India Sand Watch story, an environmental accountability project looking at the issue of illegal & destructive sand mining in India’s rivers.
+
+Context: Solving for wicked environmental problems is not easy. There’s a severe lack of data, data sources themselves are absent, structures for implementation don’t exist, and a will to collaborate is either missing or has not been made possible for various reasons. 
+
+With Veditum’s project - India Sand Watch - when we picked the issue of illegal and destructive sand mining in India’s rivers, we started with the assumption that identifying illegality itself would be enough to solve the problem. We started with trying to use machine learning for this effort. Once we have the required data on mining activity, that should be enough to address the problem, right?
+
+But we realised, thankfully early on, that this wouldn’t be enough. We had missed identifying one of the most crucial reasons that limit solutions to wicked environmental problems - intention. What we really needed to do, to solve a wicked problem like this, is build intention. We went back to the drawing board, to reimagine our response. And this response had to be designed with collaborators across non-governmental organizations, private citizens, researchers & academia, the judiciary, media persons, and state actors in mind.
+
+The data visualization component: What followed? An open-data archive built on the Dots by Ooloi Knowledge Platform. This archive (with over 50000 data points now), accessible at sandwatch.in, is designed on the Sites of Violence (SoV) Framework in sand mining (developed by myself), that takes a systems approach and visualises the sand mining sector as a series of sites of violence and / or violation. A first presentation explaining the SoV framework can be accessed at this link - https://vimeo.com/586311487 (Starting around 13 minutes).
+
+Once we had the data infrastructure in place, we went to work on building the data pipelines through scaled volunteering efforts, data sprints, partnerships, and more. Each of these efforts had a component of data visualisation - from zines to sprint report cards (which includes a playlist - ref link: veditum.org/datasprints) to GIS based maps, and more.
+
+With the data, we’ve created visual evidence for successful court cases. Further, with partners from UC Berkeley, we have a successful machine learning model in place that identifies mining activity using open source remote sensing data. But how do you convert this into evidence? And take this to people who don’t understand ML? We created a physical artefact that recreates this story as a flipbook.
+
+Participant take away: Through an engagement with a mix of physical & digital artefacts, a string of learnings on how to use open-data & data-viz for wicked environmental problems. The talk will be useful for those interested in working on environmental problems as well as those working on data visualisation to understand what it takes to build open datasets.",http://sandwatch.envmonitoring.in,https://veditum.org/iswstorymap/,http://veditum.org/datasprints,"Yes, many times",,,,,,,,,,,,,,,,,,,Keep,Under Review
+9qV18Gp,obBKbre,2026-02-15 16:47:26,Prakriti,Bakshi,Data Journalist,The Secretariat,"I'm a data journalist by designation, a communicator by career, a data nerd by passion, and an overthinker by nature. This has shaped a dataviz practice that reduces cognitive load. I’m always looking for new ways to engage with data & those curious about it.",https://www.instagram.com/prakriti.bakshi/,https://x.com/bakshi_prakriti,https://www.linkedin.com/in/prakriti-bakshi-data/,Workshop,I consent to VizChitra publishing my submission and the review of my application.,TRUE,,,,,,,,,,,,,,,,,Visualizations as Craft,"Start Here: A Dataviz Crash Course, Without The Crash Out","Yes, many times","Data visualization is a series of decisions. Each one contributes to making the full picture. What should I visualize? What should the title be? Is this the right chart type? Right colour? Right question? Do I even need a chart at all?! 
+
+The process can be exhausting and confusing... and still lead to some questionable charts. 
+
+As a perennial overthinker and certified dataviz nerd, I've thought about these questions far too often (still do), but have gotten faster and better at answering them. This workshop will help you get started on your own visualization journey and devise your own way to overcome decision fatigue when making charts. I don't hold all the answers, but this workshop can serve as a portal through which you can get to them. 
+
+Who is this for?
+
+This workshop would be helpful for anybody new to data visualization: students, early-career professionals, journalists, researchers, practitioners who want to include dataviz in their work, but don't know where to begin, or tried and gave up because of the confusion. Whether you feel you don’t have enough information—or have too much and don’t know where to start—this workshop is designed for you.
+
+Why me? 
+
+Once I discovered dataviz, I was hooked. I knew what I wanted to do, but had no idea how to do it. Dataviz has no set roadmap. Years of gleaning the internet, attending lectures, volunteering at conferences, reading books, bookmarking resources, and making charts has helped me hone my own dataviz bone (and muscle, and instinct). I've been the confused beginner who didn't know where to start. While I can't coalesce all of dataviz into a single workshop, I can share the decision-making practice, mental models, and tricks that I've learnt (and borrowed) from the best in the biz and adapted to my own workflow. This is the workshop I wish I had 8 years ago. 
+
+Workshop Flow: 
+
+1. When do I need dataviz?
+Exploring the right and wrong reasons to make a chart. 
+
+2. First round of decisions: The data, insight, and chart
+Participants learn to tap into their curiosity and identify questions to ask their dataset. They then pick up a paper and pen to sketch a first-pass visual. The focus is not perfection, but understanding what relationship they are trying to show and why.
+
+3. Second round of decisions: The title and the colours
+We examine how the framing of the title and choosing of colours changes interpretation. 
+
+4. The good (practices), the bad (decisions), and the ugly (charts) 
+We look at a few examples together and unpack the decisions behind them. The aim isn't to ridicule, but identify what worked, what didn’t, and why in a systematic way. 
+
+5. Make your worst chart
+Participants are urged to intentionally create a ""bad"" chart. As bad as they can. This is to lower the fear of messing up, to reveal hidden assumptions about design rules, and use the techniques learnt to critique charts. 
+
+6. Checklist
+The primary learning outcome is a practical decision checklist the participants co-create that they can take back to their own workflow.
+
+7. Thinking out of the box and off the charts
+We briefly explore breaking the rules and trying new mediums—like data physicalization, sonification, and visceralization.
+
+Behind every chart is a chain of decisions. Let’s make them intentional!",https://docs.google.com/presentation/d/1CciQdZPRMw7fNG7-sIW-soVxiNGm5POd17uzSca7jzQ/edit?usp=sharing,https://docs.google.com/presentation/d/1bJ62DRGX66xDK7WBepXJhXpltBANlDcz_8xd0z2HLj4/edit?usp=sharing,https://linktr.ee/prakriti.bakshi,"Paper (A4 and chart), pencils, sketch pens",Projector and whiteboard,Keep,Under Review
+Y58d65W,QKrzYKl,2026-02-15 16:56:21,Rohaan,Almeida,Senior Full Stack Developer,Vivanti,"I’m a Full Stack Developer and Cloud Engineer with 5+ years of experience building scalable, secure systems. I specialize in AWS, React, Node.js, and Kubernetes, and I speak 8 languages.",,,,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations for Community,GenCity 3D Builder,"Description
+Traditional data visualization often hits a ""flat ceiling."" While bar charts and 2D node-link diagrams are effective for simple comparisons, they often struggle to convey the physical scale, hierarchy, and narrative flow of massive, interconnected ecosystems. This talk introduces GenCity 3D Builder, a prototype designed to bridge the gap between abstract data and spatial intuition by representing complex datasets as interactive 3D cities.
+
+Core Ideas & Context
+The core idea is Data Urbanism: the practice of using architectural metaphors—buildings for entities, heights for valuation, and roads for relationships—to make data feel tangible. In an era where corporate networks and supply chains are increasingly opaque, 3D environments allow users to leverage their innate spatial reasoning. Instead of reading a legend, you ""see"" the importance of a company by its skyline presence.
+
+Why This Matters
+This topic matters to me because we are currently drowning in information but starving for context. I believe that by moving visualization into a 3D space, we can turn the act of ""analyzing a report"" into ""exploring a world."" It humanizes the data, making it easier for human brains to map and remember complex connections.
+
+Connecting to the Data Viz Conversation
+This talk connects to the growing dialogue regarding Immersive Analytics and Scrollytelling. It challenges the reliance on ""hairball"" network graphs by offering a structured, orthogonal alternative. We shift the conversation from ""How much data can we fit on a screen?"" to ""How can we guide an observer through a data-driven story?""
+
+Structure & Flow
+The presentation follows a logical ""Build to Reveal"" flow:
+
+The Problem of the Flat Screen: A brief look at the limitations of 2D visualization for high-dimensional networks.
+
+Architectural Mapping: A demonstration of how to map CSV datasets to a 3D blueprint, transforming rows into structures.
+
+The Intelligence Layer: Showing how ""Intel Terminals"" and automated link synchronization provide a deeper ""source of truth"" within the environment.
+
+Guided Narrative: A look at ""Presentation Mode,"" demonstrating how camera paths can turn a chaotic city into a structured, persuasive narrative.
+
+Intended Audience
+This session is designed for data visualization practitioners, UX designers, and technical storytellers looking for innovative ways to present complex organizational or financial data to stakeholders.",http://ec2-13-50-226-209.eu-north-1.compute.amazonaws.com/,https://docs.google.com/presentation/d/1vU1GMb7B_XeOlbxv1THrTorDwCODNRLTcBNtxSn4fI0/edit?usp=sharing,https://drive.google.com/file/d/1dRUbVbEsQ4ZffyG0gYH9kZKh5fsLPKfV/view?usp=sharing,"Yes, many times",,,,,,,,,,,,,,,,,,,Keep,Under Review
+lbQLQJB,9q1oXR4,2026-02-15 17:03:29,Richie,Lionell,,Bezalel Data,"Richie is a data story consultant, developer, trainer & mentor with one foot in technology & the other in the arts.",,,https://www.linkedin.com/in/richielionell/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations and Tools,Creating Music from Data with Microsoft Excel,"**Creating Music from Data with Microsoft Excel**
+We will learn how data can be converted to music using one of the most used but most under-appreciated tool – Microsoft Excel. 
+
+**Outline**
+Data sonification by now is a popular concept amongst data enthusiasts. We also have tools that convert data to music. But there’s nothing like using a familiar tool like Excel to do something as exciting as creating music from data.
+
+This Excel demo will touch upon music fundamentals and how to apply them to convert data points to musical tones.
+
+**Requirements**
+None. Just come and have fun.
+
+**Outcome**
+Will your boss ask for a musical tone instead of that bar chart? Never.
+Will you be inspired to try this during work when your boss isn’t looking? Definitely
+Will you start treating Microsoft Excel with more respect? Of course.
+
+**Speaker Bio**
+Richie is a data story consultant, developer, trainer & mentor with one foot in technology & the other in the arts. He conducts workshops and helps organisations create exciting data communication properties. Richie runs Bezalel Data - a small data storytelling studio. You will find more about him at linkedin.com/in/richielionell/ and bezaleldata.com
+",https://youtu.be/YcYVSLh75Lg?si=bJHssQqI1AH-4Kqq,https://youtu.be/Ke6aO2uMRMc?si=DWKv-rfkBRiRmHnY,,"Yes, many times",,,,,,,,,,,,,,,,,,,Keep,Under Review
+VLgVKXv,kdAkbqZ,2026-02-15 17:14:32,Sophie,Sparkes,Data Experience Designer,Sparkes Creative,"Sophie Sparkes is a Data Experience Designer who makes data human and relatable. She builds hands-on experiences with an illustrative, handmade touch — turning spreadsheets into something you can hold, fold, and actually want to engage with.",,,https://www.linkedin.com/in/sophiesparkes/,Workshop,I consent to VizChitra publishing my submission and the review of my application.,TRUE,,,,,,,,,,,,,,,,,Visualizations for Community,"Fold, Encode, Reflect: Making a Wellness Zine with Data","Yes, many times","**What is this workshop about?**
+
+We spend our days encoding other people's data — dashboards, reports, stories for clients and stakeholders. But how often do we turn those skills inward?
+
+This workshop explores what happens when we apply data visualisation principles to personal reflection. Participants will create an 8-page wellness check-in zine using data portrait techniques. Each page contains a reflection prompt, but instead of just writing or drawing, you encode your responses using visual variables: colour, shape, pattern, position, size, and material.
+
+**Why zines?**
+
+The zine format is quick, low-stakes, and tangible. It's like a diary or sketchbook — a familiar container for reflection. No special tools required. You fold it, fill it, and walk away with something you made. The format also has a rich history in communities who needed accessible ways to share ideas: punk, protest, LGBTQ+ movements. That DIY spirit fits perfectly with the handmade, personal nature of data portraits.
+
+**Workshop structure**
+
+*Part 1: Framing (30 mins)* Introduction to data portraits and personal data visualisation. I'll share examples from artists like Stefanie Posavec and Giorgia Lupi, then demo the visual variables we'll use and show how to fold an 8-page zine from a single sheet.
+
+*Part 2: Making (120 mins, including tea break)* Work through prompts page by page. Some are individual (for example, ""Three things I'm grateful for"" — encode by size, colour, or position). Some are group prompts where everyone contributes responses, then you visualise where you sit within the collective data. I'll circulate offering encoding suggestions and helping people build their own ""how to read"" keys. Materials include paper, coloured pencils, pens, scissors, glue, old magazines, stickers, and stamps.
+
+*Part 3: Reflection (30 mins)* Small group share: show one page, explain your encoding choices. Discussion: what did encoding add to the reflection process? How might you use this with your own teams or communities?
+
+**Why this matters to me**
+
+I've spent 12 years taking data off spreadsheets and making it human. But I rarely turn those skills on myself. This workshop is an experiment in using what we know professionally for something personal — and seeing what we notice when we do.
+
+**Connection to data viz conversations**
+
+Data portraits and Dear Data-style approaches have opened up conversations about personal data, but they're often treated as art projects rather than practical tools. This workshop asks: can these techniques support reflection and wellbeing? Can they be taught quickly and used by anyone?
+
+**Intended audience**
+
+Data visualisation practitioners curious about applying visual encoding to qualitative, personal data. No zine-making experience needed — just willingness to get hands-on with paper and scissors.
+
+**Learning outcomes**
+
+Participants will leave with:
+
+- A completed 8-page wellness zine they made themselves
+- Experience applying visual variables to personal data
+- A template and prompt guide to run similar sessions with their own teams",https://www.behance.net/sophiesparkes,https://www.canva.com/design/DAGPHLkNoH4/6vYNYdl1IhMcf_X1JCl73Q/view?utm_content=DAGPHLkNoH4&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hb375b42c31](https://www.canva.com/design/DAGPHLkNoH4/6vYNYdl1IhMcf_X1JCl73Q/view?utm_content=DAGPHLkNoH4&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hb375b42c31),https://www.canva.com/design/DAGp4J-SF_0/EWTW77tp6p673W3awOyt1g/view?utm_content=DAGp4J-SF_0&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=he69fc54a20,"- Plain white paper (A3)
+- Coloured pencils
+- Pens and markers
+- Scissors
+- Glue sticks
+- Old magazines (for collage)
+- Stickers
+- Stamps and ink pads (basic shapes like stars or circles)",- Tables and chairs (not theatre-style) — participants need flat surfaces to work on - Projector and screen for intro slides and examples - Whiteboard or flip chart for group prompts - Space for 15-25 or up to 40 participants (with a Teaching Assistant) to spread out materials comfortably,Keep,Under Review
+QKLd8A7,2EkldaA,2026-02-15 17:27:44,Kirti Vardhan,Rathore,Deputy Director,Unique Identification Authority of India,"Design Head at UIDAI, Information Designer by training. I love creating data visualizations. ",www.instagram.com/kirti_vardhan,,https://www.linkedin.com/in/kirtivardhanrathore/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations for Community,Tangible Cognisance: Mapping Connection through the Anxiety of the Analog,"How do we ""know"" someone we have never met? In 2020, as a batch of Information Design students separated by a global pandemic, we turned to the Indian Postal Service to bridge the digital divide. Tangible Cognisance was a project born out of the isolation of COVID-19, where classmates exchanged handwritten postcards to build ""abstract portraits"" of one another through the raw textures of handwriting and sketches.
+
+This talk explores the intersection of data physicalization and human emotion. We will dive into the ""Anxiety of the Analog""—the 132-day wait for a postcard, the grit of postal workers, and the mapping of these temporal journeys onto custom-designed postal stamps.
+
+But the story doesn't end there. During this session, we will turn the Vizchitra audience into a living laboratory. Participants will be invited to participate in a collective data experiment: writing postcards to fellow attendees to capture their conference learnings. By tracking these cards as they travel across the country post-event, we will create a new, asynchronous visualization of the Vizchitra community—proving that in an age of instant pings, the beauty of ""delayed data"" still holds the power to connect us.
+
+What were the intentions, inquiries, and aspirations of this project?
+
+The project began with a fundamental question: Can data foster physical warmth? In a year of Zoom fatigue, we sought to move beyond pixels to something tactile. Our goals were:
+1. To humanize data by using handwriting and drawing as qualitative metrics.
+2. To visualize the ""untrackable""—the uncertainty and impatience inherent in analog communication.
+
+What are the key findings and learnings?
+1. The Weight of the Physical: We discovered that a postcard carries more ""data"" than an email—the pressure of the pen and the wear and tear of travel tell a story of effort and intent.
+2. Visualizing Absence: We learned that ""missing data"" (the postcards that never arrived) is as significant as the data we collect. It represents the fragility of human connection.
+3. The Temporal Stamp: By mapping timelines onto the visual language of stamps, we transformed a mundane administrative tool into a vessel for personal identity.
+
+How will this session engage the Vizchitra community?
+This session moves beyond a ""show and tell."" I will provide attendees with:
+1. The Prompt: 3 postcards per person to capture reflections on Vizchitra.
+2. The Network: A system to exchange addresses with ""data strangers"" in the room.
+3. The Long-Tail Visualization: I will present a plan to collect the ""delivery data"" from these cards over the following months, which will be designed into a collective ""Vizchitra 2025 Stamp"" to be shared back with the community.
+
+Key Takeaways for Attendees:
+1. Thinking Beyond the Screen: Strategies for using physicalization to create emotional resonance in data storytelling.
+2. Community Building: Understanding how shared data experiments can extend the life of a conference and strengthen professional bonds through nostalgia and surprise.
+3. May be, Lifelong Penpals",,,,"Yes, only once",,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
