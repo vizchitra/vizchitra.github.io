@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { Header, DeckCard, ToolsCard, ToolsHeader } from '$lib/components';
+	import { Header, DeckCard, DeckOverview, ToolsCard, ToolsHeader } from '$lib/components';
 
-	type CardColor = 'pink' | 'blue' | 'teal' | 'yellow' | 'orange';
+	type CardColor = 'pink' | 'blue' | 'teal' | 'yellow' | 'orange' | 'grey';
 
 	interface DeckCard {
 		title: string;
@@ -52,16 +52,34 @@
 			color: 'yellow',
 			href: '/guides/panels',
 			angle: 132
+		},
+		{
+			title: 'GUIDES',
+			tagline: 'The Complete Journey',
+			description: 'Talks | Dialogues | Workshops | Exhibition | Panels',
+			color: 'grey',
+			href: '/guides',
+			angle: 45
+		},
+		{
+			title: 'GUIDES.MD',
+			tagline: 'The Augmented Journey',
+			description: 'All five VizChitra guides in plain text format',
+			color: 'grey',
+			href: '/guides.md',
+			angle: 90
 		}
 	];
 
 	// Map color names to hex colors (for html2canvas compatibility)
+	// Values from src/lib/tokens.ts colorTokens
 	const colorVars: Record<CardColor, string> = {
-		pink: '#EF75AB',
-		blue: '#9FBAFC',
-		teal: '#88E0D8',
-		yellow: '#FFD485',
-		orange: '#FC915B'
+		pink: '#FE82B8',
+		blue: '#95AFF1',
+		teal: '#6BC3BB',
+		yellow: '#D4AA5A',
+		orange: '#FC915B',
+		grey: '#B1B1B1'
 	};
 
 	const textColor: Record<CardColor, string> = {
@@ -69,27 +87,24 @@
 		blue: 'text-blue-900',
 		teal: 'text-teal-900',
 		yellow: 'text-yellow-900',
-		orange: 'text-orange-900'
+		orange: 'text-orange-900',
+		grey: 'text-grey-900'
 	};
 
 	// Social media card dimensions
 	const cardSizes = {
-		'twitter-summary': { width: 1200, height: 628, label: 'Twitter/X Card (1200×628)' },
-		'twitter-large': { width: 1200, height: 600, label: 'Twitter/X Large (1200×600)' },
-		'facebook-og': { width: 1200, height: 630, label: 'Facebook OG (1200×630)' },
-		linkedin: { width: 1200, height: 627, label: 'LinkedIn (1200×627)' },
-		'instagram-square': { width: 1080, height: 1080, label: 'Instagram Square (1080×1080)' },
-		'instagram-story': { width: 1080, height: 1920, label: 'Instagram Story (1080×1920)' }
+		'standard-og': { width: 1200, height: 630, label: 'Standard Open Graph (1200×630)' },
+		square: { width: 1080, height: 1080, label: 'Square / Compact (1080×1080)' }
 	};
 
 	let selectedCard = $state(cards[0]);
-	let selectedSize = $state<keyof typeof cardSizes>('twitter-summary');
+	let selectedSize = $state<keyof typeof cardSizes>('standard-og');
 	let canvasRef: HTMLDivElement;
 </script>
 
 <Header banner="square" color="grey" />
 
-<section class="mx-auto max-w-7xl space-y-10 px-2 py-12">
+<section class="mx-auto max-w-5xl space-y-10 px-2 py-12">
 	<ToolsHeader
 		trail={[
 			{ href: '/tools', label: 'Tools' },
@@ -141,20 +156,9 @@
 			<p class="text-viz-grey-dark mb-4 text-sm">
 				{cardSizes[selectedSize].width}px × {cardSizes[selectedSize].height}px
 			</p>
-			<div class="bg-viz-blue-subtle rounded-lg border-2 border-blue-300 p-4">
-				<h3 class="text-viz-black mb-2 text-sm font-bold">How to Save:</h3>
-				<ul class="text-viz-grey-dark space-y-1 text-sm">
-					<li><strong>Mac:</strong> Cmd + Shift + 4, then press Space and click the card</li>
-					<li><strong>Windows:</strong> Use Snipping Tool or Win + Shift + S</li>
-					<li>
-						<strong>Browser:</strong> Right-click on card → "Inspect" → Right-click the element → "Capture
-						node screenshot"
-					</li>
-				</ul>
-			</div>
 		</div>
 
-		<div bind:this={canvasRef} class="flex justify-center">
+		<div bind:this={canvasRef} class="mb-6 flex justify-center">
 			<div
 				class="share-card-container"
 				style="width: {Math.min(cardSizes[selectedSize].width, 1200)}px; max-width: 100%;"
@@ -162,9 +166,33 @@
 				<div
 					style="aspect-ratio: {cardSizes[selectedSize].width} / {cardSizes[selectedSize].height};"
 				>
-					<DeckCard card={selectedCard} {colorVars} {textColor} />
+					{#if selectedCard.title === 'GUIDES'}
+						<DeckOverview
+							card={selectedCard}
+							cards={cards.slice(0, 5)}
+							{colorVars}
+							{textColor}
+							isSquare={selectedSize === 'square'}
+						/>
+					{:else}
+						{#key selectedCard.title}
+							<DeckCard card={selectedCard} {colorVars} {textColor} />
+						{/key}
+					{/if}
 				</div>
 			</div>
+		</div>
+
+		<div class="bg-viz-grey-subtle border-grey-300 rounded-lg border-2 p-4">
+			<h3 class="text-viz-black mb-2 text-sm font-bold">How to Save:</h3>
+			<ul class="text-viz-grey-dark space-y-1 text-sm">
+				<li><strong>Mac:</strong> Cmd + Shift + 4, then press Space and click the card</li>
+				<li><strong>Windows:</strong> Use Snipping Tool or Win + Shift + S</li>
+				<li>
+					<strong>Browser:</strong> Right-click on card → "Inspect" → Right-click the element → "Capture
+					node screenshot"
+				</li>
+			</ul>
 		</div>
 	</ToolsCard>
 </section>

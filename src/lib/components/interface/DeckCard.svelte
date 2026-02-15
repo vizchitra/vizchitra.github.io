@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { PatternRough, LogoType } from '$lib/components';
 
-	type CardColor = 'pink' | 'blue' | 'teal' | 'yellow' | 'orange';
+	type CardColor = 'pink' | 'blue' | 'teal' | 'yellow' | 'orange' | 'grey';
 
 	interface Card {
 		title: string;
@@ -18,18 +18,11 @@
 	}
 
 	let { card, colorVars, textColor }: Props = $props();
-
-	// Background colors for each card type
-	const bgColors: Record<CardColor, string> = {
-		pink: 'bg-pink-100',
-		blue: 'bg-blue-100',
-		teal: 'bg-teal-100',
-		yellow: 'bg-yellow-100',
-		orange: 'bg-orange-100'
-	};
 </script>
 
-<div class="share-card relative h-full overflow-hidden rounded-lg shadow-xl {bgColors[card.color]}">
+<div
+	class="share-card relative flex h-full flex-col justify-between overflow-hidden rounded-lg p-16 shadow-xl"
+>
 	<PatternRough
 		color={colorVars[card.color]}
 		fillStyle="cross-hatch"
@@ -38,29 +31,29 @@
 		opacity={0.4}
 	/>
 
-	<div class="relative z-10 flex h-full flex-row justify-between p-24">
-		<!-- Top section with logo -->
-		<div class="flex items-start justify-between gap-4">
-			<div class="space-y-4">
-				<div class="mb-0 font-medium {textColor[card.color]} text-viz-lg">VIZCHITRA GUIDES</div>
-				<h1 class="font-display-sans mb-0 font-bold {textColor[card.color]} text-viz-7xl">
-					{card.title}
-				</h1>
-				<h2 class="text-viz-black text-viz-3xl">
-					{card.tagline}
-				</h2>
-				<p class="text-viz-black text-viz-2xl mt-50 text-right font-medium italic">
-					{card.description}
-				</p>
-			</div>
+	<!-- Top: Description on the right -->
+	<div class="relative z-10 flex justify-end">
+		<p
+			class="text-viz-grey-dark max-w-[23ch] bg-white/20 text-right text-2xl leading-relaxed font-medium italic"
+		>
+			{card.description}
+		</p>
+	</div>
+
+	<!-- Bottom: Content -->
+	<div class="relative z-10 flex items-end justify-between gap-8">
+		<!-- Left: Label, Title, Tagline -->
+		<div class="flex flex-col gap-3">
+			<div class="text-xl font-medium {textColor[card.color]}">VIZCHITRA GUIDES</div>
+			<h1 class="font-display-sans m-0 text-7xl leading-tight font-bold {textColor[card.color]}">
+				{card.title}
+			</h1>
+			<h2 class="text-viz-black m-0 text-4xl leading-tight">{card.tagline}</h2>
 		</div>
 
-		<!-- Bottom section with description -->
-
-		<div class="text-viz-grey-dark absolute inset-0 z-20 shrink-0 p-24 text-right">
-			<h2 class="font-display-sans text-viz-7xl">
-				<LogoType year={null} />
-			</h2>
+		<!-- Right: Logo -->
+		<div class="text-4xl">
+			<LogoType year={null} />
 		</div>
 	</div>
 </div>
