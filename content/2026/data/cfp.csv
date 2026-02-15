@@ -2118,29 +2118,567 @@ This talk is for designers, developers, and storytellers who are tired of boring
 1. Grounded Metaphors: ""Braid,"" ""Spreadsheet,"" ""Threads,"" and ""Spirals"" are easy to visualize instantly.
 2. Focus on ""Why"": It focuses on the human feeling (anxiety, trust, confusion) rather than the code (Rough.js, D3.js).
 3. Clear Conflict: It sets up ""The Braid"" vs. ""The Chaos,"" which makes the talk sound like an exciting demonstration.",,,,I have never given a talk,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+q46WD2G,1AKprVW,2026-02-15 17:59:17,Raj Bhagat,Palanichamy,Senior Program Manager,WRI India,"Raj Bhagat Palanichamy is a prominent Indian geospatial analyst and mapper, currently serving as a Senior Manager for the Geo Analytics team at WRI India. Raj’s maps are quite popular in social media platforms particularly X.",,https://x.com/rajbhagatt,https://www.linkedin.com/in/raj-bhagat-palanichamy-098a1827/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations at Work,Story telling through Maps,"Maps:
+
+Every map is a silent narrator. While we often view them as cold, clinical tools for navigation or data storage, a map’s true power lies in its ability to translate the abstract into the visceral. From the hand-drawn charts of ancient explorers to the dynamic, real-time dynamic maps of the digital age, cartography has always been less about where things are and more about what things mean. 
+
+Outline:
+
+	Maps have evolved from static reference tools into dynamic intelligent layers. They carry and convey a lot of information about the world we live in, the environment around us, the complex socio-economic systems and every other subject that we care about. Maps are widely used in governance, planning, and other decision-making processes.  
+
+In the modern era, Maps are no longer used by geographic experts or professionals but almost everyone – citizens who want to know about their environment, enthusiasts who want to know about the topography of their places, decision makers who want to know the areas that they need to prioritize for an action, legislators who want to drive policy, and even foodies who want to get food at their door step. Gone are the days where maps were limited to a smaller audience and it has now entered the daily lives of almost everyone. With the advent of modern tools such as GIS, Remote Sensing, AI and many others, it has become easier to create maps.
+
+In this context, the question is how do we use Maps to tell powerful stories? The session would focus on the speaker’s experiences with generating the content, creating the maps, the nuances behind them, and how they have been used or perceived by people. It would allow the audience to explore the world of maps and the little things that make up that world. The speaker would walk through some of the stories that were created and may be some fun background stories as well! The session would also have some small exercises where the audience would draw some simple maps related to their daily life with a pencil and some papers. This activity would allow them to think spatially and create a perspective around map generation and how they can be effectively used in storytelling.
+
+Format: Talk (Primarily Narrative with two 5-minute exercises)
+Requirements: A Pencil / Pen and some papers for free hand drawing of maps. 
+Time: 45 minutes to 1 hour
+",youtube.com/watch?v=Y_5FKCJM17g&themeRefresh=1,,,"Yes, many times",,,,,,,,,,,,,,,,,,,Keep,Under Review
+vGk4qLQ,ODPbqGk,2026-02-15 17:59:19,Areena,Arora,Editorial Coder,The Hindu,"I’m an Editorial Coder at The Hindu, working at the intersection of code, design and accountability journalism. When I’m not thinking of the future of the news industry, I’m cooking!",,x.com/AreenaArora,www.linkedin.com/in/areena-arora/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations at Work,After Scrollytelling: Reimagining the frontend of data journalism,"Scrollytelling has been synonymous with data journalism. Sticky sections, animated reveals, and long narrative scroll experiences have become the default format for visual stories. But, reader behaviour has changed since the early days of data journalism. 
+
+Readers who were once fascinated by the novelty of scrollytelling now demand clarity, speed, and relevance. I am proposing we reinvent the wheel.
+
+Most news is consumed on mobile devices, in short bursts, during commutes, between notifications, and inside infinite scroll feeds. Add to that, social media’s beast of a dopamine factory competing for the same attention. Attention is fragmented.
+
+What should the frontend of data journalism look like in 2026?
+
+Drawing on analytics such as scroll depth, interaction rates, device splits, and drop off points, I examine how readers actually engage with interactive stories. Where do they stop reading? Which interactions are used? How often do carefully designed features go untouched because they demand too much effort? 
+
+These patterns challenge the assumption that more immersion equals more impact.
+
+Data journalism needs a cognitive load budget audit. Every animation, transition, filter, and hover state carries a cost. When we overspend that budget, we lose clarity. I have been guilty of overspending too.
+
+I propose: first, a summary first architecture. The core insight must be visible within the first screen, without interaction. No hidden revelations below multiple scrolls.
+
+Second, modular storytelling. Instead of a single long linear scroll experience, stories should be built as independent visual blocks. Each block should communicate one idea clearly and survive on its own. 
+Third, interaction by necessity, not default. An interaction must reveal something that cannot be shown statically. Fourth, annotation over hover. Key context should be visible, not dependent on cursor-based behaviour. Fifth, screenshot resilience. Every visual should be understandable when captured and shared as a standalone image. If the meaning disappears outside the interactive frame, the design in the context of journalism has failed.
+
+Finally, performance discipline. Fast load times, limited motion, and clear hierarchy should be treated as editorial decisions, not engineering afterthoughts.
+
+The outline of talk will be: The rise of scrollytelling. What metrics reveal about real reader behaviour. A breakdown of new frontend principles in practice. Finally, a proposal for a styleguide for mobile-first journalism. I aim to move beyond general web accessibility principles and reinterpret them specifically for the constraints of newsrooms.
+
+I work at the intersection of investigative reporting and interactive design in an increasingly mobile dominant news environment. Every project involves negotiating between editorial ambition, design experimentation, and reader reality. A data journalist’s frontend choices shape not just aesthetics but comprehension and trust.
+
+This session connects to broader conversations in data visualization about interactivity, engagement, and responsible design. It is intended for journalists, designers, editors, and product teams building stories.
+
+Participants will leave with a concrete framework for auditing cognitive load, a set of design principles for mobile first frontend, and a practical checklist to decide when interaction truly earns its place.",,,,"Yes, only once",,,,,,,,,,Visualizations and Tools,,,,,,,,,Keep,Under Review
+WOyP4xP,QKrO19p,2026-02-15 18:00:10,"Avi ",Choukhany,Lead Service and Experience Designer,The ELICIT Foundation,"Hi, I’m Avi. I’m a Experiecne & Service designer with ELICIT foundation. I work with people, for people designing systems, tools, and stories that center care, context, and curiosity. ",https://www.instagram.com/__avi.choukhany__,,www.linkedin.com/in/avichoukhany,"Dialogues ",I consent to VizChitra publishing my submission and the review of my application.,TRUE,,,,,,,,Visualizations for Community,Collective Seeing in Conflict-Impacted Schools,I have never conducted a session,"At ELICIT, we work closely with fellows and schools in conflict-impacted contexts. Much of what matters in these spaces does not show up in marks or attendance. What shifts are things like emotional regulation, trust within classrooms, ethical decision-making, burnout, and how communities respond to disruption.
+Over time, we have built reflection structures and observation practices to stay attentive to these shifts. Fellows write weekly reflections across self, classroom, and community. We sit with small daily observations. We notice residue after disruption. We track patterns of energy, withdrawal, participation, and repair.
+This data is qualitative, layered, and relational. It carries lived experience. It cannot be reduced, but it also cannot remain scattered.
+Our stakeholders include fellows, students, school partners, donors, and our internal team. For the work to remain accountable and rooted, what we are noticing on the ground must travel back to these stakeholders in forms that are legible, ethical, and truthful.
+I see my role as building that bridge.
+The inquiry I am holding is this:
+From the daily observations and reflections we collect, how do we shape them into visible patterns that inform action?
+How might burnout, regulation, trust, or classroom climate be seen over time without flattening nuance?
+What visual forms can hold lived experience with care while still allowing patterns to emerge?
+How can qualitative reflection move from documentation to shared understanding?
+The intention of this discussion is to explore how visualization can deepen collective seeing  so that what is unfolding in classrooms can be held, understood, and acted upon with care.",https://www.elicitfoundation.com,https://www.elicitfoundation.com/post/how-i-see-tech-design-for-fragile-systems-insights-from-my-time-at-tech4education-conference-at-iit,,"Will need to get back on this. Still deciding the proper flow . ","Breakout space , Open area ",,,,,,,,,,Keep,Under Review
+yPLvMXx,Gx1Ql2j,2026-02-15 18:01:33,Hemanth,Guthala,Insights Manager,Inclusive Minds,"I  majorly work with public and administrative datasets to understand patterns that shape policy and politics. Now, I spend most of the time handling data for dashboards, decisions and democracy.",,,,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations at Work,The Map of the Mandate: Visualizing India’s Delimitation,"Electoral boundaries in most democracies get redrawn periodically, to ensure political representation is in agreement with population and demographic changes. In India, delimitation of constituencies has been shaped by regional, social and political complexities. I explore visually the historical delimitation of constituencies across multiple political scales through maps from ECI over the decades. Also, I run simulations of possible redistricting, to speculate a political realignment with the availability of high resolution electoral and demographic data after the upcoming census. I intend to use this space to deliberate with the community on democracy and data, through a visual journey of India’s electoral geographies.",pradical.net/matdata,,,"Yes, only once",,,,,,,,,,,,,,,,,,,Keep,Under Review
+5BRv4EP,7RDpWRA,2026-02-15 18:03:02,Aditi,Bhat,Chief Spinner,Spinfinity,"Aditi is a flow artist, fire performer and maker. Her creative practice, Spinfinity, brings together STEM, movement and data through hula hoops! Currently, she is the lab manager at Paper Crane Lab, where she crafts learning experiences for all ages!
+",https://www.instagram.com/spinfinity.adt,,https://www.linkedin.com/in/aditibhat7,Workshop,I consent to VizChitra publishing my submission and the review of my application.,TRUE,,,,,,,,,,,,,,,,,Visualizations as Craft,"Moving Data, Spinning Stories","Yes, many times","This workshop brings datasets out of the screen and into the body! I’ll be teaching four foundational hula hoop moves; each of which creates a shape - circle, cylinder (bar graphs in 3D), sphere and infinity. The hoop becomes a visual, tactile and kinesthetic tool to communicate information. We’ll also play with elements like speed, force, position and orientation. No prior movement or hula hoop experience is required!
+
+We’ll make a moving data selfie out of these tricks! Each trick will be mapped to a question of identity. We will first get to paper and draw the shapes the hoop is making, turning that into a data selfie. Then we'll also make a video collage of the different tricks and what they indicate about the participant. 
+
+This session is grounded in the third principle of Data Feminism - Elevate Emotion and Embodiment, which speaks about valuing multiple forms of knowledge, including those that come from our lived, bodily experiences. By engaging with data through movement, we will challenge the traditional notion that data is purely objective and recognize the power of emotion and embodiment in understanding and communicating data! 
+
+Intended takeaways:
+
+Learn a new, kinesthetic way to tell data stories
+Explore data performance, collaboratively!
+Hula hoop tricks that act as building blocks for motion-based data storytelling!
+
+This session is for anyone working at the intersection of data, design, and meaning-making - educators, artists, analysts, movement practitioners, visual storytellers, or anyone curious about reimagining their relationship with information.
+
+",https://youtu.be/6jTHeM0KQO4?si=Nb89BqVA9cTYgmCF,https://observablehq.com/embed/@spinfinity/hooptrickshapesviz?cells=viewof+singleCellGallery,,I will provide hula hoops. Mobile and Laptops to make the video version. Paper and stationery to make the paper version.,My session needs open space to be able to hula hoop openly. Whiteboard would be nice to have.,Keep,Under Review
+5BRLRXv,KYoazEM,2026-02-15 18:07:04,"Saurabh ",Arora,Co-founder,Plum Benefits,"Saurabh Arora is the Co-Founder and CTO of Plum. Saurabh is a strong advocate for the power of technology to democratize access to quality healthcare. His insights showcase his deep understanding of the interplay between technology, insurance, and healthcare. ",,https://x.com/tanish2k,https://www.linkedin.com/in/saurabhplum/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations as Craft,"Healthcare Data for Everyone: Crafting Stories That Are Simple, Accessible, and Empathetic ","Datalabs by Plum is our investigation into the burden and cost of India's health conditions, viewed through the lens of insurance claims and health checkup data. We built it because we believe data should drive better health decisions — for individuals, for companies, and for the industry.
+
+Today, the cost of healthcare — especially for chronic disease — is shrouded in jargon, archaic systems, and speculation. It doesn't help that conversations around these subjects seem intimidating, largely due to an asymmetry in context and information between healthcare systems and the general public. 
+
+At Plum, we process over 125,000 health insurance claims, 100,000 telehealth consultations, and 25,000 health checkups every year. This puts us in a unique vantage point, where we have data on the state of the urban corporate Indian's health as well as insights and trends on urban, tier-one hospitalisations. With DataLabs, we aim to bring truth to light, and do it in a way that's simple, inclusive, and accessible to the general public.
+
+In this talk, we will cover four key areas.
+
+Why healthcare data today is a black box and feels inaccessible. This is a two-pronged issue. The first is information asymmetry, and how data around incidence, costs, and treatment is hidden in jargon, claims forms, and scientific reports that are not accessible to the general public. The second is psychological — the general public is averse to talking about healthcare, and refuse to confront the possibility of a health scare. This is largely due to fearmongering, speculation, and intimidating reports and language that's cold and bereft of empathy.
+
+What we're attempting to do with DataLabs. We do not see DataLabs as a dashboard product or an analytics tool, but an initiative to bring truth to light. The guiding belief is that health data should serve three audiences: individuals trying to understand what a diagnosis means for their life and finances, companies trying to design better benefits for their people, and the industry trying to move from reactive to preventive care.
+
+Groundwork and research. There are many things that could go wrong when we're writing stories based on real people and their healthcare experiences. In this section, we talk about the guardrails we incorporate to ensure the privacy of our data, the groundwork to ensure that our narrative does not have ingrained bias, and qualitative research to identify and rectify potential red flags in our stories.
+
+Our guiding principles and editorial framework. This section captures our editorial process, design decisions, and designing for inclusivity. In our editorial process, we decide the story we want to tell from the myriad data points that we have — this is the stage where we decide which talking points to keep, which ones to kill, and which ones might require further work because they might seem overwhelming to the audience. In design decisions, we will then talk about the choices behind the data visualisation (for example — why we chose horizon charts, why use violin charts to show length of stay in a hospital, where tables are better than charts, etc.). And in designing for inclusivity, we talk about the little interactive elements on the charts that help users understand the data, especially for visualisations that are new to them.
+
+We believe this will be useful for data enthusiasts, writers, and journalists sitting at the intersection of data and research.
+
+This talk will be presented with Ganapathi Ramanathan (https://www.linkedin.com/in/ganapathi-ramanathan/)",datalabs.plumhq.com/cancer,datalabs.plumhq.com/heart-health,,"Yes, many times",,,,,,,,,,,,,,,,,,,Keep,Under Review
+5BRvBNZ,68kpNeY,2026-02-15 18:09:14,Lakshmi,Chockalingam,"Engagement Manager, Ecosystem Capacity Building",NSRCEL,"I am a data analyst turned social impact human - now heads down in entrepreneurship education. As part of NSRCEL, I work with entrepreneurship ecosystems in Mizoram and Palakkad; I also do a part-time Doctorate in Education (EdD) from the University of Bath.",,,https://www.linkedin.com/in/lakshmic135/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations for Community,"Deviation From What? Visual Centers & Norms, and the Tradeoffs they conceal","Data visualizations need reference points. We anchor scales, smooth trajectories, define clusters, choose midpoints... these decisions are necessary; they make data legible. But in doing so, they also establish a center: a trajectory that looks typical, a midpoint that appears neutral, a dominant pattern that becomes the standard against which everything else is read.
+
+This talk explores what happens once that center stabilizes. When a single trajectory becomes the implied norm, differences from it can appear irregular, lagging, or exceptional. At the same time, the trajectory itself compresses (and in many cases conceals or at the very least misrepresents) the policy decisions, resource constraints, and tradeoffs that produced it.
+
+I will draw on examples from education and public policy dashboards (spaces where summary visuals shape how institutions and communities are understood). My aim is not to argue against abstraction or analytical rigor. Rather, I want to examine how visual encoding practices construct norms, often unintentionally. When divergence is framed relative to a stabilized center, it can be read as something to be corrected at the level of the unit being measured (thereby placing unfair responsibility or judgment on the individual), instead of prompting questions about structural segmentation or competing objectives.
+
+The talk will move through three parts: first, how visual centers are constructed; second, how they shape interpretation in policy-facing datasets; and third, alternative and sometimes complimentary approaches that retain broad patterns while making structural tradeoffs and multiple trajectories more visible.
+
+This topic matters to me because I work with institutional data where dashboards influence decisions about performance, funding, and accountability. I’m interested in how we can preserve clarity without allowing abstraction to quietly harden into normativity.
+
+For practitioners and researchers in data visualization, I hope the talk offers a vocabulary for recognizing implicit centers, a way to think about the interpretive weight they carry, and practical ideas for designing with that awareness in mind.",https://youtu.be/DHxPIVA7YKg?t=6421,,,"Yes, only once",,,,,,,,,,,,,,,,,,,Keep,Under Review
+PdKY1xB,68kpdeP,2026-02-15 18:10:51,Amit,Jena,"Assistant Professor, Design",FLAME University,"I teach Data Visualisation and Data-Driven Design at FLAME University, bridging the gap between Indian ""graphicacy"" and global visualisation standards through cognitive-first pedagogy and research into the next billion users.",https://www.instagram.com/namastevis/,https://x.com/namastevis,https://www.linkedin.com/in/namastevis/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations for Community,Decoding the Graphicacy Gap: Lessons from a Failed Classroom Experiment,"In the Indian design landscape, we often conflate visual literacy - the ability to decode images with graphicacy, which is the ability to decode abstract data relationships. While our users are culturally ""image-rich,"" they are often ""graph-poor"" in a formal sense. This talk centers on a critical tension: why universal design principles, such as the Tufte-style ""data-ink ratio,"" often fail to resonate with Indian audiences. Within my own data visualisation course, I conducted a classroom experiment where design students were tasked with visualising groundwater crisis data for rural communities. The result was a spectacular failure of comprehension. This talk serves as a post-mortem of that failure, exploring the ""Graphicacy Gap"" - the hidden cognitive friction between high-level design theory and the numerical intuition of the ""Next Billion Users.""
+
+As an educator, I have seen that the biggest barrier to data equity in India is not a lack of access to data, but the lack of a ""vernacular"" for it. We are currently training students to design for a global aesthetic that assumes a level of formal numeracy that many of our fellow citizens do not share. This matters deeply because if we do not bridge this gap, our most critical data regarding health, climate, and the economy will remain locked behind a wall of abstract geometry. This talk pivots away from the industry's current focus on ""Big Data"" and ""Creative Coding"" toward Cognitive Accessibility. It connects to the global conversation on Data Humanism while adding a specific Indian nuance: how do we design for varied numeracy levels without being patronising? Ultimately, it challenges the ""universalist"" myth of the bar chart as the ultimate communicator.
+
+The presentation is structured as a ""Process Story,"" moving from a problem to a pivot. I begin with ""The Hook,"" a showcase of the polished student dashboards that failed user testing, paired with the messy, unfiltered feedback from the ground. This leads into ""The Diagnosis,"" where I define the difference between seeing and reading, explaining why abstract X-Y axes are a learned language rather than an intuitive one. In the ""Messy Middle,"" I show the evolution of sketches as we moved away from Cartesian planes toward Social Scaling and Systemic Metaphor. Finally, the talk concludes with ""The Synthesis,"" where I introduce the Graphicacy Gradient - a framework developed directly from this classroom experiment.
+
+This talk is intended for educators, design leads, and UX researchers who are building for the Indian public. It is for anyone who has ever felt that their ""clean"" dashboard wasn't telling the whole truth. Participants will leave with a Graphicacy Audit - a mental model to assess audience numeracy before picking a chart - as well as a Social Scaling Checklist for translating abstract numbers into physical, relatable analogies. Most importantly, we will explore Vernacular Archetypes: a look at ""Indian Isotypes"" and visual metaphors that consistently outperform standard charts in local contexts.",,,,I have never given a talk,,,,,,,,,,,,,,,,,,,Keep,Under Review
+1A8vVvW,obBkB4X,2026-02-15 18:15:10,Karnav,Popat,Associate,Boston Consulting Group (BCG),"I'm currently an Associate at the Mumbai office of BCG. I recently graduated from Ashoka University where I studied Computer Science, and worked on computational social science with geospatial data, especially Indian government data",instagram.com/kkkarnav,x.com/kkkarnav,linkedin.com/in/karnavpopat,"Dialogues ",I consent to VizChitra publishing my submission and the review of my application.,TRUE,,,,,,,,Visualizations for Community,Sarkaar Data Nahi Deta: Constructing Visualizable Datasets from Indian Governement Data,"Yes, only once","
+This session is about the variety of data and information with varying degrees of usability that the Indian government publishes across different platforms, and how the community can turn it into useful datasets, narratives and insights.
+
+For two years as an undergrad at Ashoka, I worked with their Centre for Digitalization, AI and Society on a broad project to take various Indian government platforms and extract meaningful data from it for social science research. This has given me deep context into a series of problems and interesting points which are fertile ground for the community to come together to discuss and solve:
+
+1. Indian open data is fragmented, it's process to publication is opaque and arbitrary, and often it is made available on the internet but not at all accessible.
+   
+2. The key constraint to making this data accessible is often UI/UX and visualization: by definition these are massive datasets, often underprocessed, and difficult to visualize. How can this data be visualized and presented in a way that the common Indian can consume?
+
+3. OVer the past few years, platforms like Data for India and Ashoka's Center for Economic Data and Analysis have made massive progress in visualizing key Indian datapoints and crafting narratives. Often, their analysis has been limited by the amount of work it takes to make obscure datasets usable and visualizable. How can their approach be expanded to more complex datasets require lots of work and compute? Is an open-source approach possible?
+
+My particular focus area is on data with a geospatial aspect: land use, environmental clearances, real estate and urban governance and expenditure, as that's the data that I have worked with extensively. 
+
+In particular, I'd like to anchor the discussion on two rich sources of open data published by the government which we were able to compile and generate useful insights from: the BhuNaksha platform (https://app4bhunakshaodisha.nic.in:8443/bhunaksha/) holding plot-by-plot land ownership and characteristic data, and the Parivesh platform (https://environmentclearance.nic.in/proposal_status_new1.aspx) holding records of all environmental clearances applied for and granted to industrial projects in India. I have been able to scrape, clean, match, process and visualize these datasets to some success and can discuss the learnings that came from the projects - and the next steps for more data like this
+
+These topics are relevant to data viz because there are vast collections of data that the government is willingly providing to the common Indian, with the primary barrier to their consumption being our inability to convert large tables into easy-to-consume graphs, exploratory websites and factoids. Data viz has the power to solve this problem, to the benefit of both the community and the nation 
+
+I think the ideal way to structure the session is as an introduction and short talk, followed by a guided discussion, and an interactive activity, yielding to free-flowing discussion (either open floor or in groups)
+
+5-10 mins: Introduction, context-setting and scope of discussion
+5-10 mins: Elaboration on problem and case studies (BhuNaksha, Parivesh, Data for India and 1-2 examples outside India)
+10-15 mins: Guided discussion on people's experiences working in the domain, problems and solutions, and opinions on the path going forward
+10-20 mins: Interactive activity (Stickies and cards to be handed out with participants to mark their opinions on most interesting Stakeholders, Problems and Domains, Approaches, and Tools/Platforms) followed by discussion
+
+The intended audience is primarily data journalists, as well as professionals and hobbyists in policy, open-source data, and across the social sciences and impact ecosystem interested in Indian government-scale data and evaluation
+",https://karnav.xyz,https://github.com/kkkarnav/pricingLand/tree/main/Maharashtra,https://www.isid.ac.in/~acegd/acegd2024/papers/PranavGupta.pdf,Browser and GitHub would probably be needed; Python QGIS and GEE are good if participants are interested in replicating/exploring case studies,Projector would be needed; whiteboard is good for interactivity,,,,,,,,,,Keep,Under Review
+jaNWl79,ODPbqGk,2026-02-15 18:17:13,Areena,Arora,Editorial Coder,The Hindu,"I’m an Editorial Coder at The Hindu, working at the intersection of code, design and accountability journalism. When I’m not thinking of the future of the news industry, I’m cooking!",,x.com/AreenaArora,www.linkedin.com/in/areena-arora/,Workshop,I consent to VizChitra publishing my submission and the review of my application.,TRUE,,,,,,,,,,,,,,,,,Visualizations at Work,Designing data stories for the six inch screen,I have never conducted a workshop,"In India, digital journalism is consumed primarily on mobile devices. Yet many visual stories are still conceived on large desktop screens and later adapted for smaller ones. This workshop argues that mobile-first data storytelling is not about breakpoints or layout tweaks. It is about narrative compression, interaction simplification, and designing within a cognitive load budget.
+
+The workshop is structured as a hands-on redesign lab that deliberately moves away from code. Participants will rework a desktop-oriented data story for a six-inch screen using pen and paper. By removing software from the process, the focus shifts to thinking, not just ever-changing tools.
+
+We begin with a short diagnostic exercise. Participants open a desktop data story on their phones and identify what breaks, what becomes unreadable, what requires hover and what feels overwhelming. This surfaces common desktop assumptions that fail in a mobile first environment.
+
+Next, participants will be given a simple rectangular sheet representing a mobile screen. They mark the thumb zone, the first scroll boundary, and the area of highest visual attention. They then receive a dataset and a desktop chart and must redesign it with some constraints like: Maximum three visual elements, one interaction, thirty seconds to first insight. It must work with one thumb, remain legible in bright outdoor light. 
+
+During the workshop, all redesigns will be sketched on paper.
+
+We will then examine interaction cost and narrative compression. When should hover be replaced with annotation, when should comparison be stacked rather than filtered, when should scrollytelling be avoided altogether. Participants critique each other’s sketches using a structured checklist.
+
+The final segment focuses on accessibility and performance from a design perspective. We discuss tap target sizing, font scaling, contrast under sunlight, scroll depth density, and low bandwidth considerations. Participants refine their paper prototypes accordingly.
+
+Each participant leaves with a mobile data story checklist that can be applied in their design workflow. This includes criteria such as whether the main insight appears before the first scroll, whether the story survives as a screenshot and whether interaction is truly necessary.
+
+I build investigative data stories for audiences who read on phones, not desktops. Each project forces a trade-off between what we want to show and what a six-inch screen can realistically carry. This workshop situates that tension within larger debates in data visualization around usability, accessibility, performance, and responsible interaction.
+
+It is designed for data journalists, visual designers, product teams, and editors who want to create mobile-first stories that hold up under real-world conditions; limited attention, variable bandwidth, bright light, one-handed use. 
+
+Participants will gain a repeatable design framework, a constraint-based thinking approach and practical tools for effective mobile-first data visualization without reducing impact.",,,,"Participants should bring their own mobile phones.
+
+I plan on bringing printed handouts of a mobile data story checklist.
+
+Other materials needed:
+A4 sheets for sketching
+Markers or pens
+Sticky notes
+A projector for walkthrough segments
+
+No specific coding tools or software are required.","Movable chairs and table, a whiteboard or wall space for pinning sketches. Alternatively, I think this can also be done effectively in an outdoor open area.",Keep,Under Review
+Ek9LO9X,81kR1WY,2026-02-15 18:17:53,"Abhiram ",Jois,Creative Technologist,Aruvu Collaboratory,"I am a creative technologist. I do place based work with communities around data, tech, stories and everything in between",https://www.instagram.com/abhiram.jois/,,,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations for Community,"Visualizing the care in rural healthcare - Booklets, Profiles and Atlases for community palliative care","Tech and data in rural healthcare is no new feat. However, data collection is extractive, top down and it travels outside or upwards for synthesis and visualization. What comes back (if they do) are lengthy reports, templatized dashboards, messy excel files etc. As a result, data, for those on ground, becomes a bureaucratic duty rather than a tool for local decision making. This talk is about how visualisation would look if it was imagined as care infrastructures and co-designed with actors central to the rural healthcare system - front line workers, Gram Panchayat officers, volunteer doctors, PHCs etc. 
+
+I will present our visualization and codesign work on the Decision Support System (DSS) that is being developed alongside a Community Palliative Care (CPC) initiative across seven Gram Panchayats in Kundapura, Karnataka. In this context we have co designed with a cluster level taskforce, a mobile care team that provides home based palliative care to seekers in the community, volunteer doctors who help make care plans etc. The DSS comprises physical and digital tools to enable local decision making, making visualizations central to the care infrastructure. It is designed to be decentralized, phygital, self-hostable and offline first. 
+
+Specifically in DSS I will talk about careseeker profiles. These are individual records used to assess needs, create care plans, manage referrals, and track each careseeker’s progress. I will share our explorations, codesign process and visualization methods through the following artefacts
+
+Phygital Care Profiles - Used by care teams and volunteer doctors to design and monitor individualized care plans across medical, emotional, and psychosocial domains. We worked with the mobile care team and doctors to build on their visual language and visualise the data collected for each care seeker. Some unique visualizations include family trees to understand care giving patterns, hand-drawn route maps (in absence of geospatial data), pain areas / assessment scales etc
+
+Care seeker booklets - Physical books given to each seeker. They act as no tech interfaces for seeing, monitoring and updating details of care.  It contains information related to their condition, trackers for everyday monitoring, care plans, care team visit logs, tear off referral slips that can be taken to PHC, hospitals etc. This artefact as a method explores physical methods of visualizing and updating data in contexts with low digital accessibility and literacy. 
+
+Data Atlas - A customizable spatial dashboard for Gram Panchayats, PHCs, and the taskforce to view overall insights specific to their needs. This will assist in medical consultation, procedures at PHC, referrals to private hospitals, scheme allotment and aid at the GP and resource and infrastructure related decisions with the taskforce.
+
+This talk is important to me and relevant to the theme because it becomes a platform to demonstrate the complexity of working with communities and rural governance systems on field in a conference of varied practitioners who may contribute to this sector in different ways. 
+This talk is useful for students, information designers, researchers, civic and govt data enthusiasts, people working in the social sector etc
+
+Key takeaways
+1. Visuals for contexts that have - varying literacy, low-connectivity, multi lingual needs
+2. Creating hybrid physical-digital visualization systems
+3. Open source, self hosted, offline tools as a way to enable autonomy and ownership.
+4. Tools for participatory visualization that prioritize people and decisions over features and numbers (ex. actor decision matrix, practice prototyping) 
+
+Speaker Bio
+Abhiram Jois is a creative technologist at Aruvu Collaboratory. He has been working in the space of community and tech for the last 3 years. His work began with working on the Channapatna Health Library with front line health workers in Channapatna and has worked with organizations like Design Beku and Janastu. Currently he is working on multiple engagements in Kundapura and Bidar. He previously spoke about portable community servers at India FOSS 25. ",https://drive.google.com/file/d/1BAJnqmztt8JXoy4LVKeQ42I_SZ92xD26/view?usp=drivesdk,https://youtu.be/Pn4ZbhkFjwk?si=Lk-RmlpsvPS3Ua3g,,"Yes, only once",,,,,,,,,,,,,,,,,,,Keep,Under Review
+BzNZvB7,Gx1Q602,2026-02-15 18:18:40,"Shalaka ",Shinde,Independent Data Journalist,,"I'm an independent data journalist building Justice Delayed, a SQL database of district-level court proceedings in India. I previously worked at The Quint and Hindustan Times before I started building Justice Delayed.",,,https://www.linkedin.com/in/shalaka-shinde-80285457/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations at Work,Bite-Sized Visualizations of Large Court Datasets to Identify Reporting Opportunities,"India's district courts have over 4.82 crore pending cases of which at least 3.71 crore are criminal cases, according to the National Judicial Data Grid. Until an exceptionally old case concludes and briefly makes headlines or an annual report is published, this number remains as the proof of a gaping data-shaped hole. 
+
+As a court and crime reporter for the Pune edition of Hindustan Times, I watched this cycle repeat: journalists waiting for rare events or official reports to cover a systemic crisis hiding in plain sight.
+
+This talk will be about breaking that cycle. I will present Justice Delayed, a database developed with support from the Brown Institute for Media Innovation's Magic Grant, that restructures district court data using individual case hearings as the smallest unit of analysis, rather than the aggregated numbers government sources provide. I will try to showcase how exploratory data visualization transformed this dataset from a database into a fast-acting tool for identifying reporting opportunities.
+
+The aim of the project, and the talk, is to introduce the data-first approach to journalists like myself, who have no background in tech, instead of using data as an afterthought in court reporting where data typically is used to add context to existing stories. Breaking the tinies unit in a dataset from an already aggregated figure to a hearing or a court case helps pose informed questions to the data. But it also complicates the analysis. Data visualisation helped bridge this gap between the mess of a large number of columns and an actual insight.
+
+Why this matters to me: I built Justice Delayed out of frustration. On my beat, I knew the system was overwhelmed but could not quantify the backlog. Official data was too aggregated to be useful for a local reporter. Once the scraping part for Justice Delayed was done, visualization helped me merge ground-level intuition and publishable findings.
+
+This talk provides an opportunity to talk about this experience of using exploratory visualization as a method of identifying story ideas rather than a product of a database. and responsible data release as we work towards open-sourcing Justice Delayed.
+
+Through the 20 minute talk, I would like to:
+Talk about what journalists actually need and what Justice Delayed provides in terms of breaking down court pendency numbers.
+A walkthrough of specific visualizations — identifying courts with disproportionately old cases, spotting patterns in hearing schedules, localizing pendency.
+Examples of published work where I used these methods for reporting.
+
+I believe this talk to be useful for journalists (ground reporters and computational reporters), law practitioners, and technologists working in the field where data and journalism overlaps. It will, hopefully, help anyone who wonders: What if we knew where these cases live in the court system? What if we knew the courts where some of the oldest cases are being heard? Or what if all relevant data uploaded on the courts portal for well-known cases was readily available in machine readable format?
+",https://www.justicedelayed.work,https://www.bellingcat.com/news/rest-of-world/2025/08/01/pragya-thakur-malegaon-trial-absence/,,I have never given a talk,,,,,,,,,,,,,,,,,,,Keep,Under Review
+QKLY5Ml,MeO75Mg,2026-02-15 18:22:01,Karnav,Popat,Associate,Boston Consulting Group (BCG),"I am currently an Associate with the Mumbai office of BCG. I recently graduated from Ashoka university where I studied Computer Science and worked on computational social science with geospatial data, particularly Indian government data",instagram.com/kkkarnav,x.com/kkkarnav,linkedin.com/in/karnavpopat,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations for Community,Sarkaar Data Nahi Deta: Constructing Visualizable Datasets from Indian Government Data,"What is your session about, 
+
+This session is about the variety of data and information with varying degrees of usability that the Indian government publishes across different platforms, and how the community can turn it into useful datasets, narratives and insights.
+
+For two years as an undergrad at Ashoka, I worked with their Centre for Digitalization, AI and Society on a broad project to take various Indian government platforms and extract meaningful data from it for social science research. This has given me deep context into a series of problems and interesting points which are fertile ground for the community to come together to discuss and solve:
+
+1. Indian open data is fragmented, it's process to publication is opaque and arbitrary, and often it is made available on the internet but not at all accessible.
+   
+2. The key constraint to making this data accessible is often UI/UX and visualization: by definition these are massive datasets, often underprocessed, and difficult to visualize. How can this data be visualized and presented in a way that the common Indian can consume?
+
+3. OVer the past few years, platforms like Data for India and Ashoka's Center for Economic Data and Analysis have made massive progress in visualizing key Indian datapoints and crafting narratives. Often, their analysis has been limited by the amount of work it takes to make obscure datasets usable and visualizable. How can their approach be expanded to more complex datasets require lots of work and compute? Is an open-source approach possible?
+
+My particular focus area is on data with a geospatial aspect: land use, environmental clearances, real estate and urban governance and expenditure, as that's the data that I have worked with extensively. 
+
+In particular, I'd like to anchor the discussion on two rich sources of open data published by the government which we were able to compile and generate useful insights from: the BhuNaksha platform (https://app4bhunakshaodisha.nic.in:8443/bhunaksha/) holding plot-by-plot land ownership and characteristic data, and the Parivesh platform (https://environmentclearance.nic.in/proposal_status_new1.aspx) holding records of all environmental clearances applied for and granted to industrial projects in India. I have been able to scrape, clean, match, process and visualize these datasets to some success and can discuss the learnings that came from the projects - and the next steps for more data like this
+
+These topics are relevant to data viz because there are vast collections of data that the government is willingly providing to the common Indian, with the primary barrier to their consumption being our inability to convert large tables into easy-to-consume graphs, exploratory websites and factoids. Data viz has the power to solve this problem, to the benefit of both the community and the nation 
+
+I think the ideal way to structure the session is as an introduction and short talk, followed by a guided discussion, and an interactive activity, yielding to free-flowing discussion (either open floor or in groups)
+
+5-10 mins: Introduction, context-setting and scope of discussion
+5-10 mins: Elaboration on problem and case studies (BhuNaksha, Parivesh, Data for India and 1-2 examples outside India)
+10-15 mins: Guided discussion on people's experiences working in the domain, problems and solutions, and opinions on the path going forward
+10-20 mins: Interactive activity (Stickies and cards to be handed out with participants to mark their opinions on most interesting Stakeholders, Problems and Domains, Approaches, and Tools/Platforms) followed by discussion
+
+The intended audience is primarily data journalists, as well as professionals and hobbyists in policy, open-source data, and across the social sciences and impact ecosystem interested in Indian government-scale data and evaluation
+
+
+
+
+
+
+
+
+
+
+
+
+==============
+
+
+
+This session is on two case studies on the use of land and environmental records with varying degrees of usability that the Indian government publishes across different platforms, and how it can  e turned into useful datasets, narratives and insights.
+
+For two years as an undergrad at Ashoka, I worked with their Centre for Digitalization, AI and Society on a broad project to take various Indian government platforms and extract meaningful data from it for social science research. My particular focus area was on data with a geospatial aspect: land use, environmental clearances, real estate and urban governance and expenditure.
+
+In particular, I'd like to anchor the discussion on two case studies on rich sources of open data published by the government which we were able to compile and generate useful insights from: the BhuNaksha platform (https://app4bhunakshaodisha.nic.in:8443/bhunaksha/) holding plot-by-plot land ownership and characteristic data, and the Parivesh platform (https://environmentclearance.nic.in/proposal_status_new1.aspx) holding records of all environmental clearances applied for and granted to industrial projects in India. I have been able to scrape, clean, match, process and visualize these datasets to some success and can discuss the learnings that came from the projects - and the next steps for more data like this.
+
+I'd like to talk about the challenges in scraping and processing this data, navigating the conflicting sources of information about the platforms; interacting with government officials on the ground in charge of collecting, digitizing and uploading the data onto the platform; common features and problems with Indian government platforms and our learnings from this undertaking. I'd also like to talk through the specifics of this domain a little bit and discuss the newly available rich data that is emerging publicly from the government
+
+These topics are relevant to data viz because there are vast collections of data that the government is willingly providing to the common Indian, with the primary barrier to their consumption being our inability to convert large tables into easy-to-consume graphs, exploratory websites and factoids. Data viz has the power to solve this problem, to the benefit of both the community and the nation 
+
+The intended audience is primarily data journalists, as well as professionals and hobbyists in policy, open-source data, and across the social sciences and impact ecosystem interested in Indian government-scale data and evaluation
+",karnav.xyz,https://github.com/kkkarnav/pricingLand,https://www.isid.ac.in/~acegd/acegd2024/papers/PranavGupta.pdf,"Yes, many times",,,,,,,,,,,,,,,,,,,Keep,Under Review
+Ek9DQ8N,68kpdeP,2026-02-15 18:22:42,Amit,Jena,"Assistant Professor, Design",FLAME University,"I teach Data Visualisation and Data-Driven Design at FLAME University, bridging the gap between Indian ""graphicacy"" and global visualisation standards through cognitive-first pedagogy and research into the next billion users.",https://www.instagram.com/namastevis/,https://x.com/namastevis,https://www.linkedin.com/in/namastevis/,"Dialogues ",I consent to VizChitra publishing my submission and the review of my application.,TRUE,,,,,,,,Visualizations for Community,Beyond the X-Y Axis: Building a Vernacular Data Language for the Next Billion Users,I have never conducted a session,"While my talk focuses on a pedagogical post-mortem of teaching data-logic, this dialogue serves as an independent, participatory forum to solve a recurring industry tension. If the standard Cartesian plane is a learned language that many Indian users have not had the opportunity to read, we must ask what alternative visual metaphors, symbols, or storytelling structures can make data intuitive for everyone. This conversation is critical today as we build Digital Public Infrastructure and public dashboards that are technically accurate but often cognitively inaccessible to the very citizens they are meant to serve. This session shifts the focus from big data to big understanding, asking how we can design for high-context cultures where abstract geometry often fails.
+This dialogue extends the conversation from the classroom into the real world of practitioners, researchers, and journalists. In the global data visualisation community, best practices are often synonymous with Western minimalist aesthetics. However, in the Indian context, graphicacy - the ability to decode graphs is the silent barrier to data equity. This session invites the community to move beyond the expert-driven dashboard metaphor and explore cognitive accessibility. We will discuss why a Sankey diagram might feel alien to a user who understands a river flow metaphor perfectly, or why a percentage fails where frequency framing succeeds.
+The session is designed as a structured experience exchange and pattern-mining exercise. I will open with one specific failure of graphicacy from the field to set the stage for vulnerability and shared discovery. Participants will then be invited to share their own war stories where a perfect visualisation failed to land with a local audience. We will deconstruct these to identify recurring cognitive barriers. In small breakout groups, participants will be tasked with an analog challenge to brainstorm a vernacular way to represent a complex data point, such as local air quality or inflation, without using a standard chart. Finally, we will reconvene to map out the common visual archetypes that emerged, identifying symbols or scales that feel inherently Indian.
+This dialogue is for anyone building for the Indian public who has felt the friction between global design standards and local cognitive styles. Participants will walk away with a shared library of failures and a collective toolkit of social scaling analogies, which are practical ways to translate abstract numbers into physical, relatable benchmarks. By the end of the session, we aim to have a rough roadmap for a vernacular data language that leverages India’s symbolic and oral traditions. While the talk provides the pedagogical foundation, this dialogue offers a space for the community to actively experiment with cognitive empathy, ensuring that our data is as readable as it is accurate.",,,,,,,,,,,,,,,Keep,Under Review
+kdoJLXR,jayq4E6,2026-02-15 18:24:23,Kuldeep,Singh,Student,NID Bengaluru,I am a Information Design Student at NID Bengaluru with a background in Computer Science.,https://www.instagram.com/kuldeep._.s_/,,https://www.linkedin.com/in/kuldeep-singh-9818721068/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations and Tools,Designing Human Control in AI Tools: A Three-Tier Framework,"As AI becomes embedded in dashboards, analysis tools, and design workflows, many interfaces collapse into a single pattern: chat. Designers are often told that if AI outputs are confusing or wrong, the solution is simply to “prompt better.” This framing hides a deeper issue: we are mixing together fundamentally different kinds of systems and asking them to behave the same way.
+
+This talk introduces a simple three-tier framework to help designers reason about how AI should be used in data and visualization tools, based on the nature of the work being done rather than the capabilities being marketed.
+
+The core distinction the talk makes is between deterministic systems and probabilistic systems. 
+
+Deterministic systems—such as spreadsheets, databases, and rule-based pipelines—produce the same output for the same input and are therefore trusted with execution and verification. 
+
+Probabilistic systems—such as generative AI—produce variable outputs by design. This variability is what makes them powerful for exploration, but also unreliable for truth and action.
+
+The problem arises when probabilistic systems are presented through interfaces that make guessing and execution look the same. In data tools, this can lead to hallucinated insights, over-trust in AI-generated outputs, and dashboards that feel “uncanny” or unreliable.
+
+To address this, I propose a three-tier framework:
+
+- Creator systems, where AI is used for exploration and ideation.
+- Guardian systems, where AI must be constrained to deterministic, verifiable sources.
+- Collaborator systems, where probabilistic intent is combined with deterministic execution through dynamic, generative interfaces.
+
+Rather than treating these tiers as rigid categories, the framework presents them as normative design goals. Real-world tools are often hybrids, and the designer’s role is to decide which tier should dominate in a given context and how transitions between them are made visible to users.
+
+The talk is grounded in examples from AI-augmented data tools and visualization workflows, showing why many current systems feel unreliable and how alternative interaction patterns can preserve human control.
+
+The presentation is structured as:
+A clear explanation of probabilistic vs. deterministic systems
+Common failure modes in AI-powered data tools
+The three-tier framework and its rationale
+Practical implications for designers building or evaluating AI-enabled visualization tools
+
+This topic matters to me as a designer because I see AI increasingly framed as an autonomous decision-maker, when in practice it requires careful interface design to remain useful and trustworthy. The framework offers designers a shared language to push back against vague “AI-first” decisions and to design tools that support exploration without sacrificing reliability.
+Key takeaways include a reusable mental model for AI in data tools, clearer criteria for when AI should generate versus verify, and a reframing of the designer’s role as an architect of human control rather than a prompt engineer.
+
+Note: This talk is based on a working research paper, currently under review / pending acceptance at CHI SRC 2026.",https://drive.google.com/file/d/1t6--Rk8U-W90z4F00in0vuTIlBRxYIkB/view?usp=sharing,,,"Yes, only once",,,,,,,,,,,,,,,,,,,Keep,Under Review
+BzNZvYQ,1AKpXxl,2026-02-15 18:27:04,Agriya,Khetarpal,Software engineer,Quansight,"I am a programmer and maintainer of several scientific open source software projects. My primary focus is on numerical and interactive computing, particularly in the Scientific Python and Jupyter ecosystems.",instagram.com/agriyakhetarpal,,https://www.linkedin.com/in/agriyakhetarpal,"Dialogues ",I consent to VizChitra publishing my submission and the review of my application.,TRUE,,,,,,,,Visualizations as Craft,"A collective autopsy of chart crimes, via the scientific method","Yes, many times","We've all seen it: there is a propensity for graphs to be perceived as showing accurate data, yet somehow, lead us to wrong conclusions. For example, bar charts with truncated axes that emphasise a 2% difference in a measure, or a correlation that vanishes when one breaks down the data by subgroups, or a trend line that hides more than it reveals.
+
+I'd like to bring together a group of participants through this dialogue to examine ""chart crimes"", which visualisations mislead (whether unintentionally or by virtue of their design), and counter them by using the scientific method applied to the practice of plotting. We'll build a shared vocabulary of common patterns that can aid plots in deceiving us as humans, i.e., as poor logicians who tend to over-rely on heuristics.
+
+Some specific themes I have in mind are: the ecological fallacy, Simpson's paradox, base rate neglect, dredging, cherry-picking, the premise of survivorship, and more. Particularly, plots in reports, newspapers, research pieces, and academia appeal to authority, making it easier for people to trust them. (I'd appreciate help refining these further!).
+
+Why does this matter? Charts are persuasive precisely because they appear objective. When we see data visualised, we assume rigour – that someone has done the work and checked the numbers. This makes misleading visualisations dangerous, especially in contexts like public health, climate reporting, or policy debates where stakes are high, and most readers lack the time, training, or will to scrutinise every plot they encounter.
+
+The problem isn't of malice (of course), as most misleading charts come from well-intentioned people making common mistakes. However, intent doesn't change impact. A poorly chosen axis scale or an overlooked subgroup can shift understanding, influence decisions, and spread disinformation that we must not be as easily prone to. Much of the discussion right now, in my view, has centred on how to make better charts with clearer hierarchies, better colour choices, and stronger narratives. However, as a contrarian, I'd like to focus on the inverse question: what makes charts fail? What are the systematic ways visualisations mislead, and how do we spot them? I think of this dialogue as the other half of that conversation. 
+
+Structure of the session should be roughly an hour split into three parts. I can start us with some striking examples of plots that look fine in their guise. The next segment will walk through the vocabulary: for each concept, I'll show what it looks like visually, why it happens, and what cues to to use to help build our pattern recognition.
+
+My idea so far is to get participants to examine scientific visualisations from news, research, and reports (all pre-decided out of a jumbo box of examples I'll bring) and perform collective work, after which findings and diagnostics can be shared.
+
+I'd like to keep this open to anyone who creates or consumes data visualisations: journalists, analysts, designers, researchers, students, policy professionals and will spare requiring a statistics background.
+
+My proposed (and hoped-for) learning outcome is that participants will ask sharper questions about plots using the scientific method and will be able to distinguish between visualisations that deceive and those that don't. They should be able to consider these pitfalls in their own work. My goal is not of cynicism but of informed scepticism. ",https://callingbullshit.org/,https://vdl.sci.utah.edu/blog/2023/04/17/misleading/,https://tomgeraghty.co.uk/index.php/ecological-fallacy-simpsons-paradox/,"Projector and screen, a pre-selected collection of 8-10 scientific visualisations from news articles, research papers, and reports as digital files (which I'll bring myself), and a few printed handouts.","Yes, a projector and/or a whiteboard would be great!",,,,,,,,,,Keep,Under Review
+7RGd7DP,Ek18yYA,2026-02-15 18:28:23,Apurva,Savadi,Visual Communication Designer,From&To,"I’m a visual designer based in Kolhapur, working across brand design, illustration, typography, and publication design. I value the spontaneity of small, thoughtful details coming together organically, almost as magical as being understood.",https://www.instagram.com/apridraw/,,www.linkedin.com/in/apurvasavadi,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations as Craft,Echoes of Forgotten India - An Archive of Everyday Sounds,"Echoes of Forgotten India - An Archive of Everyday Sounds
+
+What Is This Talk About?
+
+This talk explores data through something we rarely archive but constantly experience: everyday sounds.
+As data visualisation grows more sophisticated, we’ve unlocked inventive ways to represent complexity without losing accuracy. We spend time understanding layered information, refining methods, and ensuring nothing gets lost in translation. Amid this, there is a quieter question it asks us to notice: every passing moment in our life is also a data point. Undocumented, often overlooked, yet deeply meaningful.
+
+Insights:
+
+Growing up in a small town in India, sound was never background noise. It was information. Morning school autorickshaws, temple bells, radios leaking into the street,  these sounds shaped memory, rhythm, and identity.
+There were peculiar markers of time. The knife grinding on metal. The 'Chakku Dhaar Karnewale' uncle arriving and reminding us that months had passed, that seasons had shifted. Years later, coming back home after quite some time, one afternoon the same call returns - the uncle older now, white whiskers, more talkative, wiser, riding a new machine on a different cycle. It made me look back at the sounds that shaped my childhood.
+This project became an archive of those sounds; some evolved, some forgotten, some still loud as ever. A sugarcane seller’s call moved from trinkets tied to a cart to a pre-recorded speaker. The sound remained, but its form changed.
+The work sits at the intersection of data visualisation, memory, and lived experience. It treats data not as objective truth, but as a trace of time and attention.
+
+Intention:
+
+This talk is a breather.
+A pause that asks us to acknowledge the gravity of data that never gets collected, yet shapes our lives daily. It invites us to treat data not only as something to optimise, but something to honour.
+By reframing everyday sound as data, the talk encourages a kinder, more attentive relationship with information, without compromising rigour.
+
+Next Phase of the Project:
+
+Passing moments gain weight when visually archived. That gravity deepens further when data becomes tactile. Through stitches - each puncture of fabric forming a waveform, data makes its place in existence.
+The next phase translates this work into a textile form: a scarf documenting the evolution of sound over ten years. It becomes a reminder that attention itself is a rigorous act. Data can be emotional, incomplete, subjective, and still meaningful.
+
+Who Is This Talk For?
+
+Anyone curious about how noticing the present moment can change the way we collect, interpret, and respect information.
+
+Takeaways:
+
+- A new way to think about everyday experiences as meaningful data
+- Insight into how subjective and incomplete data can still hold value
+- Understanding how physical and tactile forms deepen data perception
+
+Flow of the Talk:
+
+The talk unfolds in three parts within a 15-minute, storytelling-led format combining visuals, sound, and personal narrative.
+It begins with context on how shared memories travel across time through sound. What starts as a personal archive often becomes relatable through others’ own memories.
+It then moves into the nuances of the data itself, inviting the audience to recall their own peculiar sound memories.
+The final part explores the tactile experience of data, and how information speaks differently when given a physical form.
+The talk concludes with a short interactive moment, where the audience is invited to guess familiar everyday sounds played live on a harmonica by a music-enthusiast friend, reinforcing how deeply sound is embedded in memory. Fun!",www.apurvasavadi.com,https://drive.google.com/file/d/1GKJNWVDOFB3lSdg-w9Z2N67KqoFHNHY2/view?usp=sharing,https://drive.google.com/drive/folders/1iDWfYMXtT7ZUBYsCKfO1FKc2YOJwRMoR?usp=sharing,I have never given a talk,,,,,,,,,,,,,,,,,,,Keep,Under Review
+XxXY0Y4,68kpNeY,2026-02-15 18:28:26,Lakshmi,Chockalingam,Engagement Manager,NSRCEL,"I am a data analyst turned social impact human - now heads down in entrepreneurship education. As part of NSRCEL, I work with entrepreneurship ecosystems in Mizoram and Palakkad; I also do a part-time Doctorate in Education (EdD) from the University of Bath.",,,https://www.linkedin.com/in/lakshmic135/,"Dialogues ",I consent to VizChitra publishing my submission and the review of my application.,TRUE,,,,,,,,Visualizations at Work,The stories our charts don't tell (yet),I have never conducted a session,"Every chart highlights something. Every dashboard prioritises something. Every metric leaves something out.
+
+This dialogue session asks a simple but uncomfortable question: When we create visualisations, do we know what we’re helping decision-makers see; and what we might be nudging them to ignore?
+
+In data visualisation, we often focus on clarity, aesthetics, and storytelling. But before colour palettes and chart types, there are deeper choices: What counts as success? What gets measured, and what doesn’t? What assumptions are built into our models, proxies, and “theories of change”? What forms of value get reduced to a number because they’re easier to plot?
+
+Given how many decisions in today's contexts are informed by data visualisations and subsequent abstractions, this session brings the conversation back to visualisation as framing. Not just “Is this chart clear?” but “What worldview does this chart assume?”
+
+Structure & Flow (WIP)
+
+1. Opening provocation (10 min)
+A few real-world chart examples that look “correct” but embed strong assumptions. Participants reflect: what story does this visualisation make obvious? What alternative stories disappear?
+
+2. Small-group dialogue (15 min)
+Participants discuss guided prompts drawn from their own practice:
+- A time when a visualisation changed a decision
+- A metric they felt uneasy about using
+- Something important that couldn’t be visualised
+
+3. Collective synthesis (10 min)
+Groups share patterns and tensions. We surface recurring blind spots and trade-offs.
+
+4. Co-creating a reflective toolkit (10 min)
+We build a short, practical checklist for more responsible visual framing (eg questions participants can use in their teams).
+
+Intended Audience: Data analysts, visualisation designers, dashboard creators, researchers, students, and anyone who builds or consumes data stories (especially those working with policy, social impact, or organisational decision-making).
+
+Learning Outcomes: Data visualisation is powerful because it simplifies complexity. But simplification is never neutral. As practitioners, we rarely pause to examine the interpretive frames we inherit that shape what ends up on the screen. This session connects everyday design choices to broader questions of value, responsibility, and influence.",https://app.t2.world/article/clz2bodzq1712901zmcictxq96q,https://app.t2.world/article/clz1s3rpt10767281zmckgvn5ast,https://app.t2.world/article/clz1trdpd11423031zmc18isajea,I am veering towards charts and sticky notes just because people prefer being off-screen sometimes; but personally also very happy to make it a mentimeter + miroboard session (would it be okay to make this decision based on what the conference organisers have seen work for similar sessions?),Whiteboard + sticky notes is what I am veering towards,,,,,,,,,,Keep,Under Review
+9qVlpYY,dWA8Ezy,2026-02-15 18:28:50,Raashi,Agarwal,Co-Founder,Climate & She,"Climate & She is a non-profit organization dedicated to researching, navigating and raising awareness on societal problems that particularly fall under the intersection between gender, safety and climate change.",https://www.instagram.com/climate.and.she?igsh=bG41MDByaWY2eGZz,,https://www.linkedin.com/company/climate-she/,"Dialogues ",I consent to VizChitra publishing my submission and the review of my application.,TRUE,,,,,,,,Visualizations for Community,#MenoPAUSE: Climacteric Change Amidst Climate Change,"Yes, only once","Navigating Climacteric Change amidst Climate Change is a challenge for Bengaluru women due to social stigma and a lack of awareness. 
+
+Project #MenoPAUSE is a call to action: we want the citizens of Bengaluru to pause for this cause. In the rush of our fast-paced urban lives, the physical and emotional transition of menopause often goes unnoticed or ignored. This dialogue is a dedicated effort to hit the ""pause button"" on our daily grind to think, learn, and talk about a life stage that affects half of our population.
+
+Specifically designed for the urban landscape of Bengaluru, it focuses on mapping the intersection between women’s hormonal health and the city’s environment. We are building a foundation of knowledge that empowers women to navigate this change with dignity and support.
+
+50% of our population will experience menopause in their lifetime. It may be a natural transition, but it ain’t pretty. Along
+with a plethora of side effects including, but not limited to, brain fog, insomnia, hot flushes, night sweats, ear pain AND
+change of taste, one is forced to hide their discomfort in a societal landscape that fails to acknowledge the pain of
+women, refusing them rest and empathy in both domestic and work settings.
+
+We were inspired to take up this issue because we noticed this glaring discrepancy in our own homes, Vishruti’s mother
+didn’t know she was going through perimenopause for months, precisely because its symptoms aren’t well known and
+recognized!
+
+Climate change and menopause may appear to be unrelated, yet they intersect in deeply personal and structural ways. Rising global temperatures intensify heat waves, which can worsen menopausal symptoms such as hot flashes, night sweats, fatigue, and sleep disturbances. Women in the menopausal transition are physiologically more sensitive to temperature fluctuations, making climate change not just an environmental crisis but also a gendered health concern. 
+
+Initiatives like the Vizchitra help situate such broader social and environmental narratives on a larger platform to reach out to the community of today for a better future tomorrow. 
+
+Overarching Structure and Design of the Dialogue includes: 
+
+1) Past History and Present Perils (5 min)
+
+This Section will focus on the cultural context of menopause in media and society, including: Etymological Origins, Historical Contexts, and the Current Landscapes in Women's Health. 
+
+2) Menopause: Terms and Conditions (10 min)
+
+This Section aims to educate the participants on the entirety of the menopausal process, including their symptoms and timelines, from premenopause to postmenopause.
+
+3) Climate Change: Myths Galore! + Bubble Bursting 
+
+We will go over the common misconceptions that one hears about this climate crisis, bursting the dangerous myths that continue to have a strong hold on our society. 
+
+4) Biological and Social Impact of Climate Change on Women's Wellness",https://drive.google.com/drive/folders/1GULvB-zTm9d8QLA7VorGFZqfvj80sfrb,https://climateandshe.carrd.co/,,,"Projector, Clicker, Mic, ",,,,,,,,,,Keep,Under Review
+RGpY5oQ,ODPo0Ep,2026-02-15 18:28:53,Raja,Biswas,Assistant Professor,,"I am a Design educator in Communication Design with a focus on design research, service design, and experimentation-led learning. In my free time, I love to paint, cook, ferment or analyze dreams. Always up for a conversation.",https://www.instagram.com/_rajabiswas_/,,,"Dialogues ",I consent to VizChitra publishing my submission and the review of my application.,TRUE,,,,,,,,Visualizations as Craft,Career Maps around Data Visualization: Mapping the different career paths taken by Data Viz enthusiasts in the room,I have never conducted a session,"The success of the session depends on the assumption that the participants are data visualization enthusiasts. The intention of the session is to enable people to open up and share their career aspirations, the paths that they have taken, where they are in the path, the factors influencing their career choices and see if some patterns emerge through the discussions and collective activities. The session shall be divided in different rounds where each round will be focused on 1 aspect alone, resulting into a visualization after each round. The hope is that at the end of the session, we get a comprehensive visualization leading to collective understanding of the ""Career Maps around Data Visualization"" by the participants of the talk.
+In the past, I have conducted similar sessions at Dessau, Germany as a part of bi-weekly voluntarily organized sessions called 'ESC'. Additionally, I've also been a Erasmus+ facilitator.",,,,"Projector, mic, tables, chairs, lots of chart papers, sketch pens, sticky notes","yes, all of it.",,,,,,,,,,Keep,Under Review
+68ovLO5,D41Zddl,2026-02-15 18:29:28,Thilakasri,Krepanand,Freelance Designer,NA,"I’m a South Indian designer, facilitator and artist based in Hyderabad. As a creative, I wear many hats: ux & visual designer and video editor. I've volunteered extensively in the climate space and worked in the field of community organizing.",https://www.instagram.com/thildabear/,,https://www.linkedin.com/in/thilakasri-krepanand-9aa564159/,"Dialogues ",I consent to VizChitra publishing my submission and the review of my application.,TRUE,,,,,,,,Visualizations for Community,"Whose Crisis? Reading Data Across Caste, Class, Gender, Religion and more","Yes, only once","I co-hosted a podcast around labour and organizing across various themes and intersections and that has led me to see how important it is to continue having conversations about the labour that goes behind keeping a city, office, country going and visibilizing our similarities and differences with understanding will help us come together stronger.
+
+The Central Question we will be grappling with in the dialogue is: 
+How do our intersecting identities and lived experiences change what we see as ""the story"" in labour data; and how can we build understanding across our differences rather than assume the worst?
+
+Who is this dialogue for?
+
+Practitioners, researchers, and organizers who work with labour data and community stories or anyone curious on this subject.
+
+This includes people who've felt invisible in dominant narratives, those who've realized their privilege shaped their interpretations, mixed roles from different contexts (Global South/North, formal/informal sectors), and anyone grappling with how their position shapes what they notice or miss in datasets. 
+
+Importantly: this is for people willing to be vulnerable about their blind spots.
+
+Why is this conversation needed now?
+
+The urgency: We're drowning in data about labour ""crises""; gig economy exploitation, care work invisibility, climate migration, pandemic impacts. But whose crisis gets centered? When we see a headline about ""essential workers,"" who do we picture? When data shows ""unemployment rising,"" whose unemployment matters most to us?
+
+In an information-saturated world, we increasingly filter by suspicion; assuming bad faith, reading for what confirms our priors. But labour data is always incomplete by design: it reflects whose work gets counted, whose struggles get named, whose bodies are rendered legible to institutions. Your podcast demonstrated this: the same city looks entirely different when viewed through the eyes of sex workers vs. gig workers vs. domestic workers.
+
+The tension: We need numbers for advocacy (to prove harm, demand resources), but numbers also flatten lived experience. And when we bring our full selves to reading data; our caste position, our gender, our class mobility, our religious context, we see different patterns, different urgencies, different villains and heroes.
+
+This conversation is needed because intersectional literacy is a practice, not a position. It requires us to slow down, compare notes, and ask: ""What am I missing because of where I stand?"" In a moment where social media rewards hot takes and certainty, this dialogue creates space for collective sense-making across difference.
+
+What perspectives or experiences should be represented?
+
+- People who work with labour data professionally AND people whose labour is the data
+- Participants who've experienced invisibility in datasets (domestic workers, informal sector, care workers)
+- People across caste, class, gender, religious positions; the goal is productive friction, not comfortable agreement
+- Organizers who've had to translate community experiences into ""legible"" data for advocacy
+- Data practitioners who've realized their defaults (what they assume, what they overlook) are shaped by privilege
+- Participants from contexts where certain intersections are hypervisible to compare what gets counted where
+
+How will you structure the conversation? (90 minutes)
+
+[0-10 min] Opening: The Same Numbers, Different Stories
+
+Present 3-4 data points about labour (e.g., ""gig worker earnings dropped 30%"", ""essential workers faced highest COVID rates"", ""care work accounts for X% of unpaid labour"")
+
+Quick popcorn round: ""When you hear this statistic, whose face do you see? What's your gut reaction anger? sadness? 'I knew it'?""
+
+Make visible: we're all reading the same numbers differently based on our lived experience
+
+[10-25 min] Small Group: Reading for What's Missing (groups of 4)
+
+Each group gets a simple labour dataset or visualization (platform workers, domestic workers, etc.)
+
+Prompt: ""Read this data through ONE intersectional lens:
+
+Group A: Read for gender
+Group B: Read for caste/class position
+Group C: Read for religion/migration status
+Group D: Read for ALL three simultaneously
+
+What patterns emerge? What questions does this lens force you to ask? What's invisible in this data that would be visible to someone living it?""
+
+[25-40 min] Experience Exchange: When Data Met Reality
+
+Participants pair up (ideally across different positionalities) and share:
+
+""Tell me about a time you realized your reading of labour data was incomplete because of your position""
+""When has data about your community or your kind of work gotten it deeply wrong? What did they miss?""
+
+[40-60 min] Full Group: Building Intersectional Literacy Together
+
+Groups report back on what they noticed. The patterns are captured on a visible space (whiteboard/digital board):
+
+What became visible when we slowed down and compared lenses?
+Where did we see the same data point but understand different urgencies?
+What questions do we need to ask BEFORE we visualize labour data?
+
+Critical turn: 
+
+""When we saw different things in the data, what was our first instinct? Suspicion? Dismissal? Curiosity?""
+
+This is where we bring in the urgency around filtering through understanding vs. assuming the worst. In advocacy work, we often treat differing interpretations as bad faith. But intersectional reading means accepting that someone seeing something different isn't lying; they're standing somewhere else.
+
+[60-75 min] Pattern Mining: Principles for Practice
+
+Small groups (new combinations):
+""Based on what we've learned, what would it look like to design labour data collection and visualization WITH intersectional literacy built in?""
+
+Can generate concrete practices:
+
+Before collecting data, ask: ""Who does this definition of 'worker' exclude?""
+When visualizing, include: ""What this data can't tell you...""
+In presentations, practice: ""Here's what I see from my position, what do you see from yours?""
+
+[75-85 min] Synthesis: Commitments, Not Conclusions
+
+Full group harvest:
+
+One thing you'll do differently in your next data project
+One question you're sitting with (not answering)
+One person/perspective you want to learn from after today
+
+[85-90 min] Closing Round
+
+Quick popcorn: ""Complete this sentence: Intersectional data literacy is...""
+
+What should participants walk away with?
+
+- Discomfort (the productive kind): Recognition of their own blind spots and defaults
+- Curiosity over certainty: Questions they'll carry into their next project
+- Peer connections: People who see data differently and are willing to learn together
+- Concrete practices: Specific prompts and questions to build into their workflow
+- Shared language: Ways to talk about positionality and data interpretation without defensiveness
+- Hope: That understanding across difference is possible, even in polarized times
+
+Encouraged mindset:
+
+- Willingness to be wrong, to have missed something, to center others' expertise
+- Commitment to curiosity over judgment
+- Understanding that this is practice—we're all learning",https://open.spotify.com/show/4NbQsJB8euW4XNWcBbz9bZ?si=5e1fa395fdf54276,,,"Printouts of some data, whiteboard and markers, sticky notes",Yes!,,,,,,,,,,Keep,Under Review
+q46A792,WOoejWN,2026-02-15 18:29:34,Yashita,Singh,Researcher,Indian Institute for Human Settlements,"
+I'm a data researcher and illustrator working at the intersection of urban informatics and critical visual inquiry, where I question how we measure and represent cities, migration, climate change, and economic development.
+",https://www.instagram.com/colourgazing/?hl=en,,https://www.linkedin.com/in/yashita-singh-aa7805147/?originalSubdomain=in,"Dialogues ",I consent to VizChitra publishing my submission and the review of my application.,TRUE,,,,,,,,Visualizations at Work,"Before the Chart, Before the Choice: How Framing Shapes Visualisation and Decision-Making","Yes, only once","Visualisations are never done in a vacuum. Every map, chart or dashboard is a bridge from what we know to the incremental insights that aim to enable better decisions. In this analytical process, key factors determine effectiveness: the conceptual framing that influences definitions, measurements, and thresholds, and the choices of scale and aggregation. We draw from our practice and reflect on how such factors shape policy debates and public understanding. A city can appear deindustrialised or diversifying, informal or a start-up hub, unequal or resilient, depending on certain choices made in the data representation.
+
+Prior knowledge of the reality being captured by data provides a conceptual frame, with transformative influence on what is visible and what is not. What counts as a city, affordable house, or most frequent commute choice? Nobody announces these decisions. They get made in government meetings and policy documents, often unnoticed by masses. What's left behind is a number: a threshold, a category, a line on a map, that starts to feel like ""the fact"" when visualised. This session is about what happens when you move that line and what it feels like to be the person who drew it.
+
+Using cases from projects I have worked on with my team at the lab:
+
+1) Urban Definition: India defines a place as ""urban"" based on how many men have left farming, not women. So, in a village where women are in the service sector but men migrated? Stays rural. No roads, no schemes. The work is real. The definition is blind to it.
+
+2) Mobility Pattern: City transport surveys show two-wheelers dominate in aggregate. But that's how men move. Women walk and take buses for safety, cost, and access. They're invisible in the data that shapes transit policy.
+
+3) Housing Affordability: Finance rules suggest a two-income Bengaluru family can afford a home in a certain price range. In reality? Those homes don't exist near jobs or schools. The rule exists; the market doesn't support it.
+
+These aren't coincidental mismatches but choices made by real decision makers that become invisible rules of who gets counted and who doesn't.
+
+The interactive exhibit doesn't explain this but makes one feel it. Three modules, each built as a choice situation in the exhibit. In the first, you play a planning official setting thresholds for what makes a settlement urban and you commit. Then the map loads, showing what India looks like under your definition, compared to versions different choices would have produced. In the second, you toggle between mobility proxies and occupation categories, watching who gets counted as economically active shift in real time. In the third, you build affordable housing band using Karnataka's per capita income data. Then hit reveal and see what's actually being built in Bengaluru, and where.
+
+The point is in the sequence: you choose before seeing, commit before understanding what's at stake.
+
+The imagined audience for this session: Urban planners, policymakers, data practitioners, researchers, journalists, and anyone curious about how invisible technical choices shape their cities, transport, and housing options.
+",https://www.themigrationstory.com/post/understanding-migration-through-public-datasets,https://docs.google.com/document/d/1T4dIGZLRq6xpxXTjvLf2gUVwcD038-0j/edit,,"a control panel with toggles, sliders, cards to pick up a role and a screen for the final visual","room with a projector, chairs and a table for the control panel",,,,,,,,,,Keep,Under Review
+445vKOA,xXQlQNJ,2026-02-15 18:30:29,Anurag,Nair,User Experience designer,IBM,"I’m a Bangalore-based UX designer creating empathetic, user-centered solutions with collaborative teams to drive meaningful social impact, and an avid urban sketcher who observes the world through my pen.",https://www.instagram.com/anyrag_24/,,https://www.linkedin.com/in/anurag-nair-17aa341a6/,Workshop,I consent to VizChitra publishing my submission and the review of my application.,TRUE,,,,,,,,,,,,,,,,,Visualizations for Community,Motivating ownership and participation in public spaces,"Yes, only once","Humans have evolved with a strong sense of territory. As a result, the public spaces humans share - like a simple streetscape - often sees confrontational and un-accommodating behaviour. When we think of such conflicting and chaotic realities, we are demotivated and discouraged. This decreases our empathy and tolerance for collective intelligence.
+
+This workshop motivates stakeholder centric solutionising and participatory intelligent action. We use physical, territorial visualizations (as elaborated on the Miro attached) as well as dynamic digitized visualizations that change as deliberations take place over the length of the workshop. Each attendee roleplays a stakeholder to a problematic territory (a streetscape). They are given a docket with their personal roles - describing their persona, their incentives, motivations and red-lines. Using this background information, each stakeholder participates in constructive deliberation. This dialogue is directed by three of us (a practising UX designer/ Anurag Nair, urban planner/ Romit Sinha and participative policymaker/ Vashishth Doshi) with inputs on subject matter AND, exciting ad-hoc events that keep the deliberations agile.
+
+As the discussion carries, the digital playground will dynamically update with changes to everyone’s respective territories (shares) within the treemap. Every hour we will have the attendees update their shares in the physical representation of the digital playground. This motivates a very personal interaction to territories - and human evolutionary thinking. Using this format, we hope to converge everyone to collective intelligence.",https://miro.com/app/board/uXjVGAZ8fG4=/,,,"Projector, whiteboard, markers, a screen","Projector, whiteboard, markers, a screen",Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
