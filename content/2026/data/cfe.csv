@@ -398,8 +398,70 @@ Link to Local Grids to Global Power: https://www.ceew.in/publications/local-grid
 ","We intend to create the visualisations digitally. However, we are open to experimenting with the physical medium. A draft of the chart we are looking to reimagine is attached to this application. The original chart looks at data from 2020 to 2025 and visualises one circle as 100 MW. In the exhibition, we want to decrease this unit further—one circle representing 1 or even 10 MW—to increase the density and scale of the data. ",https://storage.tally.so/private/CEEW-Clean-energy-powers-half-of-installed-capacity.pdf?id=lM0zP6&accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImxNMHpQNiIsImZvcm1JZCI6ImxiZXlndiIsImlhdCI6MTc3MTE3NjE4N30.zMw4NKOToVdZXgEN051mYdB7Fw2nr_p2otR14rjdND0&signature=1e7319faa5b239e1fbf46ad633d9794dda7ae2640c6c4d9448cae20227bab932,A wall or part of it. Materials—such as sunboard—to print or emboss the visual on. Magnifying glasses to see the energy transition in the earliest years up close. Benches placed at a distance to allow viewers to sit and take in the transition at scale.,"The data for the project has already been collected. The original visual was featured in our book, Local Grids to Global Power. For the exhibition, we will be extending the same visual and taking it beyond the page. 
 
 Given that the data and concept already exist, we will need roughly 2-3 weeks to draft the final exhibit ans we're confident we can install it within schedule. ",I consent to VizChitra publishing my submission and the review of my application.,TRUE,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+7RGodoZ,J9RegjR,2026-02-15 17:40:53,"Bunyan ",Usman,Student,Srishti Manipal,"A human-centered design student exploring new media, interactive systems, and data driven storytelling, building immersive experiences that connect technology and emotion through thoughtful, experimental design.",Individual,,,https://storage.tally.so/private/projs.pdf?id=GQooGe&accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkdRb29HZSIsImZvcm1JZCI6ImxiZXlndiIsImlhdCI6MTc3MTE3NzI1NH0.NKzhBd2WclQpqtzQyfgyF4dPPVSigaE8urEeSf7OrAc&signature=45347c8602cca45d742750dda76a411353314f85d13ec452951852b759263f70,https://www.instagram.com/bongyunng/,,,SkyTrace,"SkyTrace India is an interactive, large-scale installation that visualizes the environmental footprint of India’s aviation sector. The work transforms abstract aviation statistics into a tangible, spatial experience, bridging the gap between the convenience of travel and its ecological consequence.The installation opens with a macro, real-time map of Indian airspace. Thousands of flight paths are rendered as ""plexus"" of interconnected nodes. Every path on the screen is already live-calculated, displaying its specific CO₂ emissions and fuel consumption. The screen is a dense, pulsing network of the energy required to keep India moving.
+Using hand-tracking as the sole input method, visitors can reach out and select a city. Upon selection, the visual seamlessly zooms into that urban center. The data then shifts from a national overview to a hyper-local breakdown: daily flight frequencies, the ratio of international vs. domestic traffic, and the specific environmental burden that city carries. This transition allows visitors to toggle between different visualization modes, such as a localized heatmap, to compare their surroundings with other urban hubs.
+The core of the project is the translation of flight telemetry and emission models into a visual language that emphasizes weight and volume. It asks the visitor to move beyond being a passive passenger and instead confront the invisible atmospheric cost of their city’s connectivity.
+
+Core Question: How does the individual choice of a city’s mobility translate into a collective, invisible burden on our shared environment?","Live/Sourced Flight Telemetry: Utilizing OpenSky Network or FlightRadar24 datasets to track aircraft types, routes, and altitudes across the Indian subcontinent.
+Emission Modeling: Applying the ICAO Carbon Emissions criteria to calculate real-time CO₂ output and fuel burn based on specific aircraft models and flight durations.
+Urban Aviation Stats: City-specific data including annual passenger growth, airport noise contours, and the environmental impact of ground-level airport operations.
+These datasets are processed via Python scripts to drive the generative visuals in real-time, ensuring that the ""weight"" shown on screen is grounded in verified environmental science.","National View: A top-down map where flight paths are lines that shows all the flight movement happening across India
+The City Zoom: A focused, high-detail view that uses heatmaps and data overlays to quantify the local impact.
+Interactivity: Using Kinect/LiDAR, the user’s hand acts as a cursor, allowing them to ""touch"" the sky. This interaction raises questions about personal agency: by selecting their city, they confront the specific data of their own environment, making the global climate crisis feel immediate and personal.",https://storage.tally.so/private/WIP_compressed.pdf?id=OojVZY&accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ik9valZaWSIsImZvcm1JZCI6ImxiZXlndiIsImlhdCI6MTc3MTE3NzI1NH0.MSEzFhDXFvqntzPBk9KbitCl1paIs5Ygg49DAiBFzrY&signature=a00d0e9499843099d99e420d620f40e0a04c485fa630d0f4181eea6dc980ffea,"Equipment: LED Wall (preferred for contrast, and best experience ) or a High-lumen Projector, Kinect V2(I already own) or LiDAR (OAK-D or RPLiDAR)
+Space: A darkened gallery area(if projector)
+","This is a new proposal that builds on my existing expertise in TouchDesigner and Kinect-based interactive installations.
+But I do own a projector and a Kinect, so i can start working on it, now itself",I consent to VizChitra publishing my submission and the review of my application.,TRUE,,Keep,Under Review
+dWrl5Ro,obBke15,2026-02-15 17:50:06,Rama Krushna,Behera,Senior Product Designer,Razorpay,"Creative Technologist who loves working at the intersection of design, technology, and art, with a focus on building user-first and scalable - products, systems, and tools.",Individual,,,https://storage.tally.so/private/Portfolio-behera-ramakrushna.pdf?id=OojEgY&accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ik9vakVnWSIsImZvcm1JZCI6ImxiZXlndiIsImlhdCI6MTc3MTE3NzgwN30.XJnH31hH7cngygFvv-HbpdBwx77l0LLrHEZ6TQpZbZE&signature=d489e26d2442c6d0731591f65b291fb308e4200091557793cde9b222a6e2f584,https://instagram.com/algorhythm_lab,https://x.com/rkdotdesign,https://linkedin.com/in/rkdotdesign,Coral Dreams,"Coral Dreams is an interactive data-driven installation that allows visitors to explore how coral reef ecosystems respond to environmental change. Using hand gestures, participants can switch between coral species and manipulate two key variables - ocean temperature and water pollution, to observe how these factors affect coral growth, bleaching, fragmentation, and recovery.
+
+Visitors would stand before a projection of a living reef. One hand controls temperature, the other pollution levels. As values shift, the reef visibly transforms in real time: vibrant branching corals bleach under thermal stress, soft corals retract in polluted waters, growth rates slow, and biodiversity declines. When conditions improve, recovery processes emerge.
+
+Data is not used as visual ornamentation; it drives the underlying biological rules of the system. Real climate and oceanographic datasets inform thresholds, bleaching probabilities, growth curves, and mortality rates. The reef behaves according to ecological models derived from scientific research.
+
+The core question of the work is: How do invisible environmental changes accumulate into irreversible ecological loss? By allowing visitors to directly “stress” the reef, the piece reframes climate change and pollution as embodied decisions rather than distant statistics.
+
+Situated within the context of global coral reef decline - including reefs in the Indian Ocean and Andaman region, the work connects planetary systems to local ecological futures.
+
+Coral Dreams aligns with the theme of Data, Otherwise by transforming scientific datasets into an experiential ecosystem where data becomes a living, responsive organism rather than a static visualization.","The installation uses real environmental and ecological datasets related to coral reef health. These include:
+
+- Sea surface temperature anomalies (NOAA Coral Reef Watch)
+- Ocean pollution indicators and nutrient loading datasets
+- Coral bleaching threshold data
+- Coral growth and mortality rates from marine research studies
+- Species-specific resilience and recovery data
+
+These datasets define the mapping between temperature/pollution inputs and coral behaviors such as bleaching probability, growth rate, structural degradation, and recovery capacity.
+
+Climate and reef datasets will be sourced from publicly available scientific databases (NOAA, NASA Earth Observatory, UNEP, ReefBase archives, peer-reviewed marine biology research). Data will be cleaned and translated into parametric ecological rules that drive the generative system in real time.
+
+Rather than simulating arbitrary effects, the reef’s transformation is constrained by real environmental thresholds and documented biological responses.","Coral Dreams is an immersive projection-based installation where a generative coral reef ecosystem fills the wall in real time. Built using ecological rules derived from climate and ocean data, the reef responds to visitors’ hand gestures: one hand controls ocean temperature, the other pollution levels.
+
+As values shift, the reef transforms gradually - corals bleach, retract, fragment, slow in growth, or partially recover. These changes follow real environmental thresholds rather than dramatic visual exaggeration.
+
+An evolving underwater soundscape reflects reef health: vibrant ecosystems produce layered biological sound, while stressed reefs become sparse and quiet.
+
+The work asks: When does stress become irreversible? How much change is too much? Can ecosystems truly recover once thresholds are crossed?
+
+By translating scientific datasets into embodied interaction, the installation makes climate data experiential, turning abstract metrics into visible ecological consequence.",https://storage.tally.so/private/Coral-Sketch.pdf?id=xl0gr9&accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InhsMGdyOSIsImZvcm1JZCI6ImxiZXlndiIsImlhdCI6MTc3MTE3NzgwN30.HdRDESQJsVIsTWQb2w3f3tPGD6wDCQWjVyYBGgLemjg&signature=8c5dcc33f505fea91eaaa9f7034dd30f6578588e252e75f6a42360ea4c9ae61a,"- 1 projector or large LED display
+- Projection surface approx. 10–15 ft wide (adaptable to space)
+- 1 dedicated power source
+- 1 webcam
+- 1 table for computer setup
+- Controlled lighting (dimmed environment preferred for immersion)
+- Stereo speakers or small PA system for ambient sound
+
+The system runs on a laptop
+
+No internet connection is required during exhibition (data is pre-integrated).
+
+Installation time: approximately 1-2 hours including calibration of projection and gesture tracking.
+
+The work can adapt to different spatial scales and does not require structural modifications.","Coral Dreams is currently in active development. The gesture-control framework and generative coral prototypes have been tested in TouchDesigner. Environmental datasets and ecological mappings are being integrated into the system.
+
+The project is feasible within the exhibition timeline. A fully functional beta version can be completed within 2–4 weeks, followed by refinement, data calibration, and sound integration.
+
+All technical components (projection-based setup with gesture tracking) use established workflows and tools I have previously worked with. The system does not rely on custom hardware fabrication, reducing production risk.
+
+I confirm that the work can be completed, tested, and installed within the exhibition schedule.",I consent to VizChitra publishing my submission and the review of my application.,TRUE,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review

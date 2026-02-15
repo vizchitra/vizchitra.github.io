@@ -2035,9 +2035,90 @@ Key Takeaways for Attendees:
 1. Thinking Beyond the Screen: Strategies for using physicalization to create emotional resonance in data storytelling.
 2. Community Building: Understanding how shared data experiments can extend the life of a conference and strengthen professional bonds through nostalgia and surprise.
 3. May be, Lifelong Penpals",,,,"Yes, only once",,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+GxWL2Az,ZjVZEBe,2026-02-15 17:41:10,Soma,Gorai,Senior Designer-1,ValueLabs,"An architect turned designer, Soma views software as ""inhabited space."" She builds resilient tools that align digital interfaces with the user's mental model.",https://www.instagram.com/joanofarch22/,https://x.com/volatile_mess,https://www.linkedin.com/in/soma-gorai/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations at Work,Escaping the Spreadsheet: Visualizing Mental Models,"Description
+Why must a waiter mentally translate a chronological list of orders back to a physical table? Why do Jira lists flatten a web of team dependencies into isolated, static rows? These disconnects occur because our interfaces mirror how data is stored (rows and columns) rather than how work happens (spatial and interconnected).
+This talk explores a critical failure in Enterprise UX: the reliance on ""Spreadsheet Thinking."" I will share a case study of a warehouse manager's dashboard: originally a collection of boxed widgets and static tables. While the data was accurate, it was spatially blind. To find a bottleneck, the manager had to mentally translate row numbers into physical aisle locations.
+The Core Idea We need to shift from designing for the database schema to designing for the user's mental model. This means moving beyond static tables to ""Pervasive Analytics,"" visualizations that represent the topology of work, whether that is a physical floor plan or a network of task dependencies.
+Structure & Flow
+The Universal Trap: We start by identifying why the ""List"" is the default view for management tools, despite being poor at showing relationships.
+Three Vignettes of Disconnect: We will analyze three rapid examples of how ""bad viz"" hides reality from the decision-maker:
+The Physical: A warehouse manager staring at a table of ""Pending Picks,"" unable to see that the bottleneck is physically causing a traffic jam in Aisle 4.
+The Spatial: A restaurant manager trying to gauge table turnover from a list of timestamps instead of a floor plan.
+The Abstract: A product owner using Jira lists that hide the critical web of dependencies between teams.
+The Pivot: We will look at how we replaced the manager's abstract tables with a live ""digital twin"" map. This allowed them to identify bottlenecks instantly without mental calculation.
+The Framework: We conclude with a practical approach to ""Spatial Consistency."" How do you visualize context? How do you map the relationships between data points rather than just listing them?
+Why This Matters This topic connects to broader conversations in data visualization about utility over aesthetics. It challenges us to see visualization not just as a reporting layer, but as the primary operating interface for complex systems.
+Audience & Takeaways This talk is for designers, product managers, and data practitioners working in complex domains. You will leave with a diagnostic lens to spot ""Spreadsheet Thinking"" in your own tools and a new vocabulary for visualizing the ""topology"" of work.",https://somagorai.website/case-study/digital-twin,,,I have never given a talk,,,,,,,,,,,,,,,,,,,Keep,Under Review
+xXK2eed,0QMDBNy,2026-02-15 17:49:40,ciju,cherian,,FinBodhi,"I am a dev, who has been interested in visualization (data and concepts) for some time. It's been part of my writing (https://ciju.in/) and the product i am building - https://finbodhi.com/ .  I like understanding domains and explaining their essence. ",,https://x.com/ciju,https://www.linkedin.com/in/ciju-cherian/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations as Craft,Data Visualization: Understanding the medium,"## The Why
+
+Every medium has range. A newspaper can run shallow, attention-grabbing stories, or publish reporting that digs into what's going on. A documentary can be edited to push your emotions and sell you a neat conclusion, or made in a way that helps you understand multiple perspectives. Most of what we encounter stays surface-level, but that's not a limitation of the medium itself.
+
+The same is true for data visualization. The same dataset might be shown as a bar chart, a color map, or a visualization that surfaces patterns and prompts deeper questions. The medium allows for a universe of possibilities. How do you find your way through it?
+
+## The What
+
+To navigate that space, we need a better understanding of how the medium works. Data visualization operates differently from forms like writing. It relies on perception as much as reasoning.
+
+This means working with two kinds of bias. Visual perception comes with built-in shortcuts: we naturally compare lengths, spot outliers, and group by color before we've consciously thought about it. These perceptual biases can be harnessed to communicate quantities clearly, or they can mislead if used carelessly. Statistical processes introduce a different set of biases through sampling, aggregation, and summarization. These choices shape what the data says before it's ever drawn on screen.
+
+Recognizing these biases gives us a more systematic way to think about visualization. Instead of picking chart types by convention, we can reason about what a given encoding reveals or hides.
+
+## The How
+
+The talk looks at visualization and data as two separate components, then brings them together.
+
+On the **visualization** side, we look at how visual encodings tap into perceptual biases to communicate quantities, and how our tendency to compare can be used as a deliberate lever in shaping what a visualization emphasizes.
+
+On the **data** side, we look at how statistical summaries shape the story before any visual choice is made, and how understanding that process helps us show data more honestly.
+
+We walk through a few pieces of my work, including [A Visual Exploration of Indian Population](https://ciju.in/writings/population-census-2011-a-visualization), to see these ideas in practice.
+",https://ciju.in/writings/population-census-2011-a-visualization,https://finbodhi.com/docs/blog/benchmark-scenarios,,"Yes, only once",,,,,,,,,,,,,,,,,,,Keep,Under Review
+Y58YPJv,obBkMOx,2026-02-15 17:50:56,Varshini,Jeyachandran,Gen AI Developer,Cornet Health,"GenAI developer and product thinker who turns messy real-world problems into simple solutions. I understand users first, then build fast—from prototype to product. I also enjoy creating visualization dashboards, especially for healthcare data.",https://www.instagram.com/varshinijeyachandran,https://x.com/varsh2704,https://www.linkedin.com/in/varshini-jeyachandran-678a01228/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations at Work,"The Care Weave: Seeing Healthcare as a Story, Not a Spreadsheet","# Abstract
+
+If you look at a doctor’s computer, healthcare looks like a list: a blood test on Tuesday, a pill on Wednesday, a check-up on Friday. But for a patient, healthcare isn't a list of dates - it’s a feeling of being supported or being forgotten. When the doctor, the family, and the hospital are all in sync, life feels stable. When they stop talking to each other, everything starts to unravel.
+
+How do we map the ""strength"" of a healthcare team? How do we show the mess that happens when a system fails a patient?
+
+This talk introduces The Care Weave, a way of seeing healthcare as a woven fabric. We use four simple lines to represent the four main characters: the Patient, the Family, the Doctor, and the Hospital System. Instead of just marking events, we watch how these lines move together. When care is working, the lines braid into a tight, strong rope. When things break, the lines push away from each other or spiral into a messy knot.
+
+The speaker will show how they used ""hand-drawn"" styles to make scary data feel human and approachable. You’ll learn how to use simple visual cues - like lines that ""shake"" with anxiety or ""vortexes"" that show a crisis - to tell a deeper story than a standard bar chart ever could.
+
+The human body is the example, but these lessons are for anyone who needs to visualize how people work together (or fall apart) in the real world.
+
+# The Build: How the Talk Flows
+
+1. The Problem with ""Dots on a Map""
+
+Why traditional healthcare charts tell you what happened, but never how it felt.
+The Big Idea: Seeing care as a ""weave"" - where the strength of the system is found in the gaps between the lines.
+
+2. Giving Everyone a Voice
+
+How we designed four distinct ""threads"" for the Patient, Family, Doctor, and System.
+Why we chose a ""pencil-sketch"" look over a clean digital line to build trust and empathy.
+
+3. The Strength of the Braid (When things go right)
+
+Showing ""The Goal"": How the four threads pull together into a smooth, rhythmic braid when a team is working as one.
+The ""Ribbon"" effect: When things are so stable that individual effort disappears into one strong path.
+
+4. The Chaos of the Spiral (When things go wrong)
+
+The Silo Effect: Watching lines push away from the center to show what it looks like when doctors stop communicating.
+The Crisis Vortex: A look at ""The Tangle"" - where too much uncoordinated activity creates a spiral that traps the patient in a cycle of confusion.
+
+5. The Human Reset
+
+The ""Reset"" moment: Showing how one person (like a case manager) can step in and pull the messy spirals back into a calm, straight line.
+Takeaway: Three simple rules for using line-art to show ""teamwork"" and ""trust"" in any design project.
+
+# Who is this for?
+This talk is for designers, developers, and storytellers who are tired of boring dashboards. If you want to learn how to use movement, tension, and simple hand-drawn shapes to represent complex human relationships, this is for you. No medical or math background required - just a curiosity about how to tell better stories with data.
+
+# Why this works:
+1. Grounded Metaphors: ""Braid,"" ""Spreadsheet,"" ""Threads,"" and ""Spirals"" are easy to visualize instantly.
+2. Focus on ""Why"": It focuses on the human feeling (anxiety, trust, confusion) rather than the code (Rough.js, D3.js).
+3. Clear Conflict: It sets up ""The Braid"" vs. ""The Chaos,"" which makes the talk sound like an exciting demonstration.",,,,I have never given a talk,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
