@@ -40,11 +40,11 @@
 			</p>
 		</Prose>
 
-		<Text type="caption">Proposal Deadline: <strong>15 Feb 2025, 23:59 IST</strong></Text>
+		<Text type="caption">Proposal Submissions closed on <strong>15 Feb 2025</strong></Text>
 		<Cluster justify="start">
-			<Button href="https://forms.vizchitra.com/proposals" color="pink" external={true}
+			<!-- <Button href="https://forms.vizchitra.com/proposals" color="pink" external={true}
 				>Submit your Proposal</Button
-			>
+			> -->
 
 			<Button href="/2026/submissions" color="blue">View all Submissions</Button>
 		</Cluster>
