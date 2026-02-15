@@ -22,7 +22,7 @@ export interface ThemeTokens {
 	dark: string; // var(--color-viz-{color}-dark)
 	muted: string; // var(--color-viz-{color}-muted)
 	subtle: string; // var(--color-viz-{color}-subtle)
-	strong: string; // var(--color-viz-{color}-strong)
+	solid: string; // var(--color-viz-{color}-solid)
 	// Tailwind utilities
 	bg: string; // bg-viz-{color}-light
 	border: string; // border-viz-{color}-muted
@@ -65,7 +65,7 @@ export const themeTokens: Record<Color, ThemeTokens> = {
 		dark: 'var(--color-viz-grey-dark)',
 		muted: 'var(--color-viz-grey-muted)',
 		subtle: 'var(--color-viz-grey-subtle)',
-		strong: 'var(--color-viz-grey-strong)',
+		solid: 'var(--color-viz-grey-solid)',
 		bg: 'bg-viz-grey-light',
 		border: 'border-viz-grey-muted',
 		text: 'text-viz-grey-dark'
@@ -76,7 +76,7 @@ export const themeTokens: Record<Color, ThemeTokens> = {
 		dark: 'var(--color-viz-pink-dark)',
 		muted: 'var(--color-viz-pink-muted)',
 		subtle: 'var(--color-viz-pink-subtle)',
-		strong: 'var(--color-viz-pink-strong)',
+		solid: 'var(--color-viz-pink-solid)',
 		bg: 'bg-viz-pink-light',
 		border: 'border-viz-pink-muted',
 		text: 'text-viz-pink-dark'
@@ -87,7 +87,7 @@ export const themeTokens: Record<Color, ThemeTokens> = {
 		dark: 'var(--color-viz-blue-dark)',
 		muted: 'var(--color-viz-blue-muted)',
 		subtle: 'var(--color-viz-blue-subtle)',
-		strong: 'var(--color-viz-blue-strong)',
+		solid: 'var(--color-viz-blue-solid)',
 		bg: 'bg-viz-blue-light',
 		border: 'border-viz-blue-muted',
 		text: 'text-viz-blue-dark'
@@ -98,7 +98,7 @@ export const themeTokens: Record<Color, ThemeTokens> = {
 		dark: 'var(--color-viz-teal-dark)',
 		muted: 'var(--color-viz-teal-muted)',
 		subtle: 'var(--color-viz-teal-subtle)',
-		strong: 'var(--color-viz-teal-strong)',
+		solid: 'var(--color-viz-teal-solid)',
 		bg: 'bg-viz-teal-light',
 		border: 'border-viz-teal-muted',
 		text: 'text-viz-teal-dark'
@@ -109,7 +109,7 @@ export const themeTokens: Record<Color, ThemeTokens> = {
 		dark: 'var(--color-viz-yellow-dark)',
 		muted: 'var(--color-viz-yellow-muted)',
 		subtle: 'var(--color-viz-yellow-subtle)',
-		strong: 'var(--color-viz-yellow-strong)',
+		solid: 'var(--color-viz-yellow-solid)',
 		bg: 'bg-viz-yellow-light',
 		border: 'border-viz-yellow-muted',
 		text: 'text-viz-yellow-dark'
@@ -120,7 +120,7 @@ export const themeTokens: Record<Color, ThemeTokens> = {
 		dark: 'var(--color-viz-orange-dark)',
 		muted: 'var(--color-viz-orange-muted)',
 		subtle: 'var(--color-viz-orange-subtle)',
-		strong: 'var(--color-viz-orange-strong)',
+		solid: 'var(--color-viz-orange-solid)',
 		bg: 'bg-viz-orange-light',
 		border: 'border-viz-orange-muted',
 		text: 'text-viz-orange-dark'

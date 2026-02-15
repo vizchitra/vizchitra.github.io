@@ -30,11 +30,11 @@
 	const color = $derived(getColor());
 
 	const leftBorderColors = {
-		pink: 'border-l-viz-pink-dark',
-		blue: 'border-l-viz-blue-dark',
-		yellow: 'border-l-viz-yellow-dark',
-		teal: 'border-l-viz-teal-dark',
-		orange: 'border-l-viz-orange-dark'
+		pink: 'border-l-viz-pink-solid',
+		blue: 'border-l-viz-blue-solid',
+		yellow: 'border-l-viz-yellow-solid',
+		teal: 'border-l-viz-teal-solid',
+		orange: 'border-l-viz-orange-solid'
 	};
 </script>
 

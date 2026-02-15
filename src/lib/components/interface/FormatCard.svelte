@@ -43,10 +43,14 @@
 		workshops: 'pink',
 		exhibition: 'orange'
 	};
+
+	// Generate guide URL from format
+	const guideUrl = `/guides/${format}`;
 </script>
 
-<article
-	class="format-card not-prose grid grid-rows-[4rem_4rem_1fr] gap-1 overflow-hidden rounded-lg border-2 bg-white/80 shadow-md transition-shadow hover:shadow-lg {colors.border} {className} max-w-100 md:max-w-100"
+<a
+	href={guideUrl}
+	class="format-card not-prose grid grid-rows-[4rem_4rem_1fr] gap-1 overflow-hidden rounded-lg border-2 bg-white/80 shadow-md transition-all hover:shadow-lg hover:scale-102 {colors.border} {className} max-w-100 md:max-w-100"
 >
 	<!-- Row 1: Title (left) + Duration (right) -->
 	<div class="mb-8 grid grid-cols-2 items-baseline gap-2 px-5 pt-5">
@@ -83,7 +87,7 @@
 			{/each}
 		</ul>
 	</div>
-</article>
+</a>
 
 <style>
 	.format-card {

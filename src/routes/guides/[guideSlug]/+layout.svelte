@@ -192,7 +192,7 @@
 	}
 
 	/* Desktop: sidebar on right */
-	@media (min-width: 768px) {
+	@media (min-width: 960px) {
 		.guide-layout {
 			flex-direction: row;
 		}

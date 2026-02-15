@@ -13,7 +13,7 @@ We look for exhibition projects that transform data into meaningful encounters â
 > Everything is connected to everything else.
 > â€” Barry Commoner
 
-**The Experiential Journey** in the exhibition submission we are looking for:
+**The Immersive Journey** in the exhibition submission we are looking for:
 
 - **Clarity:** Clearly connects data source, method, and visual or spatial form.
 - **Grounding:** Anchors the work in a specific ecological, infrastructural, or lived context.

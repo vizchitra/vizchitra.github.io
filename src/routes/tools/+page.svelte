@@ -14,6 +14,11 @@
 			description: 'Pattern generation tools for creating unique visual designs'
 		},
 		{
+			title: 'Share Cards',
+			href: '/tools/cards',
+			description: 'Generate social media share cards and preview images for VizChitra guides'
+		},
+		{
 			title: 'Selfie',
 			href: '/tools/selfie',
 			description: 'Selfie photo tool for profile pictures'

@@ -13,7 +13,7 @@ We look for workshops that offer hands-on experiences and actionable depth, ensu
 > An ounce of practice is worth more than ton of preaching.
 > — Mahatma Gandhi
 
-**The Active Journey** in the workshop submission we are looking for:
+**The Practice Journey** in the workshop submission we are looking for:
 
 - **Reality:** Anchors the session in real-world, lived challenges or pressing questions rather than abstract theories.
 - **Outcomes:** States what participants should be able to do or apply afterward.

@@ -37,6 +37,8 @@
 	--text-flow-4: calc(var(--text-flow-3) * var(--ratio));
 	--text-flow-5: calc(var(--text-flow-4) * var(--ratio));
 	--text-flow-6: calc(var(--text-flow-5) * var(--ratio));
+	--text-flow-7: calc(var(--text-flow-6) * var(--ratio));
+	--text-flow-8: calc(var(--text-flow-7) * var(--ratio));
 
 	/* --- 4. FLUID SPACING SCALE --- */
 	--space-flow--3: calc(var(--space-base) * 0.25);
@@ -71,6 +73,8 @@
 	--text-viz-3xl: var(--text-flow-4);
 	--text-viz-4xl: var(--text-flow-5);
 	--text-viz-5xl: var(--text-flow-6);
+	--text-viz-6xl: var(--text-flow-7);
+	--text-viz-7xl: var(--text-flow-7);
 
 	/* Spacing Fluid */
 	--spacing-viz-xs: var(--space-flow--2);

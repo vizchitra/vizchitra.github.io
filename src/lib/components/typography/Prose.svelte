@@ -22,6 +22,7 @@
 	style:--prose-accent-light={theme.light}
 	style:--prose-accent-muted={theme.muted}
 	style:--prose-accent-subtle={theme.subtle}
+	style:--prose-accent-solid={theme.solid}
 >
 	{@render children?.()}
 </div>
@@ -34,6 +35,7 @@
 		--dark-color: var(--prose-accent-dark, var(--color-viz-grey-dark));
 		--muted-color: var(--prose-accent-muted, var(--color-viz-grey-muted));
 		--subtle-color: var(--prose-accent-subtle, var(--color-viz-grey-subtle));
+		--solid-color: var(--prose-accent-solid, var(--color-viz-grey-solid));
 
 		/* Base Font & Color */
 		font-family: var(--font-plex);
@@ -151,7 +153,7 @@
 
 			max-width: 50ch; /* narrower book measure */
 			padding-left: var(--space-flow-0); /* indent from the left */
-			border-left: 2px solid var(--dark-color); /* book-style vertical line */
+			border-left: 4px solid var(--solid-color); /* book-style vertical line */
 
 			font-size: var(--text-flow-0);
 			line-height: 1.6;
@@ -336,49 +338,94 @@
 
 		& table {
 			width: 100%;
-			table-layout: fixed; /* 🔑 Required */
 			border-collapse: collapse;
 			margin-block: var(--space-flow-1);
-			font-size: var(--text-flow--1);
-			line-height: 1.25;
+			/* font-size: var(--text-flow--1); */
+			line-height: 1.45;
 			border-bottom: 1px solid var(--muted-color);
-			overflow-x: auto;
+			table-layout: auto;
 		}
 
-		/* Cells */
 		& table th,
 		& table td {
-			overflow-wrap: normal;
+			overflow-wrap: break-word;
 			word-break: normal;
-		}
-
-		/* First column narrow */
-		& table th:first-child,
-		& table td:first-child {
-			width: 16%; /* adjust 12–22% */
-
-			@media (width < 20rem) {
-				width: 20%;
-			}
-		}
-
-		/* Remaining columns equal */
-		& table th:not(:first-child),
-		& table td:not(:first-child) {
-			width: auto; /* 🔑 ensures equal distribution */
 		}
 
 		& table thead th {
 			padding: var(--space-flow--2) var(--space-flow--3);
 			text-align: left;
 			font-weight: 450;
-			border-bottom: 1px solid var(--muted-color); /* The single separator line */
+			border-bottom: 1px solid var(--muted-color);
 		}
 
 		& table tbody td {
-			padding: var(--space-flow--2) var(--space-flow--3); /* Tighter vertical padding */
-			border-bottom: none; /* Removed for a cleaner look */
+			padding: var(--space-flow--2) var(--space-flow--3);
+			border-bottom: none;
 			vertical-align: top;
+		}
+
+		/* Mobile card layout (< 768px) */
+		@media (max-width: 767px) {
+			& table thead {
+				position: absolute;
+				width: 1px;
+				height: 1px;
+				padding: 0;
+				margin: -1px;
+				overflow: hidden;
+				clip: rect(0, 0, 0, 0);
+				white-space: nowrap;
+				border-width: 0;
+			}
+
+			& table,
+			& table tbody,
+			& table tr,
+			& table td {
+				display: block;
+				width: 100%;
+			}
+
+			& table tbody tr {
+				margin-bottom: var(--space-flow-0);
+				padding: var(--space-flow--3);
+				/* border-top: 1px solid var(--muted-color); */
+				border-bottom: 1px solid var(--muted-color);
+			}
+
+			& table tbody tr:last-child {
+				margin-bottom: 0;
+			}
+
+			& table td {
+				display: grid;
+				grid-template-columns: 10ch 1fr;
+				gap: var(--space-flow--3);
+				padding-block: var(--space-flow--3);
+				border-bottom: 1px solid color-mix(in oklch, var(--muted-color), transparent 50%);
+				line-height: 1.5;
+			}
+
+			& table td:last-child {
+				border-bottom: none;
+			}
+
+			& table td::before {
+				content: attr(data-label);
+				font-weight: 550;
+				font-family: var(--font-cairo);
+				color: var(--dark-color);
+				font-size: var(--text-flow-0);
+			}
+
+			& table td:empty {
+				display: none;
+			}
+
+			& table td:empty::before {
+				display: none;
+			}
 		}
 
 		/* --- 6. DIRECTIVE STYLES --- */
@@ -453,6 +500,5 @@
 				color: var(--color-viz-orange-dark);
 			}
 		}
-
 	}
 </style>
