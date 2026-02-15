@@ -912,10 +912,90 @@ Data journalists, dashboard designers, analysts, design students, and independen
 - A large wall or board with sticky notes and markers for the shared rubric-building exercise
 - A one-page handout summarizing the collective rubric, to be compiled and shared with participants after the session","Visualizations displayed on a wall or large screen visible to all. Chairs arranged in clusters of 4–5 for small group discussion, with enough space for people to stand and move to the wall during the opening ranking and closing rubric exercises. A second wall or board space reserved for the rubric-building activity.",,,,,,,,,,Keep,Under Review
 yPLy594,Bz1A5k7,2026-02-15 4:09:05,Varshini,J,,,"app ro do togayrjodmdyeolsnsysoapmamhs ahudjdksbdispnsbfbtkeops ",,,,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations as Craft,fiwofm,wo vsueinxuekdlsnhdjsoalksjxjdjshakapaamsndbdhhdudkslalalmanxnbchdjdksklakamsbdhhskalalaksnndbdhdgjsksks,,,,I have never given a talk,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+68okBBk,Gx1X4zp,2026-02-15 4:37:11,"Ntasha ","Bhardwaj ",Founder,"South Asian Institute of Crime and Justice Studies ","I’m a criminologist working to build something meaningful and people-first at the intersection of climate, exploitation, and risk, translating research into practical action.",,,https://www.linkedin.com/in/ntasha-bhardwaj-ph-d-4873ba64?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app,"Dialogues ",I consent to VizChitra publishing my submission and the review of my application.,TRUE,,,,,,,,Visualizations for Community,SurakshaLens: Building People-First Climate Data to Protect Communities,"Yes, many times","This group discussion explores what it truly takes to build a people-first data platform designed to protect communities at the intersection of climate risk and exploitation. Using SurakshaLens as a case study, the session will unpack how data can move beyond dashboards and surveillance logic to become a tool for prevention, resilience, and collective agency.
+
+SurakshaLens is envisioned as a climate exploitation risk platform that identifies patterns linking climate stress, migration pressures, and trafficking vulnerabilities. But the central question is not technological, it is ethical and political: How do we ensure such a platform is built with communities, not merely about them? How do we translate complex data into insight that district officials, frontline workers, and community leaders can use? And how do we prevent data tools from reinforcing harm, stigma, or over-policing?
+
+Key discussion themes include:
+	•	Translating data into protection: from signals to actionable prevention
+	•	Community-led design and participatory data processes
+	•	Ethical AI and safeguards in vulnerable contexts
+	•	Visualization as a bridge between evidence and decision-making
+	•	Trust, accountability, and long-term resilience
+
+This topic matters deeply to me as a criminologist working at the intersection of climate risk, exploitation, and technology. Too often, data systems in justice and security contexts are extractive, opaque, and imposed from above. SurakshaLens attempts a different approach — one grounded in community validation, multilingual accessibility, and practical usability for frontline actors.
+
+The session connects directly to broader conversations in data visualization. Effective visualization is not about aesthetic clarity alone; it is about power. Who interprets the data? Who benefits from it? Who is protected by it? We will explore how layered mapping, risk indexing, and simplified visual narratives can translate complex, multi-source data into tools that strengthen early warning systems rather than intensify surveillance.
+
+The session will be structured in three parts:
+	1.	Framing the Challenge – Brief introduction to climate-linked exploitation risks and the need for preventive data systems.
+	2.	Designing with Communities – Interactive discussion on participatory design, ethical guardrails, and trust-building.
+	3.	From Data to Action – Small-group dialogue on what makes a platform usable, accountable, and locally owned.
+
+The intended audience includes data visualization practitioners, technologists, researchers, policymakers, civil society actors, and community advocates interested in ethical data use and public-interest technology.
+
+Participants will leave with:
+	•	A clearer understanding of people-first data design principles
+	•	Practical considerations for translating complex data into protective action
+	•	A framework for embedding ethics and community ownership into digital platforms
+	•	Insight into how data visualization can strengthen resilience rather than merely monitor risk
+
+Ultimately, this session asks: What would it mean to build data systems that communities trust, shape, and use to protect themselves?",https://www.saicjs.com/suraksha-lens-1,https://www.saicjs.com/climate-exploitation-risk-index,,,"Projector, white board, breakout space ",,,,,,,,,,Keep,Under Review
+XxjNMRV,VLlLjpl,2026-02-15 5:51:53,Vijay,Jadhav,Data Journalist,IndiaSpend,"I am a data journalist at IndiaSpend specializing in data visualization and infographics. I work with public datasets to create clear visual stories, charts, and maps explaining policy, economy, health, and social issues.",https://www.instagram.com/musafir_hoon_yaro/,https://x.com/Vijay__Jadhav,https://www.linkedin.com/in/vijay-jay-jadhav/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations and Tools,How I Built a Dashboard I Didn’t Know How to Build (With AI),"This talk is about my experience as a journalist trying to build an interactive data dashboard without having a coding or developer background.
+
+In journalism, we often work with datasets, charts, and visual explainers. But when it comes to creating interactive tools or dashboards, the work usually depends on technical skills or developer support. I faced this challenge while reporting on food price data. Although we published stories and static charts, I felt something was missing. Readers could see the information, but they could not explore trends, compare states, or interact with the data in a meaningful way.
+
+This led to a practical question: Can a journalist build a dashboard without being a coder?
+
+The talk shares how I began experimenting with AI tools to help bridge this gap. Instead of presenting AI as an easy solution, I will discuss the process, including trial and error, confusion, incorrect outputs, and the time spent understanding what was happening. Over time, I realised that building a dashboard is not only about writing code. It involves making decisions about what data to include, how to structure the interface, how users might interact with it, and what insights are worth highlighting.
+
+A key part of this journey was developing a diet cost calculator. Rather than only showing food prices, this feature attempted to answer a more relatable question: What does it cost to afford a basic daily diet? This shift helped connect the data to everyday realities.
+
+This talk connects to wider discussions in data visualization about accessibility, learning new tools, and how AI is changing creative and analytical work. The session will move through the problem, the experiment, the challenges, the design decisions, and the lessons learned.
+
+This talk is intended for journalists, designers, students, and anyone curious about building with data. Key takeaways focus on realistic expectations of AI, the importance of judgement, and learning through experimentation.",https://foodprices.indiaspend.com/,https://www.indiaspend.com/agriculture/how-himalayan-states-have-higher-food-prices-972834,https://www.indiaspend.com/health/our-new-dashboard-shows-cost-of-a-health-diet-across-india-969258,I have never given a talk,,,,,,,,,,,,,,,,,,,Keep,Under Review
+Npk6OdG,aQxZebB,2026-02-15 5:52:33,Mrinal,Mrinal,Senior UI/UX Design Consultant,Vida by Hero MotoCorp,"Senior UI/UX consultant at Vida (Hero MotoCorp EV), Aalto-trained in Data Visualization. I design data viz for CSR initiatives and internal systems, and explore storytelling through visualizations inspired by my travels.",https://www.instagram.com/mrinal.work/,https://www.behance.net/gallery/211152709/Spatial-visualisation-of-lakes-of-Finland,https://www.linkedin.com/in/mrinal-33b227ab/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations as Craft,Beautifully Useless Data,"Beautifully Useless Data is a talk about reclaiming curiosity in data visualization.
+Most of us who work in data visualization operate in high-stakes environments. We document crime to guide intervention. We track climate indicators to influence policy. We build dashboards for compliance, governance, and strategic decision-making. In these contexts, data must justify itself. It must lead to action. It must solve.
+This talk asks a different question: What happens when we remove the need for action?
+At its core, this session explores non-transactional data visualization—work that does not optimize, predict, or prescribe, yet still produces meaning. Through two personal projects, I examine how data can deepen perception rather than drive decisions.
+The first project documents the 8 hours of a World Endurance Championship race in Bahrain. Instead of visualizing lap times or pit strategies, I captured the sky every 20 minutes and extracted its gradient. These gradients were animated sequentially and paired with the top three race leaders at each interval. The result is a temporal artifact: a visual memory of atmosphere and competition coexisting. It offers no strategic insight, but it creates a new way of experiencing the event.
+The second project maps the spatial dimensions of Finnish lakes during a data visualization course in Finland. Using dimensional data sourced from Jarviwiki and manually drawing the lakes to scale, I constructed a spatial study of surface area and depth. This visualization does not inform environmental policy. Instead, it transforms abstract numerical data into perceivable form, allowing viewers to sense structural relationships and spatial hierarchy.
+Together, these projects illustrate two modes of “beautifully useless” data: data as atmosphere (time-based, experiential) and data as form (spatial, perceptual).
+This topic matters to me because my professional practice sits at the intersection of systems and storytelling. I work as a UI/UX designer across apps, websites, and vehicle displays, and have also contributed to environmental CSR initiatives at Hero MotoCorp, along with internal reporting systems. Much of this work is structured, accountable, and outcome-driven. While I value that responsibility deeply, I’ve found that stepping into curiosity-led visualizations—outside compliance and performance metrics—sharpens my sensitivity to patterns, relationships, and unexpected juxtapositions. It expands my creative range in ways that structured outputs alone cannot.
+Within broader data visualization discourse, this talk connects to ongoing conversations about aesthetics, interpretation, storytelling, and the balance between analytical rigor and creative exploration. As the field matures and increasingly centers impact and accountability, there is also space to discuss play, observation, and perception as legitimate contributions.
+The structure of the talk follows a clear arc: first, acknowledging the serious responsibilities of professional data work; second, introducing the concept of removing actionability; third, presenting the Bahrain project (time and atmosphere); fourth, presenting the Finland lakes project (space and structure); and finally, synthesizing both into a framework for perception-driven visualization.
+The intended audience includes data practitioners, analysts, designers, and researchers who primarily create visualization for decision-making contexts.
+The key takeaway is not that data should abandon impact—but that impact is not the only valid outcome. Visualization can also function as documentation, memory, juxtaposition, and perceptual inquiry. By occasionally allowing data to wander without pressure, we may discover new sensitivities, new forms of seeing, and new creative depth in our serious work.
+Data can be used like language—sometimes to write a report, and sometimes to write a poem.
+",https://www.instagram.com/p/DRfNHJYCMVj/,https://www.behance.net/gallery/211152709/Spatial-visualisation-of-lakes-of-Finland,,I have never given a talk,,,,,,,,,,,,,,,,,,,Keep,Under Review
+KYb0e48,Y5OpA1z,2026-02-15 7:01:47,Anjali,Patel,Ai Product Development & Strategy Specialist,Logisoft Tech,"I work in AI product development and strategy. I have experience with social projects from my Bharat Digital fellowship. I am interested in exploring AI systems, space tech, and their impact on communities.",https://www.instagram.com/couldbeanjali?igsh=eW1ueXNybmJsYXlj&utm_source=qr,,https://www.linkedin.com/in/anjali-patel-a1371b244/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations for Community,The Hidden Cost of Intelligence: Visualizing AI Infrastructure's Environmental Impact on Indian Cities,"It started with an Instagram post I couldn't stop thinking about. Someone had shared data about Mumbai's data centers - how they consume as much electricity as thousands of households, how diesel generators near slum areas pump out toxic fumes. The next day, I saw Elon Musk's announcement about building AI factories on the Moon, arguing Earth doesn't have enough energy to scale AI. Something about that felt backwards. We're talking about launching factories into space while people in Mumbai are dealing with power shortages and air pollution from data centers already here?
+So I started investigating. What began as curiosity turned into weeks of mapping data centers, downloading air quality datasets, and pulling satellite imagery. I wanted to see what AI infrastructure actually costs us.
+What I found in Navi Mumbai's Airoli area was stark. Forty-seven data center facilities operate near Cheetah Camp , a settlement with crumbling infrastructure, built after residents were evicted decades ago. People report their electricity bills climbing while data centers expand next door, powered by coal plants authorities keep running for 24/7 AI workloads.
+
+What This Talk Covers:
+This talk walks through that investigation, showing how publicly available tools like satellite thermal imagery, CPCB air quality monitors, power grid data can map this pattern across Indian cities. The methodology is straightforward enough that anyone could replicate it, which feels important.
+I'll present visualizations showing the correlation between data center locations and environmental impacts, use ML models to forecast which cities face grid crises first under current growth, and discuss accountability frameworks: carbon budgets for AI training runs, mandatory energy reporting, AI workload auditing.
+
+Why This Matters:
+This topic matters because right now, AI's benefits and costs go to completely different people. Tech companies get profits, vulnerable communities get pollution and power cuts. That's not inevitable , it's a choice. This connects to data visualization's role in advocacy and accountability making invisible power structures visible.
+
+Talk Structure :
+1.The question: Why space solutions when Earth's infrastructure creates crises? 
+2.The investigation: Mapping methodology and findings.
+3.What accountability looks like: Frameworks and global examples.
+4.Tools and call to action.
+
+Intended Audience:
+Data journalists, civic tech practitioners, environmental advocates, policy analysts, and anyone curious about technology's real costs. No technical background needed.
+
+Key Takeaways:
+
+- Replicable methodology using only public datasets
+- Interactive visualizations adaptable for any city
+- Understanding of AI workload auditing as policy tool
+- Toolkit for community-driven tech accountability
+
+The question that keeps coming back: why are we dreaming about space-based solutions when we haven't figured out how to build AI infrastructure on Earth without making people's lives measurably worse?",,,,"Yes, only once",,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
