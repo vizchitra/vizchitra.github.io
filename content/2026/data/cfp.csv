@@ -1788,8 +1788,32 @@ Through this unconventional but deliberate method, I explore how data communicat
 
 This talk will resonate with data communication practitioners, researchers, policymakers, civil society actors, and community advocates interested in moving from data availability to data use. Participants will leave with practical insights into how national statistical systems operate, the barriers that limit uptake, and opportunities to promote better data uses within government institutions.
 ",https://opendatawatch.com/reference/the-data-value-chain-executive-summary/,https://www.domesticstreamers.com/,,"Yes, many times",,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+1A8MxWg,A7J4EQD,2026-02-15 15:37:49,Ankur,Gupta,Consultant,"Numeratelabs ","Computer Programmer by day, GIS or OSM Map Visualisation Nerd by night.",,https://x.com/getpy,,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations as Craft,MapToPoster - Cartography for the Living Room: Why We Love Looking at Simplified Cities.,"This talk explores MapToPoster, an open-source Python framework that transforms raw OpenStreetMap (OSM) data into high-resolution, minimalist cartographic art. 
+
+This talk bridges the gap between functional cartography and data art. It addresses core visualization challenges:
+• Visual Hierarchy: How to stylize road classes (highways vs. residential) to create depth without color.
+• Performance: Handling the computational load of fetching and rendering thousands of geometries for 300 DPI prints.
+• Universal Design: Solving the ""Global City"" problem, handling diverse scripts (Latin, Devanagari, Kanji) through automated typography logic.",https://github.com/originalankur/maptoposter,,,"Yes, many times",,,,,,,,,,,,,,,,,,,Keep,Under Review
+7RGZjRz,0QMZeJN,2026-02-15 15:40:02,Kritika,Trehan,Founder,Studio Ping Pong,"Kritika, Founder & Creative Head of Studio Ping Pong (Kolkata & Bangalore), has 10+ years in graphic and information design, working with brands like Booking.com, Film Companion, Amazon, and orgs like Oxfam, UNICEF & APTN to turn data into engaging visuals.",https://www.instagram.com/kritikatrehan/,,https://www.linkedin.com/in/kritika-trehan-490a9611b/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations as Craft,"Between Story & Statistic ","Storytelling and data are a powerhouse combination when done right. Complex data can often feel either too overwhelming or too simplified if not backed with the right design, treatment, and most importantly, the right visual tone.
+
+As graphic designers working with data for both commercial and personal projects, we’ve often found ourselves navigating the line between story and accuracy. 
+
+When does storytelling help make data more human, and when does it start taking something away? 
+Why do some visual choices feel instinctively “right” while others, though technically sound, seem slightly off? 
+What gets lost when we simplify or dramatise a story?
+
+Through this talk, I’d like to share some examples of our work along with a peek into our process where both form and function strike a good balance. From topics like climate change, healthcare, commercial travel, and cinema to more personal explorations where we turn everyday experiences into data stories.
+
+Beyond a showcase, the talk will offer a peek behind the process: moments where we’ve had to compromise on aesthetics for accuracy, or tone down narrative to keep nuance intact. 
+
+Who is it for: 
+Designers, researchers, and early-career practitioners who work with or communicate data, and often find themselves wondering how far to go with storytelling.
+
+What participants will take away:
+* Ways to decide when narrative helps vs when it distorts
+* Visual metaphors that make complex data easier to grasp
+* Design moves that unintentionally shift meaning or lose nuance
+* Simple frameworks to balance clarity, empathy, and honesty ",studiopingpong.com/project/booking-com,owomaniya.studiopingpong.com,yearinreview.studiopingpong.com,I have never given a talk,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
