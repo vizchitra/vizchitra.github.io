@@ -144,7 +144,7 @@
 
 		<Prose>
 			All the five guides are also available in combined plain text format at <a
-				href="/guides.md">vizchitra.com/guides.md</a
+				href="/guides.md" data-sveltekit-reload>vizchitra.com/guides.md</a
 			>
 		</Prose>
 	</Stack>
