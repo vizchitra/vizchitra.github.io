@@ -124,15 +124,15 @@
 								VIZCHITRA GUIDES
 							</div>
 							<h2
-								class="font-display-sans card-content m-0 self-start text-2xl font-bold {textColor[
+								class="font-display-sans card-content m-0 self-start text-3xl font-bold {textColor[
 									card.color
 								]}"
 							>
 								{card.title}
 							</h2>
-							<h3 class="text-viz-black text-lg">{card.tagline}</h3>
+							<h3 class="text-viz-black text-xl">{card.tagline}</h3>
 							<p
-								class="text-md card-content text-viz-black max-w-sm self-end justify-self-end bg-white/20 text-right font-medium italic"
+								class="text-md card-content text-viz-grey-dark max-w-sm self-end justify-self-end bg-white/20 text-right font-medium italic"
 							>
 								{card.description}
 							</p>
@@ -141,6 +141,12 @@
 				</div>
 			</div>
 		</FullBleed>
+
+		<Prose>
+			All the five guides are also available in combined plain text format at <a
+				href="/guides.md">vizchitra.com/guides.md</a
+			>
+		</Prose>
 	</Stack>
 </Container>
 
@@ -150,20 +156,29 @@
 		width: 100%;
 	}
 
-	/* Default: Vertical layout */
+	/* Mobile: Simple flex column */
 	.deck-inner {
-		display: grid;
-		/* 5 cards × 4 rows each: 
-		guide row + title row + tagline row + description row */
-		grid-template-rows: repeat(5, auto auto minmax(10rem, 1fr) auto);
+		display: flex;
+		flex-direction: column;
+		gap: 0rem;
 	}
 
 	.deck-card {
 		position: relative;
-		min-height: 8rem;
+		min-height: 20rem;
 		padding: 2rem 1.5rem;
-		margin-top: -1rem;
-		clip-path: polygon(0 1rem, 100% 0, 100% calc(100% - 1rem), 0 100%);
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.deck-card h3 {
+		margin-bottom: auto;
+	}
+
+	.deck-inner p {
+		text-align: right;
+		max-width: 25ch;
 	}
 
 	.card-content {
@@ -171,31 +186,18 @@
 		z-index: 1;
 	}
 
-	.deck-card:first-child {
-		margin-top: 0;
-		clip-path: polygon(0 0, 100% 0, 100% calc(100% - 1rem), 0 100%);
-	}
-
-	.deck-card:last-child {
-		clip-path: polygon(0 1rem, 100% 0, 100% 100%, 0 100%);
-	}
-
-	/* Wide: Horizontal layout */
+	/* Desktop: Grid with slanted edges */
 	@container (min-width: 60rem) {
 		.deck-inner {
+			display: grid;
 			grid-template-columns: repeat(5, 1fr);
-			/* Fixed row heights: guide row + title row + tagline row + description row + */
-			grid-template-rows: auto auto minmax(14rem, 1fr) auto;
-
-			& p {
-				text-align: right;
-			}
+			grid-template-rows: auto auto minmax(20rem, 1fr) auto;
+			gap: 0;
 		}
 
 		.deck-card {
-			/* Height controlled by grid-template-rows, not min-height */
+			min-height: auto;
 			padding: 1.5rem 2rem;
-			margin-top: 0;
 			margin-left: -1rem;
 			clip-path: polygon(1rem 0, 100% 0, calc(100% - 1rem) 100%, 0 100%);
 		}
