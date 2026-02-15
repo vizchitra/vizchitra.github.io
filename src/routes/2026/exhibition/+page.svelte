@@ -34,11 +34,11 @@
 			</p>
 		</Prose>
 
-		<Text type="caption">Exhibition Deadline: <strong>15 Feb 2025, 23:59 IST</strong></Text>
+		<Text type="caption">Exhibition Submission closed on <strong>15 Feb 2025</strong></Text>
 		<Cluster justify="start">
-			<Button href="https://forms.vizchitra.com/exhibition" color="orange" external={true}
+			<!-- <Button href="https://forms.vizchitra.com/exhibition" color="orange" external={true}
 				>Submit for Exhibition</Button
-			>
+			> -->
 			<Button href="/2026/submissions" color="blue">View all Submissions</Button>
 		</Cluster>
 

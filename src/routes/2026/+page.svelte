@@ -38,18 +38,18 @@
 		<DividerCurves />
 
 		<Heading tag="h2" class="font-normal">
-			<Slanted textContent="APPLICATIONS ARE OPEN" />
+			<Slanted color="blue" textContent="BROWSE SUBMISSIONS" />
 		</Heading>
 
 		<Text type="body">
-			We invite submissions across across four formats—<ColorSpan color="blue">Talks</ColorSpan>,
+			We invited submissions across across four formats—<ColorSpan color="blue">Talks</ColorSpan>,
 			<ColorSpan color="teal">Dialogues</ColorSpan>,
 			<ColorSpan color="pink">Workshops</ColorSpan>, and
-			<ColorSpan color="orange">Exhibition</ColorSpan>. Select the one that best suits your
-			contribution.
+			<ColorSpan color="orange">Exhibition</ColorSpan>. Last day for submissions was on 15 Feb,
+			2026. You can explore all the submitted proposals below.
 		</Text>
 
-		<Cluster justify="start">
+		<!-- <Cluster justify="start">
 			<Button href="/2026/proposals" color="pink">Submit your Proposal</Button>
 			<Button href="/2026/exhibition" color="orange">Submit for Exhibition</Button>
 		</Cluster>
@@ -64,10 +64,10 @@
 			<Slanted color="blue" textContent="BROWSE SUBMISSIONS" />
 		</Heading>
 
-		<Text type="lead">
+		<Text type="body">
 			Explore all submitted proposals for VizChitra 2026. Browse talks, dialogues, workshops, and
 			exhibitions from our community.
-		</Text>
+		</Text> -->
 
 		<Cluster justify="start">
 			<Button href="/2026/submissions" color="blue">View all Submissions</Button>
