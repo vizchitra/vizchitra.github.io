@@ -996,15 +996,311 @@ Key Takeaways:
 - Toolkit for community-driven tech accountability
 
 The question that keeps coming back: why are we dreaming about space-based solutions when we haven't figured out how to build AI infrastructure on Earth without making people's lives measurably worse?",,,,"Yes, only once",,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
+Y58d4eB,0QM1KGP,2026-02-15 7:23:11,Jalaja,Shivananda,Program Manager,BGSW,"Women Leader in Data Analytics at BGSW driving AI-led visualization transformation across industries. This talk shows how dashboards evolve into intelligent, action-driven systems, enabling predictive insights, AI integration, and scalable data culture change.",,,https://www.linkedin.com/in/jalaja-shivananda-94a062b/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations at Work,From Data to Decision: Transforming Enterprise Intelligence Through AI-Powered Visualization,"Overview: As a Women Leader in Data Analytics at BGSW, I lead the organization's data visualization and analytics transformation initiatives across diverse industries including manufacturing, industry 4.0, mobility, sustainability, and services. This talk will explore how AI has fundamentally revolutionized data visualization, transforming it from static reporting tools into dynamic, intelligent decision-making catalysts that drive real business impact. The session will demonstrate practical applications of AI-enhanced visualization across multiple domains, from dynamic KPI monitoring systems that engage users with insights about their product experiences in multi-market environments, to sophisticated dashboards that extract actionable intelligence from manufacturing shopfloors, installer networks, and energy sustainability initiatives. The talk will conclude by showcasing how modern visualization systems integrate with AI agents to create seamless visualization-to-action workflows across entire value chains, while highlighting the community impact achieved through upskilling initiatives that have empowered numerous professionals to create meaningful insights through enhanced dashboard capabilities. Attendees will gain practical frameworks for implementing AI-powered visualization systems, strategic approaches for driving data culture transformation, and actionable insights for building analytics capabilities within their organizations.",,,,I have never given a talk,,,,,,,,,,,,,,,,,,,Keep,Under Review
+VLglkpa,J9RXrMR,2026-02-15 8:15:19,Indhu Kanth,Lokasamy,Co-Founder & Creative Director,Become (Frozen Iris Pvt Limited),"Cofounder & Creative Director of Become, bridging systems, culture & data narratives. Exhibited at MAP and featured in the Processing, Serendipity Arts, he is a TEDx & Creative Mornings speaker who has worked with 60+ entities like Intel, Uber, ISB, GoI.",https://www.instagram.com/being_ink,https://x.com/LKanth46592,https://www.linkedin.com/in/indhukanth,Workshop,I consent to VizChitra publishing my submission and the review of my application.,TRUE,,,,,,,,,,,,,,,,,Visualizations as Craft,"Hide & Seek, the Creature Inside the Dataset. Re-embodying Data Through Myth, Metonym and Biophilia","Yes, many times","Why I’m Running This?
+
+I keep waiting for the era where we finally retire the pie chart. Or at least admit we’re tired of pretending a bar chart is a revelation. And yet, somehow, we’re still here, polishing the same geometries for every datasets.
+
+And I have a suspicion others feel this too. That quiet tension between “just make it pretty” and “just make it clear.” Wanting something that feels alive. As data and visualization become increasingly abstract and as AI tools make image generation effortless,I worry we’re eroding lived meaning.
+
+I’m tired of cleaner charts that stop feeling so distant and beautiful visualizations,that stay emotionally detached. The workshop turns on one lever: Does our data form actually carry the structure, behaviour, and meaning of what it represents?
+
+Before dashboards, humans used fables, myths, and animal stories to communicate complex moral and epistemic truths. Ant colonies taught distributed labour.Seasonal migrations encoded time and memory. These weren’t plain metaphors, they were cognitive structures that made complexity graspable. 
+
+This workshop is about bringing them back, without nostalgia, without illustration-for-its-own-sake. We’ll draw from biophilic systems (animals, insects, plants, ecological behaviours) and lore (cultural narratives that already carry meaning), to re-embody data in meaningful, situated ways. Not “data is like ants.” But “information density in this mode follows pheromone-trail logic.”
+
+The structure of this workshop:
+
+I’ll introduce Six Ecologies of Lived Data in this workshop namely: System, Flux, Echo, Adversial, Affectie and Commons. Using these modes, participants reinterpret their dataset into compelling, unforgettable and breathing data lores.
+
+Participants will:
+
+1. Begin with a dataset: Bring or generate a dataset (social, environmental, urban, or cultural).
+
+2. Discover biophilic systems and lore: Learn how to research living systems and cultural narratives using structured prompts and guided inquiry.
+
+3. Deconstruct both dataset and living system: Break down the dataset into behaviours (flow, density, hierarchy, feedback). Break down the organism or lore into structural features (growth logic, swarm patterns, decay cycles, memory traces).
+
+4. Practice metonymic association: Identify precise structural correspondences between dataset behaviour and living system behaviour.
+
+5. Reinterpret through the Six Systemic Ecologies: Apply the mode of System, Flux, Echo, Adversarial, Affective, or Commons to deepen interpretive framing.
+
+6. Prompt and de-prompt with AI: Generate variations, then strip away aesthetic excess to reveal underlying grammar.
+
+7. Extract a visual grammar to create a one-page “data fable”
+
+Who is it for?
+
+This workshop is for designers, data practitioners, students, artists, researchers, and civic technologists who sense that visualization today oscillates between sterile abstraction and aesthetic spectacle. It is especially relevant for early-career practitioners looking to move beyond default charts, AI-enabled designers seeking deeper conceptual control, and cross-disciplinary collaborators working at the intersection of narrative, ecology, and culture.
+
+No advanced technical skills are required. Only access to an AI tool for prompting and image generation, and a simple presentation platform such as Figma, Canva, or Google Slides. They leave with a practical method, a critical AI workflow, and a renewed lens: data can be lived, storied, and situated, not merely rendered.
+
+",https://creativemornings.com/talks/itindhu-kanth-dr-r-kalaiselvi,https://www.youtube.com/watch?v=eDk5tle2L2w,https://www.linkedin.com/feed/update/urn:li:activity:7156140582380146688/,"A screen, projector and I will arrange some worksheets and small booklets. Participants will need to bring a laptop and access to internet would be great. ","Would need a projector, whiteboard is a plus and seatings with desk for participants to use laptop. ",Keep,Under Review
+5BP7YAd,Pd5W8qe,2026-02-15 8:17:11,sukanya,deepak,Senior Designer,Fields of View,"I am a senior visual designer at Fields of View, currently building games, simulations, and tools to understand wicked problems better. I am interested in crafting meaningful experiences for people through participatory design methods.",https://www.instagram.com/soookanya/,,https://www.linkedin.com/in/sukanya-deepak-a5195091/,"Dialogues ",I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations for Community,From Data to Play: Games as Interactive Interfaces,,,,,,Visualizations for Community,Games as an interface for complex data,I have never conducted a session,"Context  
+Real-world problems are often complex and messy, involving multiple dimensions and rarely offering a single straightforward solution. We have been working with questions around such wicked problems: How do we better understand what makes people vulnerable? And just as importantly, how do we help build resilience among communities that are already at risk? 
+
+At Fields of View, we build tools that untangle the messiness inherent in real-world systems through games and simulations. Modelled on real-world data and institutional processes, these tools translate layered datasets into interactive interfaces. Rather than presenting data as static visualisations, we embed it within systems that allow participants to experience trade-offs, constraints, and unintended consequences. This session shares our ongoing work of how games and simulations can push the boundary of how we design with data - from understanding data to interacting with it. 
+
+Objective and key themes 
+Through the Dialogues discussion, we aim to deconstruct what it means to model real-world data into interactive game elements for various types of practioners- designers, techologists, and researchers amongst others. The discussion will focus on:  
+
+- Building interfaces that make complex data and disciplinary approaches more accessible and actionable  
+
+- Translating multi-layered datasets into engagement in the game  
+
+- Using interaction with data to understand trade-offs 
+
+  
+Structure  
+We begin with a facilitated 15-minute gameplay of Scheme! - a simulation-based game developed to question how we understand support for vulnerable communities. Participants will engage directly with the game rather than first being told about it. 
+
+Following the gameplay, an Open Question Circle (15 minutes) will invite participants to reflect on what datasets, disciplinary approaches, and modelling assumptions they believe informed the game design. This conversation surfaces how data is interpreted, abstracted, and translated. 
+
+In the final 15 minutes, we will share the underlying models, datasets, and design decisions used to build the game. This Experience Exchange will open discussion on alternative approaches, and other ways complex data might be represented and engaged. 
+
+Intended Audience 
+This session is intended for data visualisation practitioners, technologists, designers, researchers, and others working with complex systems and public data. 
+
+Takeaways  
+The key takeaway of the discussion is to aid an introduction into how games and simulations can create a space where complex data is not just visualised, but interacted with, and most importantly engaged with to help make more informed decisions.  
+
+We hope to open up conversations around what kind of tools, methods and approaches can make data that often sits in spreadsheets and is accessible only to a select few, more engaging and actionable.",https://fieldsofview.in/tools/scheme/,https://scheme.fieldsofview.in/,https://fieldsofview.in/,Laptops for participants to play the game,"Room with a Projector, Laptops/Screens for participants to play the game. Participants can be asked to bring their laptops.  ",,,,,,,,,,Keep,Under Review
+2E0rLyb,J9RXrMR,2026-02-15 8:25:51,Indhu Kanth,Lokasamy,Co-Founder & Creative Director,Become (Frozen Iris Pvt Limited),"Cofounder & Creative Director of Become, bridging systems, culture & data narratives. Exhibited at MAP and featured in the Processing, Serendipity Arts, he is a TEDx & Creative Mornings speaker who has worked with 60+ entities like Intel, Uber, ISB, GoI.",https://www.instagram.com/being_ink,https://x.com/LKanth46592,https://www.linkedin.com/in/indhukanth,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations as Craft,"Getting wild with Data. Re-embodying Data Through Myth, Metonym and Biophilia","Why I’m Giving This Talk
+
+I keep waiting for the era where we finally retire the pie chart. Or at least admit we’re tired of pretending a bar chart is a revelation. And yet, somehow, we’re still here—polishing the same geometries for every new dataset.
+
+I suspect many of us feel that quiet tension between “just make it pretty” and “just make it clear.” Wanting something that feels alive. As data and visualization grow more abstract and AI makes image generation effortless, I worry we’re eroding lived meaning.
+
+I’m not against cleaner charts. I’m against charts that feel distant. Against beautiful visualizations that remain emotionally detached. The central question of this talk is simple:
+
+Does our data form actually carry the structure, behaviour, and meaning of what it represents?
+
+Before dashboards, humans used fables, myths, and animal stories to communicate complex moral and epistemic truths. Ant colonies illustrated distributed labour. Seasonal migrations encoded time and memory. These weren’t decorative metaphors. they were cognitive structures that made complexity graspable.
+
+This talk is about reclaiming that structural thinking, not through nostalgia, not through illustration-for-its-own-sake, but through precision. Drawing from biophilic systems (animals, insects, plants, ecological behaviours) and cultural lore, I’ll show how we can re-embody data in situated ways.
+
+Not “data is like ants.”
+But “information density here follows pheromone-trail logic.”
+
+What I’ll Present:
+
+I’ll introduce a framework I call The Six Ecologies of Lived Data:
+
+System – interdependence
+
+Flux – growth and decay
+
+Echo – memory and trace
+
+Adversarial – tension and resistance
+
+Affective – emotional intensity
+
+Commons – shared meaning
+
+Through live and applied examples, I’ll demonstrate how to reinterpret a dataset through these modes and identify what structural qualities must be preserved in form.
+
+I’ll show how to:
+
+Begin with a dataset and map its behaviours—flow, density, hierarchy, feedback.
+
+Research and identify a living system or lore with structural parallels.
+
+Deconstruct both the dataset and the living system to find precise correspondences.
+
+Shift from metaphor to metonym—from surface similarity to structural alignment.
+
+Use AI thoughtfully: prompt for variation, then strip away aesthetic excess to reveal the grammar beneath.
+
+The focus is not on producing a new chart type, but on changing how we begin. On asking better questions before we render.
+
+Who This Talk Is For
+
+Designers, data practitioners, students, artists, researchers, and civic technologists who feel visualization today oscillates between sterile abstraction and aesthetic spectacle. Especially those working with AI who want conceptual control rather than aesthetic automation.
+
+No advanced technical skills are assumed. This is about mindset, method, and structural thinking.
+
+You’ll leave with:
+
+A new mental model: data can be lived, storied, and embodied, not merely rendered.
+
+A practical way to think in metonyms rather than metaphors.
+
+A framework for asking whether your visualization actually carries the system it represents.
+
+This isn’t a rejection of charts. It’s an invitation to rethink what they could become.",https://creativemornings.com/talks/itindhu-kanth-dr-r-kalaiselvi,https://www.youtube.com/watch?v=eDk5tle2L2w,https://www.linkedin.com/feed/update/urn:li:activity:7156140582380146688/,"Yes, many times",,,,,,,,,,Visualizations as Craft,,"Yes, many times",,https://creativemornings.com/talks/itindhu-kanth-dr-r-kalaiselvi,https://www.youtube.com/watch?v=eDk5tle2L2w,https://www.linkedin.com/feed/update/urn:li:activity:7156140582380146688/,,,Keep,Under Review
+dWrPxyK,ZjVvxpo,2026-02-15 9:19:53,Kuhu,Gupta,Data Visualization Engineer,Illumio,"Hi, I’m Kuhu Gupta, a data visualization engineer at Illumio working at the intersection of cybersecurity and data design. I build systems that transform complex network data into intuitive, high-performance visual experiences for critical decision-making.",,,https://www.linkedin.com/in/guptakuhu/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations for Community,Seven Decades in Three Inches: Designing Data as Belonging,"How do you tell a seven-decade story on a 3-inch magnet?
+
+This talk explores how the metaphor of tree rings became the foundation for translating 60+ years of alumni history into a tangible artifact. What began as a keepsake for 150+ alumni evolved into a deeper design investigation: how can data be transformed into physical form in a way that fosters identity, and belonging?
+
+At its core, this project represents a shift in perspective from visualization as something viewed on a screen to visualization as something held, gifted, and remembered. The tree ring metaphor became the organizing framework or translating decades of alumni history. Institutional identity informed the visual language, while the constraint of a 3-inch surface demanded clarity, and intentional abstraction.
+
+This topic matters deeply to me because my professional work in cybersecurity focuses on designing large-scale, high-stakes visualization systems. In contrast, this project asked: what changes when data is designed to be held instead of viewed? The turning point came when an alumnus shared that his father, a forest officer, used to bring home logs and ask him to count the rings. Seeing the magnet brought those memories back. That moment revealed something powerful: when visualization connects to lived experience, it becomes immersive and human
+
+This talk contributes to conversations in data visualization around craft, materiality, and community-centered design. It expands the field beyond screens and tools into physical artifacts and social infrastructure, demonstrating how metaphor can drive design decisions not just aesthetics.
+
+The presentation will unfold in five parts:
+
+The Design Challenge: Encoding time, identity, and institutional memory within a fixed 3-inch surface. What do you include? What do you remove? 
+Metaphor as Structure: How the tree ring metaphor became the organizing framework.
+From Artifact to Belonging: Community response, including the forest officer story, illustrates how data becomes meaningful when it connects to lived experience.
+A Framework for Designing Data as Belonging: Conclude by distilling the process into a reusable framework for translating data into tangible artifacts focusing on metaphor-driven structure, designing under constraint, encoding identity over explanation.
+
+This talk is intended for designers, visualization practitioners, crafters, and anyone interested in expanding what visualization can be.
+
+Key takeaways include:
+* A framework for translating metaphor into structure.
+* Insights into creating visualization artifacts that foster belonging.
+* What becomes possible when data is designed to be held?
+",https://www.linkedin.com/feed/update/urn:li:activity:7327754922773434369/,,,"Yes, many times",,,,,,,,,,,,,,,,,,,Keep,Under Review
+lbQRqp5,Gx1XGvL,2026-02-15 9:24:43,Deepak Thomas,Varughese,Assistant Professor,Believers Church Medical College Hospital,"I am an Community Health Physician and Epidemiologist with a special interest in Spatial Epidemiology. QGIS and R are my current tools of choice. Data Viz is a powerful tool for communications on health. 
+ 
+https://deepakvarughese.netlify.app/",,,www.linkedin.com/in/deepakvarughese/,"Dialogues ",I consent to VizChitra publishing my submission and the review of my application.,TRUE,,,,,,,,Visualizations as Craft,Documenting a Best Practices Guide for Mapping in India,I have never conducted a session,"
+The talks aims to document some of the best practices while visualizing data on a map especially in the Indian Context? 
+
+CONTEXT
+
+It is an exciting time to make maps. Free and Open Source tools have democratized map making . More and more data is being represented spatially. However, key cartographic principles need to be kept in mind while representing data spatially to help us to tell the truth and not be misled while creating a map. 
+
+What are the ideal scenarios for picking between choropleth vs spot vs hex-bin maps? When should data be normalized? How do we identify clustering? How does one deal with the Modifiable Areal Unit Problem or the Area Bias Problem? 
+
+Mapping can also be a hyperlocal activity. The same area in India may have different divisions for revenue, elections and administrations. New districts often emerge which make comparisons across time. How have teams managed this problem while working on their own projects? 
+
+WHO IS THIS DIALOGUE FOR?
+
+This dialogue is for any one who makes maps or wants to make maps.  Having a group of experienced practitioners in the mix will be ideal as this is intended to be a discussion and not advice. It is intended as a peer exchange where experienced mappers can share their workflows and newcomers can learn the ""hidden"" principles of map-making in India. 
+
+FACILITATION GUIDE
+
+1.	Introductions – Roles / Software Used?
+2.	Assigning a scribe for note - taking
+3.	Stating of Objectives
+4.	Common Problems
+        Facilitator can display a map with the common pitfall 
+        Participants can list out and discuss strategies they use for each of the problems. 
+        As time is limited , experts can pick the discussion topics we need to cover. 
+a.	Suggested Projection Systems for India
+i.	Projections for Distance
+ii.	Projections for Area
+iii.	Projections for Geometry
+b.	The Area- Bias Problem
+How do we avoid large geometries from dominating the visual space when they have the least data?
+c.	Pittfalls of plotting counts on Chloropleth Maps
+d.	The Modified Areal Unit Problem 
+e.	Identifying clusters – how do we quantify and identify clusters 
+f.	The Edge Effect at borders
+g.	Classifying and Binning Data
+i.	Quantiles 
+ii.	Natural Breaks
+iii.	Jenks
+h.	Mapping too many variables 
+i.	Strategies for dealing with changing district borders in India?
+j.	Maintaining confidentiality of data points when appropriate – ethical considerations. 
+5.	Summarizing our findings 
+6.	Forming a community of practice for mapping. 
+
+WHAT SHOULD THE PARTIPANTS WALK AWAY WITH? 
+
+At the end of this presentation , the community will be equipped with a written document that highlights best practices while making maps in the Indian Context based on the expertise of the groups. Participants will walk away with the collective wisdom of the group. 
+
+WHAT PREPARATIONS ARE NEEDED FROM PARTICIPANTS
+
+If experienced participants can prepare solutions to the pitfalls listed it may help us synthesize a stronger document at the end. However, the session is open to anyone that maybe curious as to what best practices to follow while mapping. 
+
+",https://deepakvarughese.netlify.app/,,,"Audio Video help. 
+A Screen to display maps that will be used as ""conversation starters"". 
+Microphones depending on group size. 
+Someone assigned to help document activities may be helpful. ",Projector,,,,,,,,,,Keep,Under Review
+pbaVvEP,gDAJd8N,2026-02-15 9:50:48,Anant,Mani,"Founder, CEO",randomwalk.ai,Passionate about Media & Technology. The Media has simple definition for me - connecting two or more people with flow of ideas. I founded report bee which was focused on educational data analytics. Created CM dashboard. Currently part of RandomWalk.ai,,,https://www.linkedin.com/in/ananthmani/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations as Craft,"Vibe Charting ","My talk introduces the concept of Vibe Charting: a rapid, exploratory approach to data visualization that transforms a spark of curiosity into a visual signal within minutes. At its core, Vibe Charting is about lowering the barrier between hypothesis and insight. Instead of committing to a full-scale data project, we quickly gather relevant data, restructure it with the help of modern LLMs, generate lightweight charts, and observe whether patterns meaningfully support or challenge our initial thought.
+
+The process begins with a spark — a question, intuition, or hypothesis. Traditionally, validating such ideas required substantial effort: sourcing data, cleaning it, structuring it, selecting appropriate visual forms, and preparing narratives. Today, large language models significantly compress that workflow. They can assist in scraping public information, restructuring messy text into tables, summarizing documents, and even suggesting chart formats. This allows us to “feel” the shape of an idea early — to test its viability before investing heavily in polish or infrastructure.
+
+This topic matters deeply to me because I work with teams that aspire to be data-driven but often hesitate at the starting line. The friction of tooling, uncertainty about datasets, or fear of imperfection delays insight. Vibe Charting reframes visualization not as a final artifact but as a thinking tool. It is a cognitive accelerator — a way to cut inertia and let data participate in early-stage reasoning.
+
+Within broader data visualization conversations, Vibe Charting sits at the intersection of exploratory analysis, narrative framing, and AI-assisted workflows. It challenges traditional boundaries between data preparation and storytelling. However, speed must not come at the cost of integrity. The talk will also address the risks introduced by LLMs — hallucinated data, weak sourcing, and overconfidence — and propose practical guardrails such as source tracing, explicit assumptions, and verification loops.
+
+The structure of the talk will follow a clear arc. First, I define Vibe Charting and contrast it with traditional dashboard-building. Second, I introduce the “Vibe Loop”: Spark → Data Capture → Restructure → Visualize → Narrate → Reflect. Third, I demonstrate short case studies showing how a rough hypothesis can quickly become a simple but revealing chart. Finally, I discuss how to evolve a promising vibe chart into a robust, publishable visualization.
+
+The intended audience includes data practitioners, designers, product managers, journalists, researchers, and founders — anyone who works with uncertain ideas and imperfect datasets.
+
+The key takeaway is a repeatable mindset: visualize early, validate quickly, refine deliberately. Vibe Charting empowers people to treat visualization as a dynamic thinking process rather than a final deliverable — making data exploration more accessible, iterative, and creatively energizing.",https://www.linkedin.com/posts/ananthmani_indianit-outsourcing-innovation-activity-7421421561271857152-jbpW?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAADvx9QBejweYqLjJcNK9mIxGDAInjxMTmA,https://www.linkedin.com/posts/ananthmani_datavisualization-indianeconomy-techtrends-activity-7419270104057606144-IInh?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAADvx9QBejweYqLjJcNK9mIxGDAInjxMTmA,https://www.linkedin.com/posts/ananthmani_vibedataanalytics-inflation-indiaeconomy-activity-7416075307989831680-mdWK?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAADvx9QBejweYqLjJcNK9mIxGDAInjxMTmA,"Yes, many times",,,,,,,,,,,,,,,,,,,Keep,Under Review
+7RGWqyA,pbA0YWb,2026-02-15 9:54:41,Anisha,Bhatt,Product Designer,Salesforce,"We are Interdisciplinary designers and We like diving into unexplored domains, designing solutions across scopes through robust research and participatory approaches—geeking on new paradigms while addressing today's pressing issues.",,,https://www.linkedin.com/in/anishabhatt/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations for Community,"Unpaid, Unseen and Unlimited","[Submitting with Aditi Sharma: https://www.linkedin.com/in/aditiatwork/]
+
+What problem or question are you centering?
+Invisible labour for women in India -- domestic work, emotional labour, and cognitive load -- remains economically and socially unmeasured.
+
+Women perform hours of daily work that, Do not appear on salary slips, Are not counted in GDP, Are not reflected on LinkedIn profiles
+
+
+Key questions we want to explore:
+How many hours of unpaid labour do women perform daily compared to men?
+- If this labour were paid, what would it cost annually?
+- How much of women’s “free time” is actually mental planning time?
+- What is the “Emotional Labour Tax” in relationships and workplaces?
+- How does invisible labour affect career growth and lifetime earnings?
+
+‘Because if you don't measure something you can pretend it doesn’t exist’
+
+
+
+Who is the audience for your session?
+This session is designed for:
+- Young urban couples
+- Corporate employees navigating gendered expectations 
+
+
+It is for anyone who says, “But I help.”
+
+
+
+What is the scope of your session?
+The session will present results in the form of reactions, reflections and conversations started from a series of interactive satirical data visualizations that:
+- Quantify unpaid labour in hours
+- Translate those hours into monetary value
+- Visualize mental load (planning, anticipating, remembering)
+- Explore the emotional labour gap in relationships
+- Examine long-term economic consequences
+	
+The tone will be satirical and playful on the surface – exaggerated and colorful but grounded in real data. 
+
+
+
+What will the participants take away ?
+How Satire, Playful Imagery, and Gamified Experiences spark conversations on Invisible Labor. These tools can make complex issues accessible by helping us:
+- See invisible labor translate into measurable numbers 
+- Understand its economic implications 
+- Recognize how gendered systems shape both men and women 
+- Gain a new lens of examining domestic and emotional work
+
+
+
+Ideal outcome: Conversation that go beyond the room
+We hope participants share the visuals with their partners and families, spark reflection and keep conversation alive around redistribution of labour.
+",,,,"Yes, only once",,,,,,,,,,,,,,,,,,,Keep,Under Review
+MeB5VjY,ZjVvxpo,2026-02-15 10:19:54,Kuhu,Gupta,Data Visualization Engineer,Illumio,"Hi, I’m Kuhu Gupta, a data visualization engineer at Illumio working at the intersection of cybersecurity and data design. I build systems that transform complex network data into intuitive, high-performance visual experiences for critical decision-making.",,,https://www.linkedin.com/in/guptakuhu/,Talks,I consent to VizChitra publishing my submission and the review of my application.,TRUE,Visualizations at Work,Crafting Systems: Designing Visualization at Scale,"In cybersecurity products, charts do not merely communicate, they influence operational decisions and stop breaches. A color can signal urgency. A percentage can imply completeness. A missing category can hide risk. Yet inside many organizations, visualization systems evolve in fragments: similar datasets look different across products, interaction patterns vary, accessibility is inconsistent, and design decisions are made locally rather than structurally. These inconsistencies are not cosmetic but its shapes how people interpret risk and act on it.
+
+This talk explores what happens when you treat visualization not as a collection of charts, but as a system.
+
+The project began as an internal audit of existing charts across multiple product surfaces. We mapped redundancies, misalignments, unclear encodings, and goal drift. What emerged was not just the need for a style guide, but for a shared visualization grammar, one that aligned color logic (including accessibility and brand constraints), chart-type decision rules, interaction patterns, widget design, and labeling standards to user goals. We also introduced a Product Manager checklist to anchor every visualization to a decision outcome rather than an aesthetic preference.
+
+The core idea of this talk is a shift in perspective: from visual consistency to decision consistency. A style guide is not simply a design reference; it is a governance mechanism. It formalizes how risk is represented, how clarity is constructed, and how action is implied. In doing so, it influences not just what people see, but how organizations think and act.
+
+The presentation will be structured in four parts:
+1. The Audit: Recognizing fragmentation as cognitive risk.
+2. The Framework: Building modular visualization rules.
+3. Institutionalizing Vision: Aligning design, engineering, and product.
+4. Sustaining Systems at Scale: What breaks under scale, how systems drift, and how coherence is actively maintained.
+
+
+This topic matters to me because I work in cybersecurity, where visualization directly affects real decisions. When a chart is unclear or inconsistent, it can influence how risks are interpreted and acted upon. This talk connects to ongoing conversations in data visualization about design systems, accessibility, consistency, and trust. It brings those ideas into the context of enterprise products, where visual decisions must work reliably at scale and support high-stakes use cases.
+
+The intended audience includes designers, engineers, product managers, and practitioners working inside organizations who are navigating fragmentation across dashboards or data products.
+
+Key Takeaways: 
+* A practical approach to auditing visualization ecosystems.
+* A framework for building shared visual grammars.
+* A model for turning style guides into living systems.
+",,,,"Yes, many times",,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Keep,Under Review
