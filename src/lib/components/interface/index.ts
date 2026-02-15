@@ -10,3 +10,8 @@ export { default as Card } from './Card.svelte';
 export { default as FormatCard } from './FormatCard.svelte';
 export { default as Deadline } from './Deadline.svelte';
 export { default as CallCard } from './CallCard.svelte';
+export { default as BreadCrumb } from './BreadCrumb.svelte';
+export { default as ColorSwatch } from './ColorSwatch.svelte';
+export { default as ToolsCard } from './ToolsCard.svelte';
+export { default as ToolsHeader } from './ToolsHeader.svelte';
+export { default as DeckCard } from './DeckCard.svelte';

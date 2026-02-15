@@ -222,21 +222,13 @@
 		});
 	}
 
-	function handleMouseMove(event: MouseEvent) {
-		if (event.buttons) return;
-		cursorX = event.layerX;
-		cursorY = event.layerY;
-		showCursor = true;
-		scheduleDrawOnce();
-	}
-
-	function handleTouchMove(event: TouchEvent) {
-		const touch = event.touches[0];
-		if (!touch || !canvas) return;
+	function handlePointerMove(event: PointerEvent) {
+		if (event.buttons && event.pointerType === 'mouse') return;
+		if (!canvas) return;
 
 		const rect = canvas.getBoundingClientRect();
-		cursorX = touch.clientX - rect.left;
-		cursorY = touch.clientY - rect.top;
+		cursorX = event.clientX - rect.left;
+		cursorY = event.clientY - rect.top;
 		showCursor = true;
 		scheduleDrawOnce();
 	}
@@ -270,22 +262,10 @@
 <div
 	bind:clientWidth={width}
 	bind:clientHeight={height}
-	onmousemove={!interactive ? undefined : handleMouseMove}
-	ontouchmove={!interactive ? undefined : handleTouchMove}
-	ontouchstart={!interactive ? undefined : handleTouchMove}
-	onmouseenter={() => (showCursor = true)}
-	onmouseleave={() => {
+	onpointermove={!interactive ? undefined : handlePointerMove}
+	onpointerenter={() => (showCursor = true)}
+	onpointerleave={() => {
 		// Hide the custom cursor when pointer leaves the banner area
-		showCursor = false;
-		cursorX = 0;
-		cursorY = 0;
-	}}
-	ontouchend={() => {
-		showCursor = false;
-		cursorX = 0;
-		cursorY = 0;
-	}}
-	ontouchcancel={() => {
 		showCursor = false;
 		cursorX = 0;
 		cursorY = 0;

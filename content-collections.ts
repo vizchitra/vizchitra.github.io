@@ -4,11 +4,13 @@ import { z } from 'zod';
 import remarkDirective from 'remark-directive';
 import remarkGfm from 'remark-gfm';
 import { remarkVizchitraDirectives } from './src/lib/markdown/directive.js';
+import { rehypeTableLabels } from './src/lib/markdown/table-labels.js';
 
 /* Markdown Compilation Options */
 const markdownOptions = {
 	allowDangerousHtml: true,
-	remarkPlugins: [remarkGfm, remarkDirective, remarkVizchitraDirectives]
+	remarkPlugins: [remarkGfm, remarkDirective, remarkVizchitraDirectives],
+	rehypePlugins: [rehypeTableLabels]
 };
 
 /* Pages collection define all standalone md pages */

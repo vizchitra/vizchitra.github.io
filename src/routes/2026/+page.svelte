@@ -1,16 +1,23 @@
 <script>
-	import { Flex, FullBleed } from '$lib/components/layout';
-	import { CallCard, Button } from '$lib/components/interface';
 	import {
+		Flex,
+		FullBleed,
+		CallCard,
+		Button,
 		Heading,
 		SubHeading,
 		Text,
 		Slanted,
 		LogoType,
-		ColorSpan
-	} from '$lib/components/typography';
-	import { DividerCurves, Hero, Header } from '$lib/components/structure';
-	import { Container, Stack, Cluster, Grid } from '$lib/components/layout';
+		ColorSpan,
+		DividerCurves,
+		Hero,
+		Header,
+		Container,
+		Stack,
+		Cluster,
+		Grid
+	} from '$lib/components';
 </script>
 
 <Hero banner="curve" />
@@ -63,7 +70,7 @@
 		</Text>
 
 		<Cluster justify="start">
-			<Button href="/2026/submissions" color="blue">View All Submissions</Button>
+			<Button href="/2026/submissions" color="blue">View all Submissions</Button>
 		</Cluster>
 
 		<div class="mt-6 mb-1 flex flex-row items-end gap-1">

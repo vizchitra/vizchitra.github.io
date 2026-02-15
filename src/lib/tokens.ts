@@ -22,6 +22,7 @@ export interface ThemeTokens {
 	dark: string; // var(--color-viz-{color}-dark)
 	muted: string; // var(--color-viz-{color}-muted)
 	subtle: string; // var(--color-viz-{color}-subtle)
+	solid: string; // var(--color-viz-{color}-solid)
 	// Tailwind utilities
 	bg: string; // bg-viz-{color}-light
 	border: string; // border-viz-{color}-muted
@@ -31,15 +32,15 @@ export interface ThemeTokens {
 // Color tokens map (hex + cssVar for the 6 base colors)
 export const colorTokens: Record<Color, ColorTokens> = {
 	yellow: {
-		hex: '#FFD485',
+		hex: '#D4AA5A',
 		cssVar: 'var(--color-viz-yellow)'
 	},
 	teal: {
-		hex: '#88E0D8',
+		hex: '#6BC3BB',
 		cssVar: 'var(--color-viz-teal)'
 	},
 	blue: {
-		hex: '#9FBAFC',
+		hex: '#95AFF1',
 		cssVar: 'var(--color-viz-blue)'
 	},
 	orange: {
@@ -47,11 +48,11 @@ export const colorTokens: Record<Color, ColorTokens> = {
 		cssVar: 'var(--color-viz-orange)'
 	},
 	pink: {
-		hex: '#EF75AB',
+		hex: '#FE82B8',
 		cssVar: 'var(--color-viz-pink)'
 	},
 	grey: {
-		hex: '#4C4C4C',
+		hex: '#B1B1B1',
 		cssVar: 'var(--color-viz-grey)'
 	}
 };
@@ -64,6 +65,7 @@ export const themeTokens: Record<Color, ThemeTokens> = {
 		dark: 'var(--color-viz-grey-dark)',
 		muted: 'var(--color-viz-grey-muted)',
 		subtle: 'var(--color-viz-grey-subtle)',
+		solid: 'var(--color-viz-grey-solid)',
 		bg: 'bg-viz-grey-light',
 		border: 'border-viz-grey-muted',
 		text: 'text-viz-grey-dark'
@@ -74,6 +76,7 @@ export const themeTokens: Record<Color, ThemeTokens> = {
 		dark: 'var(--color-viz-pink-dark)',
 		muted: 'var(--color-viz-pink-muted)',
 		subtle: 'var(--color-viz-pink-subtle)',
+		solid: 'var(--color-viz-pink-solid)',
 		bg: 'bg-viz-pink-light',
 		border: 'border-viz-pink-muted',
 		text: 'text-viz-pink-dark'
@@ -84,6 +87,7 @@ export const themeTokens: Record<Color, ThemeTokens> = {
 		dark: 'var(--color-viz-blue-dark)',
 		muted: 'var(--color-viz-blue-muted)',
 		subtle: 'var(--color-viz-blue-subtle)',
+		solid: 'var(--color-viz-blue-solid)',
 		bg: 'bg-viz-blue-light',
 		border: 'border-viz-blue-muted',
 		text: 'text-viz-blue-dark'
@@ -94,6 +98,7 @@ export const themeTokens: Record<Color, ThemeTokens> = {
 		dark: 'var(--color-viz-teal-dark)',
 		muted: 'var(--color-viz-teal-muted)',
 		subtle: 'var(--color-viz-teal-subtle)',
+		solid: 'var(--color-viz-teal-solid)',
 		bg: 'bg-viz-teal-light',
 		border: 'border-viz-teal-muted',
 		text: 'text-viz-teal-dark'
@@ -104,6 +109,7 @@ export const themeTokens: Record<Color, ThemeTokens> = {
 		dark: 'var(--color-viz-yellow-dark)',
 		muted: 'var(--color-viz-yellow-muted)',
 		subtle: 'var(--color-viz-yellow-subtle)',
+		solid: 'var(--color-viz-yellow-solid)',
 		bg: 'bg-viz-yellow-light',
 		border: 'border-viz-yellow-muted',
 		text: 'text-viz-yellow-dark'
@@ -114,6 +120,7 @@ export const themeTokens: Record<Color, ThemeTokens> = {
 		dark: 'var(--color-viz-orange-dark)',
 		muted: 'var(--color-viz-orange-muted)',
 		subtle: 'var(--color-viz-orange-subtle)',
+		solid: 'var(--color-viz-orange-solid)',
 		bg: 'bg-viz-orange-light',
 		border: 'border-viz-orange-muted',
 		text: 'text-viz-orange-dark'
@@ -121,30 +128,18 @@ export const themeTokens: Record<Color, ThemeTokens> = {
 };
 
 /**
- * Light variant hex codes for canvas/D3 components that need extended palettes.
- * These are NOT part of the Color type - use only when you specifically need light variants.
- */
-export const lightVariantHex = {
-	yellowLight: '#FFF3CC',
-	tealLight: '#DDF7F2',
-	blueLight: '#EAF4FF',
-	orangeLight: '#FFE6D6',
-	pinkLight: '#FFD6EB',
-	greyLight: '#F2F2F2'
-} as const;
-
-/**
+ * Historical - Not aligned with current theme tokens, but kept for reference and potential use in specific components.
  * 8-color palette for BannerCurve (5 main + 3 light variants)
  */
 export const CURVE_PALETTE = [
-	colorTokens.orange.hex, // #FC915B
-	lightVariantHex.yellowLight, // #FFF3CC
-	colorTokens.yellow.hex, // #FFD485
-	lightVariantHex.pinkLight, // #FFD6EB
-	colorTokens.pink.hex, // #EF75AB
-	lightVariantHex.tealLight, // #DDF7F2
-	colorTokens.teal.hex, // #88E0D8
-	colorTokens.blue.hex // #9FBAFC
+	'#FC915B',
+	'#FFF3CC',
+	'#FFD485',
+	'#FFD6EB',
+	'#EF75AB',
+	'#DDF7F2',
+	'#88E0D8',
+	'#9FBAFC'
 ] as const;
 
 /**

@@ -1,9 +1,5 @@
 <script lang="ts">
-	import BannerPolygon from './BannerPolygon.svelte';
-	import BannerCurve from './BannerCurve.svelte';
-	import BannerSquare from './BannerSquare.svelte';
-	import BannerBlob from './BannerBlob.svelte';
-	import FullBleed from '$lib/components/layout/FullBleed.svelte';
+	import { BannerPolygon, BannerCurve, BannerSquare, BannerBlob, FullBleed } from '$lib/components';
 
 	interface Props {
 		title?: string;

@@ -13,7 +13,11 @@ Panels at VizChitra are focused, moderated discussions built around an engaging 
 > “We don’t see things as they are, we see them as we are.”
 > — Anaïs Nin
 
-We will guide you from proposing a strong panel theme, through review and coordination, to delivering a discussion that feels dynamic, cohesive, and engaging for the audience.
+## Intent
+
+At VizChitra, panels are a **Collective Journey** — moderated conversations where multiple perspectives surface tensions, trade-offs, and shared insight.
+
+This guide helps you move from proposing a strong theme, through coordination and review, to delivering a discussion that feels dynamic, balanced, and cohesive.
 
 ## Format of Panels
 

@@ -13,9 +13,13 @@ The Exhibition at VizChitra offers a space for immersive, data-driven visualisat
 > The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.
 > — Marcel Proust
 
+## Intent
+
+At VizChitra, the exhibition is an **Immersive Journey** — a space where data becomes spatial, sensory, and experiential.
+
 Exhibits move beyond presentation into experience. They create opportunities for the community to encounter data in tangible ways — through touch, sound, movement, space, and participation. Whether sculptural, screen-based, printed, sensory, or participatory, your project becomes a shared site of inquiry.
 
-We will support you from shaping a compelling concept and proposal, through review and preparation, to installing and presenting a work that engages audiences meaningfully.
+This guide helps you move from shaping a clear concept and proposal, through curatorial review and preparation, to installing and presenting work that invites exploration and reflection.
 
 ## Format of Exhibitions
 

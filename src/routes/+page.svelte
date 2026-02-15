@@ -1,17 +1,20 @@
 <script lang="ts">
-	import { Button } from '$lib/components/interface';
-	import { RecapVideo, Mission } from '$lib/components/sections';
-	import { DividerCurves, Hero } from '$lib/components/structure';
 	import {
+		Button,
+		RecapVideo,
+		Mission,
+		DividerCurves,
+		Hero,
 		Slanted,
-		SubHeading,
 		Heading,
 		LogoType,
 		Text,
-		ColorSpan
-	} from '$lib/components/typography';
-	import { Container, Stack, Cluster } from '$lib/components/layout';
-	import FullBleed from '$lib/components/layout/FullBleed.svelte';
+		ColorSpan,
+		Container,
+		Stack,
+		Cluster,
+		FullBleed
+	} from '$lib/components';
 </script>
 
 <Hero banner="curve" />

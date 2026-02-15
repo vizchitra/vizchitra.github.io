@@ -1,16 +1,11 @@
 <script lang="ts">
-	import { Heading } from '$lib/components/typography';
-	import Header from '$lib/components/structure/Header.svelte';
-	import PatternRough from '$lib/components/patterns/PatternRough.svelte';
-	import Container from '$lib/components/layout/Container.svelte';
-	import FullBleed from '$lib/components/layout/FullBleed.svelte';
-	import Stack from '$lib/components/layout/Stack.svelte';
-	import Prose from '$lib/components/typography/Prose.svelte';
+	import { Header, PatternRough, Container, FullBleed, Stack, Prose } from '$lib/components';
 
 	type CardColor = 'pink' | 'blue' | 'teal' | 'yellow' | 'orange';
 
 	interface DeckCard {
 		title: string;
+		tagline: string;
 		description: string;
 		color: CardColor;
 		href: string;
@@ -20,35 +15,40 @@
 	const cards: DeckCard[] = [
 		{
 			title: 'TALKS',
-			description: 'Engaging presentations on data visualization topics',
+			tagline: 'The Narrative Journey',
+			description: 'Story-driven presentations rooted in lived experiences',
 			color: 'blue',
 			href: '/guides/talks',
 			angle: 50
 		},
 		{
 			title: 'DIALOGUES',
-			description: 'Open discussions sessions with peer-based learning',
+			tagline: 'The Shared Journey',
+			description: 'Participant-led conversation exploring shared questions',
 			color: 'teal',
 			href: '/guides/dialogues',
 			angle: 120
 		},
 		{
 			title: 'WORKSHOPS',
-			description: 'Hands-on learning and skill building sessions',
+			tagline: 'The Practice Journey',
+			description: 'Hands-on session focussed on practice & skill building',
 			color: 'pink',
 			href: '/guides/workshops',
 			angle: 146
 		},
 		{
 			title: 'EXHIBITION',
-			description: 'Showcase of interactive data visualisation projects',
+			tagline: 'The Immersive Journey',
+			description: 'Immersive, data-driven work that invite exploration',
 			color: 'orange',
 			href: '/guides/exhibition',
 			angle: 23
 		},
 		{
 			title: 'PANELS',
-			description: 'A focussed moderated discussion with experts.',
+			tagline: 'The Collective Journey',
+			description: 'Moderated discussions that brings multiple perspectives',
 			color: 'yellow',
 			href: '/guides/panels',
 			angle: 132
@@ -80,21 +80,33 @@
 		<Prose>
 			<h1>Guides</h1>
 			<p>
-				These guides are designed to support you (and us) to navigate the actions required from
-				first idea to final delivery for your VizChitra session.
+				These guides are designed to support both you and us as we move from first idea to final
+				delivery for your VizChitra session.
 			</p>
 			<p>
-				They bring together best practices, practical tips, and curated resources to help you
+				They bring together best practices, practical tips, and curated guidelines to help you
 				prepare, refine, and share your work with confidence across the entire journey. Think of
-				this as a working reference you can return to at every stage of your journey.
+				this as a working reference you can return to at every stage.
 			</p>
 			<p>
-				Please consider these as living documents - which we will continue to update as we go
-				through this process and will add more questions and answers to it as they emerge. If you
-				have suggestions, improvements, or additions, please open an issue or submit a pull request
-				on <a href="https://github.com/vizchitra/vizchitra.github.io">our GitHub repository</a>.
+				These are living documents. We will continue to update them as questions emerge and insights
+				evolve. If you have suggestions or improvements, please open an issue or submit a pull
+				request on <a href="https://github.com/vizchitra/vizchitra.github.io"
+					>our GitHub repository</a
+				>.
 			</p>
 			<div id="list"></div>
+			<h2>Our Five Guides</h2>
+			<p>
+				At VizChitra, each way of participating reflects a distinct approach to engaging with data.
+				Talks center narrative and lived experience. Workshops emphasize learning and skill-building
+				through doing. Dialogues create space for shared inquiry. The Exhibition invites immersive,
+				sensory encounters. Panels bring multiple perspectives into thoughtful tension
+			</p>
+			<p>
+				Together, these five approaches reflect how we learn and make meaning — through story,
+				through practice, through conversation, through experience, and through perspectives.
+			</p>
 		</Prose>
 		<FullBleed paddingY="md">
 			<div class="deck">
@@ -111,13 +123,14 @@
 							<div class="card-content self-start py-1 text-xs font-medium {textColor[card.color]}">
 								VIZCHITRA GUIDES
 							</div>
-							<h3
+							<h2
 								class="font-display-sans card-content m-0 self-start text-2xl font-bold {textColor[
 									card.color
 								]}"
 							>
 								{card.title}
-							</h3>
+							</h2>
+							<h3 class="text-viz-black text-lg">{card.tagline}</h3>
 							<p
 								class="text-md card-content text-viz-black max-w-sm self-end justify-self-end bg-white/20 text-right font-medium italic"
 							>
@@ -140,8 +153,9 @@
 	/* Default: Vertical layout */
 	.deck-inner {
 		display: grid;
-		/* 5 cards × 3 rows each: flexible description row + auto title row + auto footer row */
-		grid-template-rows: repeat(5, auto auto minmax(8rem, 1fr));
+		/* 5 cards × 4 rows each: 
+		guide row + title row + tagline row + description row */
+		grid-template-rows: repeat(5, auto auto minmax(10rem, 1fr) auto);
 	}
 
 	.deck-card {
@@ -170,8 +184,8 @@
 	@container (min-width: 60rem) {
 		.deck-inner {
 			grid-template-columns: repeat(5, 1fr);
-			/* Fixed row heights: guide row + title row + description row + */
-			grid-template-rows: auto auto minmax(14rem, 1fr);
+			/* Fixed row heights: guide row + title row + tagline row + description row + */
+			grid-template-rows: auto auto minmax(14rem, 1fr) auto;
 
 			& p {
 				text-align: right;

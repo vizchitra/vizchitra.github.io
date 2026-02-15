@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Pentagons from '$lib/components/structure/Pentagons.svelte';
+	import Pentagons from '$lib/components/patterns/Pentagons.svelte';
 
 	// Localized purpose items (moved from page) — keeps the component self-contained
 	const items: Array<{ title: string; description: string; backgroundColor: string }> = [
