@@ -80,7 +80,7 @@
 </script>
 
 <nav
-	class="bg-viz-white/80 border-viz-black/10 opacity sticky top-0 right-0 left-0 z-50 border-b backdrop-blur-md"
+	class="bg-viz-white/80 border-viz-black/10 opacity fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-md"
 >
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="flex h-16 justify-between">
@@ -122,7 +122,7 @@
 									class:rotate-315={section.expanded}
 									class:scale-120={section.expanded}
 									class:expanded={section.expanded}
-									class="chevron border-b-viz-white border-l-viz-white h-2 w-2 translate-y-[25%] rotate-135 rounded-none border-4 border-t-neutral-700 border-r-neutral-700 transition-transform"
+									class="chevron h-2 w-2 translate-y-[25%] rotate-135 rounded-none border-4 border-t-neutral-700 border-r-neutral-700 border-b-transparent border-l-transparent transition-transform"
 								></span>
 							</button>
 							{#if section.expanded}
