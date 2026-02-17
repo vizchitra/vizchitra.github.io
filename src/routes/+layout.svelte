@@ -1,23 +1,25 @@
 <script>
-	import Footer from '$lib/components/Footer.svelte';
+	import { NavMenu, Footer, SEO } from '$lib/components';
 	import '../app.css';
-	import HeaderCallToAction from '$lib/components/HeaderCallToAction.svelte';
 
 	import { page } from '$app/stores';
-	import NavMenu from '$lib/components/Navbar/NavMenu.svelte';
 
 	/** @type {{children: import('svelte').Snippet}} */
 	let { children } = $props();
+
+	// Layout props: new pageLayout key, falling back to old document convention during migration
+	let banner = $derived($page.data?.pageLayout?.banner ?? $page.data?.document?.banner ?? 'curve');
+	let color = $derived($page.data?.pageLayout?.color ?? $page.data?.document?.color);
 </script>
 
-<HeaderCallToAction />
+<SEO />
+
 <div class="app">
 	<NavMenu></NavMenu>
-	<main class:full-width={$page.url.pathname.includes('polygon-playground')}>
+	<main>
 		{@render children()}
 	</main>
-
-	<Footer />
+	<Footer {banner} {color} />
 </div>
 
 <style>
@@ -31,21 +33,14 @@
 		flex: 1;
 		display: flex;
 		flex-direction: column;
-		padding: 2.5rem;
+		/* padding: 2.5rem; */
 		width: 100%;
-		max-width: 85vw;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
-
-	main.full-width {
-		max-width: 90vw;
+		min-width: 0;
 	}
 
 	@media (max-width: 768px) {
 		main {
 			max-width: 100%;
-			padding: 1rem;
 		}
 	}
 </style>

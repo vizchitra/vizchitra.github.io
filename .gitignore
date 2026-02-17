@@ -1,5 +1,6 @@
 node_modules
 
+
 # Output
 .output
 .vercel
@@ -7,6 +8,8 @@ node_modules
 .wrangler
 /.svelte-kit
 /build
+/build 2
+/build 3
 
 # OS
 .DS_Store
@@ -24,3 +27,7 @@ vite.config.ts.timestamp-*
 
 # PartyKit
 .partykit
+.claude/
+
+# Content Collections - For Markdown File Processing
+.content-collections

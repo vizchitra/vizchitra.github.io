@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 485 79">
+  <g clip-path="url(#a)">
+    <mask id="b" width="313" height="82" x="91" y="-2" maskUnits="userSpaceOnUse" style="mask-type:alpha">
+      <path fill="#d9d9d9" d="M381 80H115.5l10-13.5-34.5-39L112-1l215.5-.5 20 16.5 32 2L404 37.5z"/>
+    </mask>
+    <g mask="url(#b)">
+      <path fill="url(#c)" d="M409 79h362v79H409z" transform="rotate(180 409 79)"/>
+    </g>
+    <path stroke="#fff" stroke-width="2" d="m307 53.5-15.567 57.349L232 92.5l-14.193-65.652L275 18.5z"/>
+    <path stroke="#fff" stroke-width="2" d="m218 27-57.5-13.5-34.5 53 55 41m153.012-55.058L348 14"/>
+    <path stroke="#fff" stroke-width="2" d="M0-1h58.822" transform="matrix(.81603 .57802 -.44886 .8936 334 52)"/>
+    <path stroke="#fff" stroke-width="2" d="M161.016 12.821V-10m216.635 94.642L404 38l-24.5-21M126.249 67.66l-36-41m.76 1.208L112.5-2m13.289 68.614-14 18m223.28-32.616-29 2m73.869-37-32-2m-.558-.213-19-15M274 18V-6m-56 33V-3"/>
+  </g>
+  <defs>
+    <linearGradient id="c" x1="409" x2="771" y1="118.5" y2="118.5" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffe6b8"/>
+      <stop offset="1" stop-color="#f8a072"/>
+    </linearGradient>
+    <clipPath id="a">
+      <path fill="#fff" d="M485 79H0V0h485z"/>
+    </clipPath>
+  </defs>
+</svg>

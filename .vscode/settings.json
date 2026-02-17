@@ -1,0 +1,30 @@
+{
+	"workbench.editor.labelFormat": "short",
+	"workbench.tree.indent": 15,
+	"explorer.compactFolders": false,
+	"oxc.fmt.configPath": ".oxfmtrc.json",
+	"editor.formatOnSave": true,
+	// "editor.defaultFormatter": "oxc.oxc-vscode",
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"[svelte]": {
+		"editor.defaultFormatter": "svelte.svelte-vscode"
+	},
+	"[yaml]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[markdown]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"files.associations": {
+		"*.svelte": "svelte",
+		"*.css": "tailwindcss"
+	},
+	"tailwindCSS.experimental.configFile": "src/app.css",
+	"tailwindCSS.includeLanguages": {
+		"svelte": "html"
+	},
+	"tailwindCSS.hovers": true,
+	"tailwindCSS.suggestions": true,
+	"tailwindCSS.validate": true,
+	"tailwindCSS.lint.invalidTailwindDirective": "warning"
+}
