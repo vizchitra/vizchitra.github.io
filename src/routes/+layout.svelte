@@ -33,6 +33,7 @@
 		flex: 1;
 		display: flex;
 		flex-direction: column;
+		padding-top: 4rem;
 		/* padding: 2.5rem; */
 		width: 100%;
 		min-width: 0;
