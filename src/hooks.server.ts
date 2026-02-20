@@ -1,14 +1,14 @@
 import { redirect } from '@sveltejs/kit';
-import { readFileSync } from 'node:fs';
 import { dev } from '$app/environment';
 
 // Parse redirect paths from Cloudflare _redirects file
 // This is done once at startup in dev
-let redirects = [];
+let redirects: Array<{ from: string; to: string; code: number }> = [];
 
 if (dev) {
 	try {
-		const content = readFileSync('_redirects', 'utf-8');
+		const fs = await import('node:fs');
+		const content = fs.readFileSync('_redirects', 'utf-8');
 		redirects = content
 			.split('\n')
 			.filter((line) => line.trim() && !line.startsWith('#'))
