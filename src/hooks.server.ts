@@ -6,7 +6,7 @@ import { readFileSync } from 'node:fs';
 let redirects;
 
 try {
-	const content = readFileSync('static/_redirects', 'utf-8');
+	const content = readFileSync('_redirects', 'utf-8');
 	redirects = content
 		.split('\n')
 		.filter((line) => line.trim() && !line.startsWith('#'))
