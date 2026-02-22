@@ -13,8 +13,7 @@ const config = {
 	kit: {
 		adapter: adapter({
 			routes: {
-				include: ['/api/*'],
-				exclude: []
+				include: ['/api/*']
 			}
 		}),
 		alias: {
