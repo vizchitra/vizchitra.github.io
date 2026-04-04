@@ -15,6 +15,8 @@ export interface SessionData {
 	designation: string;
 	organisation: string;
 	sessionType: string;
+	subtitle: string;
+	date: string;
 	slug: string;
 	speakerImage: string;
 	description: string;
@@ -45,6 +47,8 @@ function parseSessionRows(): SessionData[] {
 			designation: row['designation']?.trim() || '',
 			organisation: row['organisation']?.trim() || '',
 			sessionType,
+			subtitle: row['subtitle']?.trim() || '',
+			date: row['date']?.trim() || '',
 			slug,
 			speakerImage: row['speaker_image']?.trim() || '',
 			description: row['description']?.trim() || '',

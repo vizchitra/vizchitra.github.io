@@ -22,15 +22,16 @@
 				<h1>{session.title}</h1>
 			</Prose>
 
-			<!-- Speaker info -->
 			<div class="space-y-1.5 md:space-y-2">
-				<p class="font-display-sans text-base md:text-xl text-viz-{color}-dark text-left font-semibold">
+				<p
+					class="font-display-sans text-base md:text-xl text-viz-{color}-dark text-left font-semibold"
+				>
 					{session.speakerName}
 				</p>
 				<p class="text-viz-grey-dark/80 text-md text-left font-normal md:text-lg">
-					{session.designation}{#if session.organisation}<span
-						class="text-viz-grey-dark/80 mx-1.5">·</span
-					>{session.organisation}{/if}
+					{session.designation}{#if session.organisation}<span class="text-viz-grey-dark/80 mx-1.5"
+							>·</span
+						>{session.organisation}{/if}
 				</p>
 			</div>
 		</div>

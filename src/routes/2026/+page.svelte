@@ -114,6 +114,8 @@
 						designation={session.designation}
 						organisation={session.organisation}
 						sessionType={session.sessionType}
+						subtitle={session.subtitle}
+						date={session.date}
 						slug={session.slug}
 					/>
 				{/each}
