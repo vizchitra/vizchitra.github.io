@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import {
 		Flex,
 		FullBleed,
@@ -16,8 +16,12 @@
 		Container,
 		Stack,
 		Cluster,
-		Grid
+		Grid,
+		SessionCard
 	} from '$lib/components';
+	import type { PageData } from './$types';
+
+	let { data }: { data: PageData } = $props();
 </script>
 
 <Hero banner="curve" />
@@ -90,6 +94,35 @@
 				/>
 			</svg>
 		</div>
+
+		{#if data.selectedSessions.length > 0}
+			<DividerCurves />
+
+			<Heading tag="h2" class="font-normal">
+				<Slanted color="teal" textContent="CONFIRMED SESSIONS" />
+			</Heading>
+
+			<Text type="body">
+				Here are some of the confirmed sessions for VizChitra 2026. More announcements coming soon!
+			</Text>
+
+			<Grid maxColumns={3} minWidth="280px" gap={6}>
+				{#each data.selectedSessions as session (session.slug)}
+					<SessionCard
+						title={session.title}
+						speakerName={session.speakerName}
+						designation={session.designation}
+						organisation={session.organisation}
+						sessionType={session.sessionType}
+						slug={session.slug}
+					/>
+				{/each}
+			</Grid>
+
+			<Cluster justify="start">
+				<Button href="/2026/sessions" color="teal">View all Sessions</Button>
+			</Cluster>
+		{/if}
 
 		<FullBleed>
 			<Cluster>
