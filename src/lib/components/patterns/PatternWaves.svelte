@@ -1,11 +1,27 @@
 <script lang="ts">
 	type Tone = 'blue' | 'teal' | 'orange' | 'pink' | 'yellow';
 
+	export type WaveLayerConfig = {
+		yFactor: number;
+		ampFactor: number;
+		frequency: number;
+		fillKey?: 'light' | 'normal' | 'dark';
+		fill?: string;
+		hatched?: boolean;
+	};
+
+	const defaultLayerConfig: WaveLayerConfig[] = [
+		{ yFactor: 0.1, ampFactor: 1.5, frequency: 1.8, fillKey: 'light', hatched: true },
+		{ yFactor: 0.45, ampFactor: 2.5, frequency: 1.6, fillKey: 'normal' },
+		{ yFactor: 0.65, ampFactor: 1.2, frequency: 1.5, fillKey: 'dark' }
+	];
+
 	interface Props {
 		tone?: Tone;
 		variation?: number;
 		width?: number;
 		height?: number;
+		layerConfig?: WaveLayerConfig[];
 		class?: string;
 		ariaLabel?: string;
 	}
@@ -15,6 +31,7 @@
 		variation = 0.5,
 		width = 1080,
 		height = 1350,
+		layerConfig = defaultLayerConfig,
 		class: className = '',
 		ariaLabel
 	}: Props = $props();
@@ -95,20 +112,12 @@
 		// Deterministic offsets for visual variety
 		const seed = hashStringToUnit(`waves-${variation}`);
 
-		// Three waves with increasing amplitude and slight vertical offsets
-		const y1 = height * 0.1;
-		const y2 = height * 0.45;
-		const y3 = height * 0.65;
-
-		const a1 = baseAmp * (1.5 + seed * 0.4);
-		const a2 = baseAmp * (2.5 + seed * 0.3);
-		const a3 = baseAmp * (1.2 + seed * 0.2);
-
-		return [
-			{ d: wavePath(y1, a1, 1.8), fill: palette.light, hatched: true, opacity: 1 },
-			{ d: wavePath(y2, a2, 1.6), fill: palette.normal, opacity: 1 },
-			{ d: wavePath(y3, a3, 1.5, height * 0.12), fill: palette.dark, opacity: 1 }
-		];
+		return layerConfig.map((cfg) => {
+			const y = height * cfg.yFactor;
+			const a = baseAmp * (cfg.ampFactor + seed * 0.3);
+			const fill = cfg.fill ?? palette[cfg.fillKey ?? 'normal'];
+			return { d: wavePath(y, a, cfg.frequency), fill, hatched: cfg.hatched ?? false, opacity: 1 };
+		});
 	}
 
 	const layers = $derived(createWaveLayers());

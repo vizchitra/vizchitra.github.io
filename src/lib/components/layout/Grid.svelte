@@ -31,11 +31,7 @@
 	});
 </script>
 
-<div
-	class={['grid-layout', className]}
-	style:--grid-gap={gapSize}
-	style:--grid-cols={cols}
->
+<div class={['grid-layout', className]} style:--grid-gap={gapSize} style:--grid-cols={cols}>
 	{@render children?.()}
 </div>
 
