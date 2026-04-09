@@ -107,10 +107,11 @@
 			</div>
 
 			<div class="sessions-logistics">
-				<p class="text-base uppercase md:text-base">
+				<p class="text-base leading-none uppercase md:text-base">
 					{#if formattedDate}
-						<span class="font-display leading-tight font-black">{formattedDate}</span>
-					{/if}<span class="font-display leading-tight font-light"
+						<span class="font-display leading-none! font-black md:text-[16px]">{formattedDate}</span
+						>
+					{/if}<span class="font-display leading-none! font-light md:text-[16px]"
 						>, Bangalore International Centre
 					</span>
 				</p>
@@ -118,19 +119,19 @@
 		</div>
 
 		<div
-			class="session-card-body relative aspect-square overflow-hidden"
+			class="session-card-body relative aspect-[4/5] overflow-hidden"
 			bind:clientWidth={waveW}
 			bind:clientHeight={waveH}
 		>
 			<div class="title-content relative z-10 p-3 md:p-4">
 				<h3
-					class="title font-display text-shadow mb-1 text-2xl leading-none font-extrabold text-[#4c4c4c] uppercase md:text-3xl"
+					class="title font-display text-shadow mb-1 text-2xl leading-none font-extrabold text-[#4c4c4c] uppercase md:text-[26px]"
 				>
 					{title}
 				</h3>
 				{#if subtitle}
 					<p
-						class="subtitle font-display mb-1 text-2xl leading-tight font-light text-[#4c4c4c] uppercase md:text-2xl"
+						class="subtitle font-display mb-1 text-2xl leading-tight font-light text-[#4c4c4c] uppercase md:text-xl"
 					>
 						{subtitle}
 					</p>
@@ -147,8 +148,8 @@
 			/>
 
 			<div class="speaker-details-overlay pointer-events-auto absolute inset-0 flex flex-col">
-				<div class="absolute inset-x-0 bottom-0" style="height: {waveH * 0.275}px">
-					<div class="speaker-image absolute top-20 right-5 -translate-y-full">
+				<div class="absolute inset-x-0 bottom-0" style="height: {waveH * 0.3}px">
+					<div class="speaker-image absolute top-15 right-5 -translate-y-full">
 						<img
 							class="h-auto w-full"
 							src="{base}/images/speakers/2026/speaker-placeholder.avif"
@@ -173,10 +174,15 @@
 				<div class="speaker-details-content relative z-30 mt-auto w-full p-2.5 md:p-4">
 					<div class="speaker-details relative z-10">
 						<h3
-							class="font-display text-shadow mb-1 text-2xl leading-none text-[#4c4c4c] uppercase md:text-3xl"
+							class="font-display text-shadow mb-1 text-2xl leading-none text-[#4c4c4c] uppercase md:text-[26px] lg:text-3xl"
 						>
-							<span class="first-name font-extrabold">{speakerName.split(' ')[0]}</span>
-							<span class="last-name font-medium">{speakerName.split(' ').slice(1).join(' ')}</span>
+							<span
+								class="first-name text-2xl leading-none font-extrabold md:text-[28px] 2xl:text-3xl"
+								>{speakerName.split(' ')[0]}</span
+							>
+							<span class="last-name text-2xl leading-none font-medium md:text-[28px] 2xl:text-3xl"
+								>{speakerName.split(' ').slice(1).join(' ')}</span
+							>
 						</h3>
 						{#if designation || organisation}
 							<span class="font-display block leading-tight text-[#4c4c4c] uppercase md:text-lg">
@@ -205,7 +211,7 @@
 	}
 
 	.speaker-image {
-		max-width: min(300px, 60%);
+		max-width: min(300px, 55%);
 	}
 
 	.text-shadow {
