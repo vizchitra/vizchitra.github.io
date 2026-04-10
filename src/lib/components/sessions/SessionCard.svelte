@@ -1,7 +1,7 @@
 <script lang="ts">
 	import ProposalBadge from '../proposals/ProposalBadge.svelte';
 	import LogoType from '../typography/LogoType.svelte';
-	import PatternWaves from '../patterns/PatternWaves.svelte';
+	import SessionCardBackground from './SessionCardBackground.svelte';
 	import { sessionColorMap } from '$lib/utils/sessions';
 	import { base } from '$app/paths';
 
@@ -39,6 +39,13 @@
 		orange: 'viz-orange'
 	};
 
+	const overlayColors = {
+		pink: '#F59EC2',
+		blue: '#C3D1F6',
+		teal: '#B4F2EB',
+		orange: '#F4B696'
+	};
+
 	const color = $derived(sessionColorMap[sessionType] ?? 'blue');
 
 	function formatDate(iso: string): string {
@@ -58,24 +65,8 @@
 
 	const formattedDate = $derived(date ? formatDate(date) : '');
 
-	// --- Wave background ---
-	let waveW = $state(600);
-	let waveH = $derived.by(() => waveW * 1.25);
-
-	function hashStringToUnit(s: string): number {
-		let h = 0;
-		for (let i = 0; i < s.length; i++) {
-			h = (h * 31 + s.charCodeAt(i)) % 1000000007;
-		}
-		return (h % 1000000) / 1000000;
-	}
-
-	const cardVariation = $derived(hashStringToUnit(slug ?? title));
-
-	const cardLayerConfig = [
-		{ yFactor: 0.3, ampFactor: 1.5, frequency: 1.8, fillKey: 'light' as const, hatched: true },
-		{ yFactor: 0.5, ampFactor: 1.2, frequency: 1.5, fill: '#778ECE' }
-	];
+	let backgroundWidth = $state(600);
+	let backgroundHeight = $derived.by(() => backgroundWidth * 1.25);
 </script>
 
 {#if tbd}
@@ -120,8 +111,8 @@
 
 		<div
 			class="session-card-body relative aspect-4/5 overflow-hidden"
-			bind:clientWidth={waveW}
-			bind:clientHeight={waveH}
+			bind:clientWidth={backgroundWidth}
+			bind:clientHeight={backgroundHeight}
 		>
 			<div class="title-content relative z-10 p-3 md:p-4">
 				<h3
@@ -138,17 +129,18 @@
 				{/if}
 			</div>
 
-			<PatternWaves
-				tone={color}
-				variation={cardVariation}
-				width={waveW}
-				height={waveH}
-				layerConfig={cardLayerConfig}
+			<SessionCardBackground
+				{sessionType}
+				{color}
+				{slug}
+				{title}
+				width={backgroundWidth}
+				height={backgroundHeight}
 				class="absolute inset-0 h-full w-full"
 			/>
 
 			<div class="speaker-details-overlay pointer-events-auto absolute inset-0 flex flex-col">
-				<div class="absolute inset-x-0 bottom-0" style="height: {waveH * 0.3}px">
+				<div class="absolute inset-x-0 bottom-0" style="height: {backgroundHeight * 0.3}px">
 					<div class="speaker-image absolute top-15 right-5 -translate-y-full">
 						<img
 							class="h-auto w-full"
@@ -165,8 +157,9 @@
 						aria-hidden="true"
 					>
 						<path
+							class="fill {color}"
 							d="M0.5 364.516V0.516363C191.5 -0.982956 456 101.337 579 114.518C705 128.018 1004.5 9.01752 1080 2.01636V364.516H0.5Z"
-							fill="#C3D1F6"
+							fill={overlayColors[color] ?? overlayColors.blue}
 						/>
 					</svg>
 				</div>
@@ -174,7 +167,7 @@
 				<div class="speaker-details-content relative z-30 mt-auto w-full p-2.5 md:p-4">
 					<div class="speaker-details relative z-10">
 						<h3
-							class="font-display text-shadow mb-1 text-2xl leading-none text-[#4c4c4c] uppercase md:text-[26px] lg:text-3xl"
+							class="font-display text-shadow mb-1 text-2xl leading-none text-[#4c4c4c] uppercase md:text-[26px] lg:text-3xl xl:text-shadow-none!"
 						>
 							<span
 								class="first-name text-2xl leading-none font-extrabold md:text-[28px] 2xl:text-3xl"
@@ -206,8 +199,8 @@
 		gap: 0rem;
 
 		box-shadow:
-			rgba(50, 50, 93, 0.25) 0px 6px 14px -2px,
-			rgba(0, 0, 0, 0.3) 0px 3px 8px -3px;
+			rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+			rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 	}
 
 	.speaker-image {
@@ -216,9 +209,9 @@
 
 	.text-shadow {
 		text-shadow:
-			-1px -1px 0 white,
-			1px -1px 0 white,
-			-1px 1px 0 white,
-			1px 1px 0 white;
+			-1.8px -1.8px 0 white,
+			1.8px -1.8px 0 white,
+			-1.8px 1.8px 0 white,
+			1.8px 1.8px 0 white;
 	}
 </style>
