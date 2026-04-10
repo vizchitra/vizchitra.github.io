@@ -92,8 +92,8 @@
 		class="sessions-card group white border-viz-grey/40 block overflow-hidden rounded border transition-shadow hover:shadow-md"
 	>
 		<div class="session-card-header p-2.5 pb-0! md:p-4">
-			<div class="title mb-3 flex flex-row items-baseline justify-start gap-2">
-				<div class="logo-container text-2xl leading-none text-[#4c4c4c]">
+			<div class="title mb-2.5 flex flex-row items-baseline justify-start gap-2 md:mb-3">
+				<div class="logo-container text-xl leading-none text-[#4c4c4c] md:text-2xl">
 					<LogoType year={null} />
 				</div>
 
@@ -119,7 +119,7 @@
 		</div>
 
 		<div
-			class="session-card-body relative aspect-[4/5] overflow-hidden"
+			class="session-card-body relative aspect-4/5 overflow-hidden"
 			bind:clientWidth={waveW}
 			bind:clientHeight={waveH}
 		>
@@ -131,7 +131,7 @@
 				</h3>
 				{#if subtitle}
 					<p
-						class="subtitle font-display mb-1 text-2xl leading-tight font-light text-[#4c4c4c] uppercase md:text-xl"
+						class="subtitle font-display text-shadow mb-1 text-xl leading-tight font-light text-[#4c4c4c] uppercase md:text-xl"
 					>
 						{subtitle}
 					</p>
@@ -206,8 +206,8 @@
 		gap: 0rem;
 
 		box-shadow:
-			rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-			rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+			rgba(50, 50, 93, 0.25) 0px 6px 14px -2px,
+			rgba(0, 0, 0, 0.3) 0px 3px 8px -3px;
 	}
 
 	.speaker-image {
