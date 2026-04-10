@@ -82,38 +82,39 @@
 		href="/2026/sessions/{slug}"
 		class="sessions-card group white border-viz-grey/40 block overflow-hidden rounded border transition-shadow hover:shadow-md"
 	>
-		<div class="session-card-header p-2.5 pb-0! md:p-4">
-			<div class="title mb-2.5 flex flex-row items-baseline justify-start gap-2 md:mb-3">
-				<div class="logo-container text-xl leading-none text-[#4c4c4c] md:text-2xl">
-					<LogoType year={null} />
-				</div>
-
-				<div class="divider my-0.5 w-[2px] self-stretch bg-[#4c4c4c]"></div>
-				<p
-					class="font-display block text-2xl leading-none font-bold tracking-tighter uppercase"
-					style="color: var(--color-{currentColor})"
-				>
-					{sessionType}
-				</p>
-			</div>
-
-			<div class="sessions-logistics">
-				<p class="text-base leading-none uppercase md:text-base">
-					{#if formattedDate}
-						<span class="font-display leading-none! font-black md:text-[16px]">{formattedDate}</span
-						>
-					{/if}<span class="font-display leading-none! font-light md:text-[16px]"
-						>, Bangalore International Centre
-					</span>
-				</p>
-			</div>
-		</div>
-
 		<div
-			class="session-card-body relative aspect-4/5 overflow-hidden"
+			class="session-card-body relative aspect-4/5 overflow-visible"
 			bind:clientWidth={backgroundWidth}
 			bind:clientHeight={backgroundHeight}
 		>
+			<div class="session-card-header relative z-10 p-2.5 pb-0! md:p-4">
+				<div class="title mb-2.5 flex flex-row items-baseline justify-start gap-2 md:mb-3">
+					<div class="logo-container text-xl leading-none text-[#4c4c4c] md:text-2xl">
+						<LogoType year={null} />
+					</div>
+
+					<div class="divider my-0.5 w-0.5 self-stretch bg-[#4c4c4c]"></div>
+					<p
+						class="font-display text-shadow block text-2xl leading-none font-bold tracking-tighter uppercase"
+						style="color: var(--color-{currentColor})"
+					>
+						{sessionType}
+					</p>
+				</div>
+
+				<div class="sessions-logistics">
+					<p class="text-base leading-none uppercase md:text-base">
+						{#if formattedDate}
+							<span class="font-display leading-none! font-black md:text-[16px]"
+								>{formattedDate}</span
+							>
+						{/if}<span class="font-display leading-none! font-light md:text-[16px]"
+							>, Bangalore International Centre
+						</span>
+					</p>
+				</div>
+			</div>
+
 			<div class="title-content relative z-10 p-3 md:p-4">
 				<h3
 					class="title font-display text-shadow mb-1 text-2xl leading-none font-extrabold text-[#4c4c4c] uppercase md:text-[26px]"
@@ -136,7 +137,7 @@
 				{title}
 				width={backgroundWidth}
 				height={backgroundHeight}
-				class="absolute inset-0 h-full w-full"
+				class="absolute inset-0 z-0 h-full w-full"
 			/>
 
 			<div class="speaker-details-overlay pointer-events-auto absolute inset-0 flex flex-col">
@@ -209,9 +210,9 @@
 
 	.text-shadow {
 		text-shadow:
-			-1.8px -1.8px 0 white,
-			1.8px -1.8px 0 white,
-			-1.8px 1.8px 0 white,
-			1.8px 1.8px 0 white;
+			-1.5px -1.5px 0 white,
+			1.5px -1.5px 0 white,
+			-1.5px 1.5px 0 white,
+			1.5px 1.5px 0 white;
 	}
 </style>
