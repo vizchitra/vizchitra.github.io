@@ -1,7 +1,8 @@
 <script lang="ts">
-	import ProposalBadge from '../proposals/ProposalBadge.svelte';
 	import LogoType from '../typography/LogoType.svelte';
+	import ProposalBadge from '../proposals/ProposalBadge.svelte';
 	import SessionCardBackground from './SessionCardBackground.svelte';
+	import PatternComingSoon from './PatternComingSoon.svelte';
 	import { sessionColorMap } from '$lib/utils/sessions';
 	import { base } from '$app/paths';
 
@@ -70,11 +71,59 @@
 </script>
 
 {#if tbd}
-	<div
-		class="border-viz-grey/15 flex min-h-[200px] flex-col items-center justify-center rounded-lg border border-dashed p-6 text-center"
-	>
-		<ProposalBadge text={sessionType} {color} />
-		<p class="text-viz-grey/50 mt-3 text-sm">Coming soon</p>
+	{@const currentColor = colorClasses[color] ?? colorClasses.blue}
+	<div class="sessions-card border-viz-grey/40 overflow-hidden rounded border">
+		<div
+			class="relative flex aspect-4/5 flex-col overflow-visible"
+			bind:clientWidth={backgroundWidth}
+			bind:clientHeight={backgroundHeight}
+		>
+			<PatternComingSoon
+				tone={color}
+				width={backgroundWidth}
+				height={backgroundHeight}
+				class="absolute inset-0 h-full w-full"
+			/>
+
+			<div class="session-card-header relative z-10 p-2.5 pb-0! md:p-4">
+				<div class="title mb-2.5 flex flex-row items-baseline justify-start gap-2 md:mb-3">
+					<div class="logo-container text-xl leading-none text-[#4c4c4c] md:text-2xl">
+						<LogoType year={null} />
+					</div>
+					<div class="divider my-0.5 w-0.5 self-stretch bg-[#4c4c4c]"></div>
+					<p
+						class="font-display text-shadow block text-2xl leading-none font-bold tracking-tighter uppercase"
+						style="color: var(--color-{currentColor})"
+					>
+						{sessionType}
+					</p>
+				</div>
+
+				<div class="sessions-logistics">
+					<p class="text-base leading-none uppercase md:text-base">
+						{#if formattedDate}
+							<span class="font-display leading-none! font-black md:text-[16px]"
+								>{formattedDate}</span
+							>
+						{/if}<span class="font-display leading-none! font-light md:text-[16px]"
+							>, Bangalore International Centre
+						</span>
+					</p>
+				</div>
+			</div>
+
+			<div class="relative z-10 flex flex-1 flex-col items-center justify-end pb-4 text-center">
+				<p class="font-display text-shadow text-3xl font-bold text-[#4c4c4c] uppercase">
+					Coming soon
+				</p>
+				<div
+					class="mt-2 rounded-4xl border-2"
+					style="border-color:var(--{colorClasses[color]}-dark)"
+				>
+					<ProposalBadge text={sessionType} {color} />
+				</div>
+			</div>
+		</div>
 	</div>
 {:else}
 	{@const currentColor = colorClasses[color] ?? colorClasses.blue}

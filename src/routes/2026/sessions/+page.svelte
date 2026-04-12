@@ -42,7 +42,7 @@
 				<button
 					class="rounded-full border px-4 py-1.5 text-sm font-medium transition-colors {selectedFormat ===
 					format
-						? `bg-viz-${color}-solid text-white border-viz-${color}-solid`
+						? `bg-viz-grey border-viz-grey text-white`
 						: `border-viz-grey/20 text-viz-grey hover:border-viz-${color}-solid/40`}"
 					onclick={() => (selectedFormat = format)}
 				>
