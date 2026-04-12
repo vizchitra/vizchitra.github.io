@@ -112,8 +112,10 @@
 				</div>
 			</div>
 
-			<div class="relative z-10 flex flex-1 flex-col items-center justify-end pb-4 text-center">
-				<p class="font-display text-shadow text-3xl font-bold text-[#4c4c4c] uppercase">
+			<div
+				class="relative z-10 flex flex-1 flex-col items-center justify-end pb-3 text-center md:pb-4"
+			>
+				<p class="font-display text-shadow text-2xl font-bold text-[#4c4c4c] uppercase md:text-3xl">
 					Coming soon
 				</p>
 				<div
@@ -132,7 +134,7 @@
 		class="sessions-card group white border-viz-grey/40 block overflow-hidden rounded border transition-shadow hover:shadow-md"
 	>
 		<div
-			class="session-card-body relative aspect-4/5 overflow-visible"
+			class="session-card-body relative aspect-4/6 overflow-visible md:aspect-4/5"
 			bind:clientWidth={backgroundWidth}
 			bind:clientHeight={backgroundHeight}
 		>
@@ -166,13 +168,13 @@
 
 			<div class="title-content relative z-10 p-3 md:p-4">
 				<h3
-					class="title font-display text-shadow mb-1 text-2xl leading-none font-extrabold text-[#4c4c4c] uppercase md:text-[26px]"
+					class="title font-display text-shadow mb-1 text-[20px] leading-none font-extrabold text-[#4c4c4c] uppercase md:text-[26px]"
 				>
 					{title}
 				</h3>
 				{#if subtitle}
 					<p
-						class="subtitle font-display text-shadow mb-1 text-xl leading-tight font-light text-[#4c4c4c] uppercase md:text-xl"
+						class="subtitle font-display text-shadow mb-1 text-lg leading-tight font-light text-[#4c4c4c] uppercase md:text-xl"
 					>
 						{subtitle}
 					</p>

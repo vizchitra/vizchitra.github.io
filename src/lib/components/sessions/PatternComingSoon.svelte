@@ -48,7 +48,7 @@
 	const rings = $derived([
 		{ radius: minSide * 0.48, thickness: minSide * 0.1, fill: palette.light },
 		{ radius: minSide * 0.36, thickness: minSide * 0.1, fill: palette.normal },
-		{ radius: minSide * 0.25, thickness: minSide * 0.09, fill: palette.dark }
+		{ radius: minSide * 0.25, thickness: minSide * 0.09, fill: palette.dark, opacity: 0.75 }
 	]);
 </script>
 
@@ -69,6 +69,7 @@
 			fill="none"
 			stroke={ring.fill}
 			stroke-width={ring.thickness}
+			opacity={ring?.opacity ?? 1}
 		/>
 	{/each}
 </svg>
