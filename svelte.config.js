@@ -13,7 +13,8 @@ const config = {
 	kit: {
 		adapter: adapter({
 			routes: {
-				include: ['/api/*']
+				include: ['/api/*'],
+				exclude: []
 			}
 		}),
 		alias: {
@@ -31,7 +32,8 @@ const config = {
 					return;
 				}
 				throw new Error(message);
-			}
+			},
+			handleUnseenRoutes: 'ignore'
 		}
 	},
 	preprocess: [vitePreprocess()]

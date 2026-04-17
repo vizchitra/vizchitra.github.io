@@ -95,5 +95,5 @@ const studio = defineCollection({
 });
 
 export default defineConfig({
-	collections: [guides, studio, pages]
+	content: [guides, studio, pages]
 });

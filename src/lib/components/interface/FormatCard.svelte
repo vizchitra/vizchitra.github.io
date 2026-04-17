@@ -45,7 +45,7 @@
 	};
 
 	// Generate guide URL from format
-	const guideUrl = `/guides/${format}`;
+	const guideUrl = $derived(`/guides/${format}`);
 </script>
 
 <a
