@@ -8,7 +8,7 @@
 	let { name = '' } = $props();
 
 	// Eagerly load all SVGs as raw strings so we can inline them by filename
-	const svgs = import.meta.glob('/src/lib/assets/**/*.svg', { as: 'raw', eager: true });
+	const svgs = import.meta.glob('/src/lib/assets/**/*.svg', { query: '?raw', import: 'default', eager: true });
 
 	function getSvg(name) {
 		if (!name) return '';

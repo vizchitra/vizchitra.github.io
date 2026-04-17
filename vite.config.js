@@ -22,6 +22,9 @@ export default defineConfig({
 		sveltekit(),
 		dsv(),
 		hmrReload()],
+	build: {
+		chunkSizeWarningLimit: 1000
+	},
 	server: {
 		fs: {
 			allow: ['..']
