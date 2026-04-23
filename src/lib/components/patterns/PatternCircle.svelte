@@ -55,6 +55,7 @@
 
 	const HATCH_SPACING = 30;
 	const HATCH_STROKE = 1;
+	const CENTER_OFFSET_Y = -0.15; // -1 = top, 0 = center, +1 = bottom
 	let viewBox = $derived(`0 0 ${width} ${height}`);
 	let ariaHidden = $derived(!ariaLabel);
 
@@ -159,7 +160,7 @@
 		const [r1, r2, r3, r4] = sample(4, seed + 0.03);
 		const minSide = Math.min(width, height);
 		const centerX = width / 2;
-		const centerY = height / 2;
+		const centerY = height / 2 + (CENTER_OFFSET_Y * height) / 2;
 
 		// Bigger circles with more whitespace in center
 		const outerRadius = minSide * (0.42 + v * 0.06);
@@ -256,7 +257,12 @@
 
 		<mask id={maskId} maskUnits="userSpaceOnUse">
 			<rect x="0" y="0" {width} {height} fill="white" />
-			<circle cx={width / 2} cy={height / 2} r={maskRadius} fill="black" />
+			<circle
+				cx={width / 2}
+				cy={height / 2 + (CENTER_OFFSET_Y * height) / 2}
+				r={maskRadius}
+				fill="black"
+			/>
 		</mask>
 	</defs>
 
