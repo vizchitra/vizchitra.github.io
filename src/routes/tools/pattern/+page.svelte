@@ -1,5 +1,14 @@
 <script lang="ts">
-	import { PatternWaves, PatternRiver, PatternCircle, PatternStream, ToolsCard, ToolsHeader, Header } from '$lib/components';
+	import {
+		PatternWaves,
+		PatternRiver,
+		PatternCircle,
+		PatternStream,
+		PatternArc,
+		ToolsCard,
+		ToolsHeader,
+		Header
+	} from '$lib/components';
 
 	const variants = ['waves', 'river', 'circle', 'stream'] as const;
 	const tones = ['blue', 'teal', 'pink', 'orange', 'yellow'] as const;
@@ -30,6 +39,10 @@
 	let riverTone = $state<'blue' | 'teal' | 'orange' | 'pink' | 'yellow'>('teal');
 	let circleTone = $state<'blue' | 'teal' | 'orange' | 'pink' | 'yellow'>('pink');
 	let streamTone = $state<'blue' | 'teal' | 'orange' | 'pink' | 'yellow'>('orange');
+
+	// Arc countdown target date — picker value is treated as IST (UTC+05:30)
+	let arcTargetDateStr = $state('2026-07-03T09:00');
+	let arcTargetDate = $derived(new Date(arcTargetDateStr + ':00+05:30'));
 </script>
 
 <Header banner="square" color="grey"></Header>
@@ -238,4 +251,58 @@
 			</div>
 		</ToolsCard>
 	{/each}
+
+	<!-- Arc countdown card -->
+	<ToolsCard widthClass="w-full" maxWidthClass="max-w-6xl">
+		<div class="mb-4 space-y-3">
+			<div>
+				<h2 class="text-viz-black text-2xl font-bold">Arc</h2>
+				<p class="text-viz-grey text-sm">
+					Countdown clock with four concentric arcs: outermost (orange) for seconds, then (blue) for
+					minutes, (pink) for hours, inner (teal) for days
+				</p>
+			</div>
+			<div class="flex flex-wrap items-center gap-6">
+				<div class="flex items-center gap-3">
+					<label for="arcTargetDate" class="text-viz-grey-dark text-sm font-medium"
+						>Target date</label
+					>
+					<input
+						id="arcTargetDate"
+						type="datetime-local"
+						bind:value={arcTargetDateStr}
+						class="text-viz-black border-viz-grey-light rounded-md border bg-white px-3 py-1 text-sm"
+					/>
+				</div>
+			</div>
+		</div>
+
+		<div class="grid gap-6 md:grid-cols-2">
+			<!-- Generated Pattern -->
+			<div class="space-y-2">
+				<p class="text-viz-grey text-xs font-medium tracking-wide uppercase">Generated Pattern</p>
+				<div class="border-viz-grey-light overflow-hidden rounded-xl border bg-white">
+					<PatternArc
+						targetDate={arcTargetDate}
+						width={400}
+						height={500}
+						class="block h-auto w-full"
+						ariaLabel="Arc countdown pattern"
+					/>
+				</div>
+			</div>
+
+			<!-- Reference Image -->
+			<div class="space-y-2">
+				<p class="text-viz-grey text-xs font-medium tracking-wide uppercase">Reference Design</p>
+				<div class="border-viz-grey-light overflow-hidden rounded-xl border bg-gray-50">
+					<img
+						src="/images/patterns/patterns-arcs-spinner.png"
+						alt="Reference arc countdown pattern"
+						class="block h-auto w-full"
+					/>
+				</div>
+			</div>
+		</div>
+	</ToolsCard>
 </section>

@@ -10,4 +10,5 @@ export { default as PatternRiver } from './PatternRiver.svelte';
 export { default as PatternStream } from './PatternStream.svelte';
 export { default as PatternWaves } from './PatternWaves.svelte';
 export { default as PatternRough } from './PatternRough.svelte';
+export { default as PatternArc } from './PatternArc.svelte';
 export { default as Pentagons } from './Pentagons.svelte';

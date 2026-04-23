@@ -7,11 +7,14 @@
 	interface Props {
 		title?: string;
 		subtitle?: string;
+		description?: string;
 		pattern?: Pattern;
 		tone?: Tone;
 		variation?: number;
 		titlePosition?: string;
-		subtitlePosition?: string;
+		descriptionPosition?: string;
+		titleWidth?: string;
+		descriptionWidth?: string;
 		href?: string;
 		external?: boolean;
 		class?: string;
@@ -20,11 +23,14 @@
 	let {
 		title = '',
 		subtitle = '',
+		description = '',
 		pattern = 'circle',
 		tone = 'pink',
 		variation = 0.5,
 		titlePosition = 'top-0 left-0',
-		subtitlePosition = 'bottom-0 left-0',
+		descriptionPosition = 'bottom-0 left-0',
+		titleWidth,
+		descriptionWidth,
 		href,
 		external = false,
 		class: className = ''
@@ -68,7 +74,7 @@
 	};
 
 	const titlePositionClass = $derived(`absolute ${titlePosition}`);
-	const subtitlePositionClass = $derived(`absolute ${subtitlePosition}`);
+	const descriptionPositionClass = $derived(`absolute ${descriptionPosition}`);
 
 	const textColors: Record<Tone, string> = {
 		blue: 'text-viz-white',
@@ -103,26 +109,34 @@
 
 		<!-- Content Overlay with Independent Positioning -->
 		<div class="pointer-events-none relative z-10 h-full p-8">
-			<!-- Title Section -->
+			<!-- Title + Subtitle block -->
 			{#if title}
-				<div class={titlePositionClass}>
+				<div class={titlePositionClass} style={titleWidth ? `width: ${titleWidth}` : undefined}>
 					<h3
-						class="font-display text-viz-black max-w-[90%] text-2xl leading-tight font-bold uppercase drop-shadow-lg md:text-3xl"
+						class="font-display text-viz-black text-2xl leading-tight font-bold uppercase drop-shadow-lg md:text-3xl"
 					>
 						{title}
 					</h3>
+					{#if subtitle}
+						<p class="text-viz-black m-0 text-base leading-tight drop-shadow-md">
+							{subtitle}
+						</p>
+					{/if}
 				</div>
 			{/if}
 
-			<!-- Subtitle Section -->
-			{#if subtitle}
-				<div class={subtitlePositionClass}>
+			<!-- Description Section -->
+			{#if description}
+				<div
+					class={descriptionPositionClass}
+					style={descriptionWidth ? `width: ${descriptionWidth}` : undefined}
+				>
 					<p
-						class="font-body text-viz-sm max-w-[25ch] text-base leading-[1.1] italic drop-shadow-md {textColors[
+						class="font-body text-viz-sm text-base leading-[1.1] italic drop-shadow-md {textColors[
 							tone
 						]}"
 					>
-						{subtitle}
+						{description}
 					</p>
 				</div>
 			{/if}
