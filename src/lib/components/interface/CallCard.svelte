@@ -111,14 +111,17 @@
 		<div class="pointer-events-none relative z-10 h-full p-8">
 			<!-- Title + Subtitle block -->
 			{#if title}
-				<div class={titlePositionClass} style={titleWidth ? `width: ${titleWidth}` : undefined}>
+				<div
+					class={titlePositionClass}
+					style={titleWidth ? `width: min(${titleWidth}, calc(100% - 2rem))` : undefined}
+				>
 					<h3
-						class="font-display text-viz-black text-2xl leading-tight font-bold uppercase drop-shadow-lg md:text-3xl"
+						class="font-display text-viz-black mx-1 mt-0 text-2xl leading-tight font-bold uppercase drop-shadow-lg md:text-3xl"
 					>
 						{title}
 					</h3>
 					{#if subtitle}
-						<p class="text-viz-black m-0 text-base leading-tight drop-shadow-md">
+						<p class="text-viz-black mx-1 mt-0 text-lg leading-tight drop-shadow-md md:text-xl">
 							{subtitle}
 						</p>
 					{/if}
@@ -129,10 +132,12 @@
 			{#if description}
 				<div
 					class={descriptionPositionClass}
-					style={descriptionWidth ? `width: ${descriptionWidth}` : undefined}
+					style={descriptionWidth
+						? `width: min(${descriptionWidth}, calc(100% - 2rem))`
+						: undefined}
 				>
 					<p
-						class="font-body text-viz-sm text-base leading-[1.1] italic drop-shadow-md {textColors[
+						class="font-body text-md mx-1 mt-0 leading-[1.1] italic drop-shadow-md {textColors[
 							tone
 						]}"
 					>

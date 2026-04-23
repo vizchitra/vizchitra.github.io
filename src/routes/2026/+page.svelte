@@ -50,15 +50,16 @@
 		</Heading>
 
 		<Text type="body">
-			<ColorSpan color="blue">Conference Day on July 4<sup>th</sup>, 2026</ColorSpan>: Features
+			<ColorSpan color="black">Conference Day on July 4<sup>th</sup>, 2026</ColorSpan>: Full day of
+			sessions including
 			<ColorSpan color="blue">Talks</ColorSpan>,
 			<ColorSpan color="teal">Dialogues</ColorSpan>, and the
 			<ColorSpan color="orange">Exhibition</ColorSpan> at Bangalore International Center (BIC), Bengaluru.
 		</Text>
 		<Text>
-			<ColorSpan color="pink">Workshop Day on July 3<sup>rd</sup>, 2026</ColorSpan>: Dedicated to
-			hands-on
-			<ColorSpan color="pink">Workshops</ColorSpan> in central Bangalor near BIC, with details coming
+			<ColorSpan color="black">Workshop Day on July 3<sup>rd</sup>, 2026</ColorSpan>: Multiple
+			half-day hands-on
+			<ColorSpan color="pink">Workshops</ColorSpan> in central Bengaluru near BIC, with details coming
 			soon.
 		</Text>
 
@@ -71,9 +72,9 @@
 						description="Deep dives into projects & lived experiences. Stories that reshape how we see our viz work."
 						pattern="waves"
 						tone="blue"
-						titlePosition="top-6 left-4 text-left"
+						titlePosition="top-5 left-3 text-left"
 						titleWidth="15ch"
-						descriptionPosition="bottom-3 left-4 text-left"
+						descriptionPosition="bottom-2 left-3 text-left"
 						descriptionWidth="30ch"
 						href="/2026"
 					/>
@@ -82,12 +83,12 @@
 					<CallCard
 						title="Dialogues"
 						subtitle="The Shared Journey"
-						description="Participant-driven, unconference-style sessions. Meaning emerges through conversation."
+						description="Participant-driven, unconference-style sessions. Meaning that emerges through conversation."
 						pattern="river"
 						tone="teal"
-						titlePosition="top-20 left-5 text-left"
-						descriptionPosition="top-40 left-5 text-left"
-						descriptionWidth="20ch"
+						titlePosition="top-18 left-3 text-left"
+						descriptionPosition="top-37 left-3 text-left"
+						descriptionWidth="16ch"
 						href="/2026"
 					/>
 				</Stack>
@@ -95,12 +96,12 @@
 					<CallCard
 						title="Exhibition"
 						subtitle="The Immersive Journey"
-						description="Data, Otherwise: a curated gallery on climate & ecology. Viz that makes you slow down & converse."
+						description="Data, Otherwise: a curated gallery on climate & ecology viz. Works that slow you down & feel."
 						pattern="stream"
 						tone="orange"
 						titlePosition="top-5 left-1/2 -translate-x-1/2 text-center"
 						titleWidth="30ch"
-						descriptionPosition="bottom-3 left-1/2 -translate-x-1/2 text-center"
+						descriptionPosition="bottom-2 left-1/2 -translate-x-1/2 text-center"
 						descriptionWidth="30ch"
 						href="/2026"
 					/>
@@ -112,8 +113,8 @@
 						description="Half-day, hands-on sessions with expert facilitators. Skill-building & learning through doing."
 						pattern="circle"
 						tone="pink"
-						titlePosition="top-35 left-1/2 -translate-x-1/2 text-center"
-						descriptionPosition="bottom-3 left-1/2 -translate-x-1/2 text-center"
+						titlePosition="top-32 left-1/2 -translate-x-1/2 text-center"
+						descriptionPosition="bottom-2 left-1/2 -translate-x-1/2 text-center"
 						descriptionWidth="30ch"
 						href="/2026"
 						variation={0.5}
