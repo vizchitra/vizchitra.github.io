@@ -14,9 +14,10 @@
 			accentColor: 'var(--color-viz-orange)',
 			subsections: [
 				{ name: 'Event', href: '/2026/' },
+				{ name: 'Get Tickets', href: 'https://tickets.vizchitra.com' },
+				{ name: 'Submissions', href: '/2026/submissions' },
 				{ name: 'Call for Proposals', href: '/2026/proposals' },
-				{ name: 'Call for Exhibition', href: '/2026/exhibition' },
-				{ name: 'Submissions', href: '/2026/submissions' }
+				{ name: 'Call for Exhibition', href: '/2026/exhibition' }
 			],
 			expanded: false
 		},

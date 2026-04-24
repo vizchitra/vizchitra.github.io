@@ -284,7 +284,7 @@
 				<div class="border-viz-grey-light overflow-hidden rounded-xl border bg-white">
 					<PatternArc
 						targetDate={arcTargetDate}
-						width={400}
+						width={500}
 						height={500}
 						class="block h-auto w-full"
 						ariaLabel="Arc countdown pattern"

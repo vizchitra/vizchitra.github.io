@@ -81,7 +81,7 @@
 						ontouchstart={handleSpinnerInteract}
 						onmousedown={handleSpinnerInteract}
 					>
-						<PatternArc {targetDate} width={240} height={300} />
+						<PatternArc {targetDate} width={300} height={300} />
 					</a>
 				{:else}
 					<LogoTagline />
@@ -119,9 +119,9 @@
 			animation-play-state: paused;
 			filter: drop-shadow(0 8px 28px oklch(0.2 0 0 / 0.35));
 			cursor:
-				url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='none' stroke='%23333' stroke-width='2'/%3E%3Cline x1='16' y1='4' x2='16' y2='28' stroke='%23333' stroke-width='2'/%3E%3Cline x1='4' y1='16' x2='28' y2='16' stroke='%23333' stroke-width='2'/%3E%3C/svg%3E")
+				url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E🎟️%3C/text%3E%3C/svg%3E")
 					16 16,
-				zoom-in;
+				pointer;
 		}
 	}
 
@@ -129,10 +129,10 @@
 	@keyframes spinnerBreathe {
 		0%,
 		100% {
-			filter: drop-shadow(0 2px 8px oklch(0.2 0 0 / 0.15));
+			filter: drop-shadow(0 0 4px oklch(76% 0.11 82 / 0.3));
 		}
 		50% {
-			filter: drop-shadow(0 6px 20px oklch(0.2 0 0 / 0.32));
+			filter: drop-shadow(0 0 10px oklch(76% 0.11 82 / 0.7));
 		}
 	}
 
