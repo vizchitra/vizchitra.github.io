@@ -11,8 +11,8 @@
 
 	let {
 		targetDate = new Date('2026-07-03T09:00:00+05:30'),
-		width = 400,
-		height = 500,
+		width = 350,
+		height = 400,
 		class: className = '',
 		ariaLabel
 	}: Props = $props();
@@ -33,6 +33,10 @@
 	const DAYS_SW = 24; // Days stroke width
 	const TEXT_R = SECS_R + 14; // Radius for top curved text label (glyphs extend outward)
 	const BOTTOM_TEXT_R = SECS_R + 40; // Larger offset: bottom glyphs extend inward toward ring
+
+	const BG_R_INNER = SECS_R + SECS_SW / 2; // 153 — rings only; text labels float outside
+	const BG_R_STAMP = 210; // 210 — stamp; contains all text labels inside
+	const BG_R = BG_R_STAMP; // ← toggle: BG_R_INNER or BG_R_STAMP
 
 	const MAX_DISPLAY_DAYS = 90; // Scale of the days arc (≥ days to event)
 
@@ -156,6 +160,16 @@
 			d={`M ${cx - BOTTOM_TEXT_R},${cy} A ${BOTTOM_TEXT_R},${BOTTOM_TEXT_R} 0 0,0 ${cx + BOTTOM_TEXT_R},${cy}`}
 		/>
 	</defs>
+
+	<!-- Background circle -->
+	<circle
+		{cx}
+		{cy}
+		r={BG_R}
+		fill="var(--color-viz-grey-subtle)"
+		stroke="var(--color-viz-grey-muted)"
+		stroke-width="1"
+	/>
 
 	<!-- Top label curved along top arc -->
 	<text

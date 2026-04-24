@@ -35,11 +35,11 @@
 			and connecting with the data visualization community.
 		</Text>
 
-		<Cluster justify="start">
+		<!-- <Cluster justify="start">
 			<Button href="https://tickets.vizchitra.com" color="pink" external={true}>
 				Get your Tickets now!
 			</Button>
-		</Cluster>
+		</Cluster> -->
 
 		<DividerCurves />
 
@@ -50,18 +50,22 @@
 		</Heading>
 
 		<Text type="body">
-			<ColorSpan color="black">Conference Day on July 4<sup>th</sup>, 2026</ColorSpan>: Full day of
-			sessions including
+			<ColorSpan color="black">Conference Day on July 4<sup>th</sup>, 2026 (Saturday)</ColorSpan>:
+			Full day of sessions including
 			<ColorSpan color="blue">Talks</ColorSpan>,
 			<ColorSpan color="teal">Dialogues</ColorSpan>, and the
 			<ColorSpan color="orange">Exhibition</ColorSpan> at Bangalore International Center (BIC), Bengaluru.
 		</Text>
 		<Text>
-			<ColorSpan color="black">Workshop Day on July 3<sup>rd</sup>, 2026</ColorSpan>: Multiple
-			half-day hands-on
+			<ColorSpan color="black">Workshop Day on July 3<sup>rd</sup>, 2026 (Friday)</ColorSpan>:
+			Multiple half-day hands-on
 			<ColorSpan color="pink">Workshops</ColorSpan> in central Bengaluru near BIC, with details coming
 			soon.
 		</Text>
+
+		<Cluster justify="start" class="pt-8">
+			<Button href="https://tickets.vizchitra.com" color="pink" external={true}>Get Tickets</Button>
+		</Cluster>
 
 		<FullBleed>
 			<Cluster class="pt-8">
@@ -122,12 +126,6 @@
 				</Stack>
 			</Cluster>
 		</FullBleed>
-
-		<Cluster justify="start" class="pt-8">
-			<Button href="https://tickets.vizchitra.com" color="pink" external={true}>
-				Get your Tickets now!
-			</Button>
-		</Cluster>
 
 		<DividerCurves />
 
