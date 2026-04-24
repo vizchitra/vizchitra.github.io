@@ -47,6 +47,8 @@
 	// ─────────────────────────────────────────────────────────────────────────────
 
 	// Rotation angles driven by requestAnimationFrame — each ring starts at a different offset
+	let mounted = $state(false);
+
 	let secsAngle = $state(0);
 	let minsAngle = $state(90);
 	let hrsAngle = $state(180);
@@ -96,6 +98,7 @@
 
 			raf = requestAnimationFrame(tick);
 		};
+		mounted = true;
 		raf = requestAnimationFrame(tick);
 
 		const countdownInterval = setInterval(() => {
@@ -182,73 +185,76 @@
 		<textPath href="#topTextArc" startOffset="50%" text-anchor="middle">GET TICKETS</textPath>
 	</text>
 
-	<!-- Days — innermost, teal -->
-	<circle
-		{cx}
-		{cy}
-		r={DAYS_R}
-		fill="none"
-		stroke="var(--color-viz-teal)"
-		stroke-width={DAYS_SW}
-		stroke-dasharray={daysDash}
-		stroke-linecap="butt"
-		transform={`rotate(${daysAngle}, ${cx}, ${cy})`}
-	/>
+	<!-- Arc rings — hidden until mounted to prevent SSR hydration flash -->
+	<g style={`opacity: ${mounted ? 1 : 0}; transition: opacity 0.3s ease`}>
+		<!-- Days — innermost, teal -->
+		<circle
+			{cx}
+			{cy}
+			r={DAYS_R}
+			fill="none"
+			stroke="var(--color-viz-teal)"
+			stroke-width={DAYS_SW}
+			stroke-dasharray={daysDash}
+			stroke-linecap="butt"
+			transform={`rotate(${daysAngle}, ${cx}, ${cy})`}
+		/>
 
-	<!-- Center countdown number — drawn BEFORE rings so arcs layer on top -->
-	<text
-		x={cx}
-		y={cy + 14}
-		text-anchor="middle"
-		dominant-baseline="middle"
-		font-size="200"
-		font-weight="850"
-		font-family="var(--font-display)"
-		fill="var(--color-viz-grey)"
-		letter-spacing="-0.04em"
-		style="font-variation-settings: 'slnt' 0"
-	>
-		{centerDisplay}
-	</text>
+		<!-- Center countdown number — drawn BEFORE rings so arcs layer on top -->
+		<text
+			x={cx}
+			y={cy + 14}
+			text-anchor="middle"
+			dominant-baseline="middle"
+			font-size="200"
+			font-weight="850"
+			font-family="var(--font-display)"
+			fill="var(--color-viz-grey)"
+			letter-spacing="-0.04em"
+			style="font-variation-settings: 'slnt' 0"
+		>
+			{centerDisplay}
+		</text>
 
-	<!-- Seconds — outermost, orange -->
-	<circle
-		{cx}
-		{cy}
-		r={SECS_R}
-		fill="none"
-		stroke="var(--color-viz-orange)"
-		stroke-width={SECS_SW}
-		stroke-dasharray={secsDash}
-		stroke-linecap="butt"
-		transform={`rotate(${secsAngle}, ${cx}, ${cy})`}
-	/>
+		<!-- Seconds — outermost, orange -->
+		<circle
+			{cx}
+			{cy}
+			r={SECS_R}
+			fill="none"
+			stroke="var(--color-viz-orange)"
+			stroke-width={SECS_SW}
+			stroke-dasharray={secsDash}
+			stroke-linecap="butt"
+			transform={`rotate(${secsAngle}, ${cx}, ${cy})`}
+		/>
 
-	<!-- Minutes — blue -->
-	<circle
-		{cx}
-		{cy}
-		r={MINS_R}
-		fill="none"
-		stroke="var(--color-viz-blue)"
-		stroke-width={MINS_SW}
-		stroke-dasharray={minsDash}
-		stroke-linecap="butt"
-		transform={`rotate(${minsAngle}, ${cx}, ${cy})`}
-	/>
+		<!-- Minutes — blue -->
+		<circle
+			{cx}
+			{cy}
+			r={MINS_R}
+			fill="none"
+			stroke="var(--color-viz-blue)"
+			stroke-width={MINS_SW}
+			stroke-dasharray={minsDash}
+			stroke-linecap="butt"
+			transform={`rotate(${minsAngle}, ${cx}, ${cy})`}
+		/>
 
-	<!-- Hours — pink -->
-	<circle
-		{cx}
-		{cy}
-		r={HRS_R}
-		fill="none"
-		stroke="var(--color-viz-pink)"
-		stroke-width={HRS_SW}
-		stroke-dasharray={hrsDash}
-		stroke-linecap="butt"
-		transform={`rotate(${hrsAngle}, ${cx}, ${cy})`}
-	/>
+		<!-- Hours — pink -->
+		<circle
+			{cx}
+			{cy}
+			r={HRS_R}
+			fill="none"
+			stroke="var(--color-viz-pink)"
+			stroke-width={HRS_SW}
+			stroke-dasharray={hrsDash}
+			stroke-linecap="butt"
+			transform={`rotate(${hrsAngle}, ${cx}, ${cy})`}
+		/>
+	</g>
 
 	<!-- Bottom label curved along bottom arc -->
 	<text
