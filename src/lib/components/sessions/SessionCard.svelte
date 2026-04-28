@@ -72,7 +72,7 @@
 
 {#if tbd}
 	{@const currentColor = colorClasses[color] ?? colorClasses.blue}
-	<div class="sessions-card border-viz-grey/40 overflow-hidden rounded border">
+	<div class="sessions-card border-viz-grey/40 overflow-hidden rounded border hover:scale-101 transition-transform">
 		<div
 			class="relative flex aspect-4/5 flex-col overflow-visible"
 			bind:clientWidth={backgroundWidth}
@@ -131,7 +131,7 @@
 	{@const currentColor = colorClasses[color] ?? colorClasses.blue}
 	<a
 		href="/2026/sessions/{slug}"
-		class="sessions-card group white border-viz-grey/40 block overflow-hidden rounded border transition-shadow hover:shadow-md"
+		class="sessions-card group white border-viz-grey/40 block overflow-hidden rounded border transition-all hover:scale-102"
 	>
 		<div
 			class="session-card-body relative aspect-4/6 overflow-visible md:aspect-4/5"
@@ -253,6 +253,12 @@
 		box-shadow:
 			rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
 			rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+	}
+
+	.sessions-card:hover {
+		box-shadow:
+			rgba(50, 50, 93, 0.2) 0px 10px 15px -2px,
+			rgba(0, 0, 0, 0.2) 0px 6px 8px -3px;
 	}
 
 	.speaker-image {
