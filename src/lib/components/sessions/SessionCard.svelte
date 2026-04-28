@@ -68,11 +68,15 @@
 
 	let backgroundWidth = $state(600);
 	let backgroundHeight = $derived.by(() => backgroundWidth * 1.25);
+
+	const textPathRadius = 58;
 </script>
 
 {#if tbd}
 	{@const currentColor = colorClasses[color] ?? colorClasses.blue}
-	<div class="sessions-card border-viz-grey/40 overflow-hidden rounded border hover:scale-101 transition-transform">
+	<div
+		class="sessions-card border-viz-grey/40 overflow-hidden rounded border transition-transform hover:scale-101"
+	>
 		<div
 			class="relative flex aspect-4/5 flex-col overflow-visible"
 			bind:clientWidth={backgroundWidth}
@@ -202,7 +206,7 @@
 					</div>
 
 					<svg
-						class="relative block h-full w-full"
+						class="relative z-0 block h-full w-full"
 						viewBox="0 0 1080 365"
 						preserveAspectRatio="none"
 						fill="none"
@@ -213,6 +217,77 @@
 							d="M0.5 364.516V0.516363C191.5 -0.982956 456 101.337 579 114.518C705 128.018 1004.5 9.01752 1080 2.01636V364.516H0.5Z"
 							fill={overlayColors[color] ?? overlayColors.blue}
 						/>
+					</svg>
+
+					<svg
+						class="view-details-button absolute -right-18 -bottom-18 z-40 block h-60 w-60 origin-center scale-0 transition-transform duration-400 ease-out group-hover:scale-100"
+						preserveAspectRatio="none"
+						viewBox="0 0 200 200"
+						fill="none"
+						aria-hidden="true"
+					>
+						<defs>
+							<path
+								id="view-details-path-{slug}"
+								d="M 100,100 m -{textPathRadius},0 a {textPathRadius},{textPathRadius} 0 1,1 {textPathRadius *
+									2},0 a {textPathRadius},{textPathRadius} 0 1,1 -{textPathRadius * 2},0"
+								fill="none"
+							/>
+						</defs>
+
+						<circle
+							cx="100"
+							cy="100"
+							r="80"
+							fill="#fff"
+							stroke="var(--color-{colorClasses[color]})"
+							stroke-width="7"
+							fill-opacity="1"
+						/>
+
+						<circle
+							cx="100"
+							cy="100"
+							r="52"
+							fill="var(--color-{colorClasses[color]}-dark)"
+							stroke-width="10"
+							fill-opacity="0.75"
+						/>
+
+						<circle
+							cx="100"
+							cy="100"
+							r="45"
+							fill="var(--color-{colorClasses[color]})"
+							fill-opacity="1"
+						/>
+						<circle cx="100" cy="100" r="35" fill="#fff" fill-opacity="1" />
+
+						<g
+							transform="translate(100 100) scale(0.325) translate(-63 -63)"
+							stroke="#4c4c4c"
+							stroke-width="13"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							fill="none"
+						>
+							<path d="M26.25 63L99.75 63" />
+							<path d="M63 26.25L99.75 63L63 99.75" />
+						</g>
+
+						<text
+							class="view-details-text font-display"
+							fill="#4c4c4c"
+							font-size="16"
+							font-weight="800"
+							letter-spacing="2"
+							text-anchor="middle"
+						>
+							<!-- <textPath href="#view-details-path-{slug}" startOffset="0%">•</textPath> -->
+							<textPath href="#view-details-path-{slug}" startOffset="18%">VIEW DETAILS</textPath>
+							<!-- <textPath href="#view-details-path-{slug}" startOffset="50%">•</textPath> -->
+							<textPath href="#view-details-path-{slug}" startOffset="65%">VIEW DETAILS</textPath>
+						</text>
 					</svg>
 				</div>
 
@@ -271,5 +346,20 @@
 			1.5px -1.5px 0 white,
 			-1.5px 1.5px 0 white,
 			1.5px 1.5px 0 white;
+	}
+
+	.view-details-text {
+		transform-box: view-box;
+		transform-origin: 100px 100px;
+		animation: view-details-spin 14s linear infinite;
+	}
+
+	@keyframes view-details-spin {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
 	}
 </style>
