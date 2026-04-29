@@ -19,7 +19,13 @@
 		ariaLabel
 	}: Props = $props();
 
-	type Layer = { d: string; fill: string; opacity?: number; hatched?: boolean };
+	type Layer = {
+		d: string;
+		color: string;
+		thickness: number;
+		opacity?: number;
+		hatched?: boolean;
+	};
 
 	type CircleData = { innerRadius: number; layers: Layer[] };
 
@@ -83,72 +89,42 @@
 		centerX: number,
 		centerY: number,
 		radius: number,
-		thickness: number,
 		wobble: number,
 		phase: number
 	): string {
 		const points = 32;
-		const outerPoints: { x: number; y: number }[] = [];
-		const innerPoints: { x: number; y: number }[] = [];
+		const ringPoints: { x: number; y: number }[] = [];
 
 		for (let i = 0; i < points; i++) {
 			const angle = (i / points) * Math.PI * 2;
-			const wobbleOuter =
+			const wobbleAmt =
 				Math.sin(angle * 3 + phase) * wobble * 0.15 +
 				Math.cos(angle * 2 + phase * 0.7) * wobble * 0.1 +
 				Math.sin(angle * 5 + phase * 1.3) * wobble * 0.05;
-			const wobbleInner =
-				Math.sin(angle * 3 + phase + 0.5) * wobble * 0.12 +
-				Math.cos(angle * 2 + phase * 0.8) * wobble * 0.08;
-
-			const outerR = radius + wobbleOuter;
-			const innerR = radius - thickness + wobbleInner;
-
-			outerPoints.push({
-				x: centerX + Math.cos(angle) * outerR,
-				y: centerY + Math.sin(angle) * outerR
-			});
-			innerPoints.push({
-				x: centerX + Math.cos(angle) * innerR,
-				y: centerY + Math.sin(angle) * innerR
+			const r = radius + wobbleAmt;
+			ringPoints.push({
+				x: centerX + Math.cos(angle) * r,
+				y: centerY + Math.sin(angle) * r
 			});
 		}
 
-		let d = `M ${outerPoints[0].x} ${outerPoints[0].y}`;
+		let d = `M ${ringPoints[0].x} ${ringPoints[0].y}`;
 		for (let i = 1; i < points; i++) {
-			const p0 = outerPoints[i - 1];
-			const p1 = outerPoints[i];
+			const p0 = ringPoints[i - 1];
+			const p1 = ringPoints[i];
 			const xc = (p0.x + p1.x) / 2;
 			const yc = (p0.y + p1.y) / 2;
 			d += ` Q ${p0.x} ${p0.y} ${xc} ${yc}`;
 		}
-		// Close the outer loop back to start with overlap to avoid gap
-		const p0 = outerPoints[points - 1];
-		const p1 = outerPoints[0];
-		const p2 = outerPoints[1];
-		const xc = (p0.x + p1.x) / 2;
-		const yc = (p0.y + p1.y) / 2;
-		d += ` Q ${p0.x} ${p0.y} ${xc} ${yc}`;
-		// Overlap slightly past the start
-		const xc2 = (p1.x + p2.x) / 2;
-		const yc2 = (p1.y + p2.y) / 2;
-		d += ` Q ${p1.x} ${p1.y} ${xc2} ${yc2}`;
-
-		// Move to inner ring at overlap point and go backwards
-		d += ` L ${innerPoints[1].x} ${innerPoints[1].y}`;
-		for (let i = points - 1; i > 1; i--) {
-			const p0i = innerPoints[i];
-			const p1i = innerPoints[i - 1];
-			const xci = (p0i.x + p1i.x) / 2;
-			const yci = (p0i.y + p1i.y) / 2;
-			d += ` Q ${p0i.x} ${p0i.y} ${xci} ${yci}`;
-		}
-		// Close back through overlap points to ensure no gap
-		const p0i = innerPoints[1];
-		const p1i = innerPoints[0];
-		const xci = (p0i.x + p1i.x) / 2;
-		const yci = (p0i.y + p1i.y) / 2;
-		d += ` Q ${p0i.x} ${p0i.y} ${xci} ${yci}`;
+		const last = ringPoints[points - 1];
+		const first = ringPoints[0];
+		const second = ringPoints[1];
+		const xcClose = (last.x + first.x) / 2;
+		const ycClose = (last.y + first.y) / 2;
+		d += ` Q ${last.x} ${last.y} ${xcClose} ${ycClose}`;
+		const xcWrap = (first.x + second.x) / 2;
+		const ycWrap = (first.y + second.y) / 2;
+		d += ` Q ${first.x} ${first.y} ${xcWrap} ${ycWrap}`;
 		d += ' Z';
 		return d;
 	}
@@ -176,12 +152,12 @@
 					d: organicLoopPath(
 						centerX,
 						centerY,
-						outerRadius,
-						baseThickness * 1.6,
+						outerRadius - baseThickness * 0.8,
 						wobbleAmount * 0.85,
 						r1 * Math.PI * 2
 					),
-					fill: palette.light,
+					color: palette.light,
+					thickness: baseThickness * 1.6,
 					hatched: false,
 					opacity: 1
 				},
@@ -190,12 +166,12 @@
 					d: organicLoopPath(
 						centerX,
 						centerY,
-						outerRadius - baseThickness * 1.0,
-						baseThickness * 1.1,
+						outerRadius - baseThickness * 1.55,
 						wobbleAmount * 0.9,
 						r3 * Math.PI * 2
 					),
-					fill: palette.normal,
+					color: palette.normal,
+					thickness: baseThickness * 1.1,
 					opacity: 1
 				},
 				// Dark inner ring (smallest) - thinnest
@@ -203,12 +179,12 @@
 					d: organicLoopPath(
 						centerX,
 						centerY,
-						outerRadius - baseThickness * 1.8,
-						baseThickness * 0.6,
+						outerRadius - baseThickness * 2.1,
 						wobbleAmount,
 						r4 * Math.PI * 2
 					),
-					fill: palette.dark,
+					color: palette.dark,
+					thickness: baseThickness * 0.6,
 					opacity: 1
 				}
 			]
@@ -264,10 +240,51 @@
 	<rect {width} {height} fill="var(--color-viz-white)" />
 	<rect {width} {height} fill={`url(#${hatchId})`} mask={`url(#${maskId})`} opacity="0.85" />
 
-	{#each layers as layer}
-		<path d={layer.d} fill={layer.fill} fill-opacity={layer.opacity ?? 1} aria-hidden="true" />
+	{#each layers as layer, index}
+		<path
+			class="circle-path"
+			style:--stroke-base="{layer.thickness}px"
+			style:--stroke-hover="{layer.thickness * (1 + (layers.length - index - 1) * 0.4)}px"
+			style:--hover-scale={1 + (layers.length - index - 1) * 0.05}
+			style:transition-duration={`${300 + (layers.length - index - 1) * 200}ms`}
+			d={layer.d}
+			fill="none"
+			stroke={layer.color}
+			stroke-opacity={layer.opacity ?? 1}
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			aria-hidden="true"
+		/>
 		{#if layer.hatched}
-			<path d={layer.d} fill={`url(#${hatchId})`} opacity="0.95" aria-hidden="true" />
+			<path
+				class="circle-path"
+				style:--stroke-base="{layer.thickness}px"
+				style:--stroke-hover="{layer.thickness * (1 + (layers.length - index - 1) * 0.4)}px"
+				style:--hover-scale={1 + (layers.length - index - 1) * 0.1}
+				style:transition-duration={`${300 + (layers.length - index - 1) * 200}ms`}
+				d={layer.d}
+				fill="none"
+				stroke={`url(#${hatchId})`}
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				opacity="0.95"
+				aria-hidden="true"
+			/>
 		{/if}
 	{/each}
 </svg>
+
+<style>
+	.circle-path {
+		stroke-width: var(--stroke-base);
+		transform-box: fill-box;
+		transform-origin: center;
+		transition-property: stroke-width, transform;
+		transition-timing-function: ease-out;
+	}
+
+	:global(.group:hover) .circle-path {
+		stroke-width: var(--stroke-hover);
+		transform: scale(var(--hover-scale, 1));
+	}
+</style>
