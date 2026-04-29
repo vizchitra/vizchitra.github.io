@@ -197,7 +197,9 @@
 
 			<div class="speaker-details-overlay pointer-events-auto absolute inset-0 flex flex-col">
 				<div class="absolute inset-x-0 bottom-0" style="height: {backgroundHeight * 0.3}px">
-					<div class="speaker-image absolute top-15 right-5 -translate-y-full">
+					<div
+						class="speaker-image absolute top-15 right-5 -translate-y-full transition-transform duration-300 group-hover:scale-104"
+					>
 						<img
 							class="h-auto w-full"
 							src="{base}/images/speakers/2026/speaker-placeholder.avif"
@@ -220,7 +222,7 @@
 					</svg>
 
 					<svg
-						class="view-details-button absolute -right-18 -bottom-18 z-40 block h-60 w-60 origin-center scale-0 transition-transform duration-400 ease-out group-hover:scale-100"
+						class="view-details-button absolute -right-10 -bottom-8 z-40 block h-40 w-40 origin-center scale-0 transition-transform duration-400 ease-out group-hover:scale-100 md:h-50 md:w-50 lg:-right-18 lg:-bottom-18 lg:h-60 lg:w-60"
 						preserveAspectRatio="none"
 						viewBox="0 0 200 200"
 						fill="none"
