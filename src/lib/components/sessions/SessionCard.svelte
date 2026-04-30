@@ -17,6 +17,7 @@
 		slug?: string;
 		speakerImage?: string;
 		tbd?: boolean;
+		showViewDetailsButton?: boolean;
 	}
 
 	let {
@@ -29,7 +30,8 @@
 		date,
 		slug,
 		speakerImage,
-		tbd = false
+		tbd = false,
+		showViewDetailsButton = false
 	}: Props = $props();
 
 	const colorClasses = {
@@ -221,6 +223,7 @@
 						/>
 					</svg>
 
+					{#if showViewDetailsButton}
 					<svg
 						class="view-details-button absolute -right-10 -bottom-8 z-40 block h-40 w-40 origin-center scale-0 transition-transform duration-400 ease-out group-hover:scale-100 md:h-50 md:w-50 lg:-right-18 lg:-bottom-18 lg:h-60 lg:w-60"
 						preserveAspectRatio="none"
@@ -291,6 +294,7 @@
 							<textPath href="#view-details-path-{slug}" startOffset="65%">VIEW DETAILS</textPath>
 						</text>
 					</svg>
+					{/if}
 				</div>
 
 				<div class="speaker-details-content relative z-30 mt-auto w-full p-2.5 md:p-4">

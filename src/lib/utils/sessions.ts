@@ -1,5 +1,5 @@
 import { parseCSV, generateSlug } from '$lib/utils/csv-parser';
-import sessionsRaw from '../../../content/2026/data/sessions-placeholder.csv?raw';
+import sessionsRaw from '../../../content/2026/data/2026-sessions.csv?raw';
 
 /** Color mapping for session types, used across all session components */
 export const sessionColorMap: Record<string, 'blue' | 'teal' | 'pink' | 'orange'> = {
