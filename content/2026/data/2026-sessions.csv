@@ -99,88 +99,15 @@ Areas we want to cover:
 Intended Outcome: 
 Participants leave with a clearer understanding of how different teams handle qualitative knowledge, a shared language to describe internal challenges, and practical ideas drawn from peer experience. The session emphasises collective learning and reflection rather than instruction.",,TRUE
 Dialogues,2026-07-04T10:00,,,,,,,,
-Workshop,2026-07-04T10:00,"Observe, Collect, Map",,Priti,Information Experience Designer,,"In this ""walkshop"", I will lead a group of participants on a data dérive, focused on documenting the neighbourhood from a sensory perspective.  We will collectively observe and map the sensory environment around us using visual ethnography and 'score-based' data walks.
-
-With observations recorded, the group will participate in a collective mapping exercise — coming together to visualise the sights, smells, sounds and feelings of the local neighbourhood.
-
-This workshop is designed to make data accessible and meaningful to beginners, educators, and the local community who may not traditionally see themselves as part of the Data Visualisation ecosystem.",,TRUE
-Workshop,2026-07-04T10:00,Storytelling with Data ,Designing Persuasive Visual Narratives,Shaurabh,Assistant Professor,Azim Premji University,"Workshop Title: Storytelling with Data – Designing Persuasive Visual Narratives (3 hours)
-
-Shaurabh Anand, Gopi Sankar G
-
-This workshop explores how organisations, researchers, students, and community members can transform data analysis into persuasive, audience-centred narratives. Across sectors, whether in research, policy, business, or civic initiatives, data is routinely used to understand problems, inform decisions, and evaluate outcomes. Yet valuable insights often fail to influence action because they are not communicated clearly or compellingly. This session introduces storytelling with data as a structured approach to converting analysis into coherent visual arguments that resonate with specific audiences.
-
-The workshop engages with three key themes: narrative framing, visualization choice, and clarity in communication. Rather than treating visualization as a purely technical skill, the workshop positions itself within broader conversations in data visualization for presenting compelling stories. At the end of the workshop, the participants will be able to frame and select visualization and design clear, audience-oriented data stories.
-
-Structure and Design
-
-The workshop is organised into three progressive segments.
-
-1. Framing the Story (45 minutes)
-The workshop will begin with a discussion on what entails storytelling with data. Through discussions and illustrative examples, the participants will learn about purpose, and desired takeaway from storytelling. 
-
-2. Developing a storyboard (60 minutes): 
-Using a given data source, participants model raw data into a storyboard, moving from question to structured narrative. 
-
-3. Choosing the Visual Form (75 minutes)
-This segment focuses on selecting appropriate visualization techniques for numerical data. Instead of surveying many tools, we examine decision logic: comparison, trend, distribution, or relationship? Participants work with a provided dataset to identify a central message and design one visualization that best communicates it. They write a two-sentence narrative explaining the insight. A structured peer-critique exercise follows, encouraging reflection on clarity and audience alignment.
-
-
-Interactive and Engaging Elements
-
-The workshop relies on collaborative hands-on exercises, peer critique, and discusison. Participants actively construct and revise a data story rather than passively observing demonstrations.
-
-Intended Audience
-
-Anyone interested in data visualization.
-
-
-Learning Outcomes
-
-By the end of the session, participants will learn to:
-
-Understand storytelling with data
-Select visualization types aligned with communicative purpose
-Design clear, audience-oriented data stories
-
-
-
-Why This Topic Matters to us
-
-In our experience working with data and teaching others to use it, we often see strong analysis lose impact at the stage of communication. This workshop responds to that gap. Effective data storytelling strengthens arguments by making their logic, evidence, and implications visible and accessible. In a world saturated with information, the ability to communicate insight responsibly and persuasively is essential across fields and professions.",,TRUE
-Workshop,2026-07-04T10:00,Wear Thinking Hats,Visualizing Data with CogniLense,Siddharth,CEO,Monsoonfish,"You’re in a room with people, a dashboard on the screen, and a decision to make. The numbers are the same for everyone. And yet, within minutes, you have five different interpretations, five different “obvious” next steps, and one familiar question floating around—“How are you seeing this?”
-
-Because the real variable isn’t the data. It’s the lens.
-
-How do you think when things are unclear? How do you solve problems when every option has trade-offs? How do you visualise data when it’s incomplete, noisy, or politically loaded? Most of us don’t realise we’re answering these questions on autopilot, using default thinking patterns that feel “logical” because they’re familiar.
-
-That’s exactly what this Cognilense workshop is built for.
-
-So, what exactly is Cognilense?
-CogniLense is a practical thinking toolkit, built as card decks created from Siddharth Kabra’s experience across hundreds of design and business problems. It gives teams a simple, structured way to switch perspectives on purpose, instead of getting stuck in one dominant viewpoint. These are problem solving tools to think from various perspectives and arrive at a holistic solution.
-
-Here's what the worskhop looks like:
-- The session centers on one idea: if you change the lens, you change the interpretations, decisions and conclusions. 
-- Participants will work in small groups of 5–6
-- A scenario-based activity where information is introduced in “data chunks,” just like real life—partial, messy, and open to interpretation. 
-- Each participant takes on a specific thinking lens (the CogniLense “hats”; for example: optimist, skeptic, crook, judgement, process)
-- The group debates the same situation from different angles before aligning on a conclusion. 
-- We close with a guided debrief and reflection to surface what changed, why it changed, and what participants noticed about their own default patterns of thinking and visualizing data.
-
-
-Who is the audience for the workshop?
-People who work with decisions-making and different scenarios - especially those in product, design, business, data, marketing, leadership, and collaborative roles; where outcomes improve when teams can consider multiple viewpoints (not just the loudest one). Even students, designers, or any professional in data viz.
-
-What will participants take away?
-Participants leave with:
-- Awareness of their own thinking patterns and blind spots
-- A repeatable method to interpret and communicate data through multiple lenses.
-- Sharper awareness of bias patterns (individual and group)
-- A stronger ability to align teams around decisions, especially when the data is real, but the meaning is contested.
-- A stronger habit of conscious thinking and visualising data, instead of autopilot conclusions.",,TRUE
-Workshop,2026-07-04T10:00,,,,,,,,
 Exhibition,2026-07-04T10:00,Communicating Data for Clean Air Awareness,,Sai Krishna,Research Associate,Urban Emissions Info LLP,,,TRUE
 Exhibition,2026-07-04T10:00,Puddle Beneath the Plate,,Shreya,Student,"National Institute of Design, Bengaluru",,,TRUE
 Exhibition,2026-07-04T10:00,The Knowledge Gap: ,Mapping India's Climate Consciousness,Saumya,Founder and Creative Director,From&To,,,TRUE
 Exhibition,2026-07-04T10:00,Waterscapes of Bengaluru,,Madhuri,Trustee,Paani Earth Foundation ,,,TRUE
 Exhibition,2026-07-04T10:00,,,,,,,,
+Workshop,2026-07-04T10:00,From tables to maps: Visualising geographic data using DataWrapper,,Prasanta Kumar Dutta,Data Visualisation Developer,Reuters,,https://storage.tally.so/private/7ad81cae-91f0-4778-b6e7-7eb369b2f6cd.jpg?id=jE978Q&accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImpFOTc4USIsImZvcm1JZCI6InBiUGQ4YiIsImlhdCI6MTc3NzU2NTUwOH0.uOTw1fJ-q4K6hBJwkvlqzXmRE4viHLIcIMrLicER6HA&signature=01e8963183607ad8d23d4fd14da7900a1cb802c682e71f3d31581e862270fa7b,true
+Workshop,2026-07-04T10:00,D3 for Creatives: Custom Dataviz Without Getting Lost in Code,,Schubert de Abreu,Dataviz Developer,Revisual Labs,,https://storage.tally.so/private/schubert-vizchitra.jpg?id=WZpdkR&accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IldacGRrUiIsImZvcm1JZCI6InBiUGQ4YiIsImlhdCI6MTc3NzU2NTUwOH0.7vAqm8S0CCtKvVLrjUOh6BIUHBYyCMLD-A87HQ2TD0I&signature=8c0373e808e1c796b0d88efe1f2d5a1e7a183a9162fd181bc1f567eb0bf9fffa,true
+Workshop,2026-07-04T10:00,"A Dataviz Crash Course, Without The Crash Out",,Prakriti Bakshi,Data Storyteller,Independent,,https://storage.tally.so/private/Prakriti_Bakshi_Profile.jpg?id=Lo5Xjv&accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkxvNVhqdiIsImZvcm1JZCI6InBiUGQ4YiIsImlhdCI6MTc3NzU2NTUwOH0.TsxcsmmPHGjgLSdXHn6VirJBqU-Rp2j_ZND6A6rzJEs&signature=42c8617ef75f41a889f8661cf22bce05334b82431be780b8f4aab4fba6467b8b,true
+Workshop,2026-07-04T10:00,The value of sketching in your projects,,Adolfo Arranz,Senior graphics editor,Thomson Reuters,,https://storage.tally.so/private/careto-adolfo02.png?id=ZQv8xa&accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlpRdjh4YSIsImZvcm1JZCI6InBiUGQ4YiIsImlhdCI6MTc3NzU2NTUwOH0.fDUBsn5EhXjpTdHrNxiG8DqMBrBPMEkAR9ND3voQtI4&signature=e47c58f7d0a5b8332d2d88efc1a160ebb089f71b59785bd9eec7d8690139958a,true
+Workshop,2026-07-04T10:00,"Observe, Collect, Map",,Priti Pandurangan,Information Experience Designer,Independent,,https://storage.tally.so/private/Priti-Headshot.jpg?id=QEv0ZG&accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlFFdjBaRyIsImZvcm1JZCI6InBiUGQ4YiIsImlhdCI6MTc3NzU2NTUwOH0.x2XPpJYle-kapaQWzwLE4bAdjHWopmD4bRnA4H5f7qY&signature=669b4924e375bf0f4e49b3aeef4e087cb9351c37be2863605c52b7668ba9fe0b,true
+Workshop,2026-07-04T10:00,Instant DataViz – just add AI ✨,,Kenneth Dsouza,Designer,Independent,,https://storage.tally.so/private/profile.png?id=AQA4By&accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkFRQTRCeSIsImZvcm1JZCI6InBiUGQ4YiIsImlhdCI6MTc3NzU2NTUwOH0.S_zZkeaQp1hhkY6jh6xJs9sy-guI3GpK_j9cbYgy4jk&signature=ace2d43845d440a8ee4260adaa9d5832c4c3d05efc1edd90493567f1980838bc,true
+Workshop,2026-07-04T10:00,Designing data stories for the six-inch screen,,Areena Arora,Editorial Coder,The Hindu,,https://storage.tally.so/private/AreenaArora.jpeg?id=bAKg9E&accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJBS2c5RSIsImZvcm1JZCI6InBiUGQ4YiIsImlhdCI6MTc3NzU2NTUwOH0.N8uuZn_jpnIV0C8WxqotUwBIIts5iJSPM9axl4s9hQ0&signature=620a41be14354897682afe85ceec6423b6757c8a4b5926bfa01483f2ce7a9abc,true
