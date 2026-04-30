@@ -8,6 +8,7 @@
 		height?: number;
 		class?: string;
 		ariaLabel?: string;
+		showHatch?: boolean;
 	}
 
 	let {
@@ -16,7 +17,8 @@
 		width = 1080,
 		height = 1350,
 		class: className = '',
-		ariaLabel
+		ariaLabel,
+		showHatch = true
 	}: Props = $props();
 
 	type Layer = {
@@ -238,7 +240,9 @@
 
 	<!-- Background with hatched pattern -->
 	<rect {width} {height} fill="var(--color-viz-white)" />
-	<rect {width} {height} fill={`url(#${hatchId})`} mask={`url(#${maskId})`} opacity="0.85" />
+	{#if showHatch}
+		<rect {width} {height} fill={`url(#${hatchId})`} mask={`url(#${maskId})`} opacity="0.85" />
+	{/if}
 
 	{#each layers as layer, index}
 		<path

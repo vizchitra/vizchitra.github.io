@@ -56,6 +56,7 @@
 			{variation}
 			{width}
 			height={height * 0.8}
+			showHatch={false}
 			class="absolute inset-0 h-full w-full -translate-y-[25%] overflow-visible"
 		/>
 	{:else if sessionType === 'Exhibition'}
