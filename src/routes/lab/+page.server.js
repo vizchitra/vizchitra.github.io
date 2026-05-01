@@ -24,7 +24,7 @@ export function load() {
 	return {
 		categories,
 		pageMeta: {
-			title: 'Studio',
+			title: 'Lab',
 			description: 'Design system workspace for VizChitra'
 		}
 	};

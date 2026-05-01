@@ -13,7 +13,8 @@ export function load({ params }) {
 	return {
 		document: doc,
 		pageMeta: {
-			title: `${doc.title} - Studio`,
+			title: `${doc.title} - Lab`,
+
 			description: doc.description
 		}
 	};

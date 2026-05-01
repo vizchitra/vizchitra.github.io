@@ -71,11 +71,11 @@ const guides = defineCollection({
 	}
 });
 
-/* Studio collection for design system workspace - combines testing,
+/* Audits collection for design system workspace - combines testing,
 	 documentation, and automated audits in one place */
-const studio = defineCollection({
-	name: 'studio',
-	directory: 'studio',
+const audits = defineCollection({
+	name: 'audits',
+	directory: 'lab',
 	include: '**/*.md',
 	schema: z.object({
 		title: z.string(),
@@ -97,5 +97,5 @@ const studio = defineCollection({
 });
 
 export default defineConfig({
-	content: [guides, studio, pages]
+	content: [guides, audits, pages]
 });

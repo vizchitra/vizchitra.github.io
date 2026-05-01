@@ -38,7 +38,7 @@
 		<Stack space="2xl">
 			<!-- Header -->
 			<div class="mb-8 text-center">
-				<h1 class="mb-4 text-5xl font-bold text-gray-900">Studio</h1>
+				<h1 class="mb-4 text-5xl font-bold text-gray-900">Lab</h1>
 				<p class="text-xl text-gray-600">
 					Design system workspace for testing, documentation, and audits
 				</p>
@@ -62,7 +62,7 @@
 								<li class="flex flex-col gap-1">
 									<div class="flex items-baseline gap-2">
 										<a
-											href="/studio/{item.slug}"
+										href="/lab/{item.slug}"
 											class="text-lg font-medium text-blue-600 underline transition-colors hover:text-pink-600"
 										>
 											{item.title}
