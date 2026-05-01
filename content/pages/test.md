@@ -2,9 +2,13 @@
 title: Test Page
 description: For testing Studio front matter parsing
 slug: test
-banner: square
-color: grey
+banner: blob
+color: blue
 ---
-# This is a test page
+# Testing the
 
-to verify that the new Studio setup can read frontmatter from markdown files in the `content/pages` collection and display them correctly in the Studio UI.
+To verify that the new Studio setup can read front matter from markdown files in the `content/pages` collection and display them correctly in the Studio UI.
+
+You can change the text here.
+
+## :slanted[This is a slanted heading]

@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@handlewithcare/remark-prosemirror':
+        specifier: ^0.1.5
+        version: 0.1.5(prosemirror-model@1.25.4)
       fuse.js:
         specifier: ^7.3.0
         version: 7.3.0
@@ -703,6 +706,11 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
+
+  '@handlewithcare/remark-prosemirror@0.1.5':
+    resolution: {integrity: sha512-HLDQJLKyvvLs8F62xR9ufWl42PDHOzJbRYL5zoAiBWTrx+6mqyBOZrB7ZygLtt9Q8kW1g57GSXJLh+ScUA/Rwg==}
+    peerDependencies:
+      prosemirror-model: ^1.24.0
 
   '@img/colour@1.1.0':
     resolution: {integrity: sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ==}
@@ -2121,6 +2129,9 @@ packages:
     resolution: {integrity: sha512-ej4AhfhfL2Q2zpMmLo7U1Uv9+PyhIZpgQLGT1F9miIGmiCJIoCgSmczFdrc97mWT4kVY72KA+WnnhJ5pghSvSg==}
     engines: {node: '>= 0.4'}
 
+  hast-util-from-html@2.0.3:
+    resolution: {integrity: sha512-CUSRHXyKjzHov8yKsQjGOElXy/3EKpyX56ELnkHH34vDVw1N1XSQ1ZcAvTyAPtGqLTuKP/uxM+aLkSPqF/EtMw==}
+
   hast-util-from-parse5@8.0.3:
     resolution: {integrity: sha512-3kxEVkEKt0zvcZ3hCRYI8rqrgwtlIOFMWkbclACvjlDw8Li9S2hk/d51OI0nr/gIpdMHNepwgOKqZ/sy0Clpyg==}
 
@@ -3346,6 +3357,20 @@ snapshots:
   '@esbuild/win32-x64@0.27.2':
     optional: true
 
+  '@handlewithcare/remark-prosemirror@0.1.5(prosemirror-model@1.25.4)':
+    dependencies:
+      '@types/hast': 3.0.4
+      '@types/mdast': 4.0.4
+      '@types/unist': 3.0.3
+      devlop: 1.1.0
+      hast-util-from-html: 2.0.3
+      micromark-util-sanitize-uri: 2.0.1
+      prosemirror-model: 1.25.4
+      trim-lines: 3.0.1
+      unist-util-is: 6.0.1
+      unist-util-visit: 5.1.0
+      zwitch: 2.0.4
+
   '@img/colour@1.1.0': {}
 
   '@img/sharp-darwin-arm64@0.34.5':
@@ -4505,6 +4530,15 @@ snapshots:
   hasown@2.0.3:
     dependencies:
       function-bind: 1.1.2
+
+  hast-util-from-html@2.0.3:
+    dependencies:
+      '@types/hast': 3.0.4
+      devlop: 1.1.0
+      hast-util-from-parse5: 8.0.3
+      parse5: 7.3.0
+      vfile: 6.0.3
+      vfile-message: 4.0.3
 
   hast-util-from-parse5@8.0.3:
     dependencies:

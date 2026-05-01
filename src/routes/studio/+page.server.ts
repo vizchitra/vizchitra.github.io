@@ -1,92 +1,137 @@
 import type { PageServerLoad } from './$types';
 import { redirect } from '@sveltejs/kit';
-import { studioConfig } from '../../../studio.config';
+import { studioConfig, type StudioCollection } from '../../../studio.config';
 
-interface FileEntry {
+// ── Shared types ─────────────────────────────────────────────────────────────
+
+export interface FileEntry {
 	title: string;
 	filePath: string;
-	url: string;
+	url: string; // empty = no link (e.g. data files)
 }
 
-interface CollectionIndex {
+export interface FlatGroup {
+	kind: 'flat';
 	name: string;
-	description: string;
-	type: 'markdown' | 'json';
 	files: FileEntry[];
 }
 
-function guideUrl(filePath: string, section?: string): string {
-	// content/guides/talks/00-overview.md → /guides/talks/overview
-	const match = filePath.match(/content\/guides\/([^/]+)\//);
-	if (match && section) return `/guides/${match[1]}/${section}`;
-	return '/';
+export interface GuideSubGroup {
+	name: string; // display name, e.g. "Talks"
+	slug: string; // URL slug, e.g. "talks"
+	files: FileEntry[];
 }
 
-function pageUrl(filePath: string): string {
-	// content/pages/ethos.md → /ethos
-	const match = filePath.match(/content\/pages\/(.+)\.md$/);
-	if (match) return `/${match[1]}`;
-	return '/';
+export interface TreeGroup {
+	kind: 'tree';
+	name: string;
+	groups: GuideSubGroup[];
 }
 
-async function buildCollections(): Promise<CollectionIndex[]> {
+export type ContentGroup = FlatGroup | TreeGroup;
+
+// ── Content tree builder ──────────────────────────────────────────────────────
+
+async function buildContentTree(collections: StudioCollection[]): Promise<ContentGroup[]> {
 	const { readdirSync, readFileSync, statSync } = await import('node:fs');
-	const { join, basename } = await import('node:path');
+	const { join } = await import('node:path');
 	const { default: matter } = await import('gray-matter');
 
 	function getTitle(fullPath: string): string {
 		try {
 			const raw = readFileSync(fullPath, 'utf-8');
-			return matter(raw).data?.title ?? basename(fullPath, '.md');
+			return matter(raw).data?.title ?? fullPath.split('/').pop() ?? fullPath;
 		} catch {
-			return basename(fullPath, '.md');
+			return fullPath.split('/').pop() ?? fullPath;
 		}
 	}
 
-	function getFrontmatter(fullPath: string): Record<string, unknown> {
+	function getFrontmatterField(fullPath: string, field: string): string {
 		try {
-			return matter(readFileSync(fullPath, 'utf-8')).data ?? {};
+			return (matter(readFileSync(fullPath, 'utf-8')).data?.[field] as string) ?? '';
 		} catch {
-			return {};
+			return '';
 		}
 	}
 
-	return studioConfig.collections.map((col) => {
-		let files: FileEntry[] = [];
+	function resolveUrl(template: string, slug: string, dirSlug: string, fullPath: string): string {
+		let url = template.replace('{dirSlug}', dirSlug).replace('{slug}', slug);
+		if (url.includes('{section}')) {
+			url = url.replace('{section}', getFrontmatterField(fullPath, 'section'));
+		}
+		// Unresolved tokens, empty trailing segment, or double slashes → no link
+		if (url.includes('{') || url.endsWith('/') || url.includes('//')) return '';
+		return url;
+	}
+
+	function filesForCollection(col: StudioCollection): FileEntry[] {
+		const isMarkdown = col.type === 'markdown';
+		const dirSlug = col.path.split('/').pop() ?? '';
+		let filenames: string[] = [];
 		try {
-			const entries = readdirSync(col.path).sort();
-			files = entries
+			filenames = readdirSync(col.path)
 				.filter((f) => {
 					try {
-						return statSync(join(col.path, f)).isFile();
+						return (
+							statSync(join(col.path, f)).isFile() &&
+							!f.startsWith('.') &&
+							(!isMarkdown || f.endsWith('.md'))
+						);
 					} catch {
 						return false;
 					}
 				})
-				.map((f) => {
-					const fullPath = join(col.path, f);
-					const relPath = `${col.path}/${f}`;
-					const fm = getFrontmatter(fullPath);
-					let url = '/';
-					if (col.type === 'markdown') {
-						if (col.path.startsWith('content/pages')) {
-							url = pageUrl(relPath);
-						} else if (col.path.startsWith('content/guides')) {
-							url = guideUrl(relPath, fm.section as string | undefined);
-						}
-					}
-					return {
-						title: col.type === 'markdown' ? getTitle(fullPath) : f,
-						filePath: relPath,
-						url
-					};
-				});
+				.sort();
 		} catch {
-			// directory may not exist yet
+			// directory missing — return empty
 		}
-		return { name: col.name, description: col.description, type: col.type, files };
+		return filenames.map((f) => {
+			const fullPath = join(col.path, f);
+			const slug = f.replace(/\.[^.]+$/, '');
+			const title = isMarkdown ? getTitle(fullPath) : f;
+			const url = col.urlTemplate ? resolveUrl(col.urlTemplate, slug, dirSlug, fullPath) : '';
+			return { title, filePath: `${col.path}/${f}`, url };
+		});
+	}
+
+	// Process in config order, merging grouped collections into TreeGroups
+	type OrderedEntry =
+		| { kind: 'flat'; col: StudioCollection }
+		| { kind: 'tree'; groupName: string; cols: StudioCollection[] };
+
+	const ordered: OrderedEntry[] = [];
+	const groupMap = new Map<string, StudioCollection[]>();
+
+	for (const col of collections) {
+		if (col.group) {
+			if (!groupMap.has(col.group)) {
+				const cols: StudioCollection[] = [];
+				groupMap.set(col.group, cols);
+				ordered.push({ kind: 'tree', groupName: col.group, cols });
+			}
+			groupMap.get(col.group)!.push(col);
+		} else {
+			ordered.push({ kind: 'flat', col });
+		}
+	}
+
+	return ordered.map((entry): ContentGroup => {
+		if (entry.kind === 'flat') {
+			return { kind: 'flat', name: entry.col.name, files: filesForCollection(entry.col) };
+		}
+		return {
+			kind: 'tree',
+			name: entry.groupName,
+			groups: entry.cols.map((col) => ({
+				name: col.name,
+				slug: col.path.split('/').pop() ?? col.name.toLowerCase(),
+				files: filesForCollection(col)
+			}))
+		};
 	});
 }
+
+// ── Load ──────────────────────────────────────────────────────────────────────
 
 export const load: PageServerLoad = async ({ locals, platform }) => {
 	if (!locals.studioUser) {
@@ -98,13 +143,13 @@ export const load: PageServerLoad = async ({ locals, platform }) => {
 		.map((h: string) => h.trim())
 		.filter(Boolean);
 
-	const collections = await buildCollections();
+	const contentGroups = await buildContentTree(studioConfig.collections);
 
 	return {
 		user: locals.studioUser,
 		config: studioConfig,
 		allowedUsers,
-		collections,
+		contentGroups,
 		pageMeta: {
 			title: 'Studio',
 			description: 'VizChitra content editor'

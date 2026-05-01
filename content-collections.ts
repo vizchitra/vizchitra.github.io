@@ -5,6 +5,7 @@ import remarkDirective from 'remark-directive';
 import remarkGfm from 'remark-gfm';
 import { remarkVizchitraDirectives } from './src/lib/markdown/directive.js';
 import { rehypeTableLabels } from './src/lib/markdown/table-labels.js';
+import { pagesSchema, guidesSchema } from './src/lib/content/schemas.js';
 
 /* Markdown Compilation Options */
 const markdownOptions = {
@@ -46,15 +47,7 @@ const guides = defineCollection({
 	name: 'guides',
 	directory: 'content/guides',
 	include: '**/*.md',
-	schema: z.object({
-		title: z.string(),
-		description: z.string(),
-		guide: z.enum(['talks', 'workshops', 'dialogues', 'exhibition', 'panels']),
-		section: z.string(),
-		order: z.number(),
-		draft: z.boolean().optional().default(false),
-		content: z.string()
-	}),
+	schema: guidesSchema.extend({ content: z.string() }),
 	transform: async (document, context) => {
 		// Extract guideId and sectionSlug from the file path
 		// e.g., "talks/intro.md" — normalise Windows backslashes first.

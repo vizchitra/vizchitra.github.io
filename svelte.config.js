@@ -13,7 +13,7 @@ const config = {
 	kit: {
 		adapter: adapter({
 			routes: {
-				include: ['/api/*', '/2026/submissions/*/og-image.png'],
+				include: ['/api/*', '/2026/submissions/*/og-image.png', '/studio', '/studio/*'],
 				exclude: []
 			}
 		}),
@@ -28,8 +28,13 @@ const config = {
 			entries: ['*'],
 			concurrency: 8,
 			handleHttpError: ({ path, message }) => {
-				// Ignore API routes and Cloudflare-handled redirects during prerendering
-				if (path.startsWith('/api/') || redirectPaths.includes(path)) {
+				// Ignore API routes, studio routes (not prerendered), build assets, and Cloudflare-handled redirects
+				if (
+					path.startsWith('/api/') ||
+					path.startsWith('/studio') ||
+					path.startsWith('/app/') ||
+					redirectPaths.includes(path)
+				) {
 					return;
 				}
 				throw new Error(message);

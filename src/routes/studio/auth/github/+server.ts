@@ -34,7 +34,7 @@ export const GET: RequestHandler = async ({ platform, url }) => {
 	const githubUrl = new URL('https://github.com/login/oauth/authorize');
 	githubUrl.searchParams.set('client_id', clientId);
 	githubUrl.searchParams.set('redirect_uri', callbackUrl);
-	githubUrl.searchParams.set('scope', 'repo');
+	githubUrl.searchParams.set('scope', 'read:user');
 	githubUrl.searchParams.set('state', `${state}:${encodeURIComponent(next)}`);
 
 	return new Response(null, {

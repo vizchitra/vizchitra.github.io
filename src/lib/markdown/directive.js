@@ -1,5 +1,6 @@
 import { visit } from 'unist-util-visit';
 import { formatSlantedText } from '../utils/slanted.js';
+import { directivesByName } from './directives.config.js';
 
 // ============================================
 // SECTION 1: Helper Functions
@@ -194,7 +195,15 @@ const INLINE_DIRECTIVES = {
 
 function handleDirective(node, registry) {
 	const directive = registry[node.name];
-	if (!directive) return; // Unknown directive, pass through
+	if (!directive) {
+		// Warn in dev if the directive name is not in the shared registry
+		if (!directivesByName.has(node.name)) {
+			console.warn(
+				`[directive] Unknown directive "${node.name}" — add it to directives.config.ts if intentional`
+			);
+		}
+		return; // Unknown directive, pass through unchanged
+	}
 
 	// Pass node to transform for directives that need child access
 	const output = directive.transformsChildren

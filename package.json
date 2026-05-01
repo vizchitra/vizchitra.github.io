@@ -18,6 +18,7 @@
 		"audit:all": "pnpm audit:css; pnpm audit:tailwind"
 	},
 	"dependencies": {
+		"@handlewithcare/remark-prosemirror": "^0.1.5",
 		"fuse.js": "^7.3.0",
 		"roughjs": "^4.6.6"
 	},

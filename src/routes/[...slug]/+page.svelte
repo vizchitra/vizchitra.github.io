@@ -64,13 +64,12 @@
 
 <Container>
 	{#if isEditing}
-		<div class="mt-4 pt-4">
-			<ProseMirrorEditor
-				bind:this={editorRef}
-				markdown={data.bodyContent ?? ''}
-				filePath={data.contentPath}
-			/>
-		</div>
+		<ProseMirrorEditor
+			bind:this={editorRef}
+			markdown={data.bodyContent ?? ''}
+			filePath={data.contentPath}
+			{color}
+		/>
 	{:else}
 		<Prose color={data.document.color}>
 			{@html data.document.html}

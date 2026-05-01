@@ -21,7 +21,12 @@ export default defineConfig({
 	build: {
 		chunkSizeWarningLimit: 1000,
 		rolldownOptions: {
-			treeshake: { commonjs: true }
+			treeshake: { commonjs: true },
+			output: {
+				advancedChunks: {
+					groups: [{ name: 'prosemirror', test: /prosemirror/ }]
+				}
+			}
 		}
 	},
 	server: {

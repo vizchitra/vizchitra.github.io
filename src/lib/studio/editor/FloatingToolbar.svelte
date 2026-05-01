@@ -40,7 +40,7 @@
 
 	// ── Position ───────────────────────────────────────────────────────────
 	/** Keep toolbar inside the viewport horizontally (≥8px from edges). */
-	const HALF_WIDTH = 152; // half of approx toolbar width
+	const HALF_WIDTH = 175; // half of approx toolbar width
 	const safeLeft = $derived(
 		coords ? Math.max(HALF_WIDTH + 8, Math.min(coords.left, window.innerWidth - HALF_WIDTH - 8)) : 0
 	);
@@ -52,7 +52,7 @@
 	<div
 		role="toolbar"
 		aria-label="Text formatting"
-		class="border-grey-700 bg-grey-900 shadow-grey-950 fixed z-[200] flex items-center gap-0.5 rounded border p-1 shadow-lg"
+		class="border-grey-700 bg-grey-900 shadow-grey-950 fixed z-[200] flex items-center gap-0.5 rounded border p-1.5 shadow-lg"
 		style:top="{safeTop}px"
 		style:left="{safeLeft}px"
 		style:transform="translateY(-100%) translateX(-50%)"
@@ -61,7 +61,7 @@
 		<button
 			type="button"
 			onmousedown={(e) => cmd(toggleMark(schema.marks.strong), e)}
-			class="rounded px-2 py-1 text-xs font-bold transition {isMarkActive(schema.marks.strong)
+			class="rounded px-2.5 py-1.5 text-sm font-bold transition {isMarkActive(schema.marks.strong)
 				? 'bg-grey-700 text-viz-grey-light'
 				: 'text-viz-grey-muted hover:bg-grey-800 hover:text-viz-grey-light'}"
 			title="Bold (⌘B)">B</button
@@ -69,28 +69,28 @@
 		<button
 			type="button"
 			onmousedown={(e) => cmd(toggleMark(schema.marks.em), e)}
-			class="rounded px-2 py-1 text-xs italic transition {isMarkActive(schema.marks.em)
+			class="rounded px-2.5 py-1.5 text-sm italic transition {isMarkActive(schema.marks.em)
 				? 'bg-grey-700 text-viz-grey-light'
 				: 'text-viz-grey-muted hover:bg-grey-800 hover:text-viz-grey-light'}"
 			title="Italic (⌘I)">I</button
 		>
 		<button
 			type="button"
-			onmousedown={(e) => cmd(toggleMark(schema.marks.code), e)}
-			class="rounded px-2 py-1 font-mono text-xs transition {isMarkActive(schema.marks.code)
-				? 'bg-grey-700 text-viz-grey-light'
+			onmousedown={(e) => cmd(toggleMark(schema.marks.slanted), e)}
+			class="rounded px-2.5 py-1.5 text-sm italic transition {isMarkActive(schema.marks.slanted)
+				? 'bg-grey-700 text-viz-yellow'
 				: 'text-viz-grey-muted hover:bg-grey-800 hover:text-viz-grey-light'}"
-			title="Inline code">`</button
+			title=":slanted[…] heading accent">Sl</button
 		>
 
 		<!-- Separator -->
-		<div class="bg-grey-700 mx-0.5 h-4 w-px"></div>
+		<div class="bg-grey-700 mx-0.5 h-5 w-px"></div>
 
 		<!-- Block types -->
 		<button
 			type="button"
 			onmousedown={(e) => cmd(setBlockType(schema.nodes.heading, { level: 2 }), e)}
-			class="rounded px-2 py-1 text-xs font-semibold transition {isBlock(schema.nodes.heading, {
+			class="rounded px-2.5 py-1.5 text-sm font-semibold transition {isBlock(schema.nodes.heading, {
 				level: 2
 			})
 				? 'bg-grey-700 text-viz-grey-light'
@@ -100,7 +100,7 @@
 		<button
 			type="button"
 			onmousedown={(e) => cmd(setBlockType(schema.nodes.heading, { level: 3 }), e)}
-			class="rounded px-2 py-1 text-xs font-semibold transition {isBlock(schema.nodes.heading, {
+			class="rounded px-2.5 py-1.5 text-sm font-semibold transition {isBlock(schema.nodes.heading, {
 				level: 3
 			})
 				? 'bg-grey-700 text-viz-grey-light'
@@ -110,32 +110,32 @@
 		<button
 			type="button"
 			onmousedown={(e) => cmd(setBlockType(schema.nodes.paragraph), e)}
-			class="rounded px-2 py-1 text-xs transition {isBlock(schema.nodes.paragraph)
+			class="rounded px-2.5 py-1.5 text-sm transition {isBlock(schema.nodes.paragraph)
 				? 'bg-grey-700 text-viz-grey-light'
 				: 'text-viz-grey-muted hover:bg-grey-800 hover:text-viz-grey-light'}"
 			title="Paragraph">¶</button
 		>
 
 		<!-- Separator -->
-		<div class="bg-grey-700 mx-0.5 h-4 w-px"></div>
+		<div class="bg-grey-700 mx-0.5 h-5 w-px"></div>
 
 		<!-- Block wraps -->
 		<button
 			type="button"
 			onmousedown={(e) => cmd(wrapIn(schema.nodes.blockquote), e)}
-			class="text-viz-grey-muted hover:bg-grey-800 hover:text-viz-grey-light rounded px-2 py-1 text-xs transition"
+			class="text-viz-grey-muted hover:bg-grey-800 hover:text-viz-grey-light rounded px-2.5 py-1.5 text-sm transition"
 			title="Blockquote">"</button
 		>
 		<button
 			type="button"
 			onmousedown={(e) => cmd(wrapInList(schema.nodes.bullet_list), e)}
-			class="text-viz-grey-muted hover:bg-grey-800 hover:text-viz-grey-light rounded px-2 py-1 text-xs transition"
+			class="text-viz-grey-muted hover:bg-grey-800 hover:text-viz-grey-light rounded px-2.5 py-1.5 text-sm transition"
 			title="Bullet list">•</button
 		>
 		<button
 			type="button"
 			onmousedown={(e) => cmd(wrapInList(schema.nodes.ordered_list), e)}
-			class="text-viz-grey-muted hover:bg-grey-800 hover:text-viz-grey-light rounded px-2 py-1 text-xs transition"
+			class="text-viz-grey-muted hover:bg-grey-800 hover:text-viz-grey-light rounded px-2.5 py-1.5 text-sm transition"
 			title="Ordered list">1.</button
 		>
 	</div>

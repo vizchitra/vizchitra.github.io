@@ -13,8 +13,17 @@
 	let editorRef: ProseMirrorEditor | null = $state(null);
 	let currentFrontmatter = $state<Record<string, unknown>>({});
 
-	onMount(async () => {
+	// Reset frontmatter whenever we navigate to a different section.
+	// onMount alone isn't enough — SvelteKit reuses the component instance
+	// across same-layout navigations, so we must react to data.contentPath.
+	$effect(() => {
+		// Accessing data.contentPath makes this effect re-run on every section change.
+		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+		data.contentPath;
 		currentFrontmatter = { ...data.parsedFrontmatter };
+	});
+
+	onMount(async () => {
 		try {
 			const res = await fetch('/api/studio/me');
 			if (res.ok) isAuthed = true;

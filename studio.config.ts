@@ -11,6 +11,8 @@ export interface StudioCollection {
 	path: string;
 	type: 'markdown' | 'json';
 	description: string;
+	group?: string; // collections sharing a group name → merged into a TreeGroup
+	urlTemplate?: string; // e.g. '/{slug}' or '/guides/{dirSlug}/{section}'
 	schema?: CollectionSchema[];
 }
 
@@ -21,7 +23,7 @@ export interface StudioConfig {
 }
 
 export const studioConfig: StudioConfig = {
-	description: 'Editorial workspace for VizChitra 2026 content.',
+	description: 'Content Editing for VizChitra Website.',
 	instructions:
 		'Raise a PR for all changes. Ping @amitkaps for review before merging. ' +
 		'Keep tone warm, inclusive, and practical. ' +
@@ -32,37 +34,48 @@ export const studioConfig: StudioConfig = {
 			name: 'Pages',
 			path: 'content/pages',
 			type: 'markdown',
-			description: 'Standalone markdown pages (community, ethos, conduct, tools)'
+			description: 'Standalone markdown pages (community, ethos, conduct, tools)',
+			urlTemplate: '/{slug}'
 		},
 		{
-			name: 'Guides — Talks',
+			name: 'Talks',
 			path: 'content/guides/talks',
 			type: 'markdown',
-			description: 'Facilitator guides for Talk sessions'
+			group: 'Guides',
+			description: 'Facilitator guides for Talk sessions',
+			urlTemplate: '/guides/{dirSlug}/{section}'
 		},
 		{
-			name: 'Guides — Workshops',
+			name: 'Workshops',
 			path: 'content/guides/workshops',
 			type: 'markdown',
-			description: 'Facilitator guides for Workshop sessions'
+			group: 'Guides',
+			description: 'Facilitator guides for Workshop sessions',
+			urlTemplate: '/guides/{dirSlug}/{section}'
 		},
 		{
-			name: 'Guides — Dialogues',
+			name: 'Dialogues',
 			path: 'content/guides/dialogues',
 			type: 'markdown',
-			description: 'Facilitator guides for Dialogue sessions'
+			group: 'Guides',
+			description: 'Facilitator guides for Dialogue sessions',
+			urlTemplate: '/guides/{dirSlug}/{section}'
 		},
 		{
-			name: 'Guides — Exhibition',
+			name: 'Exhibition',
 			path: 'content/guides/exhibition',
 			type: 'markdown',
-			description: 'Facilitator guides for Exhibition sessions'
+			group: 'Guides',
+			description: 'Facilitator guides for Exhibition sessions',
+			urlTemplate: '/guides/{dirSlug}/{section}'
 		},
 		{
-			name: 'Guides — Panels',
+			name: 'Panels',
 			path: 'content/guides/panels',
 			type: 'markdown',
-			description: 'Facilitator guides for Panel sessions'
+			group: 'Guides',
+			description: 'Facilitator guides for Panel sessions',
+			urlTemplate: '/guides/{dirSlug}/{section}'
 		},
 		{
 			name: 'Sessions 2026',

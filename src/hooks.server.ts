@@ -38,8 +38,8 @@ export async function handle({ event, resolve }) {
 	// Populate studioUser for studio + API studio routes
 	const path = event.url.pathname;
 	if (path.startsWith('/studio') || path.startsWith('/api/studio')) {
-		// Dev bypass: set STUDIO_DEV_USER in .env to skip OAuth entirely
-		const devUser = dev && env.STUDIO_DEV_USER;
+		// In dev mode, always bypass OAuth — no env vars needed
+		const devUser = dev && (env.STUDIO_DEV_USER || 'dev');
 		if (devUser) {
 			event.locals.studioUser = { handle: devUser, sessionId: 'dev' };
 		} else {
