@@ -62,7 +62,7 @@
 								<li class="flex flex-col gap-1">
 									<div class="flex items-baseline gap-2">
 										<a
-										href="/lab/{item.slug}"
+											href="/lab/{item.slug}"
 											class="text-lg font-medium text-blue-600 underline transition-colors hover:text-pink-600"
 										>
 											{item.title}

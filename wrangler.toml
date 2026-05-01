@@ -6,3 +6,7 @@ pages_build_output_dir = ".svelte-kit/cloudflare"
 [[kv_namespaces]]
 binding = "PROPOSAL_VOTES"
 id = "1e942766305343679da8071bbe2198c4"
+
+[[kv_namespaces]]
+binding = "STUDIO_SESSIONS"
+id = "REPLACE_WITH_REAL_KV_ID"

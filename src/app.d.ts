@@ -1,8 +1,15 @@
 declare global {
 	namespace App {
+		interface Locals {
+			studioUser: { handle: string; sessionId: string } | null;
+		}
 		interface Platform {
 			env: {
 				PROPOSAL_VOTES: KVNamespace;
+				STUDIO_SESSIONS: KVNamespace;
+				STUDIO_GITHUB_CLIENT_ID: string;
+				STUDIO_GITHUB_CLIENT_SECRET: string;
+				STUDIO_ALLOWED_USERS: string;
 			};
 			context: ExecutionContext;
 			caches: CacheStorage & { default: Cache };
