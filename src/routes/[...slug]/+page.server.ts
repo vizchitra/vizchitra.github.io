@@ -2,7 +2,6 @@ import { error, redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { allPages } from 'content-collections';
 import { readFileSync } from 'node:fs';
-import matter from 'gray-matter';
 
 // Parse redirects from _redirects file (loaded once at build time)
 const redirectsContent = readFileSync('_redirects', 'utf-8');
@@ -54,8 +53,15 @@ export const load: PageServerLoad = async ({ params }) => {
 		document: page,
 		rawContent: page.content ?? '',
 		contentPath: `content/pages/${page.slug}.md`,
-		parsedFrontmatter: matter(page.content ?? '').data as Record<string, unknown>,
-		bodyContent: matter(page.content ?? '').content,
+		parsedFrontmatter: {
+			title: page.title,
+			...(page.description ? { description: page.description } : {}),
+			...(page.slug ? { slug: page.slug } : {}),
+			...(page.banner ? { banner: page.banner } : {}),
+			...(page.color ? { color: page.color } : {}),
+			...(page.draft ? { draft: page.draft } : {})
+		} as Record<string, unknown>,
+		bodyContent: page.content ?? '',
 		pageMeta: {
 			title: page.title,
 			description: page.description,

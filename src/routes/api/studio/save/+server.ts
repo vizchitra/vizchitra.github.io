@@ -1,21 +1,7 @@
 import type { RequestHandler } from './$types';
 import { dev } from '$app/environment';
-import { writeFileSync } from 'node:fs';
-import { resolve, normalize } from 'node:path';
-import matter from 'gray-matter';
 
 export const prerender = false;
-
-const ALLOWED_ROOT = resolve('content');
-
-/** Ensure the resolved file path stays within the content/ directory */
-function safePath(filePath: string): string {
-	const resolved = resolve(normalize(filePath));
-	if (!resolved.startsWith(ALLOWED_ROOT + '/')) {
-		throw new Error('Path traversal detected');
-	}
-	return resolved;
-}
 
 export const POST: RequestHandler = async ({ request, locals }) => {
 	// Auth guard
@@ -53,9 +39,18 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 		});
 	}
 
+	// Dynamic imports — only available in Node.js (pnpm dev), not Workers runtime
+	const { resolve, normalize } = await import('node:path');
+	const { writeFileSync } = await import('node:fs');
+	const { default: matter } = await import('gray-matter');
+
+	const ALLOWED_ROOT = resolve('content');
+
 	let absolute: string;
 	try {
-		absolute = safePath(filePath);
+		const resolved = resolve(normalize(filePath));
+		if (!resolved.startsWith(ALLOWED_ROOT + '/')) throw new Error('Path traversal detected');
+		absolute = resolved;
 	} catch {
 		return new Response(JSON.stringify({ error: 'Invalid file path' }), {
 			status: 400,
@@ -67,7 +62,7 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 
 	try {
 		writeFileSync(absolute, serialised, 'utf-8');
-	} catch (e) {
+	} catch {
 		return new Response(JSON.stringify({ error: 'Write failed' }), {
 			status: 500,
 			headers: { 'Content-Type': 'application/json' }

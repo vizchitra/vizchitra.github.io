@@ -1,6 +1,15 @@
 import type { RequestHandler } from './$types';
+import { dev } from '$app/environment';
+import { env } from '$env/dynamic/private';
+import { redirect } from '@sveltejs/kit';
 
 export const GET: RequestHandler = async ({ platform, url }) => {
+	// Dev bypass: when STUDIO_DEV_USER is set, skip OAuth entirely
+	if (dev && env.STUDIO_DEV_USER) {
+		const next = url.searchParams.get('next') ?? '/studio';
+		throw redirect(302, next);
+	}
+
 	const clientId = platform?.env?.STUDIO_GITHUB_CLIENT_ID;
 	if (!clientId) {
 		return new Response('OAuth not configured', { status: 500 });
