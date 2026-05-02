@@ -18,6 +18,7 @@
 		speakerImage?: string;
 		tbd?: boolean;
 		showViewDetailsButton?: boolean;
+		isExpanded?: boolean;
 	}
 
 	let {
@@ -31,7 +32,8 @@
 		slug,
 		speakerImage,
 		tbd = false,
-		showViewDetailsButton = false
+		showViewDetailsButton = false,
+		isExpanded = true
 	}: Props = $props();
 
 	const colorClasses = {
@@ -197,13 +199,13 @@
 				class="absolute inset-0 z-0 h-full w-full"
 			/>
 
-			<div class="speaker-details-overlay pointer-events-auto absolute inset-0 flex flex-col">
+			<div class="speaker-details-overlay pointer-events-none absolute inset-0 flex flex-col">
 				<div class="absolute inset-x-0 bottom-0" style="height: {backgroundHeight * 0.3}px">
 					<div
 						class="speaker-image absolute top-15 right-5 -translate-y-full transition-transform duration-300 group-hover:scale-104"
 					>
 						<img
-							class="h-auto w-full"
+							class="relative z-10 h-auto w-full"
 							src="{base}/images/speakers/2026/speaker-placeholder.avif"
 							alt="Speaker placeholder image"
 						/>
@@ -224,76 +226,76 @@
 					</svg>
 
 					{#if showViewDetailsButton}
-					<svg
-						class="view-details-button absolute -right-10 -bottom-8 z-40 block h-40 w-40 origin-center scale-0 transition-transform duration-400 ease-out group-hover:scale-100 md:h-50 md:w-50 lg:-right-18 lg:-bottom-18 lg:h-60 lg:w-60"
-						preserveAspectRatio="none"
-						viewBox="0 0 200 200"
-						fill="none"
-						aria-hidden="true"
-					>
-						<defs>
-							<path
-								id="view-details-path-{slug}"
-								d="M 100,100 m -{textPathRadius},0 a {textPathRadius},{textPathRadius} 0 1,1 {textPathRadius *
-									2},0 a {textPathRadius},{textPathRadius} 0 1,1 -{textPathRadius * 2},0"
-								fill="none"
-							/>
-						</defs>
-
-						<circle
-							cx="100"
-							cy="100"
-							r="80"
-							fill="#fff"
-							stroke="var(--color-{colorClasses[color]})"
-							stroke-width="7"
-							fill-opacity="1"
-						/>
-
-						<circle
-							cx="100"
-							cy="100"
-							r="52"
-							fill="var(--color-{colorClasses[color]}-dark)"
-							stroke-width="10"
-							fill-opacity="0.75"
-						/>
-
-						<circle
-							cx="100"
-							cy="100"
-							r="45"
-							fill="var(--color-{colorClasses[color]})"
-							fill-opacity="1"
-						/>
-						<circle cx="100" cy="100" r="35" fill="#fff" fill-opacity="1" />
-
-						<g
-							transform="translate(100 100) scale(0.325) translate(-63 -63)"
-							stroke="#4c4c4c"
-							stroke-width="13"
-							stroke-linecap="round"
-							stroke-linejoin="round"
+						<svg
+							class="view-details-button absolute -right-10 -bottom-8 z-40 block h-40 w-40 origin-center scale-0 transition-transform duration-400 ease-out group-hover:scale-100 md:h-50 md:w-50 lg:-right-18 lg:-bottom-18 lg:h-60 lg:w-60"
+							preserveAspectRatio="none"
+							viewBox="0 0 200 200"
 							fill="none"
+							aria-hidden="true"
 						>
-							<path d="M26.25 63L99.75 63" />
-							<path d="M63 26.25L99.75 63L63 99.75" />
-						</g>
+							<defs>
+								<path
+									id="view-details-path-{slug}"
+									d="M 100,100 m -{textPathRadius},0 a {textPathRadius},{textPathRadius} 0 1,1 {textPathRadius *
+										2},0 a {textPathRadius},{textPathRadius} 0 1,1 -{textPathRadius * 2},0"
+									fill="none"
+								/>
+							</defs>
 
-						<text
-							class="view-details-text font-display"
-							fill="#4c4c4c"
-							font-size="16"
-							font-weight="800"
-							letter-spacing="2"
-							text-anchor="middle"
-						>
-							<!-- <textPath href="#view-details-path-{slug}" startOffset="0%">•</textPath> -->
-							<textPath href="#view-details-path-{slug}" startOffset="18%">VIEW DETAILS</textPath>
-							<!-- <textPath href="#view-details-path-{slug}" startOffset="50%">•</textPath> -->
-							<textPath href="#view-details-path-{slug}" startOffset="65%">VIEW DETAILS</textPath>
-						</text>
-					</svg>
+							<circle
+								cx="100"
+								cy="100"
+								r="80"
+								fill="#fff"
+								stroke="var(--color-{colorClasses[color]})"
+								stroke-width="7"
+								fill-opacity="1"
+							/>
+
+							<circle
+								cx="100"
+								cy="100"
+								r="52"
+								fill="var(--color-{colorClasses[color]}-dark)"
+								stroke-width="10"
+								fill-opacity="0.75"
+							/>
+
+							<circle
+								cx="100"
+								cy="100"
+								r="45"
+								fill="var(--color-{colorClasses[color]})"
+								fill-opacity="1"
+							/>
+							<circle cx="100" cy="100" r="35" fill="#fff" fill-opacity="1" />
+
+							<g
+								transform="translate(100 100) scale(0.325) translate(-63 -63)"
+								stroke="#4c4c4c"
+								stroke-width="13"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								fill="none"
+							>
+								<path d="M26.25 63L99.75 63" />
+								<path d="M63 26.25L99.75 63L63 99.75" />
+							</g>
+
+							<text
+								class="view-details-text font-display"
+								fill="#4c4c4c"
+								font-size="16"
+								font-weight="800"
+								letter-spacing="2"
+								text-anchor="middle"
+							>
+								<!-- <textPath href="#view-details-path-{slug}" startOffset="0%">•</textPath> -->
+								<textPath href="#view-details-path-{slug}" startOffset="18%">VIEW DETAILS</textPath>
+								<!-- <textPath href="#view-details-path-{slug}" startOffset="50%">•</textPath> -->
+								<textPath href="#view-details-path-{slug}" startOffset="65%">VIEW DETAILS</textPath>
+							</text>
+						</svg>
 					{/if}
 				</div>
 
