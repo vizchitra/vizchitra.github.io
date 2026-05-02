@@ -65,7 +65,7 @@
 	<div>
 		<!-- Session type badge + logistics -->
 		<div class="border-viz-grey/10 mb-8 border-b pb-6 md:mb-12 md:pb-8">
-			<div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+			<div class="flex flex-wrap items-center justify-between gap-x-3 gap-y-3">
 				<p class="font-display text-viz-grey-dark text-base uppercase md:text-lg">
 					{#if formattedDate}<span class="font-bold">{formattedDate}</span
 						>{/if}{#if session.time}{#if formattedDate}<span class="mx-2">·</span>{/if}<span
@@ -74,6 +74,29 @@
 							>{session.venue}</span
 						>{/if}
 				</p>
+
+				<a
+					href="https://tickets.vizchitra.com/"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="font-display bg-viz-{color}-dark hover:bg-viz-{color} inline-flex items-center gap-2 rounded-full px-5 py-2 text-base font-bold text-white uppercase transition-colors md:text-lg"
+				>
+					Purchase Tickets
+					<svg
+						class="h-4 w-4"
+						fill="none"
+						stroke="currentColor"
+						viewBox="0 0 24 24"
+						aria-hidden="true"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M14 5l7 7m0 0l-7 7m7-7H3"
+						/>
+					</svg>
+				</a>
 			</div>
 		</div>
 
