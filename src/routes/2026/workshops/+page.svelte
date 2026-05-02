@@ -45,6 +45,7 @@
 						slug={session.slug}
 						speakerImage={session.speakerImage}
 						tbd={session.tbd}
+						showViewDetailsButton={true}
 						descriptionHtml={session.descriptionHtml}
 						from="workshops"
 					/>
