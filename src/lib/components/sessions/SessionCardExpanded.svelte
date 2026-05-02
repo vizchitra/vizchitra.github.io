@@ -165,7 +165,7 @@
 		class="sessions-card group white border-viz-grey/40 mx-auto block w-full overflow-hidden rounded border transition-all hover:scale-102"
 	>
 		<div
-			class="session-card-body relative flex aspect-4/6.5 max-h-[85vh] flex-col overflow-visible md:aspect-4/5.5"
+			class="session-card-body relative flex aspect-4/7 max-h-[85vh] flex-col overflow-visible md:aspect-4/5.75 md:max-h-none"
 			bind:clientWidth={backgroundWidth}
 			bind:clientHeight={backgroundHeight}
 		>
@@ -203,21 +203,20 @@
 
 			<div class="title-content relative z-10 p-3 md:p-4">
 				<h3
-					class="title font-display text-shadow mb-1 text-[20px] leading-none font-extrabold text-[#4c4c4c] uppercase md:text-[26px]"
+					class="title font-display text-shadow mb-1 text-[20px] leading-none font-extrabold text-[#4c4c4c] uppercase md:text-[28px]"
 				>
 					{title}
+					{subtitle}
 				</h3>
-				{#if subtitle}
+				<!-- {#if subtitle}
 					<p
-						class="subtitle font-display text-shadow mb-1 text-lg leading-tight font-light text-[#4c4c4c] uppercase md:text-xl"
-					>
-						{subtitle}
-					</p>
-				{/if}
+						class="subtitle font-display text-shadow mb-1 text-[20px] leading-none font-extrabold text-[#4c4c4c] uppercase md:text-[28px]"
+					></p>
+				{/if} -->
 			</div>
 
 			{#if isExpanded}
-				<div class="short-description-container relative z-10 p-3 pt-1 md:p-4">
+				<div class="short-description-container relative z-10 p-3 pt-0 md:p-4 md:pt-1">
 					<p
 						class="short-description font-display text-shadow mb-1 max-w-[40ch] text-lg leading-tight font-normal text-[#4c4c4c] md:text-[19px]"
 					>
@@ -242,7 +241,7 @@
 
 				<div
 					class="speaker-image absolute right-5 bottom-0 origin-center transition-transform duration-300 group-hover:scale-104 group-hover:rotate-1"
-					style:transform={buildSpeakerImageTransform(speakerName)}
+					style:transform={buildSpeakerImageTransform(speakerName, screenWidth)}
 				>
 					<img
 						class="relative z-10 h-auto w-full"
@@ -413,7 +412,7 @@
 	}
 
 	:global(.background-container-expanded svg) {
-		transform: translate(20%, 10%) scale(1.3) !important;
+		transform: translate(20%, 12%) scale(1.25) !important;
 		translate: none !important;
 	}
 

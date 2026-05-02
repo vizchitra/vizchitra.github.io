@@ -11,11 +11,11 @@
 /** @type {Record<string, { x?: number; y?: number; scale?: number; order?: number }>} */
 export const speakerImageTransforms = {
 	'Kenneth Dsouza / Rasagy Sharma': { x: 10, y: -15, scale: 1.5, order: 1 },
-	'Areena Arora': { x: 10, y: 8, scale: 1.1, order: 2 },
+	'Areena Arora': { x: 10, y: 8, scale: 1, order: 2 },
 	'Schubert de Abreu': { x: 14, y: -5, scale: 1.2, order: 3 },
 	'Priti Pandurangan': { x: 10, y: 5, scale: 0.95, order: 4 },
 	'Adolfo Arranz': { x: 20, y: -15, scale: 1.3, order: 5 },
-	'Prakriti Bakshi': { x: 5, y: 15, scale: 1, order: 6 },
+	'Prakriti Bakshi': { x: 5, y: 15, scale: 0.95, order: 6 },
 	'Prasanta Kumar Dutta': { x: 15, y: -5, scale: 1.3, order: 7 },
 };
 
@@ -23,11 +23,12 @@ export const speakerImageTransforms = {
  * @param {string | undefined} name
  * @returns {string}
  */
-export function buildSpeakerImageTransform(name) {
+export function buildSpeakerImageTransform(name, screenWidth = 1000) {
 	const t = (name && speakerImageTransforms[name]) || {};
 	const tx = t.x ?? 0;
-	const ty = t.y ?? 0;
+	const ty = screenWidth < 768 ? t.y - 6 : t.y ?? 0;
 	const s = t.scale ?? 1;
+
 	return `translate(${tx}%, ${ty}%) scale(${s})`;
 }
 
