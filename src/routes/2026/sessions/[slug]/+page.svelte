@@ -10,6 +10,24 @@
 
 	const session = $derived(data.session);
 	const color = $derived(sessionColorMap[session.sessionType] ?? 'blue');
+
+	function formatDate(iso: string): string {
+		const d = new Date(iso);
+		const day = d.getDate();
+		const suffix =
+			day % 10 === 1 && day !== 11
+				? 'st'
+				: day % 10 === 2 && day !== 12
+					? 'nd'
+					: day % 10 === 3 && day !== 13
+						? 'rd'
+						: 'th';
+		const month = d.toLocaleDateString('en-GB', { month: 'long' });
+		return `${day}${suffix} ${month}`;
+	}
+
+	const formattedDate = $derived(session.date ? formatDate(session.date) : '');
+	const period = $derived(session.time === '10:00 - 13:00' ? 'Morning' : 'Afternoon');
 </script>
 
 <Header banner="curve" />
@@ -19,7 +37,7 @@
 		<div class="space-y-4">
 			<Prose>
 				<h6><a href="/2026/sessions">Sessions</a> | VizChitra 2026</h6>
-				<h1>{session.title}</h1>
+				<h1>{session.title} {session.subtitle}</h1>
 			</Prose>
 
 			<div class="space-y-1.5 md:space-y-2">
@@ -38,10 +56,17 @@
 	</header>
 
 	<div>
-		<!-- Session type badge -->
+		<!-- Session type badge + logistics -->
 		<div class="border-viz-grey/10 mb-8 border-b pb-6 md:mb-12 md:pb-8">
-			<div class="flex flex-wrap items-center gap-2">
-				<ProposalBadge text={session.sessionType} {color} />
+			<div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+				<p class="font-display text-viz-grey-dark text-base uppercase md:text-lg">
+					{#if formattedDate}<span class="font-bold">{formattedDate}</span
+						>{/if}{#if session.time}{#if formattedDate}<span class="mx-2">·</span>{/if}<span
+							class="font-bold">{session.time} | {period}</span
+						>{/if}{#if session.venue}<span class="mx-2">·</span><span class="font-light"
+							>{session.venue}</span
+						>{/if}
+				</p>
 			</div>
 		</div>
 
