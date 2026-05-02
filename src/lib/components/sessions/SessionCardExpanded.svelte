@@ -5,6 +5,7 @@
 	import PatternComingSoon from './PatternComingSoon.svelte';
 	import { sessionColorMap } from '$lib/utils/sessions';
 	import { base } from '$app/paths';
+	import { buildSpeakerImageTransform } from './speakerConfig.js';
 
 	interface Props {
 		title: string;
@@ -204,14 +205,15 @@
 			</div>
 
 			<div class="speaker-details-overlay pointer-events-none absolute inset-0 flex flex-col">
-				<div class="absolute inset-x-0 bottom-0" style="height: {backgroundHeight * 0.2}px">
+				<div class="absolute inset-x-0 bottom-0" style="height: {backgroundHeight * 0.225}px">
 					<div
 						class="speaker-image absolute top-15 right-5 -translate-y-full transition-transform duration-300 group-hover:scale-104 md:top-20"
 					>
 						<img
 							class="relative z-10 h-auto w-full"
-							src="{base}/images/speakers/2026/speaker-placeholder.avif"
+							src="{base}{speakerImage || '/images/speakers/2026/speaker-placeholder.avif'}"
 							alt="{speakerName}'s photo"
+							style:transform={buildSpeakerImageTransform(speakerName)}
 						/>
 
 						<div
