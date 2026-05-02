@@ -89,6 +89,7 @@
 	const overlayStrokeWidth = 12;
 
 	let screenWidth = $state(0);
+	let patternHeight = $state(0);
 </script>
 
 <svelte:window bind:innerWidth={screenWidth} />
@@ -162,7 +163,7 @@
 		class="sessions-card group white border-viz-grey/40 mx-auto block w-full overflow-hidden rounded border transition-all hover:scale-102"
 	>
 		<div
-			class="session-card-body relative aspect-4/6.5 overflow-visible md:aspect-4/5.25 md:max-h-[85vh]"
+			class="session-card-body relative flex aspect-4/6.5 max-h-[85vh] flex-col overflow-visible md:aspect-4/5.5"
 			bind:clientWidth={backgroundWidth}
 			bind:clientHeight={backgroundHeight}
 		>
@@ -213,7 +214,7 @@
 				{/if}
 			</div>
 
-			<div class="short-description-container relative z-10 p-3 md:p-4">
+			<div class="short-description-container relative z-10 p-3 pt-1 md:p-4">
 				<p
 					class="short-description font-display text-shadow mb-1 max-w-[40ch] text-lg leading-tight font-normal text-[#4c4c4c] md:text-[19px]"
 				>
@@ -221,35 +222,37 @@
 				</p>
 			</div>
 
-			<div class="speaker-details-overlay pointer-events-none absolute inset-0 flex flex-col">
-				<div class="absolute inset-x-0 bottom-0" style="height: {backgroundHeight * 0.225}px">
-					<div
-						class="speaker-image absolute top-15 right-5 -translate-y-full transition-transform duration-300 group-hover:scale-104 md:top-20"
-					>
-						<img
-							class="relative z-10 h-auto w-full"
-							src="{base}{speakerImage || '/images/speakers/2026/speaker-placeholder.avif'}"
-							alt="{speakerName}'s photo"
-							style:transform={buildSpeakerImageTransform(speakerName)}
-						/>
+			<div
+				class="background-container-expanded relative z-0 flex w-full flex-row items-center justify-end"
+				style:height="100%"
+			>
+				<SessionCardBackground
+					{sessionType}
+					{color}
+					{slug}
+					{title}
+					width={expandedBgWidth}
+					height={expandedBgWidth}
+					class="absolute inset-0 z-0 h-full w-full"
+				/>
 
-						<div
-							class="background-container-expanded absolute -right-[30%] -bottom-[75%] z-0"
-							style:width="{expandedBgWidth * (screenWidth < 768 ? 1.55 : 1.5)}px"
-							style:height="{expandedBgWidth * 1.25 * (screenWidth < 768 ? 1.55 : 1.5)}px"
-						>
-							<SessionCardBackground
-								{sessionType}
-								{color}
-								{slug}
-								{title}
-								width={expandedBgWidth}
-								height={expandedBgWidth * 1.25}
-								class="absolute inset-0 z-0 h-full w-full"
-							/>
-						</div>
-					</div>
+				<div
+					class="speaker-image absolute right-5 bottom-0 transition-transform duration-300 group-hover:scale-104"
+					style:transform={buildSpeakerImageTransform(speakerName)}
+				>
+					<img
+						class="relative z-10 h-auto w-full"
+						src="{base}{speakerImage || '/images/speakers/2026/speaker-placeholder.avif'}"
+						alt="{speakerName}'s photo"
+					/>
+				</div>
+			</div>
 
+			<div
+				class="speaker-details-overlay pointer-events-auto relative mt-auto flex flex-col"
+				style:height="{patternHeight}px"
+			>
+				<div class="absolute inset-x-0 bottom-0">
 					<svg
 						class="relative z-0 block h-full w-full"
 						viewBox="{overlayStrokeWidth} 0 {1080 - 2 * overlayStrokeWidth} {364 -
@@ -257,6 +260,7 @@
 						preserveAspectRatio="none"
 						fill="none"
 						aria-hidden="true"
+						bind:clientHeight={patternHeight}
 					>
 						<path
 							class="fill {color}"
@@ -402,6 +406,11 @@
 		transform-box: view-box;
 		transform-origin: 100px 100px;
 		animation: view-details-spin 14s linear infinite;
+	}
+
+	:global(.background-container-expanded svg) {
+		transform: translate(20%, 10%) scale(1.3) !important;
+		translate: none !important;
 	}
 
 	@keyframes view-details-spin {
