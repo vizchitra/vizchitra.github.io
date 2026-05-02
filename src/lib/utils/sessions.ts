@@ -20,6 +20,7 @@ export interface SessionData {
 	slug: string;
 	speakerImage: string;
 	description: string;
+	shortDescription: string;
 	tbd: boolean;
 }
 
@@ -52,6 +53,7 @@ function parseSessionRows(): SessionData[] {
 			slug,
 			speakerImage: row['speaker_image']?.trim() || '',
 			description: row['description']?.trim() || '',
+			shortDescription: row['short_description']?.trim() || '',
 			tbd
 		});
 	}

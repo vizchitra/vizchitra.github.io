@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { Header, SessionCard, Container, Stack, Grid, Prose, FullBleed } from '$lib/components';
+	import { Header, Container, Stack, Grid, Prose, FullBleed } from '$lib/components';
+	import SessionCardExpanded from '$lib/components/sessions/SessionCardExpanded.svelte';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -26,22 +27,25 @@
 
 		<!-- Workshop cards grid -->
 		<FullBleed paddingX="xl">
-			<Grid maxColumns={4} minWidth="300px" gap={6}>
-				{#each data.sessions as session, i (session.tbd ? `tbd-${session.sessionType}-${i}` : session.slug)}
-					<SessionCard
-						title={session.title}
-						speakerName={session.speakerName}
-						designation={session.designation}
-						organisation={session.organisation}
-						sessionType={session.sessionType}
-						subtitle={session.subtitle}
-						date={session.date}
-						slug={session.slug}
-						speakerImage={session.speakerImage}
-						tbd={session.tbd}
-					/>
-				{/each}
-			</Grid>
+			<div class="grid-containe mx-auto w-full max-w-[1500px]">
+				<Grid maxColumns={4} minWidth="450px" gap={6}>
+					{#each data.sessions as session, i (session.tbd ? `tbd-${session.sessionType}-${i}` : session.slug)}
+						<SessionCardExpanded
+							title={session.title}
+							speakerName={session.speakerName}
+							designation={session.designation}
+							organisation={session.organisation}
+							sessionType={session.sessionType}
+							subtitle={session.subtitle}
+							date={session.date}
+							slug={session.slug}
+							speakerImage={session.speakerImage}
+							tbd={session.tbd}
+							descriptionHtml={session.descriptionHtml}
+						/>
+					{/each}
+				</Grid>
+			</div>
 		</FullBleed>
 
 		{#if data.sessions.length === 0}
