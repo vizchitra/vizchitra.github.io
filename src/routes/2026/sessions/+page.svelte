@@ -70,6 +70,8 @@
 						sessionType={session.sessionType}
 						subtitle={session.subtitle}
 						date={session.date}
+						time={session.time}
+						venue={session.venue}
 						slug={session.slug}
 						speakerImage={session.speakerImage}
 						tbd={session.tbd}

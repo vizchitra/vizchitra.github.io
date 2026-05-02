@@ -11,7 +11,7 @@
 <Container>
 	<Stack>
 		<Prose>
-			<h1>Workshops</h1>
+			<h1>Workshops - 3rd July</h1>
 			<p>
 				Explore the workshops lined up for VizChitra 2026 — hands-on sessions with leading
 				practitioners.
@@ -40,6 +40,8 @@
 						sessionType={session.sessionType}
 						subtitle={session.subtitle}
 						date={session.date}
+						time={session.time}
+						venue={session.venue}
 						slug={session.slug}
 						speakerImage={session.speakerImage}
 						tbd={session.tbd}

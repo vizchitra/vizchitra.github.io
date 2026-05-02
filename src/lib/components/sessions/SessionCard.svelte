@@ -13,7 +13,8 @@
 		organisation?: string;
 		sessionType: string;
 		subtitle?: string;
-		date?: string;
+		time?: string;
+		venue?: string;
 		slug?: string;
 		speakerImage?: string;
 		tbd?: boolean;
@@ -28,7 +29,8 @@
 		organisation,
 		sessionType,
 		subtitle,
-		date,
+		time,
+		venue,
 		slug,
 		speakerImage,
 		tbd = false,
@@ -52,23 +54,6 @@
 	};
 
 	const color = $derived(sessionColorMap[sessionType] ?? 'blue');
-
-	function formatDate(iso: string): string {
-		const d = new Date(iso);
-		const day = d.getDate();
-		const suffix =
-			day % 10 === 1 && day !== 11
-				? 'st'
-				: day % 10 === 2 && day !== 12
-					? 'nd'
-					: day % 10 === 3 && day !== 13
-						? 'rd'
-						: 'th';
-		const month = d.toLocaleDateString('en-GB', { month: 'long' });
-		return `${day}${suffix} ${month}`;
-	}
-
-	const formattedDate = $derived(date ? formatDate(date) : '');
 
 	let backgroundWidth = $state(600);
 	let backgroundHeight = $derived.by(() => backgroundWidth * 1.25);
@@ -109,13 +94,14 @@
 
 				<div class="sessions-logistics">
 					<p class="text-base leading-none uppercase md:text-base">
-						{#if formattedDate}
-							<span class="font-display leading-none! font-black md:text-[16px]"
-								>{formattedDate}</span
+						{#if time}
+							<span class="font-display leading-snug! font-bold md:text-[16px]">{time} | </span>
+							<span class="font-display leading-snug! font-bold md:text-[16px]"
+								>{time === '10:00 - 13:00' ? 'Morning' : 'Afternoon'}</span
 							>
-						{/if}<span class="font-display leading-none! font-light md:text-[16px]"
-							>, Bangalore International Centre
-						</span>
+						{/if}{#if venue}<span class="font-display leading-snug! font-light md:text-[16px]"
+								>, {venue}
+							</span>{/if}
 					</p>
 				</div>
 			</div>
@@ -163,13 +149,14 @@
 
 				<div class="sessions-logistics">
 					<p class="text-base leading-none uppercase md:text-base">
-						{#if formattedDate}
-							<span class="font-display leading-none! font-black md:text-[16px]"
-								>{formattedDate}</span
+						{#if time}
+							<span class="font-display leading-snug! font-bold md:text-[16px]">{time} | </span>
+							<span class="font-display leading-snug! font-bold md:text-[16px]"
+								>{time === '10:00 - 13:00' ? 'Morning' : 'Afternoon'}</span
 							>
-						{/if}<span class="font-display leading-none! font-light md:text-[16px]"
-							>, Bangalore International Centre
-						</span>
+						{/if}{#if venue}<span class="font-display leading-snug! font-light md:text-[16px]"
+								>, {venue}
+							</span>{/if}
 					</p>
 				</div>
 			</div>

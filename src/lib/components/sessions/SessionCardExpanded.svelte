@@ -15,6 +15,8 @@
 		sessionType: string;
 		subtitle?: string;
 		date?: string;
+		time?: string;
+		venue?: string;
 		slug?: string;
 		speakerImage?: string;
 		tbd?: boolean;
@@ -30,6 +32,8 @@
 		sessionType,
 		subtitle,
 		date,
+		time,
+		venue,
 		slug,
 		speakerImage,
 		tbd = false,
@@ -118,11 +122,11 @@
 					<p class="text-base leading-none uppercase md:text-base">
 						{#if formattedDate}
 							<span class="font-display leading-none! font-black md:text-[16px]"
-								>{formattedDate}</span
+								>{#if time}, {time}{/if}</span
 							>
-						{/if}<span class="font-display leading-none! font-light md:text-[16px]"
-							>, Bangalore International Centre
-						</span>
+						{/if}{#if venue}<span class="font-display leading-none! font-light md:text-[16px]"
+								>, {venue}
+							</span>{/if}
 					</p>
 				</div>
 			</div>
@@ -149,7 +153,7 @@
 		class="sessions-card group white border-viz-grey/40 mx-auto block w-full overflow-hidden rounded border transition-all hover:scale-102"
 	>
 		<div
-			class="session-card-body relative aspect-4/6 overflow-visible md:aspect-4/5 md:max-h-[80vh]"
+			class="session-card-body relative aspect-4/6.5 overflow-visible md:aspect-4/5.25 md:max-h-[85vh]"
 			bind:clientWidth={backgroundWidth}
 			bind:clientHeight={backgroundHeight}
 		>
@@ -170,13 +174,14 @@
 
 				<div class="sessions-logistics">
 					<p class="text-base leading-none uppercase md:text-base">
-						{#if formattedDate}
-							<span class="font-display leading-none! font-black md:text-[16px]"
-								>{formattedDate}</span
+						{#if time}
+							<span class="font-display leading-snug! font-bold md:text-[17px]">{time} | </span>
+							<span class="font-display leading-snug! font-bold md:text-[17px]"
+								>{time === '10:00 - 13:00' ? 'Morning' : 'Afternoon'}</span
 							>
-						{/if}<span class="font-display leading-none! font-light md:text-[16px]"
-							>, Indiranagar, Bangalore
-						</span>
+						{/if}{#if venue}<span class="font-display leading-snug! font-light md:text-[17px]"
+								>, {venue}
+							</span>{/if}
 					</p>
 				</div>
 			</div>

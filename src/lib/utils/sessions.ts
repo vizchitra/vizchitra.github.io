@@ -17,6 +17,8 @@ export interface SessionData {
 	sessionType: string;
 	subtitle: string;
 	date: string;
+	time: string;
+	venue: string;
 	slug: string;
 	speakerImage: string;
 	description: string;
@@ -50,6 +52,8 @@ function parseSessionRows(): SessionData[] {
 			sessionType,
 			subtitle: row['subtitle']?.trim() || '',
 			date: row['date']?.trim() || '',
+			time: row['time']?.trim() || '',
+			venue: row['venue']?.trim() || '',
 			slug,
 			speakerImage: row['speaker_image']?.trim() || '',
 			description: row['description']?.trim() || '',
