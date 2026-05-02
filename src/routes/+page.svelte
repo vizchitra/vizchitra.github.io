@@ -17,7 +17,7 @@
 	} from '$lib/components';
 </script>
 
-<Hero banner="curve" />
+<Hero banner="spinner" />
 
 <Container>
 	<Stack>

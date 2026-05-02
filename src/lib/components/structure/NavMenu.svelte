@@ -14,6 +14,7 @@
 			accentColor: 'var(--color-viz-orange)',
 			subsections: [
 				{ name: 'Event', href: '/2026/' },
+				{ name: 'Get Tickets', href: 'https://tickets.vizchitra.com' },
 				{ name: 'Workshops', href: '/2026/workshops' },
 				{ name: 'Submissions', href: '/2026/submissions' }
 			],

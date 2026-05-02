@@ -23,11 +23,11 @@
 	let { data }: { data: PageData } = $props();
 </script>
 
-<Hero banner="curve" />
+<Hero banner="spinner" />
 
 <Container>
 	<Stack>
-		<Heading tag="h1">
+		<Heading tag="h1" class="py-8">
 			<LogoType year="2026" />
 		</Heading>
 
@@ -38,7 +38,101 @@
 			and connecting with the data visualization community.
 		</Text>
 
+		<!-- <Cluster justify="start">
+			<Button href="https://tickets.vizchitra.com" color="pink" external={true}>
+				Get your Tickets now!
+			</Button>
+		</Cluster> -->
+
 		<DividerCurves />
+
+		<!-- ── What's On ─────────────────────────────────────────────────── -->
+
+		<Heading tag="h2" class="font-normal">
+			<Slanted color="pink" textContent="WHAT'S ON" />
+		</Heading>
+
+		<Text type="body">
+			<ColorSpan color="black">Conference Day on July 4<sup>th</sup>, 2026 (Saturday)</ColorSpan>:
+			Full day of sessions including
+			<ColorSpan color="blue">Talks</ColorSpan>,
+			<ColorSpan color="teal">Dialogues</ColorSpan>, and the
+			<ColorSpan color="orange">Exhibition</ColorSpan> at Bangalore International Center (BIC), Bengaluru.
+		</Text>
+		<Text>
+			<ColorSpan color="black">Workshop Day on July 3<sup>rd</sup>, 2026 (Friday)</ColorSpan>:
+			Multiple half-day hands-on
+			<ColorSpan color="pink">Workshops</ColorSpan> in central Bengaluru near BIC, with details coming
+			soon.
+		</Text>
+
+		<Cluster justify="start" class="pt-8">
+			<Button href="https://tickets.vizchitra.com" color="pink" external={true}>Get Tickets</Button>
+		</Cluster>
+
+		<FullBleed>
+			<Cluster class="pt-8">
+				<Stack>
+					<CallCard
+						title="Talks"
+						subtitle="The Narrative Journey"
+						description="Deep dives into projects & lived experiences. Stories that reshape how we see our viz work."
+						pattern="waves"
+						tone="blue"
+						titlePosition="top-5 left-3 text-left"
+						titleWidth="15ch"
+						descriptionPosition="bottom-2 left-3 text-left"
+						descriptionWidth="30ch"
+						href="/2026"
+					/>
+				</Stack>
+				<Stack>
+					<CallCard
+						title="Dialogues"
+						subtitle="The Shared Journey"
+						description="Participant-driven, unconference-style sessions. Meaning that emerges through conversation."
+						pattern="river"
+						tone="teal"
+						titlePosition="top-18 left-3 text-left"
+						descriptionPosition="top-37 left-3 text-left"
+						descriptionWidth="16ch"
+						href="/2026"
+					/>
+				</Stack>
+				<Stack>
+					<CallCard
+						title="Exhibition"
+						subtitle="The Immersive Journey"
+						description="Data, Otherwise: a curated gallery on climate & ecology viz. Works that slow you down & feel."
+						pattern="stream"
+						tone="orange"
+						titlePosition="top-5 left-1/2 -translate-x-1/2 text-center"
+						titleWidth="30ch"
+						descriptionPosition="bottom-2 left-1/2 -translate-x-1/2 text-center"
+						descriptionWidth="30ch"
+						href="/2026"
+					/>
+				</Stack>
+				<Stack>
+					<CallCard
+						title="Workshops"
+						subtitle="The Learning Journey"
+						description="Half-day, hands-on sessions with expert facilitators. Skill-building & learning through doing."
+						pattern="circle"
+						tone="pink"
+						titlePosition="top-32 left-1/2 -translate-x-1/2 text-center"
+						descriptionPosition="bottom-2 left-1/2 -translate-x-1/2 text-center"
+						descriptionWidth="30ch"
+						href="/2026"
+						variation={0.5}
+					/>
+				</Stack>
+			</Cluster>
+		</FullBleed>
+
+		<DividerCurves />
+
+		<!-- ── Browse Submissions ─────────────────────────────────────────── -->
 
 		<Heading tag="h2" class="font-normal">
 			<Slanted color="blue" textContent="BROWSE SUBMISSIONS" />
