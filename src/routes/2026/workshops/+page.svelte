@@ -46,6 +46,7 @@
 						speakerImage={session.speakerImage}
 						tbd={session.tbd}
 						descriptionHtml={session.descriptionHtml}
+						from="workshops"
 					/>
 				{/each}
 			</div>

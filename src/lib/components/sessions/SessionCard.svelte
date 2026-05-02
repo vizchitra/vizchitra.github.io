@@ -20,6 +20,7 @@
 		tbd?: boolean;
 		showViewDetailsButton?: boolean;
 		isExpanded?: boolean;
+		from?: string;
 	}
 
 	let {
@@ -35,8 +36,11 @@
 		speakerImage,
 		tbd = false,
 		showViewDetailsButton = false,
-		isExpanded = true
+		isExpanded = true,
+		from = ''
 	}: Props = $props();
+
+	const detailHref = $derived(from ? `/2026/sessions/${slug}?from=${from}` : `/2026/sessions/${slug}`);
 
 	const colorClasses = {
 		pink: 'viz-pink',
@@ -124,7 +128,7 @@
 {:else}
 	{@const currentColor = colorClasses[color] ?? colorClasses.blue}
 	<a
-		href="/2026/sessions/{slug}"
+		href={detailHref}
 		class="sessions-card group white border-viz-grey/40 block overflow-hidden rounded border transition-all hover:scale-102"
 	>
 		<div

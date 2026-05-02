@@ -4,12 +4,19 @@
 	import { Container } from '$lib/components/layout';
 	import { ProposalBadge } from '$lib/components/proposals';
 	import { sessionColorMap } from '$lib/utils/sessions';
+	import { page } from '$app/state';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
 
 	const session = $derived(data.session);
 	const color = $derived(sessionColorMap[session.sessionType] ?? 'blue');
+
+	const backLink = $derived.by(() => {
+		const from = page.url.searchParams.get('from');
+		if (from === 'workshops') return { href: '/2026/workshops', label: 'Back to Workshops' };
+		return { href: '/2026/sessions', label: 'Back to All Sessions' };
+	});
 
 	function formatDate(iso: string): string {
 		const d = new Date(iso);
@@ -36,7 +43,7 @@
 	<header class="max-w-4xl pt-18 pb-6 md:pt-14">
 		<div class="space-y-4">
 			<Prose>
-				<h6><a href="/2026/sessions">Sessions</a> | VizChitra 2026</h6>
+				<h6><a href={backLink.href}>{backLink.label.replace('Back to ', '')}</a> | VizChitra 2026</h6>
 				<h1>{session.title} {session.subtitle}</h1>
 			</Prose>
 
@@ -121,7 +128,7 @@
 		<!-- Back link -->
 		<div class="border-viz-grey/10 mt-16 border-t pt-8 text-center">
 			<a
-				href="/2026/sessions"
+				href={backLink.href}
 				class="group font-text-sans text-viz-grey inline-flex items-center gap-2 transition-colors hover:text-viz-{color}-dark"
 			>
 				<svg
@@ -137,7 +144,7 @@
 						d="M11 17l-5-5m0 0l5-5m-5 5h12"
 					/>
 				</svg>
-				<span>Back to All Sessions</span>
+				<span>{backLink.label}</span>
 			</a>
 		</div>
 	</div>
