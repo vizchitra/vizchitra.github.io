@@ -91,7 +91,9 @@
 	const overlayStrokeWidth = 12;
 
 	let screenWidth = $state(0);
-	let patternHeight = $state(0);
+	const waveHeight = $derived(
+		Math.round((backgroundWidth * (364 - overlayStrokeWidth)) / (1080 - 2 * overlayStrokeWidth))
+	);
 </script>
 
 <svelte:window bind:innerWidth={screenWidth} />
@@ -227,8 +229,7 @@
 				{/if}
 			</div>
 			<div
-				class="background-container-expanded relative z-0 flex w-full flex-row items-center justify-end"
-				style:height="100%"
+				class="background-container-expanded relative z-0 flex w-full flex-1 flex-row items-center justify-end"
 			>
 				<SessionCardBackground
 					{sessionType}
@@ -252,11 +253,8 @@
 				</div>
 			</div>
 
-			<div
-				class="speaker-details-overlay pointer-events-auto relative mt-auto flex flex-col"
-				style:height="{patternHeight}px"
-			>
-				<div class="absolute inset-x-0 bottom-0">
+			<div class="speaker-details-overlay pointer-events-auto relative flex flex-col">
+				<div class="absolute inset-x-0 bottom-0" style:height="{waveHeight}px">
 					<svg
 						class="relative z-0 block h-full w-full"
 						viewBox="{overlayStrokeWidth} 0 {1080 - 2 * overlayStrokeWidth} {364 -
@@ -264,7 +262,6 @@
 						preserveAspectRatio="none"
 						fill="none"
 						aria-hidden="true"
-						bind:clientHeight={patternHeight}
 					>
 						<path
 							class="fill {color}"
@@ -357,8 +354,9 @@
 							{#each speakerName.split('/').map((s) => s.trim()) as person, i}
 								{#if i > 0}<span
 										class="text-xl leading-none font-medium md:text-[28px] 2xl:text-3xl"
-										> / </span
-									>{/if}
+									>
+										/
+									</span>{/if}
 								<span
 									class="first-name text-xl leading-none font-extrabold md:text-[28px] 2xl:text-3xl"
 									>{person.split(' ')[0]}</span
