@@ -20,7 +20,12 @@ export const load: PageServerLoad = async ({ params }) => {
 		throw error(404, `Session "${params.slug}" not found`);
 	}
 
-	const descriptionHtml = session.description ? await marked.parse(session.description) : '';
+	const descriptionHtml = session.longDescription
+		? await marked.parse(session.longDescription, { breaks: true })
+		: '';
+	const speakerAboutHtml = session.speakerAbout
+		? await marked.parse(session.speakerAbout, { breaks: true })
+		: '';
 
 	// Related sessions: prioritise same theme (sessionType), then others
 	const relatedSessions = confirmed
@@ -35,12 +40,13 @@ export const load: PageServerLoad = async ({ params }) => {
 	return {
 		session,
 		descriptionHtml,
+		speakerAboutHtml,
 		relatedSessions,
 		pageMeta: {
 			title: `${session.title} | VizChitra 2026 Sessions`,
 			noSuffix: true,
 			description:
-				session.description.split('\n')[0] || session.description.substring(0, 150),
+				session.shortDescription || session.longDescription.split('\n')[0] || session.longDescription.substring(0, 150),
 			ogImage: 'https://vizchitra.com/images/preview/preview-2026.jpg'
 		}
 	};

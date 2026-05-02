@@ -55,7 +55,20 @@
 			</div>
 		</section>
 
+		<!-- About the speaker -->
+		{#if data.speakerAboutHtml}
+			<section class="mb-8 md:mb-10">
+				<Heading tag="h2" align="left" class="pb-4">About the speaker</Heading>
+				<div class="prose text-viz-grey/90 md:prose-lg markdown-content max-w-none">
+					<Prose>
+						{@html data.speakerAboutHtml}
+					</Prose>
+				</div>
+			</section>
+		{/if}
+
 		<!-- Related sessions -->
+		<!-- 
 		{#if data.relatedSessions.length > 0}
 			<section class="border-viz-grey/10 mt-16 border-t pt-8">
 				<Heading tag="h4" align="left" class="pb-4">Other Sessions</Heading>
@@ -77,7 +90,8 @@
 					{/each}
 				</div>
 			</section>
-		{/if}
+		{/if} 
+		-->
 
 		<!-- Back link -->
 		<div class="border-viz-grey/10 mt-16 border-t pt-8 text-center">

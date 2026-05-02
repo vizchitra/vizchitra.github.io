@@ -9,11 +9,9 @@ export const load: PageServerLoad = async () => {
 
 	const sessions = await Promise.all(
 		rawSessions.map(async (s) => {
-			if (s.tbd || !s.description) return { ...s, descriptionHtml: '' };
+			if (s.tbd || !s.shortDescription) return { ...s, descriptionHtml: '' };
 
-			const truncated =
-				s.description.length > 200 ? s.description.slice(0, 200) + '...' : s.description;
-			const descriptionHtml = await marked.parseInline(truncated);
+			const descriptionHtml = await marked.parseInline(s.shortDescription);
 			return { ...s, descriptionHtml };
 		})
 	);

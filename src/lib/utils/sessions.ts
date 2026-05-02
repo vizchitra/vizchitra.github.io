@@ -21,7 +21,8 @@ export interface SessionData {
 	venue: string;
 	slug: string;
 	speakerImage: string;
-	description: string;
+	speakerAbout: string;
+	longDescription: string;
 	shortDescription: string;
 	tbd: boolean;
 }
@@ -56,7 +57,8 @@ function parseSessionRows(): SessionData[] {
 			venue: row['venue']?.trim() || '',
 			slug,
 			speakerImage: row['speaker_image']?.trim() || '',
-			description: row['description']?.trim() || '',
+			speakerAbout: row['speaker_about']?.trim() || '',
+			longDescription: row['long_description']?.trim() || '',
 			shortDescription: row['short_description']?.trim() || '',
 			tbd
 		});
