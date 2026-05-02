@@ -1,6 +1,7 @@
 import type { PageServerLoad } from './$types';
 import { marked } from 'marked';
 import { resolveConfirmedSessions } from '$lib/utils/sessions';
+import { getSpeakerOrder } from '$lib/components/sessions/speakerConfig.js';
 
 export const prerender = true;
 
@@ -14,6 +15,8 @@ export const load: PageServerLoad = async () => {
 			return { ...s, descriptionHtml };
 		})
 	);
+
+	selectedSessions.sort((a, b) => getSpeakerOrder(a.speakerName) - getSpeakerOrder(b.speakerName));
 
 	return {
 		selectedSessions,

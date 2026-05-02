@@ -200,7 +200,7 @@
 			</Text>
 
 			<FullBleed paddingX="md">
-				<div class="sessions-grid mx-auto w-full max-w-[1500px] justify-center gap-6">
+				<div class="sessions-grid mx-auto w-full justify-center gap-6">
 					{#each data.selectedSessions as session (session.slug)}
 						<SessionCardExpanded
 							title={session.title}
@@ -215,6 +215,7 @@
 							slug={session.slug}
 							speakerImage={session.speakerImage}
 							tbd={session.tbd}
+							isExpanded={false}
 							descriptionHtml={session.descriptionHtml}
 						/>
 					{/each}
@@ -276,10 +277,10 @@
 <style>
 	.sessions-grid {
 		display: grid;
-		grid-template-columns: repeat(3, minmax(320px, 400px));
+		grid-template-columns: repeat(3, minmax(320px, 450px));
 	}
 
-	@media (max-width: 1400px) {
+	@media (max-width: 1600px) {
 		.sessions-grid {
 			grid-template-columns: repeat(2, minmax(320px, 550px));
 		}

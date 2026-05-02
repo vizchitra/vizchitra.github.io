@@ -20,6 +20,7 @@
 		slug?: string;
 		speakerImage?: string;
 		tbd?: boolean;
+		isExpanded?: boolean;
 		showViewDetailsButton?: boolean;
 		descriptionHtml?: string;
 		from?: string;
@@ -38,6 +39,7 @@
 		slug,
 		speakerImage,
 		tbd = false,
+		isExpanded = true,
 		showViewDetailsButton = false,
 		descriptionHtml = '',
 		from = ''
@@ -214,13 +216,15 @@
 				{/if}
 			</div>
 
-			<div class="short-description-container relative z-10 p-3 pt-1 md:p-4">
-				<p
-					class="short-description font-display text-shadow mb-1 max-w-[40ch] text-lg leading-tight font-normal text-[#4c4c4c] md:text-[19px]"
-				>
-					{@html descriptionHtml}
-				</p>
-			</div>
+			{#if isExpanded}
+				<div class="short-description-container relative z-10 p-3 pt-1 md:p-4">
+					<p
+						class="short-description font-display text-shadow mb-1 max-w-[40ch] text-lg leading-tight font-normal text-[#4c4c4c] md:text-[19px]"
+					>
+						{@html descriptionHtml}
+					</p>
+				</div>
+			{/if}
 
 			<div
 				class="background-container-expanded relative z-0 flex w-full flex-row items-center justify-end"

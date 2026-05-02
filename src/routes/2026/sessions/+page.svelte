@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { Header, SessionCard, Container, Stack, Grid, Prose, FullBleed } from '$lib/components';
+	import { Header, Container, Stack, Grid, Prose, FullBleed } from '$lib/components';
+	import SessionCardExpanded from '$lib/components/sessions/SessionCardExpanded.svelte';
 	import { sessionColorMap } from '$lib/utils/sessions';
 	import type { PageData } from './$types';
 
@@ -60,9 +61,9 @@
 
 		<!-- Session cards grid -->
 		<FullBleed paddingX="xl">
-			<Grid maxColumns={4} minWidth="300px" gap={6}>
+			<Grid maxColumns={4} minWidth="350px" gap={6}>
 				{#each filteredSessions as session, i (session.tbd ? `tbd-${session.sessionType}-${i}` : session.slug)}
-					<SessionCard
+					<SessionCardExpanded
 						title={session.title}
 						speakerName={session.speakerName}
 						designation={session.designation}
@@ -75,6 +76,7 @@
 						slug={session.slug}
 						speakerImage={session.speakerImage}
 						tbd={session.tbd}
+						isExpanded={false}
 					/>
 				{/each}
 			</Grid>
