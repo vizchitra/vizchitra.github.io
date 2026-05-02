@@ -1,6 +1,7 @@
 import type { PageServerLoad } from './$types';
 import { marked } from 'marked';
 import { resolveAllSessions } from '$lib/utils/sessions';
+import { getSpeakerOrder } from '$lib/components/sessions/speakerConfig.js';
 
 export const prerender = true;
 
@@ -18,7 +19,8 @@ export const load: PageServerLoad = async () => {
 		})
 	);
 
-	// TBD entries last
+	// Sort by configured order in speakerConfig, then push TBD entries last
+	sessions.sort((a, b) => getSpeakerOrder(a.speakerName) - getSpeakerOrder(b.speakerName));
 	sessions.sort((a, b) => Number(a.tbd) - Number(b.tbd));
 
 	return {
