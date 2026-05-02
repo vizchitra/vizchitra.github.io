@@ -40,7 +40,7 @@
 			{width}
 			height={height * 0.8}
 			layerConfig={wavesLayerConfig}
-			class="absolute inset-0 h-full w-full -translate-y-[25%] overflow-visible"
+			class="absolute inset-0 h-full w-full overflow-visible"
 		/>
 	{:else if sessionType === 'Dialogues'}
 		<PatternRiver

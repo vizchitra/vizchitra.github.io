@@ -169,62 +169,63 @@
 			bind:clientWidth={backgroundWidth}
 			bind:clientHeight={backgroundHeight}
 		>
-			<div class="session-card-header relative z-10 p-2.5 pb-0! md:p-4">
-				<div class="title mb-2.5 flex flex-row items-baseline justify-start gap-2 md:mb-3">
-					<div class="logo-container text-xl leading-none text-[#4c4c4c] md:text-2xl">
-						<LogoType classes="text-2xl!" year={null} />
+			<div class="session-top-text-content z-20 overflow-visible">
+				<div class="session-card-header relative z-10 p-2.5 pb-0! md:p-4">
+					<div class="title mb-2.5 flex flex-row items-baseline justify-start gap-2 md:mb-3">
+						<div class="logo-container text-xl leading-none text-[#4c4c4c] md:text-2xl">
+							<LogoType classes="text-2xl!" year={null} />
+						</div>
+
+						<div class="divider my-0.5 w-0.5 self-stretch bg-[#4c4c4c]"></div>
+						<p
+							class="font-display text-shadow block text-2xl leading-none font-bold tracking-tighter uppercase"
+							style="color: var(--color-{currentColor})"
+						>
+							{sessionType}
+						</p>
 					</div>
 
-					<div class="divider my-0.5 w-0.5 self-stretch bg-[#4c4c4c]"></div>
-					<p
-						class="font-display text-shadow block text-2xl leading-none font-bold tracking-tighter uppercase"
-						style="color: var(--color-{currentColor})"
+					<div class="sessions-logistics">
+						<p class="text-base leading-none uppercase md:text-base">
+							{#if time}
+								<span class="font-display leading-snug! font-bold md:text-[17px]">{time} | </span>
+								<span class="font-display leading-snug! font-bold md:text-[17px]"
+									>{time === '10:00 - 13:00' ? 'Morning' : 'Afternoon'}</span
+								>
+							{/if}
+							{#if venue}
+								<p class="text-base leading-none uppercase md:text-base">
+									<span class="font-display leading-none! font-light md:text-[16px]">{venue} </span>
+								</p>
+							{/if}
+						</p>
+					</div>
+				</div>
+
+				<div class="title-content relative z-10 p-3 md:p-4">
+					<h3
+						class="title font-display text-shadow mb-1 text-[20px] leading-none font-extrabold text-[#4c4c4c] uppercase md:text-[28px]"
 					>
-						{sessionType}
-					</p>
-				</div>
-
-				<div class="sessions-logistics">
-					<p class="text-base leading-none uppercase md:text-base">
-						{#if time}
-							<span class="font-display leading-snug! font-bold md:text-[17px]">{time} | </span>
-							<span class="font-display leading-snug! font-bold md:text-[17px]"
-								>{time === '10:00 - 13:00' ? 'Morning' : 'Afternoon'}</span
-							>
-						{/if}
-						{#if venue}
-							<p class="text-base leading-none uppercase md:text-base">
-								<span class="font-display leading-none! font-light md:text-[16px]">{venue} </span>
-							</p>
-						{/if}
-					</p>
-				</div>
-			</div>
-
-			<div class="title-content relative z-10 p-3 md:p-4">
-				<h3
-					class="title font-display text-shadow mb-1 text-[20px] leading-none font-extrabold text-[#4c4c4c] uppercase md:text-[28px]"
-				>
-					{title}
-					{subtitle}
-				</h3>
-				<!-- {#if subtitle}
+						{title}
+						{subtitle}
+					</h3>
+					<!-- {#if subtitle}
 					<p
 						class="subtitle font-display text-shadow mb-1 text-[20px] leading-none font-extrabold text-[#4c4c4c] uppercase md:text-[28px]"
 					></p>
 				{/if} -->
-			</div>
-
-			{#if isExpanded}
-				<div class="short-description-container relative z-10 p-3 pt-0 md:p-4 md:pt-1">
-					<p
-						class="short-description font-display text-shadow mb-1 max-w-[40ch] text-lg leading-tight font-normal text-[#4c4c4c] md:text-[19px]"
-					>
-						{@html descriptionHtml}
-					</p>
 				</div>
-			{/if}
 
+				{#if isExpanded}
+					<div class="short-description-container relative z-10 p-3 pt-0 md:p-4 md:pt-1">
+						<p
+							class="short-description font-display text-shadow mb-1 max-w-[40ch] text-lg leading-tight font-normal text-[#4c4c4c] md:text-[19px]"
+						>
+							{@html descriptionHtml}
+						</p>
+					</div>
+				{/if}
+			</div>
 			<div
 				class="background-container-expanded relative z-0 flex w-full flex-row items-center justify-end"
 				style:height="100%"
@@ -395,6 +396,29 @@
 
 	.speaker-image {
 		max-width: min(300px, 55%);
+	}
+
+	.session-top-text-content {
+		position: relative;
+		background: rgba(255, 255, 255, 0.8);
+	}
+
+	.session-top-text-content::after {
+		content: '';
+		position: absolute;
+		bottom: 0px;
+		left: 0;
+		width: 100%;
+		height: 20px;
+		transform: translateY(100%);
+		background: linear-gradient(
+			to bottom,
+			rgba(255, 255, 255, 0.75) 0%,
+			rgba(255, 255, 255, 0.1) 50%,
+			transparent 90%
+		);
+		z-index: -1;
+		pointer-events: none;
 	}
 
 	.text-shadow {
