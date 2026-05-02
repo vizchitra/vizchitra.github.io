@@ -219,7 +219,7 @@
 				{#if isExpanded}
 					<div class="short-description-container relative z-10 p-3 pt-0 md:p-4 md:pt-1">
 						<p
-							class="short-description font-display text-shadow mb-1 max-w-[40ch] text-lg leading-tight font-normal text-[#4c4c4c] md:text-[19px]"
+							class="short-description font-body text-shadow mb-1 max-w-[40ch] text-[17px] leading-tight font-normal text-[#4c4c4c] md:text-[18px]"
 						>
 							{@html descriptionHtml}
 						</p>
@@ -354,13 +354,19 @@
 						<h3
 							class="font-display text-shadow mb-1 text-2xl leading-none text-[#4c4c4c] uppercase md:text-[26px] lg:text-3xl xl:text-shadow-none!"
 						>
-							<span
-								class="first-name text-xl leading-none font-extrabold md:text-[28px] 2xl:text-3xl"
-								>{speakerName.split(' ')[0]}</span
-							>
-							<span class="last-name text-xl leading-none font-medium md:text-[28px] 2xl:text-3xl"
-								>{speakerName.split(' ').slice(1).join(' ')}</span
-							>
+							{#each speakerName.split('/').map((s) => s.trim()) as person, i}
+								{#if i > 0}<span
+										class="text-xl leading-none font-medium md:text-[28px] 2xl:text-3xl"
+										> / </span
+									>{/if}
+								<span
+									class="first-name text-xl leading-none font-extrabold md:text-[28px] 2xl:text-3xl"
+									>{person.split(' ')[0]}</span
+								>
+								<span class="last-name text-xl leading-none font-medium md:text-[28px] 2xl:text-3xl"
+									>{person.split(' ').slice(1).join(' ')}</span
+								>
+							{/each}
 						</h3>
 						{#if designation || organisation}
 							<span class="font-display block leading-tight text-[#4c4c4c] uppercase md:text-lg">
@@ -406,19 +412,24 @@
 	.session-top-text-content::after {
 		content: '';
 		position: absolute;
-		bottom: 0px;
 		left: 0;
 		width: 100%;
-		height: 20px;
-		transform: translateY(100%);
+		height: 40px;
+		bottom: -40px;
 		background: linear-gradient(
 			to bottom,
 			rgba(255, 255, 255, 0.75) 0%,
-			rgba(255, 255, 255, 0.1) 50%,
-			transparent 90%
+			rgba(255, 255, 255, 0) 100%
 		);
 		z-index: -1;
 		pointer-events: none;
+	}
+
+	@media (min-width: 550px) {
+		.session-top-text-content::after {
+			height: 60px;
+			bottom: -60px;
+		}
 	}
 
 	.text-shadow {
