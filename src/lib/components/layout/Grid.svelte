@@ -23,7 +23,7 @@
 		if (columns) {
 			return `repeat(${columns}, 1fr)`;
 		} else if (maxColumns) {
-			const effectiveMinWidth = `max(${minWidth}, calc((100% - ${maxColumns - 1} * ${gapSize}) / ${maxColumns}))`;
+			const effectiveMinWidth = `min(100%, max(${minWidth}, calc((100% - ${maxColumns - 1} * ${gapSize}) / ${maxColumns})))`;
 			return `repeat(auto-fit, minmax(${effectiveMinWidth}, 1fr))`;
 		} else {
 			return `repeat(auto-fit, minmax(min(${minWidth}, 100%), 1fr))`;
@@ -31,11 +31,7 @@
 	});
 </script>
 
-<div
-	class={['grid-layout', className]}
-	style:--grid-gap={gapSize}
-	style:--grid-cols={cols}
->
+<div class={['grid-layout', className]} style:--grid-gap={gapSize} style:--grid-cols={cols}>
 	{@render children?.()}
 </div>
 

@@ -56,14 +56,15 @@ const guides = defineCollection({
 	}),
 	transform: async (document, context) => {
 		// Extract guideId and sectionSlug from the file path
-		// e.g., "talks/intro.md"
-		const segments = document._meta.path.split('/');
+		// e.g., "talks/intro.md" — normalise Windows backslashes first.
+		const normalisedPath = document._meta.path.replace(/\\/g, '/');
+		const segments = normalisedPath.split('/');
 		const html = await compileMarkdown(context, document, markdownOptions);
 		return {
 			...document,
 			html,
 			guideId: segments[0],
-			guideSlug: document._meta.path.replace(/\.md$/, ''), // full path for routing
+			guideSlug: normalisedPath.replace(/\.md$/, ''),
 			sectionSlug: document.section
 		};
 	}

@@ -15,9 +15,8 @@
 			subsections: [
 				{ name: 'Event', href: '/2026/' },
 				{ name: 'Get Tickets', href: 'https://tickets.vizchitra.com' },
-				{ name: 'Submissions', href: '/2026/submissions' },
-				{ name: 'Call for Proposals', href: '/2026/proposals' },
-				{ name: 'Call for Exhibition', href: '/2026/exhibition' }
+				{ name: 'Workshops', href: '/2026/workshops' },
+				{ name: 'Submissions', href: '/2026/submissions' }
 			],
 			expanded: false
 		},
