@@ -5,6 +5,7 @@
 	import { ProposalBadge } from '$lib/components/proposals';
 	import { sessionColorMap } from '$lib/utils/sessions';
 	import { page } from '$app/state';
+	import { browser } from '$app/environment';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -13,6 +14,7 @@
 	const color = $derived(sessionColorMap[session.sessionType] ?? 'blue');
 
 	const backLink = $derived.by(() => {
+		if (!browser) return { href: '/2026/sessions', label: 'Back to All Sessions' };
 		const from = page.url.searchParams.get('from');
 		if (from === 'workshops') return { href: '/2026/workshops', label: 'Back to Workshops' };
 		return { href: '/2026/sessions', label: 'Back to All Sessions' };
