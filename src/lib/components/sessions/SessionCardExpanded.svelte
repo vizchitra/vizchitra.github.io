@@ -43,7 +43,9 @@
 		from = ''
 	}: Props = $props();
 
-	const detailHref = $derived(from ? `/2026/sessions/${slug}?from=${from}` : `/2026/sessions/${slug}`);
+	const detailHref = $derived(
+		from ? `/2026/sessions/${slug}?from=${from}` : `/2026/sessions/${slug}`
+	);
 
 	const colorClasses = {
 		pink: 'viz-pink',
@@ -97,7 +99,7 @@
 		class="sessions-card border-viz-grey/40 overflow-hidden rounded border transition-transform hover:scale-101"
 	>
 		<div
-			class="relative flex aspect-4/5 flex-col overflow-visible"
+			class="relative flex aspect-4/5.5 flex-col overflow-visible"
 			bind:clientWidth={backgroundWidth}
 			bind:clientHeight={backgroundHeight}
 		>
@@ -128,10 +130,13 @@
 							<span class="font-display leading-none! font-black md:text-[16px]"
 								>{#if time}, {time}{/if}</span
 							>
-						{/if}{#if venue}<span class="font-display leading-none! font-light md:text-[16px]"
-								>, {venue}
-							</span>{/if}
+						{/if}
 					</p>
+					{#if venue}
+						<p class="text-base leading-none uppercase md:text-base">
+							<span class="font-display leading-none! font-light md:text-[16px]">{venue} </span>
+						</p>
+					{/if}
 				</div>
 			</div>
 
@@ -164,7 +169,7 @@
 			<div class="session-card-header relative z-10 p-2.5 pb-0! md:p-4">
 				<div class="title mb-2.5 flex flex-row items-baseline justify-start gap-2 md:mb-3">
 					<div class="logo-container text-xl leading-none text-[#4c4c4c] md:text-2xl">
-						<LogoType year={null} />
+						<LogoType classes="text-2xl!" year={null} />
 					</div>
 
 					<div class="divider my-0.5 w-0.5 self-stretch bg-[#4c4c4c]"></div>
@@ -183,9 +188,12 @@
 							<span class="font-display leading-snug! font-bold md:text-[17px]"
 								>{time === '10:00 - 13:00' ? 'Morning' : 'Afternoon'}</span
 							>
-						{/if}{#if venue}<span class="font-display leading-snug! font-light md:text-[17px]"
-								>, {venue}
-							</span>{/if}
+						{/if}
+						{#if venue}
+							<p class="text-base leading-none uppercase md:text-base">
+								<span class="font-display leading-none! font-light md:text-[16px]">{venue} </span>
+							</p>
+						{/if}
 					</p>
 				</div>
 			</div>

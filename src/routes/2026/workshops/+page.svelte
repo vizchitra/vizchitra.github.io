@@ -11,7 +11,7 @@
 <Container>
 	<Stack>
 		<Prose>
-			<h1>Workshops - 3rd July</h1>
+			<h1>Workshops on 3rd July, 2026</h1>
 			<p>
 				Explore the workshops lined up for VizChitra 2026 — hands-on sessions with leading
 				practitioners.
