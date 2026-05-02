@@ -1,10 +1,19 @@
 import type { PageServerLoad } from './$types';
+import { marked } from 'marked';
 import { resolveConfirmedSessions } from '$lib/utils/sessions';
 
 export const prerender = true;
 
 export const load: PageServerLoad = async () => {
-	const selectedSessions = resolveConfirmedSessions();
+	const raw = resolveConfirmedSessions();
+
+	const selectedSessions = await Promise.all(
+		raw.map(async (s) => {
+			if (!s.shortDescription) return { ...s, descriptionHtml: '' };
+			const descriptionHtml = await marked.parseInline(s.shortDescription);
+			return { ...s, descriptionHtml };
+		})
+	);
 
 	return {
 		selectedSessions,

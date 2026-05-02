@@ -15,10 +15,9 @@
 		Header,
 		Container,
 		Stack,
-		Cluster,
-		Grid,
-		SessionCard
+		Cluster
 	} from '$lib/components';
+	import SessionCardExpanded from '$lib/components/sessions/SessionCardExpanded.svelte';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -106,20 +105,27 @@
 				Here are some of the confirmed sessions for VizChitra 2026. More announcements coming soon!
 			</Text>
 
-			<Grid maxColumns={3} minWidth="280px" gap={6}>
-				{#each data.selectedSessions as session (session.slug)}
-					<SessionCard
-						title={session.title}
-						speakerName={session.speakerName}
-						designation={session.designation}
-						organisation={session.organisation}
-						sessionType={session.sessionType}
-						subtitle={session.subtitle}
-						date={session.date}
-						slug={session.slug}
-					/>
-				{/each}
-			</Grid>
+			<FullBleed paddingX="md">
+				<div class="sessions-grid mx-auto w-full max-w-[1500px] justify-center gap-6">
+					{#each data.selectedSessions as session (session.slug)}
+						<SessionCardExpanded
+							title={session.title}
+							speakerName={session.speakerName}
+							designation={session.designation}
+							organisation={session.organisation}
+							sessionType={session.sessionType}
+							subtitle={session.subtitle}
+							date={session.date}
+							time={session.time}
+							venue={session.venue}
+							slug={session.slug}
+							speakerImage={session.speakerImage}
+							tbd={session.tbd}
+							descriptionHtml={session.descriptionHtml}
+						/>
+					{/each}
+				</div>
+			</FullBleed>
 
 			<Cluster justify="start">
 				<Button href="/2026/sessions" color="teal">View all Sessions</Button>
@@ -172,3 +178,22 @@
 		</FullBleed>
 	</Stack>
 </Container>
+
+<style>
+	.sessions-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(320px, 400px));
+	}
+
+	@media (max-width: 1400px) {
+		.sessions-grid {
+			grid-template-columns: repeat(2, minmax(320px, 550px));
+		}
+	}
+
+	@media (max-width: 850px) {
+		.sessions-grid {
+			grid-template-columns: repeat(1, minmax(300px, 550px));
+		}
+	}
+</style>
