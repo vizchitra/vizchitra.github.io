@@ -1,108 +1,17 @@
 session_type,date,title,subtitle,short_description,long_description,speaker_name,designation,organisation,description,speaker_image,display
-Talks,2026-07-04T10:00,Atlas of Intangibles,,,,Priti,Information Experience Designer,,"In *Space and Place*, Tuan (1977, p.18) notes that “... [a] place achieves concrete reality when our experience of it is total, that is through all the senses”. Our personal memories of a place are situated in fleeting sensory experiences – the waft of the petrichor, bird songs scoring the background, bakery aromas, sounds of traffic and footfalls whizzing by. This interplay between our senses structures and mediates our sense of a place. However, traditional mapping practices — deriving their methods from scientific paradigms — view maps as objective and immutable artefacts to measure and notate the world. These provide limited guidance for observing, collecting and representing such subjective, qualitative data. 
-
-Map-making has a long history of development, where methods for recording and representing geographical information have been refined over centuries (Abrams and Hall, 2008). In recent years, there has been a rise in humanistic approaches to data visualisation, and cartography is now primed for a similar expansion of perspectives. 
-
-My talk centers on data experiences that highlight the rich, interconnected web of sensory information underlying our everyday encounters. Showcasing the process behind my work, I examine alternate forms of data collection, such as visual ethnography, score-based data walks, collective mapping, and the design of data experiences that encourage a deeper connection with the places we inhabit.",,TRUE
-Talks,2026-07-04T10:00,Beyond the Surface: ,"Gender,Economics and Data Narratives in Public Media",,,Ambika,,,"This talk explores the theme of how economic and financial data is visualized and narrated in public media, and how gendered realities are often concealed in the process. Common gender factors such as labor force participation, income, growth, and financial inclusion are often presented as merely facts. However, the mathematical and methodological choices behind these numbers: the averages and categorizations often influence whose experiences will be shown and whose will remain hidden in sight.
-
-The core idea of this talk is that economics and mathematics work as narrative tools in public media than being just jargonized technical tools. When gender is treated as a thought for later, stories risk reinforcing systematic invisibility rather than challenging inequality. By examining how data is presented, this talk asks how public media can represent economic realities more inclusively.
-
-This topic matters to me because my work lies at the intersection of economics, mathematics, and researched-based public writing, with special focus on gender, culture and social structures. Through researching for articles and writing about social factors, I have repeatedly encountered gaps between lived gendered experiences and the way economic data is presented in media, public and policy debates. This talk grows out of that tension and goes all the way towards connecting directly to conversations in data visualization around ethics, representation, and accessibility in writing and policy contexts. It also focuses on the responsibility of data practitioners to question dominant visual factors rather than reproducing them without critically thinking about them.
-
-The talk will follow a clear structure: first, outlining how economic data is commonly visualized in public media. Second, it will examine how specific mathematical and data choices flatten gendered labor and care work. Third, it will be analyzing examples where visualization either conceals or reveals inequality and lastly, it will offer practical solutions through frameworks that will integrate gender into economic data stories.
-
-The intended audience includes students, media people, writers researchers, analysts, and practitioners working with socio-economic and mathematical data.
-
-Key takeaways will include ways to question headline numbers, strategies to integrate gender into economic narratives, and methods for designing data visualizations that are both rigorous and socially accountable.",,TRUE
-Talks,2026-07-04T10:00,New maps for BMTC Majestic:," bringing data, design and government together",,,Shubhra,Creative Lead,Bengawalk,"What is this talk about?
-Recently I worked with BMTC, WRI India and Villgro at Bengawalk to redesign the 20-year-old maps at Bengaluru's most iconic bus station, Majestic. Majestic, the heart of the city's transit system, has 300+ bus routes, 36 platforms, a railway station, and now a metro interchange. With over 3-4 lakh daily visitors, clear navigation is essential. This talk is about the process that goes into making such data accessible: categorisation and filtering of public data, working out the design system based on user research and feedback, and working with the government to help them see the value of good design for cities. 
-
-The core ideas of this talk:
-1. The process behind map-making for citizens: user research and site analysis, data, design and implementation
-2. India needs to invest in user-centric design to transform its cities
-3. We can start small and think big— governments can invest in pilot projects in key areas before scaling to the broader city
-
-Why is data visualisation so important for public design?
-Most of the work we do at Bengawalk is about making the city of Bengaluru more accessible with design, tech and storytelling. Getting to do the data visualisation of public data —BMTC routes at Majestic Bus Station— was important because:
-1. It makes the complex clear: people are now able to skim 150+ routes in seconds. Also, relationships between platforms and their directionalities in the city emerged for the first time, to the delight of both city nerds and regular commuters alike. 
-2. It puts us in the minds of the people: it pushed us to analyse and understand how people actually navigate, instead of designing in a vacuum. This can be especially useful for government officials to experience in order to serve the people. 
-3. It feels good: good design that helps you find your way can reduce unnecessary confusion and frustration. Also, it makes the space more pleasant and transparent. 
-These are things that the people of any city deserve. 
-
-The main sections and flow of the presentation:
-1. The difference good wayfinding & signage can make
-2. The process behind making the maps for BMTC Majestic: 
-			2.1 user research and site analysis
-			2.2 categorising and filtering public data
-			2.3 working out the design system
-			2.4 public feedback, stakeholder feedback, and multiple iterations 
-			2.5 on-site implementation
-3. Why data visualisation so important for public design
-4. How to make the government value and invest in good design for cities
-
-Intended audience:
-Government officials, urban planners, designers from any field",,TRUE
-Talks,2026-07-04T10:00,Creating Hex Maps for India,,,,Akshar Niranjan,Applied Data Fellow,University of Chicago,"My talk is about visualizing geography, India's states in particular. I want to re-introduce maps where they assign equal visual space to each state.
-
-I want people to explore how creating and using alternative map designs, they can challenge some visual biases that they may unknowingly hold. By giving each state equal visual weight, I am challenging the viewer to engage with the underlying data rather than subconsciously ignoring trends in smaller states, particularly the NE region.
-
-This matters to me because states which perform really well in a policy arena get left out when they are visualized by performance. When this data, such as school enrollment rates, or health outcomes are mapped using traditional maps, there are some times when small states don't get the attention they deserve- their success stories can disappear in plain sight.
-
-The talk will be structured in 4 parts. 
-
-First I will visually unpack the bias we hold, I'll do this by showing important data and how small states end up in our blind spots.
-
-Next, I will talk about how I approached this problem. Why I chose Hexagons, How I assigned them positions on an imaginary grid. Walk them through the construction process, which is largely non-digital, and the trade-offs I had to make between geography and design. This process was very manual and hands on and involved cutting physical hexagons and lots of trial and error.
-
-Next, I will talk about creating a python function and turning it into a streamlit website to encode these into a visualization and how one can patch data to this function to create their own maps.
-
-Finally, I will end with examples and cases where this map could be preferred over the traditional one and also when it probably won't be the best choice to visualize state data.
-
-The intended audience for this project are likely college-going data enthusiasts who are looking to expand how they can viz tools which are relevant, and how they can turn simple visualization functions into easy-to-use websites.",,TRUE
-Talks,2026-07-04T10:00,Building Composable Platform React Charts ,,,,Ambika,Visualization Engineer,Atlassian,"Building web charts that are flexible, maintainable, and consistent is a challenge whenever visualization systems need to scale across products, teams, or entire platforms. Large-scale enterprise environments, with their diverse workflows, data requirements, and design standards, highlight the need for a robust approach. This talk will explore how to build composable React chart components that serve as the foundation of scalable visualization systems, enabling teams to deliver interactive, customizable, and performant charts while maintaining cohesion, reducing duplication, and embedding accessibility from the ground up.
-
-React provides the perfect foundation for composable chart components. By leveraging its component architecture, props, and hooks, developers can create modular, reusable, and adaptable charts that are platform aware and easy to extend. Accessibility through keyboard navigation, screen reader support, and ARIA-compliant elements should be baked in from the start, ensuring all users can interact with and understand the data. This approach allows teams to balance flexibility, consistency, and inclusivity, turning charts from isolated components into a coherent, scalable system.
-
-The talk will demonstrate how to put these principles into practice. It will cover patterns for composable components, API design conventions, and strategies for reuse, along with approaches for customization and overrides that allow product-specific adaptations without breaking platform-wide consistency. Accessibility will be highlighted as a first-class concern, showing how to design charts that work for everyone without costly retrofits. Finally, the session will address scalability, performance, and long-term maintainability, illustrating how a React-based charting system can evolve to support multiple products, large datasets, and complex interactions over time.
-
-This topic matters because building visualizations at scale is as much about engineering a system as it is about displaying data. Composable, reusable charts let teams respond quickly to new requirements, reduce duplication, and maintain consistency across products or platforms. When accessibility is built in from the start, these charts work for everyone, helping teams minimize technical debt, collaborate effectively, and evolve their visualization layer alongside the products it supports.
-
-The intended audience includes front-end and visualization engineers, UI/UX designers, and technical product leads who work on platform-level products or large-scale analytics systems. By the end of the session, attendees will understand why composable, accessible chart patterns are critical for scalable platforms, how to design charts that balance flexibility and consistency, and practical strategies for implementing a maintainable, extensible, and inclusive visualization system.",,TRUE
+Talks,2026-07-04T10:00,,,,,,,,,,TRUE
+Talks,2026-07-04T10:00,,,,,,,,,,TRUE
+Talks,2026-07-04T10:00,,,,,,,,,,TRUE
+Talks,2026-07-04T10:00,,,,,,,,,,TRUE
+Talks,2026-07-04T10:00,,,,,,,,,,TRUE
 Talks,2026-07-04T10:00,,,,,,,,,,
-Dialogues,2026-07-04T10:00,Is it all Good Vibes Only?,The Ch(art) of Visualising Data with Vibe Coding,,,Surbhi,"Data journalist, Data viz-ard",Independent,"With large language models, coding has changed, and so has data visualisation. 
-
-“The hottest new programming language is English”, says Andrej Karpathy, who coined the term vibe coding. Since 2025, interest in the term has surged globally (https://tinyurl.com/ykff2bua). Anywhere you look, charts, dashboard, infographics, microsites built through prompts and iteration show up.
-
-For someone like me, who spent countless hours painstakingly building charts line by line in ggplot/R or discovering new libraries like cutecharts in Python, vibe coding was an exciting shift. It took away most of the manual labour of writing code, allowed me to experiment with D3.js and other interactive chart libraries with low effort. Most of all, it massively cut the time taken from idea to implementation. Now I could spin up a working dashboard in hours, not days.
-
-Beyond changing how we make visualisations, vibe-coding is also changing what we feel while building them. When you can go from an idea to prototype in minutes, without the slow learning that once came from writing and debugging code, there is an emotional arc to your technical workflow.
-
-There is the thrill of instant creation, followed quickly by unease: disbelief that it works, frustration when small things break, and a creeping sense of not knowing how to debug. It can be disillusioning to sit with the feeling that you made something but don't fully know how. Some days it can feed imposter syndrome, other days it can re-assure you that your fundamentals are in place. I find myself constantly negotiating with what I still need to know, what I can defer learning, and what I may no longer need to learn in the data visualisation process anymore.
-
-This dialogue will explore similar tensions and dilemmas in the minds of data visualisers. Some questions we will reflect on: Where does one begin to vibe-code? What tools and workflows do we reach out for? Which decisions still belong to the maker, and which are delegated to the tool? Who does vibe-coding open doors for, and whose work does it reshape? What do we do when it exposes gaps in our skills? Is it a career skill that can be taught and learnt? In the hands of founders, product managers, and designers, has vibe-coding helped? How are developers experiencing this shift? And as we move faster, how do we ensure quality, rigour, creativity, and trust in our products? How do we coordinate, deliver and scale data visualisations with this new method? 
-
-Based on the discussion, we’ll map the shifting _vibes_ of making visualisations through vibe-coding with a simple emoji-based exercise. Participants will create their own _vibe-check_ chart: time spent vibe-coding on the x-axis, and sentiments such as thrill, disbelief, self-doubt, bargaining, acceptance or more, felt with varying intensity in the process, on the y-axis. Emoji stickers will be cut out and placed on the chart to mark how these feelings rise and fall. A sample version here: https://tinyurl.com/53t9sd87
-
-The session will help participants articulate where they feel confident, where they feel lost, and what they want to hold on to as the practice shifts. Bring your wins, failures, half-started experiments, or fully shipped vibe-coded charts, dashboards, and visual projects. This will be a candid conversation about the emotional experience of making dataviz in this brave new world.",,TRUE
-Dialogues,2026-07-04T10:00,When Research Meets Decisions: ,A Discussion About Using Qualitative Data at Work,,,Akshay ,Co-founder & Director,Ooloi Labs,"This session is a facilitated open conversation for practitioners who work with user feedback, research, or qualitative data inside organisations. Rather than a presentation, the goal is to create a space where participants can compare real experiences of how insights actually travel — or fail to travel — into decisions.
-
-Many teams today collect large amounts of qualitative information: interviews, support conversations, NPS comments, usability tests, field observations, and internal feedback. However, across product and program teams, a common pattern appears: research exists, but decisions are still driven by intuition, hierarchy, or dashboards. This dialogue invites participants to collectively examine why that happens.
-
-We will guide the discussion through a set of prompts, encouraging participants to share practices, frustrations, and workarounds from their own organisations. The facilitators will not present solutions; instead we will help surface patterns across roles, sectors, and team structures.
-
-Areas we want to cover:
-- How qualitative data is gathered: What kind of qualitative data is gathered, who actually does it, how is this data managed
-- How decisions are actually made: how does quant talk to qual, at what points does qual become absolutely necessary, how is the information analysed, how is it presented
-- How have team structures + processes changed with the influx of AI: what actual changes have happened in workflows because of AI tools? Real change or a lot of Linkedin theater? 
-
-Intended Outcome: 
-Participants leave with a clearer understanding of how different teams handle qualitative knowledge, a shared language to describe internal challenges, and practical ideas drawn from peer experience. The session emphasises collective learning and reflection rather than instruction.",,TRUE
+Dialogues,2026-07-04T10:00,,,,,,,,,,TRUE
+Dialogues,2026-07-04T10:00,,,,,,,,,,TRUE
 Dialogues,2026-07-04T10:00,,,,,,,,,,
-Exhibition,2026-07-04T10:00,Communicating Data for Clean Air Awareness,,,,Sai Krishna,Research Associate,Urban Emissions Info LLP,,,TRUE
-Exhibition,2026-07-04T10:00,Puddle Beneath the Plate,,,,Shreya,Student,"National Institute of Design, Bengaluru",,,TRUE
-Exhibition,2026-07-04T10:00,The Knowledge Gap: ,Mapping India's Climate Consciousness,,,Saumya,Founder and Creative Director,From&To,,,TRUE
-Exhibition,2026-07-04T10:00,Waterscapes of Bengaluru,,,,Madhuri,Trustee,Paani Earth Foundation ,,,TRUE
+Exhibition,2026-07-04T10:00,,,,,,,,,,TRUE
+Exhibition,2026-07-04T10:00,,,,,,,,,,TRUE
+Exhibition,2026-07-04T10:00,,,,,,,,,,TRUE
+Exhibition,2026-07-04T10:00,,,,,,,,,,TRUE
 Exhibition,2026-07-04T10:00,,,,,,,,,,
 Workshop,2026-07-04T10:00,From Tables to Maps ,with Datawrapper,"Load geographic data, pick the right map type, and style clear, publish-ready maps without any GIS software.","If you already live in spreadsheets, this workshop is a practical introduction to turning tables into clear, data-driven maps without needing heavy GIS tools. Using the free version of Datawrapper, it shows how maps function as information graphics and storytelling devices in real use. You will work through locator, symbol and choropleth maps and learn how to bring in geographic data from simple sources while also understanding how to style and export clean, publish-ready maps.
 It’s for anyone who works with data and wants to quickly make maps for a corporate presentation, a news story or a school project using just a browser and curiosity. You will know when each map type fits, how to size and color symbols correctly and how to match regions including how to avoid common design mistakes.. The workshop will be conducted by Prasanta Kumar Dutta, a Data Visualisation Developer at Reuters Graphics who regularly works with geographic data on award-winning data stories.",Prasanta Kumar Dutta,Data Visualisation Developer,Reuters,,/images/speakers/2026/speaker-prasanta.avif,TRUE

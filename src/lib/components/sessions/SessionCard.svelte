@@ -206,8 +206,8 @@
 					>
 						<img
 							class="relative z-10 h-auto w-full"
-							src="{base}/images/speakers/2026/speaker-placeholder.avif"
-							alt="Speaker placeholder image"
+							src="{base}{speakerImage || '/images/speakers/2026/speaker-placeholder.avif'}"
+							alt="{speakerName}'s photo"
 						/>
 					</div>
 

@@ -18,6 +18,9 @@ export const load: PageServerLoad = async () => {
 		})
 	);
 
+	// TBD entries last
+	sessions.sort((a, b) => Number(a.tbd) - Number(b.tbd));
+
 	return {
 		sessions,
 		pageMeta: {
