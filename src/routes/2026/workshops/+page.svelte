@@ -18,19 +18,10 @@
 			</p>
 		</Prose>
 
-		<div class="flex flex-wrap items-center gap-2">
-			<span class="text-viz-grey/50 ml-auto text-sm">
-				{data.sessions.filter((s) => !s.tbd).length} confirmed
-				{#if data.sessions.filter((s) => s.tbd).length > 0}
-					{data.sessions.filter((s) => s.tbd).length} · coming soon
-				{/if}
-			</span>
-		</div>
-
 		<!-- Workshop cards grid -->
 		<FullBleed paddingX="md">
 			<!-- wanted something more custom to control card sizes -->
-			<div class="sessions-grid mx-auto w-full max-w-[1500px] justify-center gap-6">
+			<div class="sessions-grid mx-auto mt-5 w-full max-w-[1500px] justify-center gap-6">
 				{#each data.sessions as session, i (session.tbd ? `tbd-${session.sessionType}-${i}` : session.slug)}
 					<SessionCardExpanded
 						title={session.title}
