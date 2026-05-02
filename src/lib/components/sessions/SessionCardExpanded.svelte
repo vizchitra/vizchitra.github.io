@@ -76,7 +76,11 @@
 
 	const textPathRadius = 58;
 	const overlayStrokeWidth = 12;
+
+	let screenWidth = $state(0);
 </script>
+
+<svelte:window bind:innerWidth={screenWidth} />
 
 {#if tbd}
 	{@const currentColor = colorClasses[color] ?? colorClasses.blue}
@@ -141,10 +145,10 @@
 	{@const currentColor = colorClasses[color] ?? colorClasses.blue}
 	<a
 		href="/2026/sessions/{slug}"
-		class="sessions-card group white border-viz-grey/40 mx-auto block w-full max-w-[550px] overflow-hidden rounded border transition-all hover:scale-102 lg:max-w-none"
+		class="sessions-card group white border-viz-grey/40 mx-auto block w-full overflow-hidden rounded border transition-all hover:scale-102"
 	>
 		<div
-			class="session-card-body relative aspect-4/6 overflow-visible md:aspect-4/5.25"
+			class="session-card-body relative aspect-4/6 overflow-visible md:aspect-4/5 md:max-h-[80vh]"
 			bind:clientWidth={backgroundWidth}
 			bind:clientHeight={backgroundHeight}
 		>
@@ -193,7 +197,7 @@
 
 			<div class="short-description-container relative z-10 p-3 md:p-4">
 				<p
-					class="short-description font-display text-shadow mb-1 max-w-[40ch] text-lg leading-tight font-light text-[#4c4c4c] md:text-[19px]"
+					class="short-description font-display text-shadow mb-1 max-w-[40ch] text-lg leading-tight font-normal text-[#4c4c4c] md:text-[19px]"
 				>
 					{@html descriptionHtml}
 				</p>
@@ -202,18 +206,18 @@
 			<div class="speaker-details-overlay pointer-events-none absolute inset-0 flex flex-col">
 				<div class="absolute inset-x-0 bottom-0" style="height: {backgroundHeight * 0.2}px">
 					<div
-						class="speaker-image absolute top-20 right-5 -translate-y-full transition-transform duration-300 group-hover:scale-104"
+						class="speaker-image absolute top-15 right-5 -translate-y-full transition-transform duration-300 group-hover:scale-104 md:top-20"
 					>
 						<img
 							class="relative z-10 h-auto w-full"
 							src="{base}/images/speakers/2026/speaker-placeholder.avif"
-							alt="Speaker placeholder image"
+							alt="{speakerName}'s photo"
 						/>
 
 						<div
 							class="background-container-expanded absolute -right-[30%] -bottom-[75%] z-0"
-							style:width="{expandedBgWidth * 1.5}px"
-							style:height="{expandedBgWidth * 1.25 * 1.5}px"
+							style:width="{expandedBgWidth * (screenWidth < 768 ? 1.55 : 1.5)}px"
+							style:height="{expandedBgWidth * 1.25 * (screenWidth < 768 ? 1.55 : 1.5)}px"
 						>
 							<SessionCardBackground
 								{sessionType}
@@ -324,10 +328,10 @@
 							class="font-display text-shadow mb-1 text-2xl leading-none text-[#4c4c4c] uppercase md:text-[26px] lg:text-3xl xl:text-shadow-none!"
 						>
 							<span
-								class="first-name text-2xl leading-none font-extrabold md:text-[28px] 2xl:text-3xl"
+								class="first-name text-xl leading-none font-extrabold md:text-[28px] 2xl:text-3xl"
 								>{speakerName.split(' ')[0]}</span
 							>
-							<span class="last-name text-2xl leading-none font-medium md:text-[28px] 2xl:text-3xl"
+							<span class="last-name text-xl leading-none font-medium md:text-[28px] 2xl:text-3xl"
 								>{speakerName.split(' ').slice(1).join(' ')}</span
 							>
 						</h3>

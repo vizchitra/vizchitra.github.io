@@ -20,31 +20,32 @@
 
 		<div class="flex flex-wrap items-center gap-2">
 			<span class="text-viz-grey/50 ml-auto text-sm">
-				{data.sessions.filter((s) => !s.tbd).length} confirmed ·
-				{data.sessions.filter((s) => s.tbd).length} coming soon
+				{data.sessions.filter((s) => !s.tbd).length} confirmed
+				{#if data.sessions.filter((s) => s.tbd).length > 0}
+					{data.sessions.filter((s) => s.tbd).length} · coming soon
+				{/if}
 			</span>
 		</div>
 
 		<!-- Workshop cards grid -->
-		<FullBleed paddingX="xl">
-			<div class="grid-containe mx-auto w-full max-w-[1500px]">
-				<Grid maxColumns={4} minWidth="450px" gap={6}>
-					{#each data.sessions as session, i (session.tbd ? `tbd-${session.sessionType}-${i}` : session.slug)}
-						<SessionCardExpanded
-							title={session.title}
-							speakerName={session.speakerName}
-							designation={session.designation}
-							organisation={session.organisation}
-							sessionType={session.sessionType}
-							subtitle={session.subtitle}
-							date={session.date}
-							slug={session.slug}
-							speakerImage={session.speakerImage}
-							tbd={session.tbd}
-							descriptionHtml={session.descriptionHtml}
-						/>
-					{/each}
-				</Grid>
+		<FullBleed paddingX="md">
+			<!-- wanted something more custom to control card sizes -->
+			<div class="sessions-grid mx-auto w-full max-w-[1500px] justify-center gap-6">
+				{#each data.sessions as session, i (session.tbd ? `tbd-${session.sessionType}-${i}` : session.slug)}
+					<SessionCardExpanded
+						title={session.title}
+						speakerName={session.speakerName}
+						designation={session.designation}
+						organisation={session.organisation}
+						sessionType={session.sessionType}
+						subtitle={session.subtitle}
+						date={session.date}
+						slug={session.slug}
+						speakerImage={session.speakerImage}
+						tbd={session.tbd}
+						descriptionHtml={session.descriptionHtml}
+					/>
+				{/each}
 			</div>
 		</FullBleed>
 
@@ -55,3 +56,22 @@
 		{/if}
 	</Stack>
 </Container>
+
+<style>
+	.sessions-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(320px, 550px));
+	}
+
+	@media (max-width: 1400px) {
+		.sessions-grid {
+			grid-template-columns: repeat(2, minmax(320px, 550px));
+		}
+	}
+
+	@media (max-width: 850px) {
+		.sessions-grid {
+			grid-template-columns: repeat(1, minmax(300px, 550px));
+		}
+	}
+</style>

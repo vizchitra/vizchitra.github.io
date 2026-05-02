@@ -52,7 +52,9 @@
 
 			<span class="text-viz-grey/50 ml-auto text-sm">
 				{filteredSessions.filter((s) => !s.tbd).length} confirmed ·
-				{filteredSessions.filter((s) => s.tbd).length} coming soon
+				{#if filteredSessions.filter((s) => s.tbd).length > 0}
+					{filteredSessions.filter((s) => s.tbd).length} coming soon
+				{/if}
 			</span>
 		</div>
 
