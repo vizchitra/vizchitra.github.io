@@ -171,7 +171,7 @@
 			color: var(--dark-color);
 		}
 
-		& a {
+		& a:not(.btn) {
 			/* color: var(--dark-color); */
 			text-decoration: underline;
 			text-decoration-color: var(--muted-color);
@@ -180,7 +180,7 @@
 			text-decoration-skip-ink: auto;
 		}
 
-		& a:hover {
+		& a:not(.btn):hover {
 			text-decoration-color: var(--dark-color);
 			padding: 0.35em 0;
 			background-color: var(--subtle-color);
