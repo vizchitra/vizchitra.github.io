@@ -16,6 +16,7 @@
 				{ name: 'Event', href: '/2026/' },
 				{ name: 'Get Tickets', href: 'https://tickets.vizchitra.com' },
 				{ name: 'Workshops', href: '/2026/workshops' },
+				{ name: 'Scholarships', href: '/2026/scholarships' },
 				{ name: 'Submissions', href: '/2026/submissions' }
 			],
 			expanded: false
