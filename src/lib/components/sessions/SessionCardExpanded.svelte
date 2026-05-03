@@ -372,7 +372,7 @@
 								{#if i > 0}<span
 										class="text-xl leading-none font-medium md:text-[28px] 2xl:text-3xl"
 									>
-										/
+										&nbsp;/
 									</span>{/if}
 								<span
 									class="first-name text-xl leading-none font-extrabold md:text-[28px] 2xl:text-3xl"
@@ -433,7 +433,7 @@
 	.text-shape-float {
 		float: right;
 		width: 52%;
-		height: 6em;
+		height: 5em;
 		shape-outside: circle(65% at 90% 50%);
 		shape-margin: 0.75rem;
 	}
