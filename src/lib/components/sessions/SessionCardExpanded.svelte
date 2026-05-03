@@ -217,8 +217,10 @@
 
 				{#if isExpanded}
 					<div class="short-description-container relative z-10 p-3 pt-0 md:p-4 md:pt-1">
+						<!-- float pushes text away from the photo/pattern on the right -->
+						<div class="text-shape-float" aria-hidden="true"></div>
 						<p
-							class="short-description font-body text-shadow mb-1 max-w-[40ch] text-[17px] leading-tight font-normal text-[#4c4c4c] md:text-[18px]"
+							class="short-description font-body text-shadow mb-1 text-[17px] leading-tight font-normal text-[#4c4c4c] md:text-[18px]"
 						>
 							{@html descriptionHtml}
 						</p>
@@ -416,12 +418,12 @@
 		max-width: min(300px, 55%);
 	}
 
-	.session-top-text-content {
+	/* .session-top-text-content {
 		position: relative;
 		background: rgba(255, 255, 255, 0.8);
-	}
+	} */
 
-	.session-top-text-content::after {
+	/* .session-top-text-content::after {
 		content: '';
 		position: absolute;
 		left: 0;
@@ -435,13 +437,22 @@
 		);
 		z-index: -1;
 		pointer-events: none;
-	}
+	} */
 
 	@media (min-width: 550px) {
 		.session-top-text-content::after {
 			height: 60px;
 			bottom: -60px;
 		}
+	}
+
+	.text-shape-float {
+		float: right;
+		width: 46%;
+		height: 8em;
+		/* circle centred on the right, curving the text away from the photo */
+		shape-outside: circle(55% at 88% 55%);
+		shape-margin: 0.5rem;
 	}
 
 	.text-shadow {
