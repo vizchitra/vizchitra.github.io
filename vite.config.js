@@ -8,8 +8,9 @@ import { hmrReload } from './text.config.js';
 
 export default defineConfig({
 	optimizeDeps: {
-		// Ensure Rolldown optimization options are present to avoid esbuild deprecation warnings
-		rolldownOptions: {}
+		rolldownOptions: {
+			treeshake: { commonjs: true }
+		}
 	},
 	resolve: {
 		alias: {
@@ -23,7 +24,10 @@ export default defineConfig({
 		dsv(),
 		hmrReload()],
 	build: {
-		chunkSizeWarningLimit: 1000
+		chunkSizeWarningLimit: 1000,
+		rolldownOptions: {
+			treeshake: { commonjs: true }
+		}
 	},
 	server: {
 		fs: {
