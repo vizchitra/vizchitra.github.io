@@ -10,13 +10,13 @@
 
 /** @type {Record<string, { x?: number; y?: number; scale?: number; order?: number }>} */
 export const speakerImageTransforms = {
-	'Kenneth Dsouza / Rasagy Sharma': { x: 10, y: -15, scale: 1.5, order: 1 },
-	'Areena Arora': { x: 10, y: 8, scale: 1, order: 2 },
-	'Schubert de Abreu': { x: 14, y: -5, scale: 1.2, order: 3 },
-	'Priti Pandurangan': { x: 10, y: 5, scale: 0.95, order: 4 },
-	'Adolfo Arranz': { x: 20, y: -15, scale: 1.3, order: 5 },
-	'Prakriti Bakshi': { x: 5, y: 15, scale: 0.95, order: 6 },
-	'Prasanta Kumar Dutta': { x: 15, y: -5, scale: 1.3, order: 7 },
+	'Kenneth Dsouza / Rasagy Sharma': { x: 10, y: -65, scale: 1.3, order: 1 },
+	'Areena Arora': { x: 10, y: 5, scale: 1.1, order: 2 },
+	'Schubert de Abreu': { x: 14, y: -25, scale: 1.1, order: 3 },
+	'Priti Pandurangan': { x: 15, y: -30, scale: 0.9, order: 4 },
+	'Adolfo Arranz': { x: 15, y: -30, scale: 1.2, order: 5 },
+	'Prakriti Bakshi': { x: 0, y: 12, scale: 1.2, order: 6 },
+	'Prasanta Kumar Dutta': { x: 15, y: -25, scale: 1.3, order: 7 },
 };
 
 /**

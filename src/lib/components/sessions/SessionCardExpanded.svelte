@@ -164,11 +164,23 @@
 		class="sessions-card group white border-viz-grey/40 isolate mx-auto block w-full transform-gpu overflow-hidden rounded border transition-[transform,box-shadow] hover:scale-102"
 	>
 		<div
-			class="session-card-body relative flex aspect-4/5.75 max-h-[85svh] flex-col overflow-visible md:max-h-none"
+			class="session-card-body relative flex aspect-4/5.75 max-h-[85svh] flex-col overflow-hidden md:max-h-none"
 			bind:clientWidth={backgroundWidth}
 			bind:clientHeight={backgroundHeight}
 		>
-			<div class="session-top-text-content z-20 overflow-visible">
+			<!-- Pattern anchored to full card so translate % is stable regardless of flex split -->
+			<div class="pattern-bg-expanded absolute inset-0 z-0 overflow-visible">
+				<SessionCardBackground
+					{sessionType}
+					{color}
+					{slug}
+					{title}
+					width={expandedBgWidth}
+					height={expandedBgWidth}
+					class="h-full w-full"
+				/>
+			</div>
+			<div class="session-top-text-content z-20">
 				<div class="session-card-header relative z-10 p-2.5 pb-0! md:p-4">
 					<div class="title mb-2.5 flex flex-row items-baseline justify-start gap-2 md:mb-3">
 						<div class="logo-container text-xl leading-none text-[#4c4c4c] md:text-2xl">
@@ -216,28 +228,21 @@
 				</div>
 
 				{#if isExpanded}
-					<div class="short-description-container relative z-10 p-3 pt-0 md:p-4 md:pt-1">
-						<p
-							class="short-description font-body text-shadow mb-1 max-w-[40ch] text-[17px] leading-tight font-normal text-[#4c4c4c] md:text-[18px]"
+					<div class="short-description-container absolute z-10 p-3 pt-0 md:p-4 md:pt-1">
+						<!-- float pushes text away from the photo/pattern on the right -->
+						<div class="text-shape-float" aria-hidden="true"></div>
+						<!-- div (not p) so that inner <p> tags from descriptionHtml don't break float context -->
+						<div
+							class="short-description font-body text-shadow mb-1 text-[17px] leading-tight font-normal text-[#4c4c4c] md:text-[18px]"
 						>
 							{@html descriptionHtml}
-						</p>
+						</div>
 					</div>
 				{/if}
 			</div>
 			<div
 				class="background-container-expanded relative z-0 flex w-full flex-1 flex-row items-center justify-end"
 			>
-				<SessionCardBackground
-					{sessionType}
-					{color}
-					{slug}
-					{title}
-					width={expandedBgWidth}
-					height={expandedBgWidth}
-					class="absolute inset-0 z-0 h-full w-full"
-				/>
-
 				<div
 					class="speaker-image absolute right-5 bottom-0 origin-center transition-transform duration-300 group-hover:scale-104 group-hover:rotate-1"
 					style:transform={buildSpeakerImageTransform(speakerName, screenWidth)}
@@ -251,7 +256,7 @@
 			</div>
 
 			<div
-				class="speaker-details-overlay pointer-events-auto relative flex flex-col"
+				class="speaker-details-overlay pointer-events-auto absolute inset-x-0 bottom-0 z-10 flex flex-col"
 				style:background-color={overlayColors[color] ?? overlayColors.blue}
 			>
 				<!-- wave height = card-width/3; padding-bottom% is relative to own width (inset-x-0) -->
@@ -369,7 +374,7 @@
 								{#if i > 0}<span
 										class="text-xl leading-none font-medium md:text-[28px] 2xl:text-3xl"
 									>
-										/
+										&nbsp;/
 									</span>{/if}
 								<span
 									class="first-name text-xl leading-none font-extrabold md:text-[28px] 2xl:text-3xl"
@@ -417,24 +422,7 @@
 	}
 
 	.session-top-text-content {
-		position: relative;
-		background: rgba(255, 255, 255, 0.8);
-	}
-
-	.session-top-text-content::after {
-		content: '';
-		position: absolute;
-		left: 0;
-		width: 100%;
-		height: 40px;
-		bottom: -40px;
-		background: linear-gradient(
-			to bottom,
-			rgba(255, 255, 255, 0.75) 0%,
-			rgba(255, 255, 255, 0) 100%
-		);
-		z-index: -1;
-		pointer-events: none;
+		/* max-h set inline (52%) caps text area so background-container always gets space */
 	}
 
 	@media (min-width: 550px) {
@@ -442,6 +430,13 @@
 			height: 60px;
 			bottom: -60px;
 		}
+	}
+
+	.text-shape-float {
+		float: right;
+		width: 52%;
+		height: 12em;
+		shape-outside: polygon(70% 0%, 100% 0%, 100% 100%, -75% 100%);
 	}
 
 	.text-shadow {
@@ -458,9 +453,10 @@
 		animation: view-details-spin 14s linear infinite;
 	}
 
-	:global(.background-container-expanded svg) {
-		transform: translate(20%, 12%) scale(1.25) !important;
-		translate: none !important;
+	:global(.pattern-bg-expanded svg) {
+		/* transform-origin: bottom center !important; */
+		transform: translate(25%, 25%) scale(1.25) !important;
+		/* translate: none !important; */
 	}
 
 	@keyframes view-details-spin {
