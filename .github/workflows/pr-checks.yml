@@ -15,8 +15,13 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
+<<<<<<< HEAD
       lint: ${{ steps.lint.outcome }}
       oxlint: ${{ steps.oxlint.outcome }}
+=======
+      lint:         ${{ steps.lint.outcome }}
+      oxlint:       ${{ steps.oxlint.outcome }}
+>>>>>>> 021867c (ci: post check results as sticky PR comment)
       svelte_check: ${{ steps.svelte_check.outcome }}
 
     steps:
@@ -42,10 +47,13 @@ jobs:
         id: oxlint
         run: pnpm lint:code
         continue-on-error: true
+<<<<<<< HEAD
 
       # .content-collections/generated is gitignored and only created by vite build
       - name: Build (generates content-collection types for svelte-check)
         run: pnpm build
+=======
+>>>>>>> 021867c (ci: post check results as sticky PR comment)
 
       - name: Svelte type-check
         id: svelte_check
@@ -71,10 +79,17 @@ jobs:
 
     outputs:
       build_seconds: ${{ steps.timing.outputs.build_seconds }}
+<<<<<<< HEAD
       chunk_kb: ${{ steps.sizes.outputs.chunk_kb }}
       chunk_name: ${{ steps.sizes.outputs.chunk_name }}
       time_ok: ${{ steps.timing.outputs.time_ok }}
       size_ok: ${{ steps.sizes.outputs.size_ok }}
+=======
+      chunk_kb:      ${{ steps.sizes.outputs.chunk_kb }}
+      chunk_name:    ${{ steps.sizes.outputs.chunk_name }}
+      time_ok:       ${{ steps.timing.outputs.time_ok }}
+      size_ok:       ${{ steps.sizes.outputs.size_ok }}
+>>>>>>> 021867c (ci: post check results as sticky PR comment)
 
     steps:
       - uses: actions/checkout@v4
