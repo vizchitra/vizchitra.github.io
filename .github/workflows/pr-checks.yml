@@ -1,0 +1,103 @@
+name: PR Checks
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  # ── 1. Quality ─────────────────────────────────────────────────────────────
+  quality:
+    name: Quality (lint + type-check)
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Prettier format check
+        run: pnpm lint
+
+      - name: Oxlint
+        run: pnpm lint:code
+
+      - name: Svelte type-check
+        run: pnpm check
+
+  # ── 2. Build guard ─────────────────────────────────────────────────────────
+  build:
+    name: Build (time + bundle size)
+    runs-on: ubuntu-latest
+
+    # Thresholds — update these when intentional changes shift baselines
+    env:
+      BUILD_TIME_LIMIT_S: 120   # fail if vite build exceeds 2 min
+      CHUNK_SIZE_LIMIT_KB: 600  # fail if largest shared JS chunk exceeds 600 KB
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        run: |
+          START=$(date +%s)
+          pnpm build
+          END=$(date +%s)
+          ELAPSED=$((END - START))
+          echo "build_seconds=$ELAPSED" >> "$GITHUB_ENV"
+
+      - name: Build time guard
+        run: |
+          echo "Build took ${build_seconds}s (limit ${BUILD_TIME_LIMIT_S}s)"
+          if [ "$build_seconds" -gt "$BUILD_TIME_LIMIT_S" ]; then
+            echo "❌ Build exceeded ${BUILD_TIME_LIMIT_S}s — check for new prerendered routes or heavy plugins"
+            exit 1
+          fi
+          echo "✅ Build time OK: ${build_seconds}s"
+
+      - name: Bundle size guard
+        run: |
+          CHUNK_DIR=".svelte-kit/cloudflare/app/immutable/chunks"
+          if [ ! -d "$CHUNK_DIR" ]; then
+            echo "No chunks directory found — skipping size check"
+            exit 0
+          fi
+
+          LARGEST_FILE=$(ls -S "$CHUNK_DIR"/*.js 2>/dev/null | head -1)
+          if [ -z "$LARGEST_FILE" ]; then
+            echo "No JS chunks found"
+            exit 0
+          fi
+
+          SIZE_BYTES=$(wc -c < "$LARGEST_FILE")
+          SIZE_KB=$((SIZE_BYTES / 1024))
+          FILENAME=$(basename "$LARGEST_FILE")
+
+          echo "Largest shared chunk: $FILENAME = ${SIZE_KB} KB (limit ${CHUNK_SIZE_LIMIT_KB} KB)"
+
+          if [ "$SIZE_KB" -gt "$CHUNK_SIZE_LIMIT_KB" ]; then
+            echo "❌ Shared chunk ${SIZE_KB} KB exceeds ${CHUNK_SIZE_LIMIT_KB} KB — a large dependency may have leaked into the shared bundle"
+            exit 1
+          fi
+          echo "✅ Bundle size OK: ${SIZE_KB} KB"
