@@ -58,6 +58,7 @@ function getColor(proposal: CFPProposal | CFEProposal) {
 	return '#f97316'; // Viz Orange for Exhibition
 }
 
+
 export const GET: RequestHandler = async ({ params }) => {
 	await initResvg();
 	const cfpProposals = parseCFPProposals(cfpRaw);
