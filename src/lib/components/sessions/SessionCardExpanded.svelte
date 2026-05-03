@@ -168,7 +168,7 @@
 			bind:clientWidth={backgroundWidth}
 			bind:clientHeight={backgroundHeight}
 		>
-			<div class="session-top-text-content z-20 max-h-[52%] overflow-hidden">
+			<div class="session-top-text-content z-20">
 				<div class="session-card-header relative z-10 p-2.5 pb-0! md:p-4">
 					<div class="title mb-2.5 flex flex-row items-baseline justify-start gap-2 md:mb-3">
 						<div class="logo-container text-xl leading-none text-[#4c4c4c] md:text-2xl">
@@ -229,7 +229,7 @@
 				{/if}
 			</div>
 			<div
-				class="background-container-expanded relative z-0 flex w-full flex-1 flex-row items-center justify-end"
+				class="background-container-expanded relative z-0 flex min-h-[36%] w-full flex-1 flex-row items-center justify-end"
 			>
 				<SessionCardBackground
 					{sessionType}
@@ -432,15 +432,15 @@
 
 	.text-shape-float {
 		float: right;
-		width: 46%;
-		height: 5em; /* smaller on mobile to preserve pattern area height */
-		shape-outside: circle(55% at 88% 55%);
-		shape-margin: 0.5rem;
+		width: 52%;
+		height: 6em;
+		shape-outside: circle(65% at 90% 50%);
+		shape-margin: 0.75rem;
 	}
 
 	@media (min-width: 550px) {
 		.text-shape-float {
-			height: 8em;
+			height: 9em;
 		}
 	}
 
