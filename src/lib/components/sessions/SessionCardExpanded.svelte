@@ -452,7 +452,8 @@
 	}
 
 	:global(.background-container-expanded svg) {
-		transform: translate(20%, 12%) scale(1.25) !important;
+		transform: translate(25%, 25%) scale(1.25) !important;
+		transform-origin: bottom center !important;
 		translate: none !important;
 	}
 
