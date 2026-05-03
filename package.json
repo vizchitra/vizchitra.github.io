@@ -19,7 +19,14 @@
 	},
 	"dependencies": {
 		"fuse.js": "^7.3.0",
+<<<<<<< HEAD
 		"roughjs": "^4.6.6"
+=======
+		"maplibre-gl": "^5.24.0",
+		"roughjs": "^4.6.6",
+		"svelte-maplibre-gl": "^1.0.3",
+		"svelte-youtube-embed": "^0.4.6"
+>>>>>>> c497824 (chore: update all dependencies and add Rolldown treeshake config)
 	},
 	"devDependencies": {
 		"@content-collections/core": "^0.15.0",
