@@ -34,6 +34,7 @@ const config = {
 				}
 				throw new Error(message);
 			},
+			handleMissingId: 'ignore',
 			handleUnseenRoutes: 'ignore'
 		}
 	},
