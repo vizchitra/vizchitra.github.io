@@ -13,7 +13,7 @@ const config = {
 	kit: {
 		adapter: adapter({
 			routes: {
-				include: ['/api/*'],
+				include: ['/api/*', '/2026/submissions/*/og-image.png'],
 				exclude: []
 			}
 		}),
