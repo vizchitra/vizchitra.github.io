@@ -1,25 +1,20 @@
 <script lang="ts">
-	const MAPTILER_KEY = 'YNqfpfEi1e5BsLyLojCf';
-	const MAP_STYLE = 'streets-v2';
-
 	const { type } = $props<{ type: 'workshop' | 'conference' }>();
 
+	const BASE = 'https://staticmap.openstreetmap.de/staticmap.php';
+
 	// Conference: Bangalore International Centre
-	const conferenceUrl = [
-		`https://api.maptiler.com/maps/${MAP_STYLE}/static`,
-		`/77.63523618257383,12.966827628489266,14/800x420.png`,
-		`?key=${MAPTILER_KEY}`,
-		`&markers=pin-s-star+e779a6|77.63523618257383,12.966827628489266`
-	].join('');
+	const conferenceUrl =
+		`${BASE}?center=12.966827628489266,77.63523618257383` +
+		`&zoom=14&size=800x420&maptype=mapnik` +
+		`&markers=12.966827628489266,77.63523618257383,red-pushpin`;
 
 	// Workshops: midpoint between Samagata Foundation and Underline Center
-	const workshopUrl = [
-		`https://api.maptiler.com/maps/${MAP_STYLE}/static`,
-		`/77.61972309781267,12.971429203549093,13/800x420.png`,
-		`?key=${MAPTILER_KEY}`,
-		`&markers=pin-s-star+e779a6|77.6027528238416,12.97563511752492`,
-		`|77.63669336178374,12.967223289573266`
-	].join('');
+	const workshopUrl =
+		`${BASE}?center=12.971429203549093,77.61972309781267` +
+		`&zoom=13&size=800x420&maptype=mapnik` +
+		`&markers=12.97563511752492,77.6027528238416,red-pushpin` +
+		`|12.967223289573266,77.63669336178374,red-pushpin`;
 
 	const src = type === 'conference' ? conferenceUrl : workshopUrl;
 	const alt =
