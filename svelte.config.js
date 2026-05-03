@@ -13,12 +13,12 @@ const config = {
 	kit: {
 		adapter: adapter({
 			routes: {
-				include: ['/api/*'],
+				include: ['/api/*', '/2026/submissions/*/og-image.png'],
 				exclude: []
 			}
 		}),
 		alias: {
-			"content-collections": "./.content-collections/generated",
+			'content-collections': './.content-collections/generated'
 		},
 		output: {
 			bundleStrategy: 'split'
@@ -26,6 +26,7 @@ const config = {
 		appDir: 'app',
 		prerender: {
 			entries: ['*'],
+			concurrency: 8,
 			handleHttpError: ({ path, message }) => {
 				// Ignore API routes and Cloudflare-handled redirects during prerendering
 				if (path.startsWith('/api/') || redirectPaths.includes(path)) {
@@ -33,6 +34,7 @@ const config = {
 				}
 				throw new Error(message);
 			},
+			handleMissingId: 'ignore',
 			handleUnseenRoutes: 'ignore'
 		}
 	},

@@ -46,7 +46,9 @@ export const load: PageServerLoad = async ({ params }) => {
 			title: `${session.title} | VizChitra 2026 Sessions`,
 			noSuffix: true,
 			description:
-				session.shortDescription || session.longDescription.split('\n')[0] || session.longDescription.substring(0, 150),
+				session.shortDescription ||
+				session.longDescription.split('\n')[0] ||
+				session.longDescription.substring(0, 150),
 			ogImage: 'https://vizchitra.com/images/preview/preview-2026.jpg'
 		}
 	};

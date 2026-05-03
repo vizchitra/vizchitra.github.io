@@ -84,7 +84,7 @@ export async function captureNodeAsPNG(
 		return {
 			dataUrl: pngDataUrl,
 			canvas: canvas,
-			blob: await new Promise(resolve => canvas.toBlob(resolve, 'image/png')),
+			blob: await new Promise((resolve) => canvas.toBlob(resolve, 'image/png')),
 			download: (filename = 'screenshot.png') => {
 				const link = document.createElement('a');
 				link.download = filename;

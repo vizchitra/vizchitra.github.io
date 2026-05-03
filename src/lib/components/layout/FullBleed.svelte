@@ -25,8 +25,13 @@
 		children?: Snippet;
 	}
 
-	let { paddingX = '0', paddingY = '0', class: className = '', children, ...rest }: Props =
-		$props();
+	let {
+		paddingX = '0',
+		paddingY = '0',
+		class: className = '',
+		children,
+		...rest
+	}: Props = $props();
 
 	const paddingXValue = $derived(paddingX === '0' ? '0' : `var(--spacing-viz-${paddingX})`);
 	const paddingYValue = $derived(paddingY === '0' ? '0' : `var(--spacing-viz-${paddingY})`);

@@ -3,7 +3,7 @@ name: Fetch Data Daily
 on:
   schedule:
     # Runs once daily at 12:00 UTC
-    - cron: "0 12 * * *"
+    - cron: '0 12 * * *'
 
   workflow_dispatch: # Allows manual trigger from Actions tab
 
@@ -37,8 +37,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "22"
-          cache: "pnpm"
+          node-version: '22'
+          cache: 'pnpm'
         # Node runtime + dependency cache for faster runs
 
       - name: Install dependencies
@@ -55,10 +55,10 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v7
         with:
-          commit-message: "chore: 🤖 update data from sheets"
+          commit-message: 'chore: 🤖 update data from sheets'
           branch: data-update
           delete-branch: true
-          title: "chore: 🤖 update data from sheets"
+          title: 'chore: 🤖 update data from sheets'
           body: |
             🤖 Auto-generated PR to update data from Google Sheets.
           labels: automated

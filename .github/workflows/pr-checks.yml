@@ -1,0 +1,195 @@
+name: PR Checks
+
+on:
+  pull_request:
+    branches: [master]
+
+# Needed to post/update PR comments
+permissions:
+  pull-requests: write
+
+jobs:
+  # ── 1. Quality ─────────────────────────────────────────────────────────────
+  quality:
+    name: Quality
+    runs-on: ubuntu-latest
+
+    outputs:
+      lint: ${{ steps.lint.outcome }}
+      oxlint: ${{ steps.oxlint.outcome }}
+      svelte_check: ${{ steps.svelte_check.outcome }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+
+      - run: pnpm install
+
+      - name: Prettier format check
+        id: lint
+        run: pnpm lint
+        continue-on-error: true
+
+      - name: Oxlint
+        id: oxlint
+        run: pnpm lint:code
+        continue-on-error: true
+
+      # .content-collections/generated is gitignored and only created by vite build
+      - name: Build (generates content-collection types for svelte-check)
+        run: pnpm build
+
+      - name: Svelte type-check
+        id: svelte_check
+        run: pnpm check
+        continue-on-error: true
+
+      # Fail the job if any individual check failed
+      - name: Assert all passed
+        if: >
+          steps.lint.outcome         != 'success' ||
+          steps.oxlint.outcome       != 'success' ||
+          steps.svelte_check.outcome != 'success'
+        run: exit 1
+
+  # ── 2. Build ───────────────────────────────────────────────────────────────
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    env:
+      BUILD_TIME_LIMIT_S: 120
+      CHUNK_SIZE_LIMIT_KB: 600
+
+    outputs:
+      build_seconds: ${{ steps.timing.outputs.build_seconds }}
+      chunk_kb: ${{ steps.sizes.outputs.chunk_kb }}
+      chunk_name: ${{ steps.sizes.outputs.chunk_name }}
+      time_ok: ${{ steps.timing.outputs.time_ok }}
+      size_ok: ${{ steps.sizes.outputs.size_ok }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+
+      - run: pnpm install
+
+      - name: Build + measure time
+        id: timing
+        run: |
+          START=$(date +%s)
+          pnpm build
+          ELAPSED=$(( $(date +%s) - START ))
+          echo "build_seconds=$ELAPSED" >> "$GITHUB_OUTPUT"
+          if [ "$ELAPSED" -le "$BUILD_TIME_LIMIT_S" ]; then
+            echo "time_ok=true"  >> "$GITHUB_OUTPUT"
+          else
+            echo "time_ok=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Measure largest shared chunk
+        id: sizes
+        run: |
+          CHUNK_DIR=".svelte-kit/cloudflare/app/immutable/chunks"
+          LARGEST=$(ls -S "$CHUNK_DIR"/*.js 2>/dev/null | head -1)
+          SIZE_KB=$(( $(wc -c < "$LARGEST") / 1024 ))
+          echo "chunk_kb=$SIZE_KB"           >> "$GITHUB_OUTPUT"
+          echo "chunk_name=$(basename $LARGEST)" >> "$GITHUB_OUTPUT"
+          if [ "$SIZE_KB" -le "$CHUNK_SIZE_LIMIT_KB" ]; then
+            echo "size_ok=true"  >> "$GITHUB_OUTPUT"
+          else
+            echo "size_ok=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Enforce limits
+        if: >
+          steps.timing.outputs.time_ok == 'false' ||
+          steps.sizes.outputs.size_ok  == 'false'
+        run: exit 1
+
+  # ── 3. PR Comment ──────────────────────────────────────────────────────────
+  report:
+    name: Post results
+    needs: [quality, build]
+    if: always()
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const icon = s => s === 'success' ? '✅' : s === 'failure' ? '❌' : '⏭️';
+
+            const lint        = '${{ needs.quality.outputs.lint }}';
+            const oxlint      = '${{ needs.quality.outputs.oxlint }}';
+            const svelteCheck = '${{ needs.quality.outputs.svelte_check }}';
+            const buildSecs   = '${{ needs.build.outputs.build_seconds }}';
+            const chunkKb     = '${{ needs.build.outputs.chunk_kb }}';
+            const chunkName   = '${{ needs.build.outputs.chunk_name }}';
+            const timeOk      = '${{ needs.build.outputs.time_ok }}' === 'true';
+            const sizeOk      = '${{ needs.build.outputs.size_ok }}'  === 'true';
+
+            const allOk =
+              lint === 'success' && oxlint === 'success' &&
+              svelteCheck === 'success' && timeOk && sizeOk;
+
+            const header = allOk
+              ? '### ✅ CI Checks passed'
+              : '### ❌ CI Checks failed';
+
+            const body = [
+              header,
+              '',
+              '| | Check | Result |',
+              '|:---:|---|---|',
+              `| ${icon(lint)}          | Prettier format   | ${lint === 'success' ? 'passed' : lint} |`,
+              `| ${icon(oxlint)}        | Oxlint            | ${oxlint === 'success' ? 'passed' : oxlint} |`,
+              `| ${icon(svelteCheck)}   | Svelte type-check | ${svelteCheck === 'success' ? 'passed' : svelteCheck} |`,
+              `| ${timeOk ? '✅' : '❌'} | Build time        | ${buildSecs}s (limit 120s) |`,
+              `| ${sizeOk ? '✅' : '❌'} | Shared bundle     | ${chunkKb} KB (limit 600 KB) — \`${chunkName}\` |`,
+              '',
+              `<sub>Updated ${new Date().toUTCString()}</sub>`,
+              '<!-- vizchitra-pr-checks -->'
+            ].join('\n');
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+            });
+
+            const existing = comments.find(c =>
+              c.body.includes('<!-- vizchitra-pr-checks -->')
+            );
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body
+              });
+            }

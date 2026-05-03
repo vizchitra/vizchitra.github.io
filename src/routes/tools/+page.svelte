@@ -26,7 +26,8 @@
 		{
 			title: 'Colors',
 			href: '/tools/colors',
-			description: 'Complete color palette and usage guidelines including base colors, ramps, and named variants'
+			description:
+				'Complete color palette and usage guidelines including base colors, ramps, and named variants'
 		}
 	];
 </script>
@@ -47,7 +48,7 @@
 				href={tool.href}
 				class="border-viz-grey-muted bg-viz-white hover:border-viz-grey-dark group block rounded-lg border-2 p-6 transition-all duration-200 hover:shadow-lg"
 			>
-				<h2 class="text-viz-black mb-3 text-2xl font-bold group-hover:text-viz-pink">
+				<h2 class="text-viz-black group-hover:text-viz-pink mb-3 text-2xl font-bold">
 					{tool.title}
 				</h2>
 				<p class="text-viz-grey-dark text-base">{tool.description}</p>

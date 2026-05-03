@@ -1,5 +1,4 @@
 import { error } from '@sveltejs/kit';
-export const prerender = true;
 import type { RequestHandler } from './$types';
 import { parseCFPProposals, parseCFEProposals } from '$lib/utils/csv-parser';
 import cfpRaw from '../../../../../../content/2026/data/cfp.csv?raw';
@@ -26,75 +25,63 @@ const logoPath = resolve(process.cwd(), 'src/lib/assets/images/logos/vizchitra-l
 const logoBuffer = await readFile(logoPath);
 const logoBase64 = `data:image/png;base64,${logoBuffer.toString('base64')}`;
 
-
 // Initialize WASM
 let initialized = false;
 const initResvg = async () => {
-  if (initialized) return;
-  const require = createRequire(import.meta.url);
-  try {
-    const wasmPath = require.resolve('@resvg/resvg-wasm/index_bg.wasm');
-    const wasmBuffer = await readFile(wasmPath);
-    await initWasm(wasmBuffer);
-    initialized = true;
-  } catch (e) {
-    console.error('Failed to initialize resvg-wasm', e);
-  }
-};
-
-// Define entries for prerendering
-export const entries = async () => {
-  const cfpProposals = parseCFPProposals(cfpRaw);
-  const cfeProposals = parseCFEProposals(cfeRaw);
-  const proposals = [...cfpProposals, ...cfeProposals];
-  return proposals.map((p) => ({ id: p.slug }));
+	if (initialized) return;
+	const require = createRequire(import.meta.url);
+	try {
+		const wasmPath = require.resolve('@resvg/resvg-wasm/index_bg.wasm');
+		const wasmBuffer = await readFile(wasmPath);
+		await initWasm(wasmBuffer);
+		initialized = true;
+	} catch (e) {
+		console.error('Failed to initialize resvg-wasm', e);
+	}
 };
 
 // Helper to get color code
 function getColor(proposal: CFPProposal | CFEProposal) {
-  if (proposal.type === 'cfp') {
-    const cfpProposal = proposal as CFPProposal;
-    switch (cfpProposal.proposalType) {
-      case 'Talks':
-        return '#3b82f6'; // Viz Blue
-      case 'Dialogues':
-        return '#14b8a6'; // Viz Teal
-      case 'Workshop':
-        return '#ec4899'; // Viz Pink
-      default:
-        return '#4c4c4c';
-    }
-  }
-  return '#f97316'; // Viz Orange for Exhibition
+	if (proposal.type === 'cfp') {
+		const cfpProposal = proposal as CFPProposal;
+		switch (cfpProposal.proposalType) {
+			case 'Talks':
+				return '#3b82f6'; // Viz Blue
+			case 'Dialogues':
+				return '#14b8a6'; // Viz Teal
+			case 'Workshop':
+				return '#ec4899'; // Viz Pink
+			default:
+				return '#4c4c4c';
+		}
+	}
+	return '#f97316'; // Viz Orange for Exhibition
 }
 
-export const GET: RequestHandler = async ({ params, fetch }) => {
-  await initResvg();
-  const cfpProposals = parseCFPProposals(cfpRaw);
-  const cfeProposals = parseCFEProposals(cfeRaw);
-  const proposals = [...cfpProposals, ...cfeProposals];
+export const GET: RequestHandler = async ({ params }) => {
+	await initResvg();
+	const cfpProposals = parseCFPProposals(cfpRaw);
+	const cfeProposals = parseCFEProposals(cfeRaw);
+	const proposals = [...cfpProposals, ...cfeProposals];
 
-  const proposal = proposals.find((p) => p.slug === params.id);
+	const proposal = proposals.find((p) => p.slug === params.id);
 
-  if (!proposal) {
-    throw error(404, 'Proposal not found');
-  }
+	if (!proposal) {
+		throw error(404, 'Proposal not found');
+	}
 
-  const isCFP = proposal.type === 'cfp';
-  const title = isCFP
-    ? (proposal as CFPProposal).title
-    : (proposal as CFEProposal).projectTitle;
-  const typeName = isCFP ? (proposal as CFPProposal).proposalType : 'Exhibition';
-  const theme = isCFP ? (proposal as CFPProposal).theme : '';
-  const author = proposal.firstName;
-  const organization = proposal.organisation;
+	const isCFP = proposal.type === 'cfp';
+	const title = isCFP ? (proposal as CFPProposal).title : (proposal as CFEProposal).projectTitle;
+	const typeName = isCFP ? (proposal as CFPProposal).proposalType : 'Exhibition';
+	const theme = isCFP ? (proposal as CFPProposal).theme : '';
+	const author = proposal.firstName;
+	const organization = proposal.organisation;
 
+	const height = 630;
+	const width = 1200;
+	const accentColor = getColor(proposal);
 
-  const height = 630;
-  const width = 1200;
-  const accentColor = getColor(proposal);
-
-  const markup = html(`
+	const markup = html(`
 		<div
 			style="
                 display: flex;
@@ -121,13 +108,17 @@ export const GET: RequestHandler = async ({ params, fetch }) => {
                         font-size: 24px;
                         font-weight: 600;
                      ">${typeName}</div>
-                     ${theme ? `<div style="
+                     ${
+												theme
+													? `<div style="
                         color: #666;
                         font-size: 24px;
                         border: 1px solid #ddd;
                          padding: 7px 16px;
                          border-radius: 20px;
-                     ">${theme}</div>` : ''}
+                     ">${theme}</div>`
+													: ''
+											}
                 </div>
             </div>
 
@@ -162,36 +153,36 @@ export const GET: RequestHandler = async ({ params, fetch }) => {
 		</div>
 	`);
 
-  const svg = await satori(markup as any, {
-    width,
-    height,
-    fonts: [
-      {
-        name: 'IBM Plex Sans',
-        data: fontData,
-        weight: 400,
-        style: 'normal'
-      },
-      {
-        name: 'Cairo',
-        data: displayFontData,
-        weight: 700,
-        style: 'normal'
-      }
-    ]
-  });
+	const svg = await satori(markup as any, {
+		width,
+		height,
+		fonts: [
+			{
+				name: 'IBM Plex Sans',
+				data: fontData,
+				weight: 400,
+				style: 'normal'
+			},
+			{
+				name: 'Cairo',
+				data: displayFontData,
+				weight: 700,
+				style: 'normal'
+			}
+		]
+	});
 
-  const resvg = new Resvg(svg, {
-    fitTo: { mode: 'width', value: width }
-  });
+	const resvg = new Resvg(svg, {
+		fitTo: { mode: 'width', value: width }
+	});
 
-  const pngData = resvg.render();
-  const pngBuffer = pngData.asPng();
+	const pngData = resvg.render();
+	const pngBuffer = pngData.asPng();
 
-  return new Response(pngBuffer as any, {
-    headers: {
-      'Content-Type': 'image/png',
-      'Cache-Control': 'public, max-age=600' // Cache for 10 mins
-    }
-  });
+	return new Response(pngBuffer as any, {
+		headers: {
+			'Content-Type': 'image/png',
+			'Cache-Control': 'public, max-age=600' // Cache for 10 mins
+		}
+	});
 };

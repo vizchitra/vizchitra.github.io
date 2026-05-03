@@ -15,16 +15,10 @@ export function hmrReload() {
 				const invalidatedModules = new Set();
 				for (const mod of modules) {
 					if (mod.id == null) continue;
-					const clientModule =
-						server.environments.client.moduleGraph.getModuleById(mod.id);
+					const clientModule = server.environments.client.moduleGraph.getModuleById(mod.id);
 					if (clientModule != null) continue;
 
-					this.environment.moduleGraph.invalidateModule(
-						mod,
-						invalidatedModules,
-						timestamp,
-						true,
-					);
+					this.environment.moduleGraph.invalidateModule(mod, invalidatedModules, timestamp, true);
 					hasSsrOnlyModules = true;
 				}
 
@@ -32,7 +26,7 @@ export function hmrReload() {
 					server.ws.send({ type: 'full-reload' });
 					return [];
 				}
-			},
-		},
+			}
+		}
 	};
 }

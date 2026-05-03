@@ -7,14 +7,14 @@
 
 	let { startDate, deadline, title = 'Deadline' }: Props = $props();
 
-
-
 	let start = $derived(new Date(startDate));
 	let end = $derived(new Date(deadline));
 	let today = $derived(new Date());
 
 	let totalDays = $derived(Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)));
-	let daysProgress = $derived(Math.ceil((today.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)));
+	let daysProgress = $derived(
+		Math.ceil((today.getTime() - start.getTime()) / (1000 * 60 * 60 * 24))
+	);
 	let daysLeft = $derived(Math.ceil((end.getTime() - today.getTime()) / (1000 * 60 * 60 * 24)));
 
 	let isPast = $derived(daysLeft < 0);
@@ -47,7 +47,7 @@
 		<!-- Timeline Row -->
 		<div class="flex items-center gap-0">
 			<!-- Start Date Dot -->
-			<div class="h-3 w-3 rounded-full bg-viz-black flex-shrink-0"></div>
+			<div class="bg-viz-black h-3 w-3 flex-shrink-0 rounded-full"></div>
 
 			<!-- Progress Bar Container -->
 			<div class="relative flex-1 px-2">
@@ -55,32 +55,34 @@
 				<progress
 					value={daysProgress}
 					max={totalDays}
-					class="h-1 w-full appearance-none rounded-full bg-viz-black"
+					class="bg-viz-black h-1 w-full appearance-none rounded-full"
 				></progress>
 
 				<!-- Today vertical line marker -->
 				<div
-					class="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-0.5 h-6 bg-viz-black"
+					class="bg-viz-black absolute top-1/2 h-6 w-0.5 -translate-x-1/2 -translate-y-1/2"
 					style="left: {progressPercent}%"
 				></div>
 			</div>
 
 			<!-- End Date Dot -->
-			<div class="h-3 w-3 rounded-full bg-viz-pink flex-shrink-0"></div>
+			<div class="bg-viz-pink h-3 w-3 flex-shrink-0 rounded-full"></div>
 		</div>
 
 		<!-- Labels Row -->
-		<div class="flex items-start gap-0 relative">
+		<div class="relative flex items-start gap-0">
 			<!-- Start Date Label -->
-			<div class="flex-shrink-0 w-3">
-				<span class="text-viz-black text-xs font-bold tracking-wider uppercase block">{formattedStart}</span>
+			<div class="w-3 flex-shrink-0">
+				<span class="text-viz-black block text-xs font-bold tracking-wider uppercase"
+					>{formattedStart}</span
+				>
 			</div>
 
 			<!-- Center spacing -->
-			<div class="flex-1 flex justify-center px-2">
+			<div class="flex flex-1 justify-center px-2">
 				<!-- Today Label -->
 				<div class="flex flex-col items-center gap-1">
-					<span class="text-viz-black text-xs font-bold tracking-wider uppercase whitespace-nowrap"
+					<span class="text-viz-black text-xs font-bold tracking-wider whitespace-nowrap uppercase"
 						>Today</span
 					>
 					<span class="text-viz-pink-dark text-sm font-bold">
@@ -94,8 +96,10 @@
 			</div>
 
 			<!-- End Date Label -->
-			<div class="flex-shrink-0 w-3 text-right">
-				<span class="text-viz-pink-dark text-xs font-bold tracking-wider uppercase block">{formattedEnd}</span>
+			<div class="w-3 flex-shrink-0 text-right">
+				<span class="text-viz-pink-dark block text-xs font-bold tracking-wider uppercase"
+					>{formattedEnd}</span
+				>
 			</div>
 		</div>
 	</div>

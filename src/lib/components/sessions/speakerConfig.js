@@ -16,7 +16,7 @@ export const speakerImageTransforms = {
 	'Priti Pandurangan': { x: 15, y: -30, scale: 0.9, order: 4 },
 	'Adolfo Arranz': { x: 15, y: -30, scale: 1.2, order: 5 },
 	'Prakriti Bakshi': { x: 0, y: 12, scale: 1.2, order: 6 },
-	'Prasanta Kumar Dutta': { x: 15, y: -25, scale: 1.3, order: 7 },
+	'Prasanta Kumar Dutta': { x: 15, y: -25, scale: 1.3, order: 7 }
 };
 
 /**
@@ -26,7 +26,7 @@ export const speakerImageTransforms = {
 export function buildSpeakerImageTransform(name, screenWidth = 1000) {
 	const t = (name && speakerImageTransforms[name]) || {};
 	const tx = t.x ?? 0;
-	const ty = screenWidth < 768 ? (t.y ?? 0) - 6 : t.y ?? 0;
+	const ty = screenWidth < 768 ? (t.y ?? 0) - 6 : (t.y ?? 0);
 	const s = t.scale ?? 1;
 
 	return `translate(${tx}%, ${ty}%) scale(${s})`;

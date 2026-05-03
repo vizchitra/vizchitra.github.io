@@ -122,18 +122,19 @@
 							class="cursor-pointer rounded-md"
 							target={(section as any)?.target || '_self'}
 						>
-							<span class="font-base text-2xl whitespace-nowrap text-[#4C4C4C]">{section.name}</span>
+							<span class="font-base text-2xl whitespace-nowrap text-[#4C4C4C]">{section.name}</span
+							>
 						</a>
 					{/if}
 				</div>
 
-					<div class="polygon-divider mb-2 w-full" bind:clientWidth={width}>
-						<svg
-							{width}
-							{height}
-							viewBox={`0 0 ${width ?? 0} ${height ?? 0}`}
-							preserveAspectRatio="xMidYMid meet"
-						>
+				<div class="polygon-divider mb-2 w-full" bind:clientWidth={width}>
+					<svg
+						{width}
+						{height}
+						viewBox={`0 0 ${width ?? 0} ${height ?? 0}`}
+						preserveAspectRatio="xMidYMid meet"
+					>
 						<line
 							x1={0}
 							y1={height / 2}

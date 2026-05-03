@@ -10,13 +10,13 @@
 		Speakers2025,
 		Workshop2025,
 		SponsorCard,
-		Map,
 		VenueCard,
 		FAQ,
 		Header,
 		Hero,
 		Grid
 	} from '$lib/components';
+	import Map from '$lib/components/sections/map/Map.svelte';
 	import sponsors from '$lib/data/sponsors2025.json';
 	import VizchitraLogo from '$lib/assets/images/logos/viz-logo-animate.svg?raw';
 

@@ -52,7 +52,7 @@
 	let height = $state(0);
 	let cursorX = $state(0);
 	let cursorY = $state(0);
-    let showCursor = $state(false);
+	let showCursor = $state(false);
 	let lastUpdate = 0;
 	let scheduledRaf = 0;
 	let initialTimer: number | null = null;
@@ -283,7 +283,8 @@
 
 	<div
 		class="custom-cursor"
-		style="display: {showCursor ? 'block' : 'none'}; transform: translate3d({cursorX - CURSOR_SIZE / 2}px, {cursorY - CURSOR_SIZE / 2}px, 0)"
+		style="display: {showCursor ? 'block' : 'none'}; transform: translate3d({cursorX -
+			CURSOR_SIZE / 2}px, {cursorY - CURSOR_SIZE / 2}px, 0)"
 	>
 		<MousePointer size={CURSOR_SIZE} />
 	</div>
