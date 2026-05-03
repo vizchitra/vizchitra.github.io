@@ -25,11 +25,11 @@ With the support of Friends of VizChitra and sponsors, we are offering full scho
 
 You don't need to prove anything. If any of these sound like you, this is for you:
 
-- You're a student, freelancer, early-career practitioner, or career switcher for whom the ticket cost is a real barrier.
-- You're from a Tier 2/3 city, smaller town, or non-metro India.
-- You're earlier in your journey — self-taught, switching careers, still building your foundation.
-- What you learn here will go somewhere — a classroom, a newsroom, a team, a community.
-- Your background or perspective isn't often in the room at events like this.
+- You are a student, freelancer, early-career practitioner, or career switcher for whom the ticket cost is a real barrier.
+- You are from a Tier 2 or 3 city, smaller town, or non-metro India.
+- You are earlier in your journey, as self-taught, are switching careers, or still building your foundation.
+- You will take back what you learn here to a classroom, to a newsroom, to a team, to a community.
+- Your background or perspective is not often in the room at events like this.
 
 You don't need to tick every box. If you're unsure, apply.
 
