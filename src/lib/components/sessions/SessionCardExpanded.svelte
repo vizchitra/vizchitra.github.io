@@ -164,10 +164,10 @@
 	{@const currentColor = colorClasses[color] ?? colorClasses.blue}
 	<a
 		href={detailHref}
-		class="sessions-card group white border-viz-grey/40 mx-auto block w-full overflow-hidden rounded border transition-all hover:scale-102"
+		class="sessions-card group white border-viz-grey/40 mx-auto block w-full overflow-hidden rounded border transition-[transform,box-shadow] hover:scale-102"
 	>
 		<div
-			class="session-card-body relative flex aspect-4/7 max-h-[85vh] flex-col overflow-visible md:aspect-4/5.75 md:max-h-none"
+			class="session-card-body relative flex aspect-4/7 max-h-[85svh] flex-col overflow-visible md:aspect-4/5.75 md:max-h-none"
 			bind:clientWidth={backgroundWidth}
 			bind:clientHeight={backgroundHeight}
 		>
@@ -188,7 +188,7 @@
 					</div>
 
 					<div class="sessions-logistics">
-						<p class="text-base leading-none uppercase md:text-base">
+						<div class="text-base leading-none uppercase md:text-base">
 							{#if time}
 								<span class="font-display leading-snug! font-bold md:text-[17px]">{time} | </span>
 								<span class="font-display leading-snug! font-bold md:text-[17px]"
@@ -200,7 +200,7 @@
 									<span class="font-display leading-none! font-light md:text-[16px]">{venue} </span>
 								</p>
 							{/if}
-						</p>
+						</div>
 					</div>
 				</div>
 

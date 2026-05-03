@@ -16,3 +16,4 @@ export { default as ToolsCard } from './ToolsCard.svelte';
 export { default as ToolsHeader } from './ToolsHeader.svelte';
 export { default as DeckCard } from './DeckCard.svelte';
 export { default as DeckOverview } from './DeckOverview.svelte';
+export { default as CursorHint } from './CursorHint.svelte';
