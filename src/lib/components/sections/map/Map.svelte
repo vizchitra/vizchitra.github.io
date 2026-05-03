@@ -1,82 +1,31 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
-	import maplibregl from 'maplibre-gl';
+	const MAPTILER_KEY = 'YNqfpfEi1e5BsLyLojCf';
+	const MAP_STYLE = 'streets-v2';
 
 	const { type } = $props<{ type: 'workshop' | 'conference' }>();
 
-	const workshopMarkers = [
-		{
-			id: 'samagata',
-			name: 'Samagata Foundation',
-			lnglat: [77.6027528238416, 12.97563511752492] as [number, number],
-			address:
-				'46/1, Cobalt, 4th, Church St, Haridevpur, Shanthala Nagar, Ashok Nagar, Bengaluru, Karnataka 560001'
-		},
-		{
-			id: 'underline',
-			name: 'Underline Center',
-			lnglat: [77.63669336178374, 12.967223289573266] as [number, number],
-			address:
-				'3rd Floor, above Blue Tokai, #24 3rd A Cross, 1st Main Rd, Bengaluru, Karnataka 560071'
-		}
-	];
+	// Conference: Bangalore International Centre
+	const conferenceUrl = [
+		`https://api.maptiler.com/maps/${MAP_STYLE}/static`,
+		`/77.63523618257383,12.966827628489266,14/800x420.png`,
+		`?key=${MAPTILER_KEY}`,
+		`&markers=pin-s-star+e779a6|77.63523618257383,12.966827628489266`
+	].join('');
 
-	const conferenceMarkers = [
-		{
-			id: 'conference',
-			name: 'Bangalore International Centre',
-			lnglat: [77.63523618257383, 12.966827628489266] as [number, number],
-			address: '7, 4th Main Rd, Stage 2, Domlur, Bengaluru, Karnataka 560071'
-		}
-	];
+	// Workshops: midpoint between Samagata Foundation and Underline Center
+	const workshopUrl = [
+		`https://api.maptiler.com/maps/${MAP_STYLE}/static`,
+		`/77.61972309781267,12.971429203549093,13/800x420.png`,
+		`?key=${MAPTILER_KEY}`,
+		`&markers=pin-s-star+e779a6|77.6027528238416,12.97563511752492`,
+		`|77.63669336178374,12.967223289573266`
+	].join('');
 
-	const markers = type === 'workshop' ? workshopMarkers : conferenceMarkers;
-	const center: [number, number] =
-		markers.length > 1
-			? [
-					(markers[0].lnglat[0] + markers[1].lnglat[0]) / 2,
-					(markers[0].lnglat[1] + markers[1].lnglat[1]) / 2
-				]
-			: markers[0].lnglat;
-
-	let mapContainer: HTMLDivElement;
-	let map: maplibregl.Map;
-
-	onMount(() => {
-		map = new maplibregl.Map({
-			container: mapContainer,
-			style: 'https://api.maptiler.com/maps/streets-v2/style.json?key=YNqfpfEi1e5BsLyLojCf',
-			zoom: 13,
-			maxPitch: 80,
-			center
-		});
-
-		for (const m of markers) {
-			const popup = new maplibregl.Popup({ offset: 24, closeButton: false }).setHTML(
-				`<div style="padding:8px"><div style="margin-bottom:4px;font-size:1.125rem;font-weight:600">${m.name}</div><div style="font-size:0.875rem">${m.address}</div></div>`
-			);
-			const el = document.createElement('div');
-			el.style.cssText = 'font-size:1.875rem;line-height:1;text-align:center';
-			el.textContent = '📍';
-			new maplibregl.Marker({ element: el }).setLngLat(m.lnglat).setPopup(popup).addTo(map);
-			map.on('load', () => popup.addTo(map).setLngLat(m.lnglat));
-		}
-	});
-
-	onDestroy(() => map?.remove());
+	const src = type === 'conference' ? conferenceUrl : workshopUrl;
+	const alt =
+		type === 'conference'
+			? 'Map showing Bangalore International Centre, conference venue'
+			: 'Map showing Samagata Foundation and Underline Center, workshop venues';
 </script>
 
-<svelte:head>
-	<link rel="stylesheet" href="/maplibre-gl.css" />
-</svelte:head>
-
-<div bind:this={mapContainer} class="h-120 w-full"></div>
-
-<style>
-	:global(.maplibregl-popup-close-button) {
-		margin: 4px 12px 0 0;
-		font-size: 1.2rem;
-		color: var(--color-viz-pink);
-		display: none;
-	}
-</style>
+<img {src} {alt} class="h-full w-full rounded-2xl object-cover" loading="lazy" />

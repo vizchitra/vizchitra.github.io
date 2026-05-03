@@ -16,14 +16,9 @@
 		Hero,
 		Grid
 	} from '$lib/components';
-	import { onMount } from 'svelte';
+	import Map from '$lib/components/sections/map/Map.svelte';
 	import sponsors from '$lib/data/sponsors2025.json';
 	import VizchitraLogo from '$lib/assets/images/logos/viz-logo-animate.svg?raw';
-
-	let Map = $state<any>(null);
-	onMount(async () => {
-		Map = (await import('$lib/components/sections/map/Map.svelte')).default;
-	});
 
 	const whyAttend = [
 		{
@@ -206,7 +201,7 @@
 		<div class="mx-auto grid w-full grid-cols-1 gap-8 lg:grid-cols-3">
 			<div class="lg:col-span-2">
 				<div class="h-[380px] w-full overflow-hidden rounded-2xl">
-					{#if Map}<svelte:component this={Map} type="conference" />{/if}
+					<Map type="conference" />
 				</div>
 			</div>
 			<div class="lg:col-span-1">
@@ -226,7 +221,7 @@
 			{/each}
 			<div class="order-1 lg:col-span-1 xl:order-0 xl:col-span-4">
 				<div class="h-full w-full overflow-hidden rounded-2xl">
-					{#if Map}<svelte:component this={Map} type="workshop" />{/if}
+					<Map type="workshop" />
 				</div>
 			</div>
 		</div>
