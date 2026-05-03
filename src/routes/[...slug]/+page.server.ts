@@ -53,7 +53,8 @@ export const load: PageServerLoad = async ({ params }) => {
 		document: page,
 		pageMeta: {
 			title: page.title,
-			description: page.description
+			description: page.description,
+			...(page.ogImage && { ogImage: `https://vizchitra.com${page.ogImage}` })
 		},
 		pageLayout: {
 			banner: page.banner,

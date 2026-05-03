@@ -4,6 +4,7 @@ description: 10 fully funded slots for people who wouldn't be able to attend Viz
 slug: 2026/scholarships
 banner: curve
 color: pink
+ogImage: /images/preview/preview-scholarships.jpg
 ---
 
 # Financial Aid Scholarships

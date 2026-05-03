@@ -24,6 +24,7 @@ const pages = defineCollection({
 		slug: z.string(),
 		banner: z.enum(['polygon', 'curve', 'square', 'blob']).optional(),
 		color: z.enum(['grey', 'pink', 'blue', 'teal', 'yellow', 'orange']).optional(),
+		ogImage: z.string().optional(),
 		draft: z.boolean().optional().default(false),
 		content: z.string().optional()
 	}),
