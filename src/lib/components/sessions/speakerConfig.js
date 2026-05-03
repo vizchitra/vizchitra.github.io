@@ -26,7 +26,7 @@ export const speakerImageTransforms = {
 export function buildSpeakerImageTransform(name, screenWidth = 1000) {
 	const t = (name && speakerImageTransforms[name]) || {};
 	const tx = t.x ?? 0;
-	const ty = screenWidth < 768 ? t.y - 6 : t.y ?? 0;
+	const ty = screenWidth < 768 ? (t.y ?? 0) - 6 : t.y ?? 0;
 	const s = t.scale ?? 1;
 
 	return `translate(${tx}%, ${ty}%) scale(${s})`;
