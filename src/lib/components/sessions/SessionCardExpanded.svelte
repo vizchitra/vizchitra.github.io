@@ -168,6 +168,18 @@
 			bind:clientWidth={backgroundWidth}
 			bind:clientHeight={backgroundHeight}
 		>
+			<!-- Pattern anchored to full card so translate % is stable regardless of flex split -->
+			<div class="pattern-bg-expanded absolute inset-0 z-0 overflow-visible">
+				<SessionCardBackground
+					{sessionType}
+					{color}
+					{slug}
+					{title}
+					width={expandedBgWidth}
+					height={expandedBgWidth}
+					class="h-full w-full"
+				/>
+			</div>
 			<div class="session-top-text-content z-20">
 				<div class="session-card-header relative z-10 p-2.5 pb-0! md:p-4">
 					<div class="title mb-2.5 flex flex-row items-baseline justify-start gap-2 md:mb-3">
@@ -231,16 +243,6 @@
 			<div
 				class="background-container-expanded relative z-0 flex w-full flex-1 flex-row items-center justify-end"
 			>
-				<SessionCardBackground
-					{sessionType}
-					{color}
-					{slug}
-					{title}
-					width={expandedBgWidth}
-					height={expandedBgWidth}
-					class="absolute inset-0 z-0 h-full w-full"
-				/>
-
 				<div
 					class="speaker-image absolute right-5 bottom-0 origin-center transition-transform duration-300 group-hover:scale-104 group-hover:rotate-1"
 					style:transform={buildSpeakerImageTransform(speakerName, screenWidth)}
@@ -451,10 +453,10 @@
 		animation: view-details-spin 14s linear infinite;
 	}
 
-	:global(.background-container-expanded svg) {
+	:global(.pattern-bg-expanded svg) {
+		/* transform-origin: bottom center !important; */
 		transform: translate(25%, 25%) scale(1.25) !important;
-		transform-origin: bottom center !important;
-		translate: none !important;
+		/* translate: none !important; */
 	}
 
 	@keyframes view-details-spin {
