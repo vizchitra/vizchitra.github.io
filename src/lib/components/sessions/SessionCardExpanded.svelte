@@ -161,10 +161,10 @@
 	{@const currentColor = colorClasses[color] ?? colorClasses.blue}
 	<a
 		href={detailHref}
-		class="sessions-card group white border-viz-grey/40 mx-auto block w-full overflow-hidden rounded border isolate transform-gpu transition-[transform,box-shadow] hover:scale-102"
+		class="sessions-card group white border-viz-grey/40 isolate mx-auto block w-full transform-gpu overflow-hidden rounded border transition-[transform,box-shadow] hover:scale-102"
 	>
 		<div
-			class="session-card-body relative flex aspect-4/7 max-h-[85svh] flex-col overflow-visible md:aspect-4/5.75 md:max-h-none"
+			class="session-card-body relative flex aspect-4/5.75 max-h-[85svh] flex-col overflow-visible md:max-h-none"
 			bind:clientWidth={backgroundWidth}
 			bind:clientHeight={backgroundHeight}
 		>
