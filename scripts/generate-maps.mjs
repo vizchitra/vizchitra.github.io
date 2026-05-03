@@ -68,14 +68,17 @@ async function buildMap({ name, lat, lng, zoom, cols, rows, markers }) {
 	}
 	console.log();
 
-	// Marker pin SVG elements
+	// Marker pin SVG elements (teardrop shape pointing down)
 	const pins = markers
 		.map(([mlat, mlng]) => {
 			const { px, py } = toPixel(mlat, mlng, zoom, { x: originX, y: originY });
+			const r = 18;
+			// teardrop: circle body + triangle tail
 			return `
-    <circle cx="${px}" cy="${py + 2}" r="11" fill="#00000033"/>
-    <circle cx="${px}" cy="${py}" r="11" fill="#e779a6" stroke="white" stroke-width="2.5"/>
-    <circle cx="${px}" cy="${py}" r="4" fill="white"/>`;
+    <circle cx="${px}" cy="${py}" r="${r + 3}" fill="black" fill-opacity="0.25"/>
+    <path d="M${px},${py + r + 12} L${px - r},${py} A${r},${r} 0 1 1 ${px + r},${py} Z"
+          fill="#e779a6" stroke="white" stroke-width="3" stroke-linejoin="round"/>
+    <circle cx="${px}" cy="${py}" r="7" fill="white"/>`;
 		})
 		.join('');
 
