@@ -29,7 +29,7 @@
 <Container>
 	<Stack>
 		<Heading tag="h1" class="py-8">
-			<LogoType year="2026" />
+			<LogoType year={2026} />
 		</Heading>
 
 		<Text type="lead">
@@ -137,12 +137,16 @@
 
 		{#if data.selectedSessions.length > 0}
 			<Heading tag="h2" class="font-normal">
-				<Slanted color="teal" textContent="CONFIRMED SESSIONS" />
+				<Slanted color="pink" textContent="TAKING SHAPE: Confimed Sessions" />
 			</Heading>
 
-			<Text type="body">
-				Here are some of the confirmed sessions for VizChitra 2026. More announcements coming soon!
-			</Text>
+			<Text type="body"
+				>The lineup is taking shape for VizChitra 2026. Here's a first look at the Workshop
+				Sessions. More to come soon.</Text
+			>
+			<Cluster justify="start">
+				<Button href="/2026/sessions" color="pink">View all Sessions</Button>
+			</Cluster>
 
 			<FullBleed paddingX="md">
 				<div class="sessions-grid mx-auto w-full justify-center gap-6">
@@ -166,10 +170,6 @@
 					{/each}
 				</div>
 			</FullBleed>
-
-			<Cluster justify="start">
-				<Button href="/2026/sessions" color="teal">View all Sessions</Button>
-			</Cluster>
 		{/if}
 
 		<!-- ── Browse Submissions ─────────────────────────────────────────── -->

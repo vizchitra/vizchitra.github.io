@@ -80,14 +80,14 @@
 </div>
 
 <style>
-	.session-card-background::after {
-		/* content: '';
+	/* .session-card-background::after {
+		content: '';
 		position: absolute;
 		top: 0;
 		left: 0;
 		right: 0;
 		height: 20%;
 		background: linear-gradient(to bottom, var(--color-viz-white), transparent);
-		pointer-events: none; */
-	}
+		pointer-events: none;
+	} */
 </style>
