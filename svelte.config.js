@@ -26,6 +26,7 @@ const config = {
 		appDir: 'app',
 		prerender: {
 			entries: ['*'],
+			concurrency: 8,
 			handleHttpError: ({ path, message }) => {
 				// Ignore API routes and Cloudflare-handled redirects during prerendering
 				if (path.startsWith('/api/') || redirectPaths.includes(path)) {

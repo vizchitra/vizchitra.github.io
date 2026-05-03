@@ -1,5 +1,4 @@
 import { error } from '@sveltejs/kit';
-export const prerender = true;
 import type { RequestHandler } from './$types';
 import { parseCFPProposals, parseCFEProposals } from '$lib/utils/csv-parser';
 import cfpRaw from '../../../../../../content/2026/data/cfp.csv?raw';
@@ -42,14 +41,6 @@ const initResvg = async () => {
   }
 };
 
-// Define entries for prerendering
-export const entries = async () => {
-  const cfpProposals = parseCFPProposals(cfpRaw);
-  const cfeProposals = parseCFEProposals(cfeRaw);
-  const proposals = [...cfpProposals, ...cfeProposals];
-  return proposals.map((p) => ({ id: p.slug }));
-};
-
 // Helper to get color code
 function getColor(proposal: CFPProposal | CFEProposal) {
   if (proposal.type === 'cfp') {
@@ -68,7 +59,7 @@ function getColor(proposal: CFPProposal | CFEProposal) {
   return '#f97316'; // Viz Orange for Exhibition
 }
 
-export const GET: RequestHandler = async ({ params, fetch }) => {
+export const GET: RequestHandler = async ({ params }) => {
   await initResvg();
   const cfpProposals = parseCFPProposals(cfpRaw);
   const cfeProposals = parseCFEProposals(cfeRaw);
