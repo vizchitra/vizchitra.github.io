@@ -17,10 +17,7 @@ export const GET: RequestHandler = async ({ params, platform, url }) => {
 	// Validate platform is available (Cloudflare Workers)
 	if (!platform?.env?.PROPOSAL_VOTES) {
 		console.error('KV namespace not available');
-		return json(
-			{ error: 'Service temporarily unavailable' },
-			{ status: 503 }
-		);
+		return json({ error: 'Service temporarily unavailable' }, { status: 503 });
 	}
 
 	const kv = platform.env.PROPOSAL_VOTES;
@@ -45,9 +42,6 @@ export const GET: RequestHandler = async ({ params, platform, url }) => {
 		});
 	} catch (err) {
 		console.error('Error fetching votes:', err);
-		return json(
-			{ error: 'Failed to fetch vote data' },
-			{ status: 500 }
-		);
+		return json({ error: 'Failed to fetch vote data' }, { status: 500 });
 	}
 };

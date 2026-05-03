@@ -15,8 +15,8 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      lint:         ${{ steps.lint.outcome }}
-      oxlint:       ${{ steps.oxlint.outcome }}
+      lint: ${{ steps.lint.outcome }}
+      oxlint: ${{ steps.oxlint.outcome }}
       svelte_check: ${{ steps.svelte_check.outcome }}
 
     steps:
@@ -28,8 +28,8 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: "22"
-          cache: "pnpm"
+          node-version: '22'
+          cache: 'pnpm'
 
       - run: pnpm install
 
@@ -42,6 +42,10 @@ jobs:
         id: oxlint
         run: pnpm lint:code
         continue-on-error: true
+
+      # .content-collections/generated is gitignored and only created by vite build
+      - name: Build (generates content-collection types for svelte-check)
+        run: pnpm build
 
       - name: Svelte type-check
         id: svelte_check
@@ -67,10 +71,10 @@ jobs:
 
     outputs:
       build_seconds: ${{ steps.timing.outputs.build_seconds }}
-      chunk_kb:      ${{ steps.sizes.outputs.chunk_kb }}
-      chunk_name:    ${{ steps.sizes.outputs.chunk_name }}
-      time_ok:       ${{ steps.timing.outputs.time_ok }}
-      size_ok:       ${{ steps.sizes.outputs.size_ok }}
+      chunk_kb: ${{ steps.sizes.outputs.chunk_kb }}
+      chunk_name: ${{ steps.sizes.outputs.chunk_name }}
+      time_ok: ${{ steps.timing.outputs.time_ok }}
+      size_ok: ${{ steps.sizes.outputs.size_ok }}
 
     steps:
       - uses: actions/checkout@v4
@@ -81,8 +85,8 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: "22"
-          cache: "pnpm"
+          node-version: '22'
+          cache: 'pnpm'
 
       - run: pnpm install
 

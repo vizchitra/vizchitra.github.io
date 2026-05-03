@@ -18,9 +18,7 @@ await initWasm(await readFile(wasmPath));
 function toTile(lat, lng, z) {
 	const x = Math.floor(((lng + 180) / 360) * 2 ** z);
 	const lr = (lat * Math.PI) / 180;
-	const y = Math.floor(
-		((1 - Math.log(Math.tan(lr) + 1 / Math.cos(lr)) / Math.PI) / 2) * 2 ** z
-	);
+	const y = Math.floor(((1 - Math.log(Math.tan(lr) + 1 / Math.cos(lr)) / Math.PI) / 2) * 2 ** z);
 	return { x, y };
 }
 
@@ -29,8 +27,7 @@ function toPixel(lat, lng, z, gridOriginTile) {
 	const lr = (lat * Math.PI) / 180;
 	const fracX = ((lng + 180) / 360) * 2 ** z - gridOriginTile.x;
 	const fracY =
-		((1 - Math.log(Math.tan(lr) + 1 / Math.cos(lr)) / Math.PI) / 2) * 2 ** z -
-		gridOriginTile.y;
+		((1 - Math.log(Math.tan(lr) + 1 / Math.cos(lr)) / Math.PI) / 2) * 2 ** z - gridOriginTile.y;
 	return { px: Math.round(fracX * 256), py: Math.round(fracY * 256) };
 }
 

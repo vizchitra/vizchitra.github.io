@@ -27,13 +27,9 @@
 	class="deck-overview relative flex h-full flex-col justify-between overflow-hidden rounded-lg shadow-xl"
 >
 	<!-- Deck stripes (same clip-path as guides page) -->
-	<div class="absolute inset-0 deck-inner">
+	<div class="deck-inner absolute inset-0">
 		{#each cards as card, i}
-			<div
-				class="deck-card relative"
-				class:first={i === 0}
-				class:last={i === cards.length - 1}
-			>
+			<div class="deck-card relative" class:first={i === 0} class:last={i === cards.length - 1}>
 				<PatternRough
 					color={colorVars[card.color]}
 					fillStyle="cross-hatch"
@@ -61,9 +57,7 @@
 			<!-- Left: Label, Title, Tagline -->
 			<div class="flex flex-col gap-3">
 				<div class="text-xl font-medium {textColor[card.color]}">VIZCHITRA GUIDES</div>
-				<h1
-					class="font-display-sans m-0 text-7xl leading-tight font-bold {textColor[card.color]}"
-				>
+				<h1 class="font-display-sans m-0 text-7xl leading-tight font-bold {textColor[card.color]}">
 					{card.title}
 				</h1>
 				<h2 class="text-viz-black m-0 text-4xl leading-tight">{card.tagline}</h2>

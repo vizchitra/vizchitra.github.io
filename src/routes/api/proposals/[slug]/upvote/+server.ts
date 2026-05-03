@@ -14,10 +14,7 @@ export const POST: RequestHandler = async ({ request, params, platform }) => {
 	// Validate platform is available (Cloudflare Workers)
 	if (!platform?.env?.PROPOSAL_VOTES) {
 		console.error('KV namespace not available');
-		return json(
-			{ success: false, error: 'Service temporarily unavailable' },
-			{ status: 503 }
-		);
+		return json({ success: false, error: 'Service temporarily unavailable' }, { status: 503 });
 	}
 
 	// Parse request body
@@ -26,18 +23,12 @@ export const POST: RequestHandler = async ({ request, params, platform }) => {
 		const body = await request.json();
 		deviceId = body.deviceId;
 	} catch (err) {
-		return json(
-			{ success: false, error: 'Invalid request body' },
-			{ status: 400 }
-		);
+		return json({ success: false, error: 'Invalid request body' }, { status: 400 });
 	}
 
 	// Validate device ID
 	if (!deviceId || !isValidDeviceId(deviceId)) {
-		return json(
-			{ success: false, error: 'Invalid device ID' },
-			{ status: 400 }
-		);
+		return json({ success: false, error: 'Invalid device ID' }, { status: 400 });
 	}
 
 	const kv = platform.env.PROPOSAL_VOTES;
@@ -77,10 +68,7 @@ export const POST: RequestHandler = async ({ request, params, platform }) => {
 		});
 	} catch (err) {
 		console.error('Error adding upvote:', err);
-		return json(
-			{ success: false, error: 'Failed to add upvote' },
-			{ status: 500 }
-		);
+		return json({ success: false, error: 'Failed to add upvote' }, { status: 500 });
 	}
 };
 
@@ -94,10 +82,7 @@ export const DELETE: RequestHandler = async ({ request, params, platform }) => {
 	// Validate platform is available (Cloudflare Workers)
 	if (!platform?.env?.PROPOSAL_VOTES) {
 		console.error('KV namespace not available');
-		return json(
-			{ success: false, error: 'Service temporarily unavailable' },
-			{ status: 503 }
-		);
+		return json({ success: false, error: 'Service temporarily unavailable' }, { status: 503 });
 	}
 
 	// Parse request body
@@ -106,18 +91,12 @@ export const DELETE: RequestHandler = async ({ request, params, platform }) => {
 		const body = await request.json();
 		deviceId = body.deviceId;
 	} catch (err) {
-		return json(
-			{ success: false, error: 'Invalid request body' },
-			{ status: 400 }
-		);
+		return json({ success: false, error: 'Invalid request body' }, { status: 400 });
 	}
 
 	// Validate device ID
 	if (!deviceId || !isValidDeviceId(deviceId)) {
-		return json(
-			{ success: false, error: 'Invalid device ID' },
-			{ status: 400 }
-		);
+		return json({ success: false, error: 'Invalid device ID' }, { status: 400 });
 	}
 
 	const kv = platform.env.PROPOSAL_VOTES;
@@ -156,9 +135,6 @@ export const DELETE: RequestHandler = async ({ request, params, platform }) => {
 		});
 	} catch (err) {
 		console.error('Error removing upvote:', err);
-		return json(
-			{ success: false, error: 'Failed to remove upvote' },
-			{ status: 500 }
-		);
+		return json({ success: false, error: 'Failed to remove upvote' }, { status: 500 });
 	}
 };

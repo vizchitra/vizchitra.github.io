@@ -22,17 +22,22 @@ const projectRoot = path.resolve(__dirname, '..');
 const CATEGORY_PATTERNS = {
 	layout: /^(flex|grid|block|inline-block|inline|hidden|table|contents|flow-root|list-item)/,
 	spacing: /^([mp][xytblr]?-|gap-|space-)/,
-	colors: /^(bg|text|border|ring|from|via|to|fill|stroke|caret|accent|decoration)-(?!opacity|none|current|transparent|inherit)/,
-	typography: /^(font-|text-(?:xs|sm|base|lg|xl|2xl|3xl|4xl|5xl|6xl|7xl|8xl|9xl|left|center|right|justify|start|end|balance|wrap|nowrap|pretty)|leading-|tracking-|decoration-|underline|overline|line-through|no-underline|uppercase|lowercase|capitalize|normal-case|truncate|whitespace-|break-)/,
+	colors:
+		/^(bg|text|border|ring|from|via|to|fill|stroke|caret|accent|decoration)-(?!opacity|none|current|transparent|inherit)/,
+	typography:
+		/^(font-|text-(?:xs|sm|base|lg|xl|2xl|3xl|4xl|5xl|6xl|7xl|8xl|9xl|left|center|right|justify|start|end|balance|wrap|nowrap|pretty)|leading-|tracking-|decoration-|underline|overline|line-through|no-underline|uppercase|lowercase|capitalize|normal-case|truncate|whitespace-|break-)/,
 	sizing: /^(w-|h-|min-w|min-h|max-w|max-h|size-)/,
 	borders: /^(border(?!-opacity)|rounded|ring-(?!opacity))/,
-	effects: /^(shadow|opacity-|blur-|brightness-|contrast-|grayscale|hue-rotate|invert|saturate|sepia|backdrop-)/,
+	effects:
+		/^(shadow|opacity-|blur-|brightness-|contrast-|grayscale|hue-rotate|invert|saturate|sepia|backdrop-)/,
 	positioning: /^(absolute|relative|fixed|sticky|static|inset-|top-|left-|right-|bottom-|z-)/,
-	flexgrid: /^(justify-|items-|content-|self-|place-|order-|flex-(?!none)|grid-|col-|row-|auto-cols|auto-rows)/,
+	flexgrid:
+		/^(justify-|items-|content-|self-|place-|order-|flex-(?!none)|grid-|col-|row-|auto-cols|auto-rows)/,
 	transforms: /^(scale-|rotate-|translate|skew-|origin-)/,
 	transitions: /^(transition|duration-|delay-|ease-|animate-)/,
 	interactivity: /^(cursor-|select-|resize|scroll-|touch-|will-change|pointer-events)/,
-	other: /^(overflow-|overscroll-|visible|invisible|sr-only|not-sr-only|aspect-|object-|mix-blend|isolation|filter|divide-|appearance-)/
+	other:
+		/^(overflow-|overscroll-|visible|invisible|sr-only|not-sr-only|aspect-|object-|mix-blend|isolation|filter|divide-|appearance-)/
 };
 
 // Color families in OKLCH tokens
@@ -514,9 +519,7 @@ function generateReport(results, oklchTokens) {
 	sortedCategories.slice(0, 10).forEach(([cat, count]) => {
 		const classes = stats.classesByCategory[cat];
 		if (classes && classes.size > 0) {
-			const sortedClasses = Array.from(classes)
-				.sort()
-				.slice(0, 12);
+			const sortedClasses = Array.from(classes).sort().slice(0, 12);
 			const categoryName = cat.charAt(0).toUpperCase() + cat.slice(1);
 			md += `**${categoryName}** (${count}) — \`${sortedClasses.join('`, `')}\`${classes.size > 12 ? ` (+${classes.size - 12} more)` : ''}\n\n`;
 		}
@@ -572,7 +575,9 @@ function generateReport(results, oklchTokens) {
 
 				const examples = [];
 				Object.entries(byPrefix).forEach(([prefix, classList]) => {
-					examples.push(`\`${classList.slice(0, 3).join('`, `')}\`${classList.length > 3 ? ` (+${classList.length - 3})` : ''}`);
+					examples.push(
+						`\`${classList.slice(0, 3).join('`, `')}\`${classList.length > 3 ? ` (+${classList.length - 3})` : ''}`
+					);
 				});
 
 				md += examples.join(', ') + '\n\n';

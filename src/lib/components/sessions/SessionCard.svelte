@@ -40,7 +40,9 @@
 		from = ''
 	}: Props = $props();
 
-	const detailHref = $derived(from ? `/2026/sessions/${slug}?from=${from}` : `/2026/sessions/${slug}`);
+	const detailHref = $derived(
+		from ? `/2026/sessions/${slug}?from=${from}` : `/2026/sessions/${slug}`
+	);
 
 	const colorClasses = {
 		pink: 'viz-pink',

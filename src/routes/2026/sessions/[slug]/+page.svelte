@@ -45,7 +45,9 @@
 	<header class="max-w-4xl pt-18 pb-6 md:pt-14">
 		<div class="space-y-4">
 			<Prose>
-				<h6><a href={backLink.href}>{backLink.label.replace('Back to ', '')}</a> | VizChitra 2026</h6>
+				<h6>
+					<a href={backLink.href}>{backLink.label.replace('Back to ', '')}</a> | VizChitra 2026
+				</h6>
 				<h1>{session.title} {session.subtitle}</h1>
 			</Prose>
 

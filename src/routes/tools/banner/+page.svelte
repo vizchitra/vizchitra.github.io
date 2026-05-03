@@ -1,5 +1,13 @@
 <script lang="ts">
-	import { BannerCurve, BannerPolygon, BannerSquare, BannerBlob, Header, ToolsCard, ToolsHeader } from '$lib/components';
+	import {
+		BannerCurve,
+		BannerPolygon,
+		BannerSquare,
+		BannerBlob,
+		Header,
+		ToolsCard,
+		ToolsHeader
+	} from '$lib/components';
 
 	let bannerType: 'polygon' | 'curve' | 'square' | 'blob' = 'curve';
 </script>

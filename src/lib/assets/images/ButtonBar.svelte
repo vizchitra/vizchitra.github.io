@@ -1,5 +1,4 @@
 <script lang="ts">
-
 	// Define the shape of an individual data item using a generic record.
 	type Item = Record<string, any>;
 
@@ -9,7 +8,7 @@
 	export let keyField: string = ''; // Field name used as the unique key (e.g., 'code')
 	export let labelField: string = ''; // Field name used as the display label (e.g., 'name')
 
-  export let onSelect: (value: any) => void; 
+	export let onSelect: (value: any) => void;
 
 	/**
 	 * Reactive statement to compute unique buttons based on the keyField.
@@ -23,7 +22,6 @@
 	 *
 	 * @param item - The selected item object
 	 */
-
 </script>
 
 <!-- Render the button bar UI -->

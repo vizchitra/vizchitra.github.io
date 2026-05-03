@@ -25,24 +25,31 @@ import { Heading, Text, Prose } from '$lib/components/typography';
 Components are organized into 7 main categories:
 
 ### **layout/** - Layout Primitives
+
 Stack, Grid, Flex, Container, Cluster, Switcher, FullBleed
 
 ### **typography/** - Text Components
+
 Heading, SubHeading, Text, Prose, Slanted, ColorSpan, LogoType, LogoTagline, Notice
 
 ### **patterns/** - Visual Patterns & Decorations
+
 BannerPolygon, BannerCurve, BannerSquare, BannerBlob, DividerPolygon, DividerCurves, PatternWaves, PatternRiver, PatternCircle, PatternStream, PatternRough, PatternFormats, Pentagons
 
 ### **interface/** - Interactive UI Components
+
 Button, ButtonBar, Card, FormatCard, CallCard, Dropdown, VideoModal, ColorSwatch, SpeakerDeck, ColumnChart, MarqueeRow, InlineSvg, Deadline, BreadCrumb, ToolsCard, ToolsHeader
 
 ### **structure/** - Page Structure & Navigation
+
 Header, Footer, Hero, NavMenu, MobileNavDrawer, SEO, SocialLink
 
 ### **sections/** - Page Sections & Features
+
 RecapVideo, PurposeThree, VideoGrid, Mission, CallToAction, HeaderCallToAction, FAQ, Map, VenueCard, SponsorCard, SponsorButton, SponsorshipContactForm, TeamSection, MemberPentagon, HomepageSection, ConferenceDetails, KeyNote, Workshop2025, Speakers2025, SpeakerCard, SpeakerDetailsModal, SpeakerCardsTrack, SpeakerPentagon, PolygonPlayground, ImageUpload, SliderInput, SelectInput
 
 ### **proposals/** - Proposal Components
+
 ProposalCard, ProposalBadge, ProposalStatusBadge, ProposalFilters, UpvoteButton
 
 ## Exception: Sibling Component Imports
@@ -73,6 +80,7 @@ import { Button, Stack } from '$lib/components';
 ### Example 1: Route File
 
 **Before:**
+
 ```typescript
 import Header from '$lib/components/structure/Header.svelte';
 import Stack from '$lib/components/layout/Stack.svelte';
@@ -80,6 +88,7 @@ import Cluster from '$lib/components/layout/Cluster.svelte';
 ```
 
 **After:**
+
 ```typescript
 import { Header, Stack, Cluster } from '$lib/components';
 ```
@@ -87,6 +96,7 @@ import { Header, Stack, Cluster } from '$lib/components';
 ### Example 2: Component File
 
 **Before:**
+
 ```typescript
 import BannerPolygon from '$lib/components/patterns/BannerPolygon.svelte';
 import BannerCurve from '$lib/components/patterns/BannerCurve.svelte';
@@ -94,6 +104,7 @@ import FullBleed from '$lib/components/layout/FullBleed.svelte';
 ```
 
 **After:**
+
 ```typescript
 import { BannerPolygon, BannerCurve, FullBleed } from '$lib/components';
 ```
@@ -101,6 +112,7 @@ import { BannerPolygon, BannerCurve, FullBleed } from '$lib/components';
 ### Example 3: Mixed Category Imports
 
 **Before:**
+
 ```typescript
 import { Flex, FullBleed } from '$lib/components/layout';
 import { CallCard, Button } from '$lib/components/interface';
@@ -108,23 +120,24 @@ import { Heading, Text } from '$lib/components/typography';
 ```
 
 **After (consolidated):**
+
 ```typescript
-import {
-  Flex, FullBleed,
-  CallCard, Button,
-  Heading, Text
-} from '$lib/components';
+import { Flex, FullBleed, CallCard, Button, Heading, Text } from '$lib/components';
 ```
 
 **Or (with comments for clarity):**
+
 ```typescript
 import {
-  // Layout
-  Flex, FullBleed,
-  // Interface
-  CallCard, Button,
-  // Typography
-  Heading, Text
+	// Layout
+	Flex,
+	FullBleed,
+	// Interface
+	CallCard,
+	Button,
+	// Typography
+	Heading,
+	Text
 } from '$lib/components';
 ```
 

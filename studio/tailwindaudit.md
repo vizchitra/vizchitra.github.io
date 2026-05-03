@@ -13,33 +13,33 @@ order: 2
 **Files scanned:** 102  
 **Total classes:** 3462  
 **Unique classes:** 985  
-**Avg classes per file:** 33.9  
+**Avg classes per file:** 33.9
 
 ## 📊 Quick Health Metrics
 
-| Metric | Value | Status |
-|--------|-------|--------|
-| OKLCH Token Adoption | 22% | ❌ |
-| Responsive Coverage | 30% | ❌ |
-| Files with Responsive | 31/102 | ⚠️ |
+| Metric                | Value  | Status |
+| --------------------- | ------ | ------ |
+| OKLCH Token Adoption  | 22%    | ❌     |
+| Responsive Coverage   | 30%    | ❌     |
+| Files with Responsive | 31/102 | ⚠️     |
 
 ## 📚 Class Usage by Category
 
-| Category | Total | Percentage |
-|----------|-------|------------|
-| Colors | 739 | 21.3% |
-| Other | 585 | 16.9% |
-| Spacing | 539 | 15.6% |
-| Sizing | 341 | 9.8% |
-| Layout | 278 | 8.0% |
-| Typography | 263 | 7.6% |
-| Positioning | 214 | 6.2% |
-| Flexgrid | 194 | 5.6% |
-| Borders | 132 | 3.8% |
-| Transitions | 70 | 2.0% |
-| Effects | 54 | 1.6% |
-| Interactivity | 41 | 1.2% |
-| Transforms | 12 | 0.3% |
+| Category      | Total | Percentage |
+| ------------- | ----- | ---------- |
+| Colors        | 739   | 21.3%      |
+| Other         | 585   | 16.9%      |
+| Spacing       | 539   | 15.6%      |
+| Sizing        | 341   | 9.8%       |
+| Layout        | 278   | 8.0%       |
+| Typography    | 263   | 7.6%       |
+| Positioning   | 214   | 6.2%       |
+| Flexgrid      | 194   | 5.6%       |
+| Borders       | 132   | 3.8%       |
+| Transitions   | 70    | 2.0%       |
+| Effects       | 54    | 1.6%       |
+| Interactivity | 41    | 1.2%       |
+| Transforms    | 12    | 0.3%       |
 
 ### Classes by Category
 
@@ -63,40 +63,39 @@ order: 2
 
 **Transitions** (70) — `duration-150`, `duration-200`, `duration-300`, `duration-50`, `ease-in-out`, `transition`, `transition-all`, `transition-colors`, `transition-opacity`, `transition-shadow`, `transition-transform`
 
-
 ## 🏆 Most Used Utilities (Top 20)
 
-| Rank | Class | Usage | Category |
-|------|-------|-------|----------|
-| 1 | `flex` | 118 | layout |
-| 2 | `items-center` | 82 | flexgrid |
-| 3 | `w-full` | 82 | sizing |
-| 4 | `font-bold` | 64 | typography |
-| 5 | `relative` | 60 | positioning |
-| 6 | `text-sm` | 57 | colors |
-| 7 | `flex-col` | 48 | layout |
-| 8 | `absolute` | 47 | positioning |
-| 9 | `bg-white` | 33 | colors |
-| 10 | `text-viz-grey` | 31 | colors |
-| 11 | `text-center` | 30 | colors |
-| 12 | `h-full` | 30 | sizing |
-| 13 | `border` | 29 | borders |
-| 14 | `font-medium` | 28 | typography |
-| 15 | `justify-center` | 28 | flexgrid |
-| 16 | `text-lg` | 28 | colors |
-| 17 | `gap-2` | 26 | spacing |
-| 18 | `overflow-hidden` | 26 | other |
-| 19 | `?` | 25 | other |
-| 20 | `:` | 25 | other |
+| Rank | Class             | Usage | Category    |
+| ---- | ----------------- | ----- | ----------- |
+| 1    | `flex`            | 118   | layout      |
+| 2    | `items-center`    | 82    | flexgrid    |
+| 3    | `w-full`          | 82    | sizing      |
+| 4    | `font-bold`       | 64    | typography  |
+| 5    | `relative`        | 60    | positioning |
+| 6    | `text-sm`         | 57    | colors      |
+| 7    | `flex-col`        | 48    | layout      |
+| 8    | `absolute`        | 47    | positioning |
+| 9    | `bg-white`        | 33    | colors      |
+| 10   | `text-viz-grey`   | 31    | colors      |
+| 11   | `text-center`     | 30    | colors      |
+| 12   | `h-full`          | 30    | sizing      |
+| 13   | `border`          | 29    | borders     |
+| 14   | `font-medium`     | 28    | typography  |
+| 15   | `justify-center`  | 28    | flexgrid    |
+| 16   | `text-lg`         | 28    | colors      |
+| 17   | `gap-2`           | 26    | spacing     |
+| 18   | `overflow-hidden` | 26    | other       |
+| 19   | `?`               | 25    | other       |
+| 20   | `:`               | 25    | other       |
 
 ## 🎨 Color Token Analysis
 
-| Metric | Value | Status |
-|--------|-------|--------|
-| OKLCH Token Usage | 164 | ✅ |
-| Raw Hex/Other Colors | 570 | ⚠️ |
-| Token Adoption Rate | 22% | ⚠️ |
-| Unused Tokens | 49 | ℹ️ |
+| Metric               | Value | Status |
+| -------------------- | ----- | ------ |
+| OKLCH Token Usage    | 164   | ✅     |
+| Raw Hex/Other Colors | 570   | ⚠️     |
+| Token Adoption Rate  | 22%   | ⚠️     |
+| Unused Tokens        | 49    | ℹ️     |
 
 ### Color Classes in Use
 
@@ -120,90 +119,95 @@ order: 2
 - `--color-yellow-950`
 - `--color-teal-50`
 - `--color-teal-100`
-- *...and 39 more*
+- _...and 39 more_
 
 ## 📱 Responsive Design Coverage
 
 | Breakpoint | Usage Count | Files |
-|------------|-------------|-------|
-| `sm:` | 23 | - |
-| `md:` | 165 | - |
-| `lg:` | 19 | - |
-| `xl:` | 22 | - |
-| `2xl:` | 0 | - |
+| ---------- | ----------- | ----- |
+| `sm:`      | 23          | -     |
+| `md:`      | 165         | -     |
+| `lg:`      | 19          | -     |
+| `xl:`      | 22          | -     |
+| `2xl:`     | 0           | -     |
 
 **Components with responsive variants:** 31  
-**Components without responsive variants:** 71  
+**Components without responsive variants:** 71
 
 ## 🎭 Variant Usage
 
-| Variant | Count |
-|---------|-------|
-| `hover:` | 52 |
-| `focus:` | 36 |
-| `disabled:` | 8 |
-| `placeholder:` | 3 |
-| `active:` | 1 |
-| `dark:` | 1 |
+| Variant        | Count |
+| -------------- | ----- |
+| `hover:`       | 52    |
+| `focus:`       | 36    |
+| `disabled:`    | 8     |
+| `placeholder:` | 3     |
+| `active:`      | 1     |
+| `dark:`        | 1     |
 
 ## 🧩 Component Complexity
 
-| Complexity | Count | Percentage |
-|------------|-------|------------|
-| Low (<20) | 48 | 47% |
-| Medium (20-50) | 30 | 29% |
-| High (>50) | 24 | 24% |
+| Complexity     | Count | Percentage |
+| -------------- | ----- | ---------- |
+| Low (<20)      | 48    | 47%        |
+| Medium (20-50) | 30    | 29%        |
+| High (>50)     | 24    | 24%        |
 
 ## 📁 Analysis by File Type
 
-| Type | Files | Avg Classes | Total Classes |
-|------|-------|-------------|---------------|
-| Sections | 30 | 42.2 | 1267 |
-| Routes | 16 | 60.8 | 972 |
-| Structure | 18 | 23.7 | 426 |
-| Interface | 15 | 25.7 | 385 |
-| Components | 6 | 51.5 | 309 |
-| Typography | 8 | 11.0 | 88 |
-| Other | 2 | 6.0 | 12 |
-| Layout | 7 | 0.4 | 3 |
+| Type       | Files | Avg Classes | Total Classes |
+| ---------- | ----- | ----------- | ------------- |
+| Sections   | 30    | 42.2        | 1267          |
+| Routes     | 16    | 60.8        | 972           |
+| Structure  | 18    | 23.7        | 426           |
+| Interface  | 15    | 25.7        | 385           |
+| Components | 6     | 51.5        | 309           |
+| Typography | 8     | 11.0        | 88            |
+| Other      | 2     | 6.0         | 12            |
+| Layout     | 7     | 0.4         | 3             |
 
 ## ⚠️ High Complexity Components
 
-| File | Classes | Score | Issues |
-|------|---------|-------|--------|
-| `+page` | 239 | 265 | - |
-| `+page` | 181 | 182 | - |
-| `NavMenu` | 159 | 171 | inline styles |
-| `SpeakerCard` | 138 | 160 | inline styles |
-| `SpeakerDetailsModal` | 141 | 159 | inline styles |
-| `+page` | 148 | 159 | - |
-| `+page` | 140 | 140 | no responsive |
-| `ProposalFilters` | 127 | 132 | - |
-| `SponsorshipContactForm` | 108 | 109 | - |
-| `PolygonPlayground` | 103 | 106 | - |
+| File                     | Classes | Score | Issues        |
+| ------------------------ | ------- | ----- | ------------- |
+| `+page`                  | 239     | 265   | -             |
+| `+page`                  | 181     | 182   | -             |
+| `NavMenu`                | 159     | 171   | inline styles |
+| `SpeakerCard`            | 138     | 160   | inline styles |
+| `SpeakerDetailsModal`    | 141     | 159   | inline styles |
+| `+page`                  | 148     | 159   | -             |
+| `+page`                  | 140     | 140   | no responsive |
+| `ProposalFilters`        | 127     | 132   | -             |
+| `SponsorshipContactForm` | 108     | 109   | -             |
+| `PolygonPlayground`      | 103     | 106   | -             |
 
 ## 💡 Recommendations
 
 ### 🔴 High Priority
 
 **Replace 570 non-token color usages with OKLCH tokens**
+
 - Impact: Brand consistency, easier theming
 - Action: Update classes to use design tokens from app.css
 
 **Add responsive variants to 71 components**
+
 - Impact: Better mobile experience
 - Action: Add `md:` and `lg:` breakpoints where appropriate
 
 ### 🟡 Medium Priority
 
 **Remove 49 unused color tokens**
+
 - Impact: Smaller CSS bundle
 - Action: Delete unused tokens from app.css @theme section
 
 **Refactor 24 high-complexity components**
+
 - Impact: Maintainability and readability
 - Action: Extract repeated patterns into utility components
 
 ---
-*Report generated by VizChitra Tailwind Audit*  
-*Run: `pnpm audit:tailwind`*
+
+_Report generated by VizChitra Tailwind Audit_  
+_Run: `pnpm audit:tailwind`_

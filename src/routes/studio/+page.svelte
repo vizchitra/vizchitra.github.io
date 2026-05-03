@@ -63,14 +63,12 @@
 									<div class="flex items-baseline gap-2">
 										<a
 											href="/studio/{item.slug}"
-											class="text-lg font-medium text-blue-600 hover:text-pink-600 transition-colors underline"
+											class="text-lg font-medium text-blue-600 underline transition-colors hover:text-pink-600"
 										>
 											{item.title}
 										</a>
 										{#if item.generated}
-											<span
-												class="rounded bg-purple-100 px-2 py-0.5 text-xs text-purple-800"
-											>
+											<span class="rounded bg-purple-100 px-2 py-0.5 text-xs text-purple-800">
 												Auto-generated
 											</span>
 										{/if}

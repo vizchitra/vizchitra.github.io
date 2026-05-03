@@ -1,6 +1,6 @@
 import tailwindcss from '@tailwindcss/vite';
 import { sveltekit } from '@sveltejs/kit/vite';
-import contentCollections from "@content-collections/vite";
+import contentCollections from '@content-collections/vite';
 
 import { defineConfig } from 'vite';
 import dsv from '@rollup/plugin-dsv';
@@ -17,12 +17,7 @@ export default defineConfig({
 			'../../content': '/content'
 		}
 	},
-	plugins: [
-		tailwindcss(),
-		contentCollections(),
-		sveltekit(),
-		dsv(),
-		hmrReload()],
+	plugins: [tailwindcss(), contentCollections(), sveltekit(), dsv(), hmrReload()],
 	build: {
 		chunkSizeWarningLimit: 1000,
 		rolldownOptions: {
