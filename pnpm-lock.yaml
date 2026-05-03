@@ -17,12 +17,6 @@ importers:
       roughjs:
         specifier: ^4.6.6
         version: 4.6.6
-      svelte-maplibre-gl:
-        specifier: ^1.0.3
-        version: 1.0.3(maplibre-gl@5.24.0)(svelte@5.55.5(@typescript-eslint/types@8.58.0))
-      svelte-youtube-embed:
-        specifier: ^0.4.6
-        version: 0.4.6(@typescript-eslint/types@8.58.0)
     devDependencies:
       '@content-collections/core':
         specifier: ^0.15.0
@@ -2737,15 +2731,6 @@ packages:
       svelte: ^4.0.0 || ^5.0.0-next.0
       typescript: '>=5.0.0'
 
-  svelte-maplibre-gl@1.0.3:
-    resolution: {integrity: sha512-pGZMLN5EcJoe6lREyaY2lsbkvrnKjIGHJRM2ijN+TUDeJbV9oecjBxbDXQZd8b5X4JJztSG915L731dFdhhSwA==}
-    peerDependencies:
-      maplibre-gl: ^5.0.0 || ^4.0.0
-      svelte: '>=5.0.0'
-
-  svelte-youtube-embed@0.4.6:
-    resolution: {integrity: sha512-93pXtFhnc9azu+NPMTL5EC9Ut7oIu4ECMN358LgmnjQwJaq9ATanH06pcet3OnU9IBITOvhy9fxyfhk0zoUJEQ==}
-
   svelte@5.55.5:
     resolution: {integrity: sha512-2uCs/LZ9us+AktdzYJM8OcxQ8qnPS1kpaO7syGT/MgO+6Qr1Ybl+TqPq+97u7PHqmmMlye5ZkoyXONy5mjjAbw==}
     engines: {node: '>=18'}
@@ -5396,17 +5381,6 @@ snapshots:
       typescript: 6.0.3
     transitivePeerDependencies:
       - picomatch
-
-  svelte-maplibre-gl@1.0.3(maplibre-gl@5.24.0)(svelte@5.55.5(@typescript-eslint/types@8.58.0)):
-    dependencies:
-      maplibre-gl: 5.24.0
-      svelte: 5.55.5(@typescript-eslint/types@8.58.0)
-
-  svelte-youtube-embed@0.4.6(@typescript-eslint/types@8.58.0):
-    dependencies:
-      svelte: 5.55.5(@typescript-eslint/types@8.58.0)
-    transitivePeerDependencies:
-      - '@typescript-eslint/types'
 
   svelte@5.55.5(@typescript-eslint/types@8.58.0):
     dependencies:
