@@ -164,11 +164,11 @@
 		class="sessions-card group white border-viz-grey/40 isolate mx-auto block w-full transform-gpu overflow-hidden rounded border transition-[transform,box-shadow] hover:scale-102"
 	>
 		<div
-			class="session-card-body relative flex aspect-4/5.75 max-h-[85svh] flex-col overflow-visible md:max-h-none"
+			class="session-card-body relative flex aspect-4/5.75 max-h-[85svh] flex-col overflow-hidden md:max-h-none"
 			bind:clientWidth={backgroundWidth}
 			bind:clientHeight={backgroundHeight}
 		>
-			<div class="session-top-text-content z-20 overflow-visible">
+			<div class="session-top-text-content z-20 max-h-[52%] overflow-hidden">
 				<div class="session-card-header relative z-10 p-2.5 pb-0! md:p-4">
 					<div class="title mb-2.5 flex flex-row items-baseline justify-start gap-2 md:mb-3">
 						<div class="logo-container text-xl leading-none text-[#4c4c4c] md:text-2xl">
@@ -219,11 +219,12 @@
 					<div class="short-description-container relative z-10 p-3 pt-0 md:p-4 md:pt-1">
 						<!-- float pushes text away from the photo/pattern on the right -->
 						<div class="text-shape-float" aria-hidden="true"></div>
-						<p
+						<!-- div (not p) so that inner <p> tags from descriptionHtml don't break float context -->
+						<div
 							class="short-description font-body text-shadow mb-1 text-[17px] leading-tight font-normal text-[#4c4c4c] md:text-[18px]"
 						>
 							{@html descriptionHtml}
-						</p>
+						</div>
 					</div>
 				{/if}
 			</div>
@@ -418,26 +419,9 @@
 		max-width: min(300px, 55%);
 	}
 
-	/* .session-top-text-content {
-		position: relative;
-		background: rgba(255, 255, 255, 0.8);
-	} */
-
-	/* .session-top-text-content::after {
-		content: '';
-		position: absolute;
-		left: 0;
-		width: 100%;
-		height: 40px;
-		bottom: -40px;
-		background: linear-gradient(
-			to bottom,
-			rgba(255, 255, 255, 0.75) 0%,
-			rgba(255, 255, 255, 0) 100%
-		);
-		z-index: -1;
-		pointer-events: none;
-	} */
+	.session-top-text-content {
+		/* max-h set inline (52%) caps text area so background-container always gets space */
+	}
 
 	@media (min-width: 550px) {
 		.session-top-text-content::after {
@@ -449,10 +433,15 @@
 	.text-shape-float {
 		float: right;
 		width: 46%;
-		height: 8em;
-		/* circle centred on the right, curving the text away from the photo */
+		height: 5em; /* smaller on mobile to preserve pattern area height */
 		shape-outside: circle(55% at 88% 55%);
 		shape-margin: 0.5rem;
+	}
+
+	@media (min-width: 550px) {
+		.text-shape-float {
+			height: 8em;
+		}
 	}
 
 	.text-shadow {
