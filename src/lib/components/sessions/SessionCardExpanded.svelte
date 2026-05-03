@@ -216,7 +216,7 @@
 				</div>
 
 				{#if isExpanded}
-					<div class="short-description-container relative z-10 p-3 pt-0 md:p-4 md:pt-1">
+					<div class="short-description-container absolute z-10 p-3 pt-0 md:p-4 md:pt-1">
 						<!-- float pushes text away from the photo/pattern on the right -->
 						<div class="text-shape-float" aria-hidden="true"></div>
 						<!-- div (not p) so that inner <p> tags from descriptionHtml don't break float context -->
@@ -229,7 +229,7 @@
 				{/if}
 			</div>
 			<div
-				class="background-container-expanded relative z-0 flex min-h-[36%] w-full flex-1 flex-row items-center justify-end"
+				class="background-container-expanded relative z-0 flex w-full flex-1 flex-row items-center justify-end"
 			>
 				<SessionCardBackground
 					{sessionType}
@@ -254,7 +254,7 @@
 			</div>
 
 			<div
-				class="speaker-details-overlay pointer-events-auto relative flex flex-col"
+				class="speaker-details-overlay pointer-events-auto absolute inset-x-0 bottom-0 z-10 flex flex-col"
 				style:background-color={overlayColors[color] ?? overlayColors.blue}
 			>
 				<!-- wave height = card-width/3; padding-bottom% is relative to own width (inset-x-0) -->
@@ -433,15 +433,8 @@
 	.text-shape-float {
 		float: right;
 		width: 52%;
-		height: 5em;
-		shape-outside: circle(65% at 90% 50%);
-		shape-margin: 0.75rem;
-	}
-
-	@media (min-width: 550px) {
-		.text-shape-float {
-			height: 9em;
-		}
+		height: 12em;
+		shape-outside: polygon(70% 0%, 100% 0%, 100% 100%, -75% 100%);
 	}
 
 	.text-shadow {
