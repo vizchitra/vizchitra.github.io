@@ -32,6 +32,20 @@ const CONTAINER_DIRECTIVES = {
 // SECTION 3: Block/Leaf Directives (::name)
 // ============================================
 
+const BUTTON_COLOR_VARS = {
+	blue: '--color-viz-blue-solid',
+	pink: '--color-viz-pink-solid',
+	teal: '--color-viz-teal-solid',
+	orange: '--color-viz-orange-solid',
+	yellow: '--color-viz-yellow-solid'
+};
+
+const BUTTON_SIZE_CLASSES = {
+	sm: 'text-sm',
+	md: 'text-base',
+	lg: 'text-lg'
+};
+
 const BLOCK_DIRECTIVES = {
 	hr: {
 		transform: () => ({
@@ -50,6 +64,52 @@ const BLOCK_DIRECTIVES = {
 				'aria-hidden': 'true'
 			}
 		})
+	},
+
+	button: {
+		transformsChildren: true,
+		transform: (node) => {
+			const attrs = node.attributes || {};
+			const href = attrs.href || '#';
+			const color = attrs.color || 'orange';
+			const size = attrs.size || 'md';
+			const external = attrs.external === 'true' || attrs.external === '';
+			const label = getTextContent(node) || attrs.label || 'Learn More';
+
+			const bgColorVar = BUTTON_COLOR_VARS[color] ?? BUTTON_COLOR_VARS.orange;
+			const sizeClass = BUTTON_SIZE_CLASSES[size] ?? BUTTON_SIZE_CLASSES.md;
+
+			const hChildren = [{ type: 'text', value: label }];
+			if (external) {
+				hChildren.push({
+					type: 'element',
+					tagName: 'span',
+					properties: { className: ['ml-1', 'text-lg'] },
+					children: [{ type: 'text', value: '↗' }]
+				});
+			}
+
+			return {
+				hName: 'a',
+				hProperties: {
+					href,
+					...(external && { target: '_blank', rel: 'noopener noreferrer' }),
+					style: `background-color: var(${bgColorVar}); color: white;`,
+					className: [
+						'btn', 'not-prose', 'inline-flex', 'transform', 'items-center',
+						'justify-center', 'rounded-sm', 'px-4', 'py-4', 'text-center',
+						'text-xl', 'font-semibold', 'text-white', 'no-underline',
+						'transition-transform', 'duration-300', 'ease-in-out',
+						'hover:-translate-y-1', 'hover:scale-102',
+						'hover:shadow-[0_12px_30px_rgba(0,0,0,0.14),0_0_22px_rgba(255,255,255,0.06)]',
+						'focus:outline-none', 'focus-visible:ring-4',
+						'focus-visible:ring-white/10', 'focus-visible:outline-none',
+						sizeClass
+					]
+				},
+				hChildren
+			};
+		}
 	}
 };
 
