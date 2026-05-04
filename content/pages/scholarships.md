@@ -19,7 +19,7 @@ These financial aid scholarships exist to make that possible. If cost is standin
 
 ## The Scholarship
 
-With the support of Friends of VizChitra and sponsors, we are offering full scholarships for **10 individuals** to attend the VizChitra 2026. The scholarship covers the ticket cost for the Conference Day on 04 July 2026. Recipients travelling from outside Bangalore can also receive up to **₹5,000 towards travel and accommodation** (reimbursed on actuals).
+With the support of Friends of VizChitra and sponsors, we are offering full scholarships for **10 individuals** to attend the VizChitra 2026. The scholarship covers the ticket cost for the Conference Day on 04 July 2026. Recipients travelling from outside Bangalore also receive **₹5,000 towards travel and accommodation**.
 
 ## Who should apply
 
@@ -36,8 +36,6 @@ You don't need to tick every box. If you're unsure, apply.
 ## How it works
 
 Fill out the form before **May 25, 2026**. Applications will be reviewed by a panel from the VizChitra community based on financial need, geographic access, career stage, impact outcome, and lived experience. Final decisions will be communicated by email within a week of the deadline.
-
-Already bought a ticket? If your application is selected, we'll issue a refund.
 
 ::button[Apply for Scholarship]{href="https://forms.vizchitra.com/scholarships" color="pink"}
 
