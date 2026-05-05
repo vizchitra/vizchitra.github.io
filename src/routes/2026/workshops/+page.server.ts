@@ -20,7 +20,11 @@ export const load: PageServerLoad = async () => {
 	);
 
 	// Sort by configured order in speakerConfig, then push TBD entries last
-	sessions.sort((a, b) => getSpeakerOrder(a.speakerName) - getSpeakerOrder(b.speakerName));
+	sessions.sort(
+		(a, b) =>
+			getSpeakerOrder(a.speakerName, a.sessionType) -
+			getSpeakerOrder(b.speakerName, b.sessionType)
+	);
 	sessions.sort((a, b) => Number(a.tbd) - Number(b.tbd));
 
 	return {

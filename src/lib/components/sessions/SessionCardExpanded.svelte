@@ -245,7 +245,7 @@
 			>
 				<div
 					class="speaker-image absolute right-5 bottom-0 origin-center transition-transform duration-300 group-hover:scale-104 group-hover:rotate-1"
-					style:transform={buildSpeakerImageTransform(speakerName, screenWidth)}
+					style:transform={buildSpeakerImageTransform(speakerName, screenWidth, sessionType)}
 				>
 					<img
 						class="relative z-10 h-auto w-full"
