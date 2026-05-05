@@ -17,13 +17,32 @@
 
 /** @type {Record<string, { x?: number; y?: number; scale?: number; order?: number }>} */
 export const speakerImageTransforms = {
+	// Workshops
 	'Kenneth Dsouza / Rasagy Sharma': { x: 10, y: -65, scale: 1.3, order: 1 },
 	'Areena Arora': { x: 10, y: 5, scale: 1.1, order: 2 },
 	'Schubert de Abreu': { x: 14, y: -25, scale: 1.1, order: 3 },
 	'Priti Pandurangan': { x: 15, y: -30, scale: 0.9, order: 4 },
 	'Adolfo Arranz': { x: 15, y: -30, scale: 1.2, order: 5 },
 	'Prakriti Bakshi': { x: 0, y: 12, scale: 1.2, order: 6 },
-	'Prasanta Kumar Dutta': { x: 15, y: -25, scale: 1.3, order: 7 }
+	'Prasanta Kumar Dutta': { x: 15, y: -25, scale: 1.3, order: 7 },
+
+	// Talks
+	'Saurabh Arora': { x: 10, y: -25, scale: 1.2, order: 8 },
+	'Shubhra Agarwal': { x: 10, y: -25, scale: 1.2, order: 9 },
+	'Bargava Subramanian': { x: 10, y: -25, scale: 1.2, order: 10 },
+	'Supriya Joshi': { x: 10, y: -25, scale: 1.2, order: 11 },
+	'Shalaka Shinde': { x: 10, y: -25, scale: 1.2, order: 12 },
+	'Jaidev Deshpande': { x: 10, y: -25, scale: 1.2, order: 13 },
+	'Sneha Kaul': { x: 10, y: -25, scale: 1.2, order: 14 },
+	'Abhiram Jois': { x: 10, y: -25, scale: 1.2, order: 15 },
+	'Priti Pandurangan__Talks': { x: 10, y: -25, scale: 1.2, order: 16 },
+	'Siddharth Agarwal': { x: 10, y: -25, scale: 1.2, order: 17 },
+	'Rohit Bhardwaj': { x: 10, y: -25, scale: 1.2, order: 18 },
+
+	// Dialogues
+	'Anand S': { x: 10, y: -25, scale: 1.2, order: 19 },
+	'Agriya Khetarpal': { x: 10, y: -25, scale: 1.2, order: 20 },
+	'Lakshmi Chockalingam': { x: 10, y: -25, scale: 1.2, order: 21 }
 };
 
 /**
