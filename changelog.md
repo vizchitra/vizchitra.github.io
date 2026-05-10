@@ -5,6 +5,20 @@ Format: date, what changed, why, key files, notes for the next agent.
 
 ---
 
+## 2026-05-10 — fix: stage 500 error, build info footer, wrangler compat bump
+
+**What changed:**
+
+1. Stage endpoint wrapped in top-level try/catch so all errors return JSON instead of an HTML 500 page. Error messages will now surface correctly in the studio UI.
+2. Build SHA and branch injected at build time via `vite.config.js` `define` using `CF_PAGES_COMMIT_SHA` / `CF_PAGES_BRANCH`. Shown as `#abc1234 · branch` in footer of both `/studio` and `/studio/login`.
+3. `wrangler.toml` bumped to `compatibility_date = "2025-05-01"` and `nodejs_compat_v2` flag to enable latest Node.js API polyfills in CF Workers.
+
+**Why:** Stage endpoint was returning HTML 500 (crashing before JSON response), hiding the real error. Build info footer needed for deployment visibility. Older compat date may have caused Worker import failures with `@octokit/rest`.
+
+**Key files:** `src/routes/api/studio/stage/+server.ts`, `vite.config.js`, `src/lib/build.ts` (new), `src/routes/studio/+page.svelte`, `src/routes/studio/login/+page.svelte`, `wrangler.toml`
+
+---
+
 ## 2026-05-10 — fix: studio auth KV consistency and save error messages
 
 **What changed:** Two fixes:

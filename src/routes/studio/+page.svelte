@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { PageProps } from './$types';
 	import type { FlatGroup, TreeGroup, SubmissionRow, SessionRow } from './+page.server';
+	import { buildSha, buildBranch } from '$lib/build';
 
 	let { data }: PageProps = $props();
 	const user = $derived(data.user);
@@ -395,4 +396,7 @@
 			{/if}
 		</div>
 	</main>
+	<footer class="pb-6 text-center">
+		<span class="text-grey-700 font-mono text-xs">#{buildSha} · {buildBranch}</span>
+	</footer>
 </div>

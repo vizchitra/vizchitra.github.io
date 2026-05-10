@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { PageProps } from './$types';
 	import Header from '$lib/components/structure/Header.svelte';
+	import { buildSha, buildBranch } from '$lib/build';
 	let { data }: PageProps = $props();
 </script>
 
@@ -40,4 +41,7 @@
 			Sign in with GitHub
 		</a>
 	</div>
+	<footer class="pb-6 text-center">
+		<span class="text-grey-400 font-mono text-xs">#{buildSha} · {buildBranch}</span>
+	</footer>
 </div>
