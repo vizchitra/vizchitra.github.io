@@ -4,18 +4,31 @@
 	import { panelStore } from './PanelStore';
 
 	const STATUSES = ['Under Review', 'Selected', 'Not Proceeding'] as const;
-	type Status = (typeof STATUSES)[number];
 
 	interface Props {
 		submissionType: 'cfp' | 'cfe';
 		id: string;
-		initialStatus: string;
+		/** Whether the user is currently editing (controlled by parent) */
+		isEditing: boolean;
+		onStartEdit: () => void;
+		onStopEdit: () => void;
+		onCancel: () => void;
 		status: string;
 		onStatusChange: (s: string) => void;
 		getNotes: () => string;
 	}
 
-	let { submissionType, id, initialStatus, status, onStatusChange, getNotes }: Props = $props();
+	let {
+		submissionType,
+		id,
+		isEditing,
+		onStartEdit,
+		onStopEdit,
+		onCancel,
+		status,
+		onStatusChange,
+		getNotes
+	}: Props = $props();
 
 	// ── Panel state ──────────────────────────────────────────────
 	let collapsed = $state(false);
@@ -25,12 +38,11 @@
 	});
 	onDestroy(() => panelStore.set('hidden'));
 
-	// ── Feedback state ───────────────────────────────────────────
-	let dirty = $state(false);
+	// ── Save / stage ─────────────────────────────────────────────
 	let saving = $state(false);
-	let saveStatus = $state<'idle' | 'staged' | 'error'>('idle');
-	let stagedCount = $state(0);
+	let saveStatus = $state<'idle' | 'saved' | 'staged' | 'error'>('idle');
 	let errorMessage = $state<string | null>(null);
+	let stagedCount = $state(0);
 
 	onMount(() => {
 		if (!dev) {
@@ -42,12 +54,6 @@
 				.catch(() => {});
 		}
 	});
-
-	function setStatus(s: string) {
-		onStatusChange(s);
-		dirty = true;
-		saveStatus = 'idle';
-	}
 
 	async function save() {
 		saving = true;
@@ -61,15 +67,25 @@
 			});
 			if (!res.ok) throw new Error('Save failed');
 			const data = (await res.json()) as { stagedCount?: number };
-			stagedCount = data.stagedCount ?? stagedCount + 1;
-			saveStatus = 'staged';
-			dirty = false;
+			if (dev) {
+				saveStatus = 'saved';
+			} else {
+				stagedCount = data.stagedCount ?? stagedCount + 1;
+				saveStatus = 'staged';
+			}
+			onStopEdit();
 		} catch {
 			saveStatus = 'error';
 			errorMessage = 'Save failed — try again';
 		} finally {
 			saving = false;
 		}
+	}
+
+	function cancel() {
+		onCancel();
+		saveStatus = 'idle';
+		errorMessage = null;
 	}
 
 	// ── Publish ──────────────────────────────────────────────────
@@ -103,8 +119,6 @@
 			publishing = false;
 		}
 	}
-
-	const filePath = `content/2026/feedback/${submissionType}.json`;
 </script>
 
 <!-- Collapsed strip -->
@@ -186,13 +200,14 @@
 			<p class="text-viz-grey-light font-mono text-sm font-medium">{submissionType}.json</p>
 		</div>
 
-		<!-- Dirty indicator -->
+		<!-- Edit-state indicator -->
 		<div class="border-grey-800 border-b px-4 py-3">
 			<div class="flex items-center gap-2">
-				<span class="h-2 w-2 flex-shrink-0 rounded-full {dirty ? 'bg-amber-400' : 'bg-emerald-500'}"
-				></span>
+				{#if isEditing}
+					<span class="h-2 w-2 flex-shrink-0 rounded-full bg-amber-400"></span>
+				{/if}
 				<span class="text-viz-grey-muted text-xs">
-					{dirty ? 'Unsaved changes' : 'No changes'}
+					{isEditing ? 'Editing' : 'Viewing'}
 				</span>
 			</div>
 		</div>
@@ -212,51 +227,83 @@
 					</p>
 				</div>
 
-				<!-- Status select -->
+				<!-- Status — select when editing, read-only pill when viewing -->
 				<div class="mb-3">
 					<label class="text-viz-grey-muted mb-1 block text-xs font-medium" for="feedback-status">
 						status
 					</label>
-					<select
-						id="feedback-status"
-						value={status}
-						onchange={(e) => setStatus((e.target as HTMLSelectElement).value)}
-						class="border-grey-700 bg-grey-800 text-viz-grey-light focus:border-viz-yellow w-full rounded border px-2.5 py-1.5 text-xs focus:outline-none"
-					>
-						{#each STATUSES as s}
-							<option value={s}>{s}</option>
-						{/each}
-					</select>
+					{#if isEditing}
+						<select
+							id="feedback-status"
+							value={status}
+							onchange={(e) => onStatusChange((e.target as HTMLSelectElement).value)}
+							class="border-grey-700 bg-grey-800 text-viz-grey-light focus:border-viz-yellow w-full rounded border px-2.5 py-1.5 text-xs focus:outline-none"
+						>
+							{#each STATUSES as s}
+								<option value={s}>{s}</option>
+							{/each}
+						</select>
+					{:else}
+						<p
+							class="border-grey-700 bg-grey-800 text-viz-grey-muted w-full rounded border px-2.5 py-1.5 text-xs"
+						>
+							{status}
+						</p>
+					{/if}
 				</div>
 
-				<p class="text-viz-grey-muted text-[10px]">
-					Edit notes directly on the page. Use Save to stage changes.
-				</p>
+				{#if isEditing}
+					<p class="text-viz-grey-muted text-[10px]">Edit notes directly on the page below.</p>
+				{/if}
 			</div>
 		</div>
 
 		<!-- Footer actions -->
 		<div class="border-grey-800 space-y-2 border-t px-4 py-3">
-			{#if saveStatus === 'error'}
-				<p class="text-xs text-red-400">{errorMessage}</p>
-			{:else if saveStatus === 'staged'}
-				<p class="text-xs text-emerald-400">✓ Staged! Hit Publish below to go live.</p>
+			{#if isEditing}
+				<!-- Save status messages -->
+				{#if saveStatus === 'error'}
+					<p class="text-xs text-red-400">{errorMessage}</p>
+				{:else if saveStatus === 'saved'}
+					<p class="text-xs text-emerald-400">✓ Saved to disk</p>
+				{:else if saveStatus === 'staged'}
+					<p class="text-xs text-emerald-400">
+						✓ Saved! When you're done, hit Publish below to go live.
+					</p>
+				{/if}
+
+				<div class="flex gap-2">
+					<button
+						type="button"
+						onclick={cancel}
+						class="border-grey-700 text-viz-grey-muted hover:border-grey-600 hover:text-viz-grey-light flex-1 rounded border px-3 py-1.5 text-xs transition-colors"
+					>
+						Cancel
+					</button>
+					<button
+						type="button"
+						onclick={save}
+						disabled={saving}
+						class="bg-viz-yellow text-grey-900 flex-1 rounded px-3 py-1.5 text-xs font-semibold transition-opacity hover:opacity-90 disabled:opacity-50"
+					>
+						{saving ? 'Saving…' : 'Save'}
+					</button>
+				</div>
+			{:else}
+				<button
+					type="button"
+					onclick={() => {
+						onStartEdit();
+						saveStatus = 'idle';
+					}}
+					class="bg-viz-yellow text-grey-900 w-full rounded px-3 py-2 text-xs font-semibold transition-opacity hover:opacity-90"
+				>
+					Edit feedback
+				</button>
 			{/if}
 
-			<button
-				type="button"
-				onclick={save}
-				disabled={saving}
-				class="bg-viz-yellow text-grey-900 relative w-full rounded px-3 py-1.5 text-xs font-semibold transition-opacity hover:opacity-90 disabled:opacity-50"
-			>
-				{#if dirty}
-					<span class="absolute -top-1 -right-1 h-2 w-2 rounded-full bg-amber-500"></span>
-				{/if}
-				{saving ? 'Saving…' : 'Save feedback'}
-			</button>
-
-			<!-- Publish (prod only, when staged changes exist) -->
-			{#if !dev && stagedCount > 0}
+			<!-- Publish (prod only, when staged changes exist and not currently editing) -->
+			{#if !dev && stagedCount > 0 && !isEditing}
 				<div class="mt-1 space-y-1.5">
 					<p class="text-[10px] tracking-widest text-[var(--color-grey-500)] uppercase">
 						{stagedCount} change{stagedCount !== 1 ? 's' : ''} ready to publish

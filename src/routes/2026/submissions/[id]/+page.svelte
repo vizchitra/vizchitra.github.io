@@ -44,6 +44,11 @@
 	let isStudioUser = $state(false);
 	let statusRef = $state(data.feedback?.status ?? 'Under Review');
 	let notesRef = $state(data.feedback?.notes ?? '');
+	let isEditing = $state(false);
+
+	// Snapshots taken when entering edit mode — used for cancel revert
+	let savedStatus = $state(statusRef);
+	let savedNotes = $state(notesRef);
 
 	onMount(async () => {
 		try {
@@ -53,6 +58,22 @@
 			// Not authed
 		}
 	});
+
+	function startEdit() {
+		savedStatus = statusRef;
+		savedNotes = notesRef;
+		isEditing = true;
+	}
+
+	function stopEdit() {
+		isEditing = false;
+	}
+
+	function cancelEdit() {
+		statusRef = savedStatus;
+		notesRef = savedNotes;
+		isEditing = false;
+	}
 
 	function getNotes() {
 		return notesRef;
@@ -64,7 +85,10 @@
 	<FeedbackPanel
 		submissionType={proposal.type}
 		id={proposal.id}
-		initialStatus={statusRef}
+		{isEditing}
+		onStartEdit={startEdit}
+		onStopEdit={stopEdit}
+		onCancel={cancelEdit}
 		status={statusRef}
 		onStatusChange={(s) => (statusRef = s)}
 		{getNotes}
@@ -306,6 +330,7 @@
 
 		{#if isStudioUser}
 			<EditableFeedback
+				{isEditing}
 				status={statusRef}
 				initialNotes={notesRef}
 				onNotesChange={(n) => (notesRef = n)}
