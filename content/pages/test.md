@@ -5,12 +5,8 @@ slug: test
 banner: blob
 color: blue
 ---
-# Testing the
+# Testing the Studio Setup
 
-To verify that the new Studio setup can read front matter from markdown files in the `content/pages` collection and display them correctly in the Studio UI.
+To verify that the new Studio setup can read files and it is possible for us to edit the files. Display  `content/pages` and \`collection\` and display them correctly in the Studio UI.
 
-You can change the text here.
-
-Hello changing this page.
-
-## :slanted[This is a slanted heading]
+:slanted[This is a slanted salutation.]
