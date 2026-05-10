@@ -13,6 +13,7 @@ declare global {
 				STUDIO_GITHUB_CLIENT_SECRET: string;
 				STUDIO_ALLOWED_USERS: string;
 				STUDIO_GITHUB_TOKEN?: string;
+				STUDIO_BASE_URL?: string;
 			};
 			context: ExecutionContext;
 			caches: CacheStorage & { default: Cache };
