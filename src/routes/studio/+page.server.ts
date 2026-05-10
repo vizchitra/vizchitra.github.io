@@ -1,5 +1,6 @@
 import type { PageServerLoad } from './$types';
 import { redirect } from '@sveltejs/kit';
+import matter from 'gray-matter';
 import { studioConfig, type StudioCollection } from '../../../studio.config';
 import { parseCFPProposals, parseCFEProposals } from '$lib/utils/csv-parser';
 import { resolveAllSessions } from '$lib/utils/sessions';
@@ -7,6 +8,17 @@ import cfpRaw from '../../../content/2026/data/cfp.csv?raw';
 import cfeRaw from '../../../content/2026/data/cfe.csv?raw';
 import cfpFeedback from '../../../content/2026/feedback/cfp.json';
 import cfeFeedback from '../../../content/2026/feedback/cfe.json';
+
+// Vite pre-bundles all studio content files at build time.
+// Works in both dev (HMR keeps it live) and Cloudflare Workers (no node:fs needed).
+const _rawMarkdown = import.meta.glob<{ default: string }>('/content/**/*.md', {
+	query: '?raw',
+	eager: true
+});
+// Normalise keys: '/content/pages/about.md' → 'content/pages/about.md'
+const markdownContent: Record<string, string> = Object.fromEntries(
+	Object.entries(_rawMarkdown).map(([p, m]) => [p.replace(/^\//, ''), m.default])
+);
 
 export interface SubmissionRow {
 	id: string;
@@ -61,42 +73,49 @@ export type ContentGroup = FlatGroup | TreeGroup;
 
 // ── Content tree builder ──────────────────────────────────────────────────────
 
-async function buildContentTree(collections: StudioCollection[]): Promise<ContentGroup[]> {
-	// node:fs is only available in Node.js dev server, not Cloudflare Workers
-	let readdirSync: (typeof import('node:fs'))['readdirSync'];
-	let readFileSync: (typeof import('node:fs'))['readFileSync'];
-	let statSync: (typeof import('node:fs'))['statSync'];
-	let join: (typeof import('node:path'))['join'];
-	let matter: (typeof import('gray-matter'))['default'];
-	try {
-		({ readdirSync, readFileSync, statSync } = await import('node:fs'));
-		({ join } = await import('node:path'));
-		({ default: matter } = await import('gray-matter'));
-	} catch {
-		return [];
-	}
-
-	function getTitle(fullPath: string): string {
+function buildContentTree(collections: StudioCollection[]): ContentGroup[] {
+	function getTitle(filePath: string): string {
+		const raw = markdownContent[filePath];
+		if (!raw)
+			return (
+				filePath
+					.split('/')
+					.pop()
+					?.replace(/\.[^.]+$/, '') ?? filePath
+			);
 		try {
-			const raw = readFileSync(fullPath, 'utf-8');
-			return matter(raw).data?.title ?? fullPath.split('/').pop() ?? fullPath;
+			return (
+				(matter(raw).data?.title as string) ??
+				filePath
+					.split('/')
+					.pop()
+					?.replace(/\.[^.]+$/, '') ??
+				filePath
+			);
 		} catch {
-			return fullPath.split('/').pop() ?? fullPath;
+			return (
+				filePath
+					.split('/')
+					.pop()
+					?.replace(/\.[^.]+$/, '') ?? filePath
+			);
 		}
 	}
 
-	function getFrontmatterField(fullPath: string, field: string): string {
+	function getFrontmatterField(filePath: string, field: string): string {
+		const raw = markdownContent[filePath];
+		if (!raw) return '';
 		try {
-			return (matter(readFileSync(fullPath, 'utf-8')).data?.[field] as string) ?? '';
+			return (matter(raw).data?.[field] as string) ?? '';
 		} catch {
 			return '';
 		}
 	}
 
-	function resolveUrl(template: string, slug: string, dirSlug: string, fullPath: string): string {
+	function resolveUrl(template: string, slug: string, dirSlug: string, filePath: string): string {
 		let url = template.replace('{dirSlug}', dirSlug).replace('{slug}', slug);
 		if (url.includes('{section}')) {
-			url = url.replace('{section}', getFrontmatterField(fullPath, 'section'));
+			url = url.replace('{section}', getFrontmatterField(filePath, 'section'));
 		}
 		// Unresolved tokens, empty trailing segment, or double slashes → no link
 		if (url.includes('{') || url.endsWith('/') || url.includes('//')) return '';
@@ -104,32 +123,23 @@ async function buildContentTree(collections: StudioCollection[]): Promise<Conten
 	}
 
 	function filesForCollection(col: StudioCollection): FileEntry[] {
-		const isMarkdown = col.type === 'markdown';
 		const dirSlug = col.path.split('/').pop() ?? '';
-		let filenames: string[] = [];
-		try {
-			filenames = readdirSync(col.path)
-				.filter((f) => {
-					try {
-						return (
-							statSync(join(col.path, f)).isFile() &&
-							!f.startsWith('.') &&
-							(!isMarkdown || f.endsWith('.md'))
-						);
-					} catch {
-						return false;
-					}
-				})
-				.sort();
-		} catch {
-			// directory missing — return empty
-		}
+		const prefix = col.path + '/';
+		const filenames = Object.keys(markdownContent)
+			.filter((p) => p.startsWith(prefix) && !p.slice(prefix.length).includes('/'))
+			.filter((p) => {
+				const f = p.slice(prefix.length);
+				return !f.startsWith('.') && f.endsWith('.md');
+			})
+			.map((p) => p.slice(prefix.length))
+			.sort();
+
 		return filenames.map((f) => {
-			const fullPath = join(col.path, f);
-			const slug = f.replace(/\.[^.]+$/, '');
-			const title = isMarkdown ? getTitle(fullPath) : f;
-			const url = col.urlTemplate ? resolveUrl(col.urlTemplate, slug, dirSlug, fullPath) : '';
-			return { title, filePath: `${col.path}/${f}`, url };
+			const filePath = `${col.path}/${f}`;
+			const slug = f.replace(/\.md$/, '');
+			const title = getTitle(filePath);
+			const url = col.urlTemplate ? resolveUrl(col.urlTemplate, slug, dirSlug, filePath) : '';
+			return { title, filePath, url };
 		});
 	}
 
@@ -182,7 +192,7 @@ export const load: PageServerLoad = async ({ locals, platform }) => {
 		.map((h: string) => h.trim())
 		.filter(Boolean);
 
-	const contentGroups = await buildContentTree(studioConfig.collections);
+	const contentGroups = buildContentTree(studioConfig.collections);
 
 	// ── Submissions + feedback ────────────────────────────────────────────────
 	type FeedbackMap = Record<string, { status?: string; notes?: string }>;
