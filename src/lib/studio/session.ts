@@ -104,13 +104,6 @@ export async function deleteSession(kv: KVNamespace, sessionId: string): Promise
 	await kv.delete(sessionId);
 }
 
-export function isAllowedUser(allowedUsers: string, handle: string): boolean {
-	return allowedUsers
-		.split(',')
-		.map((h) => h.trim().toLowerCase())
-		.includes(handle.toLowerCase());
-}
-
 export function requireAuth(event: RequestEvent): { handle: string } {
 	const user = event.locals.studioUser;
 	if (!user) {
