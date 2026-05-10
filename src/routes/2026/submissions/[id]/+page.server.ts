@@ -4,7 +4,10 @@ import { marked } from 'marked';
 import { parseCFPProposals, parseCFEProposals } from '$lib/utils/csv-parser';
 import cfpRaw from '../../../../../content/2026/data/cfp.csv?raw';
 import cfeRaw from '../../../../../content/2026/data/cfe.csv?raw';
+import cfpFeedbackRaw from '../../../../../content/2026/feedback/cfp.json';
+import cfeFeedbackRaw from '../../../../../content/2026/feedback/cfe.json';
 
+// Prerender the static shell; studio users get runtime data via client fetch
 export const prerender = true;
 
 export const entries: EntryGenerator = async () => {
@@ -51,12 +54,19 @@ export const load: PageServerLoad = async ({ params }) => {
 		};
 	}
 
+	// Feedback data (from committed JSON — studio users get live data client-side)
+	const feedbackMap = proposal.type === 'cfp'
+		? (cfpFeedbackRaw as Record<string, { status: string; notes: string }>)
+		: (cfeFeedbackRaw as Record<string, { status: string; notes: string }>);
+	const feedback = feedbackMap[proposal.id] ?? null;
+
 	// Vote data will be fetched client-side by the UpvoteButton component
 	// This avoids trying to fetch from the non-prerenderable API during prerendering
 	return {
 		proposal,
 		descriptionHtml,
 		additionalHtml,
+		feedback,
 		voteData: { votes: 0, hasVoted: false },
 		pageMeta: {
 			title: `${title} | VizChitra 2026 Proposals`,

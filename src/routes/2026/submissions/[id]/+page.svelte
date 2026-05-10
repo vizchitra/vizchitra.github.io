@@ -3,6 +3,7 @@
 	import { Heading, Prose } from '$lib/components/typography';
 	import { Container } from '$lib/components/layout';
 	import { ProposalBadge, ProposalStatusBadge, UpvoteButton } from '$lib/components/proposals';
+	import EditableFeedback from '$lib/studio/editor/EditableFeedback.svelte';
 	import type { PageData } from './$types';
 	import type { CFPProposal, CFEProposal } from '$lib/types/proposals';
 
@@ -270,6 +271,17 @@
 				</section>
 			{/if}
 		{/if}
+
+		{#await fetch('/api/studio/me').then(r => r.ok ? r.json() : null) then user}
+			{#if user?.handle}
+				<EditableFeedback
+					submissionType={proposal.type}
+					id={proposal.id}
+					initialStatus={data.feedback?.status ?? 'Under Review'}
+					initialNotes={data.feedback?.notes ?? ''}
+				/>
+			{/if}
+		{/await}
 
 		<div class="border-viz-grey/10 mt-16 border-t pt-8 text-center">
 			<a
