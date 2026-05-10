@@ -323,7 +323,7 @@
     "display": false
   },
   {
-    "slug": "from-tables-to-maps-19",
+    "slug": "from-tables-to-maps",
     "sessionType": "Workshop",
     "date": "2026-07-03T10:00",
     "time": "14:30 - 17:30",
@@ -340,7 +340,7 @@
     "display": true
   },
   {
-    "slug": "draw-with-data-20",
+    "slug": "draw-with-data",
     "sessionType": "Workshop",
     "date": "2026-07-03T10:01",
     "time": "10:00 - 13:00",
@@ -357,7 +357,7 @@
     "display": true
   },
   {
-    "slug": "a-dataviz-crash-course-21",
+    "slug": "a-dataviz-crash-course",
     "sessionType": "Workshop",
     "date": "2026-07-03T10:02",
     "time": "14:30 - 17:30",
@@ -374,7 +374,7 @@
     "display": true
   },
   {
-    "slug": "data-rough-22",
+    "slug": "data-rough",
     "sessionType": "Workshop",
     "date": "2026-07-03T10:03",
     "time": "14:30 - 17:30",
@@ -391,7 +391,7 @@
     "display": true
   },
   {
-    "slug": "observe-collect-map-23",
+    "slug": "observe-collect-map",
     "sessionType": "Workshop",
     "date": "2026-07-03T10:04",
     "time": "10:00 - 13:00",
@@ -408,7 +408,7 @@
     "display": true
   },
   {
-    "slug": "interactive-dataviz-using-ai-coding-24",
+    "slug": "interactive-dataviz-using-ai-coding",
     "sessionType": "Workshop",
     "date": "2026-07-03T10:05",
     "time": "10:00 - 13:00",
@@ -425,7 +425,7 @@
     "display": true
   },
   {
-    "slug": "designing-data-stories-for-small-screens-25",
+    "slug": "designing-data-stories-for-small-screens",
     "sessionType": "Workshop",
     "date": "2026-07-03T10:06",
     "time": "10:00 - 13:00",
