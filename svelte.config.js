@@ -3,7 +3,7 @@ import adapter from '@sveltejs/adapter-cloudflare';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 // Parse redirect paths from Cloudflare _redirects file (single source of truth)
-const redirectPaths = readFileSync('_redirects', 'utf-8')
+const redirectPaths = readFileSync('static/_redirects', 'utf-8')
 	.split('\n')
 	.filter((line) => line.trim())
 	.map((line) => line.split(' ')[0]);

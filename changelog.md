@@ -5,6 +5,18 @@ Format: date, what changed, why, key files, notes for the next agent.
 
 ---
 
+## 2026-05-10 — fix(redirects): move \_redirects to static/ and add missing -19 entry
+
+**What changed:** Moved `_redirects` from project root to `static/` so `adapter-cloudflare` includes it in the build output (`.svelte-kit/cloudflare`). Previously the file was never deployed — all redirects were silently broken in production. Also updated `svelte.config.js` to read from `static/_redirects`. Added the missing `/2026/sessions/interactive-dataviz-using-ai-coding-19` redirect (old URL shared in workshop communications).
+
+**Why:** Cloudflare Pages only serves files from the `pages_build_output_dir` (`.svelte-kit/cloudflare`). The adapter copies `static/` there at build time; the project root is not included.
+
+**Key files:** `static/_redirects` (moved from `_redirects`), `svelte.config.js`
+
+**Notes for next agent:** `static/_redirects` is now the single source of truth for Cloudflare redirects. Add new entries there. The `svelte.config.js` reads this file at build time to exclude redirect paths from prerender error handling.
+
+---
+
 ## 2026-05-10 — fix(studio): Save Failed on stage/feedback endpoints
 
 **What changed:** Extracted `ensureStagingBranch` helper in `src/lib/studio/staging.ts` and used it in both `stage` and `feedback` API endpoints. The helper handles three cases that previously caused "Save Failed": (1) KV has a stale branch reference (branch deleted after PR merge — `getRef` now verifies the branch is still live before using it); (2) branch already exists on GitHub but KV is empty (after a same-day publish — `createRef` 422 is now caught and treated as success); (3) normal first save (unchanged).
