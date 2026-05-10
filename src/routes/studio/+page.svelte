@@ -64,7 +64,7 @@
 
 <svelte:head>
 	<title>Studio | VizChitra</title>
-	<meta name="description" content="VizChitra content editor" />
+	<meta name="description" content="VizChitra Studio" />
 </svelte:head>
 
 <div class="bg-grey-950 min-h-screen">
