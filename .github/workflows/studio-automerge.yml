@@ -1,0 +1,24 @@
+name: Studio Auto-merge
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [master]
+
+# Both permissions are required: write PR status + perform the merge
+permissions:
+  pull-requests: write
+  contents: write
+
+jobs:
+  automerge:
+    name: Enable auto-merge for Studio PRs
+    runs-on: ubuntu-latest
+    # Only act on branches created by the Studio editor
+    if: startsWith(github.head_ref, 'studio/')
+
+    steps:
+      - name: Enable auto-merge (squash)
+        run: gh pr merge --auto --squash "${{ github.event.pull_request.html_url }}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

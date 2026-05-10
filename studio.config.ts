@@ -25,10 +25,10 @@ export interface StudioConfig {
 export const studioConfig: StudioConfig = {
 	description: 'Content Editing for VizChitra Website.',
 	instructions:
-		'Raise a PR for all changes. Ping @amitkaps for review before merging. ' +
-		'Keep tone warm, inclusive, and practical. ' +
-		'For markdown pages: edit body and frontmatter via the in-page editor. ' +
-		'For structured data: use the collection form to update records.',
+		'When you publish, your changes are sent for review and will go live on the website automatically. ' +
+		'Write in a warm, welcoming, and clear tone — as if speaking directly to attendees. ' +
+		'To edit a page, use the editor that appears on the page itself. ' +
+		'To update session or event records, use the form in the collection view.',
 	collections: [
 		{
 			name: 'Pages',
