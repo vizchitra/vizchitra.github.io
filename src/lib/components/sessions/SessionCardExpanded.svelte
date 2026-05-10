@@ -201,7 +201,7 @@
 							{#if time}
 								<span class="font-display leading-snug! font-bold md:text-[17px]">{time} | </span>
 								<span class="font-display leading-snug! font-bold md:text-[17px]"
-									>{time === '10:00 - 13:00' ? 'Morning' : 'Afternoon'}</span
+									>{+time.split(' - ')[1].split(':')[0] < 12 ? 'Morning' : 'Afternoon'}</span
 								>
 							{/if}
 							{#if venue}
@@ -245,7 +245,7 @@
 			>
 				<div
 					class="speaker-image absolute right-5 bottom-0 origin-center transition-transform duration-300 group-hover:scale-104 group-hover:rotate-1"
-					style:transform={buildSpeakerImageTransform(speakerName, screenWidth)}
+					style:transform={buildSpeakerImageTransform(speakerName, screenWidth, sessionType)}
 				>
 					<img
 						class="relative z-10 h-auto w-full"
