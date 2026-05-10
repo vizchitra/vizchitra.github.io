@@ -20,6 +20,9 @@
 	"dependencies": {
 		"@handlewithcare/remark-prosemirror": "^0.1.5",
 		"fuse.js": "^7.3.0",
+		"prosemirror-tables": "^1.8.5",
+		"remark-parse": "^11.0.0",
+		"remark-stringify": "^11.0.0",
 		"roughjs": "^4.6.6"
 	},
 	"devDependencies": {
