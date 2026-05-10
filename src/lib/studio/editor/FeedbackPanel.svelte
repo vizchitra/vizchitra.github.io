@@ -9,8 +9,7 @@
 	const STATUS_STYLE: Record<Status, string> = {
 		'Under Review': 'bg-amber-950/40 text-amber-300 border-amber-800/50',
 		Selected: 'bg-emerald-950/40 text-emerald-300 border-emerald-800/50',
-		'Not Proceeding':
-			'bg-[var(--color-grey-800)] text-[var(--color-grey-500)] border-[var(--color-grey-700)]'
+		'Not Proceeding': 'bg-grey-800 text-grey-500 border-grey-700'
 	};
 
 	interface Props {

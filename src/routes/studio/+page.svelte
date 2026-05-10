@@ -19,8 +19,7 @@
 	const STATUS_STYLE: Record<string, string> = {
 		'Under Review': 'bg-amber-950/40 text-amber-300 border-amber-800/50',
 		Selected: 'bg-emerald-950/40 text-emerald-300 border-emerald-800/50',
-		'Not Proceeding':
-			'bg-[var(--color-grey-800)] text-[var(--color-grey-500)] border-[var(--color-grey-700)]'
+		'Not Proceeding': 'bg-grey-800 text-grey-500 border-grey-700'
 	};
 
 	// Staged changes state
@@ -65,24 +64,24 @@
 
 <svelte:head>
 	<title>Studio | VizChitra</title>
-	<meta name="description" content="VizChitra content editor" />
+	<meta name="description" content="VizChitra Studio" />
 </svelte:head>
 
-<div class="min-h-screen bg-[var(--color-grey-950,#0a0a0a)]">
+<div class="bg-grey-950 min-h-screen">
 	<main class="mx-auto max-w-5xl space-y-6 px-6 py-10">
 		<!-- Header + editorial guide card -->
-		<div class="rounded-xl border border-[var(--color-grey-800)] bg-[var(--color-grey-900)] p-6">
+		<div class="border-grey-800 bg-grey-900 rounded-xl border p-6">
 			<div class="mb-4 flex items-start justify-between gap-4">
 				<div>
-					<h1 class="text-xl font-bold text-[var(--color-grey-100)]">VizChitra Studio</h1>
-					<p class="mt-0.5 text-sm text-[var(--color-grey-500)]">{config.description}</p>
+					<h1 class="text-grey-100 text-xl font-bold">VizChitra Studio</h1>
+					<p class="text-grey-500 mt-0.5 text-sm">{config.description}</p>
 				</div>
 				<div class="flex shrink-0 items-center gap-3">
-					<span class="text-sm text-[var(--color-grey-500)]">@{user.handle}</span>
+					<span class="text-grey-500 text-sm">@{user.handle}</span>
 					<form method="POST" action="/studio/logout">
 						<button
 							type="submit"
-							class="rounded border border-[var(--color-grey-700)] px-3 py-1.5 text-sm text-[var(--color-grey-400)] transition-colors hover:border-[var(--color-grey-600)] hover:text-[var(--color-grey-200)]"
+							class="border-grey-700 text-grey-400 hover:border-grey-600 hover:text-grey-200 rounded border px-3 py-1.5 text-sm transition-colors"
 						>
 							Sign out
 						</button>
@@ -106,13 +105,13 @@
 
 		<!-- Staged changes + publish -->
 		{#if stagedFiles.length > 0 || publishResult}
-			<div class="rounded-xl border border-[var(--color-grey-700)] bg-[var(--color-grey-900)] p-6">
-				<h2 class="mb-4 text-base font-semibold text-[var(--color-grey-100)]">Ready to publish</h2>
+			<div class="border-grey-700 bg-grey-900 rounded-xl border p-6">
+				<h2 class="text-grey-100 mb-4 text-base font-semibold">Ready to publish</h2>
 
 				{#if stagedFiles.length > 0}
 					<ul class="mb-4 space-y-1">
 						{#each stagedFiles as file}
-							<li class="flex items-center gap-2 text-sm text-[var(--color-grey-400)]">
+							<li class="text-grey-400 flex items-center gap-2 text-sm">
 								<span class="h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400"></span>
 								<span class="font-mono">{file}</span>
 							</li>
@@ -124,7 +123,7 @@
 							type="text"
 							bind:value={publishMessage}
 							placeholder="Briefly describe your changes…"
-							class="min-w-0 flex-1 rounded border border-[var(--color-grey-700)] bg-[var(--color-grey-800)] px-3 py-2 text-sm text-[var(--color-grey-200)] placeholder:text-[var(--color-grey-600)] focus:border-[var(--color-grey-500)] focus:outline-none"
+							class="border-grey-700 bg-grey-800 text-grey-200 placeholder:text-grey-600 focus:border-grey-500 min-w-0 flex-1 rounded border px-3 py-2 text-sm focus:outline-none"
 						/>
 						<button
 							onclick={publish}
@@ -157,37 +156,34 @@
 		<!-- Content groups -->
 		<div class="grid gap-4 sm:grid-cols-2">
 			{#each contentGroups as group}
-				<div
-					class="overflow-hidden rounded-xl border border-[var(--color-grey-800)] bg-[var(--color-grey-900)]"
-				>
+				<div class="border-grey-800 bg-grey-900 overflow-hidden rounded-xl border">
 					<!-- Card header -->
-					<div class="border-b border-[var(--color-grey-800)] px-5 py-3.5">
-						<span class="text-sm font-semibold text-[var(--color-grey-200)]">{group.name}</span>
+					<div class="border-grey-800 border-b px-5 py-3.5">
+						<span class="text-grey-200 text-sm font-semibold">{group.name}</span>
 					</div>
 
 					{#if group.kind === 'flat'}
 						{@const flat = group as FlatGroup}
 						{#if flat.files.length > 0}
-							<ul class="divide-y divide-[var(--color-grey-800)]">
+							<ul class="divide-grey-800 divide-y">
 								{#each flat.files as file}
 									<li>
 										{#if file.url}
 											<a
 												href={file.url}
-												class="group flex items-center justify-between px-5 py-2.5 transition-colors hover:bg-[var(--color-grey-800)]"
+												class="group hover:bg-grey-800 flex items-center justify-between px-5 py-2.5 transition-colors"
 											>
-												<span
-													class="text-sm text-[var(--color-grey-300)] group-hover:text-[var(--color-grey-100)]"
+												<span class="text-grey-300 group-hover:text-grey-100 text-sm"
 													>{file.title}</span
 												>
-												<span class="font-mono text-xs text-[var(--color-grey-700)]"
+												<span class="text-grey-700 font-mono text-xs"
 													>{file.filePath.split('/').pop()}</span
 												>
 											</a>
 										{:else}
 											<div class="flex items-center justify-between px-5 py-2.5">
-												<span class="text-sm text-[var(--color-grey-400)]">{file.title}</span>
-												<span class="font-mono text-xs text-[var(--color-grey-700)]"
+												<span class="text-grey-400 text-sm">{file.title}</span>
+												<span class="text-grey-700 font-mono text-xs"
 													>{file.filePath.split('/').pop()}</span
 												>
 											</div>
@@ -196,28 +192,26 @@
 								{/each}
 							</ul>
 						{:else}
-							<p class="px-5 py-4 text-sm text-[var(--color-grey-600)] italic">No files yet.</p>
+							<p class="text-grey-600 px-5 py-4 text-sm italic">No files yet.</p>
 						{/if}
 					{:else}
 						{@const tree = group as TreeGroup}
 						{#if tree.groups.length > 0}
-							<div class="divide-y divide-[var(--color-grey-800)]">
+							<div class="divide-grey-800 divide-y">
 								{#each tree.groups as sub}
 									<details class="group/details">
 										<summary
-											class="flex cursor-pointer list-none items-center justify-between px-5 py-2.5 transition-colors hover:bg-[var(--color-grey-800)]"
+											class="hover:bg-grey-800 flex cursor-pointer list-none items-center justify-between px-5 py-2.5 transition-colors"
 										>
-											<span class="text-sm font-medium text-[var(--color-grey-300)]"
-												>{sub.name}</span
-											>
+											<span class="text-grey-300 text-sm font-medium">{sub.name}</span>
 											<span class="flex items-center gap-2">
 												<span
-													class="rounded-full bg-[var(--color-grey-800)] px-2 py-0.5 font-mono text-xs text-[var(--color-grey-500)]"
+													class="bg-grey-800 text-grey-500 rounded-full px-2 py-0.5 font-mono text-xs"
 													>{sub.files.length}</span
 												>
 												<!-- chevron rotates open -->
 												<svg
-													class="h-3.5 w-3.5 text-[var(--color-grey-600)] transition-transform group-open/details:rotate-180"
+													class="text-grey-600 h-3.5 w-3.5 transition-transform group-open/details:rotate-180"
 													viewBox="0 0 24 24"
 													fill="none"
 													stroke="currentColor"
@@ -229,27 +223,24 @@
 												</svg>
 											</span>
 										</summary>
-										<ul
-											class="divide-y divide-[var(--color-grey-800)] border-t border-[var(--color-grey-800)] bg-[var(--color-grey-950,#0a0a0a)]"
-										>
+										<ul class="divide-grey-800 border-grey-800 bg-grey-950 divide-y border-t">
 											{#each sub.files as file}
 												<li>
 													{#if file.url}
 														<a
 															href={file.url}
-															class="group/link flex items-center justify-between py-2 pr-5 pl-8 transition-colors hover:bg-[var(--color-grey-800)]"
+															class="group/link hover:bg-grey-800 flex items-center justify-between py-2 pr-5 pl-8 transition-colors"
 														>
-															<span
-																class="text-sm text-[var(--color-grey-400)] group-hover/link:text-[var(--color-grey-100)]"
+															<span class="text-grey-400 group-hover/link:text-grey-100 text-sm"
 																>{file.title}</span
 															>
-															<span class="font-mono text-xs text-[var(--color-grey-700)]"
+															<span class="text-grey-700 font-mono text-xs"
 																>{file.filePath.split('/').pop()}</span
 															>
 														</a>
 													{:else}
 														<div class="flex items-center justify-between py-2 pr-5 pl-8">
-															<span class="text-sm text-[var(--color-grey-500)]">{file.title}</span>
+															<span class="text-grey-500 text-sm">{file.title}</span>
 														</div>
 													{/if}
 												</li>
@@ -259,7 +250,7 @@
 								{/each}
 							</div>
 						{:else}
-							<p class="px-5 py-4 text-sm text-[var(--color-grey-600)] italic">No content yet.</p>
+							<p class="text-grey-600 px-5 py-4 text-sm italic">No content yet.</p>
 						{/if}
 					{/if}
 				</div>
@@ -267,52 +258,42 @@
 		</div>
 
 		<!-- Sessions 2026 -->
-		<div
-			class="overflow-hidden rounded-xl border border-[var(--color-grey-800)] bg-[var(--color-grey-900)]"
-		>
-			<div class="border-b border-[var(--color-grey-800)] px-5 py-3.5">
-				<span class="text-sm font-semibold text-[var(--color-grey-200)]">Sessions 2026</span>
+		<div class="border-grey-800 bg-grey-900 overflow-hidden rounded-xl border">
+			<div class="border-grey-800 border-b px-5 py-3.5">
+				<span class="text-grey-200 text-sm font-semibold">Sessions 2026</span>
 			</div>
 			{#if sessionRows.length > 0}
 				<div class="overflow-x-auto">
 					<table class="w-full text-sm">
 						<thead>
-							<tr class="border-b border-[var(--color-grey-800)]">
-								<th class="px-5 py-2 text-left font-medium text-[var(--color-grey-600)]">Title</th>
-								<th class="px-3 py-2 text-left font-medium text-[var(--color-grey-600)]">Speaker</th
-								>
-								<th class="px-3 py-2 text-left font-medium text-[var(--color-grey-600)]">Type</th>
-								<th class="px-3 py-2 text-left font-medium text-[var(--color-grey-600)]">Time</th>
-								<th class="px-3 py-2 text-left font-medium text-[var(--color-grey-600)]">Status</th>
+							<tr class="border-grey-800 border-b">
+								<th class="text-grey-600 px-5 py-2 text-left font-medium">Title</th>
+								<th class="text-grey-600 px-3 py-2 text-left font-medium">Speaker</th>
+								<th class="text-grey-600 px-3 py-2 text-left font-medium">Type</th>
+								<th class="text-grey-600 px-3 py-2 text-left font-medium">Time</th>
+								<th class="text-grey-600 px-3 py-2 text-left font-medium">Status</th>
 							</tr>
 						</thead>
-						<tbody class="divide-y divide-[var(--color-grey-800)]">
+						<tbody class="divide-grey-800 divide-y">
 							{#each sessionRows as row}
-								<tr class="transition-colors hover:bg-[var(--color-grey-800)]">
+								<tr class="hover:bg-grey-800 transition-colors">
 									<td class="max-w-[16rem] px-5 py-2.5">
 										{#if row.url}
 											<a
 												href={row.url}
-												class="block truncate text-[var(--color-grey-300)] hover:text-[var(--color-grey-100)] hover:underline"
+												class="text-grey-300 hover:text-grey-100 block truncate hover:underline"
 											>
 												{row.title}
 											</a>
 										{:else}
-											<span class="block truncate text-[var(--color-grey-500)] italic"
-												>{row.title}</span
-											>
+											<span class="text-grey-500 block truncate italic">{row.title}</span>
 										{/if}
 									</td>
 									<td class="max-w-[10rem] px-3 py-2.5">
-										<span class="block truncate text-[var(--color-grey-500)]"
-											>{row.speakerName}</span
-										>
+										<span class="text-grey-500 block truncate">{row.speakerName}</span>
 									</td>
-									<td class="px-3 py-2.5 whitespace-nowrap text-[var(--color-grey-600)]"
-										>{row.sessionType}</td
-									>
-									<td
-										class="px-3 py-2.5 font-mono text-xs whitespace-nowrap text-[var(--color-grey-700)]"
+									<td class="text-grey-600 px-3 py-2.5 whitespace-nowrap">{row.sessionType}</td>
+									<td class="text-grey-700 px-3 py-2.5 font-mono text-xs whitespace-nowrap"
 										>{row.time || '—'}</td
 									>
 									<td class="px-3 py-2.5">
@@ -323,7 +304,7 @@
 											>
 										{:else}
 											<span
-												class="rounded-full border border-[var(--color-grey-700)] bg-[var(--color-grey-800)] px-2 py-0.5 text-xs font-semibold text-[var(--color-grey-500)]"
+												class="border-grey-700 bg-grey-800 text-grey-500 rounded-full border px-2 py-0.5 text-xs font-semibold"
 												>TBD</span
 											>
 										{/if}
@@ -334,31 +315,27 @@
 					</table>
 				</div>
 			{:else}
-				<p class="px-5 py-4 text-sm text-[var(--color-grey-600)] italic">No sessions yet.</p>
+				<p class="text-grey-600 px-5 py-4 text-sm italic">No sessions yet.</p>
 			{/if}
 		</div>
 
 		<!-- Submissions 2026 -->
-		<div
-			class="overflow-hidden rounded-xl border border-[var(--color-grey-800)] bg-[var(--color-grey-900)]"
-		>
+		<div class="border-grey-800 bg-grey-900 overflow-hidden rounded-xl border">
 			<!-- Header + tabs -->
-			<div
-				class="flex items-center justify-between border-b border-[var(--color-grey-800)] px-5 py-3.5"
-			>
-				<span class="text-sm font-semibold text-[var(--color-grey-200)]">Submissions 2026</span>
-				<div class="flex gap-1 rounded-lg bg-[var(--color-grey-800)] p-0.5">
+			<div class="border-grey-800 flex items-center justify-between border-b px-5 py-3.5">
+				<span class="text-grey-200 text-sm font-semibold">Submissions 2026</span>
+				<div class="bg-grey-800 flex gap-1 rounded-lg p-0.5">
 					{#each ['cfp', 'cfe'] as const as tab}
 						<button
 							type="button"
 							onclick={() => (activeSubmissionTab = tab)}
 							class="rounded px-3 py-1 text-xs font-semibold tracking-wider uppercase transition-colors {activeSubmissionTab ===
 							tab
-								? 'bg-[var(--color-grey-700)] text-[var(--color-grey-100)]'
-								: 'text-[var(--color-grey-500)] hover:text-[var(--color-grey-300)]'}"
+								? 'bg-grey-700 text-grey-100'
+								: 'text-grey-500 hover:text-grey-300'}"
 						>
 							{tab.toUpperCase()}
-							<span class="ml-1 font-mono font-normal text-[var(--color-grey-600)]"
+							<span class="text-grey-600 ml-1 font-mono font-normal"
 								>({(tab === 'cfp' ? cfpSubmissions : cfeSubmissions).length})</span
 							>
 						</button>
@@ -371,31 +348,27 @@
 				<div class="overflow-x-auto">
 					<table class="w-full text-sm">
 						<thead>
-							<tr class="border-b border-[var(--color-grey-800)]">
-								<th class="px-5 py-2 text-left font-medium text-[var(--color-grey-600)]">Title</th>
-								<th class="px-3 py-2 text-left font-medium text-[var(--color-grey-600)]">By</th>
-								<th class="px-3 py-2 text-left font-medium text-[var(--color-grey-600)]">Format</th>
-								<th class="px-3 py-2 text-left font-medium text-[var(--color-grey-600)]">Status</th>
-								<th class="px-3 py-2 text-left font-medium text-[var(--color-grey-600)]">Notes</th>
+							<tr class="border-grey-800 border-b">
+								<th class="text-grey-600 px-5 py-2 text-left font-medium">Title</th>
+								<th class="text-grey-600 px-3 py-2 text-left font-medium">By</th>
+								<th class="text-grey-600 px-3 py-2 text-left font-medium">Format</th>
+								<th class="text-grey-600 px-3 py-2 text-left font-medium">Status</th>
+								<th class="text-grey-600 px-3 py-2 text-left font-medium">Notes</th>
 							</tr>
 						</thead>
-						<tbody class="divide-y divide-[var(--color-grey-800)]">
+						<tbody class="divide-grey-800 divide-y">
 							{#each activeSubmissions as row}
-								<tr class="group transition-colors hover:bg-[var(--color-grey-800)]">
+								<tr class="group hover:bg-grey-800 transition-colors">
 									<td class="max-w-[16rem] px-5 py-2.5">
 										<a
 											href={row.url}
-											class="block truncate text-[var(--color-grey-300)] hover:text-[var(--color-grey-100)] hover:underline"
+											class="text-grey-300 hover:text-grey-100 block truncate hover:underline"
 										>
 											{row.title}
 										</a>
 									</td>
-									<td class="px-3 py-2.5 whitespace-nowrap text-[var(--color-grey-500)]"
-										>{row.submitter}</td
-									>
-									<td class="px-3 py-2.5 whitespace-nowrap text-[var(--color-grey-600)]"
-										>{row.format}</td
-									>
+									<td class="text-grey-500 px-3 py-2.5 whitespace-nowrap">{row.submitter}</td>
+									<td class="text-grey-600 px-3 py-2.5 whitespace-nowrap">{row.format}</td>
 									<td class="px-3 py-2.5 whitespace-nowrap">
 										<span
 											class="rounded-full border px-2 py-0.5 text-xs font-semibold {STATUS_STYLE[
@@ -407,9 +380,9 @@
 									</td>
 									<td class="max-w-[14rem] overflow-hidden px-3 py-2.5">
 										{#if row.notes}
-											<p class="line-clamp-1 text-xs text-[var(--color-grey-600)]">{row.notes}</p>
+											<p class="text-grey-600 line-clamp-1 text-xs">{row.notes}</p>
 										{:else}
-											<span class="text-xs text-[var(--color-grey-700)] italic">—</span>
+											<span class="text-grey-700 text-xs italic">—</span>
 										{/if}
 									</td>
 								</tr>
@@ -418,7 +391,7 @@
 					</table>
 				</div>
 			{:else}
-				<p class="px-5 py-4 text-sm text-[var(--color-grey-600)] italic">No submissions yet.</p>
+				<p class="text-grey-600 px-5 py-4 text-sm italic">No submissions yet.</p>
 			{/if}
 		</div>
 	</main>

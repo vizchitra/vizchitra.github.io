@@ -280,7 +280,7 @@
 			<!-- Publish CTA (prod only, staged changes pending, not currently editing) -->
 			{#if !dev && localStagedCount > 0 && !isEditing}
 				<div class="mt-1 space-y-1.5">
-					<p class="text-[10px] tracking-widest text-[var(--color-grey-500)] uppercase">
+					<p class="text-grey-500 text-[10px] tracking-widest uppercase">
 						{localStagedCount} change{localStagedCount !== 1 ? 's' : ''} ready to publish
 					</p>
 					<textarea

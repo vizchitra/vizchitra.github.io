@@ -9,7 +9,7 @@
 	<meta name="description" content="Sign in to VizChitra Studio" />
 </svelte:head>
 
-<Hero banner="square" color="grey" tagline="EDITORIAL STUDIO — CONTENT MANAGEMENT" />
+<Header banner="square" color="grey" />
 
 <div class="flex justify-center px-4 py-12">
 	<div class="w-full max-w-sm">
