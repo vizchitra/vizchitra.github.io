@@ -5,6 +5,19 @@ Format: date, what changed, why, key files, notes for the next agent.
 
 ---
 
+## 2026-05-10 — feat: move publish to Studio dashboard, auto-close stale PRs
+
+**What changed:**
+
+1. Removed publish form from `StudioPanel`. After saving, the panel now shows "✓ Staged. Go to Studio to publish when ready." with a link, and a teal button "N staged changes — publish in Studio" linking to `/studio`. Publish lives only on the Studio dashboard.
+2. `ensureStagingBranch` now closes any open PRs from previous `studio/{handle}/*` branches before creating a new one. Runs as best-effort (non-fatal on error).
+
+**Why:** Publish button in the side panel gave the false impression that each page must be published individually. Auto-close prevents stale PR accumulation across editing sessions.
+
+**Key files:** `src/lib/studio/editor/StudioPanel.svelte`, `src/lib/studio/staging.ts`
+
+---
+
 ## 2026-05-10 — fix: publish fails when PR already exists for staging branch
 
 **What changed:** Publish endpoint now checks for an existing open PR on the staging branch before calling `pulls.create`. If one exists, it returns that PR's URL instead of failing with "A pull request already exists". Also surfaced the real server error in `StudioPanel` instead of the hardcoded "Publish failed — try again".
