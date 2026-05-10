@@ -5,6 +5,14 @@ Format: date, what changed, why, key files, notes for the next agent.
 
 ---
 
+## 2026-05-10 — fix: ArrayBuffer cast in session.ts, rename CI step
+
+**What changed:** Cast `providedSig.buffer as ArrayBuffer` to satisfy `BufferSource` type (TypeScript rejects `SharedArrayBuffer`). Renamed CI step from "Svelte type-check" to "Svelte Check" in `pr-checks.yml`.
+
+**Key files:** `src/lib/studio/session.ts`, `.github/workflows/pr-checks.yml`
+
+---
+
 ## 2026-05-10 — fix: session.ts type errors (Uint8Array/ArrayBuffer)
 
 **What changed:** Fixed two TypeScript errors in `src/lib/studio/session.ts` that failed svelte-check: `b64url` now accepts `ArrayBuffer | Uint8Array`, and `crypto.subtle.verify` receives `.buffer` to satisfy the `BufferSource` type.

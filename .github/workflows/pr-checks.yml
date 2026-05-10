@@ -74,7 +74,7 @@ jobs:
             echo "size_ok=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Svelte type-check
+      - name: Svelte Check
         id: svelte_check
         run: pnpm check
         continue-on-error: true
@@ -113,7 +113,7 @@ jobs:
               `| ${icon(fmtOxfmt)}      | oxfmt (TS/JS/JSON)  | ${fmtOxfmt === 'success' ? 'passed' : fmtOxfmt} |`,
               `| ${icon(fmtPrettier)}   | Prettier (Svelte/MD)| ${fmtPrettier === 'success' ? 'passed' : fmtPrettier} |`,
               `| ${icon(oxlint)}        | Oxlint              | ${oxlint === 'success' ? 'passed' : oxlint} |`,
-              `| ${icon(svelteCheck)}   | Svelte type-check | ${svelteCheck === 'success' ? 'passed' : svelteCheck} |`,
+              `| ${icon(svelteCheck)}   | Svelte Check | ${svelteCheck === 'success' ? 'passed' : svelteCheck} |`,
               `| ${timeOk ? '✅' : '❌'} | Build time        | ${buildSecs}s (limit 120s) |`,
               `| ${sizeOk ? '✅' : '❌'} | Shared bundle     | ${chunkKb} KB (limit 600 KB) — \`${chunkName}\` |`,
               '',
