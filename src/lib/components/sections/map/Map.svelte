@@ -1,8 +1,11 @@
 <script lang="ts">
-	const { type } = $props<{ type: 'workshop' | 'conference' }>();
+	export let type: 'workshop' | 'conference';
 
-	const src = type === 'conference' ? '/images/map/conference.jpg' : '/images/map/workshop.jpg';
-	const alt =
+	const conferenceStatic = '/images/map/conference.png';
+	const workshopStatic = '/images/map/workshop.png';
+
+	$: src = type === 'conference' ? conferenceStatic : workshopStatic;
+	$: alt =
 		type === 'conference'
 			? 'Map showing Bangalore International Centre, conference venue'
 			: 'Map showing Samagata Foundation and Underline Center, workshop venues';
