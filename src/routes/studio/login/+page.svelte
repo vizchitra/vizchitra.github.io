@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { PageProps } from './$types';
+	import Hero from '$lib/components/structure/Hero.svelte';
 	let { data }: PageProps = $props();
 </script>
 
@@ -8,10 +9,12 @@
 	<meta name="description" content="Sign in to VizChitra Studio" />
 </svelte:head>
 
-<div class="flex min-h-screen items-center justify-center bg-gray-50">
-	<div class="w-full max-w-sm rounded-xl bg-white p-8 shadow-md">
-		<h1 class="mb-2 text-2xl font-bold text-gray-900">VizChitra Studio</h1>
-		<p class="mb-6 text-sm text-gray-500">Content editor — sign in with your GitHub account.</p>
+<Hero banner="square" color="grey" tagline="EDITORIAL STUDIO — CONTENT MANAGEMENT" />
+
+<div class="flex justify-center px-4 py-12">
+	<div class="w-full max-w-sm">
+		<h2 class="mb-1 text-xl font-bold text-gray-900">Sign in to Studio</h2>
+		<p class="mb-6 text-sm text-gray-500">Use your GitHub account to access the content editor.</p>
 
 		{#if data.error === 'unauthorized'}
 			<div class="mb-4 rounded bg-red-50 px-4 py-3 text-sm text-red-700">

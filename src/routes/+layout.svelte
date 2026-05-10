@@ -4,9 +4,10 @@
 
 	import { page } from '$app/stores';
 	import { panelStore } from '$lib/studio/editor/PanelStore';
+	import ViewOnlyStrip from '$lib/studio/editor/ViewOnlyStrip.svelte';
 
-	/** @type {{children: import('svelte').Snippet}} */
-	let { children } = $props();
+	/** @type {{children: import('svelte').Snippet, data: import('./$types').LayoutData}} */
+	let { children, data } = $props();
 
 	// Layout props: new pageLayout key, falling back to old document convention during migration
 	let banner = $derived($page.data?.pageLayout?.banner ?? $page.data?.document?.banner ?? 'curve');
@@ -20,6 +21,10 @@
 </script>
 
 <SEO />
+
+{#if data.studioUser && !$page.url.pathname.startsWith('/studio') && $panelStore === 'hidden'}
+	<ViewOnlyStrip />
+{/if}
 
 <div class="app">
 	<NavMenu></NavMenu>

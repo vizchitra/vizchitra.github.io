@@ -5,6 +5,35 @@ Format: date, what changed, why, key files, notes for the next agent.
 
 ---
 
+## 2026-05-10 — feat(studio): login banner, save fix, persistent panel, social previews
+
+**What changed:**
+
+1. **Login banner** — replaced the bare centered card with a `<Hero banner="square" color="grey">` at the top + form below, matching the site aesthetic.
+2. **Save Failed fix** — `/api/studio/data` had its own inline staging-branch logic that didn't use `ensureStagingBranch()` from `staging.ts`, so the 422 "Reference already exists" fix from PR #291 never applied to session saves. Replaced with `ensureStagingBranch()`. Also fixed `SessionPanel` to surface the actual API error message instead of always showing "Save failed".
+3. **Persistent panel** — added `src/routes/+layout.server.ts` to expose `studioUser`, and a new `ViewOnlyStrip.svelte` component rendered by the root layout when logged in and no real editable panel is present. Eliminates content-shift when navigating between editable and non-editable pages.
+4. **Social preview** — added `socialImage` prop to `PanelShell`, `StudioPanel`, and `SessionPanel`. Pages pass `data.pageMeta.ogImage` to show the og:image inside the Preview section of the panel.
+
+**Why:** Studio panel was jumpy (appearing/disappearing between pages), save was broken for sessions, login page was bare.
+
+**Key files:** `src/routes/studio/login/+page.svelte`, `src/routes/api/studio/data/+server.ts`, `src/lib/studio/editor/SessionPanel.svelte`, `src/lib/studio/editor/PanelShell.svelte`, `src/lib/studio/editor/StudioPanel.svelte`, `src/lib/studio/editor/ViewOnlyStrip.svelte` (new), `src/routes/+layout.server.ts` (new), `src/routes/+layout.svelte`
+
+**Notes for next agent:** `ViewOnlyStrip` sets `panelStore` to `'collapsed'` on mount and `'hidden'` on destroy. It only renders when `data.studioUser && !pathname.startsWith('/studio') && $panelStore === 'hidden'`. The `pageMeta.ogImage` must be set in page `load()` for the social preview to appear.
+
+---
+
+## 2026-05-10 — fix(redirects): handle all redirects in hooks.server before routing (PR #294)
+
+**What changed:** Moved all `_redirects` handling into `hooks.server.ts` using a `?raw` Vite import. The hook runs before any routing, so redirects fire before SvelteKit can serve a prerendered 404 page.
+
+**Why:** Workshop session URLs with old numbered slugs (e.g. `/2026/sessions/dataviz-crash-course-without-the-crash-out-19`) were returning 404. The `/2026/sessions/[slug]` route has `prerender = true` — for slugs not in the prerendered set, SvelteKit serves the static 404 page and the `load` function never runs. CF Pages `_redirects` also didn't fire because the CF Worker handles `/*` first. `hooks.server.ts` is the only place that runs unconditionally before routing in all environments.
+
+**Key files:** `src/hooks.server.ts`
+
+**Notes for next agent:** `hooks.server.ts` is now the single runtime redirect handler (uses `?raw` Vite import — no `node:fs`). The `_redirects` file at project root is still needed for CF Pages native redirects (non-Worker paths). The redirect check in `src/routes/2026/sessions/[slug]/+page.server.ts` (from PR #293) is now redundant but harmless.
+
+---
+
 ## 2026-05-10 — fix(redirects): move \_redirects to static/ and add missing -19 entry
 
 **What changed:** Moved `_redirects` from project root to `static/` so `adapter-cloudflare` includes it in the build output (`.svelte-kit/cloudflare`). Previously the file was never deployed — all redirects were silently broken in production. Also updated `svelte.config.js` to read from `static/_redirects`. Added the missing `/2026/sessions/interactive-dataviz-using-ai-coding-19` redirect (old URL shared in workshop communications).

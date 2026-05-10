@@ -15,9 +15,18 @@
 		getMarkdown: () => string;
 		getFrontmatter: () => Record<string, unknown>;
 		onFrontmatterChange: (updated: Record<string, unknown>) => void;
+		/** og:image URL for social preview */
+		socialImage?: string;
 	}
 
-	let { filePath, frontmatter, getMarkdown, getFrontmatter, onFrontmatterChange }: Props = $props();
+	let {
+		filePath,
+		frontmatter,
+		getMarkdown,
+		getFrontmatter,
+		onFrontmatterChange,
+		socialImage
+	}: Props = $props();
 
 	// ── Schema ───────────────────────────────────────────────────
 	const collection = $derived(collectionFromPath(filePath));
@@ -258,6 +267,37 @@
 				</span>
 			</div>
 		</div>
+
+		<!-- Social preview -->
+		{#if socialImage}
+			<div class="border-grey-800 border-b">
+				<details class="group" open>
+					<summary
+						class="text-viz-grey-muted hover:text-viz-grey-light flex cursor-pointer list-none items-center justify-between px-4 py-2.5 text-[10px] font-semibold tracking-widest uppercase transition-colors"
+					>
+						Preview
+						<svg
+							class="h-3 w-3 transition-transform group-open:rotate-180"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							aria-hidden="true"
+						>
+							<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+						</svg>
+					</summary>
+					<div class="px-4 pb-3">
+						<p class="text-viz-grey-muted mb-1.5 text-[10px] tracking-widest uppercase">Social</p>
+						<img
+							src={socialImage}
+							alt="Social preview"
+							class="border-grey-700 w-full rounded border object-cover"
+						/>
+					</div>
+				</details>
+			</div>
+		{/if}
 
 		<!-- Scrollable body: frontmatter + toolbar -->
 		<div class="flex-1 overflow-y-auto">
