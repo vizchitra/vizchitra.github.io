@@ -62,9 +62,19 @@ export type ContentGroup = FlatGroup | TreeGroup;
 // ── Content tree builder ──────────────────────────────────────────────────────
 
 async function buildContentTree(collections: StudioCollection[]): Promise<ContentGroup[]> {
-	const { readdirSync, readFileSync, statSync } = await import('node:fs');
-	const { join } = await import('node:path');
-	const { default: matter } = await import('gray-matter');
+	// node:fs is only available in Node.js dev server, not Cloudflare Workers
+	let readdirSync: (typeof import('node:fs'))['readdirSync'];
+	let readFileSync: (typeof import('node:fs'))['readFileSync'];
+	let statSync: (typeof import('node:fs'))['statSync'];
+	let join: (typeof import('node:path'))['join'];
+	let matter: (typeof import('gray-matter'))['default'];
+	try {
+		({ readdirSync, readFileSync, statSync } = await import('node:fs'));
+		({ join } = await import('node:path'));
+		({ default: matter } = await import('gray-matter'));
+	} catch {
+		return [];
+	}
 
 	function getTitle(fullPath: string): string {
 		try {
