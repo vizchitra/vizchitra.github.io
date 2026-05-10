@@ -15,11 +15,9 @@ node_modules
 .DS_Store
 Thumbs.db
 
-# Env
+# Env — all local env files stay out of the repo; secrets live in CF Pages dashboard
 .env
 .env.*
-!.env.example
-!.env.test
 .dev.vars
 
 
