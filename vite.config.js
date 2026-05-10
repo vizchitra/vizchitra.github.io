@@ -7,6 +7,10 @@ import dsv from '@rollup/plugin-dsv';
 import { hmrReload } from './text.config.js';
 
 export default defineConfig({
+	define: {
+		__BUILD_SHA__: JSON.stringify((process.env.CF_PAGES_COMMIT_SHA || 'dev').slice(0, 7)),
+		__BUILD_BRANCH__: JSON.stringify(process.env.CF_PAGES_BRANCH || 'local')
+	},
 	optimizeDeps: {
 		rolldownOptions: {
 			treeshake: { commonjs: true }

@@ -16,7 +16,21 @@ function isAllowedPath(filePath: string): boolean {
 	return ALLOWED_PREFIXES.some((prefix) => normalised.startsWith(prefix));
 }
 
-export const POST: RequestHandler = async ({ request, locals, platform }) => {
+const json500 = (msg: string) =>
+	new Response(JSON.stringify({ error: msg }), {
+		status: 500,
+		headers: { 'Content-Type': 'application/json' }
+	});
+
+export const POST: RequestHandler = async (event) => {
+	try {
+		return await handlePost(event);
+	} catch (e) {
+		return json500(e instanceof Error ? e.message : String(e));
+	}
+};
+
+async function handlePost({ request, locals, platform }: Parameters<RequestHandler>[0]) {
 	if (!locals.studioUser) {
 		return new Response(JSON.stringify({ error: 'Unauthorized' }), {
 			status: 401,
@@ -44,20 +58,10 @@ export const POST: RequestHandler = async ({ request, locals, platform }) => {
 	}
 
 	const githubToken = platform?.env?.STUDIO_GITHUB_TOKEN;
-	if (!githubToken) {
-		return new Response(JSON.stringify({ error: 'GitHub token not configured' }), {
-			status: 500,
-			headers: { 'Content-Type': 'application/json' }
-		});
-	}
+	if (!githubToken) return json500('GitHub token not configured');
 
 	const kv = platform?.env?.STUDIO_SESSIONS;
-	if (!kv) {
-		return new Response(JSON.stringify({ error: 'KV not available' }), {
-			status: 500,
-			headers: { 'Content-Type': 'application/json' }
-		});
-	}
+	if (!kv) return json500('KV not available');
 
 	const handle = locals.studioUser.handle;
 	const octokit = new Octokit({ auth: githubToken });
@@ -106,10 +110,6 @@ export const POST: RequestHandler = async ({ request, locals, platform }) => {
 			headers: { 'Content-Type': 'application/json' }
 		});
 	} catch (e) {
-		const message = e instanceof Error ? e.message : 'GitHub API error';
-		return new Response(JSON.stringify({ error: message }), {
-			status: 500,
-			headers: { 'Content-Type': 'application/json' }
-		});
+		return json500(e instanceof Error ? e.message : 'GitHub API error');
 	}
-};
+}
