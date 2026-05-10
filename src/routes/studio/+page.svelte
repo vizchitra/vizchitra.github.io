@@ -76,18 +76,22 @@
 			<div
 				class="rounded border border-amber-800/40 bg-amber-950/30 px-4 py-3 text-sm text-amber-300"
 			>
-				{config.instructions}
+				<p class="mb-2">{config.instructions.lead}</p>
+				<ul class="space-y-1">
+					{#each config.instructions.bullets as bullet}
+						<li class="flex gap-2">
+							<span class="shrink-0">·</span>
+							<span><strong class="font-semibold">{bullet.label}:</strong> {bullet.text}</span>
+						</li>
+					{/each}
+				</ul>
 			</div>
 		</div>
 
 		<!-- Staged changes + publish -->
 		{#if stagedFiles.length > 0 || publishResult}
-			<div
-				class="rounded-xl border border-[var(--color-grey-700)] bg-[var(--color-grey-900)] p-6"
-			>
-				<h2 class="mb-4 text-base font-semibold text-[var(--color-grey-100)]">
-					Ready to publish
-				</h2>
+			<div class="rounded-xl border border-[var(--color-grey-700)] bg-[var(--color-grey-900)] p-6">
+				<h2 class="mb-4 text-base font-semibold text-[var(--color-grey-100)]">Ready to publish</h2>
 
 				{#if stagedFiles.length > 0}
 					<ul class="mb-4 space-y-1">

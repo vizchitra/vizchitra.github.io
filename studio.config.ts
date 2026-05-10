@@ -18,17 +18,32 @@ export interface StudioCollection {
 
 export interface StudioConfig {
 	description: string;
-	instructions: string;
+	instructions: {
+		lead: string;
+		bullets: { label: string; text: string }[];
+	};
 	collections: StudioCollection[];
 }
 
 export const studioConfig: StudioConfig = {
 	description: 'Content Editing for VizChitra Website.',
-	instructions:
-		'When you publish, your changes are sent for review and will go live on the website automatically. ' +
-		'Write in a warm, welcoming, and clear tone — as if speaking directly to attendees. ' +
-		'To edit a page, use the editor that appears on the page itself. ' +
-		'To update session or event records, use the form in the collection view.',
+	instructions: {
+		lead: 'When you publish, your changes go live on the website immediately.',
+		bullets: [
+			{
+				label: 'Tone',
+				text: 'Write warmly and clearly — imagine speaking directly to someone at VizChitra.'
+			},
+			{
+				label: 'Pages',
+				text: 'Open any page on the site to edit it using the inline editor.'
+			},
+			{
+				label: 'Collections',
+				text: 'Use the collection view to update session and event records.'
+			}
+		]
+	},
 	collections: [
 		{
 			name: 'Pages',
