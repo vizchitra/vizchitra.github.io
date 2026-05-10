@@ -66,35 +66,7 @@
 	});
 	onDestroy(() => panelStore.set('hidden'));
 
-	// ── Publish ──────────────────────────────────────────────────────────────
-	let publishing = $state(false);
-	let publishStatus = $state<'idle' | 'done' | 'error'>('idle');
-	let prUrl = $state<string | null>(null);
-	let publishMessage = $state('');
-	// Track staged count locally so it resets after publish without prop change
-	let localStagedCount = $derived(stagedCount);
-
-	async function publish() {
-		if (!publishMessage.trim() || publishing) return;
-		publishing = true;
-		publishStatus = 'idle';
-		try {
-			const res = await fetch('/api/studio/publish', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ message: publishMessage })
-			});
-			if (!res.ok) throw new Error('Publish failed');
-			const data = (await res.json()) as { prUrl: string };
-			prUrl = data.prUrl;
-			publishStatus = 'done';
-			publishMessage = '';
-		} catch {
-			publishStatus = 'error';
-		} finally {
-			publishing = false;
-		}
-	}
+	const localStagedCount = $derived(stagedCount);
 </script>
 
 <!-- ── Collapsed strip ────────────────────────────────────────────────── -->
@@ -188,49 +160,65 @@
 			</div>
 		</div>
 
-		<!-- Optional preview (card + social) -->
-		{#if preview || socialImage}
-			<div class="border-grey-800 border-b">
-				<details class="group" open>
-					<summary
-						class="text-viz-grey-muted hover:text-viz-grey-light flex cursor-pointer list-none items-center justify-between px-4 py-2.5 text-[10px] font-semibold tracking-widest uppercase transition-colors"
-					>
-						Preview
-						<svg
-							class="h-3 w-3 transition-transform group-open:rotate-180"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"
-							aria-hidden="true"
-						>
-							<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-						</svg>
-					</summary>
-					<div class="space-y-3 px-4 pb-3">
-						{#if preview}
-							{@render preview()}
-						{/if}
-						{#if socialImage}
-							<div>
-								<p class="text-viz-grey-muted mb-1.5 text-[10px] tracking-widest uppercase">
-									Social
-								</p>
-								<img
-									src={socialImage}
-									alt="Social preview"
-									class="border-grey-700 w-full rounded border object-cover"
-								/>
-							</div>
-						{/if}
-					</div>
-				</details>
-			</div>
-		{/if}
-
-		<!-- Scrollable body -->
+		<!-- Scrollable body: fields, then previews -->
 		<div class="flex-1 overflow-y-auto">
 			{@render children()}
+
+			<!-- Card preview (passed by consuming panel) -->
+			{#if preview}
+				<div class="border-grey-800 border-b">
+					<details class="group">
+						<summary
+							class="text-viz-grey-muted hover:text-viz-grey-light flex cursor-pointer list-none items-center justify-between px-4 py-2.5 text-[10px] font-semibold tracking-widest uppercase transition-colors"
+						>
+							Card preview
+							<svg
+								class="h-3 w-3 transition-transform group-open:rotate-180"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								aria-hidden="true"
+							>
+								<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+							</svg>
+						</summary>
+						<div class="px-4 pb-3">
+							{@render preview()}
+						</div>
+					</details>
+				</div>
+			{/if}
+
+			<!-- Social og:image preview -->
+			{#if socialImage}
+				<div class="border-grey-800 border-b">
+					<details class="group">
+						<summary
+							class="text-viz-grey-muted hover:text-viz-grey-light flex cursor-pointer list-none items-center justify-between px-4 py-2.5 text-[10px] font-semibold tracking-widest uppercase transition-colors"
+						>
+							Social preview
+							<svg
+								class="h-3 w-3 transition-transform group-open:rotate-180"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								aria-hidden="true"
+							>
+								<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+							</svg>
+						</summary>
+						<div class="px-4 pb-3">
+							<img
+								src={socialImage}
+								alt="Social preview"
+								class="border-grey-700 w-full rounded border object-cover"
+							/>
+						</div>
+					</details>
+				</div>
+			{/if}
 		</div>
 
 		<!-- Footer: Edit / Cancel+Save / Publish -->
@@ -243,7 +231,7 @@
 					<p class="text-xs text-emerald-400">✓ Saved to disk</p>
 				{:else if saveStatus === 'staged'}
 					<p class="text-xs text-emerald-400">
-						✓ Staged! Hit Publish below when you're ready to go live.
+						✓ Staged. <a href="/studio" class="underline">Go to Studio</a> to publish when ready.
 					</p>
 				{/if}
 
@@ -277,39 +265,14 @@
 				</button>
 			{/if}
 
-			<!-- Publish CTA (prod only, staged changes pending, not currently editing) -->
+			<!-- Staged nudge (prod only, not currently editing) -->
 			{#if !dev && localStagedCount > 0 && !isEditing}
-				<div class="mt-1 space-y-1.5">
-					<p class="text-grey-500 text-[10px] tracking-widest uppercase">
-						{localStagedCount} change{localStagedCount !== 1 ? 's' : ''} ready to publish
-					</p>
-					<textarea
-						bind:value={publishMessage}
-						placeholder="Describe your changes…"
-						rows={2}
-						class="border-grey-700 bg-grey-800 text-viz-grey-light placeholder-grey-600 focus:border-viz-teal w-full rounded border px-2.5 py-1.5 text-xs focus:outline-none"
-					></textarea>
-					{#if publishStatus === 'done' && prUrl}
-						<a
-							href={prUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="block text-center text-xs text-emerald-400 underline">✓ PR opened →</a
-						>
-					{:else if publishStatus === 'error'}
-						<p class="text-xs text-red-400">Publish failed — try again</p>
-					{/if}
-					<button
-						type="button"
-						onclick={publish}
-						disabled={!publishMessage.trim() || publishing}
-						class="bg-viz-teal text-grey-900 w-full rounded px-3 py-2 text-xs font-semibold transition-opacity hover:opacity-90 disabled:opacity-50"
-					>
-						{publishing
-							? 'Publishing…'
-							: `Publish ${localStagedCount} change${localStagedCount !== 1 ? 's' : ''}`}
-					</button>
-				</div>
+				<a
+					href="/studio"
+					class="bg-viz-teal text-grey-900 mt-1 block w-full rounded px-3 py-2 text-center text-xs font-semibold transition-opacity hover:opacity-90"
+				>
+					{localStagedCount} staged change{localStagedCount !== 1 ? 's' : ''} — publish in Studio
+				</a>
 			{/if}
 		</div>
 	</aside>
