@@ -105,7 +105,10 @@
 
 			if (!res.ok) {
 				const data = await res.json().catch(() => ({}));
-				errorMessage = (data as { error?: string }).error ?? 'Save failed';
+				const serverError = (data as { error?: string }).error;
+				errorMessage = serverError
+					? `Save failed: ${serverError}`
+					: `Save failed (HTTP ${res.status})`;
 				saveStatus = 'error';
 				return;
 			}
