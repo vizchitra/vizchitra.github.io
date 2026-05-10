@@ -1,9 +1,11 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import Header from '$lib/components/structure/Header.svelte';
 	import { Heading, Prose } from '$lib/components/typography';
 	import { Container } from '$lib/components/layout';
 	import { ProposalBadge, ProposalStatusBadge, UpvoteButton } from '$lib/components/proposals';
 	import EditableFeedback from '$lib/studio/editor/EditableFeedback.svelte';
+	import FeedbackPanel from '$lib/studio/editor/FeedbackPanel.svelte';
 	import type { PageData } from './$types';
 	import type { CFPProposal, CFEProposal } from '$lib/types/proposals';
 
@@ -37,7 +39,37 @@
 	const description = $derived(
 		isCFP ? (proposal as CFPProposal).description : (proposal as CFEProposal).projectDescription
 	);
+
+	// ── Studio feedback state (shared between FeedbackPanel + EditableFeedback) ─
+	let isStudioUser = $state(false);
+	let statusRef = $state(data.feedback?.status ?? 'Under Review');
+	let notesRef = $state(data.feedback?.notes ?? '');
+
+	onMount(async () => {
+		try {
+			const res = await fetch('/api/studio/me');
+			if (res.ok) isStudioUser = true;
+		} catch {
+			// Not authed
+		}
+	});
+
+	function getNotes() {
+		return notesRef;
+	}
 </script>
+
+<!-- FeedbackPanel: fixed sidebar, only visible to studio users -->
+{#if isStudioUser}
+	<FeedbackPanel
+		submissionType={proposal.type}
+		id={proposal.id}
+		initialStatus={statusRef}
+		status={statusRef}
+		onStatusChange={(s) => (statusRef = s)}
+		{getNotes}
+	/>
+{/if}
 
 <!-- Clean header with title and speaker -->
 
@@ -272,16 +304,13 @@
 			{/if}
 		{/if}
 
-		{#await fetch('/api/studio/me').then(r => r.ok ? r.json() : null) then user}
-			{#if user?.handle}
-				<EditableFeedback
-					submissionType={proposal.type}
-					id={proposal.id}
-					initialStatus={data.feedback?.status ?? 'Under Review'}
-					initialNotes={data.feedback?.notes ?? ''}
-				/>
-			{/if}
-		{/await}
+		{#if isStudioUser}
+			<EditableFeedback
+				status={statusRef}
+				initialNotes={notesRef}
+				onNotesChange={(n) => (notesRef = n)}
+			/>
+		{/if}
 
 		<div class="border-viz-grey/10 mt-16 border-t pt-8 text-center">
 			<a
