@@ -5,6 +5,16 @@ Format: date, what changed, why, key files, notes for the next agent.
 
 ---
 
+## 2026-05-10 — refactor(studio): replace [var(--color-*)] with Tailwind tokens
+
+**What changed:** Replaced all `text-[var(--color-grey-500)]` / `bg-[var(--color-viz-blue-subtle)]` arbitrary Tailwind class values with direct token names (`text-grey-500`, `bg-viz-blue-subtle`, etc.) across studio editor components and the studio dashboard.
+
+**Why:** In Tailwind v4, all `--color-*` variables in `@theme static` automatically generate utility classes — no need for the `[var()]` escape hatch. Direct token names are shorter, readable, and correctly scanned by Tailwind's JIT. (This was in PR #295 but merged before the commit landed.)
+
+**Key files:** `src/lib/studio/editor/SessionPanel.svelte`, `StudioPanel.svelte`, `PanelShell.svelte`, `FeedbackPanel.svelte`, `EditableFeedback.svelte`, `src/routes/studio/+page.svelte`
+
+---
+
 ## 2026-05-10 — feat(studio): login banner, save fix, persistent panel, social previews
 
 **What changed:**

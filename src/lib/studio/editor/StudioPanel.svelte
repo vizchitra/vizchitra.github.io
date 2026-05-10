@@ -435,7 +435,7 @@
 			<!-- Publish (prod only, when staged changes exist) -->
 			{#if !dev && stagedCount > 0 && !isEditing}
 				<div class="mt-1 space-y-1.5">
-					<p class="text-[10px] tracking-widest text-[var(--color-grey-500)] uppercase">
+					<p class="text-grey-500 text-[10px] tracking-widest uppercase">
 						{stagedCount} change{stagedCount !== 1 ? 's' : ''} ready to publish
 					</p>
 					<textarea
