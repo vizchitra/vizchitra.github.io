@@ -133,6 +133,7 @@
 	// ── Publish ──────────────────────────────────────────────────
 	let publishing = $state(false);
 	let publishStatus = $state<'idle' | 'done' | 'error'>('idle');
+	let publishError = $state<string | null>(null);
 	let prUrl = $state<string | null>(null);
 	let publishMessage = $state('');
 
@@ -143,19 +144,25 @@
 		}
 		publishing = true;
 		publishStatus = 'idle';
+		publishError = null;
 		try {
 			const res = await fetch('/api/studio/publish', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ message: publishMessage })
 			});
-			if (!res.ok) throw new Error('Publish failed');
-			const data = (await res.json()) as { prUrl: string };
-			prUrl = data.prUrl;
+			const data = (await res.json()) as { ok?: boolean; prUrl?: string; error?: string };
+			if (!res.ok) {
+				publishError = data.error ?? `Publish failed (HTTP ${res.status})`;
+				publishStatus = 'error';
+				return;
+			}
+			prUrl = data.prUrl ?? null;
 			publishStatus = 'done';
 			stagedCount = 0;
 			publishMessage = '';
 		} catch {
+			publishError = 'Network error — please try again';
 			publishStatus = 'error';
 		} finally {
 			publishing = false;
@@ -455,7 +462,7 @@
 							class="block text-center text-xs text-emerald-400 underline">✓ PR opened →</a
 						>
 					{:else if publishStatus === 'error'}
-						<p class="text-xs text-red-400">Publish failed — try again</p>
+						<p class="text-xs text-red-400">{publishError ?? 'Publish failed — try again'}</p>
 					{/if}
 					<button
 						type="button"
