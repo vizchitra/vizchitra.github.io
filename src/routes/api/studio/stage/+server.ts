@@ -1,12 +1,12 @@
 import type { RequestHandler } from './$types';
 import { Octokit } from '@octokit/rest';
 import matter from 'gray-matter';
+import { ensureStagingBranch, stagingKey, type StagingState } from '$lib/studio/staging';
 
 export const prerender = false;
 
 const OWNER = 'vizchitra';
 const REPO = 'vizchitra.github.io';
-const BASE_BRANCH = 'master';
 
 const ALLOWED_PREFIXES = ['content/'];
 
@@ -14,16 +14,6 @@ function isAllowedPath(filePath: string): boolean {
 	const normalised = filePath.replace(/\\/g, '/').replace(/^\/+/, '');
 	if (normalised.includes('..')) return false;
 	return ALLOWED_PREFIXES.some((prefix) => normalised.startsWith(prefix));
-}
-
-/** KV key for a user's staging state */
-function stagingKey(handle: string): string {
-	return `studio_staging:${handle}`;
-}
-
-interface StagingState {
-	branch: string;
-	files: string[];
 }
 
 export const POST: RequestHandler = async ({ request, locals, platform }) => {
@@ -76,29 +66,7 @@ export const POST: RequestHandler = async ({ request, locals, platform }) => {
 	const content = btoa(unescape(encodeURIComponent(serialised)));
 
 	try {
-		// Load or create staging state
-		const existing = (await kv.get(stagingKey(handle), 'json')) as StagingState | null;
-
-		let branchName: string;
-
-		if (existing?.branch) {
-			branchName = existing.branch;
-		} else {
-			// Create a new staging branch
-			const date = new Date().toISOString().slice(0, 10);
-			branchName = `studio/${handle}/${date}`;
-			const { data: ref } = await octokit.git.getRef({
-				owner: OWNER,
-				repo: REPO,
-				ref: `heads/${BASE_BRANCH}`
-			});
-			await octokit.git.createRef({
-				owner: OWNER,
-				repo: REPO,
-				ref: `refs/heads/${branchName}`,
-				sha: ref.object.sha
-			});
-		}
+		const { branchName, existing } = await ensureStagingBranch(octokit, kv, handle);
 
 		// Get current file SHA on the staging branch
 		let sha: string | undefined;
