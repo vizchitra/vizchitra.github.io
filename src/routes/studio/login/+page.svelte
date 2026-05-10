@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageProps } from './$types';
-	import Hero from '$lib/components/structure/Hero.svelte';
+	import Header from '$lib/components/structure/Hero.svelte';
 	let { data }: PageProps = $props();
 </script>
 
@@ -9,7 +9,7 @@
 	<meta name="description" content="Sign in to VizChitra Studio" />
 </svelte:head>
 
-<Hero banner="square" color="grey" tagline="EDITORIAL STUDIO — CONTENT MANAGEMENT" />
+<Header banner="square" color="grey" />
 
 <div class="flex justify-center px-4 py-12">
 	<div class="w-full max-w-sm">

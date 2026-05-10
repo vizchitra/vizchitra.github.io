@@ -5,6 +5,18 @@ Format: date, what changed, why, key files, notes for the next agent.
 
 ---
 
+## 2026-05-10 — chore: automated commit for PR
+
+**What changed:** Staged current workspace edits and prepared branch for PR.
+
+**Why:** User requested a commit and pull request; this entry records the automated save.
+
+**Key files:** see staged changes in the commit.
+
+**Notes for next agent:** Replace this placeholder with a detailed changelog entry describing the grouped changes before merging.
+
+---
+
 ## 2026-05-10 — refactor(studio): replace [var(--color-*)] with Tailwind tokens
 
 **What changed:** Replaced all `text-[var(--color-grey-500)]` / `bg-[var(--color-viz-blue-subtle)]` arbitrary Tailwind class values with direct token names (`text-grey-500`, `bg-viz-blue-subtle`, etc.) across studio editor components and the studio dashboard.
