@@ -4,20 +4,17 @@ on:
   pull_request:
     branches: [master]
 
-# Needed to post/update PR comments
 permissions:
   pull-requests: write
 
 jobs:
-  # ── 1. Quality ─────────────────────────────────────────────────────────────
-  quality:
+  checks:
     name: Quality
     runs-on: ubuntu-latest
 
-    outputs:
-      lint: ${{ steps.lint.outcome }}
-      oxlint: ${{ steps.oxlint.outcome }}
-      svelte_check: ${{ steps.svelte_check.outcome }}
+    env:
+      BUILD_TIME_LIMIT_S: 120
+      CHUNK_SIZE_LIMIT_KB: 600
 
     steps:
       - uses: actions/checkout@v4
@@ -33,6 +30,7 @@ jobs:
 
       - run: pnpm install
 
+      # ── Quality ────────────────────────────────────────────────────────────
       - name: Prettier format check
         id: lint
         run: pnpm lint
@@ -43,53 +41,7 @@ jobs:
         run: pnpm lint:code
         continue-on-error: true
 
-      # .content-collections/generated is gitignored and only created by vite build
-      - name: Build (generates content-collection types for svelte-check)
-        run: pnpm build
-
-      - name: Svelte type-check
-        id: svelte_check
-        run: pnpm check
-        continue-on-error: true
-
-      # Fail the job if any individual check failed
-      - name: Assert all passed
-        if: >
-          steps.lint.outcome         != 'success' ||
-          steps.oxlint.outcome       != 'success' ||
-          steps.svelte_check.outcome != 'success'
-        run: exit 1
-
-  # ── 2. Build ───────────────────────────────────────────────────────────────
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-
-    env:
-      BUILD_TIME_LIMIT_S: 120
-      CHUNK_SIZE_LIMIT_KB: 600
-
-    outputs:
-      build_seconds: ${{ steps.timing.outputs.build_seconds }}
-      chunk_kb: ${{ steps.sizes.outputs.chunk_kb }}
-      chunk_name: ${{ steps.sizes.outputs.chunk_name }}
-      time_ok: ${{ steps.timing.outputs.time_ok }}
-      size_ok: ${{ steps.sizes.outputs.size_ok }}
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: pnpm/action-setup@v4
-        with:
-          run_install: false
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: 'pnpm'
-
-      - run: pnpm install
-
+      # ── Build (needed for content-collection types + metrics) ───────────────
       - name: Build + measure time
         id: timing
         run: |
@@ -109,41 +61,35 @@ jobs:
           CHUNK_DIR=".svelte-kit/cloudflare/app/immutable/chunks"
           LARGEST=$(ls -S "$CHUNK_DIR"/*.js 2>/dev/null | head -1)
           SIZE_KB=$(( $(wc -c < "$LARGEST") / 1024 ))
-          echo "chunk_kb=$SIZE_KB"           >> "$GITHUB_OUTPUT"
-          echo "chunk_name=$(basename $LARGEST)" >> "$GITHUB_OUTPUT"
+          echo "chunk_kb=$SIZE_KB"                   >> "$GITHUB_OUTPUT"
+          echo "chunk_name=$(basename "$LARGEST")"   >> "$GITHUB_OUTPUT"
           if [ "$SIZE_KB" -le "$CHUNK_SIZE_LIMIT_KB" ]; then
             echo "size_ok=true"  >> "$GITHUB_OUTPUT"
           else
             echo "size_ok=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Enforce limits
-        if: >
-          steps.timing.outputs.time_ok == 'false' ||
-          steps.sizes.outputs.size_ok  == 'false'
-        run: exit 1
+      - name: Svelte type-check
+        id: svelte_check
+        run: pnpm check
+        continue-on-error: true
 
-  # ── 3. PR Comment ──────────────────────────────────────────────────────────
-  report:
-    name: Post results
-    needs: [quality, build]
-    if: always()
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/github-script@v7
+      # ── Post PR comment ────────────────────────────────────────────────────
+      - name: Post results comment
+        if: always()
+        uses: actions/github-script@v7
         with:
           script: |
             const icon = s => s === 'success' ? '✅' : s === 'failure' ? '❌' : '⏭️';
 
-            const lint        = '${{ needs.quality.outputs.lint }}';
-            const oxlint      = '${{ needs.quality.outputs.oxlint }}';
-            const svelteCheck = '${{ needs.quality.outputs.svelte_check }}';
-            const buildSecs   = '${{ needs.build.outputs.build_seconds }}';
-            const chunkKb     = '${{ needs.build.outputs.chunk_kb }}';
-            const chunkName   = '${{ needs.build.outputs.chunk_name }}';
-            const timeOk      = '${{ needs.build.outputs.time_ok }}' === 'true';
-            const sizeOk      = '${{ needs.build.outputs.size_ok }}'  === 'true';
+            const lint        = '${{ steps.lint.outcome }}';
+            const oxlint      = '${{ steps.oxlint.outcome }}';
+            const svelteCheck = '${{ steps.svelte_check.outcome }}';
+            const buildSecs   = '${{ steps.timing.outputs.build_seconds }}';
+            const chunkKb     = '${{ steps.sizes.outputs.chunk_kb }}';
+            const chunkName   = '${{ steps.sizes.outputs.chunk_name }}';
+            const timeOk      = '${{ steps.timing.outputs.time_ok }}' === 'true';
+            const sizeOk      = '${{ steps.sizes.outputs.size_ok }}'  === 'true';
 
             const allOk =
               lint === 'success' && oxlint === 'success' &&
@@ -193,3 +139,13 @@ jobs:
                 body
               });
             }
+
+      # ── Fail the job if any check failed ───────────────────────────────────
+      - name: Assert all passed
+        if: >
+          steps.lint.outcome         != 'success' ||
+          steps.oxlint.outcome       != 'success' ||
+          steps.svelte_check.outcome != 'success' ||
+          steps.timing.outputs.time_ok == 'false' ||
+          steps.sizes.outputs.size_ok  == 'false'
+        run: exit 1
