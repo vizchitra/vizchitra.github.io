@@ -5,6 +5,16 @@ Format: date, what changed, why, key files, notes for the next agent.
 
 ---
 
+## 2026-05-10 — fix: publish fails when PR already exists for staging branch
+
+**What changed:** Publish endpoint now checks for an existing open PR on the staging branch before calling `pulls.create`. If one exists, it returns that PR's URL instead of failing with "A pull request already exists". Also surfaced the real server error in `StudioPanel` instead of the hardcoded "Publish failed — try again".
+
+**Why:** After publishing, KV staging state is cleared but the branch and PR remain open until merged. A subsequent save reuses the same branch, then a second publish attempt fails because GitHub rejects creating a duplicate PR.
+
+**Key files:** `src/routes/api/studio/publish/+server.ts`, `src/lib/studio/editor/StudioPanel.svelte`
+
+---
+
 ## 2026-05-10 — fix: ArrayBuffer cast in session.ts, rename CI step
 
 **What changed:** Cast `providedSig.buffer as ArrayBuffer` to satisfy `BufferSource` type (TypeScript rejects `SharedArrayBuffer`). Renamed CI step from "Svelte type-check" to "Svelte Check" in `pr-checks.yml`.
