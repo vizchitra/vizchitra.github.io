@@ -51,6 +51,17 @@ export const load: PageServerLoad = async ({ params }) => {
 
 	return {
 		document: page,
+		rawContent: page.content ?? '',
+		contentPath: `content/pages/${page.slug}.md`,
+		parsedFrontmatter: {
+			title: page.title,
+			...(page.description ? { description: page.description } : {}),
+			...(page.slug ? { slug: page.slug } : {}),
+			...(page.banner ? { banner: page.banner } : {}),
+			...(page.color ? { color: page.color } : {}),
+			...(page.draft ? { draft: page.draft } : {})
+		} as Record<string, unknown>,
+		bodyContent: page.content ?? '',
 		pageMeta: {
 			title: page.title,
 			description: page.description,

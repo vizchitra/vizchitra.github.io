@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad, EntryGenerator } from './$types';
-import { marked } from 'marked';
+import { markdownToHtml } from '$lib/utils/markdown';
 import { resolveAllSessions } from '$lib/utils/sessions';
 
 export const prerender = true;
@@ -20,12 +20,8 @@ export const load: PageServerLoad = async ({ params }) => {
 		throw error(404, `Session "${params.slug}" not found`);
 	}
 
-	const descriptionHtml = session.longDescription
-		? await marked.parse(session.longDescription, { breaks: true })
-		: '';
-	const speakerAboutHtml = session.speakerAbout
-		? await marked.parse(session.speakerAbout, { breaks: true })
-		: '';
+	const descriptionHtml = await markdownToHtml(session.longDescription);
+	const speakerAboutHtml = await markdownToHtml(session.speakerAbout);
 
 	// Related sessions: prioritise same theme (sessionType), then others
 	const relatedSessions = confirmed

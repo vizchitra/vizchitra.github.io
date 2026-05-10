@@ -1,7 +1,7 @@
 import { allGuides } from 'content-collections';
 import { error } from '@sveltejs/kit';
 
-export function load({ params }) {
+export async function load({ params }) {
 	const { guideSlug, sectionSlug } = params;
 
 	// Get all sections for this guide, sorted by order
@@ -26,12 +26,26 @@ export function load({ params }) {
 
 	const capitalize = (s) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : '');
 
+	// Studio editing support — content-collections strips frontmatter from `content`,
+	// so reconstruct parsedFrontmatter from the known schema fields on the document.
+	const parsedFrontmatter = {
+		title: section.title,
+		description: section.description,
+		guide: section.guide,
+		section: section.section,
+		order: section.order,
+		...(section.draft ? { draft: section.draft } : {})
+	};
+
 	return {
 		section: sectionData,
 		prevSection,
 		nextSection,
 		guideSlug,
 		isDraft,
+		contentPath: `content/guides/${section._meta.path}`,
+		parsedFrontmatter,
+		bodyContent: section.content ?? '',
 		pageMeta: {
 			title: `${capitalize(section.section)} | ${capitalize(guideSlug)} | VizChitra Guide`,
 			description: section.description,

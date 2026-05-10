@@ -1,11 +1,59 @@
 <script lang="ts">
 	import Prose from '$lib/components/typography/Prose.svelte';
 	import type { PageProps } from './$types';
+	import { onMount } from 'svelte';
+	import { editMode } from '$lib/studio/editor/EditModeStore';
+	import ProseMirrorEditor from '$lib/studio/editor/ProseMirrorEditor.svelte';
+	import StudioPanel from '$lib/studio/editor/StudioPanel.svelte';
 
 	let { data }: PageProps = $props();
 
 	let headerColor = $derived(`text-${data.guideColor}-700`);
+	let isAuthed = $state(false);
+	let editorRef: ProseMirrorEditor | null = $state(null);
+	let currentFrontmatter = $state<Record<string, unknown>>({});
+
+	// Reset frontmatter whenever we navigate to a different section.
+	// onMount alone isn't enough — SvelteKit reuses the component instance
+	// across same-layout navigations, so we must react to data.contentPath.
+	$effect(() => {
+		// Accessing data.contentPath makes this effect re-run on every section change.
+		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+		data.contentPath;
+		currentFrontmatter = { ...data.parsedFrontmatter };
+	});
+
+	onMount(async () => {
+		try {
+			const res = await fetch('/api/studio/me');
+			if (res.ok) isAuthed = true;
+		} catch {
+			/* not authed */
+		}
+	});
+
+	const isEditing = $derived($editMode.isEditing && $editMode.filePath === data.contentPath);
+
+	function getMarkdown(): string {
+		return editorRef?.getMarkdown() ?? data.bodyContent ?? '';
+	}
+	function getFrontmatter(): Record<string, unknown> {
+		return currentFrontmatter;
+	}
+	function onFrontmatterChange(updated: Record<string, unknown>) {
+		currentFrontmatter = updated;
+	}
 </script>
+
+{#if isAuthed}
+	<StudioPanel
+		filePath={data.contentPath}
+		frontmatter={currentFrontmatter}
+		{getMarkdown}
+		{getFrontmatter}
+		{onFrontmatterChange}
+	/>
+{/if}
 
 <article class="guide-article">
 	<nav class="article-header py-8">
@@ -19,6 +67,12 @@
 			<p class="text-lg text-gray-500">🚧 This section is currently being written.</p>
 			<p class="text-sm text-gray-400">Check back soon for updates!</p>
 		</div>
+	{:else if isEditing}
+		<ProseMirrorEditor
+			bind:this={editorRef}
+			markdown={data.bodyContent ?? ''}
+			filePath={data.contentPath}
+		/>
 	{:else}
 		<Prose color={data.guideColor}>
 			{@html data.section.html}

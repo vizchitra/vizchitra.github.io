@@ -20,7 +20,7 @@ export const POST: RequestHandler = async ({ request, params, platform }) => {
 	// Parse request body
 	let deviceId: string;
 	try {
-		const body = await request.json();
+		const body = (await request.json()) as { deviceId: string };
 		deviceId = body.deviceId;
 	} catch (err) {
 		return json({ success: false, error: 'Invalid request body' }, { status: 400 });
@@ -88,7 +88,7 @@ export const DELETE: RequestHandler = async ({ request, params, platform }) => {
 	// Parse request body
 	let deviceId: string;
 	try {
-		const body = await request.json();
+		const body = (await request.json()) as { deviceId: string };
 		deviceId = body.deviceId;
 	} catch (err) {
 		return json({ success: false, error: 'Invalid request body' }, { status: 400 });

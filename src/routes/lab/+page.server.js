@@ -1,4 +1,4 @@
-import { allStudios } from 'content-collections';
+import { allAudits } from 'content-collections';
 
 export function load() {
 	// Group by category
@@ -10,7 +10,7 @@ export function load() {
 		audit: []
 	};
 
-	allStudios.forEach((doc) => {
+	allAudits.forEach((doc) => {
 		if (categories[doc.category]) {
 			categories[doc.category].push(doc);
 		}
@@ -24,7 +24,7 @@ export function load() {
 	return {
 		categories,
 		pageMeta: {
-			title: 'Studio',
+			title: 'Lab',
 			description: 'Design system workspace for VizChitra'
 		}
 	};

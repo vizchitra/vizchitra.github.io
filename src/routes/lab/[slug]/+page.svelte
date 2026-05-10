@@ -10,7 +10,7 @@
 	<Container paddingY="xl">
 		<!-- Breadcrumb -->
 		<nav class="mb-6 text-sm text-gray-600">
-			<a href="/studio" class="underline hover:text-pink-600">Studio</a>
+			<a href="/lab" class="underline hover:text-pink-600">Lab</a>
 			<span class="mx-2">/</span>
 			<span class="text-gray-900">{data.document.title}</span>
 		</nav>
