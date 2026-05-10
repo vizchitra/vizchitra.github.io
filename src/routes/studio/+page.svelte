@@ -6,6 +6,45 @@
 	const user = $derived(data.user);
 	const config = $derived(data.config);
 	const contentGroups = $derived(data.contentGroups);
+
+	// Staged changes state
+	let stagedFiles = $state<string[]>([]);
+	let publishMessage = $state('');
+	let publishing = $state(false);
+	let publishResult = $state<{ ok: boolean; prUrl?: string; error?: string } | null>(null);
+
+	async function loadStaged() {
+		const res = await fetch('/api/studio/staged');
+		if (res.ok) {
+			const json = await res.json();
+			stagedFiles = json.files ?? [];
+		}
+	}
+
+	async function publish() {
+		if (!publishMessage.trim() || publishing) return;
+		publishing = true;
+		publishResult = null;
+		try {
+			const res = await fetch('/api/studio/publish', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ message: publishMessage })
+			});
+			const json = await res.json();
+			publishResult = json;
+			if (json.ok) {
+				stagedFiles = [];
+				publishMessage = '';
+			}
+		} finally {
+			publishing = false;
+		}
+	}
+
+	$effect(() => {
+		loadStaged();
+	});
 </script>
 
 <svelte:head>
@@ -40,6 +79,60 @@
 				{config.instructions}
 			</div>
 		</div>
+
+		<!-- Staged changes + publish -->
+		{#if stagedFiles.length > 0 || publishResult}
+			<div
+				class="rounded-xl border border-[var(--color-grey-700)] bg-[var(--color-grey-900)] p-6"
+			>
+				<h2 class="mb-4 text-base font-semibold text-[var(--color-grey-100)]">
+					Ready to publish
+				</h2>
+
+				{#if stagedFiles.length > 0}
+					<ul class="mb-4 space-y-1">
+						{#each stagedFiles as file}
+							<li class="flex items-center gap-2 text-sm text-[var(--color-grey-400)]">
+								<span class="h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400"></span>
+								<span class="font-mono">{file}</span>
+							</li>
+						{/each}
+					</ul>
+
+					<div class="flex gap-3">
+						<input
+							type="text"
+							bind:value={publishMessage}
+							placeholder="Briefly describe your changes…"
+							class="min-w-0 flex-1 rounded border border-[var(--color-grey-700)] bg-[var(--color-grey-800)] px-3 py-2 text-sm text-[var(--color-grey-200)] placeholder:text-[var(--color-grey-600)] focus:border-[var(--color-grey-500)] focus:outline-none"
+						/>
+						<button
+							onclick={publish}
+							disabled={!publishMessage.trim() || publishing}
+							class="shrink-0 rounded bg-amber-500 px-4 py-2 text-sm font-semibold text-black transition-colors hover:bg-amber-400 disabled:cursor-not-allowed disabled:opacity-40"
+						>
+							{publishing ? 'Publishing…' : 'Publish'}
+						</button>
+					</div>
+				{/if}
+
+				{#if publishResult}
+					{#if publishResult.ok}
+						<p class="mt-3 text-sm text-emerald-400">
+							✓ Changes sent for review.
+							<a
+								href={publishResult.prUrl}
+								target="_blank"
+								rel="noopener"
+								class="underline hover:text-emerald-300">View PR →</a
+							>
+						</p>
+					{:else}
+						<p class="mt-3 text-sm text-red-400">⚠ {publishResult.error}</p>
+					{/if}
+				{/if}
+			</div>
+		{/if}
 
 		<!-- Content groups -->
 		<div class="grid gap-4 sm:grid-cols-2">
