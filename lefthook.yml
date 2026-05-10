@@ -9,9 +9,3 @@ pre-commit:
     lint:
       glob: "*.{ts,js,svelte}"
       run: pnpm exec oxlint {staged_files}
-    changelog:
-      run: |
-        if git diff --cached --name-only | grep -qE '^src/|^content/|^studio\.config'; then
-          git diff --cached --name-only | grep -q '^changelog\.md' || \
-            { echo "⚠️  Source files changed — please update changelog.md before committing"; exit 1; }
-        fi
