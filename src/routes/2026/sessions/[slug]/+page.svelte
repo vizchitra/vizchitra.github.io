@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, untrack } from 'svelte';
 	import { markdownToHtml } from '$lib/utils/markdown';
 	import Header from '$lib/components/structure/Header.svelte';
 	import { Heading, Prose } from '$lib/components/typography';
@@ -45,21 +45,17 @@
 	let isStudioUser = $state(false);
 	let isEditing = $state(false);
 
-	// Live-editable short fields (mirrored from session data, updated via panel)
-	let liveType = $state(session.sessionType);
-	let liveTime = $state(session.time);
-	let liveVenue = $state(session.venue);
-	let liveSpeaker = $state(session.speakerName);
-	let liveDesignation = $state(session.designation);
-	let liveOrganisation = $state(session.organisation);
-
-	// Live-editable markdown fields (edited inline on page)
-	let liveDescription = $state(session.longDescription ?? '');
-	let liveSpeakerAbout = $state(session.speakerAbout ?? '');
-
-	// Rendered HTML for the markdown fields (starts with server-side render)
-	let liveDescriptionHtml = $state(data.descriptionHtml);
-	let liveSpeakerAboutHtml = $state(data.speakerAboutHtml);
+	// Live-editable fields — untrack() marks intentional one-time init from props
+	let liveType = $state(untrack(() => session.sessionType));
+	let liveTime = $state(untrack(() => session.time));
+	let liveVenue = $state(untrack(() => session.venue));
+	let liveSpeaker = $state(untrack(() => session.speakerName));
+	let liveDesignation = $state(untrack(() => session.designation));
+	let liveOrganisation = $state(untrack(() => session.organisation));
+	let liveDescription = $state(untrack(() => session.longDescription ?? ''));
+	let liveSpeakerAbout = $state(untrack(() => session.speakerAbout ?? ''));
+	let liveDescriptionHtml = $state(untrack(() => data.descriptionHtml));
+	let liveSpeakerAboutHtml = $state(untrack(() => data.speakerAboutHtml));
 
 	// Re-render markdown live as user types
 	$effect(() => {

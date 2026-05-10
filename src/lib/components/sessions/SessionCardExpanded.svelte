@@ -421,9 +421,7 @@
 		max-width: min(300px, 55%);
 	}
 
-	.session-top-text-content {
-		/* max-h set inline (52%) caps text area so background-container always gets space */
-	}
+	/* .session-top-text-content: max-h set inline (52%) caps text area so background-container always gets space */
 
 	@media (min-width: 550px) {
 		.session-top-text-content::after {

@@ -9,7 +9,7 @@
 	 * via EditableField components, not in this panel.
 	 */
 	import { dev } from '$app/environment';
-	import { onMount } from 'svelte';
+	import { onMount, untrack } from 'svelte';
 	import PanelShell from './PanelShell.svelte';
 	import { sessionColorMap } from '$lib/utils/sessions';
 
@@ -62,15 +62,17 @@
 	}: Props = $props();
 
 	// ── Local mutable copies for the form ────────────────────────────────────
-	let localType = $state(sessionType);
-	let localDate = $state(date);
-	let localTime = $state(time);
-	let localVenue = $state(venue);
-	let localTitle = $state(title);
-	let localSubtitle = $state(subtitle);
-	let localSpeaker = $state(speakerName);
-	let localDesignation = $state(designation);
-	let localOrganisation = $state(organisation);
+	// untrack() marks these as intentionally non-reactive initial values;
+	// the $effect below re-syncs from props whenever editing starts.
+	let localType = $state(untrack(() => sessionType));
+	let localDate = $state(untrack(() => date));
+	let localTime = $state(untrack(() => time));
+	let localVenue = $state(untrack(() => venue));
+	let localTitle = $state(untrack(() => title));
+	let localSubtitle = $state(untrack(() => subtitle));
+	let localSpeaker = $state(untrack(() => speakerName));
+	let localDesignation = $state(untrack(() => designation));
+	let localOrganisation = $state(untrack(() => organisation));
 
 	// Reset local copies whenever we enter a new editing session
 	$effect(() => {

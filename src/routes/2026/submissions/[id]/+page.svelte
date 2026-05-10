@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, untrack } from 'svelte';
 	import Header from '$lib/components/structure/Header.svelte';
 	import { Heading, Prose } from '$lib/components/typography';
 	import { Container } from '$lib/components/layout';
@@ -42,13 +42,13 @@
 
 	// ── Studio feedback state (shared between FeedbackPanel + EditableFeedback) ─
 	let isStudioUser = $state(false);
-	let statusRef = $state(data.feedback?.status ?? 'Under Review');
-	let notesRef = $state(data.feedback?.notes ?? '');
+	let statusRef = $state(untrack(() => data.feedback?.status ?? 'Under Review'));
+	let notesRef = $state(untrack(() => data.feedback?.notes ?? ''));
 	let isEditing = $state(false);
 
 	// Snapshots taken when entering edit mode — used for cancel revert
-	let savedStatus = $state(statusRef);
-	let savedNotes = $state(notesRef);
+	let savedStatus = $state(untrack(() => statusRef));
+	let savedNotes = $state(untrack(() => notesRef));
 
 	onMount(async () => {
 		try {
