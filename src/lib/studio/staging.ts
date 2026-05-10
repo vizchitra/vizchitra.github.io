@@ -44,6 +44,26 @@ export async function ensureStagingBranch(
 		}
 	}
 
+	// Close any stale open PRs from previous studio branches for this user
+	try {
+		const { data: openPrs } = await octokit.pulls.list({
+			owner: OWNER,
+			repo: REPO,
+			state: 'open',
+			per_page: 20
+		});
+		const stalePrs = openPrs.filter(
+			(pr) => pr.head.ref.startsWith(`studio/${handle}/`) && pr.head.ref !== existing?.branch
+		);
+		await Promise.all(
+			stalePrs.map((pr) =>
+				octokit.pulls.update({ owner: OWNER, repo: REPO, pull_number: pr.number, state: 'closed' })
+			)
+		);
+	} catch {
+		// Non-fatal — stale PR cleanup is best-effort
+	}
+
 	// Determine new branch name from today's date
 	const date = new Date().toISOString().slice(0, 10);
 	const branchName = `studio/${handle}/${date}`;

@@ -67,20 +67,35 @@ export const POST: RequestHandler = async ({ request, locals, platform }) => {
 	try {
 		const octokit = new Octokit({ auth: githubToken });
 
-		const fileList = state.files.map((f) => `- \`${f}\``).join('\n');
-		const { data: pr } = await octokit.pulls.create({
+		// Check if a PR already exists for this branch (e.g. previous publish still open)
+		const { data: existingPrs } = await octokit.pulls.list({
 			owner: OWNER,
 			repo: REPO,
-			title: `content: ${message.slice(0, 72)}`,
-			body: `${message}\n\n**Edited by @${handle} via VizChitra Studio**\n\n### Changed files\n${fileList}`,
-			head: state.branch,
-			base: BASE_BRANCH
+			head: `${OWNER}:${state.branch}`,
+			state: 'open'
 		});
 
-		// Clear staging state from KV
+		let prUrl: string;
+
+		if (existingPrs.length > 0) {
+			prUrl = existingPrs[0].html_url;
+		} else {
+			const fileList = state.files.map((f) => `- \`${f}\``).join('\n');
+			const { data: pr } = await octokit.pulls.create({
+				owner: OWNER,
+				repo: REPO,
+				title: `content: ${message.slice(0, 72)}`,
+				body: `${message}\n\n**Edited by @${handle} via VizChitra Studio**\n\n### Changed files\n${fileList}`,
+				head: state.branch,
+				base: BASE_BRANCH
+			});
+			prUrl = pr.html_url;
+		}
+
+		// Clear staging state from KV so the next save creates a fresh branch
 		await kv.delete(`studio_staging:${handle}`);
 
-		return new Response(JSON.stringify({ ok: true, prUrl: pr.html_url }), {
+		return new Response(JSON.stringify({ ok: true, prUrl }), {
 			status: 200,
 			headers: { 'Content-Type': 'application/json' }
 		});

@@ -9,3 +9,6 @@ build
 .env
 .env.*
 !.env.example
+
+# Content files are edited by the studio editor; formatting is not enforced
+content/
