@@ -9,7 +9,7 @@ let redirects: Array<{ from: string; to: string; code: number }> = [];
 if (dev) {
 	try {
 		const fs = await import('node:fs');
-		const content = fs.readFileSync('static/_redirects', 'utf-8');
+		const content = fs.readFileSync('_redirects', 'utf-8');
 		redirects = content
 			.split('\n')
 			.filter((line) => line.trim() && !line.startsWith('#'))

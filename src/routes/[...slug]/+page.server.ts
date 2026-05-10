@@ -1,7 +1,7 @@
 import { error, redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { allPages } from 'content-collections';
-import redirectsContent from '../../../static/_redirects?raw';
+import redirectsContent from '../../../_redirects?raw';
 const redirects = new Map<string, { to: string; code: number }>();
 
 redirectsContent
