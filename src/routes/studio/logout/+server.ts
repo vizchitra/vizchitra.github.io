@@ -1,15 +1,7 @@
 import type { RequestHandler } from './$types';
-import { deleteSession, clearSessionCookie } from '$lib/studio/session';
+import { clearSessionCookie } from '$lib/studio/session';
 
-export const POST: RequestHandler = async ({ locals, platform }) => {
-	const user = locals.studioUser;
-	if (user) {
-		const kv = platform?.env?.STUDIO_SESSIONS;
-		if (kv) {
-			await deleteSession(kv, user.sessionId);
-		}
-	}
-
+export const POST: RequestHandler = async () => {
 	return new Response(null, {
 		status: 302,
 		headers: {

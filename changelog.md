@@ -5,6 +5,38 @@ Format: date, what changed, why, key files, notes for the next agent.
 
 ---
 
+## 2026-05-10 — fix: ArrayBuffer cast in session.ts, rename CI step
+
+**What changed:** Cast `providedSig.buffer as ArrayBuffer` to satisfy `BufferSource` type (TypeScript rejects `SharedArrayBuffer`). Renamed CI step from "Svelte type-check" to "Svelte Check" in `pr-checks.yml`.
+
+**Key files:** `src/lib/studio/session.ts`, `.github/workflows/pr-checks.yml`
+
+---
+
+## 2026-05-10 — fix: session.ts type errors (Uint8Array/ArrayBuffer)
+
+**What changed:** Fixed two TypeScript errors in `src/lib/studio/session.ts` that failed svelte-check: `b64url` now accepts `ArrayBuffer | Uint8Array`, and `crypto.subtle.verify` receives `.buffer` to satisfy the `BufferSource` type.
+
+**Key files:** `src/lib/studio/session.ts`
+
+---
+
+## 2026-05-10 — fix: signed cookie auth, prettier content ignore, build info placement
+
+**What changed:**
+
+1. Replaced KV-backed sessions with HMAC-signed cookies (`createSignedSession` / `verifySignedSession` in `session.ts`). Auth is now verified by checking the cookie signature — no KV lookup, no eventual-consistency delay. Requires `STUDIO_SESSION_SECRET` CF Pages secret (any long random string, e.g. `openssl rand -hex 32`).
+2. Added `content/` to `.prettierignore` so studio-generated PR content files no longer fail the Prettier CI check.
+3. Moved build info on `/studio/login` to below the sign-in button.
+
+**Why:** KV eventual consistency caused every login to bounce back to `/studio/login` — the session write at one CF edge wasn't visible at another edge when the redirect landed. Signed cookies eliminate the round-trip entirely.
+
+**Key files:** `src/lib/studio/session.ts`, `src/routes/studio/auth/callback/+server.ts`, `src/hooks.server.ts`, `src/routes/studio/logout/+server.ts`, `src/app.d.ts`, `.prettierignore`, `src/routes/studio/login/+page.svelte`
+
+**Notes for next agent:** `STUDIO_SESSION_SECRET` must be set in CF Pages dashboard → Settings → Environment variables → as a secret. Without it, login returns 500 "Session secret not configured".
+
+---
+
 ## 2026-05-10 — fix: stage 500 error, build info footer, wrangler compat bump
 
 **What changed:**

@@ -1,6 +1,6 @@
 import { redirect } from '@sveltejs/kit';
 import { dev } from '$app/environment';
-import { getSession } from '$lib/studio/session';
+import { verifySignedSession } from '$lib/studio/session';
 import redirectsRaw from '../_redirects?raw';
 
 // Parse _redirects once at module load (bundled by Vite — works in CF Workers)
@@ -34,14 +34,19 @@ export async function handle({ event, resolve }) {
 		// In dev mode, always bypass OAuth — no env vars needed
 		const devUser = dev && (process.env.STUDIO_DEV_USER || 'dev');
 		if (devUser) {
-			event.locals.studioUser = { handle: devUser, sessionId: 'dev' };
+			event.locals.studioUser = { handle: devUser };
 		} else {
-			const kv = event.platform?.env?.STUDIO_SESSIONS;
-			if (kv) {
-				const session = await getSession(kv, event.request);
-				event.locals.studioUser = session
-					? { handle: session.handle, sessionId: session.sessionId }
-					: null;
+			const secret = event.platform?.env?.STUDIO_SESSION_SECRET;
+			if (secret) {
+				const cookieHeader = event.request.headers.get('cookie') ?? '';
+				const token =
+					cookieHeader
+						.split(';')
+						.map((c) => c.trim())
+						.find((c) => c.startsWith('studio_session='))
+						?.slice('studio_session='.length) ?? '';
+				const session = token ? await verifySignedSession(token, secret) : null;
+				event.locals.studioUser = session ? { handle: session.handle } : null;
 			} else {
 				event.locals.studioUser = null;
 			}

@@ -40,8 +40,6 @@
 			</svg>
 			Sign in with GitHub
 		</a>
+		<p class="mt-4 text-center font-mono text-xs text-gray-400">#{buildSha} · {buildBranch}</p>
 	</div>
-	<footer class="pb-6 text-center">
-		<span class="text-grey-400 font-mono text-xs">#{buildSha} · {buildBranch}</span>
-	</footer>
 </div>
