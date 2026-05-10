@@ -45,6 +45,12 @@ export interface SessionRow {
 
 // ── Shared types ─────────────────────────────────────────────────────────────
 
+export interface TableGroup<T> {
+	name: string;
+	count: number;
+	rows: T[];
+}
+
 export interface FileEntry {
 	title: string;
 	filePath: string;
@@ -180,17 +186,23 @@ function buildContentTree(collections: StudioCollection[]): ContentGroup[] {
 	});
 }
 
+function groupBy<T>(rows: T[], key: (r: T) => string, order: string[]): TableGroup<T>[] {
+	return order
+		.map((name) => ({ name, count: 0, rows: [] as T[] }))
+		.map((g) => {
+			g.rows = rows.filter((r) => key(r) === g.name);
+			g.count = g.rows.length;
+			return g;
+		})
+		.filter((g) => g.count > 0);
+}
+
 // ── Load ──────────────────────────────────────────────────────────────────────
 
 export const load: PageServerLoad = async ({ locals, platform }) => {
 	if (!locals.studioUser) {
 		throw redirect(302, '/studio/login');
 	}
-
-	const allowedUsers = (platform?.env?.STUDIO_ALLOWED_USERS ?? '')
-		.split(',')
-		.map((h: string) => h.trim())
-		.filter(Boolean);
 
 	const contentGroups = buildContentTree(studioConfig.collections);
 
@@ -234,14 +246,49 @@ export const load: PageServerLoad = async ({ locals, platform }) => {
 		url: s.slug ? `/2026/sessions/${s.slug}` : ''
 	}));
 
+	const SESSION_TYPES = ['Talks', 'Dialogues', 'Workshop', 'Exhibition', 'Panels'];
+	const CFP_FORMATS = ['Talks', 'Dialogues', 'Workshop'];
+	const sessionGroups = groupBy(sessionRows, (r) => r.sessionType, SESSION_TYPES);
+	const cfpGroups = groupBy(cfpSubmissions, (r) => r.format, CFP_FORMATS);
+	const cfeGroups = groupBy(cfeSubmissions, (r) => r.format, [
+		'Exhibition',
+		'Individual',
+		'Collective'
+	]);
+
+	// ── Staged files with resolved URLs ──────────────────────────────────────────
+	const fileUrlMap = new Map<string, string>();
+	for (const group of contentGroups) {
+		if (group.kind === 'flat') {
+			for (const f of group.files) fileUrlMap.set(f.filePath, f.url);
+		} else {
+			for (const sub of group.groups) {
+				for (const f of sub.files) fileUrlMap.set(f.filePath, f.url);
+			}
+		}
+	}
+
+	interface StagingState {
+		branch: string;
+		files: string[];
+	}
+	const kv = platform?.env?.STUDIO_SESSIONS;
+	const stagingState = kv
+		? ((await kv.get(`studio_staging:${locals.studioUser.handle}`, 'json')) as StagingState | null)
+		: null;
+	const stagedFiles = (stagingState?.files ?? []).map((path) => ({
+		path,
+		url: fileUrlMap.get(path) ?? ''
+	}));
+
 	return {
 		user: locals.studioUser,
 		config: studioConfig,
-		allowedUsers,
 		contentGroups,
-		cfpSubmissions,
-		cfeSubmissions,
-		sessionRows,
+		stagedFiles,
+		sessionGroups,
+		cfpGroups,
+		cfeGroups,
 		pageMeta: {
 			title: 'Studio',
 			description: 'VizChitra content editor'

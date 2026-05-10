@@ -5,6 +5,24 @@ Format: date, what changed, why, key files, notes for the next agent.
 
 ---
 
+## 2026-05-10 — feat: studio UI improvements (grouped tables, panel layout, collaborator auth)
+
+**What changed:**
+
+1. Sessions and Submissions on the Studio dashboard are now grouped by type (Talks, Dialogues, Workshop, Exhibition, Panels) with collapsible `<details>` per group and a count badge — matching the Guides tree pattern.
+2. New generic `GroupedTableCard.svelte` component handles any grouped table via Svelte 5 snippets — reusable for future data tables.
+3. Staged files in the "Ready to publish" section are now clickable links back to the editable page.
+4. Studio dashboard shows a two-step Edit → Publish workflow explanation instead of the old misleading "changes go live immediately" text.
+5. `StudioPanel`: social og:image preview and optional `previewCard` snippet now appear _below_ frontmatter fields (not above). Parent pages can pass `{#snippet previewCard()}` for e.g. a `SessionCardExpanded` preview.
+6. Auth now checks GitHub repo collaborator status via the bot token instead of a static `STUDIO_ALLOWED_USERS` env var. Anyone added as a collaborator on `vizchitra/vizchitra.github.io` can log in — no redeployment needed to add/remove editors.
+7. Staged files are now loaded in the server `load()` function (from KV) with URLs resolved, removing the client-side `loadStaged()` fetch.
+
+**Key files:** `src/lib/studio/GroupedTableCard.svelte` (new), `src/routes/studio/+page.svelte`, `src/routes/studio/+page.server.ts`, `src/lib/studio/editor/StudioPanel.svelte`, `src/routes/studio/auth/callback/+server.ts`, `src/lib/studio/session.ts`, `src/app.d.ts`, `studio.config.ts`
+
+**Notes for next agent:** `STUDIO_ALLOWED_USERS` CF Pages secret can be removed — it is no longer read. `STUDIO_GITHUB_TOKEN` must be set (it was already required for stage/publish) — it is now also used for the collaborator check at login.
+
+---
+
 ## 2026-05-10 — fix: publish auto-merges master into studio branch and enables PR auto-merge
 
 **What changed:**

@@ -17,6 +17,8 @@
 		onFrontmatterChange: (updated: Record<string, unknown>) => void;
 		/** og:image URL for social preview */
 		socialImage?: string;
+		/** Optional Svelte 5 snippet rendered as a collapsible "Card preview" section below the social image */
+		previewCard?: import('svelte').Snippet;
 	}
 
 	let {
@@ -25,7 +27,8 @@
 		getMarkdown,
 		getFrontmatter,
 		onFrontmatterChange,
-		socialImage
+		socialImage,
+		previewCard
 	}: Props = $props();
 
 	// ── Schema ───────────────────────────────────────────────────
@@ -239,38 +242,7 @@
 			</div>
 		</div>
 
-		<!-- Social preview -->
-		{#if socialImage}
-			<div class="border-grey-800 border-b">
-				<details class="group" open>
-					<summary
-						class="text-viz-grey-muted hover:text-viz-grey-light flex cursor-pointer list-none items-center justify-between px-4 py-2.5 text-[10px] font-semibold tracking-widest uppercase transition-colors"
-					>
-						Preview
-						<svg
-							class="h-3 w-3 transition-transform group-open:rotate-180"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"
-							aria-hidden="true"
-						>
-							<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-						</svg>
-					</summary>
-					<div class="px-4 pb-3">
-						<p class="text-viz-grey-muted mb-1.5 text-[10px] tracking-widest uppercase">Social</p>
-						<img
-							src={socialImage}
-							alt="Social preview"
-							class="border-grey-700 w-full rounded border object-cover"
-						/>
-					</div>
-				</details>
-			</div>
-		{/if}
-
-		<!-- Scrollable body: frontmatter + toolbar -->
+		<!-- Scrollable body: frontmatter + previews -->
 		<div class="flex-1 overflow-y-auto">
 			<!-- Frontmatter fields -->
 			<div class="border-grey-800 border-b px-4 py-3">
@@ -354,6 +326,62 @@
 					</div>
 				{/each}
 			</div>
+
+			<!-- Social og:image preview -->
+			{#if socialImage}
+				<div class="border-grey-800 border-b">
+					<details class="group">
+						<summary
+							class="text-viz-grey-muted hover:text-viz-grey-light flex cursor-pointer list-none items-center justify-between px-4 py-2.5 text-[10px] font-semibold tracking-widest uppercase transition-colors"
+						>
+							Social preview
+							<svg
+								class="h-3 w-3 transition-transform group-open:rotate-180"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								aria-hidden="true"
+							>
+								<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+							</svg>
+						</summary>
+						<div class="px-4 pb-3">
+							<img
+								src={socialImage}
+								alt="Social preview"
+								class="border-grey-700 w-full rounded border object-cover"
+							/>
+						</div>
+					</details>
+				</div>
+			{/if}
+
+			<!-- Card preview (passed as snippet by parent page) -->
+			{#if previewCard}
+				<div class="border-grey-800 border-b">
+					<details class="group">
+						<summary
+							class="text-viz-grey-muted hover:text-viz-grey-light flex cursor-pointer list-none items-center justify-between px-4 py-2.5 text-[10px] font-semibold tracking-widest uppercase transition-colors"
+						>
+							Card preview
+							<svg
+								class="h-3 w-3 transition-transform group-open:rotate-180"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								aria-hidden="true"
+							>
+								<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+							</svg>
+						</summary>
+						<div class="px-4 pb-3">
+							{@render previewCard()}
+						</div>
+					</details>
+				</div>
+			{/if}
 		</div>
 
 		<!-- Footer actions -->
