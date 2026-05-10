@@ -2,7 +2,7 @@ import type { RequestHandler } from './$types';
 import { dev } from '$app/environment';
 import { createSession, buildSessionCookie, isAllowedUser } from '$lib/studio/session';
 
-export const GET: RequestHandler = async ({ platform, url }) => {
+export const GET: RequestHandler = async ({ platform, url, request }) => {
 	const code = url.searchParams.get('code');
 	const stateParam = url.searchParams.get('state') ?? '';
 
@@ -17,41 +17,58 @@ export const GET: RequestHandler = async ({ platform, url }) => {
 	const clientId = platform?.env?.STUDIO_GITHUB_CLIENT_ID;
 	const clientSecret = platform?.env?.STUDIO_GITHUB_CLIENT_SECRET;
 	const allowedUsers = platform?.env?.STUDIO_ALLOWED_USERS ?? '';
+	const origin = platform?.env?.STUDIO_BASE_URL ?? url.origin;
+	const callbackUrl = `${origin}/studio/auth/callback`;
 
 	if (!clientId || !clientSecret) {
 		return new Response('OAuth not configured', { status: 500 });
 	}
 
-	// Validate CSRF state
+	// Validate CSRF state via cookie (avoids KV eventual-consistency issues across
+	// Cloudflare edge locations; SameSite=Lax ensures the cookie survives the redirect)
 	const [state, encodedNext] = stateParam.split(':');
 	const next = encodedNext ? decodeURIComponent(encodedNext) : '/studio';
 
-	if (kv && state) {
-		const stored = await kv.get(`oauth_state:${state}`);
-		if (!stored) {
-			return new Response(null, {
-				status: 302,
-				headers: { Location: '/studio/login?error=invalid_state' }
-			});
-		}
-		// Consume the state token (one-time use)
-		await kv.delete(`oauth_state:${state}`);
+	const cookieHeader = request.headers.get('cookie') ?? '';
+	const cookieState =
+		cookieHeader
+			.split(';')
+			.map((c) => c.trim())
+			.find((c) => c.startsWith('oauth_state='))
+			?.slice('oauth_state='.length) ?? '';
+
+	const clearStateCookie = 'oauth_state=; Path=/; Max-Age=0; HttpOnly; SameSite=Lax; Secure';
+
+	if (!state || !cookieState || cookieState !== state) {
+		return new Response(null, {
+			status: 302,
+			headers: { Location: '/studio/login?error=invalid_state' }
+		});
 	}
 
-	// Exchange code for access token
+	// Exchange code for access token; redirect_uri is required when it was sent
+	// during the authorization request
 	const tokenRes = await fetch('https://github.com/login/oauth/access_token', {
 		method: 'POST',
 		headers: {
 			Accept: 'application/json',
 			'Content-Type': 'application/json'
 		},
-		body: JSON.stringify({ client_id: clientId, client_secret: clientSecret, code })
+		body: JSON.stringify({
+			client_id: clientId,
+			client_secret: clientSecret,
+			code,
+			redirect_uri: callbackUrl
+		})
 	});
 
 	if (!tokenRes.ok) {
 		return new Response(null, {
 			status: 302,
-			headers: { Location: '/studio/login?error=token_exchange' }
+			headers: {
+				Location: '/studio/login?error=token_exchange',
+				'Set-Cookie': clearStateCookie
+			}
 		});
 	}
 
@@ -59,7 +76,10 @@ export const GET: RequestHandler = async ({ platform, url }) => {
 	if (!tokenData.access_token) {
 		return new Response(null, {
 			status: 302,
-			headers: { Location: '/studio/login?error=no_token' }
+			headers: {
+				Location: '/studio/login?error=no_token',
+				'Set-Cookie': clearStateCookie
+			}
 		});
 	}
 
@@ -74,7 +94,10 @@ export const GET: RequestHandler = async ({ platform, url }) => {
 	if (!userRes.ok) {
 		return new Response(null, {
 			status: 302,
-			headers: { Location: '/studio/login?error=user_fetch' }
+			headers: {
+				Location: '/studio/login?error=user_fetch',
+				'Set-Cookie': clearStateCookie
+			}
 		});
 	}
 
@@ -84,7 +107,10 @@ export const GET: RequestHandler = async ({ platform, url }) => {
 	if (!handle) {
 		return new Response(null, {
 			status: 302,
-			headers: { Location: '/studio/login?error=no_handle' }
+			headers: {
+				Location: '/studio/login?error=no_handle',
+				'Set-Cookie': clearStateCookie
+			}
 		});
 	}
 
@@ -92,25 +118,26 @@ export const GET: RequestHandler = async ({ platform, url }) => {
 	if (!isAllowedUser(allowedUsers, handle)) {
 		return new Response(null, {
 			status: 302,
-			headers: { Location: '/studio/login?error=unauthorized' }
+			headers: {
+				Location: '/studio/login?error=unauthorized',
+				'Set-Cookie': clearStateCookie
+			}
 		});
 	}
 
-	// Create session
+	// Create session in KV
 	if (!kv) {
 		return new Response('Session store not available', { status: 500 });
 	}
 	const sessionId = await createSession(kv, handle);
-	const cookie = buildSessionCookie(sessionId, !dev);
+	const sessionCookie = buildSessionCookie(sessionId, !dev);
 
 	// Ensure next is a safe relative path (prevent open redirect)
 	const safePath = next.startsWith('/') && !next.startsWith('//') ? next : '/studio';
 
-	return new Response(null, {
-		status: 302,
-		headers: {
-			Location: safePath,
-			'Set-Cookie': cookie
-		}
-	});
+	const headers = new Headers({ Location: safePath });
+	headers.append('Set-Cookie', sessionCookie);
+	headers.append('Set-Cookie', clearStateCookie);
+
+	return new Response(null, { status: 302, headers });
 };
