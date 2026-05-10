@@ -75,9 +75,24 @@ export const POST: RequestHandler = async ({ request, locals, platform }) => {
 			state: 'open'
 		});
 
+		// Bring studio branch up to date with master (content-only edits never conflict)
+		try {
+			await octokit.repos.merge({
+				owner: OWNER,
+				repo: REPO,
+				base: state.branch,
+				head: BASE_BRANCH,
+				commit_message: `Merge master into ${state.branch}`
+			});
+		} catch {
+			// 204 (already up-to-date) or any other non-fatal error — proceed
+		}
+
+		let prNumber: number;
 		let prUrl: string;
 
 		if (existingPrs.length > 0) {
+			prNumber = existingPrs[0].number;
 			prUrl = existingPrs[0].html_url;
 		} else {
 			const fileList = state.files.map((f) => `- \`${f}\``).join('\n');
@@ -89,7 +104,25 @@ export const POST: RequestHandler = async ({ request, locals, platform }) => {
 				head: state.branch,
 				base: BASE_BRANCH
 			});
+			prNumber = pr.number;
 			prUrl = pr.html_url;
+		}
+
+		// Enable auto-squash-merge so the PR merges itself after CI passes
+		try {
+			await octokit.graphql(
+				`mutation($prId: ID!) {
+					enablePullRequestAutoMerge(input: { pullRequestId: $prId, mergeMethod: SQUASH }) {
+						clientMutationId
+					}
+				}`,
+				{
+					prId: (await octokit.pulls.get({ owner: OWNER, repo: REPO, pull_number: prNumber })).data
+						.node_id
+				}
+			);
+		} catch {
+			// Auto-merge may be disabled on the repo — non-fatal, editor can merge manually
 		}
 
 		// Clear staging state from KV so the next save creates a fresh branch
