@@ -1,6 +1,22 @@
 import type { PageServerLoad } from './$types';
 import { redirect } from '@sveltejs/kit';
 import { studioConfig, type StudioCollection } from '../../../studio.config';
+import { parseCFPProposals, parseCFEProposals, generateSlug } from '$lib/utils/csv-parser';
+import cfpRaw from '../../../content/2026/data/cfp.csv?raw';
+import cfeRaw from '../../../content/2026/data/cfe.csv?raw';
+import cfpFeedback from '../../../content/2026/feedback/cfp.json';
+import cfeFeedback from '../../../content/2026/feedback/cfe.json';
+
+export interface SubmissionRow {
+	id: string;
+	slug: string;
+	title: string;
+	submitter: string;
+	format: string;
+	status: string;
+	notes: string;
+	url: string;
+}
 
 // ── Shared types ─────────────────────────────────────────────────────────────
 
@@ -145,11 +161,40 @@ export const load: PageServerLoad = async ({ locals, platform }) => {
 
 	const contentGroups = await buildContentTree(studioConfig.collections);
 
+	// ── Submissions + feedback ────────────────────────────────────────────────
+	type FeedbackMap = Record<string, { status?: string; notes?: string }>;
+	const cfpFb = cfpFeedback as FeedbackMap;
+	const cfeFb = cfeFeedback as FeedbackMap;
+
+	const cfpSubmissions: SubmissionRow[] = parseCFPProposals(cfpRaw).map((p) => ({
+		id: p.id,
+		slug: p.slug,
+		title: p.title,
+		submitter: p.firstName,
+		format: p.proposalType,
+		status: cfpFb[p.id]?.status ?? 'Under Review',
+		notes: cfpFb[p.id]?.notes ?? '',
+		url: `/2026/submissions/${p.slug}`
+	}));
+
+	const cfeSubmissions: SubmissionRow[] = parseCFEProposals(cfeRaw).map((p) => ({
+		id: p.id,
+		slug: p.slug,
+		title: p.title,
+		submitter: p.firstName,
+		format: p.submissionType ?? 'Exhibition',
+		status: cfeFb[p.id]?.status ?? 'Under Review',
+		notes: cfeFb[p.id]?.notes ?? '',
+		url: `/2026/submissions/${p.slug}`
+	}));
+
 	return {
 		user: locals.studioUser,
 		config: studioConfig,
 		allowedUsers,
 		contentGroups,
+		cfpSubmissions,
+		cfeSubmissions,
 		pageMeta: {
 			title: 'Studio',
 			description: 'VizChitra content editor'

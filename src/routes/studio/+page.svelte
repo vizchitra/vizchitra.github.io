@@ -1,11 +1,24 @@
 <script lang="ts">
 	import type { PageProps } from './$types';
-	import type { FlatGroup, TreeGroup } from './+page.server';
+	import type { FlatGroup, TreeGroup, SubmissionRow } from './+page.server';
 
 	let { data }: PageProps = $props();
 	const user = $derived(data.user);
 	const config = $derived(data.config);
 	const contentGroups = $derived(data.contentGroups);
+	const cfpSubmissions = $derived(data.cfpSubmissions as SubmissionRow[]);
+	const cfeSubmissions = $derived(data.cfeSubmissions as SubmissionRow[]);
+
+	// Active submissions tab
+	let activeTab = $state<'cfp' | 'cfe'>('cfp');
+	const activeSubmissions = $derived(activeTab === 'cfp' ? cfpSubmissions : cfeSubmissions);
+
+	const STATUS_STYLE: Record<string, string> = {
+		'Under Review': 'bg-amber-950/40 text-amber-300 border-amber-800/50',
+		Selected: 'bg-emerald-950/40 text-emerald-300 border-emerald-800/50',
+		'Not Proceeding':
+			'bg-[var(--color-grey-800)] text-[var(--color-grey-500)] border-[var(--color-grey-700)]'
+	};
 
 	// Staged changes state
 	let stagedFiles = $state<string[]>([]);
@@ -248,6 +261,90 @@
 					{/if}
 				</div>
 			{/each}
+		</div>
+
+		<!-- Submissions 2026 -->
+		<div
+			class="overflow-hidden rounded-xl border border-[var(--color-grey-800)] bg-[var(--color-grey-900)]"
+		>
+			<!-- Header + tabs -->
+			<div
+				class="flex items-center justify-between border-b border-[var(--color-grey-800)] px-5 py-3.5"
+			>
+				<span class="text-sm font-semibold text-[var(--color-grey-200)]">Submissions 2026</span>
+				<div class="flex gap-1 rounded-lg bg-[var(--color-grey-800)] p-0.5">
+					{#each ['cfp', 'cfe'] as const as tab}
+						<button
+							type="button"
+							onclick={() => (activeTab = tab)}
+							class="rounded px-3 py-1 text-xs font-semibold tracking-wider uppercase transition-colors {activeTab ===
+							tab
+								? 'bg-[var(--color-grey-700)] text-[var(--color-grey-100)]'
+								: 'text-[var(--color-grey-500)] hover:text-[var(--color-grey-300)]'}"
+						>
+							{tab.toUpperCase()}
+							<span class="ml-1 font-mono font-normal text-[var(--color-grey-600)]"
+								>({(tab === 'cfp' ? cfpSubmissions : cfeSubmissions).length})</span
+							>
+						</button>
+					{/each}
+				</div>
+			</div>
+
+			<!-- Table -->
+			{#if activeSubmissions.length > 0}
+				<div class="overflow-x-auto">
+					<table class="w-full text-sm">
+						<thead>
+							<tr class="border-b border-[var(--color-grey-800)]">
+								<th class="px-5 py-2 text-left font-medium text-[var(--color-grey-600)]">Title</th>
+								<th class="px-3 py-2 text-left font-medium text-[var(--color-grey-600)]">By</th>
+								<th class="px-3 py-2 text-left font-medium text-[var(--color-grey-600)]">Format</th>
+								<th class="px-3 py-2 text-left font-medium text-[var(--color-grey-600)]">Status</th>
+								<th class="px-3 py-2 text-left font-medium text-[var(--color-grey-600)]">Notes</th>
+							</tr>
+						</thead>
+						<tbody class="divide-y divide-[var(--color-grey-800)]">
+							{#each activeSubmissions as row}
+								<tr class="group transition-colors hover:bg-[var(--color-grey-800)]">
+									<td class="px-5 py-2.5 text-[var(--color-grey-300)]">
+										<a
+											href={row.url}
+											class="line-clamp-1 hover:text-[var(--color-grey-100)] hover:underline"
+										>
+											{row.title}
+										</a>
+									</td>
+									<td class="px-3 py-2.5 whitespace-nowrap text-[var(--color-grey-500)]"
+										>{row.submitter}</td
+									>
+									<td class="px-3 py-2.5 whitespace-nowrap text-[var(--color-grey-600)]"
+										>{row.format}</td
+									>
+									<td class="px-3 py-2.5 whitespace-nowrap">
+										<span
+											class="rounded-full border px-2 py-0.5 text-xs font-semibold {STATUS_STYLE[
+												row.status
+											] ?? STATUS_STYLE['Under Review']}"
+										>
+											{row.status}
+										</span>
+									</td>
+									<td class="max-w-[14rem] px-3 py-2.5">
+										{#if row.notes}
+											<p class="line-clamp-1 text-xs text-[var(--color-grey-600)]">{row.notes}</p>
+										{:else}
+											<span class="text-xs text-[var(--color-grey-700)] italic">—</span>
+										{/if}
+									</td>
+								</tr>
+							{/each}
+						</tbody>
+					</table>
+				</div>
+			{:else}
+				<p class="px-5 py-4 text-sm text-[var(--color-grey-600)] italic">No submissions yet.</p>
+			{/if}
 		</div>
 	</main>
 </div>
