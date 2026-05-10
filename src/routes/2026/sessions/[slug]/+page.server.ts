@@ -1,7 +1,18 @@
-import { error } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 import type { PageServerLoad, EntryGenerator } from './$types';
 import { markdownToHtml } from '$lib/utils/markdown';
 import { resolveAllSessions } from '$lib/utils/sessions';
+import redirectsRaw from '../../../../../_redirects?raw';
+
+const redirectMap = new Map<string, string>(
+	redirectsRaw
+		.split('\n')
+		.filter((line) => line.trim() && !line.startsWith('#'))
+		.flatMap((line) => {
+			const [from, to, code] = line.split(/\s+/);
+			return from && to ? [[from, to] as [string, string]] : [];
+		})
+);
 
 export const prerender = true;
 
@@ -17,6 +28,8 @@ export const load: PageServerLoad = async ({ params }) => {
 	const session = confirmed.find((s) => s.slug === params.slug);
 
 	if (!session) {
+		const target = redirectMap.get(`/2026/sessions/${params.slug}`);
+		if (target) throw redirect(301, target);
 		throw error(404, `Session "${params.slug}" not found`);
 	}
 
