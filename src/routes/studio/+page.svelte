@@ -1,21 +1,22 @@
 <script lang="ts">
 	import type { PageProps } from './$types';
-	import type { FlatGroup, TreeGroup, SubmissionRow, SessionRow } from './+page.server';
+	import type { FlatGroup, TreeGroup, SubmissionRow, SessionRow, TableGroup } from './+page.server';
+	import GroupedTableCard from '$lib/studio/GroupedTableCard.svelte';
 	import { buildSha, buildBranch } from '$lib/build';
 
 	let { data }: PageProps = $props();
 	const user = $derived(data.user);
 	const config = $derived(data.config);
 	const contentGroups = $derived(data.contentGroups);
-	const cfpSubmissions = $derived(data.cfpSubmissions as SubmissionRow[]);
-	const cfeSubmissions = $derived(data.cfeSubmissions as SubmissionRow[]);
-	const sessionRows = $derived(data.sessionRows as SessionRow[]);
+	const sessionGroups = $derived(data.sessionGroups as TableGroup<SessionRow>[]);
+	const cfpGroups = $derived(data.cfpGroups as TableGroup<SubmissionRow>[]);
+	const cfeGroups = $derived(data.cfeGroups as TableGroup<SubmissionRow>[]);
 
 	// ── Submissions tabs ─────────────────────────────────────────────────────
 	let activeSubmissionTab = $state<'cfp' | 'cfe'>('cfp');
-	const activeSubmissions = $derived(
-		activeSubmissionTab === 'cfp' ? cfpSubmissions : cfeSubmissions
-	);
+	const activeGroups = $derived(activeSubmissionTab === 'cfp' ? cfpGroups : cfeGroups);
+	const cfpTotal = $derived(cfpGroups.reduce((s, g) => s + g.count, 0));
+	const cfeTotal = $derived(cfeGroups.reduce((s, g) => s + g.count, 0));
 
 	const STATUS_STYLE: Record<string, string> = {
 		'Under Review': 'bg-amber-950/40 text-amber-300 border-amber-800/50',
@@ -23,19 +24,11 @@
 		'Not Proceeding': 'bg-grey-800 text-grey-500 border-grey-700'
 	};
 
-	// Staged changes state
-	let stagedFiles = $state<string[]>([]);
+	// ── Staged changes + publish ──────────────────────────────────────────────
+	let stagedFiles = $state(data.stagedFiles as { path: string; url: string }[]);
 	let publishMessage = $state('');
 	let publishing = $state(false);
 	let publishResult = $state<{ ok: boolean; prUrl?: string; error?: string } | null>(null);
-
-	async function loadStaged() {
-		const res = await fetch('/api/studio/staged');
-		if (res.ok) {
-			const json = (await res.json()) as { files?: string[] };
-			stagedFiles = json.files ?? [];
-		}
-	}
 
 	async function publish() {
 		if (!publishMessage.trim() || publishing) return;
@@ -57,10 +50,6 @@
 			publishing = false;
 		}
 	}
-
-	$effect(() => {
-		loadStaged();
-	});
 </script>
 
 <svelte:head>
@@ -70,7 +59,7 @@
 
 <div class="bg-grey-950 min-h-screen">
 	<main class="mx-auto max-w-5xl space-y-6 px-6 py-10">
-		<!-- Header + editorial guide card -->
+		<!-- Header + workflow guide -->
 		<div class="border-grey-800 bg-grey-900 rounded-xl border p-6">
 			<div class="mb-4 flex items-start justify-between gap-4">
 				<div>
@@ -89,18 +78,28 @@
 					</form>
 				</div>
 			</div>
-			<div
-				class="rounded border border-amber-800/40 bg-amber-950/30 px-4 py-3 text-sm text-amber-300"
-			>
-				<p class="mb-2">{config.instructions.lead}</p>
-				<ul class="space-y-1">
-					{#each config.instructions.bullets as bullet}
-						<li class="flex gap-2">
-							<span class="shrink-0">·</span>
-							<span><strong class="font-semibold">{bullet.label}:</strong> {bullet.text}</span>
-						</li>
-					{/each}
-				</ul>
+
+			<!-- Workflow explanation -->
+			<div class="grid gap-3 sm:grid-cols-2">
+				<div class="rounded border border-blue-800/40 bg-blue-950/30 px-4 py-3">
+					<p class="mb-1 text-xs font-semibold tracking-widest text-blue-300 uppercase">
+						Step 1 — Edit
+					</p>
+					<p class="text-sm text-blue-200">
+						Open any page on the site. Click <strong class="font-semibold">Edit page</strong> in the side
+						panel, make your changes, and save.
+					</p>
+				</div>
+				<div class="rounded border border-amber-800/40 bg-amber-950/30 px-4 py-3">
+					<p class="mb-1 text-xs font-semibold tracking-widest text-amber-300 uppercase">
+						Step 2 — Publish
+					</p>
+					<p class="text-sm text-amber-200">
+						Return here, describe your changes below, and click
+						<strong class="font-semibold">Publish</strong>. Changes go for review and deploy
+						automatically.
+					</p>
+				</div>
 			</div>
 		</div>
 
@@ -112,9 +111,17 @@
 				{#if stagedFiles.length > 0}
 					<ul class="mb-4 space-y-1">
 						{#each stagedFiles as file}
-							<li class="text-grey-400 flex items-center gap-2 text-sm">
+							<li class="flex items-center gap-2 text-sm">
 								<span class="h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400"></span>
-								<span class="font-mono">{file}</span>
+								{#if file.url}
+									<a
+										href={file.url}
+										class="font-mono text-amber-300 hover:text-amber-200 hover:underline"
+										>{file.path}</a
+									>
+								{:else}
+									<span class="text-grey-400 font-mono">{file.path}</span>
+								{/if}
 							</li>
 						{/each}
 					</ul>
@@ -158,7 +165,6 @@
 		<div class="grid gap-4 sm:grid-cols-2">
 			{#each contentGroups as group}
 				<div class="border-grey-800 bg-grey-900 overflow-hidden rounded-xl border">
-					<!-- Card header -->
 					<div class="border-grey-800 border-b px-5 py-3.5">
 						<span class="text-grey-200 text-sm font-semibold">{group.name}</span>
 					</div>
@@ -210,7 +216,6 @@
 													class="bg-grey-800 text-grey-500 rounded-full px-2 py-0.5 font-mono text-xs"
 													>{sub.files.length}</span
 												>
-												<!-- chevron rotates open -->
 												<svg
 													class="text-grey-600 h-3.5 w-3.5 transition-transform group-open/details:rotate-180"
 													viewBox="0 0 24 24"
@@ -259,142 +264,109 @@
 		</div>
 
 		<!-- Sessions 2026 -->
-		<div class="border-grey-800 bg-grey-900 overflow-hidden rounded-xl border">
-			<div class="border-grey-800 border-b px-5 py-3.5">
-				<span class="text-grey-200 text-sm font-semibold">Sessions 2026</span>
-			</div>
-			{#if sessionRows.length > 0}
-				<div class="overflow-x-auto">
-					<table class="w-full text-sm">
-						<thead>
-							<tr class="border-grey-800 border-b">
-								<th class="text-grey-600 px-5 py-2 text-left font-medium">Title</th>
-								<th class="text-grey-600 px-3 py-2 text-left font-medium">Speaker</th>
-								<th class="text-grey-600 px-3 py-2 text-left font-medium">Type</th>
-								<th class="text-grey-600 px-3 py-2 text-left font-medium">Time</th>
-								<th class="text-grey-600 px-3 py-2 text-left font-medium">Status</th>
-							</tr>
-						</thead>
-						<tbody class="divide-grey-800 divide-y">
-							{#each sessionRows as row}
-								<tr class="hover:bg-grey-800 transition-colors">
-									<td class="max-w-[16rem] px-5 py-2.5">
-										{#if row.url}
-											<a
-												href={row.url}
-												class="text-grey-300 hover:text-grey-100 block truncate hover:underline"
-											>
-												{row.title}
-											</a>
-										{:else}
-											<span class="text-grey-500 block truncate italic">{row.title}</span>
-										{/if}
-									</td>
-									<td class="max-w-[10rem] px-3 py-2.5">
-										<span class="text-grey-500 block truncate">{row.speakerName}</span>
-									</td>
-									<td class="text-grey-600 px-3 py-2.5 whitespace-nowrap">{row.sessionType}</td>
-									<td class="text-grey-700 px-3 py-2.5 font-mono text-xs whitespace-nowrap"
-										>{row.time || '—'}</td
-									>
-									<td class="px-3 py-2.5">
-										{#if row.display}
-											<span
-												class="rounded-full border border-emerald-800/50 bg-emerald-950/40 px-2 py-0.5 text-xs font-semibold text-emerald-300"
-												>Confirmed</span
-											>
-										{:else}
-											<span
-												class="border-grey-700 bg-grey-800 text-grey-500 rounded-full border px-2 py-0.5 text-xs font-semibold"
-												>TBD</span
-											>
-										{/if}
-									</td>
-								</tr>
-							{/each}
-						</tbody>
-					</table>
-				</div>
-			{:else}
-				<p class="text-grey-600 px-5 py-4 text-sm italic">No sessions yet.</p>
-			{/if}
-		</div>
+		<GroupedTableCard title="Sessions 2026" groups={sessionGroups}>
+			{#snippet headerRow()}
+				<th class="text-grey-600 px-5 py-2 text-left font-medium">Title</th>
+				<th class="text-grey-600 px-3 py-2 text-left font-medium">Speaker</th>
+				<th class="text-grey-600 px-3 py-2 text-left font-medium">Time</th>
+				<th class="text-grey-600 px-3 py-2 text-left font-medium">Status</th>
+			{/snippet}
+			{#snippet row(r: SessionRow)}
+				<tr class="hover:bg-grey-800 transition-colors">
+					<td class="max-w-[16rem] px-5 py-2.5">
+						{#if r.url}
+							<a
+								href={r.url}
+								class="text-grey-300 hover:text-grey-100 block truncate hover:underline"
+							>
+								{r.title}
+							</a>
+						{:else}
+							<span class="text-grey-500 block truncate italic">{r.title}</span>
+						{/if}
+					</td>
+					<td class="max-w-40 px-3 py-2.5">
+						<span class="text-grey-500 block truncate">{r.speakerName}</span>
+					</td>
+					<td class="text-grey-700 px-3 py-2.5 font-mono text-xs whitespace-nowrap"
+						>{r.time || '—'}</td
+					>
+					<td class="px-3 py-2.5">
+						{#if r.display}
+							<span
+								class="rounded-full border border-emerald-800/50 bg-emerald-950/40 px-2 py-0.5 text-xs font-semibold text-emerald-300"
+								>Confirmed</span
+							>
+						{:else}
+							<span
+								class="border-grey-700 bg-grey-800 text-grey-500 rounded-full border px-2 py-0.5 text-xs font-semibold"
+								>TBD</span
+							>
+						{/if}
+					</td>
+				</tr>
+			{/snippet}
+		</GroupedTableCard>
 
 		<!-- Submissions 2026 -->
-		<div class="border-grey-800 bg-grey-900 overflow-hidden rounded-xl border">
-			<!-- Header + tabs -->
-			<div class="border-grey-800 flex items-center justify-between border-b px-5 py-3.5">
-				<span class="text-grey-200 text-sm font-semibold">Submissions 2026</span>
+		<GroupedTableCard
+			title="Submissions 2026"
+			groups={activeGroups}
+			emptyMessage="No submissions yet."
+		>
+			{#snippet tabs()}
 				<div class="bg-grey-800 flex gap-1 rounded-lg p-0.5">
-					{#each ['cfp', 'cfe'] as const as tab}
+					{#each [{ id: 'cfp', label: 'CFP', count: cfpTotal }, { id: 'cfe', label: 'CFE', count: cfeTotal }] as tab}
 						<button
 							type="button"
-							onclick={() => (activeSubmissionTab = tab)}
+							onclick={() => (activeSubmissionTab = tab.id as 'cfp' | 'cfe')}
 							class="rounded px-3 py-1 text-xs font-semibold tracking-wider uppercase transition-colors {activeSubmissionTab ===
-							tab
+							tab.id
 								? 'bg-grey-700 text-grey-100'
 								: 'text-grey-500 hover:text-grey-300'}"
 						>
-							{tab.toUpperCase()}
-							<span class="text-grey-600 ml-1 font-mono font-normal"
-								>({(tab === 'cfp' ? cfpSubmissions : cfeSubmissions).length})</span
-							>
+							{tab.label}
+							<span class="text-grey-600 ml-1 font-mono font-normal">({tab.count})</span>
 						</button>
 					{/each}
 				</div>
-			</div>
-
-			<!-- Table -->
-			{#if activeSubmissions.length > 0}
-				<div class="overflow-x-auto">
-					<table class="w-full text-sm">
-						<thead>
-							<tr class="border-grey-800 border-b">
-								<th class="text-grey-600 px-5 py-2 text-left font-medium">Title</th>
-								<th class="text-grey-600 px-3 py-2 text-left font-medium">By</th>
-								<th class="text-grey-600 px-3 py-2 text-left font-medium">Format</th>
-								<th class="text-grey-600 px-3 py-2 text-left font-medium">Status</th>
-								<th class="text-grey-600 px-3 py-2 text-left font-medium">Notes</th>
-							</tr>
-						</thead>
-						<tbody class="divide-grey-800 divide-y">
-							{#each activeSubmissions as row}
-								<tr class="group hover:bg-grey-800 transition-colors">
-									<td class="max-w-[16rem] px-5 py-2.5">
-										<a
-											href={row.url}
-											class="text-grey-300 hover:text-grey-100 block truncate hover:underline"
-										>
-											{row.title}
-										</a>
-									</td>
-									<td class="text-grey-500 px-3 py-2.5 whitespace-nowrap">{row.submitter}</td>
-									<td class="text-grey-600 px-3 py-2.5 whitespace-nowrap">{row.format}</td>
-									<td class="px-3 py-2.5 whitespace-nowrap">
-										<span
-											class="rounded-full border px-2 py-0.5 text-xs font-semibold {STATUS_STYLE[
-												row.status
-											] ?? STATUS_STYLE['Under Review']}"
-										>
-											{row.status}
-										</span>
-									</td>
-									<td class="max-w-[14rem] overflow-hidden px-3 py-2.5">
-										{#if row.notes}
-											<p class="text-grey-600 line-clamp-1 text-xs">{row.notes}</p>
-										{:else}
-											<span class="text-grey-700 text-xs italic">—</span>
-										{/if}
-									</td>
-								</tr>
-							{/each}
-						</tbody>
-					</table>
-				</div>
-			{:else}
-				<p class="text-grey-600 px-5 py-4 text-sm italic">No submissions yet.</p>
-			{/if}
-		</div>
+			{/snippet}
+			{#snippet headerRow()}
+				<th class="text-grey-600 px-5 py-2 text-left font-medium">Title</th>
+				<th class="text-grey-600 px-3 py-2 text-left font-medium">By</th>
+				<th class="text-grey-600 px-3 py-2 text-left font-medium">Status</th>
+				<th class="text-grey-600 px-3 py-2 text-left font-medium">Notes</th>
+			{/snippet}
+			{#snippet row(r: SubmissionRow)}
+				<tr class="hover:bg-grey-800 transition-colors">
+					<td class="max-w-[16rem] px-5 py-2.5">
+						<a
+							href={r.url}
+							class="text-grey-300 hover:text-grey-100 block truncate hover:underline"
+						>
+							{r.title}
+						</a>
+					</td>
+					<td class="text-grey-500 px-3 py-2.5 whitespace-nowrap">{r.submitter}</td>
+					<td class="px-3 py-2.5 whitespace-nowrap">
+						<span
+							class="rounded-full border px-2 py-0.5 text-xs font-semibold {STATUS_STYLE[
+								r.status
+							] ?? STATUS_STYLE['Under Review']}"
+						>
+							{r.status}
+						</span>
+					</td>
+					<td class="max-w-56 overflow-hidden px-3 py-2.5">
+						{#if r.notes}
+							<p class="text-grey-600 line-clamp-1 text-xs">{r.notes}</p>
+						{:else}
+							<span class="text-grey-700 text-xs italic">—</span>
+						{/if}
+					</td>
+				</tr>
+			{/snippet}
+		</GroupedTableCard>
 	</main>
 	<footer class="pb-6 text-center">
 		<span class="text-grey-700 font-mono text-xs">#{buildSha} · {buildBranch}</span>

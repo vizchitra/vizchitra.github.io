@@ -1,6 +1,7 @@
 import type { RequestHandler } from './$types';
 import { dev } from '$app/environment';
-import { createSignedSession, buildSessionCookie, isAllowedUser } from '$lib/studio/session';
+import { Octokit } from '@octokit/rest';
+import { createSignedSession, buildSessionCookie } from '$lib/studio/session';
 
 export const GET: RequestHandler = async ({ platform, url, request }) => {
 	const code = url.searchParams.get('code');
@@ -16,7 +17,7 @@ export const GET: RequestHandler = async ({ platform, url, request }) => {
 	const clientId = platform?.env?.STUDIO_GITHUB_CLIENT_ID;
 	const clientSecret = platform?.env?.STUDIO_GITHUB_CLIENT_SECRET;
 	const sessionSecret = platform?.env?.STUDIO_SESSION_SECRET;
-	const allowedUsers = platform?.env?.STUDIO_ALLOWED_USERS ?? '';
+	const githubBotToken = platform?.env?.STUDIO_GITHUB_TOKEN;
 	const origin = platform?.env?.STUDIO_BASE_URL ?? url.origin;
 	const callbackUrl = `${origin}/studio/auth/callback`;
 
@@ -94,11 +95,22 @@ export const GET: RequestHandler = async ({ platform, url, request }) => {
 		});
 	}
 
-	if (!isAllowedUser(allowedUsers, handle)) {
-		return new Response(null, {
-			status: 302,
-			headers: { Location: '/studio/login?error=unauthorized', 'Set-Cookie': clearStateCookie }
-		});
+	// Check GitHub repo collaborator status using the bot token.
+	// Anyone added as a collaborator on vizchitra/vizchitra.github.io can log in.
+	if (githubBotToken) {
+		try {
+			const octokit = new Octokit({ auth: githubBotToken });
+			await octokit.repos.checkCollaborator({
+				owner: 'vizchitra',
+				repo: 'vizchitra.github.io',
+				username: handle
+			});
+		} catch {
+			return new Response(null, {
+				status: 302,
+				headers: { Location: '/studio/login?error=unauthorized', 'Set-Cookie': clearStateCookie }
+			});
+		}
 	}
 
 	// Create a signed cookie — no KV write, no eventual-consistency delay.

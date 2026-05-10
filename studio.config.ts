@@ -28,19 +28,19 @@ export interface StudioConfig {
 export const studioConfig: StudioConfig = {
 	description: 'Content Editing for VizChitra Website.',
 	instructions: {
-		lead: 'When you publish, your changes go live on the website immediately.',
+		lead: 'Edit any page, then return here to publish your changes for review.',
 		bullets: [
+			{
+				label: 'Step 1 — Edit',
+				text: 'Open any page on the site. Click "Edit page" in the side panel, make your changes, and save.'
+			},
+			{
+				label: 'Step 2 — Publish',
+				text: 'Return to Studio, describe your changes, and click Publish. Changes go for review and deploy automatically.'
+			},
 			{
 				label: 'Tone',
 				text: 'Write warmly and clearly — imagine speaking directly to someone at VizChitra.'
-			},
-			{
-				label: 'Pages',
-				text: 'Open any page on the site to edit it using the inline editor.'
-			},
-			{
-				label: 'Collections',
-				text: 'Use the collection view to update session and event records.'
 			}
 		]
 	},
