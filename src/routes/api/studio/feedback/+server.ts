@@ -56,7 +56,7 @@ export const POST: RequestHandler = async ({ request, locals, platform }) => {
 		});
 	}
 
-	const githubToken = (platform?.env as Record<string, string> | undefined)?.STUDIO_GITHUB_TOKEN;
+	const githubToken = platform?.env?.STUDIO_GITHUB_TOKEN;
 	if (!githubToken) {
 		return new Response(JSON.stringify({ error: 'GitHub token not configured' }), {
 			status: 500,

@@ -18,7 +18,7 @@
 		uniqueOptions = Array.from(map.values());
 	});
 
-	let element: HTMLElement = $state();
+	let element: HTMLSelectElement = $state();
 </script>
 
 <!-- Styled dropdown with icon -->

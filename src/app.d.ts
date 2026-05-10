@@ -1,3 +1,5 @@
+/// <reference types="@cloudflare/workers-types" />
+
 declare global {
 	namespace App {
 		interface Locals {
@@ -10,6 +12,7 @@ declare global {
 				STUDIO_GITHUB_CLIENT_ID: string;
 				STUDIO_GITHUB_CLIENT_SECRET: string;
 				STUDIO_ALLOWED_USERS: string;
+				STUDIO_GITHUB_TOKEN?: string;
 			};
 			context: ExecutionContext;
 			caches: CacheStorage & { default: Cache };

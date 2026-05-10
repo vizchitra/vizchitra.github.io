@@ -16,15 +16,14 @@
 	let editorRef: ProseMirrorEditor | null = $state(null);
 	let currentFrontmatter = $state<Record<string, unknown>>({});
 
-	onMount(async () => {
+	onMount(() => {
 		currentFrontmatter = { ...data.parsedFrontmatter };
 
-		try {
-			const res = await fetch('/api/studio/me');
-			if (res.ok) isAuthed = true;
-		} catch {
-			// Not authed — panel stays hidden
-		}
+		fetch('/api/studio/me')
+			.then((res) => {
+				if (res.ok) isAuthed = true;
+			})
+			.catch(() => {});
 
 		const beforeUnload = (e: BeforeUnloadEvent) => {
 			if ($editMode.isDirty) e.preventDefault();

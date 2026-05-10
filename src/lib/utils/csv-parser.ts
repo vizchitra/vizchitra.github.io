@@ -105,7 +105,7 @@ export function parseCFPProposals(csvString: string): CFPProposal[] {
 				theme,
 				title,
 				description,
-			links: combineLinks(row['dialogue_links'], row['dialogue_link_1'], row['dialogue_link_2']),
+				links: combineLinks(row['dialogue_links'], row['dialogue_link_1'], row['dialogue_link_2']),
 				materials: row['dialogue_materials'] || undefined,
 				roomSetup: row['dialogue_room'] || undefined
 			};

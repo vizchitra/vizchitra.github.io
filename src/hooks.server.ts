@@ -1,6 +1,5 @@
 import { redirect } from '@sveltejs/kit';
 import { dev } from '$app/environment';
-import { env } from '$env/dynamic/private';
 import { getSession } from '$lib/studio/session';
 
 // Parse redirect paths from Cloudflare _redirects file
@@ -39,7 +38,7 @@ export async function handle({ event, resolve }) {
 	const path = event.url.pathname;
 	if (path.startsWith('/studio') || path.startsWith('/api/studio')) {
 		// In dev mode, always bypass OAuth — no env vars needed
-		const devUser = dev && (env.STUDIO_DEV_USER || 'dev');
+		const devUser = dev && (process.env.STUDIO_DEV_USER || 'dev');
 		if (devUser) {
 			event.locals.studioUser = { handle: devUser, sessionId: 'dev' };
 		} else {

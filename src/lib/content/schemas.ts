@@ -28,6 +28,6 @@ export const guidesSchema = z.object({
 	description: z.string().min(1, 'Description is required'),
 	guide: z.enum(['talks', 'workshops', 'dialogues', 'exhibition', 'panels']),
 	section: z.string().min(1, 'Section is required'),
-	order: z.coerce.number({ invalid_type_error: 'Must be a number' }),
+	order: z.coerce.number({ message: 'Must be a number' }),
 	draft: z.boolean().optional().default(false)
 });

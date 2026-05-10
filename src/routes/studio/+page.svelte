@@ -32,7 +32,7 @@
 	async function loadStaged() {
 		const res = await fetch('/api/studio/staged');
 		if (res.ok) {
-			const json = await res.json();
+			const json = (await res.json()) as { files?: string[] };
 			stagedFiles = json.files ?? [];
 		}
 	}
@@ -47,7 +47,7 @@
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ message: publishMessage })
 			});
-			const json = await res.json();
+			const json = (await res.json()) as { ok: boolean; prUrl?: string; error?: string };
 			publishResult = json;
 			if (json.ok) {
 				stagedFiles = [];

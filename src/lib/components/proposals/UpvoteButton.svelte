@@ -94,7 +94,7 @@
 		try {
 			const response = await fetch(`/api/proposals/${slug}/votes?deviceId=${deviceId}`);
 			if (response.ok) {
-				const data = await response.json();
+				const data = (await response.json()) as { votes: number; hasVoted: boolean };
 				votes = data.votes;
 				hasVoted = data.hasVoted;
 			}
@@ -127,13 +127,9 @@
 			});
 
 			if (response.ok) {
-				const data = await response.json();
+				const data = (await response.json()) as { votes: number; hasVoted: boolean };
 				votes = data.votes;
 				hasVoted = data.hasVoted;
-			} else {
-				// Revert on error
-				votes = previousVotes;
-				hasVoted = previousHasVoted;
 			}
 		} catch (err) {
 			// Revert on error (silent handling)

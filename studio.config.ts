@@ -91,6 +91,6 @@ export const studioConfig: StudioConfig = {
 			group: 'Guides',
 			description: 'Facilitator guides for Panel sessions',
 			urlTemplate: '/guides/{dirSlug}/{section}'
-		},
+		}
 	]
 };

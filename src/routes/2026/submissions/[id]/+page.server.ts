@@ -55,9 +55,10 @@ export const load: PageServerLoad = async ({ params }) => {
 	}
 
 	// Feedback data (from committed JSON — studio users get live data client-side)
-	const feedbackMap = proposal.type === 'cfp'
-		? (cfpFeedbackRaw as Record<string, { status: string; notes: string }>)
-		: (cfeFeedbackRaw as Record<string, { status: string; notes: string }>);
+	const feedbackMap =
+		proposal.type === 'cfp'
+			? (cfpFeedbackRaw as Record<string, { status: string; notes: string }>)
+			: (cfeFeedbackRaw as Record<string, { status: string; notes: string }>);
 	const feedback = feedbackMap[proposal.id] ?? null;
 
 	// Vote data will be fetched client-side by the UpvoteButton component

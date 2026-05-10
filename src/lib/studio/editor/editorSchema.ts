@@ -19,7 +19,8 @@ import { tableNodes } from 'prosemirror-tables';
 const pmTableNodes = tableNodes({
 	tableGroup: 'block',
 	cellContent: 'block+'
-});
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+} as any);
 
 // ── block_directive ────────────────────────────────────────────────────────
 // Represents :::notice … ::: (containerDirective in mdast-util-directive)
