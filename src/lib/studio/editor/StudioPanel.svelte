@@ -130,45 +130,6 @@
 		}
 	}
 
-	// ── Publish ──────────────────────────────────────────────────
-	let publishing = $state(false);
-	let publishStatus = $state<'idle' | 'done' | 'error'>('idle');
-	let publishError = $state<string | null>(null);
-	let prUrl = $state<string | null>(null);
-	let publishMessage = $state('');
-
-	async function publish() {
-		if (!publishMessage.trim()) {
-			alert('Please add a description for the pull request.');
-			return;
-		}
-		publishing = true;
-		publishStatus = 'idle';
-		publishError = null;
-		try {
-			const res = await fetch('/api/studio/publish', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ message: publishMessage })
-			});
-			const data = (await res.json()) as { ok?: boolean; prUrl?: string; error?: string };
-			if (!res.ok) {
-				publishError = data.error ?? `Publish failed (HTTP ${res.status})`;
-				publishStatus = 'error';
-				return;
-			}
-			prUrl = data.prUrl ?? null;
-			publishStatus = 'done';
-			stagedCount = 0;
-			publishMessage = '';
-		} catch {
-			publishError = 'Network error — please try again';
-			publishStatus = 'error';
-		} finally {
-			publishing = false;
-		}
-	}
-
 	function cancel() {
 		if ($editMode.isDirty) {
 			if (!confirm('You have unsaved changes. Discard them?')) return;
@@ -405,7 +366,7 @@
 					<p class="text-xs text-emerald-400">✓ Saved to disk</p>
 				{:else if saveStatus === 'staged'}
 					<p class="text-xs text-emerald-400">
-						✓ Saved! When you're done editing, hit Publish below to go live.
+						✓ Staged. <a href="/studio" class="underline">Go to Studio</a> to publish when ready.
 					</p>
 				{/if}
 
@@ -442,39 +403,14 @@
 				</button>
 			{/if}
 
-			<!-- Publish (prod only, when staged changes exist) -->
+			<!-- Staged nudge (prod only, when staged changes exist and not editing) -->
 			{#if !dev && stagedCount > 0 && !isEditing}
-				<div class="mt-1 space-y-1.5">
-					<p class="text-grey-500 text-[10px] tracking-widest uppercase">
-						{stagedCount} change{stagedCount !== 1 ? 's' : ''} ready to publish
-					</p>
-					<textarea
-						bind:value={publishMessage}
-						placeholder="What did you change? (e.g. 'Updated speaker bio')"
-						rows={2}
-						class="border-grey-700 bg-grey-800 text-viz-grey-light placeholder-grey-600 focus:border-viz-teal w-full rounded border px-2.5 py-1.5 text-xs focus:outline-none"
-					></textarea>
-					{#if publishStatus === 'done' && prUrl}
-						<a
-							href={prUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="block text-center text-xs text-emerald-400 underline">✓ PR opened →</a
-						>
-					{:else if publishStatus === 'error'}
-						<p class="text-xs text-red-400">{publishError ?? 'Publish failed — try again'}</p>
-					{/if}
-					<button
-						type="button"
-						onclick={publish}
-						disabled={publishing}
-						class="bg-viz-teal text-grey-900 w-full rounded px-3 py-2 text-xs font-semibold transition-opacity hover:opacity-90 disabled:opacity-50"
-					>
-						{publishing
-							? 'Publishing…'
-							: `Publish ${stagedCount} change${stagedCount !== 1 ? 's' : ''}`}
-					</button>
-				</div>
+				<a
+					href="/studio"
+					class="bg-viz-teal text-grey-900 mt-1 block w-full rounded px-3 py-2 text-center text-xs font-semibold transition-opacity hover:opacity-90"
+				>
+					{stagedCount} staged change{stagedCount !== 1 ? 's' : ''} — publish in Studio
+				</a>
 			{/if}
 		</div>
 	</aside>
