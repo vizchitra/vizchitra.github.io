@@ -1,83 +1,108 @@
 import type { RequestEvent } from '@sveltejs/kit';
 
 const SESSION_COOKIE = 'studio_session';
-const SESSION_TTL_SECONDS = 7 * 24 * 60 * 60; // 7 days
+const SESSION_TTL_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
+const SESSION_TTL_SECONDS = SESSION_TTL_MS / 1000;
 
 export interface StudioSession {
 	handle: string;
 	createdAt: number;
 }
 
-/** Generate a cryptographically random session ID */
-function generateSessionId(): string {
-	const bytes = new Uint8Array(32);
-	crypto.getRandomValues(bytes);
-	return Array.from(bytes)
-		.map((b) => b.toString(16).padStart(2, '0'))
-		.join('');
+// ── Signed cookie session (no KV lookup on every request) ─────────────────────
+// Cookie value: base64url(payload).base64url(hmac)
+// This eliminates the KV eventual-consistency problem — auth works immediately
+// after login even across different Cloudflare edge nodes.
+
+async function getHmacKey(secret: string): Promise<CryptoKey> {
+	return crypto.subtle.importKey(
+		'raw',
+		new TextEncoder().encode(secret),
+		{ name: 'HMAC', hash: 'SHA-256' },
+		false,
+		['sign', 'verify']
+	);
 }
 
-/** Create a new session in KV and return the session ID */
-export async function createSession(kv: KVNamespace, handle: string): Promise<string> {
-	const sessionId = generateSessionId();
-	const session: StudioSession = { handle, createdAt: Date.now() };
-	await kv.put(sessionId, JSON.stringify(session), {
-		expirationTtl: SESSION_TTL_SECONDS
-	});
-	return sessionId;
+function b64url(buf: ArrayBuffer): string {
+	return btoa(String.fromCharCode(...new Uint8Array(buf)))
+		.replace(/\+/g, '-')
+		.replace(/\//g, '_')
+		.replace(/=/g, '');
 }
 
-/** Look up a session from KV using the cookie in the request */
-export async function getSession(
-	kv: KVNamespace,
-	request: Request
-): Promise<(StudioSession & { sessionId: string }) | null> {
-	const cookieHeader = request.headers.get('cookie') ?? '';
-	const match = cookieHeader
-		.split(';')
-		.map((c) => c.trim())
-		.find((c) => c.startsWith(`${SESSION_COOKIE}=`));
+function b64urlDecode(s: string): Uint8Array {
+	const padded = s.replace(/-/g, '+').replace(/_/g, '/');
+	const pad = padded.length % 4 === 0 ? '' : '='.repeat(4 - (padded.length % 4));
+	return Uint8Array.from(atob(padded + pad), (c) => c.charCodeAt(0));
+}
 
-	if (!match) return null;
+export async function createSignedSession(handle: string, secret: string): Promise<string> {
+	const payload = JSON.stringify({ handle, exp: Date.now() + SESSION_TTL_MS });
+	const encodedPayload = b64url(new TextEncoder().encode(payload));
+	const key = await getHmacKey(secret);
+	const sig = await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(encodedPayload));
+	return `${encodedPayload}.${b64url(sig)}`;
+}
 
-	const sessionId = match.slice(SESSION_COOKIE.length + 1);
-	if (!sessionId) return null;
-
-	const raw = await kv.get(sessionId);
-	if (!raw) return null;
-
+export async function verifySignedSession(
+	token: string,
+	secret: string
+): Promise<{ handle: string } | null> {
+	const dot = token.lastIndexOf('.');
+	if (dot === -1) return null;
+	const encodedPayload = token.slice(0, dot);
+	const sigPart = token.slice(dot + 1);
 	try {
-		const session = JSON.parse(raw) as StudioSession;
-		return { ...session, sessionId };
+		const key = await getHmacKey(secret);
+		const expectedSig = await crypto.subtle.sign(
+			'HMAC',
+			key,
+			new TextEncoder().encode(encodedPayload)
+		);
+		const providedSig = b64urlDecode(sigPart);
+		// Constant-time compare
+		if (expectedSig.byteLength !== providedSig.byteLength) return null;
+		const valid = await crypto.subtle.verify(
+			'HMAC',
+			key,
+			providedSig,
+			new TextEncoder().encode(encodedPayload)
+		);
+		if (!valid) return null;
+		const payload = JSON.parse(new TextDecoder().decode(b64urlDecode(encodedPayload))) as {
+			handle?: string;
+			exp?: number;
+		};
+		if (!payload.handle || !payload.exp || payload.exp < Date.now()) return null;
+		return { handle: payload.handle };
 	} catch {
 		return null;
 	}
 }
 
-/** Delete a session from KV */
-export async function deleteSession(kv: KVNamespace, sessionId: string): Promise<void> {
-	await kv.delete(sessionId);
-}
-
-/** Build a Set-Cookie header value for setting the session cookie */
-export function buildSessionCookie(sessionId: string, isProd: boolean): string {
+export function buildSessionCookie(token: string, isProd: boolean): string {
 	const parts = [
-		`${SESSION_COOKIE}=${sessionId}`,
+		`${SESSION_COOKIE}=${token}`,
 		'Path=/',
 		`Max-Age=${SESSION_TTL_SECONDS}`,
 		'HttpOnly',
-		'SameSite=Strict'
+		'SameSite=Lax'
 	];
 	if (isProd) parts.push('Secure');
 	return parts.join('; ');
 }
 
-/** Build a Set-Cookie header value that clears the session cookie */
 export function clearSessionCookie(): string {
-	return `${SESSION_COOKIE}=; Path=/; Max-Age=0; HttpOnly; SameSite=Strict`;
+	return `${SESSION_COOKIE}=; Path=/; Max-Age=0; HttpOnly; SameSite=Lax`;
 }
 
-/** Check whether a GitHub handle is in the allowed users env var */
+// ── KV session helpers (kept for logout revocation only) ──────────────────────
+
+export async function deleteSession(kv: KVNamespace, sessionId: string): Promise<void> {
+	await kv.delete(sessionId);
+}
+
 export function isAllowedUser(allowedUsers: string, handle: string): boolean {
 	return allowedUsers
 		.split(',')
@@ -85,11 +110,9 @@ export function isAllowedUser(allowedUsers: string, handle: string): boolean {
 		.includes(handle.toLowerCase());
 }
 
-/** Require auth — returns studioUser or redirects to login */
-export function requireAuth(event: RequestEvent): { handle: string; sessionId: string } {
+export function requireAuth(event: RequestEvent): { handle: string } {
 	const user = event.locals.studioUser;
 	if (!user) {
-		// Store intended URL so we can redirect after login
 		const next = encodeURIComponent(event.url.pathname);
 		throw new Response(null, {
 			status: 302,

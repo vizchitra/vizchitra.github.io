@@ -5,6 +5,8 @@ pages_build_output_dir = ".svelte-kit/cloudflare"
 
 [vars]
 STUDIO_BASE_URL = "https://vizchitra.com"
+# STUDIO_SESSION_SECRET — set as a CF Pages secret (not here), any long random string
+# e.g. openssl rand -hex 32
 
 [[kv_namespaces]]
 binding = "PROPOSAL_VOTES"

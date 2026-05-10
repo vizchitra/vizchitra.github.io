@@ -1,17 +1,6 @@
 import type { RequestHandler } from './$types';
 import { dev } from '$app/environment';
-import { createSession, buildSessionCookie, isAllowedUser } from '$lib/studio/session';
-
-async function waitForKvWrite(kv: KVNamespace, key: string): Promise<void> {
-	const delay = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
-	for (let i = 0; i < 5; i++) {
-		// eslint-disable-next-line no-await-in-loop
-		const check = await kv.get(key);
-		if (check) return;
-		// eslint-disable-next-line no-await-in-loop
-		await delay(300);
-	}
-}
+import { createSignedSession, buildSessionCookie, isAllowedUser } from '$lib/studio/session';
 
 export const GET: RequestHandler = async ({ platform, url, request }) => {
 	const code = url.searchParams.get('code');
@@ -24,9 +13,9 @@ export const GET: RequestHandler = async ({ platform, url, request }) => {
 		});
 	}
 
-	const kv = platform?.env?.STUDIO_SESSIONS;
 	const clientId = platform?.env?.STUDIO_GITHUB_CLIENT_ID;
 	const clientSecret = platform?.env?.STUDIO_GITHUB_CLIENT_SECRET;
+	const sessionSecret = platform?.env?.STUDIO_SESSION_SECRET;
 	const allowedUsers = platform?.env?.STUDIO_ALLOWED_USERS ?? '';
 	const origin = platform?.env?.STUDIO_BASE_URL ?? url.origin;
 	const callbackUrl = `${origin}/studio/auth/callback`;
@@ -34,9 +23,10 @@ export const GET: RequestHandler = async ({ platform, url, request }) => {
 	if (!clientId || !clientSecret) {
 		return new Response('OAuth not configured', { status: 500 });
 	}
+	if (!sessionSecret) {
+		return new Response('Session secret not configured', { status: 500 });
+	}
 
-	// Validate CSRF state via cookie (avoids KV eventual-consistency issues across
-	// Cloudflare edge locations; SameSite=Lax ensures the cookie survives the redirect)
 	const [state, encodedNext] = stateParam.split(':');
 	const next = encodedNext ? decodeURIComponent(encodedNext) : '/studio';
 
@@ -57,14 +47,9 @@ export const GET: RequestHandler = async ({ platform, url, request }) => {
 		});
 	}
 
-	// Exchange code for access token; redirect_uri is required when it was sent
-	// during the authorization request
 	const tokenRes = await fetch('https://github.com/login/oauth/access_token', {
 		method: 'POST',
-		headers: {
-			Accept: 'application/json',
-			'Content-Type': 'application/json'
-		},
+		headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
 		body: JSON.stringify({
 			client_id: clientId,
 			client_secret: clientSecret,
@@ -76,10 +61,7 @@ export const GET: RequestHandler = async ({ platform, url, request }) => {
 	if (!tokenRes.ok) {
 		return new Response(null, {
 			status: 302,
-			headers: {
-				Location: '/studio/login?error=token_exchange',
-				'Set-Cookie': clearStateCookie
-			}
+			headers: { Location: '/studio/login?error=token_exchange', 'Set-Cookie': clearStateCookie }
 		});
 	}
 
@@ -87,28 +69,18 @@ export const GET: RequestHandler = async ({ platform, url, request }) => {
 	if (!tokenData.access_token) {
 		return new Response(null, {
 			status: 302,
-			headers: {
-				Location: '/studio/login?error=no_token',
-				'Set-Cookie': clearStateCookie
-			}
+			headers: { Location: '/studio/login?error=no_token', 'Set-Cookie': clearStateCookie }
 		});
 	}
 
-	// Fetch GitHub user identity
 	const userRes = await fetch('https://api.github.com/user', {
-		headers: {
-			Authorization: `Bearer ${tokenData.access_token}`,
-			'User-Agent': 'VizChitra-Studio'
-		}
+		headers: { Authorization: `Bearer ${tokenData.access_token}`, 'User-Agent': 'VizChitra-Studio' }
 	});
 
 	if (!userRes.ok) {
 		return new Response(null, {
 			status: 302,
-			headers: {
-				Location: '/studio/login?error=user_fetch',
-				'Set-Cookie': clearStateCookie
-			}
+			headers: { Location: '/studio/login?error=user_fetch', 'Set-Cookie': clearStateCookie }
 		});
 	}
 
@@ -118,39 +90,24 @@ export const GET: RequestHandler = async ({ platform, url, request }) => {
 	if (!handle) {
 		return new Response(null, {
 			status: 302,
-			headers: {
-				Location: '/studio/login?error=no_handle',
-				'Set-Cookie': clearStateCookie
-			}
+			headers: { Location: '/studio/login?error=no_handle', 'Set-Cookie': clearStateCookie }
 		});
 	}
 
-	// Check authorisation
 	if (!isAllowedUser(allowedUsers, handle)) {
 		return new Response(null, {
 			status: 302,
-			headers: {
-				Location: '/studio/login?error=unauthorized',
-				'Set-Cookie': clearStateCookie
-			}
+			headers: { Location: '/studio/login?error=unauthorized', 'Set-Cookie': clearStateCookie }
 		});
 	}
 
-	// Create session in KV
-	if (!kv) {
-		return new Response('Session store not available', { status: 500 });
-	}
-	const sessionId = await createSession(kv, handle);
-	const sessionCookie = buildSessionCookie(sessionId, !dev);
+	// Create a signed cookie — no KV write, no eventual-consistency delay.
+	// The HMAC signature lets hooks.server.ts verify the session without any
+	// network call to KV, so auth works immediately on every edge node.
+	const token = await createSignedSession(handle, sessionSecret);
+	const sessionCookie = buildSessionCookie(token, !dev);
 
-	// KV is eventually consistent across edge nodes — verify the write is readable
-	// before redirecting, otherwise the very next request to /studio may miss the
-	// session and bounce the user back to the login page.
-	await waitForKvWrite(kv, sessionId);
-
-	// Ensure next is a safe relative path (prevent open redirect)
 	const safePath = next.startsWith('/') && !next.startsWith('//') ? next : '/studio';
-
 	const headers = new Headers({ Location: safePath });
 	headers.append('Set-Cookie', sessionCookie);
 	headers.append('Set-Cookie', clearStateCookie);

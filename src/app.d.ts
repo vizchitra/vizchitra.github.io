@@ -3,7 +3,7 @@
 declare global {
 	namespace App {
 		interface Locals {
-			studioUser: { handle: string; sessionId: string } | null;
+			studioUser: { handle: string } | null;
 		}
 		interface Platform {
 			env: {
@@ -14,6 +14,7 @@ declare global {
 				STUDIO_ALLOWED_USERS: string;
 				STUDIO_GITHUB_TOKEN?: string;
 				STUDIO_BASE_URL?: string;
+				STUDIO_SESSION_SECRET: string;
 			};
 			context: ExecutionContext;
 			caches: CacheStorage & { default: Cache };
