@@ -15,8 +15,8 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      lint:         ${{ steps.lint.outcome }}
-      oxlint:       ${{ steps.oxlint.outcome }}
+      lint: ${{ steps.lint.outcome }}
+      oxlint: ${{ steps.oxlint.outcome }}
       svelte_check: ${{ steps.svelte_check.outcome }}
 
     steps:
@@ -71,10 +71,10 @@ jobs:
 
     outputs:
       build_seconds: ${{ steps.timing.outputs.build_seconds }}
-      chunk_kb:      ${{ steps.sizes.outputs.chunk_kb }}
-      chunk_name:    ${{ steps.sizes.outputs.chunk_name }}
-      time_ok:       ${{ steps.timing.outputs.time_ok }}
-      size_ok:       ${{ steps.sizes.outputs.size_ok }}
+      chunk_kb: ${{ steps.sizes.outputs.chunk_kb }}
+      chunk_name: ${{ steps.sizes.outputs.chunk_name }}
+      time_ok: ${{ steps.timing.outputs.time_ok }}
+      size_ok: ${{ steps.sizes.outputs.size_ok }}
 
     steps:
       - uses: actions/checkout@v4

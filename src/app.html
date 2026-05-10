@@ -1,39 +1,24 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<base href="/" />
 
-<<<<<<< HEAD
-		<link rel="icon" type="image/svg+xml" href="%sveltekit.assets%/favicon.svg" />
-=======
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<base href="/" />
->>>>>>> dcdd8b0 (fix: 404 page renders without CSS at deep URL paths)
+	<link rel="icon" type="image/svg+xml" href="%sveltekit.assets%/favicon.svg" />
+	<meta name="author" content="VizChitra Community" />
+	<meta property="og:site_name" content="VizChitra" />
 
-		<meta name="author" content="VizChitra Community" />
-		<meta property="og:site_name" content="VizChitra" />
+	%sveltekit.head%
 
-		%sveltekit.head%
+	<link rel="preload" href="%sveltekit.assets%/fonts/Cairo-Variable-Latin.woff2" as="font" type="font/woff2"
+		crossorigin />
+	<link rel="preload" href="%sveltekit.assets%/fonts/IBMPlexSans-Variable-Italic-Latin.woff2" as="font"
+		type="font/woff2" crossorigin />
+</head>
 
-		<link
-			rel="preload"
-			href="%sveltekit.assets%/fonts/Cairo-Variable-Latin.woff2"
-			as="font"
-			rel="preload"
-			href="%sveltekit.assets%/fonts/IBMPlexSans-Variable-Italic-Latin.woff2"
+<body data-sveltekit-preload-data="hover">
+	<div style="display: contents">%sveltekit.body%</div>
+</body>
 
-			<link rel="icon" type="image/svg+xml" href="%sveltekit.assets%/favicon.svg" />
-			as="font"
-			type="font/woff2"
-			crossorigin
-		/>
-	</head>
-
-	<body data-sveltekit-preload-data="hover">
-		<div style="display: contents">%sveltekit.body%</div>
-	</body>
 </html>
