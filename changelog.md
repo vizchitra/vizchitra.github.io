@@ -5,6 +5,18 @@ Format: date, what changed, why, key files, notes for the next agent.
 
 ---
 
+## 2026-05-10 — fix(studio): Save Failed on stage/feedback endpoints
+
+**What changed:** Extracted `ensureStagingBranch` helper in `src/lib/studio/staging.ts` and used it in both `stage` and `feedback` API endpoints. The helper handles three cases that previously caused "Save Failed": (1) KV has a stale branch reference (branch deleted after PR merge — `getRef` now verifies the branch is still live before using it); (2) branch already exists on GitHub but KV is empty (after a same-day publish — `createRef` 422 is now caught and treated as success); (3) normal first save (unchanged).
+
+**Why:** After publishing a PR and clearing KV, if the user made another edit the same day, `createRef` threw "Reference already exists" (422) because the branch wasn't deleted yet on GitHub. This surfaced as a generic "Save Failed" error in the UI.
+
+**Key files:** `src/lib/studio/staging.ts` (new), `src/routes/api/studio/stage/+server.ts`, `src/routes/api/studio/feedback/+server.ts`
+
+**Notes for next agent:** `STUDIO_GITHUB_TOKEN` must be set as a Cloudflare secret (not in wrangler.toml). If save still fails after this fix, check that secret is configured in the CF Pages dashboard.
+
+---
+
 ## 2026-05-10 — Quality gates, changelog enforcement & faster CI
 
 **What changed:** Added pre-commit hooks via `lefthook` that run oxfmt, prettier, oxlint, and a changelog guard on staged files. Split `pnpm lint` into `lint:fmt` (oxfmt for TS/JS/JSON, ~800ms) and `lint:fmt:svelte` (prettier for Svelte/MD only). Updated CI to run both as separate steps with individual pass/fail rows in the PR comment. Added a Changelog section to `agents.md` requiring agents to update `changelog.md` before committing when source files change.
