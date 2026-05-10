@@ -28,7 +28,8 @@ export const GET: RequestHandler = async ({ platform, url }) => {
 	}
 
 	const next = url.searchParams.get('next') ?? '/studio';
-	const callbackUrl = `${url.origin}/studio/auth/callback`;
+	const origin = platform?.env?.STUDIO_BASE_URL ?? url.origin;
+	const callbackUrl = `${origin}/studio/auth/callback`;
 
 	const githubUrl = new URL('https://github.com/login/oauth/authorize');
 	githubUrl.searchParams.set('client_id', clientId);
