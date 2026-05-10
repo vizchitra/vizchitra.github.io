@@ -13,8 +13,8 @@ const config = {
 	kit: {
 		adapter: adapter({
 			routes: {
-				include: ['/api/*', '/2026/submissions/*/og-image.png', '/studio', '/studio/*'],
-				exclude: []
+				include: ['/*'],
+				exclude: ['/app/*', '/fonts/*', '/images/*', '/docs/*']
 			}
 		}),
 		alias: {
