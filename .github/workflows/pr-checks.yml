@@ -31,9 +31,14 @@ jobs:
       - run: pnpm install
 
       # ── Quality ────────────────────────────────────────────────────────────
-      - name: Prettier format check
-        id: lint
-        run: pnpm lint
+      - name: Format check (oxfmt — TS/JS/JSON)
+        id: fmt_oxfmt
+        run: pnpm lint:fmt
+        continue-on-error: true
+
+      - name: Format check (Prettier — Svelte/MD)
+        id: fmt_prettier
+        run: pnpm lint:fmt:svelte
         continue-on-error: true
 
       - name: Oxlint
@@ -82,7 +87,8 @@ jobs:
           script: |
             const icon = s => s === 'success' ? '✅' : s === 'failure' ? '❌' : '⏭️';
 
-            const lint        = '${{ steps.lint.outcome }}';
+            const fmtOxfmt    = '${{ steps.fmt_oxfmt.outcome }}';
+            const fmtPrettier = '${{ steps.fmt_prettier.outcome }}';
             const oxlint      = '${{ steps.oxlint.outcome }}';
             const svelteCheck = '${{ steps.svelte_check.outcome }}';
             const buildSecs   = '${{ steps.timing.outputs.build_seconds }}';
@@ -92,8 +98,8 @@ jobs:
             const sizeOk      = '${{ steps.sizes.outputs.size_ok }}'  === 'true';
 
             const allOk =
-              lint === 'success' && oxlint === 'success' &&
-              svelteCheck === 'success' && timeOk && sizeOk;
+              fmtOxfmt === 'success' && fmtPrettier === 'success' &&
+              oxlint === 'success' && svelteCheck === 'success' && timeOk && sizeOk;
 
             const header = allOk
               ? '### ✅ CI Checks passed'
@@ -104,8 +110,9 @@ jobs:
               '',
               '| | Check | Result |',
               '|:---:|---|---|',
-              `| ${icon(lint)}          | Prettier format   | ${lint === 'success' ? 'passed' : lint} |`,
-              `| ${icon(oxlint)}        | Oxlint            | ${oxlint === 'success' ? 'passed' : oxlint} |`,
+              `| ${icon(fmtOxfmt)}      | oxfmt (TS/JS/JSON)  | ${fmtOxfmt === 'success' ? 'passed' : fmtOxfmt} |`,
+              `| ${icon(fmtPrettier)}   | Prettier (Svelte/MD)| ${fmtPrettier === 'success' ? 'passed' : fmtPrettier} |`,
+              `| ${icon(oxlint)}        | Oxlint              | ${oxlint === 'success' ? 'passed' : oxlint} |`,
               `| ${icon(svelteCheck)}   | Svelte type-check | ${svelteCheck === 'success' ? 'passed' : svelteCheck} |`,
               `| ${timeOk ? '✅' : '❌'} | Build time        | ${buildSecs}s (limit 120s) |`,
               `| ${sizeOk ? '✅' : '❌'} | Shared bundle     | ${chunkKb} KB (limit 600 KB) — \`${chunkName}\` |`,
@@ -143,7 +150,8 @@ jobs:
       # ── Fail the job if any check failed ───────────────────────────────────
       - name: Assert all passed
         if: >
-          steps.lint.outcome         != 'success' ||
+          steps.fmt_oxfmt.outcome    != 'success' ||
+          steps.fmt_prettier.outcome != 'success' ||
           steps.oxlint.outcome       != 'success' ||
           steps.svelte_check.outcome != 'success' ||
           steps.timing.outputs.time_ok == 'false' ||

@@ -76,11 +76,29 @@ export type ContentGroup = FlatGroup | TreeGroup;
 function buildContentTree(collections: StudioCollection[]): ContentGroup[] {
 	function getTitle(filePath: string): string {
 		const raw = markdownContent[filePath];
-		if (!raw) return filePath.split('/').pop()?.replace(/\.[^.]+$/, '') ?? filePath;
+		if (!raw)
+			return (
+				filePath
+					.split('/')
+					.pop()
+					?.replace(/\.[^.]+$/, '') ?? filePath
+			);
 		try {
-			return (matter(raw).data?.title as string) ?? filePath.split('/').pop()?.replace(/\.[^.]+$/, '') ?? filePath;
+			return (
+				(matter(raw).data?.title as string) ??
+				filePath
+					.split('/')
+					.pop()
+					?.replace(/\.[^.]+$/, '') ??
+				filePath
+			);
 		} catch {
-			return filePath.split('/').pop()?.replace(/\.[^.]+$/, '') ?? filePath;
+			return (
+				filePath
+					.split('/')
+					.pop()
+					?.replace(/\.[^.]+$/, '') ?? filePath
+			);
 		}
 	}
 

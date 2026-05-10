@@ -33,6 +33,17 @@ These rules are designed to optimize for long-term maintainability, consistency,
 
 ---
 
+## Changelog
+
+Always update `changelog.md` at the end of every session before committing.
+
+- Append a new entry at the top (newest-first).
+- Format: `## YYYY-MM-DD — <short title>` then **What changed**, **Why**, **Key files**, **Notes for next agent**.
+- One entry per logical change group (not per commit).
+- The pre-commit hook blocks commits touching `src/`, `content/`, or `studio.config.ts` without a changelog update.
+
+---
+
 ## Non-negotiables (automated edits must follow)
 
 1. **Static-first**: Everything must work with prerendering + adapter-static (no runtime-only routes).
