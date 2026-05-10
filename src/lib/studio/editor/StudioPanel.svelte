@@ -103,12 +103,13 @@
 
 			if (dev) {
 				saveStatus = 'saved';
+				editMode.startEdit(filePath); // reset dirty, stay in edit mode
 			} else {
 				const data = (await res.json()) as { stagedCount?: number };
 				stagedCount = data.stagedCount ?? stagedCount + 1;
 				saveStatus = 'staged';
+				editMode.stopEdit(); // exit edit mode so publish UI appears
 			}
-			editMode.startEdit(filePath); // reset dirty
 		} catch {
 			errorMessage = 'Network error — please try again';
 			saveStatus = 'error';
@@ -354,7 +355,7 @@
 					<p class="text-xs text-emerald-400">✓ Saved to disk</p>
 				{:else if saveStatus === 'staged'}
 					<p class="text-xs text-emerald-400">
-						✓ Staged — {stagedCount} file{stagedCount !== 1 ? 's' : ''} pending
+						✓ Saved! When you're done editing, hit Publish below to go live.
 					</p>
 				{/if}
 
@@ -394,9 +395,12 @@
 			<!-- Publish (prod only, when staged changes exist) -->
 			{#if !dev && stagedCount > 0 && !isEditing}
 				<div class="mt-1 space-y-1.5">
+					<p class="text-[10px] tracking-widest text-[var(--color-grey-500)] uppercase">
+						{stagedCount} change{stagedCount !== 1 ? 's' : ''} ready to publish
+					</p>
 					<textarea
 						bind:value={publishMessage}
-						placeholder="Describe your changes…"
+						placeholder="What did you change? (e.g. 'Updated speaker bio')"
 						rows={2}
 						class="border-grey-700 bg-grey-800 text-viz-grey-light placeholder-grey-600 focus:border-viz-teal w-full rounded border px-2.5 py-1.5 text-xs focus:outline-none"
 					></textarea>
