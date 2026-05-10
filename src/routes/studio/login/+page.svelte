@@ -20,7 +20,7 @@
 			</div>
 		{:else if data.error}
 			<div class="mb-4 rounded bg-red-50 px-4 py-3 text-sm text-red-700">
-				Sign-in failed. Please try again.
+				Sign-in failed ({data.error}). Please try again.
 			</div>
 		{/if}
 

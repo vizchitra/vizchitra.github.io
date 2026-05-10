@@ -62,6 +62,13 @@ export type ContentGroup = FlatGroup | TreeGroup;
 // ── Content tree builder ──────────────────────────────────────────────────────
 
 async function buildContentTree(collections: StudioCollection[]): Promise<ContentGroup[]> {
+	// node:fs is only available in Node.js dev server, not Cloudflare Workers
+	try {
+		await import('node:fs');
+	} catch {
+		return [];
+	}
+
 	const { readdirSync, readFileSync, statSync } = await import('node:fs');
 	const { join } = await import('node:path');
 	const { default: matter } = await import('gray-matter');
