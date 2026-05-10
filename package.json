@@ -19,10 +19,7 @@
 	},
 	"dependencies": {
 		"fuse.js": "^7.3.0",
-		"roughjs": "^4.6.6",
-		"maplibre-gl": "^5.24.0",
-		"svelte-maplibre-gl": "^1.0.3",
-		"svelte-youtube-embed": "^0.4.6"
+		"roughjs": "^4.6.6"
 	},
 	"devDependencies": {
 		"@content-collections/core": "^0.15.0",
