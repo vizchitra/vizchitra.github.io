@@ -5,6 +5,17 @@ Format: date, what changed, why, key files, notes for the next agent.
 
 ---
 
+## 2026-05-10 — fix: publish auto-merges master into studio branch and enables PR auto-merge
+
+**What changed:**
+
+- `publish/+server.ts`: before creating the PR, merge master → studio branch via GitHub API so it's always up-to-date (content-only edits never conflict)
+- After creating the PR, enable auto-squash-merge via GraphQL so the PR merges itself once CI passes — content editors never need to touch GitHub
+
+**Key files:** `src/routes/api/studio/publish/+server.ts`
+
+---
+
 ## 2026-05-10 — feat: move publish to Studio dashboard, auto-close stale PRs
 
 **What changed:**
