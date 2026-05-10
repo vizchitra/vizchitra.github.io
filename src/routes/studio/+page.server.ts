@@ -1,7 +1,8 @@
 import type { PageServerLoad } from './$types';
 import { redirect } from '@sveltejs/kit';
 import { studioConfig, type StudioCollection } from '../../../studio.config';
-import { parseCFPProposals, parseCFEProposals, generateSlug } from '$lib/utils/csv-parser';
+import { parseCFPProposals, parseCFEProposals } from '$lib/utils/csv-parser';
+import { resolveAllSessions } from '$lib/utils/sessions';
 import cfpRaw from '../../../content/2026/data/cfp.csv?raw';
 import cfeRaw from '../../../content/2026/data/cfe.csv?raw';
 import cfpFeedback from '../../../content/2026/feedback/cfp.json';
@@ -15,6 +16,18 @@ export interface SubmissionRow {
 	format: string;
 	status: string;
 	notes: string;
+	url: string;
+}
+
+export interface SessionRow {
+	slug: string;
+	sessionType: string;
+	title: string;
+	speakerName: string;
+	organisation: string;
+	date: string;
+	time: string;
+	display: boolean;
 	url: string;
 }
 
@@ -180,12 +193,25 @@ export const load: PageServerLoad = async ({ locals, platform }) => {
 	const cfeSubmissions: SubmissionRow[] = parseCFEProposals(cfeRaw).map((p) => ({
 		id: p.id,
 		slug: p.slug,
-		title: p.title,
+		title: p.projectTitle,
 		submitter: p.firstName,
 		format: p.submissionType ?? 'Exhibition',
 		status: cfeFb[p.id]?.status ?? 'Under Review',
 		notes: cfeFb[p.id]?.notes ?? '',
 		url: `/2026/submissions/${p.slug}`
+	}));
+
+	const { sessions: allSessions } = resolveAllSessions();
+	const sessionRows: SessionRow[] = allSessions.map((s) => ({
+		slug: s.slug,
+		sessionType: s.sessionType,
+		title: s.title || '(TBD)',
+		speakerName: s.speakerName || '—',
+		organisation: s.organisation || '',
+		date: s.date,
+		time: s.time,
+		display: s.display,
+		url: s.slug ? `/2026/sessions/${s.slug}` : ''
 	}));
 
 	return {
@@ -195,6 +221,7 @@ export const load: PageServerLoad = async ({ locals, platform }) => {
 		contentGroups,
 		cfpSubmissions,
 		cfeSubmissions,
+		sessionRows,
 		pageMeta: {
 			title: 'Studio',
 			description: 'VizChitra content editor'

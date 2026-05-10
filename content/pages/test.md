@@ -11,4 +11,8 @@ To verify that the new Studio setup can read front matter from markdown files in
 
 You can change the text here.
 
+
+
+Hello
+
 ## :slanted[This is a slanted heading]

@@ -85,6 +85,8 @@
 	<FeedbackPanel
 		submissionType={proposal.type}
 		id={proposal.id}
+		{title}
+		format={isCFP ? (proposal as CFPProposal).proposalType : 'Exhibition'}
 		{isEditing}
 		onStartEdit={startEdit}
 		onStopEdit={stopEdit}

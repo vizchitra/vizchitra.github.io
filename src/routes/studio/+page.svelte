@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageProps } from './$types';
-	import type { FlatGroup, TreeGroup, SubmissionRow } from './+page.server';
+	import type { FlatGroup, TreeGroup, SubmissionRow, SessionRow } from './+page.server';
 
 	let { data }: PageProps = $props();
 	const user = $derived(data.user);
@@ -8,10 +8,13 @@
 	const contentGroups = $derived(data.contentGroups);
 	const cfpSubmissions = $derived(data.cfpSubmissions as SubmissionRow[]);
 	const cfeSubmissions = $derived(data.cfeSubmissions as SubmissionRow[]);
+	const sessionRows = $derived(data.sessionRows as SessionRow[]);
 
-	// Active submissions tab
-	let activeTab = $state<'cfp' | 'cfe'>('cfp');
-	const activeSubmissions = $derived(activeTab === 'cfp' ? cfpSubmissions : cfeSubmissions);
+	// ── Submissions tabs ─────────────────────────────────────────────────────
+	let activeSubmissionTab = $state<'cfp' | 'cfe'>('cfp');
+	const activeSubmissions = $derived(
+		activeSubmissionTab === 'cfp' ? cfpSubmissions : cfeSubmissions
+	);
 
 	const STATUS_STYLE: Record<string, string> = {
 		'Under Review': 'bg-amber-950/40 text-amber-300 border-amber-800/50',
@@ -263,6 +266,78 @@
 			{/each}
 		</div>
 
+		<!-- Sessions 2026 -->
+		<div
+			class="overflow-hidden rounded-xl border border-[var(--color-grey-800)] bg-[var(--color-grey-900)]"
+		>
+			<div class="border-b border-[var(--color-grey-800)] px-5 py-3.5">
+				<span class="text-sm font-semibold text-[var(--color-grey-200)]">Sessions 2026</span>
+			</div>
+			{#if sessionRows.length > 0}
+				<div class="overflow-x-auto">
+					<table class="w-full text-sm">
+						<thead>
+							<tr class="border-b border-[var(--color-grey-800)]">
+								<th class="px-5 py-2 text-left font-medium text-[var(--color-grey-600)]">Title</th>
+								<th class="px-3 py-2 text-left font-medium text-[var(--color-grey-600)]">Speaker</th
+								>
+								<th class="px-3 py-2 text-left font-medium text-[var(--color-grey-600)]">Type</th>
+								<th class="px-3 py-2 text-left font-medium text-[var(--color-grey-600)]">Time</th>
+								<th class="px-3 py-2 text-left font-medium text-[var(--color-grey-600)]">Status</th>
+							</tr>
+						</thead>
+						<tbody class="divide-y divide-[var(--color-grey-800)]">
+							{#each sessionRows as row}
+								<tr class="transition-colors hover:bg-[var(--color-grey-800)]">
+									<td class="max-w-[16rem] px-5 py-2.5">
+										{#if row.url}
+											<a
+												href={row.url}
+												class="block truncate text-[var(--color-grey-300)] hover:text-[var(--color-grey-100)] hover:underline"
+											>
+												{row.title}
+											</a>
+										{:else}
+											<span class="block truncate text-[var(--color-grey-500)] italic"
+												>{row.title}</span
+											>
+										{/if}
+									</td>
+									<td class="max-w-[10rem] px-3 py-2.5">
+										<span class="block truncate text-[var(--color-grey-500)]"
+											>{row.speakerName}</span
+										>
+									</td>
+									<td class="px-3 py-2.5 whitespace-nowrap text-[var(--color-grey-600)]"
+										>{row.sessionType}</td
+									>
+									<td
+										class="px-3 py-2.5 font-mono text-xs whitespace-nowrap text-[var(--color-grey-700)]"
+										>{row.time || '—'}</td
+									>
+									<td class="px-3 py-2.5">
+										{#if row.display}
+											<span
+												class="rounded-full border border-emerald-800/50 bg-emerald-950/40 px-2 py-0.5 text-xs font-semibold text-emerald-300"
+												>Confirmed</span
+											>
+										{:else}
+											<span
+												class="rounded-full border border-[var(--color-grey-700)] bg-[var(--color-grey-800)] px-2 py-0.5 text-xs font-semibold text-[var(--color-grey-500)]"
+												>TBD</span
+											>
+										{/if}
+									</td>
+								</tr>
+							{/each}
+						</tbody>
+					</table>
+				</div>
+			{:else}
+				<p class="px-5 py-4 text-sm text-[var(--color-grey-600)] italic">No sessions yet.</p>
+			{/if}
+		</div>
+
 		<!-- Submissions 2026 -->
 		<div
 			class="overflow-hidden rounded-xl border border-[var(--color-grey-800)] bg-[var(--color-grey-900)]"
@@ -276,8 +351,8 @@
 					{#each ['cfp', 'cfe'] as const as tab}
 						<button
 							type="button"
-							onclick={() => (activeTab = tab)}
-							class="rounded px-3 py-1 text-xs font-semibold tracking-wider uppercase transition-colors {activeTab ===
+							onclick={() => (activeSubmissionTab = tab)}
+							class="rounded px-3 py-1 text-xs font-semibold tracking-wider uppercase transition-colors {activeSubmissionTab ===
 							tab
 								? 'bg-[var(--color-grey-700)] text-[var(--color-grey-100)]'
 								: 'text-[var(--color-grey-500)] hover:text-[var(--color-grey-300)]'}"
@@ -307,10 +382,10 @@
 						<tbody class="divide-y divide-[var(--color-grey-800)]">
 							{#each activeSubmissions as row}
 								<tr class="group transition-colors hover:bg-[var(--color-grey-800)]">
-									<td class="px-5 py-2.5 text-[var(--color-grey-300)]">
+									<td class="max-w-[16rem] px-5 py-2.5">
 										<a
 											href={row.url}
-											class="line-clamp-1 hover:text-[var(--color-grey-100)] hover:underline"
+											class="block truncate text-[var(--color-grey-300)] hover:text-[var(--color-grey-100)] hover:underline"
 										>
 											{row.title}
 										</a>
@@ -330,7 +405,7 @@
 											{row.status}
 										</span>
 									</td>
-									<td class="max-w-[14rem] px-3 py-2.5">
+									<td class="max-w-[14rem] overflow-hidden px-3 py-2.5">
 										{#if row.notes}
 											<p class="line-clamp-1 text-xs text-[var(--color-grey-600)]">{row.notes}</p>
 										{:else}

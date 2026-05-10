@@ -92,27 +92,5 @@ export const studioConfig: StudioConfig = {
 			description: 'Facilitator guides for Panel sessions',
 			urlTemplate: '/guides/{dirSlug}/{section}'
 		},
-		{
-			name: 'Sessions 2026',
-			path: 'content/2026/data',
-			type: 'json',
-			description: 'Session records for VizChitra 2026',
-			schema: [
-				{ key: 'title', type: 'text', label: 'Title', required: true },
-				{
-					key: 'format',
-					type: 'select',
-					label: 'Format',
-					options: ['Talk', 'Workshop', 'Dialogue', 'Exhibition', 'Panel']
-				},
-				{
-					key: 'status',
-					type: 'select',
-					label: 'Status',
-					options: ['tbd', 'announced', 'confirmed']
-				},
-				{ key: 'description', type: 'textarea', label: 'Description' }
-			]
-		}
 	]
 };

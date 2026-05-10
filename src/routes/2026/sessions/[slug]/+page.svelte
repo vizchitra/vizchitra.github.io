@@ -1,9 +1,11 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import Header from '$lib/components/structure/Header.svelte';
 	import { Heading, Prose } from '$lib/components/typography';
 	import { Container } from '$lib/components/layout';
 	import { ProposalBadge } from '$lib/components/proposals';
 	import { sessionColorMap } from '$lib/utils/sessions';
+	import SessionPanel from '$lib/studio/editor/SessionPanel.svelte';
 	import { page } from '$app/state';
 	import { browser } from '$app/environment';
 	import type { PageData } from './$types';
@@ -37,7 +39,87 @@
 
 	const formattedDate = $derived(session.date ? formatDate(session.date) : '');
 	const period = $derived(session.time === '10:00 - 13:00' ? 'Morning' : 'Afternoon');
+
+	// ── Studio panel state ────────────────────────────────────────────────────
+	let isStudioUser = $state(false);
+	let isEditing = $state(false);
+
+	// Live-editable session fields (mirrored from session data, updated via panel)
+	let liveType = $state(session.sessionType);
+	let liveTime = $state(session.time);
+	let liveVenue = $state(session.venue);
+	let liveSpeaker = $state(session.speakerName);
+	let liveDesignation = $state(session.designation);
+	let liveOrganisation = $state(session.organisation);
+
+	// Snapshots for cancel revert
+	let savedFields: Record<string, string> = {};
+
+	onMount(async () => {
+		try {
+			const res = await fetch('/api/studio/me');
+			if (res.ok) isStudioUser = true;
+		} catch {
+			// Not authenticated
+		}
+	});
+
+	function startEdit() {
+		savedFields = {
+			sessionType: liveType,
+			time: liveTime,
+			venue: liveVenue,
+			speakerName: liveSpeaker,
+			designation: liveDesignation,
+			organisation: liveOrganisation
+		};
+		isEditing = true;
+	}
+
+	function stopEdit() {
+		isEditing = false;
+	}
+
+	function cancelEdit() {
+		liveType = savedFields.sessionType ?? session.sessionType;
+		liveTime = savedFields.time ?? session.time;
+		liveVenue = savedFields.venue ?? session.venue;
+		liveSpeaker = savedFields.speakerName ?? session.speakerName;
+		liveDesignation = savedFields.designation ?? session.designation;
+		liveOrganisation = savedFields.organisation ?? session.organisation;
+		isEditing = false;
+	}
+
+	function handleFieldChange(field: string, value: string) {
+		if (field === 'sessionType') liveType = value;
+		else if (field === 'time') liveTime = value;
+		else if (field === 'venue') liveVenue = value;
+		else if (field === 'speakerName') liveSpeaker = value;
+		else if (field === 'designation') liveDesignation = value;
+		else if (field === 'organisation') liveOrganisation = value;
+	}
 </script>
+
+<!-- SessionPanel: fixed sidebar, studio users only -->
+{#if isStudioUser}
+	<SessionPanel
+		slug={session.slug}
+		sessionType={liveType}
+		date={session.date}
+		time={liveTime}
+		venue={liveVenue}
+		title={session.title}
+		subtitle={session.subtitle}
+		speakerName={liveSpeaker}
+		designation={liveDesignation}
+		organisation={liveOrganisation}
+		{isEditing}
+		onStartEdit={startEdit}
+		onStopEdit={stopEdit}
+		onCancel={cancelEdit}
+		onFieldChange={handleFieldChange}
+	/>
+{/if}
 
 <Header banner="curve" />
 

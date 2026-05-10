@@ -31,7 +31,7 @@ export const COLLECTION_FIELD_SPECS: Record<string, SchemaSpec> = {
 	pages: {
 		title: { type: 'text', required: true },
 		description: { type: 'textarea', required: false, rows: 3 },
-		slug: { type: 'text', required: true },
+		// slug is intentionally omitted — it falls through to read-only fallback in StudioPanel
 		banner: { type: 'select', required: false, options: ['polygon', 'curve', 'square', 'blob'] },
 		color: {
 			type: 'select',
