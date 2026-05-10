@@ -18,8 +18,7 @@ export const load: PageServerLoad = async () => {
 
 	selectedSessions.sort(
 		(a, b) =>
-			getSpeakerOrder(a.speakerName, a.sessionType) -
-			getSpeakerOrder(b.speakerName, b.sessionType)
+			getSpeakerOrder(a.speakerName, a.sessionType) - getSpeakerOrder(b.speakerName, b.sessionType)
 	);
 
 	return {
