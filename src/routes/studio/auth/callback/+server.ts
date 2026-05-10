@@ -2,6 +2,17 @@ import type { RequestHandler } from './$types';
 import { dev } from '$app/environment';
 import { createSession, buildSessionCookie, isAllowedUser } from '$lib/studio/session';
 
+async function waitForKvWrite(kv: KVNamespace, key: string): Promise<void> {
+	const delay = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
+	for (let i = 0; i < 5; i++) {
+		// eslint-disable-next-line no-await-in-loop
+		const check = await kv.get(key);
+		if (check) return;
+		// eslint-disable-next-line no-await-in-loop
+		await delay(300);
+	}
+}
+
 export const GET: RequestHandler = async ({ platform, url, request }) => {
 	const code = url.searchParams.get('code');
 	const stateParam = url.searchParams.get('state') ?? '';
@@ -131,6 +142,11 @@ export const GET: RequestHandler = async ({ platform, url, request }) => {
 	}
 	const sessionId = await createSession(kv, handle);
 	const sessionCookie = buildSessionCookie(sessionId, !dev);
+
+	// KV is eventually consistent across edge nodes — verify the write is readable
+	// before redirecting, otherwise the very next request to /studio may miss the
+	// session and bounce the user back to the login page.
+	await waitForKvWrite(kv, sessionId);
 
 	// Ensure next is a safe relative path (prevent open redirect)
 	const safePath = next.startsWith('/') && !next.startsWith('//') ? next : '/studio';

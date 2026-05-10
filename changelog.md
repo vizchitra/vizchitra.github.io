@@ -5,6 +5,19 @@ Format: date, what changed, why, key files, notes for the next agent.
 
 ---
 
+## 2026-05-10 — fix: studio auth KV consistency and save error messages
+
+**What changed:** Two fixes:
+
+1. OAuth callback now verifies the KV session write is readable before redirecting to `/studio`, fixing the Safari bounce-back-to-login issue caused by Cloudflare KV eventual consistency.
+2. StudioPanel save errors now show the actual server error message and HTTP status instead of a generic "Save failed".
+
+**Why:** Safari was completing OAuth but landing back on `/studio/login` because the KV write hadn't propagated to the edge node serving `/studio`. Save failures showed a useless fallback message, hiding the real cause.
+
+**Key files:** `src/routes/studio/auth/callback/+server.ts`, `src/lib/studio/editor/StudioPanel.svelte`
+
+---
+
 ## 2026-05-10 — fix: studio login imports Header instead of Hero
 
 **What changed:** `src/routes/studio/login/+page.svelte` was importing `Hero.svelte` under the alias `Header`. Updated import to point to `Header.svelte`.
