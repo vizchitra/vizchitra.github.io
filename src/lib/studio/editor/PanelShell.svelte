@@ -37,6 +37,8 @@
 		children: Snippet;
 		/** Optional collapsible preview panel (card + social) */
 		preview?: Snippet;
+		/** og:image URL — shown in the preview section */
+		socialImage?: string;
 	}
 
 	let {
@@ -53,7 +55,8 @@
 		onSave,
 		onCancel,
 		children,
-		preview
+		preview,
+		socialImage
 	}: Props = $props();
 
 	// ── Collapse ─────────────────────────────────────────────────────────────
@@ -186,9 +189,9 @@
 		</div>
 
 		<!-- Optional preview (card + social) -->
-		{#if preview}
+		{#if preview || socialImage}
 			<div class="border-grey-800 border-b">
-				<details class="group">
+				<details class="group" open>
 					<summary
 						class="text-viz-grey-muted hover:text-viz-grey-light flex cursor-pointer list-none items-center justify-between px-4 py-2.5 text-[10px] font-semibold tracking-widest uppercase transition-colors"
 					>
@@ -204,8 +207,22 @@
 							<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
 						</svg>
 					</summary>
-					<div class="px-4 pb-3">
-						{@render preview()}
+					<div class="space-y-3 px-4 pb-3">
+						{#if preview}
+							{@render preview()}
+						{/if}
+						{#if socialImage}
+							<div>
+								<p class="text-viz-grey-muted mb-1.5 text-[10px] tracking-widest uppercase">
+									Social
+								</p>
+								<img
+									src={socialImage}
+									alt="Social preview"
+									class="border-grey-700 w-full rounded border object-cover"
+								/>
+							</div>
+						{/if}
 					</div>
 				</details>
 			</div>

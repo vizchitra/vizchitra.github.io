@@ -13,6 +13,7 @@
  */
 import type { RequestHandler } from './$types';
 import { Octokit } from '@octokit/rest';
+import { ensureStagingBranch, stagingKey, type StagingState } from '$lib/studio/staging';
 
 export const prerender = false;
 
@@ -24,15 +25,6 @@ const ALLOWED_PREFIX = 'content/';
 function isAllowed(filePath: string): boolean {
 	const norm = filePath.replace(/\\/g, '/').replace(/^\/+/, '');
 	return !norm.includes('..') && norm.startsWith(ALLOWED_PREFIX) && norm.endsWith('.json');
-}
-
-function stagingKey(handle: string): string {
-	return `studio_staging:${handle}`;
-}
-
-interface StagingState {
-	branch: string;
-	files: string[];
 }
 
 export const POST: RequestHandler = async ({ request, locals, platform }) => {
@@ -83,27 +75,7 @@ export const POST: RequestHandler = async ({ request, locals, platform }) => {
 	const repoPath = filePath.replace(/^\/+/, '');
 
 	try {
-		// Load or create staging branch
-		const existing = (await kv.get(stagingKey(handle), 'json')) as StagingState | null;
-
-		let branchName: string;
-		if (existing?.branch) {
-			branchName = existing.branch;
-		} else {
-			const date = new Date().toISOString().slice(0, 10);
-			branchName = `studio/${handle}/${date}`;
-			const { data: ref } = await octokit.git.getRef({
-				owner: OWNER,
-				repo: REPO,
-				ref: `heads/${BASE_BRANCH}`
-			});
-			await octokit.git.createRef({
-				owner: OWNER,
-				repo: REPO,
-				ref: `refs/heads/${branchName}`,
-				sha: ref.object.sha
-			});
-		}
+		const { branchName, existing } = await ensureStagingBranch(octokit, kv, handle);
 
 		// Fetch current file from staging branch (fall back to master)
 		let currentData: unknown = null;

@@ -143,6 +143,7 @@
 		organisation={liveOrganisation}
 		longDescription={liveDescription}
 		speakerAbout={liveSpeakerAbout}
+		socialImage={data.pageMeta?.ogImage}
 		{isEditing}
 		onStartEdit={startEdit}
 		onStopEdit={stopEdit}

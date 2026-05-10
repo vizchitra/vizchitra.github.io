@@ -30,6 +30,8 @@
 		/** Long-form markdown fields edited inline on the page */
 		longDescription: string;
 		speakerAbout: string;
+		/** og:image URL for social preview */
+		socialImage?: string;
 		isEditing: boolean;
 		onStartEdit: () => void;
 		onStopEdit: () => void;
@@ -51,6 +53,7 @@
 		organisation,
 		longDescription,
 		speakerAbout,
+		socialImage,
 		isEditing,
 		onStartEdit,
 		onStopEdit,
@@ -136,7 +139,10 @@
 					}
 				})
 			});
-			if (!res.ok) throw new Error('Save failed');
+			if (!res.ok) {
+				const errBody = await res.json().catch(() => ({}));
+				throw new Error((errBody as { error?: string }).error ?? 'Save failed');
+			}
 			const result = (await res.json()) as { stagedCount?: number };
 			if (dev) {
 				saveStatus = 'saved';
@@ -182,6 +188,7 @@
 	onStartEdit={startEdit}
 	onSave={save}
 	onCancel={cancel}
+	{socialImage}
 >
 	{#snippet preview()}
 		<!-- Session card mini-preview -->

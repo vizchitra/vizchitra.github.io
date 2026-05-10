@@ -54,6 +54,7 @@
 		{getMarkdown}
 		{getFrontmatter}
 		{onFrontmatterChange}
+		socialImage={data.pageMeta?.ogImage}
 	/>
 {/if}
 
