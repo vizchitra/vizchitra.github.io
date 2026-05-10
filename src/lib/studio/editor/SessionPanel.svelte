@@ -168,10 +168,10 @@
 	// ── Preview helpers ───────────────────────────────────────────────────────
 	const colorKey = $derived(sessionColorMap[localType] ?? 'blue');
 	const colorMap: Record<string, string> = {
-		blue: 'bg-[var(--color-viz-blue-subtle)] text-[var(--color-viz-blue-dark)]',
-		teal: 'bg-[var(--color-viz-teal-subtle)] text-[var(--color-viz-teal-dark)]',
-		pink: 'bg-[var(--color-viz-pink-subtle)] text-[var(--color-viz-pink-dark)]',
-		orange: 'bg-[var(--color-viz-orange-subtle)] text-[var(--color-viz-orange-dark)]'
+		blue: 'bg-viz-blue-subtle text-viz-blue-dark',
+		teal: 'bg-viz-teal-subtle text-viz-teal-dark',
+		pink: 'bg-viz-pink-subtle text-viz-pink-dark',
+		orange: 'bg-viz-orange-subtle text-viz-orange-dark'
 	};
 	const typeBadgeStyle = $derived(colorMap[colorKey] ?? colorMap['blue']);
 </script>
