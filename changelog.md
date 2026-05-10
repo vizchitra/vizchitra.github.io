@@ -5,6 +5,16 @@ Format: date, what changed, why, key files, notes for the next agent.
 
 ---
 
+## 2026-05-10 — fix: studio login imports Header instead of Hero
+
+**What changed:** `src/routes/studio/login/+page.svelte` was importing `Hero.svelte` under the alias `Header`. Updated import to point to `Header.svelte`.
+
+**Why:** Login page was rendering the animated Hero component instead of the static Header.
+
+**Key files:** `src/routes/studio/login/+page.svelte`
+
+---
+
 ## 2026-05-10 — chore: automated commit for PR
 
 **What changed:** Staged current workspace edits and prepared branch for PR.

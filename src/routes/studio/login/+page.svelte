@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageProps } from './$types';
-	import Header from '$lib/components/structure/Hero.svelte';
+	import Header from '$lib/components/structure/Header.svelte';
 	let { data }: PageProps = $props();
 </script>
 
