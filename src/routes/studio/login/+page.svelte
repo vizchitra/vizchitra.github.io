@@ -26,6 +26,7 @@
 
 		<a
 			href="/studio/auth/github"
+			data-sveltekit-reload
 			class="flex w-full items-center justify-center gap-2 rounded-lg bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:bg-gray-700"
 		>
 			<svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
