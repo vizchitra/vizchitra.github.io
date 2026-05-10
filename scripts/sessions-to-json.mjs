@@ -1,5 +1,5 @@
 /**
- * One-time migration: convert content/2026/data/2026-sessions.csv → content/2026/sessions.json
+ * One-time migration: convert content/2026/data/2026-sessions.csv → content/2026/data/sessions.json
  *
  * Run: node scripts/sessions-to-json.mjs
  *
@@ -60,6 +60,6 @@ const sessions = data.map((row, i) => {
   };
 });
 
-const out = resolve(root, 'content/2026/sessions.json');
+const out = resolve(root, 'content/2026/data/sessions.json');
 writeFileSync(out, JSON.stringify(sessions, null, 2) + '\n');
-console.log(`✓ Wrote ${sessions.length} sessions → content/2026/sessions.json`);
+console.log(`✓ Wrote ${sessions.length} sessions → content/2026/data/sessions.json`);

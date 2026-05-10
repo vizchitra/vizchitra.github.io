@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { markdownToHtml } from '$lib/utils/markdown';
 	import Header from '$lib/components/structure/Header.svelte';
 	import { Heading, Prose } from '$lib/components/typography';
 	import { Container } from '$lib/components/layout';
@@ -44,13 +45,36 @@
 	let isStudioUser = $state(false);
 	let isEditing = $state(false);
 
-	// Live-editable session fields (mirrored from session data, updated via panel)
+	// Live-editable short fields (mirrored from session data, updated via panel)
 	let liveType = $state(session.sessionType);
 	let liveTime = $state(session.time);
 	let liveVenue = $state(session.venue);
 	let liveSpeaker = $state(session.speakerName);
 	let liveDesignation = $state(session.designation);
 	let liveOrganisation = $state(session.organisation);
+
+	// Live-editable markdown fields (edited inline on page)
+	let liveDescription = $state(session.longDescription ?? '');
+	let liveSpeakerAbout = $state(session.speakerAbout ?? '');
+
+	// Rendered HTML for the markdown fields (starts with server-side render)
+	let liveDescriptionHtml = $state(data.descriptionHtml);
+	let liveSpeakerAboutHtml = $state(data.speakerAboutHtml);
+
+	// Re-render markdown live as user types
+	$effect(() => {
+		const md = liveDescription;
+		markdownToHtml(md).then((html) => {
+			liveDescriptionHtml = html;
+		});
+	});
+
+	$effect(() => {
+		const md = liveSpeakerAbout;
+		markdownToHtml(md).then((html) => {
+			liveSpeakerAboutHtml = html;
+		});
+	});
 
 	// Snapshots for cancel revert
 	let savedFields: Record<string, string> = {};
@@ -71,7 +95,9 @@
 			venue: liveVenue,
 			speakerName: liveSpeaker,
 			designation: liveDesignation,
-			organisation: liveOrganisation
+			organisation: liveOrganisation,
+			longDescription: liveDescription,
+			speakerAbout: liveSpeakerAbout
 		};
 		isEditing = true;
 	}
@@ -87,6 +113,8 @@
 		liveSpeaker = savedFields.speakerName ?? session.speakerName;
 		liveDesignation = savedFields.designation ?? session.designation;
 		liveOrganisation = savedFields.organisation ?? session.organisation;
+		liveDescription = savedFields.longDescription ?? session.longDescription ?? '';
+		liveSpeakerAbout = savedFields.speakerAbout ?? session.speakerAbout ?? '';
 		isEditing = false;
 	}
 
@@ -113,6 +141,8 @@
 		speakerName={liveSpeaker}
 		designation={liveDesignation}
 		organisation={liveOrganisation}
+		longDescription={liveDescription}
+		speakerAbout={liveSpeakerAbout}
 		{isEditing}
 		onStartEdit={startEdit}
 		onStopEdit={stopEdit}
@@ -189,22 +219,40 @@
 		<!-- Description -->
 		<section class="mb-8 md:mb-10">
 			<Heading tag="h2" align="left" class="pb-4">About this session</Heading>
-			<div class="prose text-viz-grey/90 md:prose-lg markdown-content max-w-none">
-				<Prose>
-					{@html data.descriptionHtml}
-				</Prose>
-			</div>
+			{#if isStudioUser && isEditing}
+				<textarea
+					bind:value={liveDescription}
+					rows={10}
+					class="border-viz-grey/30 bg-viz-grey-subtle text-viz-grey-dark focus:border-viz-yellow w-full rounded border p-3 font-mono text-sm focus:outline-none"
+					placeholder="About this session (markdown supported)"
+				></textarea>
+			{:else}
+				<div class="prose text-viz-grey/90 md:prose-lg markdown-content max-w-none">
+					<Prose>
+						{@html liveDescriptionHtml}
+					</Prose>
+				</div>
+			{/if}
 		</section>
 
 		<!-- About the speaker -->
-		{#if data.speakerAboutHtml}
+		{#if liveSpeakerAbout || (isStudioUser && isEditing)}
 			<section class="mb-8 md:mb-10">
 				<Heading tag="h2" align="left" class="pb-4">About the speaker</Heading>
-				<div class="prose text-viz-grey/90 md:prose-lg markdown-content max-w-none">
-					<Prose>
-						{@html data.speakerAboutHtml}
-					</Prose>
-				</div>
+				{#if isStudioUser && isEditing}
+					<textarea
+						bind:value={liveSpeakerAbout}
+						rows={8}
+						class="border-viz-grey/30 bg-viz-grey-subtle text-viz-grey-dark focus:border-viz-yellow w-full rounded border p-3 font-mono text-sm focus:outline-none"
+						placeholder="About the speaker (markdown supported)"
+					></textarea>
+				{:else}
+					<div class="prose text-viz-grey/90 md:prose-lg markdown-content max-w-none">
+						<Prose>
+							{@html liveSpeakerAboutHtml}
+						</Prose>
+					</div>
+				{/if}
 			</section>
 		{/if}
 

@@ -27,6 +27,9 @@
 		speakerName: string;
 		designation: string;
 		organisation: string;
+		/** Long-form markdown fields edited inline on the page */
+		longDescription: string;
+		speakerAbout: string;
 		isEditing: boolean;
 		onStartEdit: () => void;
 		onStopEdit: () => void;
@@ -46,6 +49,8 @@
 		speakerName,
 		designation,
 		organisation,
+		longDescription,
+		speakerAbout,
 		isEditing,
 		onStartEdit,
 		onStopEdit,
@@ -114,7 +119,7 @@
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
-					filePath: 'content/2026/sessions.json',
+					filePath: 'content/2026/data/sessions.json',
 					key: slug,
 					data: {
 						sessionType: localType,
@@ -125,7 +130,9 @@
 						subtitle: localSubtitle,
 						speakerName: localSpeaker,
 						designation: localDesignation,
-						organisation: localOrganisation
+						organisation: localOrganisation,
+						longDescription,
+						speakerAbout
 					}
 				})
 			});

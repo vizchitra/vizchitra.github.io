@@ -1,4 +1,4 @@
-import sessionsJson from '../../../content/2026/sessions.json';
+import sessionsJson from '../../../content/2026/data/sessions.json';
 
 /** Color mapping for session types, used across all session components */
 export const sessionColorMap: Record<string, 'blue' | 'teal' | 'pink' | 'orange'> = {

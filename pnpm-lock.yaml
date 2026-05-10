@@ -129,12 +129,18 @@ importers:
       prosemirror-view:
         specifier: ^1.41.8
         version: 1.41.8
+      rehype-stringify:
+        specifier: ^10.0.1
+        version: 10.0.1
       remark-directive:
         specifier: ^4.0.0
         version: 4.0.0
       remark-gfm:
         specifier: ^4.0.1
         version: 4.0.1
+      remark-rehype:
+        specifier: ^11.1.2
+        version: 11.1.2
       satori:
         specifier: ^0.26.0
         version: 0.26.0
