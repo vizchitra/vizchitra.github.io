@@ -15,8 +15,12 @@
 			subsections: [
 				{ name: 'Event', href: '/2026/' },
 				{ name: 'Get Tickets', href: 'https://tickets.vizchitra.com' },
-				{ name: 'Workshops', href: '/2026/workshops' },
 				{ name: 'Scholarships', href: '/2026/scholarships' },
+				{ divider: true },
+				// { name: 'Talks', href: '/2026/talks' },
+				// { name: 'Dialogues', href: '/2026/dialogues' },
+				{ name: 'Workshops', href: '/2026/workshops' },
+				{ divider: true },
 				{ name: 'Submissions', href: '/2026/submissions' }
 			],
 			expanded: false
@@ -136,24 +140,28 @@
 									onclick={stopPropagation(bubble('click'))}
 								>
 									{#each section.subsections as subsection}
-										<a
-											href={subsection.href}
-											class="w-full cursor-pointer px-1 py-2"
-											target={(subsection as any)?.target || '_self'}
-										>
-											<span
-												class="flex items-center gap-2 text-xl font-medium whitespace-nowrap text-neutral-700"
+										{#if (subsection as any).divider}
+											<hr class="border-viz-black/30 my-2 border-t" />
+										{:else}
+											<a
+												href={subsection.href}
+												class="w-full cursor-pointer px-1 py-2"
+												target={(subsection as any)?.target || '_self'}
 											>
-												{subsection.name}
-												{#if (subsection as any).isBadge}
-													<span
-														class="ml-1 rounded-full border border-blue-500 bg-linear-to-r from-blue-400 to-blue-600 px-2.5 py-0.5 text-xs font-semibold text-white shadow-sm transition-transform duration-200 hover:scale-105"
-													>
-														{(subsection as any).badgeText}
-													</span>
-												{/if}
-											</span>
-										</a>
+												<span
+													class="flex items-center gap-2 text-xl font-medium whitespace-nowrap text-neutral-700"
+												>
+													{subsection.name}
+													{#if (subsection as any).isBadge}
+														<span
+															class="ml-1 rounded-full border border-blue-500 bg-linear-to-r from-blue-400 to-blue-600 px-2.5 py-0.5 text-xs font-semibold text-white shadow-sm transition-transform duration-200 hover:scale-105"
+														>
+															{(subsection as any).badgeText}
+														</span>
+													{/if}
+												</span>
+											</a>
+										{/if}
 									{/each}
 								</div>
 							{/if}
