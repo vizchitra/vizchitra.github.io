@@ -2,6 +2,7 @@
 	import type { PageProps } from './$types';
 	import type { FlatGroup, TreeGroup, SubmissionRow, SessionRow, TableGroup } from './+page.server';
 	import GroupedTableCard from '$lib/studio/GroupedTableCard.svelte';
+	import { untrack } from 'svelte';
 	import { buildSha, buildBranch } from '$lib/build';
 
 	let { data }: PageProps = $props();
@@ -25,7 +26,9 @@
 	};
 
 	// ── Staged changes + publish ──────────────────────────────────────────────
-	let stagedFiles = $state(data.stagedFiles as { path: string; url: string }[]);
+	// untrack: stagedFiles is mutable state cleared on publish, not a live prop mirror
+	// eslint-disable-next-line svelte/valid-compile
+	let stagedFiles = $state(untrack(() => data.stagedFiles as { path: string; url: string }[]));
 	let publishMessage = $state('');
 	let publishing = $state(false);
 	let publishResult = $state<{ ok: boolean; prUrl?: string; error?: string } | null>(null);
