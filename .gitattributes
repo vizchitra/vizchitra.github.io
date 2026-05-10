@@ -1,0 +1,3 @@
+# changelog.md is prepend-only — union merge takes all lines from both sides,
+# so concurrent PRs never conflict on it.
+changelog.md merge=union
