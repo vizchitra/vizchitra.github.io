@@ -13,4 +13,6 @@ You can change the text here.
 
 Hello. Trying to change this page. 
 
+This is being done live on Bi Weekly call.
+
 ## :slanted[Voila!! ]
