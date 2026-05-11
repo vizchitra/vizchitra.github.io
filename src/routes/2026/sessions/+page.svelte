@@ -2,18 +2,46 @@
 	import { Header, Container, Stack, Grid, Prose, FullBleed } from '$lib/components';
 	import SessionCardExpanded from '$lib/components/sessions/SessionCardExpanded.svelte';
 	import { sessionColorMap } from '$lib/utils/sessions';
-	import { tr } from 'zod/v4/locales';
+	import { page } from '$app/state';
+	import { replaceState } from '$app/navigation';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
 
-	let selectedFormat = $state('all');
+	let selectedFormat = $state(page.url.searchParams.get('type') ?? 'all');
+	let selectedDay = $state(page.url.searchParams.get('day') ?? 'all');
+
+	const days = [
+		{ label: 'All Days', value: 'all' },
+		{ label: 'Conference Day — 04 Jul', value: '2026-07-04' },
+		{ label: 'Workshop Day — 03 Jul', value: '2026-07-03' }
+	];
 
 	let filteredSessions = $derived(
-		selectedFormat === 'all'
-			? data.sessions
-			: data.sessions.filter((s) => s.sessionType === selectedFormat)
+		data.sessions.filter((s) => {
+			const matchesDay = selectedDay === 'all' || s.date.startsWith(selectedDay);
+			const matchesFormat = selectedFormat === 'all' || s.sessionType === selectedFormat;
+			return matchesDay && matchesFormat;
+		})
 	);
+
+	function setDay(value: string) {
+		selectedDay = value;
+		updateUrl();
+	}
+
+	function setFormat(value: string) {
+		selectedFormat = value;
+		updateUrl();
+	}
+
+	function updateUrl() {
+		const params = new URLSearchParams();
+		if (selectedDay !== 'all') params.set('day', selectedDay);
+		if (selectedFormat !== 'all') params.set('type', selectedFormat);
+		const search = params.toString();
+		replaceState(`/2026/sessions${search ? `?${search}` : ''}`, {});
+	}
 </script>
 
 <Header banner="curve" />
@@ -28,6 +56,21 @@
 			</p>
 		</Prose>
 
+		<!-- Day filter -->
+		<div class="flex flex-wrap items-center gap-2">
+			{#each days as day}
+				<button
+					class="rounded-full border px-4 py-1.5 text-sm font-medium transition-colors {selectedDay ===
+					day.value
+						? 'bg-viz-grey border-viz-grey text-white'
+						: 'border-viz-grey/20 text-viz-grey hover:border-viz-grey/40'}"
+					onclick={() => setDay(day.value)}
+				>
+					{day.label}
+				</button>
+			{/each}
+		</div>
+
 		<!-- Format filter -->
 		<div class="flex flex-wrap items-center gap-2">
 			<button
@@ -35,7 +78,7 @@
 				'all'
 					? 'bg-viz-grey border-viz-grey text-white'
 					: 'border-viz-grey/20 text-viz-grey hover:border-viz-grey/40'}"
-				onclick={() => (selectedFormat = 'all')}
+				onclick={() => setFormat('all')}
 			>
 				All
 			</button>
@@ -46,7 +89,7 @@
 					format
 						? `bg-viz-grey border-viz-grey text-white`
 						: `border-viz-grey/20 text-viz-grey hover:border-viz-${color}-solid/40`}"
-					onclick={() => (selectedFormat = format)}
+					onclick={() => setFormat(format)}
 				>
 					{format}
 				</button>
@@ -88,7 +131,7 @@
 
 		{#if filteredSessions.length === 0}
 			<div class="py-16 text-center">
-				<p class="text-viz-grey text-lg">No sessions found for this format.</p>
+				<p class="text-viz-grey text-lg">No sessions found for this filter.</p>
 			</div>
 		{/if}
 	</Stack>

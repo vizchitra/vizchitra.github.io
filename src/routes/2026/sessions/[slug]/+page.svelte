@@ -145,8 +145,7 @@
 		<!-- Title -->
 		<Prose>
 			<h1 class="mb-3">
-				{session.title}{#if session.subtitle}
-					<span class="text-viz-grey/50 font-normal">{session.subtitle}</span>{/if}
+				{session.title}
 			</h1>
 		</Prose>
 

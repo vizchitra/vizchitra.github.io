@@ -14,13 +14,9 @@
 			accentColor: 'var(--color-viz-orange)',
 			subsections: [
 				{ name: 'Event', href: '/2026/' },
+				{ name: 'Sessions', href: '/2026/sessions' },
 				{ name: 'Get Tickets', href: 'https://tickets.vizchitra.com' },
 				{ name: 'Scholarships', href: '/2026/scholarships' },
-				{ divider: true },
-				// { name: 'Talks', href: '/2026/talks' },
-				{ name: 'Dialogues', href: '/2026/dialogues' },
-				{ name: 'Workshops', href: '/2026/workshops' },
-				{ divider: true },
 				{ name: 'Submissions', href: '/2026/submissions' }
 			],
 			expanded: false
