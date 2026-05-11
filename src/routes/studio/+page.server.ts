@@ -246,7 +246,7 @@ export const load: PageServerLoad = async ({ locals, platform }) => {
 		url: s.slug ? `/2026/sessions/${s.slug}` : ''
 	}));
 
-	const SESSION_TYPES = ['Talks', 'Dialogues', 'Workshop', 'Exhibition', 'Panels'];
+	const SESSION_TYPES = ['Talks', 'Dialogues', 'Workshops', 'Exhibition', 'Panels'];
 	const CFP_FORMATS = ['Talks', 'Dialogues', 'Workshop'];
 	const sessionGroups = groupBy(sessionRows, (r) => r.sessionType, SESSION_TYPES);
 	const cfpGroups = groupBy(cfpSubmissions, (r) => r.format, CFP_FORMATS);
