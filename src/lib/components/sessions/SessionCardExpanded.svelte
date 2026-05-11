@@ -178,256 +178,258 @@
 	</div>
 {:else}
 	{@const currentColor = colorClasses[color] ?? colorClasses.blue}
-	<a
-		href={detailHref}
-		class="sessions-card group white border-viz-grey/40 isolate mx-auto block w-full transform-gpu overflow-hidden rounded border transition-[transform,box-shadow] hover:scale-102"
-		onpointermove={handlePointerMove}
-		onpointerleave={handlePointerLeave}
-	>
-		<div
-			class="session-card-body relative flex aspect-4/5.75 max-h-[85svh] flex-col overflow-hidden md:max-h-none"
-			bind:clientWidth={backgroundWidth}
-			bind:clientHeight={backgroundHeight}
+	<div class="sessions-card-wrapper group relative mx-auto w-full">
+		<a
+			href={detailHref}
+			class="sessions-card white border-viz-grey/40 isolate block w-full transform-gpu overflow-hidden rounded border transition-[transform,box-shadow] group-hover:scale-102"
+			onpointermove={handlePointerMove}
+			onpointerleave={handlePointerLeave}
 		>
-			<!-- Pattern anchored to full card so translate % is stable regardless of flex split -->
-			<div class="pattern-bg-expanded absolute inset-0 z-0 overflow-visible">
-				<SessionCardBackground
-					{sessionType}
-					{color}
-					{variation}
-					{seed}
-					width={expandedBgWidth}
-					height={expandedBgWidth}
-					class="h-full w-full"
-				/>
-			</div>
-			<div class="session-top-text-content z-20">
-				<div class="session-card-header relative z-10 p-2.5 pb-0! md:p-4">
-					<div class="title mb-2.5 flex flex-row items-baseline justify-start gap-2 md:mb-3">
-						<div class="logo-container text-2xl leading-none text-[#4c4c4c]">
-							<LogoType classes="text-2xl!" year={null} />
-						</div>
-
-						<!-- <div class="divider my-0.5 w-0.5 self-stretch bg-[#4c4c4c]"></div> -->
-						<p
-							class="font-display text-shadow block text-2xl leading-none tracking-tighter uppercase"
-							style="color: {themeTokens[color]?.dark ??
-								themeTokens.blue.dark}; font-variation-settings: 'wght' 750;"
-						>
-							{sessionType}
-						</p>
-					</div>
-
-					<div class="sessions-logistics">
-						<div class="text-base leading-none uppercase md:text-base">
-							{#if time}
-								<span class="font-display leading-snug! font-bold md:text-[17px]">{time} ⋅ </span>
-								{#if slot}<span class="font-display leading-snug! font-bold md:text-[17px]"
-										>{slot}</span
-									>{/if}
-							{/if}
-							{#if venue}
-								<p class="text-base leading-none uppercase md:text-base">
-									<span class="font-display leading-none! font-light md:text-[16px]">{venue} </span>
-								</p>
-							{/if}
-						</div>
-					</div>
+			<div
+				class="session-card-body relative flex aspect-4/5.75 max-h-[85svh] flex-col md:max-h-none"
+				bind:clientWidth={backgroundWidth}
+				bind:clientHeight={backgroundHeight}
+			>
+				<!-- Pattern anchored to full card so translate % is stable regardless of flex split -->
+				<div class="pattern-bg-expanded absolute inset-0 z-0 overflow-visible">
+					<SessionCardBackground
+						{sessionType}
+						{color}
+						{variation}
+						{seed}
+						width={expandedBgWidth}
+						height={expandedBgWidth}
+						class="h-full w-full"
+					/>
 				</div>
+				<div class="session-top-text-content z-20">
+					<div class="session-card-header relative z-10 p-2.5 pb-0! md:p-4">
+						<div class="title mb-2.5 flex flex-row items-baseline justify-start gap-2 md:mb-3">
+							<div class="logo-container text-2xl leading-none text-[#4c4c4c]">
+								<LogoType classes="text-2xl!" year={null} />
+							</div>
 
-				<div class="title-content relative z-10 p-3 md:p-4">
-					<h3
-						class="title font-display text-shadow mb-1 text-[20px] leading-none font-extrabold text-[#4c4c4c] uppercase md:text-[28px]"
-					>
-						{title}
-					</h3>
-					<!-- {#if subtitle}
+							<!-- <div class="divider my-0.5 w-0.5 self-stretch bg-[#4c4c4c]"></div> -->
+							<p
+								class="font-display text-shadow block text-2xl leading-none tracking-tighter uppercase"
+								style="color: {themeTokens[color]?.dark ??
+									themeTokens.blue.dark}; font-variation-settings: 'wght' 750;"
+							>
+								{sessionType}
+							</p>
+						</div>
+
+						<div class="sessions-logistics">
+							<div class="text-base leading-none uppercase md:text-base">
+								{#if time}
+									<span class="font-display leading-snug! font-bold md:text-[17px]">{time} ⋅ </span>
+									{#if slot}<span class="font-display leading-snug! font-bold md:text-[17px]"
+											>{slot}</span
+										>{/if}
+								{/if}
+								{#if venue}
+									<p class="text-base leading-none uppercase md:text-base">
+										<span class="font-display leading-none! font-light md:text-[16px]"
+											>{venue}
+										</span>
+									</p>
+								{/if}
+							</div>
+						</div>
+					</div>
+
+					<div class="title-content relative z-10 p-3 md:p-4">
+						<h3
+							class="title font-display text-shadow mb-1 text-[20px] leading-none font-extrabold text-[#4c4c4c] uppercase md:text-[28px]"
+						>
+							{title}
+						</h3>
+						<!-- {#if subtitle}
 					<p
 						class="subtitle font-display text-shadow mb-1 text-[20px] leading-none font-extrabold text-[#4c4c4c] uppercase md:text-[28px]"
 					></p>
 				{/if} -->
-				</div>
-
-				{#if isExpanded}
-					<div class="short-description-container absolute z-10 p-3 pt-0 md:p-4 md:pt-1">
-						<!-- float pushes text away from the photo/pattern on the right -->
-						<div class="text-shape-float" aria-hidden="true"></div>
-						<!-- div (not p) so that inner <p> tags from descriptionHtml don't break float context -->
-						<div
-							class="short-description font-body text-shadow mb-1 text-[17px] leading-tight font-normal text-[#4c4c4c] md:text-[18px]"
-						>
-							{subtitle}
-						</div>
 					</div>
-				{/if}
-			</div>
-			<div
-				class="background-container-expanded relative z-0 flex w-full flex-1 flex-row items-center justify-end"
-			>
-				<div
-					class="speaker-image absolute right-5 bottom-0 origin-center transition-transform duration-300 group-hover:scale-104 group-hover:rotate-1"
-					style:transform={buildSpeakerImageTransform(speakerName, screenWidth, sessionType)}
-				>
-					<img
-						class="relative z-10 h-auto w-full"
-						style="filter: drop-shadow(0px 8px 16px {shadowColor}cc)"
-						src="{base}{speakerImage || '/images/speakers/2026/speaker-placeholder.avif'}"
-						alt="{speakerName}'s photo"
-					/>
+
+					{#if isExpanded}
+						<div class="short-description-container absolute z-10 p-3 pt-0 md:p-4 md:pt-1">
+							<!-- float pushes text away from the photo/pattern on the right -->
+							<div class="text-shape-float" aria-hidden="true"></div>
+							<!-- div (not p) so that inner <p> tags from descriptionHtml don't break float context -->
+							<div
+								class="short-description font-body text-shadow mb-1 text-[17px] leading-tight font-normal text-[#4c4c4c] md:text-[18px]"
+							>
+								{subtitle}
+							</div>
+						</div>
+					{/if}
 				</div>
-			</div>
-
-			<div
-				class="speaker-details-overlay pointer-events-auto absolute inset-x-0 bottom-0 z-10 flex flex-col"
-				style:background-color={overlayColor}
-			>
-				<!-- wave height = card-width/3; padding-bottom% is relative to own width (inset-x-0) -->
 				<div
-					class="absolute inset-x-0 -bottom-px"
-					style="height: 0; padding-bottom: calc(33.34% + 2px);"
+					class="background-container-expanded relative z-0 flex w-full flex-1 flex-row items-center justify-end"
 				>
-					<div class="absolute inset-0">
-						<svg
-							class="relative z-0 block h-full w-full"
-							viewBox="0 0 1080 364"
-							preserveAspectRatio="none"
-							fill="none"
-							aria-hidden="true"
-						>
-							<path
-								d="M-12 364.516V0.516363C191.5 -0.982956 456 101.337 579 114.518C705 128.018 1004.5 9.01752 1092 2.01636V364.516H-12Z"
-								fill={overlayColor}
-							/>
-							<path
-								d="M-12 0.516363C191.5 -0.982956 456 101.337 579 114.518C705 128.018 1004.5 9.01752 1092 2.01636"
-								fill="none"
-								stroke="#fff"
-								stroke-width={overlayStrokeWidth}
-							/>
-						</svg>
+					<div
+						class="speaker-image absolute right-5 bottom-0 origin-center transition-transform duration-300 group-hover:scale-104 group-hover:rotate-1"
+						style:transform={buildSpeakerImageTransform(speakerName, screenWidth, sessionType)}
+					>
+						<img
+							class="relative z-10 h-auto w-full"
+							style="filter: drop-shadow(0px 8px 16px {shadowColor}cc)"
+							src="{base}{speakerImage || '/images/speakers/2026/speaker-placeholder.avif'}"
+							alt="{speakerName}'s photo"
+						/>
+					</div>
+				</div>
 
-						{#if showViewDetailsButton}
+				<div
+					class="speaker-details-overlay pointer-events-auto absolute inset-x-0 bottom-0 z-10 flex flex-col"
+					style:background-color={overlayColor}
+				>
+					<!-- wave height = card-width/3; padding-bottom% is relative to own width (inset-x-0) -->
+					<div
+						class="absolute inset-x-0 -bottom-px"
+						style="height: 0; padding-bottom: calc(33.34% + 2px);"
+					>
+						<div class="absolute inset-0">
 							<svg
-								class="view-details-button absolute -right-10 -bottom-8 z-40 block h-40 w-40 origin-center scale-0 transition-transform duration-400 ease-out group-hover:scale-100 md:h-50 md:w-50 lg:-right-16 lg:-bottom-16 lg:h-60 lg:w-60"
+								class="relative z-0 block h-full w-full"
+								viewBox="0 0 1080 364"
 								preserveAspectRatio="none"
-								viewBox="0 0 200 200"
 								fill="none"
 								aria-hidden="true"
 							>
-								<defs>
-									<path
-										id="view-details-path-{slug}"
-										d="M 100,100 m -{textPathRadius},0 a {textPathRadius},{textPathRadius} 0 1,1 {textPathRadius *
-											2},0 a {textPathRadius},{textPathRadius} 0 1,1 -{textPathRadius * 2},0"
-										fill="none"
-									/>
-								</defs>
-								<circle
-									cx="100"
-									cy="100"
-									r="80"
-									fill="#fff"
-									stroke="var(--color-{colorClasses[color]})"
-									stroke-width="7"
-									fill-opacity="1"
+								<path
+									d="M-12 364.516V0.516363C191.5 -0.982956 456 101.337 579 114.518C705 128.018 1004.5 9.01752 1092 2.01636V364.516H-12Z"
+									fill={overlayColor}
 								/>
-								<circle
-									cx="100"
-									cy="100"
-									r="52"
-									fill="var(--color-{colorClasses[color]}-dark)"
-									stroke-width="10"
-									fill-opacity="0.75"
-								/>
-								<circle
-									cx="100"
-									cy="100"
-									r="45"
-									fill="var(--color-{colorClasses[color]})"
-									fill-opacity="1"
-								/>
-								<circle cx="100" cy="100" r="35" fill="#fff" fill-opacity="1" />
-								<g
-									transform="translate(100 100) scale(0.325) translate(-63 -63)"
-									stroke="#4c4c4c"
-									stroke-width="13"
-									stroke-linecap="round"
-									stroke-linejoin="round"
+								<path
+									d="M-12 0.516363C191.5 -0.982956 456 101.337 579 114.518C705 128.018 1004.5 9.01752 1092 2.01636"
 									fill="none"
-								>
-									<path d="M26.25 63L99.75 63" />
-									<path d="M63 26.25L99.75 63L63 99.75" />
-								</g>
-								<text
-									class="view-details-text font-display"
-									fill="#4c4c4c"
-									font-size="16"
-									font-weight="800"
-									letter-spacing="2"
-									text-anchor="middle"
-								>
-									<textPath href="#view-details-path-{slug}" startOffset="18%"
-										>VIEW DETAILS</textPath
-									>
-									<textPath href="#view-details-path-{slug}" startOffset="65%"
-										>VIEW DETAILS</textPath
-									>
-								</text>
+									stroke="#fff"
+									stroke-width={overlayStrokeWidth}
+								/>
 							</svg>
-						{/if}
+						</div>
 					</div>
-				</div>
 
-				<div class="speaker-details-content relative z-30 mt-auto w-full p-2.5 md:p-4">
-					<div class="speaker-details relative z-10">
-						<h3
-							class="font-display text-shadow mb-1 text-2xl leading-none text-[#4c4c4c] uppercase md:text-[26px] lg:text-3xl xl:text-shadow-none!"
-						>
-							{#each speakerName.split('/').map((s) => s.trim()) as person, i}
-								{#if i > 0}<span
-										class="text-xl leading-none font-medium md:text-[28px] 2xl:text-3xl"
+					<div class="speaker-details-content relative z-30 mt-auto w-full p-2.5 md:p-4">
+						<div class="speaker-details relative z-10">
+							<h3
+								class="font-display text-shadow mb-1 text-2xl leading-none text-[#4c4c4c] uppercase md:text-[26px] lg:text-3xl xl:text-shadow-none!"
+							>
+								{#each speakerName.split('/').map((s) => s.trim()) as person, i}
+									{#if i > 0}<span
+											class="text-xl leading-none font-medium md:text-[28px] 2xl:text-3xl"
+										>
+											&nbsp;/
+										</span>{/if}
+									<span
+										class="first-name text-xl leading-none font-extrabold md:text-[28px] 2xl:text-3xl"
+										>{person.split(' ')[0]}</span
 									>
-										&nbsp;/
-									</span>{/if}
-								<span
-									class="first-name text-xl leading-none font-extrabold md:text-[28px] 2xl:text-3xl"
-									>{person.split(' ')[0]}</span
-								>
-								<span class="last-name text-xl leading-none font-medium md:text-[28px] 2xl:text-3xl"
-									>{person.split(' ').slice(1).join(' ')}</span
-								>
-							{/each}
-						</h3>
-						{#if designation || organisation}
-							<span class="font-display block leading-tight text-[#4c4c4c] uppercase md:text-lg">
-								{#if designation}
-									{designation}
-								{/if}{#if organisation}, {organisation}
-								{/if}
-							</span>
-						{/if}
+									<span
+										class="last-name text-xl leading-none font-medium md:text-[28px] 2xl:text-3xl"
+										>{person.split(' ').slice(1).join(' ')}</span
+									>
+								{/each}
+							</h3>
+							{#if designation || organisation}
+								<span class="font-display block leading-tight text-[#4c4c4c] uppercase md:text-lg">
+									{#if designation}
+										{designation}
+									{/if}{#if organisation}, {organisation}
+									{/if}
+								</span>
+							{/if}
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</a>
+		</a>
+
+		{#if showViewDetailsButton}
+			<svg
+				class="view-details-button pointer-events-none absolute -right-10 -bottom-8 z-40 block h-40 w-40 origin-center scale-0 transition-transform duration-400 ease-out group-hover:scale-100 md:h-50 md:w-50 lg:-right-14 lg:-bottom-14 lg:h-60 lg:w-60"
+				viewBox="0 0 200 200"
+				fill="none"
+				aria-hidden="true"
+			>
+				<defs>
+					<path
+						id="view-details-path-{slug}"
+						d="M 100,100 m -{textPathRadius},0 a {textPathRadius},{textPathRadius} 0 1,1 {textPathRadius *
+							2},0 a {textPathRadius},{textPathRadius} 0 1,1 -{textPathRadius * 2},0"
+						fill="none"
+					/>
+				</defs>
+				<circle
+					cx="100"
+					cy="100"
+					r="80"
+					fill="#fff"
+					stroke="var(--color-{colorClasses[color]})"
+					stroke-width="7"
+					fill-opacity="1"
+				/>
+				<circle
+					cx="100"
+					cy="100"
+					r="52"
+					fill="var(--color-{colorClasses[color]}-dark)"
+					stroke-width="10"
+					fill-opacity="0.75"
+				/>
+				<circle
+					cx="100"
+					cy="100"
+					r="45"
+					fill="var(--color-{colorClasses[color]})"
+					fill-opacity="1"
+				/>
+				<circle cx="100" cy="100" r="35" fill="#fff" fill-opacity="1" />
+				<g
+					transform="translate(100 100) scale(0.325) translate(-63 -63)"
+					stroke="#4c4c4c"
+					stroke-width="13"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					fill="none"
+				>
+					<path d="M26.25 63L99.75 63" />
+					<path d="M63 26.25L99.75 63L63 99.75" />
+				</g>
+				<text
+					class="view-details-text font-display"
+					fill="#4c4c4c"
+					font-size="16"
+					font-weight="800"
+					letter-spacing="2"
+					text-anchor="middle"
+				>
+					<textPath href="#view-details-path-{slug}" startOffset="18%">VIEW DETAILS</textPath>
+					<textPath href="#view-details-path-{slug}" startOffset="65%">VIEW DETAILS</textPath>
+				</text>
+			</svg>
+		{/if}
+	</div>
 {/if}
 
 <style>
-	.sessions-card {
-		display: flex;
-		flex-direction: column;
-		gap: 0rem;
-
+	.sessions-card-wrapper {
 		box-shadow:
 			rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
 			rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 	}
 
-	.sessions-card:hover {
+	.sessions-card-wrapper:hover {
 		box-shadow:
 			rgba(50, 50, 93, 0.2) 0px 10px 15px -2px,
 			rgba(0, 0, 0, 0.2) 0px 6px 8px -3px;
+	}
+
+	.sessions-card {
+		display: flex;
+		flex-direction: column;
+		gap: 0rem;
 	}
 
 	.speaker-image {
