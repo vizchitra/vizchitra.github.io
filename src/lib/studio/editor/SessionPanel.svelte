@@ -9,6 +9,7 @@
 	 * via EditableField components, not in this panel.
 	 */
 	import { dev } from '$app/environment';
+	import { invalidateAll } from '$app/navigation';
 	import { onMount, untrack } from 'svelte';
 	import PanelShell from './PanelShell.svelte';
 	import { sessionColorMap } from '$lib/utils/sessions';
@@ -27,6 +28,8 @@
 		speakerName: string;
 		designation: string;
 		organisation: string;
+		/** Short description (shown below title on detail page and on session cards) */
+		shortDescription: string;
 		/** Long-form markdown fields edited inline on the page */
 		longDescription: string;
 		speakerAbout: string;
@@ -51,6 +54,7 @@
 		speakerName,
 		designation,
 		organisation,
+		shortDescription,
 		longDescription,
 		speakerAbout,
 		socialImage,
@@ -65,7 +69,7 @@
 	// untrack() marks these as intentionally non-reactive initial values;
 	// the $effect below re-syncs from props whenever editing starts.
 	let localType = $state(untrack(() => sessionType));
-	let localDate = $state(untrack(() => date));
+	let localDate = $state(untrack(() => date?.slice(0, 10) ?? ''));
 	let localTime = $state(untrack(() => time));
 	let localVenue = $state(untrack(() => venue));
 	let localTitle = $state(untrack(() => title));
@@ -78,7 +82,7 @@
 	$effect(() => {
 		if (isEditing) {
 			localType = sessionType;
-			localDate = date;
+			localDate = date?.slice(0, 10) ?? '';
 			localTime = time;
 			localVenue = venue;
 			localTitle = title;
@@ -136,6 +140,7 @@
 						speakerName: localSpeaker,
 						designation: localDesignation,
 						organisation: localOrganisation,
+						shortDescription,
 						longDescription,
 						speakerAbout
 					}
@@ -148,6 +153,7 @@
 			const result = (await res.json()) as { stagedCount?: number };
 			if (dev) {
 				saveStatus = 'saved';
+				await invalidateAll();
 			} else {
 				stagedCount = result.stagedCount ?? stagedCount + 1;
 				saveStatus = 'staged';
@@ -259,11 +265,10 @@
 				</label>
 				<input
 					id="session-date"
-					type="text"
+					type="date"
 					bind:value={localDate}
 					disabled={!isEditing}
 					oninput={() => update('date', localDate)}
-					placeholder="2026-07-04T15:45"
 					class="border-grey-700 bg-grey-800 text-viz-grey-light focus:border-viz-yellow w-full rounded border px-2.5 py-1.5 text-xs focus:outline-none disabled:opacity-50"
 				/>
 			</div>

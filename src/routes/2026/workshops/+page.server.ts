@@ -8,7 +8,7 @@ export const prerender = true;
 export const load: PageServerLoad = async () => {
 	const { sessions: rawSessions } = resolveAllSessions();
 
-	const workshops = rawSessions.filter((s) => s.sessionType === 'Workshop');
+	const workshops = rawSessions.filter((s) => s.sessionType === 'Workshops');
 
 	const sessions = await Promise.all(
 		workshops.map(async (s) => {

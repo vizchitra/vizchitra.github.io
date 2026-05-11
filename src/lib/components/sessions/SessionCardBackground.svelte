@@ -7,87 +7,83 @@
 	interface Props {
 		sessionType: string;
 		color: 'blue' | 'teal' | 'orange' | 'pink' | 'yellow';
-		slug: string;
-		title: string;
+		variation: number;
+		seed: number;
 		width: number;
 		height: number;
 		class?: string;
 	}
 
-	let { sessionType, color, slug, title, width, height, class: className = '' }: Props = $props();
+	let {
+		sessionType,
+		color,
+		variation,
+		seed,
+		width,
+		height,
+		class: className = ''
+	}: Props = $props();
 
-	function hashStringToUnit(s: string): number {
-		let h = 0;
-		for (let i = 0; i < s.length; i++) {
-			h = (h * 31 + s.charCodeAt(i)) % 1000000007;
-		}
-		return (h % 1000000) / 1000000;
-	}
+	// const wavesLayerConfig = [
+	// 	{ yFactor: 0.3, ampFactor: 1.5, frequency: 1.8, fillKey: 'light' as const, hatched: true },
+	// 	{ yFactor: 0.5, ampFactor: 1.2, frequency: 1.5, fill: '#778ECE' }
+	// ];
 
-	const variation = $derived(hashStringToUnit(slug ?? title));
-
-	const wavesLayerConfig = [
-		{ yFactor: 0.3, ampFactor: 1.5, frequency: 1.8, fillKey: 'light' as const, hatched: true },
-		{ yFactor: 0.5, ampFactor: 1.2, frequency: 1.5, fill: '#778ECE' }
-	];
+	const patternTransforms: Record<string, string> = {
+		Workshops: 'translate(25%, 25%) scale(1.25)',
+		Talks: 'translate(0%, 15%) scale(1)',
+		Dialogues: 'translate(10%, 0%)',
+		Exhibition: 'translate(10%, 15%) scale(1.1)'
+	};
+	const patternTransform = $derived(patternTransforms[sessionType] ?? patternTransforms.Talks);
 </script>
 
 <div class="session-card-background relative overflow-visible {className}">
-	{#if sessionType === 'Talks'}
-		<PatternWaves
-			tone={color}
-			{variation}
-			{width}
-			height={height * 0.8}
-			layerConfig={wavesLayerConfig}
-			class="absolute inset-0 h-full w-full overflow-visible"
-		/>
-	{:else if sessionType === 'Dialogues'}
-		<PatternRiver
-			tone={color}
-			{variation}
-			{width}
-			{height}
-			class="absolute inset-0 h-full w-full overflow-visible"
-		/>
-	{:else if sessionType === 'Workshop'}
-		<PatternCircle
-			tone={color}
-			{variation}
-			{width}
-			height={height * 0.8}
-			showHatch={false}
-			class="absolute inset-0 h-full w-full overflow-visible"
-		/>
-	{:else if sessionType === 'Exhibition'}
-		<PatternStream
-			tone={color}
-			{variation}
-			{width}
-			height={height * 0.8}
-			class="absolute inset-0 h-full w-full -translate-y-[25%] overflow-visible"
-		/>
-	{:else}
-		<PatternWaves
-			tone={color}
-			{variation}
-			{width}
-			height={height * 0.8}
-			layerConfig={wavesLayerConfig}
-			class="absolute inset-0 h-full w-full -translate-y-[25%] overflow-visible"
-		/>
-	{/if}
+	<!-- pattern-layer: transform applied to div, not the SVG, to avoid disrupting SVG coordinate system -->
+	<div class="pattern-layer absolute inset-0 overflow-visible" style:transform={patternTransform}>
+		{#if sessionType === 'Talks'}
+			<PatternWaves
+				tone={color}
+				{variation}
+				{width}
+				height={height * 0.8}
+				// layerConfig={wavesLayerConfig}
+				class="absolute inset-0 h-full w-full overflow-visible"
+			/>
+		{:else if sessionType === 'Dialogues'}
+			<PatternRiver
+				tone={color}
+				{variation}
+				{seed}
+				{width}
+				{height}
+				class="absolute inset-0 h-full w-full"
+			/>
+		{:else if sessionType === 'Workshops'}
+			<PatternCircle
+				tone={color}
+				{variation}
+				{width}
+				height={height * 0.8}
+				showHatch={false}
+				class="absolute inset-0 h-full w-full overflow-visible"
+			/>
+		{:else if sessionType === 'Exhibition'}
+			<PatternStream
+				tone={color}
+				{variation}
+				{width}
+				height={height * 0.8}
+				class="absolute inset-0 h-full w-full overflow-visible"
+			/>
+		{:else}
+			<PatternWaves
+				tone={color}
+				{variation}
+				{width}
+				height={height * 0.8}
+				class="absolute inset-0 h-full w-full overflow-visible"
+			/>
+		{/if}
+	</div>
 </div>
-
-<style>
-	/* .session-card-background::after {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		height: 20%;
-		background: linear-gradient(to bottom, var(--color-viz-white), transparent);
-		pointer-events: none;
-	} */
-</style>

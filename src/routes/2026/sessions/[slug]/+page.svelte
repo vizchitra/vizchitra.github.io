@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { onMount, untrack } from 'svelte';
-	import { markdownToHtml } from '$lib/utils/markdown';
 	import Header from '$lib/components/structure/Header.svelte';
 	import { Heading, Prose } from '$lib/components/typography';
 	import { Container } from '$lib/components/layout';
 	import { ProposalBadge } from '$lib/components/proposals';
 	import { sessionColorMap } from '$lib/utils/sessions';
 	import SessionPanel from '$lib/studio/editor/SessionPanel.svelte';
+	import ProseMirrorEditor from '$lib/studio/editor/ProseMirrorEditor.svelte';
 	import { page } from '$app/state';
 	import { browser } from '$app/environment';
 	import type { PageData } from './$types';
@@ -23,22 +23,6 @@
 		return { href: '/2026/sessions', label: 'Back to All Sessions' };
 	});
 
-	function formatDate(iso: string): string {
-		const d = new Date(iso);
-		const day = d.getDate();
-		const suffix =
-			day % 10 === 1 && day !== 11
-				? 'st'
-				: day % 10 === 2 && day !== 12
-					? 'nd'
-					: day % 10 === 3 && day !== 13
-						? 'rd'
-						: 'th';
-		const month = d.toLocaleDateString('en-GB', { month: 'long' });
-		return `${day}${suffix} ${month}`;
-	}
-
-	const formattedDate = $derived(session.date ? formatDate(session.date) : '');
 	const period = $derived(session.time === '10:00 - 13:00' ? 'Morning' : 'Afternoon');
 
 	// ── Studio panel state ────────────────────────────────────────────────────
@@ -52,25 +36,11 @@
 	let liveSpeaker = $state(untrack(() => session.speakerName));
 	let liveDesignation = $state(untrack(() => session.designation));
 	let liveOrganisation = $state(untrack(() => session.organisation));
+	let liveShortDescription = $state(untrack(() => session.shortDescription ?? ''));
 	let liveDescription = $state(untrack(() => session.longDescription ?? ''));
 	let liveSpeakerAbout = $state(untrack(() => session.speakerAbout ?? ''));
 	let liveDescriptionHtml = $state(untrack(() => data.descriptionHtml));
 	let liveSpeakerAboutHtml = $state(untrack(() => data.speakerAboutHtml));
-
-	// Re-render markdown live as user types
-	$effect(() => {
-		const md = liveDescription;
-		markdownToHtml(md).then((html) => {
-			liveDescriptionHtml = html;
-		});
-	});
-
-	$effect(() => {
-		const md = liveSpeakerAbout;
-		markdownToHtml(md).then((html) => {
-			liveSpeakerAboutHtml = html;
-		});
-	});
 
 	// Snapshots for cancel revert
 	let savedFields: Record<string, string> = {};
@@ -92,6 +62,7 @@
 			speakerName: liveSpeaker,
 			designation: liveDesignation,
 			organisation: liveOrganisation,
+			shortDescription: liveShortDescription,
 			longDescription: liveDescription,
 			speakerAbout: liveSpeakerAbout
 		};
@@ -109,6 +80,7 @@
 		liveSpeaker = savedFields.speakerName ?? session.speakerName;
 		liveDesignation = savedFields.designation ?? session.designation;
 		liveOrganisation = savedFields.organisation ?? session.organisation;
+		liveShortDescription = savedFields.shortDescription ?? session.shortDescription ?? '';
 		liveDescription = savedFields.longDescription ?? session.longDescription ?? '';
 		liveSpeakerAbout = savedFields.speakerAbout ?? session.speakerAbout ?? '';
 		isEditing = false;
@@ -137,6 +109,7 @@
 		speakerName={liveSpeaker}
 		designation={liveDesignation}
 		organisation={liveOrganisation}
+		shortDescription={liveShortDescription}
 		longDescription={liveDescription}
 		speakerAbout={liveSpeakerAbout}
 		socialImage={data.pageMeta?.ogImage}
@@ -151,78 +124,100 @@
 <Header banner="curve" />
 
 <Container>
-	<header class="max-w-4xl pt-18 pb-6 md:pt-14">
-		<div class="space-y-4">
-			<Prose>
-				<h6>
-					<a href={backLink.href}>{backLink.label.replace('Back to ', '')}</a> | VizChitra 2026
-				</h6>
-				<h1>{session.title} {session.subtitle}</h1>
-			</Prose>
+	<article class="max-w-3xl pt-14 pb-6 md:pt-16">
+		<!-- Breadcrumb + session type -->
+		<p class="font-display text-viz-grey mb-6 text-base uppercase">
+			<a href={backLink.href} class="hover:text-viz-grey transition-colors">VizChitra 2026</a>
+			<span class="mx-2">|</span>
+			<span class="text-viz-{color}-dark font-semibold">{session.sessionType}</span>
+		</p>
 
-			<div class="space-y-1.5 md:space-y-2">
-				<p
-					class="font-display-sans text-base md:text-xl text-viz-{color}-dark text-left font-semibold"
-				>
-					{session.speakerName}
-				</p>
-				<p class="text-viz-grey-dark/80 text-md text-left font-normal md:text-lg">
-					{session.designation}{#if session.organisation}<span class="text-viz-grey-dark/80 mx-1.5"
-							>·</span
-						>{session.organisation}{/if}
-				</p>
-			</div>
-		</div>
-	</header>
-
-	<div>
-		<!-- Session type badge + logistics -->
-		<div class="border-viz-grey/10 mb-8 border-b pb-6 md:mb-12 md:pb-8">
-			<div class="flex flex-wrap items-center justify-between gap-x-3 gap-y-3">
-				<p class="font-display text-viz-grey-dark text-base uppercase md:text-lg">
-					{#if formattedDate}<span class="font-bold">{formattedDate}</span
-						>{/if}{#if session.time}{#if formattedDate}<span class="mx-2">·</span>{/if}<span
-							class="font-bold">{session.time} | {period}</span
-						>{/if}{#if session.venue}<span class="mx-2">·</span><span class="font-light"
-							>{session.venue}</span
-						>{/if}
-				</p>
-
-				<a
-					href="https://tickets.vizchitra.com/"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="font-display bg-viz-{color}-dark hover:bg-viz-{color} inline-flex items-center gap-2 rounded-full px-5 py-2 text-base font-bold text-white uppercase transition-colors md:text-lg"
-				>
-					Purchase Tickets
-					<svg
-						class="h-4 w-4"
-						fill="none"
-						stroke="currentColor"
-						viewBox="0 0 24 24"
-						aria-hidden="true"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M14 5l7 7m0 0l-7 7m7-7H3"
-						/>
-					</svg>
-				</a>
-			</div>
+		<!-- Time + venue -->
+		<div class="text-viz-black font-display mb-8 space-y-1 text-base tracking-wide uppercase">
+			{#if session.time}
+				<p><span class="font-semibold">{session.time}</span> ⋅ {period}</p>
+			{/if}
+			{#if session.venue}
+				<p>{session.venue}</p>
+			{/if}
 		</div>
 
-		<!-- Description -->
-		<section class="mb-8 md:mb-10">
+		<!-- Title -->
+		<Prose>
+			<h1 class="mb-3">
+				{session.title}{#if session.subtitle}
+					<span class="text-viz-grey/50 font-normal">{session.subtitle}</span>{/if}
+			</h1>
+		</Prose>
+
+		<!-- Short description -->
+		{#if liveShortDescription || (isStudioUser && isEditing)}
+			<div class="mt-4 mb-8">
+				<Prose {color}>
+					{#if isStudioUser && isEditing}
+						<blockquote>
+							<textarea
+								bind:value={liveShortDescription}
+								placeholder="Short description (shown on session cards)"
+								class="w-full resize-none bg-transparent leading-relaxed italic outline-none placeholder:opacity-40"
+								style="field-sizing: content;"
+							></textarea>
+						</blockquote>
+					{:else}
+						<blockquote>{liveShortDescription}</blockquote>
+					{/if}
+				</Prose>
+			</div>
+		{/if}
+
+		<!-- Speaker -->
+		<div class="border-viz-grey/10 mt-6 space-y-1 border-t pt-6">
+			<p class="font-display-sans text-viz-{color}-dark text-lg font-semibold">
+				{session.speakerName}
+			</p>
+			<p class="text-viz-grey-dark/70 text-base">
+				{session.designation}{#if session.organisation}<span class="mx-1.5 opacity-40">·</span
+					>{session.organisation}{/if}
+			</p>
+		</div>
+
+		<!-- Tickets -->
+		<div class="mt-8">
+			<a
+				href="https://tickets.vizchitra.com/"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="font-display bg-viz-{color}-dark hover:bg-viz-{color} inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-bold text-white uppercase transition-colors"
+			>
+				Purchase Tickets
+				<svg
+					class="h-4 w-4"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24"
+					aria-hidden="true"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M14 5l7 7m0 0l-7 7m7-7H3"
+					/>
+				</svg>
+			</a>
+		</div>
+	</article>
+
+	<div class="border-viz-grey/10 max-w-3xl border-t">
+		<!-- About this session -->
+		<section class="py-10">
 			<Heading tag="h2" align="left" class="pb-4">About this session</Heading>
 			{#if isStudioUser && isEditing}
-				<textarea
-					bind:value={liveDescription}
-					rows={10}
-					class="border-viz-grey/30 bg-viz-grey-subtle text-viz-grey-dark focus:border-viz-yellow w-full rounded border p-3 font-mono text-sm focus:outline-none"
-					placeholder="About this session (markdown supported)"
-				></textarea>
+				<ProseMirrorEditor
+					markdown={liveDescription}
+					filePath="content/2026/data/sessions.json"
+					onChange={(md) => (liveDescription = md)}
+				/>
 			{:else}
 				<div class="prose text-viz-grey/90 md:prose-lg markdown-content max-w-none">
 					<Prose>
@@ -234,15 +229,14 @@
 
 		<!-- About the speaker -->
 		{#if liveSpeakerAbout || (isStudioUser && isEditing)}
-			<section class="mb-8 md:mb-10">
+			<section class="border-viz-grey/10 border-t py-10">
 				<Heading tag="h2" align="left" class="pb-4">About the speaker</Heading>
 				{#if isStudioUser && isEditing}
-					<textarea
-						bind:value={liveSpeakerAbout}
-						rows={8}
-						class="border-viz-grey/30 bg-viz-grey-subtle text-viz-grey-dark focus:border-viz-yellow w-full rounded border p-3 font-mono text-sm focus:outline-none"
-						placeholder="About the speaker (markdown supported)"
-					></textarea>
+					<ProseMirrorEditor
+						markdown={liveSpeakerAbout}
+						filePath="content/2026/data/sessions.json"
+						onChange={(md) => (liveSpeakerAbout = md)}
+					/>
 				{:else}
 					<div class="prose text-viz-grey/90 md:prose-lg markdown-content max-w-none">
 						<Prose>

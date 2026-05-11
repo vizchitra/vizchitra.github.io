@@ -4,6 +4,7 @@
 	interface Props {
 		tone?: Tone;
 		variation?: number;
+		seed?: number;
 		width?: number;
 		height?: number;
 		class?: string;
@@ -13,6 +14,7 @@
 	let {
 		tone = 'teal',
 		variation = 0.5,
+		seed = undefined,
 		width = 1080,
 		height = 1350,
 		class: className = '',
@@ -263,7 +265,7 @@
 
 	function createRiverLayers(): Layer[] {
 		const v = Math.max(0, Math.min(1, Number(variation)));
-		const seed = hashStringToUnit(`river-${variation}`);
+		const wiggleSeed = seed !== undefined ? seed : hashStringToUnit(`river-${variation}`);
 
 		const baseScale = 0.9 + v * 0.2;
 		const totalLayers = 3;
@@ -271,19 +273,19 @@
 		return [
 			// Layer 2: Outermost (furthest from axis) - Dark (render first, back layer)
 			{
-				d: stackedMirrorPath(2, totalLayers, baseScale, Math.PI * (seed + 0.6)),
+				d: stackedMirrorPath(2, totalLayers, baseScale, Math.PI * (wiggleSeed + 0.6)),
 				fill: palette.dark,
 				opacity: 1
 			},
 			// Layer 1: Middle - Normal
 			{
-				d: stackedMirrorPath(1, totalLayers, baseScale, Math.PI * (seed + 0.3)),
+				d: stackedMirrorPath(1, totalLayers, baseScale, Math.PI * (wiggleSeed + 0.3)),
 				fill: palette.normal,
 				opacity: 1
 			},
 			// Layer 0: Innermost (closest to axis) - Light with hatching (render last, front layer)
 			{
-				d: stackedMirrorPath(0, totalLayers, baseScale, Math.PI * seed),
+				d: stackedMirrorPath(0, totalLayers, baseScale, Math.PI * wiggleSeed),
 				fill: palette.light,
 				hatched: true,
 				opacity: 1

@@ -250,16 +250,12 @@
 		<rect {width} {height} fill={`url(#${hatchId})`} mask={`url(#${maskId})`} opacity="0.85" />
 	{/if}
 
-	{#each layers as layer, index}
+	{#each layers as layer}
 		<path
-			class="circle-path"
-			style:--stroke-base="{layer.thickness}px"
-			style:--stroke-hover="{layer.thickness * (1 + (layers.length - index - 1) * 0.4)}px"
-			style:--hover-scale={1 + (layers.length - index - 1) * 0.05}
-			style:transition-duration={`${300 + (layers.length - index - 1) * 200}ms`}
 			d={layer.d}
 			fill="none"
 			stroke={layer.color}
+			stroke-width={layer.thickness}
 			stroke-opacity={layer.opacity ?? 1}
 			stroke-linecap="round"
 			stroke-linejoin="round"
@@ -267,14 +263,10 @@
 		/>
 		{#if layer.hatched}
 			<path
-				class="circle-path"
-				style:--stroke-base="{layer.thickness}px"
-				style:--stroke-hover="{layer.thickness * (1 + (layers.length - index - 1) * 0.4)}px"
-				style:--hover-scale={1 + (layers.length - index - 1) * 0.1}
-				style:transition-duration={`${300 + (layers.length - index - 1) * 200}ms`}
 				d={layer.d}
 				fill="none"
 				stroke={`url(#${hatchId})`}
+				stroke-width={layer.thickness}
 				stroke-linecap="round"
 				stroke-linejoin="round"
 				opacity="0.95"
@@ -283,18 +275,3 @@
 		{/if}
 	{/each}
 </svg>
-
-<style>
-	.circle-path {
-		stroke-width: var(--stroke-base);
-		transform-box: fill-box;
-		transform-origin: center;
-		transition-property: stroke-width, transform;
-		transition-timing-function: ease-out;
-	}
-
-	:global(.group:hover) .circle-path {
-		stroke-width: var(--stroke-hover);
-		transform: scale(var(--hover-scale, 1));
-	}
-</style>

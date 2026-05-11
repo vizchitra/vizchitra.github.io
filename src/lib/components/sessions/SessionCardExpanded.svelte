@@ -4,6 +4,7 @@
 	import SessionCardBackground from './SessionCardBackground.svelte';
 	import PatternComingSoon from './PatternComingSoon.svelte';
 	import { sessionColorMap } from '$lib/utils/sessions';
+	import { themeTokens, colorTokens } from '$lib/tokens';
 	import { base } from '$app/paths';
 	import { buildSpeakerImageTransform } from './speakerConfig.js';
 
@@ -16,6 +17,7 @@
 		subtitle?: string;
 		date?: string;
 		time?: string;
+		slot?: string;
 		venue?: string;
 		slug?: string;
 		speakerImage?: string;
@@ -35,6 +37,7 @@
 		subtitle,
 		date,
 		time,
+		slot,
 		venue,
 		slug,
 		speakerImage,
@@ -57,14 +60,13 @@
 		orange: 'viz-orange'
 	};
 
-	const overlayColors = {
-		pink: '#F59EC2',
-		blue: '#C3D1F6',
-		teal: '#B4F2EB',
-		orange: '#F4B696'
-	};
-
 	const color = $derived(sessionColorMap[sessionType] ?? 'blue');
+
+	const overlayColor = $derived(themeTokens[color]?.light ?? themeTokens.blue.light);
+	const shadowColor = $derived(colorTokens[color]?.hex ?? colorTokens.blue.hex);
+
+	const textPathRadius = 58;
+	const overlayStrokeWidth = 12;
 
 	function formatDate(iso: string): string {
 		const d = new Date(iso);
@@ -87,8 +89,24 @@
 	let backgroundHeight = $derived.by(() => backgroundWidth * 1.25);
 	let expandedBgWidth = $derived(backgroundWidth * 0.55);
 
-	const textPathRadius = 58;
-	const overlayStrokeWidth = 12;
+	function hashStringToUnit(s: string): number {
+		let h = 0;
+		for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) % 1000000007;
+		return (h % 1000000) / 1000000;
+	}
+	// const seed = $derived(hashStringToUnit((slug ?? '') + title));
+	const seed = 0.5;
+
+	let variation = $state(0.5);
+
+	function handlePointerMove(e: PointerEvent) {
+		const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+		const y = e.clientY - rect.top;
+		variation = Math.round(Math.max(0, Math.min(1, y / rect.height)) * 20) / 20;
+	}
+	function handlePointerLeave() {
+		variation = 0.5;
+	}
 
 	let screenWidth = $state(0);
 </script>
@@ -114,13 +132,14 @@
 
 			<div class="session-card-header relative z-10 p-2.5 pb-0! md:p-4">
 				<div class="title mb-2.5 flex flex-row items-baseline justify-start gap-2 md:mb-3">
-					<div class="logo-container text-xl leading-none text-[#4c4c4c] md:text-2xl">
-						<LogoType year={null} />
+					<div class="logo-container text-2xl leading-none text-[#4c4c4c]">
+						<LogoType classes="text-2xl!" year={null} />
 					</div>
-					<div class="divider my-0.5 w-0.5 self-stretch bg-[#4c4c4c]"></div>
+					<!-- <div class="divider my-0.5 w-0.5 self-stretch bg-[#4c4c4c]"></div> -->
 					<p
-						class="font-display text-shadow block text-2xl leading-none font-bold tracking-tighter uppercase"
-						style="color: var(--color-{currentColor})"
+						class="font-display text-shadow block text-2xl leading-none tracking-tighter uppercase"
+						style="color: {themeTokens[color]?.dark ??
+							themeTokens.blue.dark}; font-variation-settings: 'wght' 750;"
 					>
 						{sessionType}
 					</p>
@@ -162,6 +181,8 @@
 	<a
 		href={detailHref}
 		class="sessions-card group white border-viz-grey/40 isolate mx-auto block w-full transform-gpu overflow-hidden rounded border transition-[transform,box-shadow] hover:scale-102"
+		onpointermove={handlePointerMove}
+		onpointerleave={handlePointerLeave}
 	>
 		<div
 			class="session-card-body relative flex aspect-4/5.75 max-h-[85svh] flex-col overflow-hidden md:max-h-none"
@@ -173,8 +194,8 @@
 				<SessionCardBackground
 					{sessionType}
 					{color}
-					{slug}
-					{title}
+					{variation}
+					{seed}
 					width={expandedBgWidth}
 					height={expandedBgWidth}
 					class="h-full w-full"
@@ -183,14 +204,15 @@
 			<div class="session-top-text-content z-20">
 				<div class="session-card-header relative z-10 p-2.5 pb-0! md:p-4">
 					<div class="title mb-2.5 flex flex-row items-baseline justify-start gap-2 md:mb-3">
-						<div class="logo-container text-xl leading-none text-[#4c4c4c] md:text-2xl">
+						<div class="logo-container text-2xl leading-none text-[#4c4c4c]">
 							<LogoType classes="text-2xl!" year={null} />
 						</div>
 
-						<div class="divider my-0.5 w-0.5 self-stretch bg-[#4c4c4c]"></div>
+						<!-- <div class="divider my-0.5 w-0.5 self-stretch bg-[#4c4c4c]"></div> -->
 						<p
-							class="font-display text-shadow block text-2xl leading-none font-bold tracking-tighter uppercase"
-							style="color: var(--color-{currentColor})"
+							class="font-display text-shadow block text-2xl leading-none tracking-tighter uppercase"
+							style="color: {themeTokens[color]?.dark ??
+								themeTokens.blue.dark}; font-variation-settings: 'wght' 750;"
 						>
 							{sessionType}
 						</p>
@@ -199,10 +221,10 @@
 					<div class="sessions-logistics">
 						<div class="text-base leading-none uppercase md:text-base">
 							{#if time}
-								<span class="font-display leading-snug! font-bold md:text-[17px]">{time} | </span>
-								<span class="font-display leading-snug! font-bold md:text-[17px]"
-									>{+time.split(' - ')[1].split(':')[0] < 12 ? 'Morning' : 'Afternoon'}</span
-								>
+								<span class="font-display leading-snug! font-bold md:text-[17px]">{time} ⋅ </span>
+								{#if slot}<span class="font-display leading-snug! font-bold md:text-[17px]"
+										>{slot}</span
+									>{/if}
 							{/if}
 							{#if venue}
 								<p class="text-base leading-none uppercase md:text-base">
@@ -249,6 +271,7 @@
 				>
 					<img
 						class="relative z-10 h-auto w-full"
+						style="filter: drop-shadow(0px 8px 16px {shadowColor}cc)"
 						src="{base}{speakerImage || '/images/speakers/2026/speaker-placeholder.avif'}"
 						alt="{speakerName}'s photo"
 					/>
@@ -257,7 +280,7 @@
 
 			<div
 				class="speaker-details-overlay pointer-events-auto absolute inset-x-0 bottom-0 z-10 flex flex-col"
-				style:background-color={overlayColors[color] ?? overlayColors.blue}
+				style:background-color={overlayColor}
 			>
 				<!-- wave height = card-width/3; padding-bottom% is relative to own width (inset-x-0) -->
 				<div
@@ -272,12 +295,10 @@
 							fill="none"
 							aria-hidden="true"
 						>
-							<!-- filled wave shape, no stroke -->
 							<path
 								d="M-12 364.516V0.516363C191.5 -0.982956 456 101.337 579 114.518C705 128.018 1004.5 9.01752 1092 2.01636V364.516H-12Z"
-								fill={overlayColors[color] ?? overlayColors.blue}
+								fill={overlayColor}
 							/>
-							<!-- white stroke only on the top curve, not on bottom/sides -->
 							<path
 								d="M-12 0.516363C191.5 -0.982956 456 101.337 579 114.518C705 128.018 1004.5 9.01752 1092 2.01636"
 								fill="none"
@@ -302,7 +323,6 @@
 										fill="none"
 									/>
 								</defs>
-
 								<circle
 									cx="100"
 									cy="100"
@@ -312,7 +332,6 @@
 									stroke-width="7"
 									fill-opacity="1"
 								/>
-
 								<circle
 									cx="100"
 									cy="100"
@@ -321,7 +340,6 @@
 									stroke-width="10"
 									fill-opacity="0.75"
 								/>
-
 								<circle
 									cx="100"
 									cy="100"
@@ -330,7 +348,6 @@
 									fill-opacity="1"
 								/>
 								<circle cx="100" cy="100" r="35" fill="#fff" fill-opacity="1" />
-
 								<g
 									transform="translate(100 100) scale(0.325) translate(-63 -63)"
 									stroke="#4c4c4c"
@@ -342,7 +359,6 @@
 									<path d="M26.25 63L99.75 63" />
 									<path d="M63 26.25L99.75 63L63 99.75" />
 								</g>
-
 								<text
 									class="view-details-text font-display"
 									fill="#4c4c4c"
@@ -351,11 +367,9 @@
 									letter-spacing="2"
 									text-anchor="middle"
 								>
-									<!-- <textPath href="#view-details-path-{slug}" startOffset="0%">•</textPath> -->
 									<textPath href="#view-details-path-{slug}" startOffset="18%"
 										>VIEW DETAILS</textPath
 									>
-									<!-- <textPath href="#view-details-path-{slug}" startOffset="50%">•</textPath> -->
 									<textPath href="#view-details-path-{slug}" startOffset="65%"
 										>VIEW DETAILS</textPath
 									>
@@ -449,12 +463,6 @@
 		transform-box: view-box;
 		transform-origin: 100px 100px;
 		animation: view-details-spin 14s linear infinite;
-	}
-
-	:global(.pattern-bg-expanded svg) {
-		/* transform-origin: bottom center !important; */
-		transform: translate(25%, 25%) scale(1.25) !important;
-		/* translate: none !important; */
 	}
 
 	@keyframes view-details-spin {
