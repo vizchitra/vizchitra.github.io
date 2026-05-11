@@ -2,14 +2,18 @@
 	import { Header, Container, Stack, Grid, Prose, FullBleed } from '$lib/components';
 	import SessionCardExpanded from '$lib/components/sessions/SessionCardExpanded.svelte';
 	import { sessionColorMap } from '$lib/utils/sessions';
-	import { page } from '$app/state';
 	import { replaceState } from '$app/navigation';
+	import { browser } from '$app/environment';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
 
-	let selectedFormat = $state(page.url.searchParams.get('type') ?? 'all');
-	let selectedDay = $state(page.url.searchParams.get('day') ?? 'all');
+	let selectedFormat = $state(
+		browser ? (new URLSearchParams(location.search).get('type') ?? 'all') : 'all'
+	);
+	let selectedDay = $state(
+		browser ? (new URLSearchParams(location.search).get('day') ?? 'all') : 'all'
+	);
 
 	const days = [
 		{ label: 'All Days', value: 'all' },
