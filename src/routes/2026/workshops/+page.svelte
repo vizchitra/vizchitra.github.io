@@ -32,6 +32,7 @@
 						subtitle={session.subtitle}
 						date={session.date}
 						time={session.time}
+						slot={session.slot}
 						venue={session.venue}
 						slug={session.slug}
 						speakerImage={session.speakerImage}

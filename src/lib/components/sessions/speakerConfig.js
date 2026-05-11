@@ -35,14 +35,14 @@ export const speakerImageTransforms = {
 	'Jaidev Deshpande': { x: 15, y: -25, scale: 1.15, order: 13 },
 	'Sneha Kaul': { x: 10, y: 5, scale: 1.1, order: 14 },
 	'Abhiram Jois': { x: 10, y: -15, scale: 1.3, order: 15 },
-	'Priti Pandurangan': { x: 15, y: -30, scale: 0.9, order: 16 },
+	// 'Priti Pandurangan': { x: 15, y: -30, scale: 0.9, order: 16 },
 	'Siddharth Agarwal': { x: 10, y: -15, scale: 1.1, order: 17 },
 	'Rohit Bhardwaj': { x: 10, y: -25, scale: 1.2, order: 18 },
 
 	// Dialogues
-	'Anand S': { x: 10, y: -30, scale: 0.9, order: 19 },
-	'Agriya Khetarpal': { x: 10, y: -25, scale: 1.1, order: 20 },
-	'Lakshmi Chockalingam': { x: 10, y: -0, scale: 1.2, order: 21 }
+	'Anand S': { x: 10, y: -30, scale: 0.8, order: 19 },
+	'Agriya Khetarpal': { x: 10, y: -5, scale: 1.3, order: 20 },
+	'Lakshmi Chockalingam': { x: 5, y: 15, scale: 1.4, order: 21 }
 };
 
 /**

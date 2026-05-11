@@ -55,19 +55,67 @@ export const POST: RequestHandler = async ({ request, locals, platform }) => {
 	}
 
 	const githubToken = platform?.env?.STUDIO_GITHUB_TOKEN;
-	if (!githubToken) {
-		return new Response(JSON.stringify({ error: 'GitHub token not configured' }), {
-			status: 500,
-			headers: { 'Content-Type': 'application/json' }
-		});
-	}
-
 	const kv = platform?.env?.STUDIO_SESSIONS;
-	if (!kv) {
-		return new Response(JSON.stringify({ error: 'KV not available' }), {
-			status: 500,
-			headers: { 'Content-Type': 'application/json' }
-		});
+
+	// Dev: write directly to disk instead of going through GitHub
+	if (!githubToken || !kv) {
+		try {
+			const { resolve, normalize } = await import('node:path');
+			const { readFileSync, writeFileSync } = await import('node:fs');
+
+			const ALLOWED_ROOT = resolve('content');
+			const repoPathDev = filePath.replace(/^\/+/, '');
+			const absolute = resolve(normalize(repoPathDev));
+			if (!absolute.startsWith(ALLOWED_ROOT + '/')) {
+				return new Response(JSON.stringify({ error: 'Path traversal detected' }), {
+					status: 400,
+					headers: { 'Content-Type': 'application/json' }
+				});
+			}
+
+			const currentData: unknown = JSON.parse(readFileSync(absolute, 'utf-8'));
+			let updated: unknown;
+			if (Array.isArray(currentData)) {
+				updated = currentData.map((item: Record<string, unknown>) =>
+					item.slug === key ? { ...item, ...data } : item
+				);
+			} else if (currentData && typeof currentData === 'object') {
+				updated = {
+					...(currentData as Record<string, unknown>),
+					[key]: {
+						...((currentData as Record<string, unknown>)[key] as Record<string, unknown>),
+						...data
+					}
+				};
+			} else {
+				throw new Error('Cannot parse existing file');
+			}
+
+			writeFileSync(absolute, JSON.stringify(updated, null, '\t') + '\n', 'utf-8');
+
+			// Store the override in globalThis so resolveAllSessions can apply it
+			// immediately without waiting for Vite's file-watcher to invalidate
+			// the stale module cache (race condition vs invalidateAll()).
+			const g = globalThis as Record<string, unknown>;
+			if (!g.__studioDataOverrides) g.__studioDataOverrides = {};
+			const overrides = g.__studioDataOverrides as Record<
+				string,
+				Record<string, Record<string, unknown>>
+			>;
+			if (!overrides[filePath]) overrides[filePath] = {};
+			overrides[filePath][key] = data as Record<string, unknown>;
+
+			return new Response(JSON.stringify({ ok: true }), {
+				status: 200,
+				headers: { 'Content-Type': 'application/json' }
+			});
+		} catch (e) {
+			const message = e instanceof Error ? e.message : 'Dev write failed';
+			return new Response(JSON.stringify({ error: message }), {
+				status: 500,
+				headers: { 'Content-Type': 'application/json' }
+			});
+		}
 	}
 
 	const handle = locals.studioUser.handle;

@@ -2,6 +2,7 @@
 	import { Header, Container, Stack, Grid, Prose, FullBleed } from '$lib/components';
 	import SessionCardExpanded from '$lib/components/sessions/SessionCardExpanded.svelte';
 	import { sessionColorMap } from '$lib/utils/sessions';
+	import { tr } from 'zod/v4/locales';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -22,8 +23,8 @@
 		<Prose>
 			<h1>Sessions</h1>
 			<p>
-				Explore the sessions lined up for VizChitra 2026 — talks, dialogues, workshops, and
-				exhibitions.
+				Explore the sessions lined up for VizChitra 2026: Talks, Dialogues, Workshops, and
+				Exhibitions.
 			</p>
 		</Prose>
 
@@ -62,7 +63,7 @@
 		<!-- Session cards grid -->
 		<FullBleed paddingX="xl">
 			<Grid maxColumns={4} minWidth="350px" gap={6}>
-				{#each filteredSessions as session, i (session.tbd ? `tbd-${session.sessionType}-${i}` : session.slug)}
+				{#each filteredSessions as session, i (session.slug ? session.slug : `tbd-${session.sessionType}-${i}`)}
 					<SessionCardExpanded
 						title={session.title}
 						speakerName={session.speakerName}
@@ -72,11 +73,14 @@
 						subtitle={session.subtitle}
 						date={session.date}
 						time={session.time}
+						slot={session.slot}
 						venue={session.venue}
 						slug={session.slug}
 						speakerImage={session.speakerImage}
+						showViewDetailsButton={true}
+						descriptionHtml={session.descriptionHtml}
 						tbd={session.tbd}
-						isExpanded={false}
+						isExpanded={true}
 					/>
 				{/each}
 			</Grid>

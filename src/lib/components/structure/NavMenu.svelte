@@ -18,7 +18,7 @@
 				{ name: 'Scholarships', href: '/2026/scholarships' },
 				{ divider: true },
 				// { name: 'Talks', href: '/2026/talks' },
-				// { name: 'Dialogues', href: '/2026/dialogues' },
+				{ name: 'Dialogues', href: '/2026/dialogues' },
 				{ name: 'Workshops', href: '/2026/workshops' },
 				{ divider: true },
 				{ name: 'Submissions', href: '/2026/submissions' }

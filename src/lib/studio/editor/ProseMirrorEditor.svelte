@@ -20,9 +20,10 @@
 		filePath: string;
 		color?: Color;
 		onViewReady?: (v: EditorView | null) => void;
+		onChange?: (markdown: string) => void;
 	}
 
-	let { markdown, filePath, color = 'grey', onViewReady }: Props = $props();
+	let { markdown, filePath, color = 'grey', onViewReady, onChange }: Props = $props();
 
 	let editorEl: HTMLDivElement;
 	let view: EditorView | null = null;
@@ -105,7 +106,10 @@
 				if (!view) return;
 				const newState = view.state.apply(tr);
 				view.updateState(newState);
-				if (tr.docChanged) editMode.markDirty();
+				if (tr.docChanged) {
+					editMode.markDirty();
+					onChange?.(serializeMarkdown(newState.doc));
+				}
 				updateToolbarCoords(view);
 			}
 		});
@@ -148,7 +152,7 @@
   max-w-none overrides Prose's 65ch cap — layout width is set by <Container>.
 -->
 <Prose {color} class="max-w-none">
-	<div bind:this={editorEl} class="prosemirror-editor min-h-[300px]"></div>
+	<div bind:this={editorEl} class="prosemirror-editor min-h-75"></div>
 </Prose>
 
 <style>

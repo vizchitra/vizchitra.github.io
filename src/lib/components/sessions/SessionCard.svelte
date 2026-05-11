@@ -64,6 +64,23 @@
 	let backgroundWidth = $state(600);
 	let backgroundHeight = $derived.by(() => backgroundWidth * 1.25);
 
+	function hashStringToUnit(s: string): number {
+		let h = 0;
+		for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) % 1000000007;
+		return (h % 1000000) / 1000000;
+	}
+	const seed = $derived(hashStringToUnit((slug ?? '') + title));
+	let variation = $state(0.5);
+
+	function handlePointerMove(e: PointerEvent) {
+		const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+		const y = e.clientY - rect.top;
+		variation = Math.round(Math.max(0, Math.min(1, y / rect.height)) * 20) / 20;
+	}
+	function handlePointerLeave() {
+		variation = 0.5;
+	}
+
 	const textPathRadius = 58;
 </script>
 
@@ -132,6 +149,8 @@
 	<a
 		href={detailHref}
 		class="sessions-card group white border-viz-grey/40 block overflow-hidden rounded border transition-all hover:scale-102"
+		onpointermove={handlePointerMove}
+		onpointerleave={handlePointerLeave}
 	>
 		<div
 			class="session-card-body relative aspect-4/6 overflow-visible md:aspect-4/5"
@@ -185,8 +204,8 @@
 			<SessionCardBackground
 				{sessionType}
 				{color}
-				{slug}
-				{title}
+				{variation}
+				{seed}
 				width={backgroundWidth}
 				height={backgroundHeight}
 				class="absolute inset-0 z-0 h-full w-full"

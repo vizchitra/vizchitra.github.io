@@ -19,6 +19,11 @@ export function hmrReload() {
 					if (clientModule != null) continue;
 
 					this.environment.moduleGraph.invalidateModule(mod, invalidatedModules, timestamp, true);
+
+					// Studio data files are handled via in-memory overrides + invalidateAll().
+					// Skip the full-reload for them — the page already shows correct data.
+					if (mod.id.includes('/content/') && mod.id.endsWith('.json')) continue;
+
 					hasSsrOnlyModules = true;
 				}
 
