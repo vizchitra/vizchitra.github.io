@@ -240,7 +240,6 @@
 						class="title font-display text-shadow mb-1 text-[20px] leading-none font-extrabold text-[#4c4c4c] uppercase md:text-[28px]"
 					>
 						{title}
-						{subtitle}
 					</h3>
 					<!-- {#if subtitle}
 					<p
@@ -257,7 +256,7 @@
 						<div
 							class="short-description font-body text-shadow mb-1 text-[17px] leading-tight font-normal text-[#4c4c4c] md:text-[18px]"
 						>
-							{@html descriptionHtml}
+							{subtitle}
 						</div>
 					</div>
 				{/if}
