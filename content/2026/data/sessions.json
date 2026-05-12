@@ -43,7 +43,7 @@
 		"slot": "morning",
 		"venue": "Bangalore International Centre",
 		"title": "Design for Speed and Trust, Together.",
-		"subtitle": "AI in radiology creates high-stakes decisions. Good visualisation helps people make them well.",
+		"subtitle": "AI in radiology creates high-stakes decisions. Good vis helps people make them thoughtfully.",
 		"shortDescription": "When AI reads a scan, radiologists face a dangerous choice: trust the algorithm blindly or slow down to verify it. This talk shares a framework for designing interfaces that earn trust without sacrificing speed, with lessons that transfer well beyond medicine.",
 		"longDescription": "Radiology is one of the most data-dense, high-stakes environments for visualization. The input is a medical image. The output is a diagnosis. And now, somewhere in between, there is an AI making predictions that the radiologist has to act on, fast.\n\nThe problem is not whether the AI is accurate. It is whether the radiologist can trust it without abandoning their own judgment, and without losing time they do not have.\n\nThis talk is about resolving that tension through design. Bargava shares his journey building visualization interfaces for radiologists: what failed, what worked, and the specific techniques that made AI feel like a collaborator rather than a black box demanding compliance.\n\nYou will see how spatial anchoring grounds abstract AI predictions in familiar anatomy, how non-destructive uncertainty layers let radiologists interrogate model confidence without losing sight of the underlying scan, and how progressive disclosure interfaces reduce cognitive load while keeping the human firmly in control.\n\nThe domain is radiology. The problems are universal: trust, uncertainty, cognitive load, and the question of how much agency to hand to an algorithm. If you design dashboards, data tools, or any interface where AI and human judgment have to coexist, the framework here is directly transferable.\n\nNo medical background required.\n",
 		"speakerName": "Bargava Subramanian",
@@ -90,22 +90,22 @@
 		"display": true
 	},
 	{
-		"slug": "machine-learnable-dataviz",
+		"slug": "chart-triplet",
 		"sessionType": "Talks",
-		"date": "2026-07-04T11:15",
+		"date": "2026-07-04",
 		"time": "11:15 - 11:45",
 		"slot": "morning",
 		"venue": "Bangalore International Centre",
-		"title": "Building Machine-Learnable Representations of Dataviz",
-		"subtitle": "",
-		"shortDescription": "",
-		"longDescription": "",
+		"title": "The Chart Triplet",
+		"subtitle": "A chart is its pixels, its spec, and its insight. Can a machine learn all three at once?",
+		"shortDescription": "Every chart has three faces: the visual, the declarative spec, and the insight it carries. This talk tests whether a machine can learn to move between all three, and whether that solves the harder problem of generating visualizations worth keeping.",
+		"longDescription": "A good chart compresses data. A good insight compresses the chart. This chain of lossy compressions, from dataset to visual to meaning, is what data visualization is fundamentally about.\n\nThe question Jaidev has been working on is whether a machine can learn to do it well.\n\nHis hypothesis is that the three elements of any chart, the raw pixels, the declarative specification in a language like Vega, and the insights or captions drawn from it, are not three separate things. They are one thing seen from three angles. He calls this the chart triplet. A skilled analyst with any one of the three can construct reasonable approximations of the other two. The question is whether a machine can learn to do the same.\n\nThis talk walks through a series of experiments testing that hypothesis: building dense, unified representations of the chart triplet, training visual and language transformer models to navigate between pixels, specs, and insights, and evaluating whether the outputs clear the bar from generated to genuinely useful.\n\nThe problem this is ultimately trying to solve is not generation. LLMs can already build charts. The problem is curation: distinguishing the chart worth shipping from the nine others that are technically fine. Jaidev's bet is that a meaningful representation of the chart triplet is what makes that distinction learnable.\n\nBefore the talk, he will release an open dataset of over 1,50,000 charts, each with its Vega spec and a million accompanying captions, along with all code and trained models.\n",
 		"speakerName": "Jaidev Deshpande",
 		"designation": "Senior Software Engineer II",
 		"organisation": "Aftershoot",
 		"speakerAbout": "For years, Jaidev has been trying to find the best way to narrate charts. He writes a newsletter called Being Bayesian, which uses statistics and dataviz to critique outrageous opinions on tech, economy and culture.\n\nHe currently works at Aftershoot, a SaaS startup where he leads the MLOps effort. You're likely to run into him at tech events.",
 		"speakerImage": "/images/speakers/2026/speaker-jaidev.avif",
-		"display": false
+		"display": true
 	},
 	{
 		"slug": "whats-in-your-bag",
@@ -151,15 +151,15 @@
 		"slot": "morning",
 		"venue": "Bangalore International Centre",
 		"title": "Atlas of Intangibles",
-		"subtitle": "",
-		"shortDescription": "",
-		"longDescription": "",
+		"subtitle": "A place becomes real through experience. Smell, sound, memory, and movement shape how we navigate it.",
+		"shortDescription": "A place is more than coordinates. This talk traces the process behind data experiences rooted in sensory information: visual ethnography, score-based data walks, and collective mapping that helps us connect more deeply with the places we inhabit.",
+		"longDescription": "Comming Soon",
 		"speakerName": "Priti Pandurangan",
 		"designation": "Information Experience Designer",
 		"organisation": "Independent",
 		"speakerAbout": "Priti is a creative practitioner working globally across digital humanities, data, and computational futures through research, facilitation, and critical inquiry. Her personal practice explores pluralistic approaches to data and technology, focusing on forms of knowledge and epistemologies that resist quantification while holding space for lived experience, ambiguity, and affect.\n\nShe is also a data walker and facilitates data walks in cities around the world, enabling participants to engage with urban environments through situated and embodied interpretations.\n\nCentral to her work is how culture is held, transmitted, and reconfigured across contexts and temporalities, and the structures through which it is preserved and interpreted.",
 		"speakerImage": "/images/speakers/2026/speaker-priti.avif",
-		"display": false
+		"display": true
 	},
 	{
 		"slug": "open-data-environment",
