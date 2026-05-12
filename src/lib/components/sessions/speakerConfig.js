@@ -38,11 +38,21 @@ export const speakerImageTransforms = {
 	// 'Priti Pandurangan': { x: 15, y: -30, scale: 0.9, order: 16 },
 	'Siddharth Agarwal': { x: 10, y: -15, scale: 1.1, order: 17 },
 	'Rohit Bhardwaj': { x: 10, y: -25, scale: 1.2, order: 18 },
+	'Surbhi Bhatia': { x: 10, y: -40, scale: 1.3, order: 19 },
+	'Rohit Saran': { x: 10, y: -45, scale: 1.4, order: 20 },
+	'Arvind Satyanarayan': { x: 10, y: -35, scale: 1.25, order: 21 },
+	'Aman Bhargava': { x: 10, y: -40, scale: 1.25, order: 22 },
 
 	// Dialogues
-	'Anand S': { x: 15, y: -30, scale: 0.8, order: 19 },
-	'Agriya Khetarpal': { x: 15, y: -5, scale: 1.3, order: 20 },
-	'Lakshmi Chockalingam': { x: 5, y: 15, scale: 1.4, order: 21 }
+	'Anand S': { x: 15, y: -30, scale: 0.8, order: 23 },
+	'Agriya Khetarpal': { x: 15, y: -5, scale: 1.3, order: 24 },
+	'Lakshmi Chockalingam': { x: 5, y: 15, scale: 1.4, order: 25 },
+
+	// Exhibitions
+	'Shreya Dan': { x: 10, y: -25, scale: 1.2, order: 26 },
+	'Kashvi Bansal': { x: 10, y: -25, scale: 1.2, order: 27 },
+	'Sadhana Lokesh': { x: 10, y: -25, scale: 1.2, order: 28 },
+	'Nithya Kirti / Arkoprabho Bhattacharjee': { x: 10, y: -25, scale: 1.2, order: 29 }
 };
 
 /**
