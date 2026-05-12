@@ -153,7 +153,7 @@
 		class="sessions-card border-viz-grey/40 overflow-hidden rounded border transition-transform hover:scale-101"
 	>
 		<div
-			class="relative flex aspect-4/5.5 flex-col overflow-visible"
+			class="relative flex aspect-4/5.5 h-full flex-col overflow-visible"
 			bind:clientWidth={backgroundWidth}
 			bind:clientHeight={backgroundHeight}
 		>
