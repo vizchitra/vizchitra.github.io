@@ -40,8 +40,8 @@ export const speakerImageTransforms = {
 	'Rohit Bhardwaj': { x: 10, y: -25, scale: 1.2, order: 18 },
 
 	// Dialogues
-	'Anand S': { x: 10, y: -30, scale: 0.8, order: 19 },
-	'Agriya Khetarpal': { x: 10, y: -5, scale: 1.3, order: 20 },
+	'Anand S': { x: 15, y: -30, scale: 0.8, order: 19 },
+	'Agriya Khetarpal': { x: 15, y: -5, scale: 1.3, order: 20 },
 	'Lakshmi Chockalingam': { x: 5, y: 15, scale: 1.4, order: 21 }
 };
 

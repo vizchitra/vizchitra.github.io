@@ -31,7 +31,7 @@
 
 	const patternTransforms: Record<string, string> = {
 		Workshops: 'translate(25%, 25%) scale(1.25)',
-		Talks: 'translate(0%, 15%) scale(1)',
+		Talks: 'translate(0%, 15%) scale(1.0)',
 		Dialogues: 'translate(10%, 0%)',
 		Exhibition: 'translate(10%, 15%) scale(1.1)'
 	};
