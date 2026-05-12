@@ -24,6 +24,12 @@
 			description: 'Selfie photo tool for profile pictures'
 		},
 		{
+			title: 'Photos',
+			href: '/tools/photos',
+			description:
+				'Square Portrait Designer — upload a portrait, align face using guide lines, and export a clean square headshot as WebP'
+		},
+		{
 			title: 'Colors',
 			href: '/tools/colors',
 			description:

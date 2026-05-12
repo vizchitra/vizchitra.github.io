@@ -48,6 +48,40 @@
 		from = ''
 	}: Props = $props();
 
+	const textLayouts: Record<
+		string,
+		{
+			titlePaddingTop?: string;
+			titleMaxWidth?: string;
+			descriptionTop?: string;
+			floatWidth: string;
+			floatHeight: string;
+		}
+	> = {
+		Talks: { titleMaxWidth: '70%', descriptionTop: '28%', floatWidth: '70%', floatHeight: '12em' },
+		Dialogues: {
+			titlePaddingTop: '5rem',
+			titleMaxWidth: '73%',
+			descriptionTop: '40%',
+			floatWidth: '65%',
+			floatHeight: '8em'
+		},
+		Workshops: {
+			titleMaxWidth: '100%',
+			descriptionTop: '28%',
+			floatWidth: '48%',
+			floatHeight: '11em'
+		},
+		Exhibition: {
+			titleMaxWidth: '70%',
+			descriptionTop: '42%',
+			floatWidth: '48%',
+			floatHeight: '11em'
+		}
+	};
+
+	const layout = $derived(textLayouts[sessionType] ?? textLayouts.Talks);
+
 	const detailHref = $derived(
 		from ? `/2026/sessions/${slug}?from=${from}` : `/2026/sessions/${slug}`
 	);
@@ -108,7 +142,7 @@
 		variation = 0.5;
 	}
 
-	let screenWidth = $state(0);
+	let screenWidth = $state(1024);
 </script>
 
 <svelte:window bind:innerWidth={screenWidth} />
@@ -238,9 +272,13 @@
 						</div>
 					</div>
 
-					<div class="title-content relative z-10 p-3 md:p-4">
+					<div
+						class="title-content relative z-10 p-3 md:p-4"
+						style={layout.titlePaddingTop ? `padding-top: ${layout.titlePaddingTop}` : undefined}
+					>
 						<h3
 							class="title font-display text-shadow mb-1 text-[20px] leading-none font-extrabold text-[#4c4c4c] uppercase md:text-[28px]"
+							style={layout.titleMaxWidth ? `max-width: ${layout.titleMaxWidth}` : undefined}
 						>
 							{title}
 						</h3>
@@ -252,9 +290,16 @@
 					</div>
 
 					{#if isExpanded}
-						<div class="short-description-container absolute z-10 p-3 pt-0 md:p-4 md:pt-1">
+						<div
+							class="short-description-container relative z-10 p-3 pt-0 md:absolute md:p-4 md:pt-1"
+							style={layout.descriptionTop ? `--desc-top: ${layout.descriptionTop}` : undefined}
+						>
 							<!-- float pushes text away from the photo/pattern on the right -->
-							<div class="text-shape-float" aria-hidden="true"></div>
+							<div
+								class="text-shape-float"
+								style="width: {layout.floatWidth}; height: {layout.floatHeight};"
+								aria-hidden="true"
+							></div>
 							<!-- div (not p) so that inner <p> tags from descriptionHtml don't break float context -->
 							<div
 								class="short-description font-body text-shadow mb-1 text-[17px] leading-tight font-normal text-[#4c4c4c] md:text-[18px]"
@@ -447,9 +492,13 @@
 
 	.text-shape-float {
 		float: right;
-		width: 52%;
-		height: 12em;
 		shape-outside: polygon(70% 0%, 100% 0%, 100% 100%, -75% 100%);
+	}
+
+	@media (min-width: 768px) {
+		.short-description-container {
+			top: var(--desc-top);
+		}
 	}
 
 	.text-shadow {
