@@ -17,8 +17,8 @@
 
 	const days = [
 		{ label: 'All Days', value: 'all' },
-		{ label: 'Conference Day — 04 Jul', value: '2026-07-04' },
-		{ label: 'Workshop Day — 03 Jul', value: '2026-07-03' }
+		{ label: 'Workshop Day — 03 Jul', value: '2026-07-03' },
+		{ label: 'Conference Day — 04 Jul', value: '2026-07-04' }
 	];
 
 	let filteredSessions = $derived(
