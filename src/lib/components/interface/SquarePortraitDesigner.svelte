@@ -100,9 +100,6 @@
 		out.height = size;
 		const octx = out.getContext('2d')!;
 
-		octx.fillStyle = '#ffffff';
-		octx.fillRect(0, 0, size, size);
-
 		const sf = size / SIZE;
 		const drawW = img.width * scale * sf;
 		const drawH = img.height * scale * sf;
