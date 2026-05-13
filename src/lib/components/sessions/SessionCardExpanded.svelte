@@ -58,10 +58,10 @@
 			floatHeight: string;
 		}
 	> = {
-		Talks: { titleMaxWidth: '70%', descriptionTop: '28%', floatWidth: '70%', floatHeight: '12em' },
+		Talks: { titleMaxWidth: '100%', descriptionTop: '28%', floatWidth: '70%', floatHeight: '12em' },
 		Dialogues: {
 			titlePaddingTop: '5rem',
-			titleMaxWidth: '73%',
+			titleMaxWidth: '90%',
 			descriptionTop: '40%',
 			floatWidth: '65%',
 			floatHeight: '8em'
@@ -73,7 +73,7 @@
 			floatHeight: '11em'
 		},
 		Exhibition: {
-			titleMaxWidth: '70%',
+			titleMaxWidth: '100%',
 			descriptionTop: '42%',
 			floatWidth: '48%',
 			floatHeight: '11em'
@@ -290,10 +290,7 @@
 					</div>
 
 					{#if isExpanded}
-						<div
-							class="short-description-container relative z-10 p-3 pt-0 md:absolute md:p-4 md:pt-1"
-							style={layout.descriptionTop ? `--desc-top: ${layout.descriptionTop}` : undefined}
-						>
+						<div class="short-description-container relative z-10 p-3 pt-0 md:p-4 md:pt-1">
 							<!-- float pushes text away from the photo/pattern on the right -->
 							<div
 								class="text-shape-float"
@@ -393,7 +390,7 @@
 
 		{#if showViewDetailsButton}
 			<svg
-				class="view-details-button pointer-events-none absolute -right-10 -bottom-8 z-40 block h-40 w-40 origin-center scale-0 transition-transform duration-400 ease-out group-hover:scale-100 md:h-50 md:w-50 lg:-right-14 lg:-bottom-14 lg:h-60 lg:w-60"
+				class="view-details-button pointer-events-none absolute -right-10 -bottom-8 z-40 block h-40 w-40 origin-center scale-0 transition-transform duration-400 ease-out group-hover:scale-90 md:h-50 md:w-50 lg:-right-14 lg:-bottom-14 lg:h-60 lg:w-60"
 				viewBox="0 0 200 200"
 				fill="none"
 				aria-hidden="true"
@@ -492,7 +489,11 @@
 
 	.text-shape-float {
 		float: right;
-		shape-outside: polygon(70% 0%, 100% 0%, 100% 100%, -75% 100%);
+		shape-outside: polygon(70% 0%, 100% 0%, 100% 80%, 0% 80%);
+		/* TODO: remove debug visuals once shape tuning is done */
+		/* background: rgba(255, 0, 80, 0.35);
+		clip-path: polygon(70% 0%, 100% 0%, 100% 80%, 0% 80%);
+		outline: 1px dashed rgba(255, 0, 80, 0.9); */
 	}
 
 	@media (min-width: 768px) {
