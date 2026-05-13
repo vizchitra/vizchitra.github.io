@@ -53,7 +53,7 @@
 		Workshops: {
 			pattern: 'circle',
 			tone: 'pink',
-			titlePosition: 'pt-40 text-center',
+			titlePosition: 'pt-28 md:pt-40 text-center',
 			href: '/2026/workshops',
 			subtitle: 'The Learning Journey',
 			description:
@@ -69,7 +69,7 @@
 			subtitle: 'The Narrative Journey',
 			description:
 				'Deep dives into projects & lived experiences. Stories that reshape how we see our viz work.',
-			descriptionPosition: 'bottom-5 left-8 text-left',
+			descriptionPosition: 'bottom-5 left-5 md:left-8 text-left',
 			descriptionWidth: '30ch'
 		},
 		Dialogues: {
@@ -80,7 +80,7 @@
 			subtitle: 'The Shared Journey',
 			description:
 				'Participant-driven, unconference-style sessions. Meaning that emerges through conversation.',
-			descriptionPosition: 'top-48 left-8 text-left',
+			descriptionPosition: 'top-38 md:top-48 left-5 md:left-8 text-left',
 			descriptionWidth: '20ch'
 		},
 		Exhibition: {
