@@ -53,31 +53,14 @@
 		{
 			titlePaddingTop?: string;
 			titleMaxWidth?: string;
-			descriptionTop?: string;
 			floatWidth: string;
 			floatHeight: string;
 		}
 	> = {
-		Talks: { titleMaxWidth: '90%', descriptionTop: '25%', floatWidth: '60%', floatHeight: '12em' },
-		Dialogues: {
-			// titlePaddingTop: '3rem',
-			titleMaxWidth: '50%',
-			descriptionTop: '25%',
-			floatWidth: '65%',
-			floatHeight: '8em'
-		},
-		Workshops: {
-			titleMaxWidth: '100%',
-			descriptionTop: '28%',
-			floatWidth: '48%',
-			floatHeight: '11em'
-		},
-		Exhibition: {
-			titleMaxWidth: '70%',
-			descriptionTop: '42%',
-			floatWidth: '48%',
-			floatHeight: '11em'
-		}
+		Talks: { titleMaxWidth: '90%', floatWidth: '60%', floatHeight: '12em' },
+		Dialogues: { titleMaxWidth: '50%', floatWidth: '65%', floatHeight: '8em' },
+		Workshops: { titleMaxWidth: '100%', floatWidth: '48%', floatHeight: '11em' },
+		Exhibition: { titleMaxWidth: '70%', floatWidth: '48%', floatHeight: '11em' }
 	};
 
 	const layout = $derived(textLayouts[sessionType] ?? textLayouts.Talks);
@@ -265,7 +248,7 @@
 						style={layout.titlePaddingTop ? `padding-top: ${layout.titlePaddingTop}` : undefined}
 					>
 						<h3
-							class="title font-display text-shadow mb-1 text-[20px] leading-none font-extrabold text-[#4c4c4c] uppercase md:text-[28px]"
+							class="title font-display text-shadow mb-1 text-[18px] leading-none font-extrabold text-[#4c4c4c] uppercase md:text-[20px] lg:text-[22px] 2xl:text-[28px]"
 							style={layout.titleMaxWidth ? `max-width: ${layout.titleMaxWidth}` : undefined}
 						>
 							{title}
@@ -278,10 +261,7 @@
 					</div>
 
 					{#if isExpanded}
-						<div
-							class="short-description-container relative z-10 p-3 pt-0 md:absolute md:p-4 md:pt-1"
-							style={layout.descriptionTop ? `--desc-top: ${layout.descriptionTop}` : undefined}
-						>
+						<div class="short-description-container relative z-10 p-3 pt-0 md:p-4 md:pt-1">
 							<!-- float pushes text away from the photo/pattern on the right -->
 							<div
 								class="text-shape-float"
@@ -347,26 +327,28 @@
 					<div class="speaker-details-content relative z-30 mt-auto w-full p-2.5 md:p-4">
 						<div class="speaker-details relative z-10">
 							<h3
-								class="font-display text-shadow mb-1 text-2xl leading-none text-[#4c4c4c] uppercase md:text-[26px] lg:text-3xl xl:text-shadow-none!"
+								class="font-display text-shadow mb-1 text-[18px] leading-none text-[#4c4c4c] uppercase md:text-[20px] lg:text-[22px] 2xl:text-[26px] 2xl:text-shadow-none!"
 							>
 								{#each speakerName.split('/').map((s) => s.trim()) as person, i}
 									{#if i > 0}<span
-											class="text-xl leading-none font-medium md:text-[28px] 2xl:text-3xl"
+											class="text-[18px] leading-none font-medium md:text-[20px] lg:text-[22px] 2xl:text-[28px]"
 										>
 											&nbsp;/
 										</span>{/if}
 									<span
-										class="first-name text-xl leading-none font-extrabold md:text-[28px] 2xl:text-3xl"
+										class="first-name text-[18px] leading-none font-extrabold md:text-[20px] lg:text-[22px] 2xl:text-[28px]"
 										>{person.split(' ')[0]}</span
 									>
 									<span
-										class="last-name text-xl leading-none font-medium md:text-[28px] 2xl:text-3xl"
+										class="last-name text-[18px] leading-none font-medium md:text-[20px] lg:text-[22px] 2xl:text-[28px]"
 										>{person.split(' ').slice(1).join(' ')}</span
 									>
 								{/each}
 							</h3>
 							{#if designation || organisation}
-								<span class="font-display block leading-tight text-[#4c4c4c] uppercase md:text-lg">
+								<span
+									class="font-display block text-sm leading-tight text-[#4c4c4c] uppercase md:text-[14px] lg:text-[15px] 2xl:text-lg"
+								>
 									{#if designation}
 										{designation}
 									{/if}{#if organisation}, {organisation}
@@ -481,12 +463,6 @@
 	.text-shape-float {
 		float: right;
 		shape-outside: polygon(70% 0%, 100% 0%, 100% 100%, -75% 100%);
-	}
-
-	@media (min-width: 768px) {
-		.short-description-container {
-			top: var(--desc-top);
-		}
 	}
 
 	.text-shadow {
