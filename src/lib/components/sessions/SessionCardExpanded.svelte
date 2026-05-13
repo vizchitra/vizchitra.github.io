@@ -214,28 +214,30 @@
 			>
 				<!-- Pattern anchored to full card so translate % is stable regardless of flex split -->
 				<div class="pattern-bg-expanded absolute inset-0 z-0 overflow-visible">
-					<SessionCardBackground
-						{sessionType}
-						{color}
-						{variation}
-						{seed}
-						width={expandedBgWidth}
-						height={expandedBgWidth}
-						class="h-full w-full"
-					/>
+					{#if expandedBgWidth > 0}
+						<SessionCardBackground
+							{sessionType}
+							{color}
+							{variation}
+							{seed}
+							width={expandedBgWidth}
+							height={expandedBgWidth}
+							class="h-full w-full"
+						/>
+					{/if}
 				</div>
 				<div class="session-top-text-content z-20">
 					<div class="session-card-header relative z-10 p-2.5 pb-0! md:p-4">
 						<div class="title mb-2.5 flex flex-row items-baseline justify-start gap-2 md:mb-3">
-							<div class="logo-container text-2xl leading-none text-[#4c4c4c]">
-								<LogoType classes="text-2xl!" year={null} />
+							<div class="logo-container text-xl leading-none text-[#4c4c4c] md:text-2xl">
+								<LogoType classes="text-xl md:text-2xl" year={null} />
 							</div>
 
 							<!-- <div class="divider my-0.5 w-0.5 self-stretch bg-[#4c4c4c]"></div> -->
 							<p
-								class="font-display text-shadow block text-2xl leading-none tracking-tighter uppercase"
+								class="font-display text-shadow block text-xl leading-none tracking-tighter uppercase md:text-2xl"
 								style="color: {themeTokens[color]?.dark ??
-									themeTokens.blue.dark}; font-variation-settings: 'wght' 750;"
+									themeTokens.blue.dark}; font-variation-settings: 'wght' 600;"
 							>
 								{sessionType}
 							</p>
@@ -261,11 +263,11 @@
 					</div>
 
 					<div
-						class="title-content relative z-10 p-3 md:p-4"
+						class="title-content relative z-10 p-3 pt-1 md:p-4 md:pt-3"
 						style={layout.titlePaddingTop ? `padding-top: ${layout.titlePaddingTop}` : undefined}
 					>
 						<h3
-							class="title font-display text-shadow mb-1 text-[22px] leading-none font-extrabold text-[#4c4c4c] uppercase md:text-[20px] lg:text-[22px] 2xl:text-[28px]"
+							class="title font-display text-shadow mb-1 text-[20px] leading-none font-extrabold text-[#4c4c4c] uppercase md:text-[20px] lg:text-[22px] 2xl:text-[28px]"
 							style={layout.titleMaxWidth ? `max-width: ${layout.titleMaxWidth}` : undefined}
 						>
 							{title}
@@ -287,7 +289,7 @@
 							></div>
 							<!-- div (not p) so that inner <p> tags from descriptionHtml don't break float context -->
 							<div
-								class="short-description font-body text-shadow mb-1 text-[17px] leading-tight font-normal text-[#4c4c4c] md:text-[18px]"
+								class="short-description font-body text-shadow mb-1 text-[15px] leading-tight font-normal text-[#4c4c4c] md:text-[18px]"
 							>
 								{subtitle}
 							</div>

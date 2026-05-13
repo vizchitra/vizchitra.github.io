@@ -130,7 +130,7 @@
 		</div>
 
 		<!-- Content Overlay with Independent Positioning -->
-		<div class="pointer-events-none relative z-10 h-full p-8">
+		<div class="pointer-events-none relative z-10 h-full p-5 md:p-8">
 			<!-- Title + Subtitle block -->
 			{#if title}
 				<div
@@ -163,7 +163,11 @@
 						? `width: min(${descriptionWidth}, calc(100% - 2rem))`
 						: undefined}
 				>
-					<p class="font-body {strokeClass} mx-1 mt-0 text-lg leading-tight {bodyColors[tone]}">
+					<p
+						class="font-body {strokeClass} mx-1 mt-0 text-[15px] leading-tight md:text-lg {bodyColors[
+							tone
+						]}"
+					>
 						{description}
 					</p>
 				</div>
