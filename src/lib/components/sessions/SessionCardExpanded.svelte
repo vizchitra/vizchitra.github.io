@@ -248,7 +248,7 @@
 						style={layout.titlePaddingTop ? `padding-top: ${layout.titlePaddingTop}` : undefined}
 					>
 						<h3
-							class="title font-display text-shadow mb-1 text-[18px] leading-none font-extrabold text-[#4c4c4c] uppercase md:text-[20px] lg:text-[22px] 2xl:text-[28px]"
+							class="title font-display text-shadow mb-1 text-[22px] leading-none font-extrabold text-[#4c4c4c] uppercase md:text-[20px] lg:text-[22px] 2xl:text-[28px]"
 							style={layout.titleMaxWidth ? `max-width: ${layout.titleMaxWidth}` : undefined}
 						>
 							{title}
