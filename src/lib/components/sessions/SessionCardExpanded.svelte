@@ -53,14 +53,31 @@
 		{
 			titlePaddingTop?: string;
 			titleMaxWidth?: string;
+			descriptionTop?: string;
 			floatWidth: string;
 			floatHeight: string;
 		}
 	> = {
-		Talks: { titleMaxWidth: '90%', floatWidth: '60%', floatHeight: '12em' },
-		Dialogues: { titleMaxWidth: '50%', floatWidth: '65%', floatHeight: '8em' },
-		Workshops: { titleMaxWidth: '100%', floatWidth: '48%', floatHeight: '11em' },
-		Exhibition: { titleMaxWidth: '70%', floatWidth: '48%', floatHeight: '11em' }
+		Talks: { titleMaxWidth: '100%', descriptionTop: '28%', floatWidth: '70%', floatHeight: '12em' },
+		Dialogues: {
+			titlePaddingTop: '5rem',
+			titleMaxWidth: '90%',
+			descriptionTop: '40%',
+			floatWidth: '65%',
+			floatHeight: '8em'
+		},
+		Workshops: {
+			titleMaxWidth: '100%',
+			descriptionTop: '28%',
+			floatWidth: '48%',
+			floatHeight: '11em'
+		},
+		Exhibition: {
+			titleMaxWidth: '100%',
+			descriptionTop: '42%',
+			floatWidth: '48%',
+			floatHeight: '11em'
+		}
 	};
 
 	const layout = $derived(textLayouts[sessionType] ?? textLayouts.Talks);
@@ -139,7 +156,7 @@
 		class="sessions-card border-viz-grey/40 overflow-hidden rounded border transition-transform hover:scale-101"
 	>
 		<div
-			class="relative flex aspect-4/5.5 flex-col overflow-visible"
+			class="relative flex aspect-4/5.5 h-full flex-col overflow-visible"
 			bind:clientWidth={backgroundWidth}
 			bind:clientHeight={backgroundHeight}
 		>
@@ -283,7 +300,7 @@
 					class="background-container-expanded relative z-0 flex w-full flex-1 flex-row items-center justify-end"
 				>
 					<div
-						class="speaker-image absolute right-5 bottom-0 origin-center transition-transform duration-300 group-hover:scale-104 group-hover:rotate-1"
+						class="speaker-image pointer-events-none absolute right-5 bottom-0 origin-center transition-transform duration-300 group-hover:scale-104 group-hover:rotate-1"
 						style:transform={buildSpeakerImageTransform(speakerName, screenWidth, sessionType)}
 					>
 						<img
@@ -297,7 +314,6 @@
 
 				<div
 					class="speaker-details-overlay pointer-events-auto absolute inset-x-0 bottom-0 z-10 flex flex-col"
-					style:background-color={overlayColor}
 				>
 					<!-- wave height = card-width/3; padding-bottom% is relative to own width (inset-x-0) -->
 					<div
@@ -365,7 +381,7 @@
 
 		{#if showViewDetailsButton}
 			<svg
-				class="view-details-button pointer-events-none absolute -right-8 -bottom-6 z-40 block h-32 w-32 origin-center scale-0 transition-transform duration-400 ease-out group-hover:scale-100 md:h-40 md:w-40 lg:-right-10 lg:-bottom-10 lg:h-48 lg:w-48"
+				class="view-details-button pointer-events-none absolute -right-18 -bottom-6 z-40 block h-32 w-32 origin-center scale-0 transition-transform duration-400 ease-out group-hover:scale-100 md:h-40 md:w-40 lg:-right-10 lg:-bottom-10 lg:h-48 lg:w-48"
 				viewBox="0 0 200 200"
 				fill="none"
 				aria-hidden="true"
@@ -464,7 +480,11 @@
 
 	.text-shape-float {
 		float: right;
-		shape-outside: polygon(70% 0%, 100% 0%, 100% 100%, -75% 100%);
+		shape-outside: polygon(70% 0%, 100% 0%, 100% 80%, 0% 80%);
+		/* TODO: remove debug visuals once shape tuning is done */
+		/* background: rgba(255, 0, 80, 0.35);
+		clip-path: polygon(70% 0%, 100% 0%, 100% 80%, 0% 80%);
+		outline: 1px dashed rgba(255, 0, 80, 0.9); */
 	}
 
 	.text-shadow {

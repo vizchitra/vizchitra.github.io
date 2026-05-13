@@ -2,10 +2,12 @@ pre-commit:
   commands:
     format-ts:
       glob: "*.{ts,js,mjs,cjs,json}"
-      run: sh -c 'pnpm exec oxfmt --check {staged_files}; ec=$?; [ $ec -eq 2 ] && exit 0 || exit $ec'
+      run: sh -c 'pnpm exec oxfmt {staged_files}; ec=$?; [ $ec -eq 2 ] && exit 0 || exit $ec'
+      stage_fixed: true
     format-svelte-md:
       glob: "*.{svelte,md}"
-      run: pnpm exec prettier --check {staged_files}
+      run: pnpm exec prettier --write {staged_files}
+      stage_fixed: true
     lint:
       glob: "*.{ts,js,svelte}"
       run: pnpm exec oxlint {staged_files}

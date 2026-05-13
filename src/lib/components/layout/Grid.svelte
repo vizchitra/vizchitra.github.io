@@ -42,5 +42,6 @@
 		display: grid;
 		gap: var(--grid-gap);
 		grid-template-columns: var(--grid-cols);
+		justify-content: center;
 	}
 </style>
