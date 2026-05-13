@@ -218,18 +218,19 @@
 <style>
 	.sessions-grid {
 		display: grid;
+		max-width: 1440px;
 		grid-template-columns: repeat(3, minmax(320px, 450px));
 	}
 
 	@media (max-width: 1600px) {
 		.sessions-grid {
-			grid-template-columns: repeat(2, minmax(320px, 550px));
+			grid-template-columns: repeat(2, minmax(320px, 500px));
 		}
 	}
 
 	@media (max-width: 850px) {
 		.sessions-grid {
-			grid-template-columns: repeat(1, minmax(300px, 550px));
+			grid-template-columns: repeat(1, minmax(300px, 500px));
 		}
 	}
 </style>

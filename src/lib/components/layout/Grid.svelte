@@ -3,6 +3,7 @@
 		columns?: number;
 		maxColumns?: number;
 		minWidth?: string;
+		maxItemWidth?: string;
 		gap?: number;
 		class?: string;
 		children?: import('svelte').Snippet;
@@ -12,6 +13,7 @@
 		columns,
 		maxColumns,
 		minWidth = '280px',
+		maxItemWidth = '1fr',
 		gap = 8,
 		class: className = '',
 		children
@@ -24,9 +26,9 @@
 			return `repeat(${columns}, 1fr)`;
 		} else if (maxColumns) {
 			const effectiveMinWidth = `min(100%, max(${minWidth}, calc((100% - ${maxColumns - 1} * ${gapSize}) / ${maxColumns})))`;
-			return `repeat(auto-fit, minmax(${effectiveMinWidth}, 1fr))`;
+			return `repeat(auto-fit, minmax(${effectiveMinWidth}, ${maxItemWidth}))`;
 		} else {
-			return `repeat(auto-fit, minmax(min(${minWidth}, 100%), 1fr))`;
+			return `repeat(auto-fit, minmax(min(${minWidth}, 100%), ${maxItemWidth}))`;
 		}
 	});
 </script>

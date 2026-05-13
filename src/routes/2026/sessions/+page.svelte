@@ -17,8 +17,8 @@
 
 	const days = [
 		{ label: 'All Days', value: 'all' },
-		{ label: 'Conference Day — 04 Jul', value: '2026-07-04' },
-		{ label: 'Workshop Day — 03 Jul', value: '2026-07-03' }
+		{ label: 'Workshop Day — 03 Jul', value: '2026-07-03' },
+		{ label: 'Conference Day — 04 Jul', value: '2026-07-04' }
 	];
 
 	let filteredSessions = $derived(
@@ -109,7 +109,7 @@
 
 		<!-- Session cards grid -->
 		<FullBleed paddingX="xl">
-			<Grid maxColumns={4} minWidth="350px" gap={6}>
+			<Grid maxColumns={4} minWidth="300px" maxItemWidth="300px" gap={6}>
 				{#each filteredSessions as session, i (session.slug ? session.slug : `tbd-${session.sessionType}-${i}`)}
 					<SessionCardExpanded
 						title={session.title}

@@ -2,53 +2,62 @@
  * Per-speaker translate / scale tweaks for the photo on SessionCardExpanded.
  *
  * Keys are either:
- *   - bare speaker name (matches `speaker_name` in the CSV), or
+ *   - bare speaker name (matches `speakerName` in sessions.json), or
  *   - `${speakerName}__${sessionType}` for a session-type-specific override.
  *
  * Lookup tries the scoped key first, then falls back to the bare name.
  * Use this when the same speaker appears in two session types and the cards
  * need different photo positioning.
  *
- * - x / y: any CSS length (e.g. '10', '-5%', 0).
+ * - x / y: percentage offset.
  * - scale: number (1 = no scaling).
  *
  * Omit fields you don't need; defaults are no translate, scale 1.
  */
 
-/** @type {Record<string, { x?: number; y?: number; scale?: number; order?: number }>} */
+/** @type {Record<string, { x?: number; y?: number; scale?: number }>} */
 export const speakerImageTransforms = {
 	// Workshops
-	'Kenneth Dsouza / Rasagy Sharma': { x: 10, y: -65, scale: 1.3, order: 1 },
-	'Areena Arora': { x: 10, y: 5, scale: 1.1, order: 2 },
-	'Schubert de Abreu': { x: 14, y: -25, scale: 1.1, order: 3 },
-	'Priti Pandurangan': { x: 15, y: -30, scale: 0.9, order: 4 },
-	'Adolfo Arranz': { x: 15, y: -30, scale: 1.2, order: 5 },
-	'Prakriti Bakshi': { x: 0, y: 12, scale: 1.2, order: 6 },
-	'Prasanta Kumar Dutta': { x: 15, y: -25, scale: 1.3, order: 7 },
+	'Kenneth Dsouza / Rasagy Sharma': { x: 10, y: -65, scale: 1.3 },
+	'Areena Arora': { x: 10, y: 5, scale: 1.1 },
+	'Schubert de Abreu': { x: 14, y: -25, scale: 1.1 },
+	'Priti Pandurangan': { x: 15, y: -30, scale: 0.9 },
+	'Adolfo Arranz': { x: 15, y: -30, scale: 1.2 },
+	'Prakriti Bakshi': { x: 0, y: 12, scale: 1.2 },
+	'Prasanta Kumar Dutta': { x: 15, y: -25, scale: 1.3 },
 
 	// Talks
-	'Saurabh Arora': { x: 10, y: -35, scale: 1.2, order: 8 },
-	'Shubhra Agarwal': { x: 10, y: -35, scale: 1.2, order: 9 },
-	'Bargava Subramanian': { x: 10, y: -25, scale: 1.15, order: 10 },
-	'Supriya Joshi': { x: 10, y: 0, scale: 1.1, order: 11 },
-	'Shalaka Shinde': { x: 10, y: -35, scale: 1.15, order: 12 },
-	'Jaidev Deshpande': { x: 15, y: -25, scale: 1.15, order: 13 },
-	'Sneha Kaul': { x: 10, y: 5, scale: 1.1, order: 14 },
-	'Abhiram Jois': { x: 10, y: -15, scale: 1.3, order: 15 },
-	// 'Priti Pandurangan': { x: 15, y: -30, scale: 0.9, order: 16 },
-	'Siddharth Agarwal': { x: 10, y: -15, scale: 1.1, order: 17 },
-	'Rohit Bhardwaj': { x: 10, y: -25, scale: 1.2, order: 18 },
+	'Arvind Satyanarayan': { x: 10, y: -35, scale: 1.25 },
+	'Saurabh Arora': { x: 10, y: -35, scale: 1.2 },
+	'Shubhra Agarwal': { x: 10, y: -35, scale: 1.2 },
+	'Bargava Subramanian': { x: 10, y: -25, scale: 1.15 },
+	'Supriya Joshi': { x: 10, y: 0, scale: 1.1 },
+	'Shalaka Shinde': { x: 10, y: -35, scale: 1.15 },
+	'Jaidev Deshpande': { x: 15, y: -25, scale: 1.15 },
+	'Sneha Kaul': { x: 10, y: 5, scale: 1.1 },
+	'Abhiram Jois': { x: 10, y: -15, scale: 1.3 },
+	'Siddharth Agarwal': { x: 10, y: -15, scale: 1.1 },
+	'Rohit Bhardwaj': { x: 10, y: -25, scale: 1.2 },
+	'Surbhi Bhatia': { x: 10, y: -40, scale: 1.3 },
+	'Rohit Saran': { x: 10, y: -45, scale: 1.4 },
+	'Aman Bhargava': { x: 10, y: -40, scale: 1.25 },
 
 	// Dialogues
-	'Anand S': { x: 15, y: -30, scale: 0.8, order: 19 },
-	'Agriya Khetarpal': { x: 15, y: -5, scale: 1.3, order: 20 },
-	'Lakshmi Chockalingam': { x: 5, y: 15, scale: 1.4, order: 21 }
+	'Anand S': { x: 15, y: -30, scale: 0.8 },
+	'Agriya Khetarpal': { x: 15, y: -5, scale: 1.3 },
+	'Lakshmi Chockalingam': { x: 5, y: 15, scale: 1.4 },
+
+	// Exhibitions
+	'Shreya Dan': { x: 10, y: -25, scale: 1.2 },
+	'Kashvi Bansal': { x: 10, y: -25, scale: 1.2 },
+	'Sadhana Lokesh': { x: 10, y: -25, scale: 1.2 },
+	'Nithya Kirti / Arkoprabho Bhattacharjee': { x: 10, y: -25, scale: 1.2 }
 };
 
 /**
  * @param {string | undefined} name
  * @param {string | undefined} [sessionType]
- * @returns {{ x?: number; y?: number; scale?: number; order?: number } | undefined}
+ * @returns {{ x?: number; y?: number; scale?: number } | undefined}
  */
 function lookupSpeakerConfig(name, sessionType) {
 	if (!name) return undefined;
@@ -72,16 +81,4 @@ export function buildSpeakerImageTransform(name, screenWidth = 1000, sessionType
 	const s = t.scale ?? 1;
 
 	return `translate(${tx}%, ${ty}%) scale(${s})`;
-}
-
-/**
- * Sort key for ordering sessions on the listing pages.
- * Speakers without an entry sort to the end (preserving CSV order).
- * @param {string | undefined} name
- * @param {string | undefined} [sessionType]
- * @returns {number}
- */
-export function getSpeakerOrder(name, sessionType) {
-	const t = lookupSpeakerConfig(name, sessionType);
-	return t?.order ?? Number.POSITIVE_INFINITY;
 }
