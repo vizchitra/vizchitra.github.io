@@ -109,7 +109,7 @@
 
 		<!-- Session cards grid -->
 		<FullBleed paddingX="xl">
-			<Grid maxColumns={4} minWidth="350px" gap={6}>
+			<Grid maxColumns={4} minWidth="300px" maxItemWidth="300px" gap={6}>
 				{#each filteredSessions as session, i (session.slug ? session.slug : `tbd-${session.sessionType}-${i}`)}
 					<SessionCardExpanded
 						title={session.title}

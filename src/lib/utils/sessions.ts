@@ -26,6 +26,11 @@ export interface SessionData {
 	speakerImage: string;
 	display: boolean;
 	tbd: boolean;
+	order?: number;
+}
+
+export function getSessionOrder(s: Pick<SessionData, 'order'>): number {
+	return s.order ?? Number.POSITIVE_INFINITY;
 }
 
 /** Derive tbd from stored fields (not persisted in JSON to keep data clean) */

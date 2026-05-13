@@ -58,11 +58,11 @@
 			floatHeight: string;
 		}
 	> = {
-		Talks: { titleMaxWidth: '70%', descriptionTop: '28%', floatWidth: '70%', floatHeight: '12em' },
+		Talks: { titleMaxWidth: '90%', descriptionTop: '25%', floatWidth: '60%', floatHeight: '12em' },
 		Dialogues: {
-			titlePaddingTop: '5rem',
-			titleMaxWidth: '73%',
-			descriptionTop: '40%',
+			// titlePaddingTop: '3rem',
+			titleMaxWidth: '50%',
+			descriptionTop: '25%',
 			floatWidth: '65%',
 			floatHeight: '8em'
 		},
@@ -129,9 +129,12 @@
 		return (h % 1000000) / 1000000;
 	}
 	// const seed = $derived(hashStringToUnit((slug ?? '') + title));
-	const seed = 0.5;
-
+	let seed = $state(0.5);
 	let variation = $state(0.5);
+	$effect(() => {
+		seed = Math.random();
+		variation = Math.random();
+	});
 
 	function handlePointerMove(e: PointerEvent) {
 		const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
@@ -177,21 +180,6 @@
 					>
 						{sessionType}
 					</p>
-				</div>
-
-				<div class="sessions-logistics">
-					<p class="text-base leading-none uppercase md:text-base">
-						{#if formattedDate}
-							<span class="font-display leading-none! font-black md:text-[16px]"
-								>{#if time}, {time}{/if}</span
-							>
-						{/if}
-					</p>
-					{#if venue}
-						<p class="text-base leading-none uppercase md:text-base">
-							<span class="font-display leading-none! font-light md:text-[16px]">{venue} </span>
-						</p>
-					{/if}
 				</div>
 			</div>
 
@@ -253,7 +241,7 @@
 							</p>
 						</div>
 
-						<div class="sessions-logistics">
+						<div class="sessions-logistics hidden">
 							<div class="text-base leading-none uppercase md:text-base">
 								{#if time}
 									<span class="font-display leading-snug! font-bold md:text-[17px]">{time} ⋅ </span>
@@ -393,7 +381,7 @@
 
 		{#if showViewDetailsButton}
 			<svg
-				class="view-details-button pointer-events-none absolute -right-10 -bottom-8 z-40 block h-40 w-40 origin-center scale-0 transition-transform duration-400 ease-out group-hover:scale-100 md:h-50 md:w-50 lg:-right-14 lg:-bottom-14 lg:h-60 lg:w-60"
+				class="view-details-button pointer-events-none absolute -right-8 -bottom-6 z-40 block h-32 w-32 origin-center scale-0 transition-transform duration-400 ease-out group-hover:scale-100 md:h-40 md:w-40 lg:-right-10 lg:-bottom-10 lg:h-48 lg:w-48"
 				viewBox="0 0 200 200"
 				fill="none"
 				aria-hidden="true"
