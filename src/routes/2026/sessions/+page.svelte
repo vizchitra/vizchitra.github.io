@@ -17,13 +17,19 @@
 
 	const days = [
 		{ label: 'All Days', value: 'all' },
-		{ label: 'Workshop Day — 03 Jul', value: '2026-07-03' },
-		{ label: 'Conference Day — 04 Jul', value: '2026-07-04' }
+		{ label: 'Workshop Day — 03 Jul', value: 'workshop' },
+		{ label: 'Conference Day — 04 Jul', value: 'conference' }
 	];
+
+	const dayDateMap: Record<string, string> = {
+		workshop: '2026-07-03',
+		conference: '2026-07-04'
+	};
 
 	let filteredSessions = $derived(
 		data.sessions.filter((s) => {
-			const matchesDay = selectedDay === 'all' || s.date.startsWith(selectedDay);
+			const datePrefix = dayDateMap[selectedDay] ?? selectedDay;
+			const matchesDay = selectedDay === 'all' || s.date.startsWith(datePrefix);
 			const matchesFormat = selectedFormat === 'all' || s.sessionType === selectedFormat;
 			return matchesDay && matchesFormat;
 		})
@@ -98,13 +104,6 @@
 					{format}
 				</button>
 			{/each}
-
-			<span class="text-viz-grey/50 ml-auto text-sm">
-				{filteredSessions.filter((s) => !s.tbd).length} confirmed ·
-				{#if filteredSessions.filter((s) => s.tbd).length > 0}
-					{filteredSessions.filter((s) => s.tbd).length} coming soon
-				{/if}
-			</span>
 		</div>
 
 		<!-- Session cards grid -->
