@@ -53,6 +53,7 @@
 		{
 			titlePaddingTop?: string;
 			titleMaxWidth?: string;
+			descriptionTop?: string;
 			floatWidth: string;
 			floatHeight: string;
 		}
