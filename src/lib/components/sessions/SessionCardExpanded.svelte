@@ -310,7 +310,7 @@
 					class="background-container-expanded relative z-0 flex w-full flex-1 flex-row items-center justify-end"
 				>
 					<div
-						class="speaker-image absolute right-5 bottom-0 origin-center transition-transform duration-300 group-hover:scale-104 group-hover:rotate-1"
+						class="speaker-image pointer-events-none absolute right-5 bottom-0 origin-center transition-transform duration-300 group-hover:scale-104 group-hover:rotate-1"
 						style:transform={buildSpeakerImageTransform(speakerName, screenWidth, sessionType)}
 					>
 						<img
@@ -324,7 +324,6 @@
 
 				<div
 					class="speaker-details-overlay pointer-events-auto absolute inset-x-0 bottom-0 z-10 flex flex-col"
-					style:background-color={overlayColor}
 				>
 					<!-- wave height = card-width/3; padding-bottom% is relative to own width (inset-x-0) -->
 					<div
