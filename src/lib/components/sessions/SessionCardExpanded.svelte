@@ -186,7 +186,7 @@
 	<div class="sessions-card-wrapper group relative mx-auto w-full">
 		<a
 			href={detailHref}
-			class="sessions-card white border-viz-grey/40 isolate block w-full transform-gpu overflow-hidden rounded border transition-[transform,box-shadow] group-hover:scale-102"
+			class="sessions-card bg-viz-white border-viz-grey/40 isolate block w-full transform-gpu overflow-hidden rounded border transition-[transform,box-shadow] group-hover:scale-102"
 			onpointermove={handlePointerMove}
 			onpointerleave={handlePointerLeave}
 		>

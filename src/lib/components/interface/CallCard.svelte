@@ -17,6 +17,10 @@
 		descriptionWidth?: string;
 		href?: string;
 		external?: boolean;
+		compact?: boolean;
+		fillHeight?: boolean;
+		selected?: boolean;
+		onclick?: () => void;
 		class?: string;
 	}
 
@@ -33,6 +37,10 @@
 		descriptionWidth,
 		href,
 		external = false,
+		compact = false,
+		fillHeight = false,
+		selected = false,
+		onclick,
 		class: className = ''
 	}: Props = $props();
 
@@ -73,10 +81,18 @@
 		yellow: 'outline-viz-yellow-muted'
 	};
 
-	const titlePositionClass = $derived(`absolute ${titlePosition}`);
+	const titlePositionClass = $derived(titlePosition);
 	const descriptionPositionClass = $derived(`absolute ${descriptionPosition}`);
 
-	const textColors: Record<Tone, string> = {
+	const titleColors: Record<Tone, string> = {
+		blue: 'text-viz-blue-dark',
+		teal: 'text-viz-teal-dark',
+		orange: 'text-viz-orange-dark',
+		pink: 'text-viz-pink-dark',
+		yellow: 'text-viz-yellow-dark'
+	};
+
+	const bodyColors: Record<Tone, string> = {
 		blue: 'text-viz-white',
 		teal: 'text-viz-black',
 		orange: 'text-viz-black',
@@ -84,8 +100,14 @@
 		yellow: 'text-viz-black'
 	};
 
+	const strokeClass = $derived(tone === 'blue' ? 'text-stroke-dark' : 'text-stroke-white');
+	const isCentered = $derived(titlePosition.includes('text-center'));
+
+	const outlineWidth = $derived(selected ? 'outline-4' : 'outline-2');
 	const containerClass = $derived(
-		`relative overflow-hidden rounded-lg aspect-[4/5] outline-2 ${borderColors[tone]} transition-all duration-200 hover:outline-4 active:outline-4 no-underline w-full min-w-[280px] sm:min-w-[320px] md:max-w-sm ${className}`
+		compact
+			? `relative overflow-hidden rounded-lg aspect-[3/4] ${outlineWidth} ${borderColors[tone]} transition-all duration-200 hover:outline-4 active:outline-4 no-underline w-full ${className}`
+			: `relative overflow-hidden rounded-lg aspect-[4/5.75] outline-2 ${borderColors[tone]} transition-all duration-200 hover:outline-4 active:outline-4 no-underline w-full ${className}`
 	);
 </script>
 
@@ -102,7 +124,7 @@
 				{tone}
 				variation={internalVariation}
 				width={400}
-				height={500}
+				height={575}
 				class="h-full w-full"
 			/>
 		</div>
@@ -116,12 +138,17 @@
 					style={titleWidth ? `width: min(${titleWidth}, calc(100% - 2rem))` : undefined}
 				>
 					<h3
-						class="font-display text-viz-black mx-1 mt-0 text-2xl leading-tight font-bold uppercase drop-shadow-lg md:text-3xl"
+						class="font-display mx-1 mt-0 text-2xl leading-tight font-bold uppercase drop-shadow-lg md:text-3xl {titleColors[
+							tone
+						]}"
 					>
 						{title}
 					</h3>
 					{#if subtitle}
-						<p class="text-viz-black mx-1 mt-0 text-lg leading-tight drop-shadow-md md:text-xl">
+						<p
+							class="text-viz-black mx-1 mt-0 max-w-[12ch] text-lg leading-tight md:text-2xl"
+							class:mx-auto={isCentered}
+						>
 							{subtitle}
 						</p>
 					{/if}
@@ -136,11 +163,7 @@
 						? `width: min(${descriptionWidth}, calc(100% - 2rem))`
 						: undefined}
 				>
-					<p
-						class="font-body text-md mx-1 mt-0 leading-[1.1] italic drop-shadow-md {textColors[
-							tone
-						]}"
-					>
+					<p class="font-body {strokeClass} mx-1 mt-0 text-lg leading-tight {bodyColors[tone]}">
 						{description}
 					</p>
 				</div>
@@ -155,9 +178,32 @@
 		target={external ? '_blank' : undefined}
 		rel={external ? 'noopener noreferrer' : undefined}
 		class="block no-underline"
+		{onclick}
 	>
 		{@render cardContent()}
 	</a>
+{:else if onclick}
+	<button type="button" class="block w-full cursor-pointer border-0 bg-transparent p-0" {onclick}>
+		{@render cardContent()}
+	</button>
 {:else}
 	{@render cardContent()}
 {/if}
+
+<style>
+	.text-stroke-white {
+		text-shadow:
+			-1.5px -1.5px 0 white,
+			1.5px -1.5px 0 white,
+			-1.5px 1.5px 0 white,
+			1.5px 1.5px 0 white;
+	}
+
+	.text-stroke-dark {
+		text-shadow:
+			-1.5px -1.5px 0 #1a1a2e,
+			1.5px -1.5px 0 #1a1a2e,
+			-1.5px 1.5px 0 #1a1a2e,
+			1.5px 1.5px 0 #1a1a2e;
+	}
+</style>
