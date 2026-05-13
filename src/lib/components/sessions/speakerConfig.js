@@ -38,9 +38,11 @@ export const speakerImageTransforms = {
 	'Abhiram Jois': { x: 10, y: -15, scale: 1.3 },
 	'Siddharth Agarwal': { x: 10, y: -15, scale: 1.1 },
 	'Rohit Bhardwaj': { x: 10, y: -25, scale: 1.2 },
-	'Surbhi Bhatia': { x: 10, y: -40, scale: 1.3 },
+	'Surbhi Bhatia': { x: 10, y: -40, scale: 1.5 },
 	'Rohit Saran': { x: 10, y: -45, scale: 1.4 },
-	'Aman Bhargava': { x: 10, y: -40, scale: 1.25 },
+	'Aman Bhargava': { x: 10, y: -45, scale: 1.3 },
+	'Sandeep Karmarkar': { x: 10, y: -40, scale: 1.25 },
+	'Tony Joy': { x: 10, y: -40, scale: 1.4 },
 
 	// Dialogues
 	'Anand S': { x: 15, y: -30, scale: 0.8 },
