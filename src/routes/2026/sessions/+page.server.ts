@@ -1,6 +1,6 @@
 import type { PageServerLoad } from './$types';
 import { marked } from 'marked';
-import { resolveAllSessions } from '$lib/utils/sessions';
+import { resolveAllSessions, getSessionOrder } from '$lib/utils/sessions';
 
 export const prerender = true;
 
@@ -16,7 +16,7 @@ export const load: PageServerLoad = async () => {
 		})
 	);
 
-	// TBD entries last
+	sessions.sort((a, b) => getSessionOrder(a) - getSessionOrder(b));
 	sessions.sort((a, b) => Number(a.tbd) - Number(b.tbd));
 
 	return {
