@@ -33,7 +33,7 @@
 		font-variation-settings:
 			'slnt' -4,
 			'wght' 750;
-		letter-spacing: 0.25rem;
+		letter-spacing: 0.16rem;
 	}
 
 	.I1 {
