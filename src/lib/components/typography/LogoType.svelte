@@ -47,7 +47,7 @@
 		font-variation-settings:
 			'slnt' 0,
 			'wght' 750;
-		letter-spacing: -0.1rem;
+		letter-spacing: -0.025rem;
 	}
 
 	.C2 {
@@ -61,14 +61,14 @@
 		font-variation-settings:
 			'slnt' 7,
 			'wght' 400;
-		letter-spacing: -0.1rem;
+		letter-spacing: -0.08rem;
 	}
 
 	.I2 {
 		font-variation-settings:
 			'slnt' 8,
 			'wght' 400;
-		letter-spacing: -0.3rem;
+		letter-spacing: -0.18rem;
 	}
 
 	.T2 {
