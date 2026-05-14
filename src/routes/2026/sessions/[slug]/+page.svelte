@@ -103,7 +103,10 @@
 		sessionType={liveType}
 		date={session.date}
 		time={liveTime}
+		slot={session.slot}
 		venue={liveVenue}
+		order={session.order}
+		display={session.display}
 		title={session.title}
 		subtitle={session.subtitle}
 		speakerName={liveSpeaker}
@@ -126,8 +129,13 @@
 <Container>
 	<article class="max-w-3xl pt-14 pb-6 md:pt-16">
 		<!-- Breadcrumb + session type -->
-		<p class="font-display text-viz-grey mb-6 text-base uppercase">
-			<a href={backLink.href} class="hover:text-viz-grey transition-colors">VizChitra 2026</a>
+		<p class="font-display text-viz-black mb-6 text-base uppercase">
+			<a
+				href={backLink.href}
+				class="underline decoration-current/30 decoration-2 underline-offset-[0.35em] transition-colors hover:decoration-current"
+			>
+				Sessions</a
+			>
 			<span class="mx-2">|</span>
 			<span class="text-viz-{color}-dark font-semibold">{session.sessionType}</span>
 		</p>

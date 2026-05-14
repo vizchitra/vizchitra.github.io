@@ -14,7 +14,7 @@
 	import PanelShell from './PanelShell.svelte';
 	import { sessionColorMap } from '$lib/utils/sessions';
 
-	const SESSION_TYPES = ['Talks', 'Dialogues', 'Workshop', 'Exhibition'] as const;
+	const SESSION_TYPES = ['Talks', 'Dialogues', 'Workshops', 'Exhibition'] as const;
 
 	interface Props {
 		/** Slug identifies which session in the JSON array to update */
@@ -22,7 +22,10 @@
 		sessionType: string;
 		date: string;
 		time: string;
+		slot: string;
 		venue: string;
+		order?: number;
+		display: boolean;
 		title: string;
 		subtitle: string;
 		speakerName: string;
@@ -48,7 +51,10 @@
 		sessionType,
 		date,
 		time,
+		slot,
 		venue,
+		order,
+		display,
 		title,
 		subtitle,
 		speakerName,
@@ -71,7 +77,10 @@
 	let localType = $state(untrack(() => sessionType));
 	let localDate = $state(untrack(() => date?.slice(0, 10) ?? ''));
 	let localTime = $state(untrack(() => time));
+	let localSlot = $state(untrack(() => slot));
 	let localVenue = $state(untrack(() => venue));
+	let localOrder = $state(untrack(() => order ?? 0));
+	let localDisplay = $state(untrack(() => display));
 	let localTitle = $state(untrack(() => title));
 	let localSubtitle = $state(untrack(() => subtitle));
 	let localSpeaker = $state(untrack(() => speakerName));
@@ -84,7 +93,10 @@
 			localType = sessionType;
 			localDate = date?.slice(0, 10) ?? '';
 			localTime = time;
+			localSlot = slot;
 			localVenue = venue;
+			localOrder = order ?? 0;
+			localDisplay = display;
 			localTitle = title;
 			localSubtitle = subtitle;
 			localSpeaker = speakerName;
@@ -134,7 +146,10 @@
 						sessionType: localType,
 						date: localDate,
 						time: localTime,
+						slot: localSlot,
 						venue: localVenue,
+						order: localOrder,
+						display: localDisplay,
 						title: localTitle,
 						subtitle: localSubtitle,
 						speakerName: localSpeaker,
@@ -302,6 +317,57 @@
 					oninput={() => update('venue', localVenue)}
 					class="border-grey-700 bg-grey-800 text-viz-grey-light focus:border-viz-yellow w-full rounded border px-2.5 py-1.5 text-xs focus:outline-none disabled:opacity-50"
 				/>
+			</div>
+
+			<!-- Slot -->
+			<div class="mb-3">
+				<label class="text-viz-grey-muted mb-1 block text-xs font-medium" for="session-slot">
+					slot
+				</label>
+				{#if isEditing}
+					<select
+						id="session-slot"
+						bind:value={localSlot}
+						class="border-grey-700 bg-grey-800 text-viz-grey-light focus:border-viz-yellow w-full rounded border px-2.5 py-1.5 text-xs focus:outline-none"
+					>
+						<option value="morning">morning</option>
+						<option value="afternoon">afternoon</option>
+					</select>
+				{:else}
+					<p
+						class="border-grey-700 bg-grey-800 text-viz-grey-muted w-full rounded border px-2.5 py-1.5 text-xs"
+					>
+						{slot}
+					</p>
+				{/if}
+			</div>
+
+			<!-- Order -->
+			<div class="mb-3">
+				<label class="text-viz-grey-muted mb-1 block text-xs font-medium" for="session-order">
+					order
+				</label>
+				<input
+					id="session-order"
+					type="number"
+					bind:value={localOrder}
+					disabled={!isEditing}
+					class="border-grey-700 bg-grey-800 text-viz-grey-light focus:border-viz-yellow w-full rounded border px-2.5 py-1.5 text-xs focus:outline-none disabled:opacity-50"
+				/>
+			</div>
+
+			<!-- Display -->
+			<div class="mb-3 flex items-center gap-2">
+				<input
+					id="session-display"
+					type="checkbox"
+					bind:checked={localDisplay}
+					disabled={!isEditing}
+					class="accent-viz-yellow disabled:opacity-50"
+				/>
+				<label class="text-viz-grey-muted text-xs font-medium" for="session-display">
+					display
+				</label>
 			</div>
 		</div>
 
