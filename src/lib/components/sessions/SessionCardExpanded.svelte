@@ -51,7 +51,7 @@
 	const textLayouts: Record<
 		string,
 		{
-			titlePaddingTop?: string;
+			titlePaddingRatio?: number;
 			titleMaxWidth?: string;
 			descriptionTop?: string;
 			floatWidth: string;
@@ -60,8 +60,8 @@
 	> = {
 		Talks: { titleMaxWidth: '100%', descriptionTop: '28%', floatWidth: '70%', floatHeight: '12em' },
 		Dialogues: {
-			titlePaddingTop: '5rem',
-			titleMaxWidth: '85%',
+			titlePaddingRatio: 0.24,
+			titleMaxWidth: '70%',
 			descriptionTop: '40%',
 			floatWidth: '65%',
 			floatHeight: '8em'
@@ -264,7 +264,9 @@
 
 					<div
 						class="title-content relative z-10 p-3 pt-1 md:p-4 md:pt-3"
-						style={layout.titlePaddingTop ? `padding-top: ${layout.titlePaddingTop}` : undefined}
+						style={layout.titlePaddingRatio && backgroundWidth > 0
+							? `padding-top: ${Math.round(backgroundWidth * layout.titlePaddingRatio)}px`
+							: undefined}
 					>
 						<h3
 							class="title font-display text-shadow mb-1 text-[20px] leading-none font-extrabold text-[#4c4c4c] uppercase md:text-[20px] lg:text-[22px] 2xl:text-[28px]"
