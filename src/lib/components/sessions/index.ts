@@ -1,1 +1,1 @@
-export { default as SessionCard } from './SessionCard.svelte';
+export { default as SessionCardExpanded } from './SessionCardExpanded.svelte';
