@@ -291,7 +291,8 @@ export const load: PageServerLoad = async ({ locals, platform }) => {
 		cfeGroups,
 		pageMeta: {
 			title: 'Studio',
-			description: 'VizChitra content editor'
+			description: 'VizChitra content editor',
+			ogImage: '/images/preview/preview-studio.jpg'
 		}
 	};
 };
