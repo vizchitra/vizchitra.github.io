@@ -58,6 +58,9 @@
 <svelte:head>
 	<title>Studio | VizChitra</title>
 	<meta name="description" content="VizChitra Studio" />
+	<meta property="og:image" content="/images/preview/preview-studio.jpg" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:image" content="/images/preview/preview-studio.jpg" />
 </svelte:head>
 
 <div class="bg-grey-950 min-h-screen">

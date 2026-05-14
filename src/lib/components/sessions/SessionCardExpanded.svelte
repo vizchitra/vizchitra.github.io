@@ -61,7 +61,7 @@
 		Talks: { titleMaxWidth: '100%', descriptionTop: '28%', floatWidth: '70%', floatHeight: '12em' },
 		Dialogues: {
 			titlePaddingTop: '5rem',
-			titleMaxWidth: '90%',
+			titleMaxWidth: '85%',
 			descriptionTop: '40%',
 			floatWidth: '65%',
 			floatHeight: '8em'
