@@ -8,9 +8,6 @@
 <svelte:head>
 	<title>Studio Login | VizChitra</title>
 	<meta name="description" content="Sign in to VizChitra Studio" />
-	<meta property="og:image" content="/images/preview/preview-studio.jpg" />
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:image" content="/images/preview/preview-studio.jpg" />
 </svelte:head>
 
 <Header banner="square" color="grey" />

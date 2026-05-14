@@ -9,6 +9,11 @@ export const load: PageServerLoad = ({ locals, url }) => {
 	}
 
 	return {
-		error: url.searchParams.get('error') ?? null
+		error: url.searchParams.get('error') ?? null,
+		pageMeta: {
+			title: 'Studio Login',
+			description: 'Sign in to VizChitra Studio',
+			ogImage: '/images/preview/preview-studio.jpg'
+		}
 	};
 };
