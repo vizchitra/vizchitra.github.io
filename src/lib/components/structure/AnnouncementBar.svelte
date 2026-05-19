@@ -1,6 +1,6 @@
 <script lang="ts">
 	const href = '/2026/sponsorship';
-	const text = 'VizChitra 2026 is open for sponsors ◦ July 3–4, Bengaluru ◦ Talk to us →';
+	const text = 'VizChitra 2026 ◦ Open for sponsors ◦ July 3–4, Bengaluru ◦ Talk to us →';
 	const repetitions = 6;
 
 	const tileColors = [
@@ -10,13 +10,22 @@
 		'var(--color-viz-orange)',
 		'var(--color-viz-pink)'
 	];
+
+	const textColors = [
+		'var(--color-viz-yellow-dark)',
+		'var(--color-viz-teal-dark)',
+		'var(--color-viz-blue-dark)',
+		'var(--color-viz-orange-dark)',
+		'var(--color-viz-pink-dark)'
+	];
 </script>
 
 <a class="bar" {href} aria-label="VizChitra 2026 sponsorship — Talk to us">
 	<div class="track" aria-hidden="true">
 		{#each Array(repetitions) as _, i}
 			<span class="sep-tile" style="--tile-color: {tileColors[i % tileColors.length]};"></span>
-			<span class="seg-text">{text}</span>
+			<span class="seg-text" style="--text-color: {textColors[i % textColors.length]};">{text}</span
+			>
 		{/each}
 	</div>
 </a>
@@ -91,11 +100,11 @@
 
 	.seg-text {
 		font-family: var(--font-display);
-		font-size: 11px;
-		font-weight: 700;
+		font-size: var(--text-viz-sm);
+		font-weight: 550;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
-		color: var(--color-viz-black);
+		color: var(--text-color, var(--color-viz-black));
 		padding: 0 20px;
 	}
 
@@ -104,7 +113,7 @@
 			width: 48px;
 		}
 		.seg-text {
-			font-size: 10px;
+			font-size: var(--text-viz-xs);
 		}
 	}
 </style>
