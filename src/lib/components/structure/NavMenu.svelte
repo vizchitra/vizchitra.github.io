@@ -15,6 +15,7 @@
 			subsections: [
 				{ name: 'Event', href: '/2026/' },
 				{ name: 'Sessions', href: '/2026/sessions' },
+				{ name: 'Sponsorship', href: '/2026/sponsorship' },
 				{ name: 'Get Tickets', href: 'https://tickets.vizchitra.com' },
 				{ name: 'Scholarships', href: '/2026/scholarships' },
 				{ name: 'Submissions', href: '/2026/submissions' }
