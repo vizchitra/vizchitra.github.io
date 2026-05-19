@@ -3,6 +3,7 @@ export const load = () => ({
 		title: 'Sponsorship 2026 | VizChitra',
 		description:
 			"Partner with VizChitra 2026 — India's data visualization conference on 3rd & 4th July 2026 at Bangalore International Centre.",
-		noSuffix: true
+		noSuffix: true,
+		ogImage: 'https://vizchitra.com/images/preview/preview-sponsorship.jpg'
 	}
 });

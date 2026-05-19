@@ -82,7 +82,7 @@
 
 <nav
 	class="bg-viz-white/80 border-viz-black/10 opacity fixed top-0 left-0 z-50 border-b backdrop-blur-md"
-	style="right: var(--studio-panel-width, 0); transition: right 150ms ease;"
+	style="top: var(--announcement-bar-height, 32px); right: var(--studio-panel-width, 0); transition: right 150ms ease;"
 >
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="flex h-16 justify-between">

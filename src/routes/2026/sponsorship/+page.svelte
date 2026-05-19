@@ -509,7 +509,7 @@
 		</Prose>
 
 		<Grid minWidth="16ch" maxColumns={4} gap={4}>
-			<Card variant="bordered" color="blue" title="500+">Attendees across two days</Card>
+			<Card variant="bordered" color="blue" title="450+">Attendees across two days</Card>
 			<Card variant="bordered" color="teal" title="200+">Organisations &amp; Institutions</Card>
 			<Card variant="bordered" color="pink" title="50+">Cities across India &amp; Abroad</Card>
 			<Card variant="bordered" color="yellow" title="120+">Live Stream Online</Card>

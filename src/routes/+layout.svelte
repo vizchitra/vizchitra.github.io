@@ -1,5 +1,6 @@
 <script>
 	import { NavMenu, Footer, SEO } from '$lib/components';
+	import AnnouncementBar from '$lib/components/structure/AnnouncementBar.svelte';
 	import '../app.css';
 
 	import { page } from '$app/stores';
@@ -27,6 +28,7 @@
 {/if}
 
 <div class="app">
+	<AnnouncementBar />
 	<NavMenu></NavMenu>
 	<main>
 		{@render children()}
@@ -35,6 +37,10 @@
 </div>
 
 <style>
+	:global(:root) {
+		--announcement-bar-height: 32px;
+	}
+
 	.app {
 		display: flex;
 		flex-direction: column;
@@ -45,7 +51,7 @@
 		flex: 1;
 		display: flex;
 		flex-direction: column;
-		padding-top: 4rem;
+		padding-top: calc(4rem + var(--announcement-bar-height, 32px));
 		/* padding: 2.5rem; */
 		width: 100%;
 		min-width: 0;
