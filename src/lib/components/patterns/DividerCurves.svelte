@@ -18,9 +18,9 @@
 		return shuffled;
 	}
 
-	const STROKE_WIDTH = 6;
+	const STROKE_WIDTH = 4;
 	const NUM_DOTS = 5; // 4 dots = 3 segments
-	const DOT_RADIUS = 7; // outer white circle radius (prevents cutoff at edges)
+	const DOT_RADIUS = 3; // outer white circle radius (prevents cutoff at edges)
 
 	interface DotData {
 		cx: number;
@@ -52,17 +52,18 @@
 		// Shuffle colors for segments using getColorHex directly
 		const shuffledColors = shuffleArray(brandColors).map((c) => getColorHex(c));
 
-		// Add padding to prevent dot cutoff at edges
-		const paddedWidth = width - 2 * DOT_RADIUS;
+		// Padding must match the outer circle radius to prevent edge clipping
+		const edgePad = DOT_RADIUS + 3;
+		const paddedWidth = width - 2 * edgePad;
 
 		// Random start and end Y positions
 		const startY = Math.random() * (height - STROKE_WIDTH * 2) + STROKE_WIDTH;
 		const endY = Math.random() * (height - STROKE_WIDTH * 2) + STROKE_WIDTH;
 
 		// Create control points for a flowing bezier curve (with padding)
-		const cp1x = DOT_RADIUS + paddedWidth * 0.25 + (Math.random() - 0.5) * paddedWidth * 0.2;
+		const cp1x = edgePad + paddedWidth * 0.25 + (Math.random() - 0.5) * paddedWidth * 0.2;
 		const cp1y = Math.random() * height;
-		const cp2x = DOT_RADIUS + paddedWidth * 0.75 + (Math.random() - 0.5) * paddedWidth * 0.2;
+		const cp2x = edgePad + paddedWidth * 0.75 + (Math.random() - 0.5) * paddedWidth * 0.2;
 		const cp2y = Math.random() * height;
 
 		// Generate dot positions along the curve
@@ -71,7 +72,7 @@
 
 		for (let i = 0; i < NUM_DOTS; i++) {
 			const t = i / (NUM_DOTS - 1); // 0, 0.25, 0.5, 0.75, 1
-			const x = bezierPoint(t, DOT_RADIUS, cp1x, cp2x, DOT_RADIUS + paddedWidth);
+			const x = bezierPoint(t, edgePad, cp1x, cp2x, edgePad + paddedWidth);
 			const y = bezierPoint(t, startY, cp1y, cp2y, endY);
 			dotPositions.push({ x, y });
 			newDots.push({ cx: x, cy: y, fill: getColorHex('grey') });
@@ -129,8 +130,8 @@
 			{/each}
 
 			{#each dots as dot}
-				<circle cx={dot.cx} cy={dot.cy} r="7" fill="white" />
-				<circle cx={dot.cx} cy={dot.cy} r="5" fill={dot.fill} />
+				<circle cx={dot.cx} cy={dot.cy} r={DOT_RADIUS + 3} fill="white" />
+				<circle cx={dot.cx} cy={dot.cy} r={DOT_RADIUS + 1} fill={dot.fill} />
 			{/each}
 		</svg>
 	{/if}
