@@ -11,6 +11,8 @@ To verify that the new Studio setup can read front matter from markdown files in
 
 You can change the text here.
 
+Testing this with Amit!
+
 Hello. Trying to change this page. 
 
 This is being done live on Bi Weekly call.
