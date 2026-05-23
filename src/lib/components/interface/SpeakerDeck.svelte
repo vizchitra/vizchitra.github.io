@@ -17,7 +17,7 @@
 </script>
 
 {#if id}
-	<div class="speakerdeck-container container mx-auto px-6" style="max-width: {maxWidth};">
+	<div class="speakerdeck-container" style="max-width: {maxWidth};">
 		<iframe
 			class={className}
 			frameborder="0"

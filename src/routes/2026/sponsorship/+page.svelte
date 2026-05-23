@@ -395,7 +395,7 @@
 		{
 			heading: 'Experiential by intention and memorable by craft',
 			body: 'The exhibition, the venue, the format. BIC is considered choice. Data, Otherwise is centerpience. Every element of VizChitra is crafter to be felt, not just attended.',
-			color: 'teal'
+			color: 'grey'
 		}
 	];
 
@@ -428,7 +428,7 @@
 		{
 			heading: 'Stay visible beyond the two days',
 			body: 'Session recordings, social content, community memory. VizChitra lives in the practitioner ecosystem long after July.',
-			color: 'orange'
+			color: 'grey'
 		}
 	];
 </script>
@@ -476,8 +476,9 @@
 		<Prose>
 			<h2>What Makes VizChitra Unique</h2>
 			<p>
-				VizChitra is the most intentional data event in India. Every choice of who speaks, what is
-				shared, where it happens is made with care for the craft and the community it serves.
+				VizChitra is the most deliberately crafted data event in India. Every choice: who speaks,
+				what is shown, how people encounter it, is made with care for the craft and the community it
+				serves.
 			</p>
 		</Prose>
 
@@ -628,7 +629,6 @@
 			id="17bfc05b62dc4240b2d7fa946f6c6900"
 			title="Sponsorship 2026 | VizChitra"
 			aspectRatio="1 / 1"
-			maxWidth="80vh"
 		/>
 	</Stack>
 </Container>
