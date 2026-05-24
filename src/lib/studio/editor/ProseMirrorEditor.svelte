@@ -30,7 +30,8 @@
 
 	// ── Floating toolbar state ─────────────────────────────────────────────
 	let toolbarCoords = $state<{ top: number; left: number } | null>(null);
-	let toolbarView = $state<EditorView | null>(null);
+	// $state.raw: EditorView is a class instance — deep Proxy breaks view.dispatch binding
+	let toolbarView = $state.raw<EditorView | null>(null);
 
 	// ── Input rules ────────────────────────────────────────────────────────
 	function buildInputRules() {

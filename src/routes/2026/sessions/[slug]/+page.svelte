@@ -222,7 +222,7 @@
 			{#if isStudioUser && isEditing}
 				<ProseMirrorEditor
 					markdown={liveDescription}
-					filePath="content/2026/data/sessions.json"
+					filePath="content/2026/data/sessions.toml"
 					onChange={(md) => (liveDescription = md)}
 				/>
 			{:else}
@@ -241,7 +241,7 @@
 				{#if isStudioUser && isEditing}
 					<ProseMirrorEditor
 						markdown={liveSpeakerAbout}
-						filePath="content/2026/data/sessions.json"
+						filePath="content/2026/data/sessions.toml"
 						onChange={(md) => (liveSpeakerAbout = md)}
 					/>
 				{:else}

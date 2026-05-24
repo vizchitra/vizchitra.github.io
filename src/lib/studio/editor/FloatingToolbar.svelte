@@ -1,7 +1,8 @@
 <script lang="ts">
 	import type { EditorView } from 'prosemirror-view';
-	import { toggleMark, setBlockType, wrapIn } from 'prosemirror-commands';
+	import { toggleMark, setBlockType, wrapIn, lift } from 'prosemirror-commands';
 	import { wrapInList } from 'prosemirror-schema-list';
+	import type { Command } from 'prosemirror-state';
 	import { editorSchema as schema } from './editorSchema';
 
 	interface Props {
@@ -37,6 +38,31 @@
 		if (!attrs) return node.type === nodeType;
 		return node.type === nodeType && Object.entries(attrs).every(([k, v]) => node.attrs[k] === v);
 	}
+
+	/** True when any ancestor of the selection is of the given node type. */
+	function isAncestor(nodeType: (typeof schema.nodes)[string]): boolean {
+		if (!view) return false;
+		const sel = view.state.selection;
+		for (let d = sel.$from.depth; d > 0; d--) {
+			if (sel.$from.node(d).type === nodeType) return true;
+		}
+		return false;
+	}
+
+	/** Toggle blockquote: lift if already inside one, wrap otherwise. */
+	const toggleBlockquote: Command = (state, dispatch) => {
+		const sel = state.selection;
+		let insideBlockquote = false;
+		for (let d = sel.$from.depth; d > 0; d--) {
+			if (sel.$from.node(d).type === schema.nodes.blockquote) {
+				insideBlockquote = true;
+				break;
+			}
+		}
+		return insideBlockquote
+			? lift(state, dispatch)
+			: wrapIn(schema.nodes.blockquote)(state, dispatch);
+	};
 
 	// ── Position ───────────────────────────────────────────────────────────
 	/** Keep toolbar inside the viewport horizontally (≥8px from edges). */
@@ -122,8 +148,10 @@
 		<!-- Block wraps -->
 		<button
 			type="button"
-			onmousedown={(e) => cmd(wrapIn(schema.nodes.blockquote), e)}
-			class="text-viz-grey-muted hover:bg-grey-800 hover:text-viz-grey-light rounded px-2.5 py-1.5 text-sm transition"
+			onmousedown={(e) => cmd(toggleBlockquote, e)}
+			class="rounded px-2.5 py-1.5 text-sm transition {isAncestor(schema.nodes.blockquote)
+				? 'bg-grey-700 text-viz-grey-light'
+				: 'text-viz-grey-muted hover:bg-grey-800 hover:text-viz-grey-light'}"
 			title="Blockquote">"</button
 		>
 		<button

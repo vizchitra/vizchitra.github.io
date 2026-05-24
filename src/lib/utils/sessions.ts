@@ -1,4 +1,5 @@
-import sessionsJson from '../../../content/2026/data/sessions.json';
+import { parse as parseToml } from 'smol-toml';
+import sessionsRaw from '../../../content/2026/data/sessions.toml?raw';
 
 /** Color mapping for session types, used across all session components */
 export const sessionColorMap: Record<string, 'blue' | 'teal' | 'pink' | 'orange'> = {
@@ -38,7 +39,11 @@ function withTbd(s: Omit<SessionData, 'tbd'>): SessionData {
 	return { ...s, tbd: (!s.title && !s.speakerName) || !s.display };
 }
 
-const SESSIONS_FILE_PATH = 'content/2026/data/sessions.json';
+const SESSIONS_FILE_PATH = 'content/2026/data/sessions.toml';
+
+function parseSessions(): Omit<SessionData, 'tbd'>[] {
+	return (parseToml(sessionsRaw) as { session: Omit<SessionData, 'tbd'>[] }).session;
+}
 
 function applyDevOverrides(raw: Omit<SessionData, 'tbd'>[]): Omit<SessionData, 'tbd'>[] {
 	const g = globalThis as Record<string, unknown>;
@@ -54,7 +59,7 @@ function applyDevOverrides(raw: Omit<SessionData, 'tbd'>[]): Omit<SessionData, '
 
 /** Get all sessions (confirmed + TBD placeholders) and available formats */
 export function resolveAllSessions(): { sessions: SessionData[]; formats: string[] } {
-	const raw = applyDevOverrides(sessionsJson as Omit<SessionData, 'tbd'>[]);
+	const raw = applyDevOverrides(parseSessions());
 	const sessions = raw.map(withTbd);
 	const formats = [...new Set(sessions.map((s) => s.sessionType))];
 	return { sessions, formats };
@@ -62,7 +67,7 @@ export function resolveAllSessions(): { sessions: SessionData[]; formats: string
 
 /** Get only confirmed sessions (no TBD) */
 export function resolveConfirmedSessions(): SessionData[] {
-	return applyDevOverrides(sessionsJson as Omit<SessionData, 'tbd'>[])
+	return applyDevOverrides(parseSessions())
 		.map(withTbd)
 		.filter((s) => !s.tbd);
 }

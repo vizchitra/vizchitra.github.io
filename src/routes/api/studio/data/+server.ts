@@ -24,7 +24,11 @@ const ALLOWED_PREFIX = 'content/';
 
 function isAllowed(filePath: string): boolean {
 	const norm = filePath.replace(/\\/g, '/').replace(/^\/+/, '');
-	return !norm.includes('..') && norm.startsWith(ALLOWED_PREFIX) && norm.endsWith('.json');
+	return (
+		!norm.includes('..') &&
+		norm.startsWith(ALLOWED_PREFIX) &&
+		(norm.endsWith('.json') || norm.endsWith('.toml'))
+	);
 }
 
 export const POST: RequestHandler = async ({ request, locals, platform }) => {
@@ -73,12 +77,28 @@ export const POST: RequestHandler = async ({ request, locals, platform }) => {
 				});
 			}
 
-			const currentData: unknown = JSON.parse(readFileSync(absolute, 'utf-8'));
+			const raw = readFileSync(absolute, 'utf-8');
+			const isToml = absolute.endsWith('.toml');
+			let currentData: unknown;
+			if (isToml) {
+				const { parse: parseToml } = await import('smol-toml');
+				currentData = parseToml(raw);
+			} else {
+				currentData = JSON.parse(raw);
+			}
+
+			// TOML array files are stored as { session: [...] }
+			const arrayData = isToml
+				? (currentData as Record<string, unknown[]>)[Object.keys(currentData as object)[0]]
+				: currentData;
+			const rootKey = isToml ? Object.keys(currentData as object)[0] : null;
+
 			let updated: unknown;
-			if (Array.isArray(currentData)) {
-				updated = currentData.map((item: Record<string, unknown>) =>
+			if (Array.isArray(arrayData)) {
+				const updatedArray = arrayData.map((item: Record<string, unknown>) =>
 					item.slug === key ? { ...item, ...data } : item
 				);
+				updated = isToml ? { [rootKey!]: updatedArray } : updatedArray;
 			} else if (currentData && typeof currentData === 'object') {
 				updated = {
 					...(currentData as Record<string, unknown>),
@@ -91,7 +111,14 @@ export const POST: RequestHandler = async ({ request, locals, platform }) => {
 				throw new Error('Cannot parse existing file');
 			}
 
-			writeFileSync(absolute, JSON.stringify(updated, null, '\t') + '\n', 'utf-8');
+			let serialised: string;
+			if (isToml) {
+				const { stringify: stringifyToml } = await import('smol-toml');
+				serialised = stringifyToml(updated as Record<string, unknown>);
+			} else {
+				serialised = JSON.stringify(updated, null, '\t') + '\n';
+			}
+			writeFileSync(absolute, serialised, 'utf-8');
 
 			// Store the override in globalThis so resolveAllSessions can apply it
 			// immediately without waiting for Vite's file-watcher to invalidate
@@ -138,7 +165,12 @@ export const POST: RequestHandler = async ({ request, locals, platform }) => {
 				});
 				if (!Array.isArray(fileData) && fileData.type === 'file') {
 					const decoded = atob(fileData.content.replace(/\n/g, ''));
-					currentData = JSON.parse(decoded);
+					if (repoPath.endsWith('.toml')) {
+						const { parse: parseToml } = await import('smol-toml');
+						currentData = parseToml(decoded);
+					} else {
+						currentData = JSON.parse(decoded);
+					}
 					if (ref === branchName) sha = fileData.sha;
 				}
 				break;
@@ -148,12 +180,18 @@ export const POST: RequestHandler = async ({ request, locals, platform }) => {
 		}
 
 		// Apply the update
+		const isToml = repoPath.endsWith('.toml');
+		const arrayData = isToml
+			? (currentData as Record<string, unknown[]>)[Object.keys(currentData as object)[0]]
+			: currentData;
+		const rootKey = isToml ? Object.keys(currentData as object)[0] : null;
+
 		let updated: unknown;
-		if (Array.isArray(currentData)) {
-			// Array file: find item by slug and shallow-merge
-			updated = currentData.map((item: Record<string, unknown>) =>
+		if (Array.isArray(arrayData)) {
+			const updatedArray = arrayData.map((item: Record<string, unknown>) =>
 				item.slug === key ? { ...item, ...data } : item
 			);
+			updated = isToml ? { [rootKey!]: updatedArray } : updatedArray;
 		} else if (currentData && typeof currentData === 'object') {
 			// Object file: merge into key
 			updated = {
@@ -172,8 +210,14 @@ export const POST: RequestHandler = async ({ request, locals, platform }) => {
 			});
 		}
 
-		// Write updated JSON to staging branch
-		const serialised = JSON.stringify(updated, null, 2) + '\n';
+		// Write updated file to staging branch
+		let serialised: string;
+		if (isToml) {
+			const { stringify: stringifyToml } = await import('smol-toml');
+			serialised = stringifyToml(updated as Record<string, unknown>);
+		} else {
+			serialised = JSON.stringify(updated, null, 2) + '\n';
+		}
 		const content = btoa(unescape(encodeURIComponent(serialised)));
 
 		await octokit.repos.createOrUpdateFileContents({

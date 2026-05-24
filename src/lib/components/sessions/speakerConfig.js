@@ -18,7 +18,7 @@
 /** @type {Record<string, { x?: number; y?: number; scale?: number }>} */
 export const speakerImageTransforms = {
 	// Workshops
-	'Kenneth Dsouza / Rasagy Sharma': { x: 10, y: -65, scale: 1.3 },
+	'Kenneth Dsouza // Rasagy Sharma': { x: 10, y: -65, scale: 1.3 },
 	'Areena Arora': { x: 10, y: 5, scale: 1.1 },
 	'Schubert de Abreu': { x: 14, y: -25, scale: 1.1 },
 	'Priti Pandurangan': { x: 15, y: -30, scale: 0.9 },
@@ -53,7 +53,7 @@ export const speakerImageTransforms = {
 	'Shreya Dan': { x: 10, y: -25, scale: 1.2 },
 	'Kashvi Bansal': { x: 10, y: -25, scale: 1.2 },
 	'Sadhana Lokesh': { x: 10, y: -25, scale: 1.2 },
-	'Nithya Kirti / Arkoprabho Bhattacharjee': { x: 10, y: -25, scale: 1.2 }
+	'Nithya Kirti // Arkoprabho Bhattacharjee': { x: 10, y: -25, scale: 1.2 }
 };
 
 /**
