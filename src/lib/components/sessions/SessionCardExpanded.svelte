@@ -5,7 +5,6 @@
 	import PatternComingSoon from './PatternComingSoon.svelte';
 	import { sessionColorMap } from '$lib/utils/sessions';
 	import { themeTokens, colorTokens } from '$lib/tokens';
-	import { base } from '$app/paths';
 	import { buildSpeakerImageTransform } from './speakerConfig.js';
 
 	interface Props {
@@ -200,7 +199,7 @@
 	</div>
 {:else}
 	{@const currentColor = colorClasses[color] ?? colorClasses.blue}
-	<div class="sessions-card-wrapper group relative mx-auto w-full">
+	<div class="sessions-card-wrapper group @container relative mx-auto w-full">
 		<a
 			href={detailHref}
 			class="sessions-card bg-viz-white border-viz-grey/40 isolate block w-full transform-gpu overflow-hidden rounded border transition-[transform,box-shadow] group-hover:scale-102"
@@ -301,17 +300,35 @@
 				<div
 					class="background-container-expanded relative z-0 flex w-full flex-1 flex-row items-center justify-end"
 				>
-					<div
-						class="speaker-image pointer-events-none absolute right-5 bottom-0 origin-center transition-transform duration-300 group-hover:scale-104 group-hover:rotate-1"
-						style:transform={buildSpeakerImageTransform(speakerName, screenWidth, sessionType)}
-					>
-						<img
-							class="relative z-10 h-auto w-full"
-							style="filter: drop-shadow(0px 8px 16px {shadowColor}cc)"
-							src="{base}{speakerImage || '/images/speakers/2026/speaker-placeholder.avif'}"
-							alt="{speakerName}'s photo"
-						/>
-					</div>
+					{#each (speakerImage || '')
+						.split('//')
+						.map((s) => s.trim())
+						.filter(Boolean) as img, i}
+						<div
+							class="speaker-image pointer-events-none absolute bottom-0 origin-center transition-transform duration-300 group-hover:scale-104 group-hover:rotate-1"
+							style:right="{5 + i * 30}%"
+							style:transform={buildSpeakerImageTransform(speakerName, screenWidth, sessionType)}
+						>
+							<img
+								class="relative z-10 h-auto w-full"
+								style="filter: drop-shadow(0px 8px 16px {shadowColor}cc)"
+								src={img}
+								alt={speakerName?.split('//')[i]?.trim() ?? speakerName ?? ''}
+							/>
+						</div>
+					{:else}
+						<div
+							class="speaker-image pointer-events-none absolute right-5 bottom-0 origin-center transition-transform duration-300 group-hover:scale-104 group-hover:rotate-1"
+							style:transform={buildSpeakerImageTransform(speakerName, screenWidth, sessionType)}
+						>
+							<img
+								class="relative z-10 h-auto w-full"
+								style="filter: drop-shadow(0px 8px 16px {shadowColor}cc)"
+								src="/images/speakers/2026/speaker-placeholder.avif"
+								alt={speakerName ?? ''}
+							/>
+						</div>
+					{/each}
 				</div>
 
 				<div
@@ -349,25 +366,27 @@
 							<h3
 								class="font-display text-shadow mb-1 text-[18px] leading-none text-[#4c4c4c] uppercase md:text-[20px] lg:text-[22px] 2xl:text-[26px] 2xl:text-shadow-none!"
 							>
-								{#each speakerName.split('/').map((s) => s.trim()) as person, i}
+								{#each speakerName.split('//').map((s) => s.trim()) as person, i}
+									{@const isDual = speakerName.includes('//')}
 									{#if i > 0}<span
 											class="text-[18px] leading-none font-medium md:text-[20px] lg:text-[22px] 2xl:text-[28px]"
 										>
-											&nbsp;/
+											&nbsp;//
 										</span>{/if}
 									<span
 										class="first-name text-[18px] leading-none font-extrabold md:text-[20px] lg:text-[22px] 2xl:text-[28px]"
 										>{person.split(' ')[0]}</span
 									>
 									<span
-										class="last-name text-[18px] leading-none font-medium md:text-[20px] lg:text-[22px] 2xl:text-[28px]"
-										>{person.split(' ').slice(1).join(' ')}</span
+										class="last-name text-[18px] leading-none font-medium md:text-[20px] lg:text-[22px] 2xl:text-[28px] {isDual
+											? 'hidden @sm:inline'
+											: ''}">{person.split(' ').slice(1).join(' ')}</span
 									>
 								{/each}
 							</h3>
 							{#if designation || organisation}
 								<span
-									class="font-display block text-sm leading-tight text-[#4c4c4c] uppercase md:text-[14px] lg:text-[15px] 2xl:text-lg"
+									class="font-display block text-sm leading-tight text-[#4c4c4c] md:text-[14px] lg:text-[15px] 2xl:text-lg"
 								>
 									{#if designation}
 										{designation}

@@ -140,7 +140,7 @@
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
-					filePath: 'content/2026/data/sessions.json',
+					filePath: 'content/2026/data/sessions.toml',
 					key: slug,
 					data: {
 						sessionType: localType,
@@ -201,7 +201,7 @@
 
 <PanelShell
 	breadcrumb="content/2026/"
-	fileName="sessions.json"
+	fileName="sessions.toml"
 	editLabel="Edit session"
 	{isEditing}
 	{saving}
