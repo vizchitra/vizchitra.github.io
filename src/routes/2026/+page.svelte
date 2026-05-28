@@ -19,6 +19,7 @@
 		CursorHint
 	} from '$lib/components';
 	import SessionCardExpanded from '$lib/components/sessions/SessionCardExpanded.svelte';
+	import PhotoStrip from '$lib/components/sections/PhotoStrip.svelte';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -194,6 +195,13 @@
 	// Rotating quotes
 	import { onMount, onDestroy } from 'svelte';
 
+	// Photos from VizChitra 2025 — drop files into static/images/photos/
+	const eventPhotos: string[] = [
+		// '/images/photos/01.webp',
+		// '/images/photos/02.webp',
+		// Add more as they arrive
+	];
+
 	const quotes = [
 		{
 			text: '"I realised there are so many people interested in data vis and it made me really happy"',
@@ -233,7 +241,28 @@
 		{
 			text: '"The diversity of talks! There was a relatable topic for all kinds of people from different backgrounds"',
 			attr: 'Engineer'
-		}
+		},
+		{
+			text: '"The vibe, community, and the fact we actually have a data viz conference in India"',
+			attr: 'Engineer'
+		},
+		{
+			text: '"Less AI fluff, more human depth. High authenticity across the program"',
+			attr: 'Attendee'
+		},
+		{
+			text: '"Speakers were practitioners of their craft. Non-intrusive engagement by sponsors. Timeliness. Stickers."',
+			attr: 'Data Scientist'
+		},
+		{
+			text: '"The curation, mix and variety of speakers and themes"',
+			attr: 'Information Designer'
+		},
+		{
+			text: '"Eye-opening — I discovered so many new ideas and perspectives I hadn\'t encountered before"',
+			attr: 'Product Designer'
+		},
+		{ text: '"It was good to get out of the tech bubble"', attr: 'Product Designer' }
 	];
 
 	let quoteIndex = $state(0);
@@ -322,7 +351,7 @@
 		</Heading>
 
 		<Text type="lead" align="center">
-			Over 300 practitioners gather for talks, workshops, dialogues, and an exhibition.<br />
+			Join us for talks, workshops, dialogues, and an exhibition.<br />
 			Two days of data visualization, curated by India's data viz community
 		</Text>
 
@@ -354,7 +383,78 @@
 		</div>
 
 		<DividerCurves />
+	</Stack>
+</Container>
 
+<div class="feedback-strip">
+	<div class="feedback-inner">
+		<h2 class="feedback-heading">What attendees told us after VizChitra 2025</h2>
+
+		<p class="feedback-context">How was your overall experience?</p>
+		<div class="stacked-bar">
+			<div
+				class="bar-segment"
+				style="width: 25%; background: oklch(96% 0.03 354);"
+				title="Far exceeded expectations (25%)"
+			></div>
+			<div
+				class="bar-segment"
+				style="width: 32%; background: oklch(84% 0.12 354);"
+				title="Better than expected (32%)"
+			></div>
+			<div
+				class="bar-segment"
+				style="width: 25%; background: oklch(66% 0.18 354);"
+				title="Met expectations (25%)"
+			></div>
+			<div
+				class="bar-segment"
+				style="width: 17%; background: oklch(46% 0.17 354);"
+				title="Met some expectations (17%)"
+			></div>
+			<div
+				class="bar-segment"
+				style="width: 1%; background: oklch(36% 0.15 354);"
+				title="Did not meet (1%)"
+			></div>
+		</div>
+		<div class="bar-legend">
+			<span class="legend-item"
+				><span class="legend-dot" style="background: oklch(96% 0.03 354);"></span> Far exceeded (25%)</span
+			>
+			<span class="legend-item"
+				><span class="legend-dot" style="background: oklch(84% 0.12 354);"></span> Better than expected
+				(32%)</span
+			>
+			<span class="legend-item"
+				><span class="legend-dot" style="background: oklch(66% 0.18 354);"></span> Met expectations (25%)</span
+			>
+			<span class="legend-item"
+				><span class="legend-dot" style="background: oklch(46% 0.17 354);"></span> Met some (17%)</span
+			>
+		</div>
+
+		<h3 class="feedback-subheading">What they liked most</h3>
+
+		<div class="quote-rotator">
+			{#key quoteIndex}
+				<div class="quote-anim">
+					<p class="quote-rotating">{currentQuote.text}</p>
+					<p class="quote-rotating-attr">— {currentQuote.attr}</p>
+				</div>
+			{/key}
+		</div>
+
+		{#if eventPhotos.length > 0}
+			<div style="margin-top: 2rem;">
+				<PhotoStrip photos={eventPhotos} height="240px" ariaLabel="VizChitra 2025 moments" />
+			</div>
+		{/if}
+	</div>
+</div>
+
+<Container>
+	<Stack>
 		<!-- ── What's On ─────────────────────────────────────────────────── -->
 
 		<!-- <Heading tag="h2" class="font-normal">
@@ -395,69 +495,18 @@
 			{@render sessionRow('Dialogues')}
 		</Stack>
 
-		<!-- ── Attendee Feedback Strip ─────────────────────────────────── -->
-
 		<DividerCurves />
 	</Stack>
 </Container>
 
-<div class="feedback-strip">
-	<div class="feedback-inner">
-		<h2 class="feedback-heading">What attendees told us after VizChitra 2025</h2>
-
-		<p class="feedback-context">How was your overall experience?</p>
-		<div class="stacked-bar">
-			<div
-				class="bar-segment"
-				style="width: 25%; background: #f0c4d6;"
-				title="Far exceeded expectations (25%)"
-			></div>
-			<div
-				class="bar-segment"
-				style="width: 32%; background: #e08db2;"
-				title="Better than expected (32%)"
-			></div>
-			<div
-				class="bar-segment"
-				style="width: 25%; background: #c4325a;"
-				title="Met expectations (25%)"
-			></div>
-			<div
-				class="bar-segment"
-				style="width: 17%; background: #7a1a3e;"
-				title="Met some expectations (17%)"
-			></div>
-			<div
-				class="bar-segment"
-				style="width: 1%; background: #3a0a1a;"
-				title="Did not meet (1%)"
-			></div>
-		</div>
-		<div class="bar-legend">
-			<span class="legend-item"
-				><span class="legend-dot" style="background: #f0c4d6;"></span> Far exceeded (25%)</span
-			>
-			<span class="legend-item"
-				><span class="legend-dot" style="background: #e08db2;"></span> Better than expected (32%)</span
-			>
-			<span class="legend-item"
-				><span class="legend-dot" style="background: #c4325a;"></span> Met expectations (25%)</span
-			>
-			<span class="legend-item"
-				><span class="legend-dot" style="background: #7a1a3e;"></span> Met some (17%)</span
-			>
-		</div>
-
-		<h3 class="feedback-subheading">What they liked most</h3>
-
-		<div class="quote-rotator">
-			{#key quoteIndex}
-				<div class="quote-anim">
-					<p class="quote-rotating">{currentQuote.text}</p>
-					<p class="quote-rotating-attr">— {currentQuote.attr}</p>
-				</div>
-			{/key}
-		</div>
+<div class="sponsor-banner">
+	<div class="sponsor-banner-inner">
+		<h2 class="sponsor-banner-heading">Sponsor VizChitra 2026</h2>
+		<p class="sponsor-banner-text">
+			Put your organisation in the room where India's data visualization community comes together.
+			Sponsorship starts at ₹50,000.
+		</p>
+		<a href="/2026/sponsorship" class="sponsor-banner-btn">View Sponsorship Packages →</a>
 	</div>
 </div>
 
@@ -643,7 +692,7 @@
 	/* ── Feedback strip ────────────────────────────────────────────── */
 
 	.feedback-strip {
-		background: #1a1a1a;
+		background: oklch(26% 0.13 354);
 		color: white;
 		padding: 3rem 0;
 		margin: 0;
@@ -773,6 +822,63 @@
 		margin: 0;
 		color: #ccc;
 		text-align: right;
+	}
+
+	/* ── Sponsorship banner ────────────────────────────────────────── */
+
+	.sponsor-banner {
+		background:
+			linear-gradient(to right, oklch(36% 0.15 354 / 0.85), oklch(46% 0.17 354 / 0.8)),
+			url('/images/events/conference-banner.webp') center / cover no-repeat;
+		padding: 3.5rem 0;
+		width: 100vw;
+		position: relative;
+		left: 50%;
+		right: 50%;
+		margin-left: -50vw;
+		margin-right: -50vw;
+		text-align: center;
+	}
+
+	.sponsor-banner-inner {
+		max-width: 700px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+
+	.sponsor-banner-heading {
+		font-family: var(--font-display);
+		font-size: 2rem;
+		font-weight: 800;
+		color: white;
+		margin: 0 0 0.75rem;
+	}
+
+	.sponsor-banner-text {
+		font-size: 1.1rem;
+		line-height: 1.5;
+		color: rgba(255, 255, 255, 0.9);
+		margin: 0 0 1.5rem;
+	}
+
+	.sponsor-banner-btn {
+		display: inline-block;
+		background: white;
+		color: oklch(36% 0.15 354);
+		font-family: var(--font-display);
+		font-size: 1.2rem;
+		font-weight: 800;
+		padding: 1rem 2.5rem;
+		border-radius: 4px;
+		text-decoration: none;
+		transition:
+			transform 0.3s ease,
+			box-shadow 0.3s ease;
+	}
+
+	.sponsor-banner-btn:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 	}
 
 	/* ── Mobile layout ──────────────────────────────────────────────── */

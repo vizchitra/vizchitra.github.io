@@ -11,11 +11,9 @@ ogImage: /images/preview/preview-scholarships.jpg
 
 Data visualization is a field that rewards access: to tools, to education, to community. We want VizChitra to reflect the full range of people working with data in India.
 
-These financial aid scholarships exist to make that possible. If cost is standing between you and being at VizChitra 2026, apply.
+These financial aid scholarships exist to make that possible.
 
-::button[Apply for Scholarship]{href="https://forms.vizchitra.com/scholarships" color="pink"}
-
-**Applications close May 25, 2026.**
+**Applications are now closed.** We are currently reviewing applications. Recipients will be notified by email.
 
 ## The Scholarship
 
@@ -35,10 +33,8 @@ You don't need to tick every box. If you're unsure, apply.
 
 ## How it works
 
-Fill out the form before **May 25, 2026**. Applications will be reviewed by a panel from the VizChitra community based on financial need, geographic access, career stage, impact outcome, and lived experience. Final decisions will be communicated by email within a week of the deadline.
+Applications were open until **May 25, 2026** and are now closed. All applications are being reviewed by a panel from the VizChitra community based on financial need, geographic access, career stage, impact outcome, and lived experience. Recipients will be notified by email by **June 8, 2026**.
 
-::button[Apply for Scholarship]{href="https://forms.vizchitra.com/scholarships" color="pink"}
-
-_Want to attend and can afford it? [Buy a ticket](https://tickets.vizchitra.com/) instead. It helps us offer more scholarships._
+_Want to attend and can afford it? [Buy a ticket](https://tickets.vizchitra.com/) — it helps us offer more scholarships._
 
 _Questions? Write to us at [hello@vizchitra.com](mailto:hello@vizchitra.com)_
