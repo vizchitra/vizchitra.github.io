@@ -540,17 +540,6 @@
 
 		<DividerCurves />
 
-		<!-- Participant Profile -->
-		<Prose>
-			<h2>Participant Profile @ 2025</h2>
-			<p>
-				Largest gathering of data visualization practitioners in India with representation across
-				the spectrum of organisations and work.
-			</p>
-		</Prose>
-
-		<DividerCurves />
-
 		<!-- Sponsor Experience -->
 		<Prose>
 			<h2>Sponsor Experience @ 2025</h2>

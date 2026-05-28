@@ -195,74 +195,58 @@
 	// Rotating quotes
 	import { onMount, onDestroy } from 'svelte';
 
-	// Photos from VizChitra 2025 — drop files into static/images/photos/
 	const eventPhotos: string[] = [
-		// '/images/photos/01.webp',
-		// '/images/photos/02.webp',
-		// Add more as they arrive
+		'/images/photos/hug.jpg',
+		'/images/photos/packed-auditorium.jpg',
+		'/images/photos/aditi-performance-1.jpg',
+		'/images/photos/speaker-stage.jpg',
+		'/images/photos/tote-bag.jpg',
+		'/images/photos/dialogue-circle.jpg',
+		'/images/photos/collaborating.jpg',
+		'/images/photos/crowd-registration.jpg',
+		'/images/photos/workshop-hands.jpg',
+		'/images/photos/audience-clapping.jpg',
+		'/images/photos/dialogue.jpg',
+		'/images/photos/crowd-listening.jpg',
+		'/images/photos/workshop-pair.jpg',
+		'/images/photos/stage-group.jpg',
+		'/images/photos/networking.jpg',
+		'/images/photos/group-photo.jpg'
 	];
 
 	const quotes = [
 		{
-			text: '"I realised there are so many people interested in data vis and it made me really happy"',
-			attr: 'Attendee'
+			text: "Attending this conference was truly eye-opening—I discovered so many new ideas and perspectives that I hadn't encountered before. Unlike other events, this one stood out for its unique approach and inclusive atmosphere."
 		},
 		{
-			text: '"The sessions explored data not just as numbers, but as stories with meaning and emotion"',
-			attr: 'Information Designer'
+			text: 'What I appreciate most about Vizchitra is its commitment to community growth. By encouraging everyone to speak up and share their thoughts, the event creates a platform where every voice matters.'
 		},
 		{
-			text: '"Good to see like-minded individuals in a niche field for the first time at such a large gathering"',
-			attr: 'Information Designer'
+			text: 'Please continue with this wonderful approach. Giving everyone a chance to shine not only empowers individuals, but also helps us all learn from the very best. Looking forward to more such opportunities in the future!'
 		},
 		{
-			text: '"I got the chance to speak to S Rukmini, Srinivasan Ramani and some other superb people. I never expected that"',
-			attr: 'Researcher'
-		},
-		{ text: '"The general warmth of everyone present"', attr: 'Data Journalist' },
-		{ text: '"The energy and the effort in creating a meaningful experience"', attr: 'Researcher' },
-		{ text: '"Emphasis on experiencing data viscerally"', attr: 'Attendee' },
-		{
-			text: '"Engaging speakers with substance, participatory data viz installations, great branding, great venue"',
-			attr: 'Information Designer'
+			text: 'As someone from a tech background, it was great to exchange ideas with journalists, writers, designers and product managers—and see how each perspective brings data to life. The focus on Why & What sparking fresh questions about purpose and impact.'
 		},
 		{
-			text: '"It was great to exchange ideas with journalists, writers, designers — and see how each perspective brings data to life"',
-			attr: 'Engineer'
+			text: 'Apart from the conference hall itself, the spaces outside (the participatory viz exhibits and booths) felt like a very inviting and conducive space for talking and picking each others brains across so many different kinds of designers, researchers, journalists — that was incredible!'
 		},
 		{
-			text: '"Well organized, interesting mix of sessions and speakers, things moving on time without seeming forced, good cheer"',
-			attr: 'Data Journalist'
+			text: 'The conference was incredibly insightful and inspiring. I especially appreciated how the sessions explored data not just as numbers, but as stories with meaning and emotion. It made me reflect on how I approach information design with more empathy, context, and clarity. The diversity of speakers and the openness in sharing process and challenges made the experience very valuable.'
 		},
 		{
-			text: '"Loved meeting new people who shared the same passion, being open about how to get better without any judgement"',
-			attr: 'Attendee'
+			text: 'Engaging speakers with substance and actionable information and insights, cool merch with viz integrated in them, participatory data viz installations, great branding, great venue.'
 		},
 		{
-			text: '"The diversity of talks! There was a relatable topic for all kinds of people from different backgrounds"',
-			attr: 'Engineer'
+			text: 'I also loved the idea of booth spaces where people could mingle, play games and even have cookies. Loved the overall vibe and positive learning environment and eager to see how the next event unfolds. Kudos to the organisers, volunteers and everyone involved.'
+		},
+		{ text: 'Loved the logo, branding and the entire vibe of the conference!' },
+		{ text: 'Being part of a community of people who are both intelligent and creative.' },
+		{
+			text: 'I got the chance to speak to S Rukmini, Srinivasan Ramani and some other superb people. I never expected that.'
 		},
 		{
-			text: '"The vibe, community, and the fact we actually have a data viz conference in India"',
-			attr: 'Engineer'
-		},
-		{
-			text: '"Less AI fluff, more human depth. High authenticity across the program"',
-			attr: 'Attendee'
-		},
-		{
-			text: '"Speakers were practitioners of their craft. Non-intrusive engagement by sponsors. Timeliness. Stickers."',
-			attr: 'Data Scientist'
-		},
-		{
-			text: '"The curation, mix and variety of speakers and themes"',
-			attr: 'Information Designer'
-		},
-		{
-			text: '"Eye-opening — I discovered so many new ideas and perspectives I hadn\'t encountered before"',
-			attr: 'Product Designer'
-		},
-		{ text: '"It was good to get out of the tech bubble"', attr: 'Product Designer' }
+			text: 'High authenticity was evident across majority of talks. Less AI fluff, More human depth across the program. When AI came up it was done well.'
+		}
 	];
 
 	let quoteIndex = $state(0);
@@ -272,7 +256,7 @@
 	onMount(() => {
 		quoteTimer = setInterval(() => {
 			quoteIndex = (quoteIndex + 1) % quotes.length;
-		}, 4000);
+		}, 6000);
 	});
 
 	onDestroy(() => {
@@ -381,12 +365,21 @@
 				<span class="hero-btn-text">See all Sessions →</span>
 			</a>
 		</div>
-
-		<DividerCurves />
 	</Stack>
 </Container>
 
 <div class="feedback-strip">
+	{#if eventPhotos.length > 0}
+		<div>
+			<PhotoStrip
+				photos={eventPhotos}
+				height="320px"
+				autoplayInterval={6000}
+				ariaLabel="VizChitra 2025 moments"
+			/>
+		</div>
+	{/if}
+
 	<div class="feedback-inner">
 		<h2 class="feedback-heading">What attendees told us after VizChitra 2025</h2>
 
@@ -439,17 +432,10 @@
 		<div class="quote-rotator">
 			{#key quoteIndex}
 				<div class="quote-anim">
-					<p class="quote-rotating">{currentQuote.text}</p>
-					<p class="quote-rotating-attr">— {currentQuote.attr}</p>
+					<p class="quote-rotating">{'\u201C'}{currentQuote.text}{'\u201D'}</p>
 				</div>
 			{/key}
 		</div>
-
-		{#if eventPhotos.length > 0}
-			<div style="margin-top: 2rem;">
-				<PhotoStrip photos={eventPhotos} height="240px" ariaLabel="VizChitra 2025 moments" />
-			</div>
-		{/if}
 	</div>
 </div>
 
@@ -513,8 +499,6 @@
 <Container>
 	<Stack>
 		<!-- ── Browse Submissions ─────────────────────────────────────────── -->
-
-		<DividerCurves />
 
 		<Heading tag="h2" class="font-normal">
 			<Slanted color="blue" textContent="BROWSE SUBMISSIONS" />
@@ -694,7 +678,7 @@
 	.feedback-strip {
 		background: oklch(26% 0.13 354);
 		color: white;
-		padding: 3rem 0;
+		padding: 0 0 1.5rem;
 		margin: 0;
 		width: 100vw;
 		position: relative;
@@ -714,7 +698,8 @@
 		font-family: var(--font-display);
 		font-size: 1.8rem;
 		font-weight: 800;
-		margin: 0 0 2rem;
+		margin: 2rem 0 2rem;
+		text-align: center;
 	}
 
 	.feedback-subheading {
@@ -725,6 +710,7 @@
 		opacity: 0.7;
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
+		text-align: center;
 	}
 
 	.feedback-context {
@@ -733,6 +719,7 @@
 		margin: 0 0 0.5rem;
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
+		text-align: center;
 		font-weight: 600;
 	}
 
@@ -742,6 +729,8 @@
 		border-radius: 4px;
 		overflow: hidden;
 		gap: 2px;
+		max-width: 800px;
+		margin: 0 auto;
 	}
 
 	.bar-segment {
@@ -753,6 +742,7 @@
 		gap: 1.5rem;
 		flex-wrap: wrap;
 		margin-top: 0.75rem;
+		justify-content: center;
 	}
 
 	.legend-item {
@@ -775,30 +765,32 @@
 	.quote-rotator {
 		min-height: 130px;
 		max-width: 700px;
+		margin: 0 auto;
 		position: relative;
 		overflow: hidden;
+		text-align: center;
 	}
 
 	.quote-anim {
-		animation: quoteFadeUp 4s ease both;
+		animation: quoteFadeUp 6s ease both;
 	}
 
 	@keyframes quoteFadeUp {
 		0% {
 			opacity: 0;
-			transform: translateY(16px);
+			transform: translateY(12px);
 		}
-		8% {
+		5% {
 			opacity: 1;
 			transform: translateY(0);
 		}
-		85% {
+		90% {
 			opacity: 1;
 			transform: translateY(0);
 		}
 		100% {
 			opacity: 0;
-			transform: translateY(-10px);
+			transform: translateY(-8px);
 		}
 	}
 
@@ -829,7 +821,7 @@
 	.sponsor-banner {
 		background:
 			linear-gradient(to right, oklch(36% 0.15 354 / 0.85), oklch(46% 0.17 354 / 0.8)),
-			url('/images/events/conference-banner.webp') center / cover no-repeat;
+			url('/images/photos/packed-auditorium.jpg') center / cover no-repeat;
 		padding: 3.5rem 0;
 		width: 100vw;
 		position: relative;

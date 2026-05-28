@@ -1,34 +1,47 @@
 <script lang="ts">
+	import { onMount, onDestroy } from 'svelte';
+
 	interface Props {
 		photos: string[];
 		height?: string;
 		ariaLabel?: string;
+		autoplayInterval?: number;
 	}
 
-	let { photos, height = '280px', ariaLabel = 'Event photos' }: Props = $props();
+	let {
+		photos,
+		height = '280px',
+		ariaLabel = 'Event photos',
+		autoplayInterval = 6000
+	}: Props = $props();
 
-	let scrollProgress = $state(0);
-	let isOverflowing = $state(false);
+	// Duplicate photos for seamless looping
+	const loopedPhotos = $derived([...photos, ...photos]);
+
+	let scrollEl: HTMLElement | undefined = $state();
+	let autoplayTimer: ReturnType<typeof setInterval>;
+	let userInteracting = false;
+	let halfwayPoint = 0;
 
 	function initScroller(node: HTMLElement) {
+		scrollEl = node;
 		let isDown = false;
 		let startX = 0;
 		let scrollLeft = 0;
 		let hasDragged = false;
 
-		function checkOverflow() {
-			isOverflowing = node.scrollWidth > node.clientWidth + 10;
-		}
-
-		function onScroll() {
-			const maxScroll = node.scrollWidth - node.clientWidth;
-			isOverflowing = maxScroll > 10;
-			scrollProgress = maxScroll > 0 ? node.scrollLeft / maxScroll : 0;
+		function measureHalfway() {
+			const totalChildren = node.children.length;
+			const halfChildren = totalChildren / 2;
+			if (halfChildren > 0 && node.children[halfChildren]) {
+				halfwayPoint = (node.children[halfChildren] as HTMLElement).offsetLeft;
+			}
 		}
 
 		node.addEventListener('mousedown', (e) => {
 			isDown = true;
 			hasDragged = false;
+			userInteracting = true;
 			node.style.cursor = 'grabbing';
 			startX = e.pageX;
 			scrollLeft = node.scrollLeft;
@@ -37,10 +50,14 @@
 		node.addEventListener('mouseleave', () => {
 			isDown = false;
 			node.style.cursor = '';
+			userInteracting = false;
 		});
 		node.addEventListener('mouseup', () => {
 			isDown = false;
 			node.style.cursor = '';
+			setTimeout(() => {
+				userInteracting = false;
+			}, 2000);
 		});
 		node.addEventListener('mousemove', (e) => {
 			if (!isDown) return;
@@ -60,10 +77,16 @@
 			},
 			true
 		);
-		node.addEventListener('scroll', onScroll);
 
-		checkOverflow();
-		const ro = new ResizeObserver(() => checkOverflow());
+		// Reset scroll seamlessly when reaching the duplicate set
+		node.addEventListener('scroll', () => {
+			if (halfwayPoint > 0 && node.scrollLeft >= halfwayPoint) {
+				node.scrollLeft = node.scrollLeft - halfwayPoint;
+			}
+		});
+
+		measureHalfway();
+		const ro = new ResizeObserver(() => measureHalfway());
 		ro.observe(node);
 		return {
 			destroy() {
@@ -71,28 +94,34 @@
 			}
 		};
 	}
+
+	function autoScroll() {
+		if (!scrollEl || userInteracting) return;
+		scrollEl.scrollTo({ left: scrollEl.scrollLeft + 400, behavior: 'smooth' });
+	}
+
+	onMount(() => {
+		autoplayTimer = setInterval(autoScroll, autoplayInterval);
+	});
+
+	onDestroy(() => {
+		if (autoplayTimer) clearInterval(autoplayTimer);
+	});
 </script>
 
 {#if photos.length > 0}
 	<div class="photo-strip-root">
-		{#if isOverflowing}
-			<div class="progress-track" aria-hidden="true">
-				<div class="progress-thumb" style="left: {scrollProgress * 70}%; width: 30%"></div>
-			</div>
-		{/if}
-
 		<div
 			class="photo-strip-scroll"
-			class:photo-draggable={isOverflowing}
 			use:initScroller
 			role="region"
 			aria-label={ariaLabel}
 			style="--strip-height: {height};"
 		>
-			{#each photos as photo, i}
+			{#each loopedPhotos as photo, i}
 				<img
 					src={photo}
-					alt="VizChitra 2025 — photo {i + 1}"
+					alt="VizChitra 2025 — photo {(i % photos.length) + 1}"
 					class="photo-strip-img"
 					loading="lazy"
 				/>
@@ -104,40 +133,19 @@
 <style>
 	.photo-strip-root {
 		width: 100%;
-	}
-
-	.progress-track {
-		position: relative;
-		height: 8px;
-		background: rgba(255, 255, 255, 0.2);
-		border-radius: 999px;
-		margin: 0 auto 10px;
-		max-width: 200px;
-	}
-
-	.progress-thumb {
-		position: absolute;
-		top: 0;
-		height: 100%;
-		background: rgba(255, 255, 255, 0.6);
-		border-radius: 999px;
-		transition: left 300ms ease;
+		overflow: hidden;
 	}
 
 	.photo-strip-scroll {
 		display: flex;
-		gap: 8px;
+		gap: 4px;
 		overflow-x: auto;
 		scrollbar-width: none;
-		scroll-snap-type: x mandatory;
+		cursor: grab;
 	}
 
 	.photo-strip-scroll::-webkit-scrollbar {
 		display: none;
-	}
-
-	.photo-draggable {
-		cursor: grab;
 	}
 
 	.photo-strip-img {
@@ -145,8 +153,6 @@
 		width: auto;
 		flex-shrink: 0;
 		object-fit: cover;
-		border-radius: 6px;
-		scroll-snap-align: start;
 	}
 
 	@media (max-width: 768px) {
