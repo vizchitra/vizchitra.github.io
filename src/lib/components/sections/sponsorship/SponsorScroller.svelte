@@ -105,17 +105,6 @@
 						<img src={s.logo} alt="{s.name} logo" class="sp-logo" />
 					</div>
 
-					<!-- Photo strip -->
-					<div class="sp-photos">
-						{#each [0, 1] as pi}
-							{#if s.photos?.[pi]}
-								<img src={s.photos[pi]} alt="{s.name} event photo {pi + 1}" class="sp-photo" />
-							{:else}
-								<div class="sp-photo-placeholder" aria-hidden="true"></div>
-							{/if}
-						{/each}
-					</div>
-
 					<!-- Quote -->
 					<div class="sp-quote-row">
 						<p class="sp-quote">"{s.quote}"</p>
@@ -199,7 +188,6 @@
 		grid-template-rows:
 			/* logo   */
 			auto
-			/* photos */ auto
 			/* quote  */ 1fr
 			/* ratings*/ auto;
 		grid-auto-flow: column;

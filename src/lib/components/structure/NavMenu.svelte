@@ -20,6 +20,7 @@
 				{ name: 'Sessions', href: '/2026/sessions' },
 				{ name: 'Sponsorship', href: '/2026/sponsorship' },
 				{ name: 'Get Tickets', href: 'https://tickets.vizchitra.com' },
+				{ name: 'Attendee Guide', href: '/2026/attendee-guide' },
 				{ name: 'Scholarships', href: '/2026/scholarships' },
 				{ name: 'Submissions', href: '/2026/submissions' }
 			],

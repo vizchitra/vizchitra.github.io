@@ -228,7 +228,7 @@
 			text: 'As someone from a tech background, it was great to exchange ideas with journalists, writers, designers and product managers—and see how each perspective brings data to life. The focus on Why & What sparking fresh questions about purpose and impact.'
 		},
 		{
-			text: 'Apart from the conference hall itself, the spaces outside (the participatory viz exhibits and booths) felt like a very inviting and conducive space for talking and picking each others brains across so many different kinds of designers, researchers, journalists — that was incredible!'
+			text: 'Apart from the conference hall itself, the spaces outside (the participatory viz exhibits and booths) felt like a very inviting and conducive space for talking and picking each others brains across so many different kinds of designers, researchers, journalists. That was incredible!'
 		},
 		{
 			text: 'The conference was incredibly insightful and inspiring. I especially appreciated how the sessions explored data not just as numbers, but as stories with meaning and emotion. It made me reflect on how I approach information design with more empathy, context, and clarity. The diversity of speakers and the openness in sharing process and challenges made the experience very valuable.'
@@ -342,7 +342,13 @@
 		<div class="hero-info">
 			<div class="hero-info-item">
 				<span class="hero-info-icon">📍</span>
-				<span><strong>Bangalore International Centre</strong></span>
+				<a
+					href="https://share.google/zWq1ZMJHTc5vJxtqX"
+					target="_blank"
+					rel="noopener"
+					class="underline decoration-1 underline-offset-2 transition-all hover:decoration-2"
+					><strong>Bangalore International Centre</strong></a
+				>
 			</div>
 			<div class="hero-info-item">
 				<span class="hero-info-icon">📅</span>

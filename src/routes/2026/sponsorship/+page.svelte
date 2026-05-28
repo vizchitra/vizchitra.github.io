@@ -17,6 +17,18 @@
 	import type { Sponsor } from '$lib/components/sections/sponsorship/SponsorScroller.svelte';
 	import EditorialScroller from '$lib/components/sections/sponsorship/EditorialScroller.svelte';
 	import type { EditorialCard } from '$lib/components/sections/sponsorship/EditorialScroller.svelte';
+	import PhotoStrip from '$lib/components/sections/PhotoStrip.svelte';
+
+	const sponsorPhotos: string[] = [
+		'/images/photos/sponsor-lilly-booth.jpg',
+		'/images/photos/sponsor-nutanix-group.jpg',
+		'/images/photos/sponsor-lightningchart-demo.jpg',
+		'/images/photos/sponsor-panel-closeup.jpg',
+		'/images/photos/sponsor-straive-lc-booths.jpg',
+		'/images/photos/sponsor-lilly-team.jpg',
+		'/images/photos/sponsor-nutanix.jpg',
+		'/images/photos/sponsor-rvl-attendees.jpg'
+	];
 
 	const mainPackages: Package[] = [
 		{
@@ -441,15 +453,18 @@
 		<Prose color="pink">
 			<h1>Sponsorship</h1>
 			<p>
-				<strong>VizChitra 2026</strong> returns to Bengaluru on 3rd &amp; 4th July at Bangalore International
-				Centre.
-			</p>
-			<p>
-				India's only community-led conference dedicated to data visualization as craft:
-				cross-disciplinary, practitioner-led, and intentional about every experience it creates. If
-				that sounds like a space your organisation belongs in, we'd love to have you as a sponsor.
+				<strong>VizChitra 2026</strong> returns to Bengaluru on 3rd &amp; 4th July. India's only community-led
+				conference dedicated to data visualization as craft: cross-disciplinary, practitioner-led, and
+				intentional about every experience it creates. If that sounds like a space your organisation belongs
+				in, we'd love to have you as a sponsor.
 			</p>
 		</Prose>
+
+		<Cluster justify="start">
+			<Button href="mailto:hello@vizchitra.com" color="pink" size="lg"
+				>✉️ Contact Us for Sponsorship →</Button
+			>
+		</Cluster>
 
 		<Grid minWidth="28ch" maxColumns={2} gap={6}>
 			<Card variant="bordered" color="pink" title="Conference Day // 4th July 2026">
@@ -469,9 +484,18 @@
 				</ul>
 			</Card>
 		</Grid>
+	</Stack>
+</Container>
 
-		<DividerCurves />
+<PhotoStrip
+	photos={sponsorPhotos}
+	height="360px"
+	autoplayInterval={6000}
+	ariaLabel="Sponsor experience at VizChitra 2025"
+/>
 
+<Container>
+	<Stack>
 		<!-- What makes VizChitra unique -->
 		<Prose>
 			<h2>What Makes VizChitra Unique</h2>
@@ -509,36 +533,47 @@
 			</p>
 		</Prose>
 
-		<Grid minWidth="16ch" maxColumns={4} gap={4}>
-			<Card variant="bordered" color="blue" title="450+">Attendees across two days</Card>
-			<Card variant="bordered" color="teal" title="200+">Organisations &amp; Institutions</Card>
-			<Card variant="bordered" color="pink" title="50+">Cities across India &amp; Abroad</Card>
-			<Card variant="bordered" color="yellow" title="120+">Live Stream Online</Card>
-		</Grid>
+		<div class="stat-grid">
+			<div class="stat-item">
+				<span class="stat-num">450+</span>
+				<span class="stat-desc">Attendees across two days</span>
+			</div>
+			<div class="stat-item">
+				<span class="stat-num">200+</span>
+				<span class="stat-desc">Organisations &amp; Institutions</span>
+			</div>
+			<div class="stat-item">
+				<span class="stat-num">50+</span>
+				<span class="stat-desc">Cities across India &amp; Abroad</span>
+			</div>
+			<div class="stat-item">
+				<span class="stat-num">120+</span>
+				<span class="stat-desc">Live Stream Online</span>
+			</div>
+		</div>
 
-		<Prose color="pink">
-			<blockquote>
-				"VizChitra 2025 was unlike any other data event I've been part of — thoughtful, warm, and
-				grounded in both rigour and imagination. It brought together people who care deeply about
-				data, and want to do something real with it. This is the kind of space that nudges you to
-				stretch your thinking — and feel part of a larger, generous community."
-				<br /><strong>— Yashna Jhamb, Ooloi Labs</strong>
-			</blockquote>
-		</Prose>
+		<div class="edition-photos">
+			<img
+				src="/images/photos/group-photo.jpg"
+				alt="VizChitra 2025 group photo"
+				class="edition-photo"
+			/>
+			<img
+				src="/images/photos/packed-auditorium.jpg"
+				alt="VizChitra 2025 packed auditorium"
+				class="edition-photo"
+			/>
+		</div>
 
-		<Grid minWidth="20ch" maxColumns={3} gap={4}>
-			<Card variant="bordered" color="teal" title="82%"
-				>of attendees said the event met or exceeded their expectations</Card
-			>
-			<Card variant="bordered" color="orange" title="57%"
-				>said it exceeded or far exceeded what they expected</Card
-			>
-			<Card variant="bordered" color="pink" title="72"
-				>attendees filled the feedback form across 10+ disciplines</Card
-			>
-		</Grid>
-
-		<DividerCurves />
+		<div class="featured-quote">
+			<p class="featured-quote-text">
+				{'\u201C'}VizChitra 2025 was unlike any other data event I've been part of. Thoughtful,
+				warm, and grounded in both rigour and imagination. It brought together people who care
+				deeply about data, and want to do something real with it. This is the kind of space that
+				nudges you to stretch your thinking and feel part of a larger, generous community.{'\u201D'}
+			</p>
+			<p class="featured-quote-attr">Yashna Jhamb, Ooloi Labs</p>
+		</div>
 
 		<!-- Sponsor Experience -->
 		<Prose>
@@ -579,6 +614,13 @@
 
 			<PackageScroller packages={additionalPackages} />
 		</Stack>
+
+		<Cluster justify="start">
+			<Button href="mailto:hello@vizchitra.com" color="pink" size="lg"
+				>✉️ Contact Us for Sponsorship →</Button
+			>
+		</Cluster>
+
 		<DividerCurves />
 
 		<!-- FAQs & Contact -->
@@ -633,3 +675,86 @@
 		/>
 	</Stack>
 </Container>
+
+<style>
+	.stat-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 1rem;
+	}
+
+	.stat-item {
+		padding: 0.5rem 0;
+	}
+
+	.stat-num {
+		font-family: var(--font-display);
+		font-size: 2.8rem;
+		font-weight: 800;
+		line-height: 1;
+		display: block;
+		color: var(--color-viz-black);
+	}
+
+	.stat-desc {
+		font-size: 0.9rem;
+		color: var(--color-viz-grey-dark);
+		display: block;
+		margin-top: 0.25rem;
+	}
+
+	.featured-quote {
+		background: oklch(26% 0.13 354);
+		border-radius: 4px;
+		padding: 2.5rem;
+		text-align: center;
+		width: 100%;
+	}
+
+	.featured-quote-text {
+		font-family: var(--font-display);
+		font-size: 1.3rem;
+		font-weight: 500;
+		font-style: italic;
+		line-height: 1.6;
+		color: #eee;
+		margin: 0 0 1rem;
+	}
+
+	.featured-quote-attr {
+		font-family: var(--font-display);
+		font-size: 0.9rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: oklch(84% 0.12 354);
+		margin: 0;
+	}
+
+	.edition-photos {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0.5rem;
+	}
+
+	.edition-photo {
+		width: 100%;
+		height: 280px;
+		object-fit: cover;
+		border-radius: 4px;
+	}
+
+	@media (max-width: 768px) {
+		.stat-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		.edition-photos {
+			grid-template-columns: 1fr;
+		}
+
+		.edition-photo {
+			height: 200px;
+		}
+	}
+</style>

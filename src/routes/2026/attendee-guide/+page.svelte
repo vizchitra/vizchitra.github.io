@@ -20,9 +20,9 @@
 		<Prose color="teal">
 			<h1>Attendee Guide</h1>
 			<p>
-				Welcome to <strong>VizChitra 2026</strong>. Whether you are joining us in person or tuning
-				in online, this guide has everything you need to navigate the two days comfortably. We have
-				been working on this edition for months and are thrilled to have you be part of it.
+				Welcome to <strong>VizChitra 2026</strong>. This guide has everything you need to navigate
+				the two days comfortably. We have been working on this edition for months and are thrilled
+				to have you be part of it.
 			</p>
 			<p>
 				Two days. Talks, dialogues, workshops, an exhibition, and a whole lot of community. Here is
