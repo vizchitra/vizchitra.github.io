@@ -19,6 +19,7 @@
 		CursorHint
 	} from '$lib/components';
 	import SessionCardExpanded from '$lib/components/sessions/SessionCardExpanded.svelte';
+	import PhotoStrip from '$lib/components/sections/PhotoStrip.svelte';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -96,14 +97,171 @@
 		}
 	};
 
-	// Scroll tracking — one entry per type
-	let activeIndex: Record<string, number> = $state({ Workshops: 0, Talks: 0, Dialogues: 0 });
+	// Scroll tracking — track which cards are visible
+	let visibleCards: Record<string, Set<number>> = $state({
+		Workshops: new Set([0]),
+		Talks: new Set([0]),
+		Dialogues: new Set([0])
+	});
 
 	function handleScroll(type: string, el: HTMLElement) {
-		const card = el.querySelector<HTMLElement>('.session-card-wrap');
-		if (!card) return;
-		activeIndex[type] = Math.round(el.scrollLeft / card.offsetWidth);
+		const cards = el.querySelectorAll<HTMLElement>('.session-card-wrap');
+		if (!cards.length) return;
+
+		const scrollLeft = el.scrollLeft;
+		const containerWidth = el.clientWidth;
+		const visible = new Set<number>();
+
+		cards.forEach((card, i) => {
+			const cardLeft = card.offsetLeft - el.offsetLeft;
+			const cardRight = cardLeft + card.offsetWidth;
+			const visibleLeft = Math.max(cardLeft, scrollLeft);
+			const visibleRight = Math.min(cardRight, scrollLeft + containerWidth);
+			const visibility = visibleRight - visibleLeft;
+			// Card is visible if more than 30% is showing
+			if (visibility > card.offsetWidth * 0.3) {
+				visible.add(i);
+			}
+		});
+
+		visibleCards[type] = visible;
 	}
+
+	// Drag-to-scroll (Svelte action)
+	function scrollAction(node: HTMLElement, type: string) {
+		let isDown = false;
+		let startX = 0;
+		let scrollLeft = 0;
+		let hasDragged = false;
+
+		function onMouseDown(e: MouseEvent) {
+			isDown = true;
+			hasDragged = false;
+			node.classList.add('is-dragging');
+			startX = e.pageX;
+			scrollLeft = node.scrollLeft;
+			e.preventDefault(); // Prevent link drag behavior
+		}
+
+		function onMouseLeave() {
+			isDown = false;
+			node.classList.remove('is-dragging');
+		}
+
+		function onMouseUp() {
+			isDown = false;
+			node.classList.remove('is-dragging');
+		}
+
+		function onMouseMove(e: MouseEvent) {
+			if (!isDown) return;
+			e.preventDefault();
+			const walk = (e.pageX - startX) * 1.5;
+			if (Math.abs(walk) > 5) hasDragged = true;
+			node.scrollLeft = scrollLeft - walk;
+		}
+
+		// Prevent click on links if we were dragging
+		function onClick(e: MouseEvent) {
+			if (hasDragged) {
+				e.preventDefault();
+				e.stopPropagation();
+				hasDragged = false;
+			}
+		}
+
+		function onScroll() {
+			handleScroll(type, node);
+		}
+
+		node.addEventListener('mousedown', onMouseDown);
+		node.addEventListener('mouseleave', onMouseLeave);
+		node.addEventListener('mouseup', onMouseUp);
+		node.addEventListener('mousemove', onMouseMove);
+		node.addEventListener('click', onClick, true); // capture phase
+		node.addEventListener('scroll', onScroll);
+
+		return {
+			destroy() {
+				node.removeEventListener('mousedown', onMouseDown);
+				node.removeEventListener('mouseleave', onMouseLeave);
+				node.removeEventListener('mouseup', onMouseUp);
+				node.removeEventListener('mousemove', onMouseMove);
+				node.removeEventListener('click', onClick, true);
+				node.removeEventListener('scroll', onScroll);
+			}
+		};
+	}
+	// Rotating quotes
+	import { onMount, onDestroy } from 'svelte';
+
+	const eventPhotos: string[] = [
+		'/images/photos/hug.jpg',
+		'/images/photos/packed-auditorium.jpg',
+		'/images/photos/aditi-performance-1.jpg',
+		'/images/photos/speaker-stage.jpg',
+		'/images/photos/tote-bag.jpg',
+		'/images/photos/dialogue-circle.jpg',
+		'/images/photos/collaborating.jpg',
+		'/images/photos/crowd-registration.jpg',
+		'/images/photos/workshop-hands.jpg',
+		'/images/photos/audience-clapping.jpg',
+		'/images/photos/dialogue.jpg',
+		'/images/photos/crowd-listening.jpg',
+		'/images/photos/workshop-pair.jpg',
+		'/images/photos/stage-group.jpg',
+		'/images/photos/networking.jpg',
+		'/images/photos/group-photo.jpg'
+	];
+
+	const quotes = [
+		{
+			text: "Attending this conference was truly eye-opening—I discovered so many new ideas and perspectives that I hadn't encountered before. Unlike other events, this one stood out for its unique approach and inclusive atmosphere."
+		},
+		{
+			text: 'What I appreciate most about Vizchitra is its commitment to community growth. By encouraging everyone to speak up and share their thoughts, the event creates a platform where every voice matters.'
+		},
+		{
+			text: 'Please continue with this wonderful approach. Giving everyone a chance to shine not only empowers individuals, but also helps us all learn from the very best. Looking forward to more such opportunities in the future!'
+		},
+		{
+			text: 'As someone from a tech background, it was great to exchange ideas with journalists, writers, designers and product managers—and see how each perspective brings data to life. The focus on Why & What sparking fresh questions about purpose and impact.'
+		},
+		{
+			text: 'Apart from the conference hall itself, the spaces outside (the participatory viz exhibits and booths) felt like a very inviting and conducive space for talking and picking each others brains across so many different kinds of designers, researchers, journalists. That was incredible!'
+		},
+		{
+			text: 'The conference was incredibly insightful and inspiring. I especially appreciated how the sessions explored data not just as numbers, but as stories with meaning and emotion. It made me reflect on how I approach information design with more empathy, context, and clarity. The diversity of speakers and the openness in sharing process and challenges made the experience very valuable.'
+		},
+		{
+			text: 'Engaging speakers with substance and actionable information and insights, cool merch with viz integrated in them, participatory data viz installations, great branding, great venue.'
+		},
+		{
+			text: 'I also loved the idea of booth spaces where people could mingle, play games and even have cookies. Loved the overall vibe and positive learning environment and eager to see how the next event unfolds. Kudos to the organisers, volunteers and everyone involved.'
+		},
+		{ text: 'Loved the logo, branding and the entire vibe of the conference!' },
+		{ text: 'Being part of a community of people who are both intelligent and creative.' },
+		{
+			text: 'I got the chance to speak to S Rukmini, Srinivasan Ramani and some other superb people. I never expected that.'
+		},
+		{
+			text: 'High authenticity was evident across majority of talks. Less AI fluff, More human depth across the program. When AI came up it was done well.'
+		}
+	];
+
+	let quoteIndex = $state(0);
+	let currentQuote = $derived(quotes[quoteIndex]);
+	let quoteTimer: ReturnType<typeof setInterval>;
+
+	onMount(() => {
+		quoteTimer = setInterval(() => {
+			quoteIndex = (quoteIndex + 1) % quotes.length;
+		}, 6000);
+	});
+
+	onDestroy(() => {
+		if (quoteTimer) clearInterval(quoteTimer);
+	});
 </script>
 
 {#snippet sessionRow(type: string)}
@@ -112,10 +270,17 @@
 		{@const cfg = typeConfig[type]}
 		<FullBleed paddingX="md">
 			<!-- Dots row: thin strip above, offset to align with session cards -->
-			<div class="dots-row">
-				{#each group.sessions as _, i}
-					<span class="dot" class:dot-active={activeIndex[type] === i}></span>
-				{/each}
+			{@const totalCards = group.sessions.length}
+			{@const visible = visibleCards[type] ?? new Set([0])}
+			{@const minVisible = Math.min(...visible)}
+			{@const maxVisible = Math.max(...visible)}
+			<div class="progress-track">
+				<div
+					class="progress-thumb"
+					style="left: {(minVisible / totalCards) * 100}%; width: {((maxVisible - minVisible + 1) /
+						totalCards) *
+						100}%"
+				></div>
 			</div>
 			<div class="type-row" onscroll={(e) => handleScroll(type, e.currentTarget as HTMLElement)}>
 				<!-- Fixed left CallCard (sticky on desktop, scrolls on mobile) -->
@@ -133,10 +298,7 @@
 						variation={0.5}
 					/>
 				</div>
-				<div
-					class="sessions-scroll"
-					onscroll={(e) => handleScroll(type, e.currentTarget as HTMLElement)}
-				>
+				<div class="sessions-scroll" use:scrollAction={type}>
 					{#each group.sessions as session (session.slug)}
 						<div class="session-card-wrap">
 							<SessionCardExpanded
@@ -168,24 +330,123 @@
 
 <Container>
 	<Stack>
-		<Heading tag="h1" class="py-8">
+		<Heading tag="h1" class="py-4" align="center">
 			<LogoType year={2026} />
 		</Heading>
 
-		<Text type="lead">
-			India's community-driven conference dedicated to <strong>data visualization</strong> returns
-			to <strong>Bangalore</strong>
-			on <strong>3rd & 4th July, 2026</strong>. Join us for <strong>two days</strong> of learning, sharing,
-			and connecting with the data visualization community.
+		<Text type="lead" align="center">
+			Join us for talks, workshops, dialogues, and an exhibition.<br />
+			Two days of data visualization, curated by India's data viz community
 		</Text>
 
-		<Cluster justify="start" class="pt-8">
-			<Button href="https://tickets.vizchitra.com" color="pink" external={true}>Get Tickets</Button>
-			<Button href="/2026/sessions" color="pink">See all Sessions</Button>
-		</Cluster>
+		<div class="hero-info">
+			<div class="hero-info-item">
+				<span class="hero-info-icon">📍</span>
+				<a
+					href="https://share.google/zWq1ZMJHTc5vJxtqX"
+					target="_blank"
+					rel="noopener"
+					class="underline decoration-1 underline-offset-2 transition-all hover:decoration-2"
+					><strong>Bangalore International Centre</strong></a
+				>
+			</div>
+			<div class="hero-info-item">
+				<span class="hero-info-icon">📅</span>
+				<span><strong>3rd & 4th July, 2026</strong></span>
+			</div>
+		</div>
 
-		<DividerCurves />
+		<div class="hero-actions">
+			<a
+				href="https://tickets.vizchitra.com"
+				target="_blank"
+				rel="noopener"
+				class="hero-btn hero-btn-pink"
+			>
+				<span class="hero-btn-icon">🎟️</span>
+				<span class="hero-btn-text">Get Tickets →</span>
+			</a>
+			<a href="/2026/sessions" class="hero-btn hero-btn-blue">
+				<span class="hero-btn-icon">🎤</span>
+				<span class="hero-btn-text">See all Sessions →</span>
+			</a>
+		</div>
+	</Stack>
+</Container>
 
+<div class="feedback-strip">
+	{#if eventPhotos.length > 0}
+		<div>
+			<PhotoStrip
+				photos={eventPhotos}
+				height="320px"
+				autoplayInterval={6000}
+				ariaLabel="VizChitra 2025 moments"
+			/>
+		</div>
+	{/if}
+
+	<div class="feedback-inner">
+		<h2 class="feedback-heading">What attendees told us after VizChitra 2025</h2>
+
+		<p class="feedback-context">How was your overall experience?</p>
+		<div class="stacked-bar">
+			<div
+				class="bar-segment"
+				style="width: 25%; background: oklch(96% 0.03 354);"
+				title="Far exceeded expectations (25%)"
+			></div>
+			<div
+				class="bar-segment"
+				style="width: 32%; background: oklch(84% 0.12 354);"
+				title="Better than expected (32%)"
+			></div>
+			<div
+				class="bar-segment"
+				style="width: 25%; background: oklch(66% 0.18 354);"
+				title="Met expectations (25%)"
+			></div>
+			<div
+				class="bar-segment"
+				style="width: 17%; background: oklch(46% 0.17 354);"
+				title="Met some expectations (17%)"
+			></div>
+			<div
+				class="bar-segment"
+				style="width: 1%; background: oklch(36% 0.15 354);"
+				title="Did not meet (1%)"
+			></div>
+		</div>
+		<div class="bar-legend">
+			<span class="legend-item"
+				><span class="legend-dot" style="background: oklch(96% 0.03 354);"></span> Far exceeded (25%)</span
+			>
+			<span class="legend-item"
+				><span class="legend-dot" style="background: oklch(84% 0.12 354);"></span> Better than expected
+				(32%)</span
+			>
+			<span class="legend-item"
+				><span class="legend-dot" style="background: oklch(66% 0.18 354);"></span> Met expectations (25%)</span
+			>
+			<span class="legend-item"
+				><span class="legend-dot" style="background: oklch(46% 0.17 354);"></span> Met some (17%)</span
+			>
+		</div>
+
+		<h3 class="feedback-subheading">What they liked most</h3>
+
+		<div class="quote-rotator">
+			{#key quoteIndex}
+				<div class="quote-anim">
+					<p class="quote-rotating">{'\u201C'}{currentQuote.text}{'\u201D'}</p>
+				</div>
+			{/key}
+		</div>
+	</div>
+</div>
+
+<Container>
+	<Stack>
 		<!-- ── What's On ─────────────────────────────────────────────────── -->
 
 		<!-- <Heading tag="h2" class="font-normal">
@@ -226,24 +487,39 @@
 			{@render sessionRow('Dialogues')}
 		</Stack>
 
-		<!-- ── Browse Submissions ─────────────────────────────────────────── -->
-
 		<DividerCurves />
+	</Stack>
+</Container>
+
+<div class="sponsor-banner">
+	<div class="sponsor-banner-inner">
+		<h2 class="sponsor-banner-heading">Sponsor VizChitra 2026</h2>
+		<p class="sponsor-banner-text">
+			Put your organisation in the room where India's data visualization community comes together.
+			Sponsorship starts at ₹50,000.
+		</p>
+		<a href="/2026/sponsorship" class="sponsor-banner-btn">View Sponsorship Packages →</a>
+	</div>
+</div>
+
+<Container>
+	<Stack>
+		<!-- ── Browse Submissions ─────────────────────────────────────────── -->
 
 		<Heading tag="h2" class="font-normal">
 			<Slanted color="blue" textContent="BROWSE SUBMISSIONS" />
 		</Heading>
 
 		<Text type="body">
-			We invited submissions across across four formats—<ColorSpan color="blue">Talks</ColorSpan>,
+			We received over 150 submissions across four formats—<ColorSpan color="blue">Talks</ColorSpan
+			>,
 			<ColorSpan color="teal">Dialogues</ColorSpan>,
 			<ColorSpan color="pink">Workshops</ColorSpan>, and
-			<ColorSpan color="orange">Exhibition</ColorSpan>. Last day for submissions was on 15 Feb,
-			2026. You can explore all the submitted proposals below.
+			<ColorSpan color="orange">Exhibition</ColorSpan>. Browse all submitted proposals below.
 		</Text>
 
 		<Cluster justify="start">
-			<Button href="/2026/submissions" color="blue">View all Submissions</Button>
+			<Button href="/2026/submissions" color="blue" size="lg">📋 View all Submissions →</Button>
 		</Cluster>
 	</Stack>
 </Container>
@@ -265,24 +541,25 @@
 		z-index: 10;
 	}
 
-	.dots-row {
-		display: flex;
-		gap: 6px;
-		padding: 4px 0 6px;
-		margin-left: 376px; /* 360px label + 16px sessions-scroll padding */
-	}
-
-	.dot {
-		width: 8px;
+	.progress-track {
+		position: relative;
 		height: 8px;
-		border-radius: 50%;
-		background: #ccc;
-		flex-shrink: 0;
-		transition: background 300ms ease;
+		background: #e0e0e0;
+		border-radius: 999px;
+		margin: 4px 0 8px;
+		margin-left: 376px;
+		max-width: 200px;
 	}
 
-	.dot-active {
+	.progress-thumb {
+		position: absolute;
+		top: 0;
+		height: 100%;
 		background: #444;
+		border-radius: 999px;
+		transition:
+			left 300ms ease,
+			width 300ms ease;
 	}
 
 	.sessions-scroll {
@@ -293,8 +570,17 @@
 		padding-right: 2rem;
 		scroll-snap-type: x mandatory;
 		scroll-padding-left: 16px;
-		/* hide scrollbar */
 		scrollbar-width: none;
+		cursor:
+			url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 9l-3 3 3 3'/%3E%3Cpath d='M9 5l3-3 3 3'/%3E%3Cpath d='M15 19l-3 3-3-3'/%3E%3Cpath d='M19 9l3 3-3 3'/%3E%3Cline x1='2' y1='12' x2='22' y2='12'/%3E%3Cline x1='12' y1='2' x2='12' y2='22'/%3E%3C/svg%3E")
+				14 14,
+			grab;
+	}
+
+	.sessions-scroll:global(.is-dragging) {
+		cursor: grabbing;
+		scroll-snap-type: none;
+		user-select: none;
 	}
 
 	.sessions-scroll::-webkit-scrollbar {
@@ -316,6 +602,281 @@
 	.sessions-scroll:hover .session-card-wrap:not(:first-child),
 	.sessions-scroll:focus-within .session-card-wrap:not(:first-child) {
 		margin-left: 8px;
+	}
+
+	/* ── Hero info & actions ───────────────────────────────────────── */
+
+	.hero-info {
+		display: flex;
+		justify-content: center;
+		gap: 2rem;
+		flex-wrap: wrap;
+	}
+
+	.hero-info-item {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 1.2rem;
+	}
+
+	.hero-info-icon {
+		font-size: 1.4rem;
+	}
+
+	.hero-actions {
+		display: flex;
+		gap: 1rem;
+		padding-top: 0.5rem;
+	}
+
+	.hero-btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.75rem;
+		width: 50%;
+		padding: 1.25rem 2rem;
+		border-radius: 4px;
+		text-decoration: none;
+		color: white;
+		transition:
+			transform 0.3s ease,
+			box-shadow 0.3s ease;
+	}
+
+	.hero-btn:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+	}
+
+	.hero-btn-pink {
+		background: var(--color-viz-pink-solid);
+	}
+
+	.hero-btn-blue {
+		background: var(--color-viz-blue-solid);
+	}
+
+	.hero-btn-icon {
+		font-size: 1.5rem;
+	}
+
+	.hero-btn-text {
+		font-family: var(--font-display);
+		font-size: 1.3rem;
+		font-weight: 800;
+		letter-spacing: 0.02em;
+	}
+
+	@media (max-width: 768px) {
+		.hero-actions {
+			flex-direction: column;
+		}
+
+		.hero-btn {
+			width: 100%;
+		}
+	}
+
+	/* ── Feedback strip ────────────────────────────────────────────── */
+
+	.feedback-strip {
+		background: oklch(26% 0.13 354);
+		color: white;
+		padding: 0 0 1.5rem;
+		margin: 0;
+		width: 100vw;
+		position: relative;
+		left: 50%;
+		right: 50%;
+		margin-left: -50vw;
+		margin-right: -50vw;
+	}
+
+	.feedback-inner {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+
+	.feedback-heading {
+		font-family: var(--font-display);
+		font-size: 1.8rem;
+		font-weight: 800;
+		margin: 2rem 0 2rem;
+		text-align: center;
+	}
+
+	.feedback-subheading {
+		font-family: var(--font-display);
+		font-size: 1.3rem;
+		font-weight: 700;
+		margin: 2.5rem 0 1rem;
+		opacity: 0.7;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		text-align: center;
+	}
+
+	.feedback-context {
+		font-size: 1rem;
+		opacity: 0.6;
+		margin: 0 0 0.5rem;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		text-align: center;
+		font-weight: 600;
+	}
+
+	.stacked-bar {
+		display: flex;
+		height: 28px;
+		border-radius: 4px;
+		overflow: hidden;
+		gap: 2px;
+		max-width: 800px;
+		margin: 0 auto;
+	}
+
+	.bar-segment {
+		transition: width 0.6s ease;
+	}
+
+	.bar-legend {
+		display: flex;
+		gap: 1.5rem;
+		flex-wrap: wrap;
+		margin-top: 0.75rem;
+		justify-content: center;
+	}
+
+	.legend-item {
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+		font-size: 0.8rem;
+		opacity: 0.7;
+	}
+
+	.legend-dot {
+		width: 10px;
+		height: 10px;
+		border-radius: 2px;
+		flex-shrink: 0;
+	}
+
+	/* ── Rotating quote ────────────────────────────────────────────── */
+
+	.quote-rotator {
+		min-height: 130px;
+		max-width: 700px;
+		margin: 0 auto;
+		position: relative;
+		overflow: hidden;
+		text-align: center;
+	}
+
+	.quote-anim {
+		animation: quoteFadeUp 6s ease both;
+	}
+
+	@keyframes quoteFadeUp {
+		0% {
+			opacity: 0;
+			transform: translateY(12px);
+		}
+		5% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+		90% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+		100% {
+			opacity: 0;
+			transform: translateY(-8px);
+		}
+	}
+
+	.quote-rotating {
+		font-family: var(--font-display);
+		font-size: 1.4rem;
+		font-weight: 500;
+		line-height: 1.5;
+		font-style: italic;
+		color: #eee;
+		margin: 0 0 0.5rem;
+	}
+
+	.quote-rotating-attr {
+		font-family: var(--font-display);
+		font-size: 0.85rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		opacity: 0.45;
+		margin: 0;
+		color: #ccc;
+		text-align: right;
+	}
+
+	/* ── Sponsorship banner ────────────────────────────────────────── */
+
+	.sponsor-banner {
+		background:
+			linear-gradient(to right, oklch(36% 0.15 354 / 0.85), oklch(46% 0.17 354 / 0.8)),
+			url('/images/photos/packed-auditorium.jpg') center / cover no-repeat;
+		padding: 3.5rem 0;
+		width: 100vw;
+		position: relative;
+		left: 50%;
+		right: 50%;
+		margin-left: -50vw;
+		margin-right: -50vw;
+		text-align: center;
+	}
+
+	.sponsor-banner-inner {
+		max-width: 700px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+
+	.sponsor-banner-heading {
+		font-family: var(--font-display);
+		font-size: 2rem;
+		font-weight: 800;
+		color: white;
+		margin: 0 0 0.75rem;
+	}
+
+	.sponsor-banner-text {
+		font-size: 1.1rem;
+		line-height: 1.5;
+		color: rgba(255, 255, 255, 0.9);
+		margin: 0 0 1.5rem;
+	}
+
+	.sponsor-banner-btn {
+		display: inline-block;
+		background: white;
+		color: oklch(36% 0.15 354);
+		font-family: var(--font-display);
+		font-size: 1.2rem;
+		font-weight: 800;
+		padding: 1rem 2.5rem;
+		border-radius: 4px;
+		text-decoration: none;
+		transition:
+			transform 0.3s ease,
+			box-shadow 0.3s ease;
+	}
+
+	.sponsor-banner-btn:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 	}
 
 	/* ── Mobile layout ──────────────────────────────────────────────── */
@@ -340,7 +901,7 @@
 			flex-shrink: 0;
 		}
 
-		.dots-row {
+		.progress-track {
 			margin-left: 0;
 		}
 

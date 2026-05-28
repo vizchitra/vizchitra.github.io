@@ -109,11 +109,11 @@
 				const dx = x - cursorX;
 				const dy = y - cursorY;
 				const distance = Math.sqrt(dx * dx + dy * dy);
-				const influence = Math.max(0, 1 - distance / 200);
+				const influence = Math.max(0, 1 - distance / 300);
 
 				// Pull curves toward cursor with wave-like motion
 				// Use (curveIndex + 1) to ensure first curve also moves
-				const pull = influence * 50 * Math.sin(curveIndex + 1);
+				const pull = influence * 90 * Math.sin(curveIndex + 1);
 				y += pull;
 			}
 

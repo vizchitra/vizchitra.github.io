@@ -354,14 +354,14 @@ speakerName = "Rohit Bhardwaj"
 designation = "Addl. Director General"
 organisation = "MoSPI"
 speakerAbout = """
-Rohit Bhardwaj is an Indian Statistical Service (ISS) officer of the 1998 batch. As Additional Director General, he is currently leading innovation and informatics initiatives at the National Statistical Office (NSO), India. 
+Rohit Bhardwaj is an Indian Statistical Service (ISS) officer of the 1998 batch. As Additional Director General, he is currently leading innovation and informatics initiatives at the National Statistical Office (NSO), India.
 
- Rohit initiated the development of eSankhyiki and dynamic visualizations to enhance data accessibility and user engagement in official statistics. He has been instrumental in identifying and initiating POCs and Pilots for use cases of emerging technologies in official statistics. He has successfully operationalized an innovation scheme that fosters collaboration with startups and academia to co-create data-driven solutions. 
+ Rohit initiated the development of eSankhyiki and dynamic visualizations to enhance data accessibility and user engagement in official statistics. He has been instrumental in identifying and initiating POCs and Pilots for use cases of emerging technologies in official statistics. He has successfully operationalized an innovation scheme that fosters collaboration with startups and academia to co-create data-driven solutions.
 
  His paper on creating a network of institutions for innovation in official statistics was recently accepted for presentation at the UNECE Conference on the Use of Generative AI in Official Statistics. His efforts have also led to the development of the data portal of MoSPI, resulting in tangible improvements in data dissemination and innovation."""
 speakerImage = "/images/speakers/2026/speaker-rohit.avif"
 display = true
-order = 11
+order = 4
 
 [[session]]
 slug = "kuch-kuch-data-hai"
@@ -393,7 +393,7 @@ Surbhi is a data journalist, and has spent many years searching for insights and
 She has worked with different mindsets across many settings like: urgency in newsrooms, immersion in academia, clarity in communications, and creativity in design studios. She agrees that correlation is not causation, but believes strongly that walkable cities make for a better life. She has worked with xKDR Forum, Mint, World Bank, Thibi, Open Network for Digital Commerce, and written for Kontinentalist, Nikkei Asia, Indiaspend, The Hindu, and more. Her work has been recognised by the Society for Advancing Business Editing and Writing (SABEW), Festival de Datos, and The Pudding."""
 speakerImage = "/images/speakers/2026/speaker-surbhi.webp"
 display = true
-order = 3
+order = 5
 
 [[session]]
 slug = "timely-timeless-stories"
@@ -425,7 +425,7 @@ Rohit Saran is the Managing Editor of The Times of India. He has served as Execu
 Rohit teamed up with Sajeev Kumarapuram, Design Editor of The Times of India to author '100 Ways to See India -- Stats, Stories and Surprises' which was published by Harper Collins India earlier this year. Rohit and Sajeev have spent years exploring India's data jungle—mostly out of professional need, at times out of curiosity. Along the way, they've hunted elusive numbers, dodged PDF traps, and found joy in telling stories through charts."""
 speakerImage = "/images/speakers/2026/speaker-rohit-saran.webp"
 display = true
-order = 2
+order = 3
 
 [[session]]
 slug = "data-viz-drift"
@@ -798,7 +798,7 @@ speakerAbout = """
 Prasanta Kumar Dutta is an award-winning Information Experience Designer from India, working at the intersection of design, code, and journalism at Reuters. With a background in engineering and design, he crafts data-driven pieces that visually narrate important stories and solve problems in an aesthetically engaging way. Outside the newsroom, Prasanta writes and performs poetry and comedy, and dabbles in generative art, photography, and zine-making. He co-hosts a creative coding meetup in London that brings together artists, technologists, and enthusiasts. He also teaches and speaks on data visualisation, design, and narrative cartography at leading institutions across India."""
 speakerImage = "/images/speakers/2026/speaker-prasanta.avif"
 display = true
-order = 22
+order = 5
 
 [[session]]
 slug = "draw-with-data"
@@ -821,7 +821,7 @@ speakerAbout = """
 Schubert is a frontend and dataviz developer at Revisual Labs. He spends much of his time building charts, scrollytelling pieces and interactives on the web. His work was among the winners of last year's Pudding Cup. He enjoys experimenting with design, motion and interaction to bring data and stories to life. Outside of work, you can find him on the losing side of a daily sketching habit."""
 speakerImage = "/images/speakers/2026/speaker-schubert.avif"
 display = true
-order = 23
+order = 7
 
 [[session]]
 slug = "a-dataviz-crash-course"
@@ -849,7 +849,7 @@ Most recently, she worked as a data journalist at The Secretariat, where she wro
 Prakriti earned an MSc in Computational and Data Journalism from Cardiff University and trained in slow, thoughtful journalism with Tortoise Media (now The Observer). She believes data storytelling is a necessary skill in an era of 47-second attention spans and has honed her craft by obsessing over the many small decisions that make a good data story."""
 speakerImage = "/images/speakers/2026/speaker-prakriti.avif"
 display = true
-order = 20
+order = 6
 
 [[session]]
 slug = "data-rough"
@@ -872,7 +872,7 @@ speakerAbout = """
 Adolfo is a Spaniard based in Hong Kong that helps to create visual explanations across a spectrum of topics, supporting the drive at Reuters to present new ways to present news. He likes to use handcrafted illustrations to approach the subject and create appealing visual stories. Adolfo Arranz previously worked as a creative director at South China Morning Post in Hong Kong and Mediacorp in Singapore. He has won multiple prestigious awards in visual communication."""
 speakerImage = "/images/speakers/2026/speaker-adolfo.avif"
 display = true
-order = 25
+order = 1
 
 [[session]]
 slug = "observe-collect-map"
@@ -899,7 +899,7 @@ She is also a data walker who facilitates data walks in cities around the world,
 Central to her work is how culture is held, transmitted, and reconfigured across contexts and temporalities, and the structures through which it is preserved and interpreted."""
 speakerImage = "/images/speakers/2026/speaker-priti.avif"
 display = true
-order = 24
+order = 2
 
 [[session]]
 slug = "interactive-dataviz-using-ai-coding"
@@ -936,7 +936,7 @@ He also teaches at design schools like NID & IDC, IIT Bombay, and supports desig
 """
 speakerImage = "/images/speakers/2026/speaker-kenneth.avif"
 display = true
-order = 21
+order = 3
 
 [[session]]
 slug = "designing-data-stories-for-small-screens"
@@ -963,4 +963,4 @@ Her work sits at the intersection of rigorous reporting and intentional design. 
 She's obsessed with making complexity accessible. When she's not chasing stories in data, she's cooking up a storm, always up for feeding an army."""
 speakerImage = "/images/speakers/2026/speaker-areena.avif"
 display = true
-order = 21
+order = 4

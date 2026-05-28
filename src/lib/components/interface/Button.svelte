@@ -23,7 +23,7 @@
 	const sizeClasses = {
 		sm: 'text-sm',
 		md: 'text-base',
-		lg: 'text-lg'
+		lg: 'text-2xl px-8 py-5 font-extrabold tracking-wide'
 	};
 
 	const colorVars = {

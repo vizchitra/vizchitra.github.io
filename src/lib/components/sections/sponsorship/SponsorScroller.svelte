@@ -14,34 +14,83 @@
 
 	let { sponsors }: { sponsors: Sponsor[] } = $props();
 
-	let activeIndex = $state(0);
+	let scrollProgress = $state(0);
+	let isOverflowing = $state(false);
 
 	function handleScroll(el: HTMLElement) {
-		const cards = el.querySelectorAll<HTMLElement>('.sp-card');
-		if (!cards.length) return;
-		let best = 0;
-		let bestDist = Infinity;
-		cards.forEach((card, i) => {
-			const dist = Math.abs(card.getBoundingClientRect().left - el.getBoundingClientRect().left);
-			if (dist < bestDist) {
-				bestDist = dist;
-				best = i;
-			}
+		const maxScroll = el.scrollWidth - el.clientWidth;
+		isOverflowing = maxScroll > 10;
+		scrollProgress = maxScroll > 0 ? el.scrollLeft / maxScroll : 0;
+	}
+
+	function initScroller(node: HTMLElement) {
+		let isDown = false;
+		let startX = 0;
+		let scrollLeft = 0;
+		let hasDragged = false;
+
+		function checkOverflow() {
+			isOverflowing = node.scrollWidth > node.clientWidth + 10;
+		}
+
+		node.addEventListener('mousedown', (e) => {
+			isDown = true;
+			hasDragged = false;
+			node.style.cursor = 'grabbing';
+			startX = e.pageX;
+			scrollLeft = node.scrollLeft;
+			e.preventDefault();
 		});
-		activeIndex = best;
+		node.addEventListener('mouseleave', () => {
+			isDown = false;
+			node.style.cursor = '';
+		});
+		node.addEventListener('mouseup', () => {
+			isDown = false;
+			node.style.cursor = '';
+		});
+		node.addEventListener('mousemove', (e) => {
+			if (!isDown) return;
+			e.preventDefault();
+			const walk = (e.pageX - startX) * 1.5;
+			if (Math.abs(walk) > 5) hasDragged = true;
+			node.scrollLeft = scrollLeft - walk;
+		});
+		node.addEventListener(
+			'click',
+			(e) => {
+				if (hasDragged) {
+					e.preventDefault();
+					e.stopPropagation();
+					hasDragged = false;
+				}
+			},
+			true
+		);
+
+		checkOverflow();
+		const ro = new ResizeObserver(() => checkOverflow());
+		ro.observe(node);
+		return {
+			destroy() {
+				ro.disconnect();
+			}
+		};
 	}
 </script>
 
 <div class="sp-root">
-	<div class="dots-row" aria-hidden="true">
-		{#each sponsors as _, i}
-			<span class="dot" class:dot-active={activeIndex === i}></span>
-		{/each}
-	</div>
+	{#if isOverflowing}
+		<div class="progress-track" aria-hidden="true">
+			<div class="progress-thumb" style="left: {scrollProgress * 70}%; width: 30%"></div>
+		</div>
+	{/if}
 
 	<div
 		class="sp-overflow"
+		class:sp-draggable={isOverflowing}
 		onscroll={(e) => handleScroll(e.currentTarget as HTMLElement)}
+		use:initScroller
 		role="region"
 		aria-label="Sponsor testimonials"
 	>
@@ -49,26 +98,11 @@
 			{#each sponsors as s, i (s.name)}
 				<div
 					class="sp-card"
-					role="button"
-					tabindex="0"
-					onclick={() => (activeIndex = i)}
-					onkeydown={(e) => e.key === 'Enter' && (activeIndex = i)}
 					style="--accent: var(--color-viz-{s.color}); --accent-light: var(--color-viz-{s.color}-light); --accent-muted: var(--color-viz-{s.color}-muted);"
 				>
 					<!-- Logo row -->
 					<div class="sp-logo-row">
 						<img src={s.logo} alt="{s.name} logo" class="sp-logo" />
-					</div>
-
-					<!-- Photo strip -->
-					<div class="sp-photos">
-						{#each [0, 1] as pi}
-							{#if s.photos?.[pi]}
-								<img src={s.photos[pi]} alt="{s.name} event photo {pi + 1}" class="sp-photo" />
-							{:else}
-								<div class="sp-photo-placeholder" aria-hidden="true"></div>
-							{/if}
-						{/each}
 					</div>
 
 					<!-- Quote -->
@@ -107,25 +141,27 @@
 		}
 	}
 
-	/* ── Dots ────────────────────────────────────────── */
-	.dots-row {
-		display: flex;
-		justify-content: center;
-		gap: 6px;
-		padding: 0 0 8px;
-	}
-
-	.dot {
-		width: 8px;
+	/* ── Progress bar ───────────────────────────────── */
+	.progress-track {
+		position: relative;
 		height: 8px;
-		border-radius: 50%;
-		background: var(--color-viz-grey-muted);
-		flex-shrink: 0;
-		transition: background 300ms ease;
+		background: #e0e0e0;
+		border-radius: 999px;
+		margin: 0 auto 8px;
+		max-width: 200px;
 	}
 
-	.dot-active {
-		background: var(--color-viz-grey-solid);
+	.progress-thumb {
+		position: absolute;
+		top: 0;
+		height: 100%;
+		background: #444;
+		border-radius: 999px;
+		transition: left 300ms ease;
+	}
+
+	.sp-draggable {
+		cursor: grab;
 	}
 
 	/* ── Overflow viewport ───────────────────────────── */
@@ -152,7 +188,6 @@
 		grid-template-rows:
 			/* logo   */
 			auto
-			/* photos */ auto
 			/* quote  */ 1fr
 			/* ratings*/ auto;
 		grid-auto-flow: column;

@@ -26,17 +26,27 @@
 		</Heading>
 
 		<Text type="lead" align="center">
-			India's community-driven conference dedicated to <ColorSpan color="yellow"
-				>data visualization</ColorSpan
-			>
-			is back again in <ColorSpan color="teal">2026</ColorSpan>. This flagship event over
-			<ColorSpan color="blue">two days</ColorSpan>
-			will be in <ColorSpan color="orange">Bangalore</ColorSpan> on
-			<ColorSpan color="pink">3rd & 4th July, 2026</ColorSpan>
+			Join us for the second edition of India's community-run<br />
+			<strong>data visualization conference</strong>
 		</Text>
 
+		<div class="event-details">
+			<div class="event-detail">
+				<span class="event-icon">📅</span>
+				<span class="event-text"><strong>3rd & 4th July, 2026</strong></span>
+			</div>
+			<span class="event-separator">·</span>
+			<div class="event-detail">
+				<span class="event-icon">📍</span>
+				<span class="event-text"><strong>Bangalore International Centre</strong></span>
+			</div>
+		</div>
+
 		<Cluster>
-			<Button href="/2026" color="pink">Go to our 2026 page</Button>
+			<a href="/2026" class="hero-cta">
+				<span class="hero-cta-main">Explore VizChitra 2026 →</span>
+				<span class="hero-cta-sub">Sessions · Tickets · Sponsorship</span>
+			</a>
 		</Cluster>
 
 		<!-- <Cluster>
@@ -58,7 +68,7 @@
 		<DividerCurves />
 
 		<Heading tag="h2" align="center">
-			Our Ethos @ <LogoType />
+			Our Ethos @ <LogoType year={null} />
 		</Heading>
 
 		<Text type="lead">
@@ -74,7 +84,7 @@
 		<DividerCurves />
 
 		<Heading align="center">
-			Our Mission @ <LogoType />
+			Our Mission @ <LogoType year={null} />
 		</Heading>
 
 		<Text type="lead" align="center">
@@ -91,3 +101,66 @@
 		<DividerCurves />
 	</Stack>
 </Container>
+
+<style>
+	.event-details {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+
+	.event-detail {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 1.35rem;
+	}
+
+	.event-icon {
+		font-size: 1.6rem;
+	}
+
+	.event-separator {
+		font-size: 1.5rem;
+		color: #999;
+	}
+
+	.hero-cta {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.4rem;
+		background: var(--color-viz-pink-solid);
+		color: white;
+		text-decoration: none;
+		padding: 1.25rem 3rem;
+		border-radius: 4px;
+		transition:
+			transform 0.3s ease,
+			box-shadow 0.3s ease;
+	}
+
+	.hero-cta:hover {
+		transform: translateY(-2px) scale(1.02);
+		box-shadow:
+			0 12px 30px rgba(0, 0, 0, 0.14),
+			0 0 22px rgba(255, 255, 255, 0.06);
+	}
+
+	.hero-cta-main {
+		font-family: var(--font-display);
+		font-size: 1.5rem;
+		font-weight: 800;
+		letter-spacing: 0.02em;
+	}
+
+	.hero-cta-sub {
+		font-size: 0.85rem;
+		font-weight: 500;
+		opacity: 0.85;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+</style>
