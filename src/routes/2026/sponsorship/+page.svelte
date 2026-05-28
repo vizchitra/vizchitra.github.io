@@ -576,6 +576,7 @@
 		</div>
 
 		<!-- Sponsor Experience -->
+		<DividerCurves />
 		<Prose>
 			<h2>Sponsor Experience @ 2025</h2>
 			<p>

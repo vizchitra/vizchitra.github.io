@@ -97,11 +97,12 @@
 
 	function autoScroll() {
 		if (!scrollEl || userInteracting) return;
-		scrollEl.scrollTo({ left: scrollEl.scrollLeft + 400, behavior: 'smooth' });
+		scrollEl.scrollLeft += 1;
 	}
 
 	onMount(() => {
-		autoplayTimer = setInterval(autoScroll, autoplayInterval);
+		// Slow continuous scroll
+		autoplayTimer = setInterval(autoScroll, 30);
 	});
 
 	onDestroy(() => {
