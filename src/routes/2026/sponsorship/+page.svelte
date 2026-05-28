@@ -526,6 +526,18 @@
 			</blockquote>
 		</Prose>
 
+		<Grid minWidth="20ch" maxColumns={3} gap={4}>
+			<Card variant="bordered" color="teal" title="82%"
+				>of attendees said the event met or exceeded their expectations</Card
+			>
+			<Card variant="bordered" color="orange" title="57%"
+				>said it exceeded or far exceeded what they expected</Card
+			>
+			<Card variant="bordered" color="pink" title="72"
+				>attendees filled the feedback form across 10+ disciplines</Card
+			>
+		</Grid>
+
 		<DividerCurves />
 
 		<!-- Participant Profile -->

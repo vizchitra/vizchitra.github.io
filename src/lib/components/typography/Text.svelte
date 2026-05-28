@@ -36,7 +36,7 @@
 
 	const alignClasses: Record<Align, string> = {
 		left: 'text-left',
-		center: 'text-center',
+		center: 'text-center mx-auto',
 		right: 'text-right'
 	};
 

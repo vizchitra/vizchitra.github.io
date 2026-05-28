@@ -96,14 +96,159 @@
 		}
 	};
 
-	// Scroll tracking — one entry per type
-	let activeIndex: Record<string, number> = $state({ Workshops: 0, Talks: 0, Dialogues: 0 });
+	// Scroll tracking — track which cards are visible
+	let visibleCards: Record<string, Set<number>> = $state({
+		Workshops: new Set([0]),
+		Talks: new Set([0]),
+		Dialogues: new Set([0])
+	});
 
 	function handleScroll(type: string, el: HTMLElement) {
-		const card = el.querySelector<HTMLElement>('.session-card-wrap');
-		if (!card) return;
-		activeIndex[type] = Math.round(el.scrollLeft / card.offsetWidth);
+		const cards = el.querySelectorAll<HTMLElement>('.session-card-wrap');
+		if (!cards.length) return;
+
+		const scrollLeft = el.scrollLeft;
+		const containerWidth = el.clientWidth;
+		const visible = new Set<number>();
+
+		cards.forEach((card, i) => {
+			const cardLeft = card.offsetLeft - el.offsetLeft;
+			const cardRight = cardLeft + card.offsetWidth;
+			const visibleLeft = Math.max(cardLeft, scrollLeft);
+			const visibleRight = Math.min(cardRight, scrollLeft + containerWidth);
+			const visibility = visibleRight - visibleLeft;
+			// Card is visible if more than 30% is showing
+			if (visibility > card.offsetWidth * 0.3) {
+				visible.add(i);
+			}
+		});
+
+		visibleCards[type] = visible;
 	}
+
+	// Drag-to-scroll (Svelte action)
+	function scrollAction(node: HTMLElement, type: string) {
+		let isDown = false;
+		let startX = 0;
+		let scrollLeft = 0;
+		let hasDragged = false;
+
+		function onMouseDown(e: MouseEvent) {
+			isDown = true;
+			hasDragged = false;
+			node.classList.add('is-dragging');
+			startX = e.pageX;
+			scrollLeft = node.scrollLeft;
+			e.preventDefault(); // Prevent link drag behavior
+		}
+
+		function onMouseLeave() {
+			isDown = false;
+			node.classList.remove('is-dragging');
+		}
+
+		function onMouseUp() {
+			isDown = false;
+			node.classList.remove('is-dragging');
+		}
+
+		function onMouseMove(e: MouseEvent) {
+			if (!isDown) return;
+			e.preventDefault();
+			const walk = (e.pageX - startX) * 1.5;
+			if (Math.abs(walk) > 5) hasDragged = true;
+			node.scrollLeft = scrollLeft - walk;
+		}
+
+		// Prevent click on links if we were dragging
+		function onClick(e: MouseEvent) {
+			if (hasDragged) {
+				e.preventDefault();
+				e.stopPropagation();
+				hasDragged = false;
+			}
+		}
+
+		function onScroll() {
+			handleScroll(type, node);
+		}
+
+		node.addEventListener('mousedown', onMouseDown);
+		node.addEventListener('mouseleave', onMouseLeave);
+		node.addEventListener('mouseup', onMouseUp);
+		node.addEventListener('mousemove', onMouseMove);
+		node.addEventListener('click', onClick, true); // capture phase
+		node.addEventListener('scroll', onScroll);
+
+		return {
+			destroy() {
+				node.removeEventListener('mousedown', onMouseDown);
+				node.removeEventListener('mouseleave', onMouseLeave);
+				node.removeEventListener('mouseup', onMouseUp);
+				node.removeEventListener('mousemove', onMouseMove);
+				node.removeEventListener('click', onClick, true);
+				node.removeEventListener('scroll', onScroll);
+			}
+		};
+	}
+	// Rotating quotes
+	import { onMount, onDestroy } from 'svelte';
+
+	const quotes = [
+		{
+			text: '"I realised there are so many people interested in data vis and it made me really happy"',
+			attr: 'Attendee'
+		},
+		{
+			text: '"The sessions explored data not just as numbers, but as stories with meaning and emotion"',
+			attr: 'Information Designer'
+		},
+		{
+			text: '"Good to see like-minded individuals in a niche field for the first time at such a large gathering"',
+			attr: 'Information Designer'
+		},
+		{
+			text: '"I got the chance to speak to S Rukmini, Srinivasan Ramani and some other superb people. I never expected that"',
+			attr: 'Researcher'
+		},
+		{ text: '"The general warmth of everyone present"', attr: 'Data Journalist' },
+		{ text: '"The energy and the effort in creating a meaningful experience"', attr: 'Researcher' },
+		{ text: '"Emphasis on experiencing data viscerally"', attr: 'Attendee' },
+		{
+			text: '"Engaging speakers with substance, participatory data viz installations, great branding, great venue"',
+			attr: 'Information Designer'
+		},
+		{
+			text: '"It was great to exchange ideas with journalists, writers, designers — and see how each perspective brings data to life"',
+			attr: 'Engineer'
+		},
+		{
+			text: '"Well organized, interesting mix of sessions and speakers, things moving on time without seeming forced, good cheer"',
+			attr: 'Data Journalist'
+		},
+		{
+			text: '"Loved meeting new people who shared the same passion, being open about how to get better without any judgement"',
+			attr: 'Attendee'
+		},
+		{
+			text: '"The diversity of talks! There was a relatable topic for all kinds of people from different backgrounds"',
+			attr: 'Engineer'
+		}
+	];
+
+	let quoteIndex = $state(0);
+	let currentQuote = $derived(quotes[quoteIndex]);
+	let quoteTimer: ReturnType<typeof setInterval>;
+
+	onMount(() => {
+		quoteTimer = setInterval(() => {
+			quoteIndex = (quoteIndex + 1) % quotes.length;
+		}, 4000);
+	});
+
+	onDestroy(() => {
+		if (quoteTimer) clearInterval(quoteTimer);
+	});
 </script>
 
 {#snippet sessionRow(type: string)}
@@ -112,10 +257,17 @@
 		{@const cfg = typeConfig[type]}
 		<FullBleed paddingX="md">
 			<!-- Dots row: thin strip above, offset to align with session cards -->
-			<div class="dots-row">
-				{#each group.sessions as _, i}
-					<span class="dot" class:dot-active={activeIndex[type] === i}></span>
-				{/each}
+			{@const totalCards = group.sessions.length}
+			{@const visible = visibleCards[type] ?? new Set([0])}
+			{@const minVisible = Math.min(...visible)}
+			{@const maxVisible = Math.max(...visible)}
+			<div class="progress-track">
+				<div
+					class="progress-thumb"
+					style="left: {(minVisible / totalCards) * 100}%; width: {((maxVisible - minVisible + 1) /
+						totalCards) *
+						100}%"
+				></div>
 			</div>
 			<div class="type-row" onscroll={(e) => handleScroll(type, e.currentTarget as HTMLElement)}>
 				<!-- Fixed left CallCard (sticky on desktop, scrolls on mobile) -->
@@ -133,10 +285,7 @@
 						variation={0.5}
 					/>
 				</div>
-				<div
-					class="sessions-scroll"
-					onscroll={(e) => handleScroll(type, e.currentTarget as HTMLElement)}
-				>
+				<div class="sessions-scroll" use:scrollAction={type}>
 					{#each group.sessions as session (session.slug)}
 						<div class="session-card-wrap">
 							<SessionCardExpanded
@@ -168,21 +317,41 @@
 
 <Container>
 	<Stack>
-		<Heading tag="h1" class="py-8">
+		<Heading tag="h1" class="py-4" align="center">
 			<LogoType year={2026} />
 		</Heading>
 
-		<Text type="lead">
-			India's community-driven conference dedicated to <strong>data visualization</strong> returns
-			to <strong>Bangalore</strong>
-			on <strong>3rd & 4th July, 2026</strong>. Join us for <strong>two days</strong> of learning, sharing,
-			and connecting with the data visualization community.
+		<Text type="lead" align="center">
+			Over 300 practitioners gather for talks, workshops, dialogues, and an exhibition.<br />
+			Two days of data visualization, curated by India's data viz community
 		</Text>
 
-		<Cluster justify="start" class="pt-8">
-			<Button href="https://tickets.vizchitra.com" color="pink" external={true}>Get Tickets</Button>
-			<Button href="/2026/sessions" color="pink">See all Sessions</Button>
-		</Cluster>
+		<div class="hero-info">
+			<div class="hero-info-item">
+				<span class="hero-info-icon">📍</span>
+				<span><strong>Bangalore International Centre</strong></span>
+			</div>
+			<div class="hero-info-item">
+				<span class="hero-info-icon">📅</span>
+				<span><strong>3rd & 4th July, 2026</strong></span>
+			</div>
+		</div>
+
+		<div class="hero-actions">
+			<a
+				href="https://tickets.vizchitra.com"
+				target="_blank"
+				rel="noopener"
+				class="hero-btn hero-btn-pink"
+			>
+				<span class="hero-btn-icon">🎟️</span>
+				<span class="hero-btn-text">Get Tickets →</span>
+			</a>
+			<a href="/2026/sessions" class="hero-btn hero-btn-blue">
+				<span class="hero-btn-icon">🎤</span>
+				<span class="hero-btn-text">See all Sessions →</span>
+			</a>
+		</div>
 
 		<DividerCurves />
 
@@ -226,6 +395,74 @@
 			{@render sessionRow('Dialogues')}
 		</Stack>
 
+		<!-- ── Attendee Feedback Strip ─────────────────────────────────── -->
+
+		<DividerCurves />
+	</Stack>
+</Container>
+
+<div class="feedback-strip">
+	<div class="feedback-inner">
+		<h2 class="feedback-heading">What attendees told us after VizChitra 2025</h2>
+
+		<p class="feedback-context">How was your overall experience?</p>
+		<div class="stacked-bar">
+			<div
+				class="bar-segment"
+				style="width: 25%; background: #f0c4d6;"
+				title="Far exceeded expectations (25%)"
+			></div>
+			<div
+				class="bar-segment"
+				style="width: 32%; background: #e08db2;"
+				title="Better than expected (32%)"
+			></div>
+			<div
+				class="bar-segment"
+				style="width: 25%; background: #c4325a;"
+				title="Met expectations (25%)"
+			></div>
+			<div
+				class="bar-segment"
+				style="width: 17%; background: #7a1a3e;"
+				title="Met some expectations (17%)"
+			></div>
+			<div
+				class="bar-segment"
+				style="width: 1%; background: #3a0a1a;"
+				title="Did not meet (1%)"
+			></div>
+		</div>
+		<div class="bar-legend">
+			<span class="legend-item"
+				><span class="legend-dot" style="background: #f0c4d6;"></span> Far exceeded (25%)</span
+			>
+			<span class="legend-item"
+				><span class="legend-dot" style="background: #e08db2;"></span> Better than expected (32%)</span
+			>
+			<span class="legend-item"
+				><span class="legend-dot" style="background: #c4325a;"></span> Met expectations (25%)</span
+			>
+			<span class="legend-item"
+				><span class="legend-dot" style="background: #7a1a3e;"></span> Met some (17%)</span
+			>
+		</div>
+
+		<h3 class="feedback-subheading">What they liked most</h3>
+
+		<div class="quote-rotator">
+			{#key quoteIndex}
+				<div class="quote-anim">
+					<p class="quote-rotating">{currentQuote.text}</p>
+					<p class="quote-rotating-attr">— {currentQuote.attr}</p>
+				</div>
+			{/key}
+		</div>
+	</div>
+</div>
+
+<Container>
+	<Stack>
 		<!-- ── Browse Submissions ─────────────────────────────────────────── -->
 
 		<DividerCurves />
@@ -235,15 +472,15 @@
 		</Heading>
 
 		<Text type="body">
-			We invited submissions across across four formats—<ColorSpan color="blue">Talks</ColorSpan>,
+			We received over 150 submissions across four formats—<ColorSpan color="blue">Talks</ColorSpan
+			>,
 			<ColorSpan color="teal">Dialogues</ColorSpan>,
 			<ColorSpan color="pink">Workshops</ColorSpan>, and
-			<ColorSpan color="orange">Exhibition</ColorSpan>. Last day for submissions was on 15 Feb,
-			2026. You can explore all the submitted proposals below.
+			<ColorSpan color="orange">Exhibition</ColorSpan>. Browse all submitted proposals below.
 		</Text>
 
 		<Cluster justify="start">
-			<Button href="/2026/submissions" color="blue">View all Submissions</Button>
+			<Button href="/2026/submissions" color="blue" size="lg">📋 View all Submissions →</Button>
 		</Cluster>
 	</Stack>
 </Container>
@@ -265,24 +502,25 @@
 		z-index: 10;
 	}
 
-	.dots-row {
-		display: flex;
-		gap: 6px;
-		padding: 4px 0 6px;
-		margin-left: 376px; /* 360px label + 16px sessions-scroll padding */
-	}
-
-	.dot {
-		width: 8px;
+	.progress-track {
+		position: relative;
 		height: 8px;
-		border-radius: 50%;
-		background: #ccc;
-		flex-shrink: 0;
-		transition: background 300ms ease;
+		background: #e0e0e0;
+		border-radius: 999px;
+		margin: 4px 0 8px;
+		margin-left: 376px;
+		max-width: 200px;
 	}
 
-	.dot-active {
+	.progress-thumb {
+		position: absolute;
+		top: 0;
+		height: 100%;
 		background: #444;
+		border-radius: 999px;
+		transition:
+			left 300ms ease,
+			width 300ms ease;
 	}
 
 	.sessions-scroll {
@@ -293,8 +531,17 @@
 		padding-right: 2rem;
 		scroll-snap-type: x mandatory;
 		scroll-padding-left: 16px;
-		/* hide scrollbar */
 		scrollbar-width: none;
+		cursor:
+			url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 9l-3 3 3 3'/%3E%3Cpath d='M9 5l3-3 3 3'/%3E%3Cpath d='M15 19l-3 3-3-3'/%3E%3Cpath d='M19 9l3 3-3 3'/%3E%3Cline x1='2' y1='12' x2='22' y2='12'/%3E%3Cline x1='12' y1='2' x2='12' y2='22'/%3E%3C/svg%3E")
+				14 14,
+			grab;
+	}
+
+	.sessions-scroll:global(.is-dragging) {
+		cursor: grabbing;
+		scroll-snap-type: none;
+		user-select: none;
 	}
 
 	.sessions-scroll::-webkit-scrollbar {
@@ -316,6 +563,216 @@
 	.sessions-scroll:hover .session-card-wrap:not(:first-child),
 	.sessions-scroll:focus-within .session-card-wrap:not(:first-child) {
 		margin-left: 8px;
+	}
+
+	/* ── Hero info & actions ───────────────────────────────────────── */
+
+	.hero-info {
+		display: flex;
+		justify-content: center;
+		gap: 2rem;
+		flex-wrap: wrap;
+	}
+
+	.hero-info-item {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 1.2rem;
+	}
+
+	.hero-info-icon {
+		font-size: 1.4rem;
+	}
+
+	.hero-actions {
+		display: flex;
+		gap: 1rem;
+		padding-top: 0.5rem;
+	}
+
+	.hero-btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.75rem;
+		width: 50%;
+		padding: 1.25rem 2rem;
+		border-radius: 4px;
+		text-decoration: none;
+		color: white;
+		transition:
+			transform 0.3s ease,
+			box-shadow 0.3s ease;
+	}
+
+	.hero-btn:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+	}
+
+	.hero-btn-pink {
+		background: var(--color-viz-pink-solid);
+	}
+
+	.hero-btn-blue {
+		background: var(--color-viz-blue-solid);
+	}
+
+	.hero-btn-icon {
+		font-size: 1.5rem;
+	}
+
+	.hero-btn-text {
+		font-family: var(--font-display);
+		font-size: 1.3rem;
+		font-weight: 800;
+		letter-spacing: 0.02em;
+	}
+
+	@media (max-width: 768px) {
+		.hero-actions {
+			flex-direction: column;
+		}
+
+		.hero-btn {
+			width: 100%;
+		}
+	}
+
+	/* ── Feedback strip ────────────────────────────────────────────── */
+
+	.feedback-strip {
+		background: #1a1a1a;
+		color: white;
+		padding: 3rem 0;
+		margin: 0;
+		width: 100vw;
+		position: relative;
+		left: 50%;
+		right: 50%;
+		margin-left: -50vw;
+		margin-right: -50vw;
+	}
+
+	.feedback-inner {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+
+	.feedback-heading {
+		font-family: var(--font-display);
+		font-size: 1.8rem;
+		font-weight: 800;
+		margin: 0 0 2rem;
+	}
+
+	.feedback-subheading {
+		font-family: var(--font-display);
+		font-size: 1.3rem;
+		font-weight: 700;
+		margin: 2.5rem 0 1rem;
+		opacity: 0.7;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.feedback-context {
+		font-size: 1rem;
+		opacity: 0.6;
+		margin: 0 0 0.5rem;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		font-weight: 600;
+	}
+
+	.stacked-bar {
+		display: flex;
+		height: 28px;
+		border-radius: 4px;
+		overflow: hidden;
+		gap: 2px;
+	}
+
+	.bar-segment {
+		transition: width 0.6s ease;
+	}
+
+	.bar-legend {
+		display: flex;
+		gap: 1.5rem;
+		flex-wrap: wrap;
+		margin-top: 0.75rem;
+	}
+
+	.legend-item {
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+		font-size: 0.8rem;
+		opacity: 0.7;
+	}
+
+	.legend-dot {
+		width: 10px;
+		height: 10px;
+		border-radius: 2px;
+		flex-shrink: 0;
+	}
+
+	/* ── Rotating quote ────────────────────────────────────────────── */
+
+	.quote-rotator {
+		min-height: 130px;
+		max-width: 700px;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.quote-anim {
+		animation: quoteFadeUp 4s ease both;
+	}
+
+	@keyframes quoteFadeUp {
+		0% {
+			opacity: 0;
+			transform: translateY(16px);
+		}
+		8% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+		85% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+		100% {
+			opacity: 0;
+			transform: translateY(-10px);
+		}
+	}
+
+	.quote-rotating {
+		font-family: var(--font-display);
+		font-size: 1.4rem;
+		font-weight: 500;
+		line-height: 1.5;
+		font-style: italic;
+		color: #eee;
+		margin: 0 0 0.5rem;
+	}
+
+	.quote-rotating-attr {
+		font-family: var(--font-display);
+		font-size: 0.85rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		opacity: 0.45;
+		margin: 0;
+		color: #ccc;
+		text-align: right;
 	}
 
 	/* ── Mobile layout ──────────────────────────────────────────────── */
@@ -340,7 +797,7 @@
 			flex-shrink: 0;
 		}
 
-		.dots-row {
+		.progress-track {
 			margin-left: 0;
 		}
 

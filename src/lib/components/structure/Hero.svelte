@@ -46,7 +46,7 @@
 </script>
 
 <FullBleed class="pb-24">
-	<div class="relative h-[80svh] overflow-visible">
+	<div class="relative h-[50svh] overflow-visible">
 		<!-- Banner layer -->
 		<div class="absolute inset-0 z-0">
 			{#if banner === 'curve' || banner === 'spinner'}

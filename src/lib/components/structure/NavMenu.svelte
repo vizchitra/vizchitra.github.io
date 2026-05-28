@@ -6,6 +6,9 @@
 	import VizChitraLogoType from '$lib/components/typography/LogoType.svelte';
 	import MobileNavDrawer from './MobileNavDrawer.svelte';
 	import { clickOutside } from '$lib/utils/actions';
+	import { page } from '$app/stores';
+
+	const currentPath = $derived($page.url.pathname);
 
 	let navSections = $state([
 		{
@@ -112,7 +115,11 @@
 							style:--accent-color={section.accentColor}
 						>
 							<button
-								class="flex cursor-pointer items-center gap-2 rounded-md px-3 py-2"
+								class="flex cursor-pointer items-center gap-2 rounded-md px-3 py-2 {currentPath.startsWith(
+									section.href.replace(/\/$/, '')
+								)
+									? 'nav-section-active'
+									: ''}"
 								onclick={stopPropagation(() => toggleDropdown(section.name))}
 								aria-haspopup="true"
 								aria-expanded={section.expanded}
@@ -143,7 +150,10 @@
 										{:else}
 											<a
 												href={subsection.href}
-												class="w-full cursor-pointer px-1 py-2"
+												class="w-full cursor-pointer px-1 py-2 {currentPath.replace(/\/$/, '') ===
+												subsection.href.replace(/\/$/, '')
+													? 'nav-active'
+													: ''}"
 												target={(subsection as any)?.target || '_self'}
 											>
 												<span
@@ -189,9 +199,22 @@
 </nav>
 
 <style>
+	.dropdown a {
+		border-bottom: 3px solid transparent;
+	}
+
 	.dropdown a:hover {
-		border-bottom: 4px solid var(--accent-color);
-		color: white;
+		border-bottom: 3px solid var(--accent-color);
+	}
+
+	:global(.nav-active) {
+		border-bottom: 3px solid var(--accent-color) !important;
+		font-weight: 700 !important;
+	}
+
+	:global(.nav-section-active) span:first-child {
+		border-bottom: 2px solid var(--accent-color);
+		padding-bottom: 2px;
 	}
 
 	.chevron.expanded {
