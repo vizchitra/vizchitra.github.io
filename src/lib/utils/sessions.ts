@@ -27,6 +27,7 @@ export interface SessionData {
 	speakerImage: string;
 	display: boolean;
 	tbd: boolean;
+	soldOut?: boolean;
 	order?: number;
 }
 

@@ -324,6 +324,7 @@
 								slug={session.slug}
 								speakerImage={session.speakerImage}
 								tbd={session.tbd}
+								soldOut={session.soldOut}
 								isExpanded={true}
 								descriptionHtml={session.descriptionHtml}
 							/>

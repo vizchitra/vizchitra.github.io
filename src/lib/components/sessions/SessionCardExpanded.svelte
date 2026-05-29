@@ -21,6 +21,7 @@
 		slug?: string;
 		speakerImage?: string;
 		tbd?: boolean;
+		soldOut?: boolean;
 		isExpanded?: boolean;
 		showViewDetailsButton?: boolean;
 		descriptionHtml?: string;
@@ -41,6 +42,7 @@
 		slug,
 		speakerImage,
 		tbd = false,
+		soldOut = false,
 		isExpanded = true,
 		showViewDetailsButton = false,
 		descriptionHtml = '',
@@ -206,8 +208,15 @@
 			onpointermove={handlePointerMove}
 			onpointerleave={handlePointerLeave}
 		>
+			{#if soldOut}
+				<div class="sold-out-ribbon">
+					<span class="sold-out-ribbon-text">Sold Out</span>
+				</div>
+			{/if}
 			<div
-				class="session-card-body relative flex aspect-4/5.75 max-h-[85svh] flex-col md:max-h-none"
+				class="session-card-body relative flex aspect-4/5.75 max-h-[85svh] flex-col md:max-h-none {soldOut
+					? 'sold-out-card'
+					: ''}"
 				bind:clientWidth={backgroundWidth}
 				bind:clientHeight={backgroundHeight}
 			>
@@ -468,6 +477,39 @@
 {/if}
 
 <style>
+	.sold-out-ribbon {
+		position: absolute;
+		top: 38px;
+		left: -55px;
+		z-index: 30;
+		width: 240px;
+		background: var(--color-viz-orange, oklch(76% 0.161 82));
+		transform: rotate(-35deg);
+		text-align: center;
+		padding: 10px 0;
+		pointer-events: none;
+		box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+	}
+
+	.sold-out-card {
+		opacity: 0.7;
+		filter: grayscale(40%);
+	}
+
+	.sold-out-card:hover {
+		opacity: 0.85;
+		filter: grayscale(20%);
+	}
+
+	.sold-out-ribbon-text {
+		font-family: var(--font-display);
+		font-size: 1.05rem;
+		font-weight: 800;
+		color: white;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+	}
+
 	.sessions-card-wrapper {
 		box-shadow:
 			rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
