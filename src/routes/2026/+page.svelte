@@ -196,31 +196,25 @@
 	import { onMount, onDestroy } from 'svelte';
 
 	const eventPhotos: string[] = [
-		'/images/photos/hug.jpg',
-		'/images/photos/packed-auditorium.jpg',
-		'/images/photos/aditi-performance-1.jpg',
-		'/images/photos/speaker-stage.jpg',
-		'/images/photos/smiling-audience.jpg',
 		'/images/photos/tote-bag.jpg',
-		'/images/photos/dialogue-circle.jpg',
+		'/images/photos/aditi-performance-4.jpg',
+		'/images/photos/group-photo.jpg',
+		'/images/photos/packed-auditorium.jpg',
+		'/images/photos/hug.jpg',
+		'/images/photos/crowd-registration.jpg',
+		'/images/photos/smiling-audience.jpg',
+		'/images/photos/aditi-performance-1.jpg',
 		'/images/photos/hall-talk.jpg',
 		'/images/photos/collaborating.jpg',
-		'/images/photos/crowd-registration.jpg',
-		'/images/photos/anand-workshop.jpg',
-		'/images/photos/workshop-hands.jpg',
-		'/images/photos/aditi-performance-4.jpg',
 		'/images/photos/audience-clapping.jpg',
-		'/images/photos/flash-talks.jpg',
-		'/images/photos/dialogue.jpg',
+		'/images/photos/workshop-hands.jpg',
 		'/images/photos/stage-presentation.jpg',
 		'/images/photos/crowd-listening.jpg',
 		'/images/photos/workshop-pair.jpg',
 		'/images/photos/workshop-screen.jpg',
 		'/images/photos/audience-clapping-2.jpg',
 		'/images/photos/stage-group.jpg',
-		'/images/photos/workshop-teaching.jpg',
-		'/images/photos/networking.jpg',
-		'/images/photos/group-photo.jpg'
+		'/images/photos/networking.jpg'
 	];
 
 	const quotes = [
