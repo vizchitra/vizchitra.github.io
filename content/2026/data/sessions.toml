@@ -937,6 +937,7 @@ He also teaches at design schools like NID & IDC, IIT Bombay, and supports desig
 """
 speakerImage = "/images/speakers/2026/speaker-kenneth.avif"
 display = true
+soldOut = true
 order = 3
 
 [[session]]
