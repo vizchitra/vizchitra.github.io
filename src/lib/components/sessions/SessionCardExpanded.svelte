@@ -22,6 +22,7 @@
 		speakerImage?: string;
 		tbd?: boolean;
 		soldOut?: boolean;
+		soldOutStyle?: 'stamp' | 'ribbon';
 		isExpanded?: boolean;
 		showViewDetailsButton?: boolean;
 		descriptionHtml?: string;
@@ -43,6 +44,7 @@
 		speakerImage,
 		tbd = false,
 		soldOut = false,
+		soldOutStyle = 'ribbon',
 		isExpanded = true,
 		showViewDetailsButton = false,
 		descriptionHtml = '',
@@ -202,21 +204,77 @@
 {:else}
 	{@const currentColor = colorClasses[color] ?? colorClasses.blue}
 	<div class="sessions-card-wrapper group @container relative mx-auto w-full">
-		{#if soldOut}
-			<div
-				class="absolute top-3 right-3 z-20 rounded bg-red-600 px-2.5 py-1 text-xs font-bold tracking-wider text-white uppercase shadow-md"
-			>
-				Sold Out
-			</div>
-		{/if}
 		<a
 			href={detailHref}
 			class="sessions-card bg-viz-white border-viz-grey/40 isolate block w-full transform-gpu overflow-hidden rounded border transition-[transform,box-shadow] group-hover:scale-102"
 			onpointermove={handlePointerMove}
 			onpointerleave={handlePointerLeave}
 		>
+			{#if soldOut && soldOutStyle === 'ribbon'}
+				<div class="sold-out-ribbon">
+					<span class="sold-out-ribbon-text">Sold Out</span>
+				</div>
+			{/if}
+			{#if soldOut && soldOutStyle === 'stamp'}
+				<div class="sold-out-stamp">
+					<svg viewBox="0 0 160 160" width="160" height="160">
+						<defs>
+							<path
+								id="stamp-circle-{slug}"
+								d="M 80,80 m -58,0 a 58,58 0 1,1 116,0 a 58,58 0 1,1 -116,0"
+								fill="none"
+							/>
+						</defs>
+						<circle cx="80" cy="80" r="72" fill="var(--color-viz-orange, oklch(76% 0.161 82))" />
+						<circle cx="80" cy="80" r="52" fill="white" />
+						<circle
+							cx="80"
+							cy="80"
+							r="52"
+							fill="none"
+							stroke="var(--color-viz-orange, oklch(76% 0.161 82))"
+							stroke-width="2"
+						/>
+						<text
+							fill="white"
+							font-family="var(--font-display)"
+							font-size="14"
+							font-weight="800"
+							letter-spacing="4"
+						>
+							<textPath href="#stamp-circle-{slug}" startOffset="0%"
+								>SOLD OUT · SOLD OUT · SOLD OUT ·</textPath
+							>
+						</text>
+						<text
+							x="80"
+							y="75"
+							text-anchor="middle"
+							dominant-baseline="central"
+							fill="black"
+							font-family="var(--font-display)"
+							font-size="22"
+							font-weight="800"
+							letter-spacing="1">SOLD</text
+						>
+						<text
+							x="80"
+							y="97"
+							text-anchor="middle"
+							dominant-baseline="central"
+							fill="black"
+							font-family="var(--font-display)"
+							font-size="22"
+							font-weight="800"
+							letter-spacing="1">OUT</text
+						>
+					</svg>
+				</div>
+			{/if}
 			<div
-				class="session-card-body relative flex aspect-4/5.75 max-h-[85svh] flex-col md:max-h-none"
+				class="session-card-body relative flex aspect-4/5.75 max-h-[85svh] flex-col md:max-h-none {soldOut
+					? 'sold-out-card'
+					: ''}"
 				bind:clientWidth={backgroundWidth}
 				bind:clientHeight={backgroundHeight}
 			>
@@ -477,6 +535,47 @@
 {/if}
 
 <style>
+	.sold-out-ribbon {
+		position: absolute;
+		top: 38px;
+		left: -55px;
+		z-index: 30;
+		width: 240px;
+		background: var(--color-viz-orange, oklch(76% 0.161 82));
+		transform: rotate(-35deg);
+		text-align: center;
+		padding: 10px 0;
+		pointer-events: none;
+		box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+	}
+
+	.sold-out-stamp {
+		position: absolute;
+		bottom: 22%;
+		left: 5%;
+		z-index: 20;
+		pointer-events: none;
+	}
+
+	.sold-out-card {
+		opacity: 0.7;
+		filter: grayscale(40%);
+	}
+
+	.sold-out-card:hover {
+		opacity: 0.85;
+		filter: grayscale(20%);
+	}
+
+	.sold-out-ribbon-text {
+		font-family: var(--font-display);
+		font-size: 1.05rem;
+		font-weight: 800;
+		color: white;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+	}
+
 	.sessions-card-wrapper {
 		box-shadow:
 			rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
