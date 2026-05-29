@@ -21,6 +21,7 @@
 		slug?: string;
 		speakerImage?: string;
 		tbd?: boolean;
+		soldOut?: boolean;
 		isExpanded?: boolean;
 		showViewDetailsButton?: boolean;
 		descriptionHtml?: string;
@@ -41,6 +42,7 @@
 		slug,
 		speakerImage,
 		tbd = false,
+		soldOut = false,
 		isExpanded = true,
 		showViewDetailsButton = false,
 		descriptionHtml = '',
@@ -200,6 +202,13 @@
 {:else}
 	{@const currentColor = colorClasses[color] ?? colorClasses.blue}
 	<div class="sessions-card-wrapper group @container relative mx-auto w-full">
+		{#if soldOut}
+			<div
+				class="absolute top-3 right-3 z-20 rounded bg-red-600 px-2.5 py-1 text-xs font-bold tracking-wider text-white uppercase shadow-md"
+			>
+				Sold Out
+			</div>
+		{/if}
 		<a
 			href={detailHref}
 			class="sessions-card bg-viz-white border-viz-grey/40 isolate block w-full transform-gpu overflow-hidden rounded border transition-[transform,box-shadow] group-hover:scale-102"

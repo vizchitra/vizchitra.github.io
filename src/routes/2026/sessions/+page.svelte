@@ -126,6 +126,7 @@
 						showViewDetailsButton={true}
 						descriptionHtml={session.descriptionHtml}
 						tbd={session.tbd}
+						soldOut={session.soldOut}
 						isExpanded={true}
 					/>
 				{/each}

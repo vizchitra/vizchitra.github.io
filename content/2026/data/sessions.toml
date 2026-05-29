@@ -865,6 +865,7 @@ longDescription = """
 Whether you are an experienced artist or have never picked up a pencil, this workshop introduces sketching as a practical starting point for building data stories. Led by Adolfo Arranz, an award-winning Senior Graphics Editor at Reuters Graphics, it walks through how simple, loose sketches can help you explore ideas, structure narratives and shape visual direction before moving to software. You will learn how to create story layouts with just pencil and paper, using sketching as a tool for thinking rather than drawing perfectly.
 
 This is primarily designed for anyone looking to translate ideas, journalistic research or complex explanations into clear visual formats. By focusing on paper first, you stay anchored in meaning, structure and intent rather than only execution. You will leave with a stronger understanding of how sketching supports the full design process, along with practical techniques, tools and a repeatable approach to create more engaging and memorable visual stories from one of the best in the industry."""
+soldOut = true
 speakerName = "Adolfo Arranz"
 designation = "Senior Graphics Editor"
 organisation = "Reuters"
