@@ -259,6 +259,8 @@
 	];
 
 	let quoteIndex = $state(0);
+	let videoOpen = $state(false);
+	const videoId = 'LfJLCueKkb0';
 	let currentQuote = $derived(quotes[quoteIndex]);
 	let quoteTimer: ReturnType<typeof setInterval>;
 
@@ -452,8 +454,56 @@
 				</div>
 			{/key}
 		</div>
+
+		<button
+			class="video-thumbnail"
+			onclick={() => (videoOpen = true)}
+			aria-label="Watch VizChitra 2025 recap video"
+		>
+			<img
+				src="/images/events/recap-2025-thumbnail.webp"
+				alt="VizChitra 2025 Recap"
+				class="video-thumbnail-img"
+			/>
+			<div class="video-play-overlay">
+				<svg viewBox="0 0 80 80" width="80" height="80">
+					<circle cx="40" cy="40" r="38" fill="white" opacity="0.9" />
+					<polygon
+						points="32,24 32,56 58,40"
+						fill="var(--color-viz-pink-solid, oklch(46% 0.17 354))"
+					/>
+				</svg>
+				<p class="video-play-text">Watch our 2025 Film</p>
+			</div>
+		</button>
 	</div>
 </div>
+
+{#if videoOpen}
+	<div
+		class="video-lightbox"
+		onclick={() => (videoOpen = false)}
+		onkeydown={(e) => e.key === 'Escape' && (videoOpen = false)}
+		role="dialog"
+		tabindex="-1"
+	>
+		<div class="video-lightbox-inner" onclick={(e) => e.stopPropagation()}>
+			<button
+				class="video-lightbox-close"
+				onclick={() => (videoOpen = false)}
+				aria-label="Close video">✕</button
+			>
+			<div class="video-lightbox-iframe">
+				<iframe
+					src="https://www.youtube.com/embed/{videoId}?autoplay=1"
+					title="VizChitra 2025 Recap"
+					allow="autoplay; encrypted-media; picture-in-picture"
+					allowfullscreen
+				></iframe>
+			</div>
+		</div>
+	</div>
+{/if}
 
 <Container>
 	<Stack>
@@ -830,6 +880,97 @@
 		margin: 0;
 		color: #ccc;
 		text-align: right;
+	}
+
+	.video-thumbnail {
+		position: relative;
+		display: block;
+		width: 100%;
+		max-width: 700px;
+		margin: 2rem auto 0;
+		cursor: pointer;
+		border: none;
+		background: none;
+		padding: 0;
+		border-radius: 8px;
+		overflow: hidden;
+	}
+
+	.video-thumbnail-img {
+		width: 100%;
+		display: block;
+		border-radius: 8px;
+		transition: transform 0.3s ease;
+		max-height: 350px;
+		object-fit: cover;
+	}
+
+	.video-thumbnail:hover .video-thumbnail-img {
+		transform: scale(1.02);
+	}
+
+	.video-play-overlay {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 0.75rem;
+	}
+
+	.video-play-text {
+		font-family: var(--font-display);
+		font-size: 1.3rem;
+		font-weight: 800;
+		color: white;
+		margin: 0;
+		text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+	}
+
+	.video-lightbox {
+		position: fixed;
+		inset: 0;
+		z-index: 100;
+		background: rgba(0, 0, 0, 0.85);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 2rem;
+	}
+
+	.video-lightbox-inner {
+		position: relative;
+		width: 100%;
+		max-width: 1100px;
+	}
+
+	.video-lightbox-close {
+		position: absolute;
+		top: -2.5rem;
+		right: 0;
+		background: none;
+		border: none;
+		color: white;
+		font-size: 1.5rem;
+		cursor: pointer;
+		padding: 0.5rem;
+	}
+
+	.video-lightbox-iframe {
+		position: relative;
+		width: 100%;
+		padding-bottom: 56.25%;
+	}
+
+	.video-lightbox-iframe iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: none;
+		border-radius: 8px;
 	}
 
 	/* ── Sponsorship banner ────────────────────────────────────────── */
