@@ -325,7 +325,6 @@
 								speakerImage={session.speakerImage}
 								tbd={session.tbd}
 								soldOut={session.soldOut}
-								soldOutStyle="ribbon"
 								isExpanded={true}
 								descriptionHtml={session.descriptionHtml}
 							/>

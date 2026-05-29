@@ -22,7 +22,6 @@
 		speakerImage?: string;
 		tbd?: boolean;
 		soldOut?: boolean;
-		soldOutStyle?: 'stamp' | 'ribbon';
 		isExpanded?: boolean;
 		showViewDetailsButton?: boolean;
 		descriptionHtml?: string;
@@ -44,7 +43,6 @@
 		speakerImage,
 		tbd = false,
 		soldOut = false,
-		soldOutStyle = 'ribbon',
 		isExpanded = true,
 		showViewDetailsButton = false,
 		descriptionHtml = '',
@@ -210,65 +208,9 @@
 			onpointermove={handlePointerMove}
 			onpointerleave={handlePointerLeave}
 		>
-			{#if soldOut && soldOutStyle === 'ribbon'}
+			{#if soldOut}
 				<div class="sold-out-ribbon">
 					<span class="sold-out-ribbon-text">Sold Out</span>
-				</div>
-			{/if}
-			{#if soldOut && soldOutStyle === 'stamp'}
-				<div class="sold-out-stamp">
-					<svg viewBox="0 0 160 160" width="160" height="160">
-						<defs>
-							<path
-								id="stamp-circle-{slug}"
-								d="M 80,80 m -58,0 a 58,58 0 1,1 116,0 a 58,58 0 1,1 -116,0"
-								fill="none"
-							/>
-						</defs>
-						<circle cx="80" cy="80" r="72" fill="var(--color-viz-orange, oklch(76% 0.161 82))" />
-						<circle cx="80" cy="80" r="52" fill="white" />
-						<circle
-							cx="80"
-							cy="80"
-							r="52"
-							fill="none"
-							stroke="var(--color-viz-orange, oklch(76% 0.161 82))"
-							stroke-width="2"
-						/>
-						<text
-							fill="white"
-							font-family="var(--font-display)"
-							font-size="14"
-							font-weight="800"
-							letter-spacing="4"
-						>
-							<textPath href="#stamp-circle-{slug}" startOffset="0%"
-								>SOLD OUT · SOLD OUT · SOLD OUT ·</textPath
-							>
-						</text>
-						<text
-							x="80"
-							y="75"
-							text-anchor="middle"
-							dominant-baseline="central"
-							fill="black"
-							font-family="var(--font-display)"
-							font-size="22"
-							font-weight="800"
-							letter-spacing="1">SOLD</text
-						>
-						<text
-							x="80"
-							y="97"
-							text-anchor="middle"
-							dominant-baseline="central"
-							fill="black"
-							font-family="var(--font-display)"
-							font-size="22"
-							font-weight="800"
-							letter-spacing="1">OUT</text
-						>
-					</svg>
 				</div>
 			{/if}
 			<div
@@ -547,14 +489,6 @@
 		padding: 10px 0;
 		pointer-events: none;
 		box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-	}
-
-	.sold-out-stamp {
-		position: absolute;
-		bottom: 22%;
-		left: 5%;
-		z-index: 20;
-		pointer-events: none;
 	}
 
 	.sold-out-card {
