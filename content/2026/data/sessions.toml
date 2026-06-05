@@ -432,7 +432,7 @@ designation = "UX Designer"
 organisation = "Health Care Organisation"
 speakerAbout = "Sadhana is a transdisciplinary designer guided by curiosity and a love for exploring the spaces between people, science, design, and technology. With a background in computer science and design, she combines technical thinking with creativity to build experiences that feel thoughtful and engaging.\n\nShe is especially drawn to tangible work and enjoys creating experiences that people can physically move through, interact with, and connect to. Her practice focuses on storytelling, spatial experiences, and emotional connection. More than anything, Sadhana loves seeing people respond to and enjoy the experiences she creates, finding meaning or curiosity within them."
 speakerImage = "/images/speakers/2026/speaker-sadhana.webp"
-display = false
+display = true
 order = 20
 
 [[session]]
@@ -448,10 +448,21 @@ shortDescription = ""
 longDescription = ""
 speakerName = "Nithya Kirti // Arkoprabho Bhattacharjee"
 designation = "Designer"
-organisation = "ShikshaLokam Foundation // VuNet Systems"
-speakerAbout = "Nithya is a creative practitioner with an evolving practice spanning visual design, illustration and digital product design. She is currently working as a design generalist shaping the narrative, product and visual design of a non-profit impacting 200,000+ public schools in India through open-source technology.\n\nWith a background in Experience Design and Humanities, she aims to bring transdisciplinary approaches and humour to shape projects into moments of critical reflection on technology and culture.\n\nThis exhibit marks Nithya's first foray into dataviz after a longstanding love-hate relationship with numbers.\n\nArko is a Senior Product Designer at VuNet Systems, where he's spent nearly three years in a small, fast-moving team, shaping product strategy across data retention, log analytics, and platform monitoring for some of the biggest banks in India.\n\nHis background blends product design and engineering, with his work building data-dense interfaces, design systems, and writing Agent skills to sharpen AI-assisted development workflows. Alongside his job, he loves tinkering with and building silly websites that bring joy to people through interactions. He believes good designers stay close to how things actually get built.\n\nHe also enjoys endurance running, writing poetry, and trekking among other things."
+organisation = "ShikshaLokam // VuNet Systems"
+speakerAbout = """
+Nithya is a creative practitioner with an evolving practice spanning visual design, illustration and digital product design. She is currently working as a design generalist shaping the narrative, product and visual design of a non-profit impacting 200,000+ public schools in India through open-source technology.
+
+With a background in Experience Design and Humanities, she aims to bring transdisciplinary approaches and humour to shape projects into moments of critical reflection on technology and culture.
+
+This exhibit marks Nithya's first foray into dataviz after a longstanding love-hate relationship with numbers.
+
+Arko is a Senior Product Designer at VuNet Systems, where he's spent nearly three years in a small, fast-moving team, shaping product strategy across data retention, log analytics, and platform monitoring for some of the biggest banks in India.
+
+His background blends product design and engineering, with his work building data-dense interfaces, design systems, and writing Agent skills to sharpen AI-assisted development workflows. Alongside his job, he loves tinkering with and building silly websites that bring joy to people through interactions. He believes good designers stay close to how things actually get built.
+
+He also enjoys endurance running, writing poetry, and trekking among other things."""
 speakerImage = "/images/speakers/2026/speaker-nithya.webp"
-display = false
+display = true
 order = 21
 
 [[session]]
