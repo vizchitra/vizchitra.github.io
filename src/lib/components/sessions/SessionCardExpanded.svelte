@@ -201,18 +201,20 @@
 	</div>
 {:else}
 	{@const currentColor = colorClasses[color] ?? colorClasses.blue}
-	<div class="sessions-card-wrapper group @container relative mx-auto w-full">
+	<div
+		class="sessions-card-wrapper group @container relative mx-auto w-full overflow-hidden rounded"
+	>
+		{#if soldOut}
+			<div class="sold-out-ribbon" style="background: {shadowColor};">
+				<span class="sold-out-ribbon-text">Sold Out</span>
+			</div>
+		{/if}
 		<a
 			href={detailHref}
 			class="sessions-card bg-viz-white border-viz-grey/40 isolate block w-full transform-gpu overflow-hidden rounded border transition-[transform,box-shadow] group-hover:scale-102"
 			onpointermove={handlePointerMove}
 			onpointerleave={handlePointerLeave}
 		>
-			{#if soldOut}
-				<div class="sold-out-ribbon">
-					<span class="sold-out-ribbon-text">Sold Out</span>
-				</div>
-			{/if}
 			<div
 				class="session-card-body relative flex aspect-4/5.75 max-h-[85svh] flex-col md:max-h-none {soldOut
 					? 'sold-out-card'
@@ -480,11 +482,10 @@
 	.sold-out-ribbon {
 		position: absolute;
 		top: 38px;
-		left: -55px;
+		right: -70px;
 		z-index: 30;
-		width: 240px;
-		background: var(--color-viz-orange, oklch(76% 0.161 82));
-		transform: rotate(-35deg);
+		width: 320px;
+		transform: rotate(35deg);
 		text-align: center;
 		padding: 10px 0;
 		pointer-events: none;
