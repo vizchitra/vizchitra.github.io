@@ -220,6 +220,11 @@
 			onpointermove={handlePointerMove}
 			onpointerleave={handlePointerLeave}
 		>
+			{#if soldOut}
+				<div class="sold-out-ribbon">
+					<span class="sold-out-ribbon-text">Sold Out</span>
+				</div>
+			{/if}
 			<div
 				class="session-card-body relative flex aspect-4/5.75 max-h-[85svh] flex-col md:max-h-none {soldOut
 					? 'sold-out-card'
