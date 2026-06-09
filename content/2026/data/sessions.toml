@@ -15,6 +15,7 @@ organisation = "Plum"
 speakerAbout = "Saurabh is the cofounder and CTO of Plum, where he leads Engineering, Product, and Design. Plum processes over 125,000 health insurance claims every year ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ and Saurabh wanted that data to do more than sit in spreadsheets. He created Datalabs, an initiative that turns claims data into interactive visual investigations about cost of healthcare. Their stories on cancer costs and heart disease burden have combined rigorous analysis with accessible narrative design to make complex health economics legible to anyone. Saurabh is interested in the craft of making the intimidating feel approachable, and the invisible feel urgent."
 speakerImage = "/images/speakers/2026/speaker-saurabh.avif"
 display = true
+pageReady = true
 order = 6
 
 [[session]]
@@ -34,6 +35,7 @@ organisation = "Bengawalk"
 speakerAbout = "Shubhra Agarwal is a multidisciplinary designer and filmmaker working at the intersection of people, culture and planet. Shubhra graduated from the National Institute of Design, Ahmedabad, India and works on visual design, web design, data viz and filmmaking projects.&#x20;\n\nTheir award-winning short film 'ÃÂÃÂ§ÃÂÃÂÃÂÃÂ«ÃÂÃÂ§ÃÂÃÂÃÂÃÂ°ÃÂÃÂ¥ÃÂÃÂ±ÃÂÃÂ±ÃÂÃÂ§ÃÂÃÂÃÂÃÂÃÂÃÂ¤ÃÂÃÂºÃÂÃÂºÃÂÃÂ¤ÃÂÃÂ»ÃÂÃÂ¬ People of the Flaming Mountain', one of the only films on Chinese Uighur Muslims, is recognised and celebrated across the globe. Shubhra believes that the goal informs medium, not the other way around, and uses both design and film to achieve it. Their recent interests include public transit signage, birding and travel-food memoirs.\n"
 speakerImage = "/images/speakers/2026/speaker-shubhra.avif"
 display = true
+pageReady = true
 order = 2
 
 [[session]]
@@ -53,6 +55,7 @@ organisation = ""
 speakerAbout = "Bargava is an experienced AI leader with over 20 years of experience building and architecting cutting-edge data and AI products. A three-time founder, he blends technical depth with an entrepreneurial spirit. For the past five years, Bargava has been focused on building in the Healthcare AI sector, developing solutions that bridge the gap between complex technology and patient care. He is a strong believer in the power of small teams."
 speakerImage = "/images/speakers/2026/speaker-bargava.avif"
 display = true
+pageReady = true
 order = 10
 
 [[session]]
@@ -72,6 +75,7 @@ organisation = "EPIC World"
 speakerAbout = "Supriya is a Data Analyst and Researcher with 4+ years of experience in translating complex datasets into actionable insights. Primarily in the impact space, she has led field research, conducted analysis, and developed data models. Her work spans a broad variety of data - survey, geospatial, government and modelled. This breadth of experience has given her the ability to see data not just as numbers, but as stories with real-world consequences.\n\nCurrently at EPIC World. Previously at J-PAL and Datarivu."
 speakerImage = "/images/speakers/2026/speaker-supriya.avif"
 display = true
+pageReady = true
 order = 5
 
 [[session]]
@@ -91,6 +95,7 @@ organisation = ""
 speakerAbout = "Shalaka is a journalist and founder of Justice Delayed, a court data resource built to facilitate journalistic inquiry of the Indian district court network. Her work as a data journalist is informed by her experience as a newspaper reporter in the early years of her career. Her passion project, Justice Delayed, provides data solutions for challenges that crime and court reporters face regularly. She is a graduate of the MS (data journalism) program at Columbia Journalism School, recipient of the Magic Grant by the Brown Institute of Media Innovation, and winner of the Tow/Brown Award for Excellence in Computational Journalism and Columbia Venture Competition. She has previously written for Bellingcat, The Quint, Hindustan Times and works freelance as a live data scraper for AP's election result database. Besides data democracy, her favourite topics are the untapped potential of remote sensing data for journalism and how underappreciated elephants are."
 speakerImage = "/images/speakers/2026/speaker-shalaka.avif"
 display = true
+pageReady = true
 order = 8
 
 [[session]]
@@ -110,6 +115,7 @@ organisation = "Aftershoot"
 speakerAbout = "For years, Jaidev has been trying to find the best way to narrate charts. He writes a newsletter called Being Bayesian, which uses statistics and dataviz to critique outrageous opinions on tech, economy and culture.\n\nHe currently works at Aftershoot, a SaaS startup where he leads the MLOps effort. You're likely to run into him at tech events."
 speakerImage = "/images/speakers/2026/speaker-jaidev.avif"
 display = true
+pageReady = true
 order = 6
 
 [[session]]
@@ -129,6 +135,7 @@ organisation = "UN Women Asia-Pacific"
 speakerAbout = "Sneha is a Statistics Analyst at UN Women's Asia-Pacific Regional Office in Bangkok, where she supports the global flagship program Women Count. Over seven years across the UN system, she has worked with government statisticians from 40+ national statistical offices on gender statistics and statistical literacy.&#x20;\n\nHer analytical work brings together survey microdata, geospatial data, and non-traditional sources to produce evidence that gets used. This work has shaped UN flagship publications including the ASEAN Gender Outlook 2022 and 2024 and several gender-environment publications, presented at the UN General Assembly and have informed intergovernmental processes including the climate COPs.&#x20;\n\nSneha holds a master's in behavioral science and public policy from the London School of Economics, where she studied how policy design and communication can nudge communities toward better outcomes. That lens shapes how she thinks about data communication, and what makes public data legible, participatory, and actionable.\n"
 speakerImage = "/images/speakers/2026/speaker-sneha.avif"
 display = true
+pageReady = true
 order = 5
 
 [[session]]
@@ -148,6 +155,7 @@ organisation = ""
 speakerAbout = "Abhiram is a creative technologist who is interested in anything creative and anything technology currently working as a GIS developer at WELL Labs. His work largely encompasses imagining, challenging and building technology with communities. He has worked with organisations like Aruvu Collaboratory, Design Beku and Janastu. He has worked with communities in Kundapura, Bidar, Channapatna etc.&#x20;\n\nHe graduated in human centered design from Srishti Manipal institute and did a semester of exchange with the interaction design studio at Glasgow School of Art. In what feels like a parallel life he dapples with Kannada theatre, film and art direction as an artist in Danka Art Collective. If you spot him in the wild feel free to stop and tell him about your favourite short film or video essay available on YouTube.\n"
 speakerImage = "/images/speakers/2026/speaker-abhiram.avif"
 display = true
+pageReady = true
 order = 9
 
 [[session]]
@@ -167,6 +175,7 @@ organisation = ""
 speakerAbout = "Priti is a creative practitioner working globally across digital humanities, data, and computational futures through research, facilitation, and critical inquiry. Her personal practice explores pluralistic approaches to data and technology, focusing on forms of knowledge and epistemologies that resist quantification while holding space for lived experience, ambiguity, and affect.\n\nShe is also a data walker and facilitates data walks in cities around the world, enabling participants to engage with urban environments through situated and embodied interpretations.\n\nCentral to her work is how culture is held, transmitted, and reconfigured across contexts and temporalities, and the structures through which it is preserved and interpreted."
 speakerImage = "/images/speakers/2026/speaker-priti.avif"
 display = true
+pageReady = true
 order = 9
 
 [[session]]
@@ -186,6 +195,7 @@ organisation = "Veditum India Foundation"
 speakerAbout = "Siddharth Agarwal has been walking across India and along India's rivers, attempting to document and bring stories of marginalised communities and the environment into the mainstream.&#x20;\n\nSince 2014, he has walked 6000+ kms, including the lengths of the rivers Ganga and Ken. He is the founder of Veditum India Foundation where he is working to transform the environmental governance landscape in India.&#x20;\n\nThe organisation - Veditum, has overseen long documentation and sensing expeditions of over 7000kms along 7 different rivers in India. These stories, captured as part of the Moving Upstream project and Fellowship have been distributed widely, and brought significant attention to the cause of these rivers.&#x20;\n\nThrough the India Sand Watch project, Veditum is introducing accountability in the river sand mining sector in India. And through the Kolkata Change Makers initiative, they are creating a space for deep explorations in change making for and from the city.\n"
 speakerImage = "/images/speakers/2026/speaker-siddharth.avif"
 display = true
+pageReady = true
 order = 10
 
 [[session]]
@@ -205,6 +215,7 @@ organisation = "MoSPI"
 speakerAbout = "Rohit Bhardwaj is an Indian Statistical Service (ISS) officer of the 1998 batch. As Additional Director General, he is currently leading innovation and informatics initiatives at the National Statistical Office (NSO), India.\n\n Rohit initiated the development of eSankhyiki and dynamic visualizations to enhance data accessibility and user engagement in official statistics. He has been instrumental in identifying and initiating POCs and Pilots for use cases of emerging technologies in official statistics. He has successfully operationalized an innovation scheme that fosters collaboration with startups and academia to co-create data-driven solutions.\n\n His paper on creating a network of institutions for innovation in official statistics was recently accepted for presentation at the UNECE Conference on the Use of Generative AI in Official Statistics. His efforts have also led to the development of the data portal of MoSPI, resulting in tangible improvements in data dissemination and innovation."
 speakerImage = "/images/speakers/2026/speaker-rohit.avif"
 display = true
+pageReady = true
 order = 4
 
 [[session]]
@@ -224,6 +235,7 @@ organisation = ""
 speakerAbout = "Surbhi is a data journalist, and has spent many years searching for insights and composing stories that are coded and designed to turn numbers into striking and memorable visuals. She loves working on diverse topics to uncover what really may be happening in the boundless worlds of bollywood movies, digital commerce, climate change, urbanisation, and chocolates!\n\nShe has worked with different mindsets across many settings like: urgency in newsrooms, immersion in academia, clarity in communications, and creativity in design studios. She agrees that correlation is not causation, but believes strongly that walkable cities make for a better life. She has worked with xKDR Forum, Mint, World Bank, Thibi, Open Network for Digital Commerce, and written for Kontinentalist, Nikkei Asia, Indiaspend, The Hindu, and more. Her work has been recognised by the Society for Advancing Business Editing and Writing (SABEW), Festival de Datos, and The Pudding."
 speakerImage = "/images/speakers/2026/speaker-surbhi.webp"
 display = true
+pageReady = true
 order = 5
 
 [[session]]
@@ -243,6 +255,7 @@ organisation = "The Times of India"
 speakerAbout = "Rohit Saran is the Managing Editor of The Times of India. He has served as Executive Editor of The Times of India, The Economic Times, and India Today, and was Editor-in-Chief of Business Today and Khaleej Times. Since the 1990s, he has practised data and visual journalism across leading newsrooms ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ blending numbers, visuals, and text to tell richer stories and to create enduring news products.\n\nRohit teamed up with Sajeev Kumarapuram, Design Editor of The Times of India to author '100 Ways to See India -- Stats, Stories and Surprises' which was published by Harper Collins India earlier this year. Rohit and Sajeev have spent years exploring India's data jungleÃÂÃÂ¢ÃÂÃÂÃÂÃÂmostly out of professional need, at times out of curiosity. Along the way, they've hunted elusive numbers, dodged PDF traps, and found joy in telling stories through charts."
 speakerImage = "/images/speakers/2026/speaker-rohit-saran.webp"
 display = true
+pageReady = true
 order = 3
 
 [[session]]
@@ -262,6 +275,7 @@ organisation = "Atlassian"
 speakerAbout = "Sandeep Karmarkar is a design leader with over two decades of experience spanning visual design, UX, product strategy, and team leadership across global technology companies. He currently serves as the Head of Design for the IT Operations portfolio at Atlassian, where he leads teams focused on building effective experiences for managing complex systems at scale. He has previously held leadership roles at Uber, Google, and Nutanix.\n\nOver the years, he has worked on products used by millions across mobility, cloud platforms, security, and public transport experiences in India. Deeply passionate about data visualization and information design, Sandeep has actively hired, mentored, and supported many young designers from Information Design backgrounds throughout his career. He is equally passionate about building high-performing teams and bridging industry with education through talks, workshops, mentorship, and teaching engagements.\n\nA marathon runner, trekker, and digital artist, he brings the same curiosity and endurance from the mountains into the world of design leadership, innovation, and storytelling.\n"
 speakerImage = "/images/speakers/2026/speaker-sandeep-karmarkar.webp"
 display = true
+pageReady = true
 order = 3
 
 [[session]]
@@ -281,6 +295,7 @@ organisation = "Resolve to Save Lives"
 speakerAbout = "Tony Joy is a Senior Product Designer at Resolve to Save Lives (RTSL), where he works on public health dashboards and digital systems for hypertension and diabetes programs. He helps ministries and public health teams collect and make sense of large-scale healthcare data. A lot of this work happens far away from air-conditioned offices, inside hot and busy government clinics where a single healthcare worker sees up to 200 patients a day. \n He has worked with the World Health Organisation, World Diabetes Foundation, University of Oslo, and multiple Ministries of Health to build dashboards used to monitor millions of hypertension and diabetes patients across low and middle income countries. He's especially interested in how data visualisation shapes incentives, priorities, and decision-making inside public health systems."
 speakerImage = "/images/speakers/2026/speaker-tony-joy.webp"
 display = true
+pageReady = true
 order = 13
 
 [[session]]
@@ -300,6 +315,7 @@ organisation = "MIT CSAIL"
 speakerAbout = "Arvind Satyanarayan is an Associate Professor of Computer Science at MIT EECS, and leads the Visualization Group at the MIT Computer Science and Artificial Intelligence Lab (CSAIL). His group uses data visualization as a petri dish to study intelligence augmentation, or how computational representations can help amplify human cognition and creativity.&#x20;\n\nThis work has received awards at premier academic venues (including ACM CHI, IEEE VIS, and EuroVis), and honors including the Alfred P. Sloan Fellowship (2024), the IEEE VGTC Significant New Visualization Researcher Award (2022), a Google Research Scholar Award (2021), and a Kavli Frontiers of Science Fellow (2020). The visualization tools developed by Arvind and his collaborators, including Vega and Vega-Lite, are widely used in industry (including at Apple, Google, and Microsoft), on Wikipedia, and in the Jupyter data science community.\n"
 speakerImage = "/images/speakers/2026/speaker-arvind-s.webp"
 display = true
+pageReady = true
 order = 1
 
 [[session]]
@@ -319,6 +335,7 @@ organisation = "Diagram Chasing"
 speakerAbout = "Aman Bhargava is a developer and independent researcher. He is interested in public-interest technology and making charts, with his work appearing in Reuters, Rest of World, and Unearthed by Greenpeace.&#x20;\n\nHe co-runs Diagram Chasing, an independent publication dedicated to turning public data into compelling, accessible visual stories and tools.\n"
 speakerImage = "/images/speakers/2026/speaker-aman.webp"
 display = true
+pageReady = true
 order = 4
 
 [[session]]
@@ -338,6 +355,7 @@ organisation = "Straive"
 speakerAbout = "Anand is an LLM psychologist at Straive, where he researches AI and publishes demos. Earlier, he co-founded Gramener, a data storytelling company. He's listed among India's top 10 data scientists and AI influencers and is a regular TEDx/Pycon speaker.\n\nAnand is an alumnus of IIM Bangalore, IIT Madras, London Business School, IBM, Infosys Consulting, Lehman Brothers, and BCG.\n\nMore importantly, he hand-transcribed every Calvin & Hobbes strip ever, is addicted to Minecraft & Anime (thanks to his daughter), and dreams of watching every film on the IMDb Top 250 (except The Shining)."
 speakerImage = "/images/speakers/2026/speaker-anand.avif"
 display = true
+pageReady = true
 order = 5
 
 [[session]]
@@ -357,6 +375,7 @@ organisation = "Quansight"
 speakerAbout = "Agriya is a software engineer at Quansight, where he works on scientific open source software in the Scientific Python and Jupyter ecosystems. He is passionate about advancing science policy in India and believes that data, communicated honestly and rigorously, is one of its most powerful tools ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ a conviction that keeps him equally at home, whether in a terminal or in a policy debate."
 speakerImage = "/images/speakers/2026/speaker-agriya.avif"
 display = true
+pageReady = true
 order = 17
 
 [[session]]
@@ -376,6 +395,7 @@ organisation = "Bath"
 speakerAbout = "Lakshmi is a software engineer turned social impact professional whose work sits at the intersection of data, technology, education, and entrepreneurship. Having worked across India and the UK with government and third sector organisations, she brings a systems lens to questions of development and representation.\n\nNow as a doctoral researcher, Lakshmi engages deeply with what data gets measured and whose knowledge counts. Her work attempts to interrogate (if not at least acknowledge) what is left out and whose realities are flattened in the process. Through this, she nudges toward more reflective, responsible, and context-sensitive approaches to both data and development, inviting researchers and practitioners to rethink (or at least surface) the assumptions embedded in how we see and shape the world."
 speakerImage = "/images/speakers/2026/speaker-lakshmi.avif"
 display = true
+pageReady = true
 order = 11
 
 [[session]]
@@ -386,15 +406,16 @@ time = ""
 slot = ""
 venue = "Bangalore International Centre"
 title = "Puddle Beneath the Plate"
-subtitle = ""
+subtitle = "What if the water behind our food sat visibly at the table with us?"
 shortDescription = ""
 longDescription = ""
 speakerName = "Shreya Dan"
-designation = "Student"
-organisation = "National Institute of Design, Bengaluru"
+designation = "Information Designer"
+organisation = "NID Bengaluru"
 speakerAbout = "Shreya is an Information Design student at the National Institute of Design with a background in Fashion Design from the National Institute of Fashion Technology. Originally trained as a fashion designer, her shift towards information design began after two years of working with data, visual communication, and research-driven storytelling.\n\nShe loves to explore the intersection of fashion, materiality, and data visualization by translating complex datasets into tactile and experiential forms that can be shaped, layered, and physically experienced. She aims to make abstract information more human, intuitive, and engaging for wider audiences.\n\nHer work explores storytelling through metaphors, analogies and to create experiences that feel more personal, relatable, and easy to understand."
 speakerImage = "/images/speakers/2026/speaker-shreya.webp"
-display = false
+display = true
+pageReady = false
 order = 18
 
 [[session]]
@@ -405,15 +426,24 @@ time = ""
 slot = ""
 venue = "Bangalore International Centre"
 title = "Too hot to open"
-subtitle = ""
+subtitle = "Windows into a future too hot to step outside"
 shortDescription = ""
 longDescription = ""
-speakerName = "Kashvi Bansal"
+speakerName = "Kashvi Bansal // Surbhi Bhatia"
 designation = "Editorial Designer"
 organisation = "The Ken"
-speakerAbout = "Kashvi is an editorial designer at The Ken, turning complex ideas into data visuals. Based in Bangalore, she is a data enthusiast with a love for print media and human experiences. Although her work spans brand development, web design, print, publication, and data visualization, she is currently focusing on weaving together research, data, and design to build richer narratives.\n\nShe is also the author of Missing in Action, a self-driven design research project unpacking gender disparity in Indian cinema. It explores the systemic ways women's presence and contributions in the industry are limited, rooted in a belief that art and media can be powerful catalysts for social change."
+speakerAbout = """
+Kashvi is an editorial designer at The Ken, turning complex ideas into data visuals. Based in Bangalore, she is a data enthusiast with a love for print media and human experiences. Although her work spans brand development, web design, print, publication, and data visualization, she is currently focusing on weaving together research, data, and design to build richer narratives.
+
+She is also the author of Missing in Action, a self-driven design research project unpacking gender disparity in Indian cinema. It explores the systemic ways women's presence and contributions in the industry are limited, rooted in a belief that art and media can be powerful catalysts for social change.
+
+"Surbhi is a data journalist, and has spent many years searching for insights and composing stories that are coded and designed to turn numbers into striking and memorable visuals. She loves working on diverse topics to uncover what really may be happening in the boundless worlds of bollywood movies, digital commerce, climate change, urbanisation, and chocolates!
+
+She has worked with different mindsets across many settings like: urgency in newsrooms, immersion in academia, clarity in communications, and creativity in design studios. She agrees that correlation is not causation, but believes strongly that walkable cities make for a better life. She has worked with xKDR Forum, Mint, World Bank, Thibi, Open Network for Digital Commerce, and written for Kontinentalist, Nikkei Asia, Indiaspend, The Hindu, and more. Her work has been recognised by the Society for Advancing Business Editing and Writing (SABEW), Festival de Datos, and The Pudding.
+"""
 speakerImage = "/images/speakers/2026/speaker-kashvi.webp"
-display = false
+display = true
+pageReady = false
 order = 19
 
 [[session]]
@@ -424,7 +454,7 @@ time = ""
 slot = ""
 venue = "Bangalore International Centre"
 title = "The Scent of Grounded Change"
-subtitle = ""
+subtitle = "An olfactory archive of rain, land, and urban change"
 shortDescription = ""
 longDescription = ""
 speakerName = "Sadhana Lokesh"
@@ -433,6 +463,7 @@ organisation = "Health Care Organisation"
 speakerAbout = "Sadhana is a transdisciplinary designer guided by curiosity and a love for exploring the spaces between people, science, design, and technology. With a background in computer science and design, she combines technical thinking with creativity to build experiences that feel thoughtful and engaging.\n\nShe is especially drawn to tangible work and enjoys creating experiences that people can physically move through, interact with, and connect to. Her practice focuses on storytelling, spatial experiences, and emotional connection. More than anything, Sadhana loves seeing people respond to and enjoy the experiences she creates, finding meaning or curiosity within them."
 speakerImage = "/images/speakers/2026/speaker-sadhana.webp"
 display = true
+pageReady = false
 order = 20
 
 [[session]]
@@ -443,7 +474,7 @@ time = ""
 slot = ""
 venue = "Bangalore International Centre"
 title = "Klimate Kundli"
-subtitle = ""
+subtitle = "A personal horoscope for a planet in transition"
 shortDescription = ""
 longDescription = ""
 speakerName = "Nithya Kirti // Arkoprabho Bhattacharjee"
@@ -463,7 +494,131 @@ His background blends product design and engineering, with his work building dat
 He also enjoys endurance running, writing poetry, and trekking among other things."""
 speakerImage = "/images/speakers/2026/speaker-nithya.webp"
 display = true
+pageReady = false
 order = 21
+
+
+[[session]]
+slug = "silent-cities"
+sessionType = "Exhibition"
+date = "2026-07-04"
+time = ""
+slot = ""
+venue = "Bangalore International Centre"
+title = "Silent Cities"
+subtitle = "The city sounds different when sparrows disappear"
+shortDescription = ""
+longDescription = ""
+speakerName = "Vishal Garg"
+designation = "Data Risk Leader"
+organisation = "Visual Storyteller"
+speakerAbout = """
+Vishal Garg is a Singapore-based data governance and risk professional with more than 17 years of experience in global banking, specialising in risk data, governance frameworks, and enterprise-scale data transformation. 
+
+Alongside his professional work, he explores the intersection of data, creativity, and human stories through visual storytelling. His work blends structured analytical thinking with artistic expression, demonstrating how data can communicate environmental and social narratives in deeply human ways.
+"""
+speakerImage = "/images/speakers/2026/speaker-vishal.webp"
+display = true
+pageReady = false
+order = 19
+
+
+[[session]]
+slug = "vanishing-wings"
+sessionType = "Exhibition"
+date = "2026-07-04"
+time = ""
+slot = ""
+venue = "Bangalore International Centre"
+title = "Vanishing Wings"
+subtitle = "Threads that trace the disappearance of insects"
+shortDescription = ""
+longDescription = ""
+speakerName = "Meghana Singh"
+designation = "Professor"
+organisation = "Shrishti Institute"
+speakerAbout = """
+Meghana Singh is a design educator and textile practitioner whose work explores sustainability, material narratives, and craft-based learning. Her practice engages with textiles as a medium for storytelling, ecological reflection, and participatory engagement. Drawing from traditional craft knowledge, collaborative processes, and material experimentation, she creates tactile experiences that encourage audiences to engage with environmental concerns in embodied and accessible ways. 
+
+With experience across design education, grassroots initiatives, and interdisciplinary practice, her work often bridges research, making, and community-based learning. Deeply interested in slow processes, repair cultures, and regenerative approaches to design, she uses textiles to translate complex ecological ideas into sensory and spatial encounters that invite reflection, dialogue, and collective awareness.
+"""
+speakerImage = "/images/speakers/2026/speaker-meghana.webp"
+display = true
+pageReady = false
+order = 19
+
+
+
+[[session]]
+slug = "fading-out"
+sessionType = "Exhibition"
+date = "2026-07-04"
+time = ""
+slot = ""
+venue = "Bangalore International Centre"
+title = "Fading Out"
+subtitle = "When species disappear, the data fades with them."
+shortDescription = ""
+longDescription = ""
+speakerName = "Aswanth Choyan"
+designation = "Information Designer"
+organisation = "NID Bangalore"
+speakerAbout = """
+
+"""
+speakerImage = ""
+display = true
+pageReady = false
+order = 19
+
+
+
+[[session]]
+slug = "two-monsoons"
+sessionType = "Exhibition"
+date = "2026-07-04"
+time = ""
+slot = ""
+venue = "Bangalore International Centre"
+title = "An Ancient River, A Modern Thirst"
+subtitle = "Living through the collapse of a river’s old rhythm"
+shortDescription = ""
+longDescription = ""
+speakerName = "Kuhu Gupta"
+designation = "Data Visualization Engineer	"
+organisation = "Illumio"
+speakerAbout = """
+Kuhu Gupta is a data visualization engineer at Illumio, where she designs and builds data visualizations that help make complex cybersecurity systems easier to understand. Her work focuses on network and hierarchical visualizations, cloud security maps, and scalable product visualizations that turn dense technical data into actionable insights. 
+
+Beyond her engineering role, Kuhu is passionate about data storytelling, visual metaphors, and exploring how data can be expressed through different mediums. Her work sits at the intersection of code, design, cybersecurity, and storytelling. Outside of work, she experiments with glass fusing, travel-inspired visual ideas, and finding new ways to turn everyday observations into creative projects.
+"""
+speakerImage = "/images/speakers/2026/speaker-kuhu.webp"
+display = true
+pageReady = false
+order = 19
+
+
+[[session]]
+slug = "pollution-that-wasnt"
+sessionType = "Exhibition"
+date = "2026-07-04"
+time = ""
+slot = ""
+venue = "Bangalore International Centre"
+title = "The Pollution That Wasn't"
+subtitle = "A portrait of emissions prevented through public transit"
+shortDescription = ""
+longDescription = ""
+speakerName = "Aditya Jain "
+designation = "Diagram Chasing"
+organisation = ""
+speakerAbout = """
+
+"""
+speakerImage = ""
+display = true
+pageReady = false
+order = 19
 
 [[session]]
 slug = "from-tables-to-maps"
@@ -482,7 +637,9 @@ organisation = "Reuters"
 speakerAbout = "Prasanta Kumar Dutta is an award-winning Information Experience Designer from India, working at the intersection of design, code, and journalism at Reuters. With a background in engineering and design, he crafts data-driven pieces that visually narrate important stories and solve problems in an aesthetically engaging way. Outside the newsroom, Prasanta writes and performs poetry and comedy, and dabbles in generative art, photography, and zine-making. He co-hosts a creative coding meetup in London that brings together artists, technologists, and enthusiasts. He also teaches and speaks on data visualisation, design, and narrative cartography at leading institutions across India."
 speakerImage = "/images/speakers/2026/speaker-prasanta.avif"
 display = true
+pageReady = true
 order = 5
+
 
 [[session]]
 slug = "draw-with-data"
@@ -501,7 +658,9 @@ organisation = "Revisual Labs"
 speakerAbout = "Schubert is a frontend and dataviz developer at Revisual Labs. He spends much of his time building charts, scrollytelling pieces and interactives on the web. His work was among the winners of last year's Pudding Cup. He enjoys experimenting with design, motion and interaction to bring data and stories to life. Outside of work, you can find him on the losing side of a daily sketching habit."
 speakerImage = "/images/speakers/2026/speaker-schubert.avif"
 display = true
+pageReady = true
 order = 3
+
 
 [[session]]
 slug = "a-dataviz-crash-course"
@@ -520,7 +679,9 @@ organisation = "Independent"
 speakerAbout = "Prakriti is an independent data storyteller. She uses words, numbers, and visuals to clearly communicate complexity. \n\nMost recently, she worked as a data journalist at The Secretariat, where she wrote stories that analysed the impact of policies on people, profit, and planet. She has also worked as a data storyteller with Revisual Labs, an information design agency, translating dense information and messy ideas into sharp narratives. \n\nPrakriti earned an MSc in Computational and Data Journalism from Cardiff University and trained in slow, thoughtful journalism with Tortoise Media (now The Observer). She believes data storytelling is a necessary skill in an era of 47-second attention spans and has honed her craft by obsessing over the many small decisions that make a good data story."
 speakerImage = "/images/speakers/2026/speaker-prakriti.avif"
 display = true
+pageReady = true
 order = 3
+
 
 [[session]]
 slug = "data-rough"
@@ -540,7 +701,9 @@ organisation = "Reuters"
 speakerAbout = "Adolfo is a Spaniard based in Hong Kong that helps to create visual explanations across a spectrum of topics, supporting the drive at Reuters to present new ways to present news. He likes to use handcrafted illustrations to approach the subject and create appealing visual stories. Adolfo Arranz previously worked as a creative director at South China Morning Post in Hong Kong and Mediacorp in Singapore. He has won multiple prestigious awards in visual communication."
 speakerImage = "/images/speakers/2026/speaker-adolfo.avif"
 display = true
+pageReady = true
 order = 6
+
 
 [[session]]
 slug = "observe-collect-map"
@@ -559,7 +722,9 @@ organisation = ""
 speakerAbout = "Priti is a creative practitioner working globally across digital humanities, data, and computational futures through research, facilitation, and critical inquiry. Her personal practice explores pluralistic approaches to data and technology, focusing on forms of knowledge and epistemologies that resist quantification while holding space for lived experience, ambiguity, and affect.\n\nShe is also a data walker who facilitates data walks in cities around the world, enabling participants to engage with urban environments through situated and embodied interpretations.\n\nCentral to her work is how culture is held, transmitted, and reconfigured across contexts and temporalities, and the structures through which it is preserved and interpreted."
 speakerImage = "/images/speakers/2026/speaker-priti.avif"
 display = true
+pageReady = true
 order = 1
+
 
 [[session]]
 slug = "interactive-dataviz-using-ai-coding"
@@ -578,8 +743,10 @@ organisation = "Capital One"
 speakerAbout = "Kenneth Dsouza is an experienced product designer with a Master's from NID and 12+ years of experience working at companies like Practo, Gojek, and Jiva.ag, building multi-market products and running design teams. Currently on a sabbatical, tinkering with making apps and exploring AI-native design tools.\n\nYou can find his AI projects at: <https://kenneth.dsouza.im/ai/>\n\n\n\nRasagy Sharma loves making data meaningful. He is an Information Designer, Design Educator, Data Artist & compulsive Sketchnoter.&#x20;\n\nHe currently heads the design team for DataLabs at Capital One and has spent 13+ years leading teams & designing data-heavy products at Microsoft, Sundial, Barclays, Mapbox, Capillary & Gramener.&#x20;\n\nIn his free time, he creates art using data and code, which has been exhibited at Berlin, Swiss Embassy in Delhi, NGMA Bangalore & Goethe Institute, Bangalore.\n\nHe also teaches at design schools like NID & IDC, IIT Bombay, and supports design communities like DesignUp, VizChitra & Creative Coding Sante.\n"
 speakerImage = "/images/speakers/2026/speaker-kenneth.avif"
 display = true
+pageReady = true
 soldOut = true
 order = 6
+
 
 [[session]]
 slug = "designing-data-stories-for-small-screens"
@@ -598,4 +765,5 @@ organisation = "The Hindu"
 speakerAbout = "Areena Arora is a journalist who transforms messy data into stories that matter. She uncovers patterns hidden in datasets, then designs how people encounter and understand those stories.\n\nHer work sits at the intersection of rigorous reporting and intentional design. She asks: What is the data trying to tell us? How do we present it such that people actually listen and grasp its intricacies? Before finding her way to this unique blend as The Hindu's first-ever Editorial Coder, she reported on public education and local governance in Tennessee, U.S.\n\nShe's obsessed with making complexity accessible. When she's not chasing stories in data, she's cooking up a storm, always up for feeding an army."
 speakerImage = "/images/speakers/2026/speaker-areena.avif"
 display = true
+pageReady = true
 order = 2
