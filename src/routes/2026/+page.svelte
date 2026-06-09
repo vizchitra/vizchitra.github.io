@@ -545,6 +545,7 @@
 			</Text>
 			{@render sessionRow('Talks')}
 			{@render sessionRow('Dialogues')}
+			{@render sessionRow('Exhibition')}
 		</Stack>
 
 		<DividerCurves />
