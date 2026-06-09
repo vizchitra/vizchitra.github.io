@@ -26,6 +26,7 @@
 		showViewDetailsButton?: boolean;
 		descriptionHtml?: string;
 		from?: string;
+		pageReady?: boolean;
 	}
 
 	let {
@@ -46,7 +47,8 @@
 		isExpanded = true,
 		showViewDetailsButton = false,
 		descriptionHtml = '',
-		from = ''
+		from = '',
+		pageReady = false
 	}: Props = $props();
 
 	const textLayouts: Record<
@@ -201,10 +203,20 @@
 	</div>
 {:else}
 	{@const currentColor = colorClasses[color] ?? colorClasses.blue}
-	<div class="sessions-card-wrapper group @container relative mx-auto w-full">
-		<a
-			href={detailHref}
-			class="sessions-card bg-viz-white border-viz-grey/40 isolate block w-full transform-gpu overflow-hidden rounded border transition-[transform,box-shadow] group-hover:scale-102"
+	<div
+		class="sessions-card-wrapper group @container relative mx-auto w-full overflow-hidden rounded"
+	>
+		{#if soldOut}
+			<div class="sold-out-ribbon" style="background: {shadowColor};">
+				<span class="sold-out-ribbon-text">Sold Out</span>
+			</div>
+		{/if}
+		<svelte:element
+			this={pageReady ? 'a' : 'div'}
+			href={pageReady ? detailHref : undefined}
+			class="sessions-card bg-viz-white border-viz-grey/40 isolate block w-full transform-gpu overflow-hidden rounded border transition-[transform,box-shadow] {pageReady
+				? 'cursor-pointer group-hover:scale-102'
+				: 'cursor-default'}"
 			onpointermove={handlePointerMove}
 			onpointerleave={handlePointerLeave}
 		>
@@ -407,9 +419,9 @@
 					</div>
 				</div>
 			</div>
-		</a>
+		</svelte:element>
 
-		{#if showViewDetailsButton}
+		{#if showViewDetailsButton && pageReady}
 			<svg
 				class="view-details-button pointer-events-none absolute -right-18 -bottom-6 z-40 block h-32 w-32 origin-center scale-0 transition-transform duration-400 ease-out group-hover:scale-100 md:h-40 md:w-40 lg:-right-10 lg:-bottom-10 lg:h-48 lg:w-48"
 				viewBox="0 0 200 200"
@@ -480,11 +492,10 @@
 	.sold-out-ribbon {
 		position: absolute;
 		top: 38px;
-		left: -55px;
+		right: -70px;
 		z-index: 30;
-		width: 240px;
-		background: var(--color-viz-orange, oklch(76% 0.161 82));
-		transform: rotate(-35deg);
+		width: 320px;
+		transform: rotate(35deg);
 		text-align: center;
 		padding: 10px 0;
 		pointer-events: none;

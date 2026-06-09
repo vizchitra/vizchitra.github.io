@@ -51,9 +51,12 @@ export const speakerImageTransforms = {
 
 	// Exhibitions
 	'Shreya Dan': { x: 10, y: -25, scale: 1.2 },
-	'Kashvi Bansal': { x: 10, y: -25, scale: 1.2 },
+	'Kashvi Bansal // Surbhi Bhatia': { x: 10, y: -25, scale: 1.2 },
 	'Sadhana Lokesh': { x: 10, y: -25, scale: 1.2 },
-	'Nithya Kirti // Arkoprabho Bhattacharjee': { x: 10, y: -25, scale: 1.2 }
+	'Nithya Kirti // Arkoprabho Bhattacharjee': { x: 10, y: -25, scale: 1.2 },
+	'Vishal Garg': { x: 10, y: -25, scale: 1.2 },
+	'Meghana Singh': { x: 10, y: -25, scale: 1.2 },
+	'Kuhu Gupta': { x: 10, y: -25, scale: 1.1 }
 };
 
 /**
