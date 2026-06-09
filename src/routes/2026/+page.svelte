@@ -20,6 +20,7 @@
 	} from '$lib/components';
 	import SessionCardExpanded from '$lib/components/sessions/SessionCardExpanded.svelte';
 	import PhotoStrip from '$lib/components/sections/PhotoStrip.svelte';
+	import SponsorStrip from '$lib/components/sections/SponsorStrip.svelte';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -545,6 +546,8 @@
 		<DividerCurves />
 	</Stack>
 </Container>
+
+<SponsorStrip />
 
 <div class="sponsor-banner">
 	<div class="sponsor-banner-inner">

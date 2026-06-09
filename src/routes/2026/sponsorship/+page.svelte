@@ -15,6 +15,7 @@
 	import type { Package } from '$lib/components/sections/sponsorship/PackageScroller.svelte';
 	import SponsorScroller from '$lib/components/sections/sponsorship/SponsorScroller.svelte';
 	import type { Sponsor } from '$lib/components/sections/sponsorship/SponsorScroller.svelte';
+	import SponsorStrip from '$lib/components/sections/SponsorStrip.svelte';
 	import EditorialScroller from '$lib/components/sections/sponsorship/EditorialScroller.svelte';
 	import type { EditorialCard } from '$lib/components/sections/sponsorship/EditorialScroller.svelte';
 	import PhotoStrip from '$lib/components/sections/PhotoStrip.svelte';
@@ -486,6 +487,8 @@
 		</Grid>
 	</Stack>
 </Container>
+
+<SponsorStrip />
 
 <PhotoStrip
 	photos={sponsorPhotos}
