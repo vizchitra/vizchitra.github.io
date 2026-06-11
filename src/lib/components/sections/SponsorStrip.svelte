@@ -4,15 +4,24 @@
 	interface Sponsor {
 		name: string;
 		logo: string;
-		url: string;
+		url?: string;
 		tier?: string;
-		/** Optical-balance height in px for this logo */
+		/** Fixed display height in px (width flows from the logo's aspect ratio) */
 		height?: number;
+		/** Optional safety cap on width in px (omit to let width be fully dynamic) */
+		maxWidth?: number;
 	}
 
 	let {
 		heading = 'OUR SPONSORS',
 		sponsors = [
+			{
+				name: 'Open Visualization Academy',
+				logo: '/images/logos/ova-um-logo.svg',
+				url: 'https://openvisualizationacademy.org/',
+				tier: 'Silver Sponsor',
+				height: 44
+			},
 			{
 				name: 'Revisual Labs',
 				logo: '/images/logos/revisual-labs-logo.png',
@@ -46,17 +55,24 @@
 
 		<ul class="strip-logos">
 			{#each sponsors as s (s.name)}
+				{@const style = `--logo-h: ${s.height ?? 40}px${s.maxWidth ? `; --logo-mw: ${s.maxWidth}px` : ''}`}
 				<li class="strip-item">
-					<a
-						class="strip-logo-link"
-						href={s.url}
-						target="_blank"
-						rel="noopener noreferrer"
-						aria-label={s.name}
-						style="--logo-h: {s.height ?? 40}px"
-					>
-						<img src={s.logo} alt="{s.name} logo" loading="lazy" />
-					</a>
+					{#if s.url}
+						<a
+							class="strip-logo-link"
+							href={s.url}
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label={s.name}
+							{style}
+						>
+							<img src={s.logo} alt="{s.name} logo" loading="lazy" />
+						</a>
+					{:else}
+						<span class="strip-logo-link" aria-label={s.name} {style}>
+							<img src={s.logo} alt="{s.name} logo" loading="lazy" />
+						</span>
+					{/if}
 					{#if s.tier}
 						<span class="strip-tier">{s.tier}</span>
 					{/if}
@@ -101,13 +117,14 @@
 		transition: transform 0.25s ease;
 	}
 
-	.strip-logo-link:hover {
+	a.strip-logo-link:hover {
 		transform: scale(1.08);
 	}
 
+	/* Height is fixed; width flows from the logo's aspect ratio (max-width only if a cap is set) */
 	.strip-logo-link img {
 		height: var(--logo-h, 40px);
-		max-width: 200px;
+		max-width: var(--logo-mw, none);
 		width: auto;
 		object-fit: contain;
 		display: block;
@@ -133,7 +150,8 @@
 
 		.strip-logo-link img {
 			height: calc(var(--logo-h, 40px) * 0.78);
-			max-width: 150px;
+			/* keep very wide logos from overflowing narrow screens */
+			max-width: var(--logo-mw, 240px);
 		}
 	}
 </style>
