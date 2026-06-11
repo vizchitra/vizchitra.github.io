@@ -383,6 +383,17 @@
 				<span class="hero-btn-text">See all Sessions →</span>
 			</a>
 		</div>
+
+		<Text type="body" align="center">
+			Not attending but want to back VizChitra?
+			<a
+				href="https://tickets.vizchitra.com/contribute"
+				target="_blank"
+				rel="noopener"
+				class="text-viz-pink-dark font-bold underline decoration-2 underline-offset-2"
+				>Contribute any amount →</a
+			>
+		</Text>
 	</Stack>
 </Container>
 
