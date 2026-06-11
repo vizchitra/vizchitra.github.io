@@ -23,7 +23,6 @@
 		tbd?: boolean;
 		soldOut?: boolean;
 		isExpanded?: boolean;
-		showViewDetailsButton?: boolean;
 		descriptionHtml?: string;
 		from?: string;
 		pageReady?: boolean;
@@ -45,7 +44,6 @@
 		tbd = false,
 		soldOut = false,
 		isExpanded = true,
-		showViewDetailsButton = false,
 		descriptionHtml = '',
 		from = '',
 		pageReady = false
@@ -421,7 +419,7 @@
 			</div>
 		</svelte:element>
 
-		{#if showViewDetailsButton && pageReady}
+		{#if pageReady}
 			<svg
 				class="view-details-button pointer-events-none absolute -right-18 -bottom-6 z-40 block h-32 w-32 origin-center scale-0 transition-transform duration-400 ease-out group-hover:scale-100 md:h-40 md:w-40 lg:-right-10 lg:-bottom-10 lg:h-48 lg:w-48"
 				viewBox="0 0 200 200"
