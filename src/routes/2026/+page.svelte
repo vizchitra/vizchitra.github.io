@@ -343,7 +343,8 @@
 
 		<Text type="lead" align="center">
 			Join us for talks, workshops, dialogues, and an exhibition.<br />
-			Two days of data visualization, curated by India's data viz community
+			Two days of data visualization, curated by India's data viz community —<br />
+			in person in Bengaluru, or online from anywhere.
 		</Text>
 
 		<div class="hero-info">
@@ -360,6 +361,10 @@
 			<div class="hero-info-item">
 				<span class="hero-info-icon">📅</span>
 				<span><strong>3rd & 4th July, 2026</strong></span>
+			</div>
+			<div class="hero-info-item">
+				<span class="hero-info-icon">💻</span>
+				<span><strong>In person or online</strong></span>
 			</div>
 		</div>
 
@@ -537,6 +542,7 @@
 				<ColorSpan color="blue">Talks</ColorSpan>,
 				<ColorSpan color="teal">Dialogues</ColorSpan>, and the
 				<ColorSpan color="orange">Exhibition</ColorSpan> at Bangalore International Centre (BIC), Bengaluru.
+				Can't make it to Bengaluru? A virtual pass streams the day live.
 			</Text>
 			{@render sessionRow('Talks')}
 			{@render sessionRow('Dialogues')}
@@ -544,6 +550,54 @@
 		</Stack>
 
 		<DividerCurves />
+	</Stack>
+</Container>
+
+<Container>
+	<Stack>
+		<!-- ── How to Attend ─────────────────────────────────────────────── -->
+		<Heading tag="h2" class="font-normal" align="center">
+			<Slanted color="orange" textContent="HOW TO ATTEND" />
+		</Heading>
+		<Text type="body" align="center">
+			Be there in person in Bengaluru, or join online from anywhere in the world.
+		</Text>
+
+		<div class="attend-grid">
+			<div class="attend-card attend-pink">
+				<h3 class="attend-title">In person · Bengaluru</h3>
+				<ul class="attend-list">
+					<li>Conference Day, 4 July, at the BIC</li>
+					<li>Talks, Dialogues and the Exhibition</li>
+					<li>Add a hands-on Workshop separately</li>
+				</ul>
+				<a class="attend-btn" href="https://tickets.vizchitra.com" target="_blank" rel="noopener"
+					>🎟️ Get in-person tickets →</a
+				>
+			</div>
+			<div class="attend-card attend-teal">
+				<h3 class="attend-title">Online · From anywhere</h3>
+				<ul class="attend-list">
+					<li>Stream the conference live</li>
+					<li>Join from any city or country</li>
+					<li>Virtual pass at ₹1,299</li>
+				</ul>
+				<a class="attend-btn" href="https://tickets.vizchitra.com" target="_blank" rel="noopener"
+					>💻 Get a virtual pass →</a
+				>
+			</div>
+		</div>
+
+		<Text type="body" align="center">
+			Not attending but want to back VizChitra?
+			<a
+				href="https://tickets.vizchitra.com/contribute"
+				target="_blank"
+				rel="noopener"
+				class="text-viz-pink-dark font-bold underline decoration-2 underline-offset-2"
+				>Contribute any amount →</a
+			>
+		</Text>
 	</Stack>
 </Container>
 
@@ -969,6 +1023,80 @@
 		height: 100%;
 		border: none;
 		border-radius: 8px;
+	}
+
+	/* ── How to Attend cards ───────────────────────────────────────── */
+
+	.attend-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+		gap: 1.5rem;
+		align-items: stretch;
+	}
+
+	.attend-card {
+		display: flex;
+		flex-direction: column;
+		border: 2px solid var(--card-border);
+		border-radius: 0.75rem;
+		background: rgba(255, 255, 255, 0.8);
+		padding: 1.5rem 1.75rem;
+	}
+
+	.attend-pink {
+		--card-border: var(--color-viz-pink-dark);
+		--card-accent: var(--color-viz-pink-solid);
+	}
+
+	.attend-teal {
+		--card-border: var(--color-viz-teal-dark);
+		--card-accent: var(--color-viz-teal-dark);
+	}
+
+	.attend-title {
+		font-family: var(--font-display);
+		font-weight: 800;
+		font-size: 1.25rem;
+		color: var(--card-border);
+		margin: 0 0 0.5rem;
+	}
+
+	.attend-list {
+		list-style: disc;
+		margin: 0 0 1.5rem;
+		padding-left: 1.15rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.4rem;
+		flex: 1 1 auto;
+		color: var(--color-viz-grey-dark);
+	}
+
+	.attend-list li {
+		line-height: 1.4;
+	}
+
+	.attend-btn {
+		align-self: flex-start;
+		margin-top: auto;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		background: var(--card-accent);
+		color: #fff;
+		font-weight: 600;
+		font-size: 1rem;
+		padding: 0.7rem 1.3rem;
+		border-radius: 8px;
+		text-decoration: none;
+		transition:
+			transform 0.2s ease,
+			box-shadow 0.2s ease;
+	}
+
+	.attend-btn:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 	}
 
 	/* ── Sponsorship banner ────────────────────────────────────────── */
