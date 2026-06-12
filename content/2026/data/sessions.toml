@@ -26,6 +26,7 @@ He has written about data, analytics, and AI on his Substack The Art of Data Sci
 speakerImage = "/images/speakers/2026/speaker-karthik.webp"
 display = true
 pageReady = true
+ticketCode = "agentic_dataviz"
 order = 1
 
 
@@ -407,7 +408,7 @@ longDescription = "Bar charts with truncated axes. Correlations that vanish when
 speakerName = "Agriya Khetarpal"
 designation = "Software Engineer"
 organisation = "Quansight"
-speakerAbout = "Agriya is a software engineer at Quansight, where he works on scientific open source software in the Scientific Python and Jupyter ecosystems. He is passionate about advancing science policy in India and believes that data, communicated honestly and rigorously, is one of its most powerful tools ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ a conviction that keeps him equally at home, whether in a terminal or in a policy debate."
+speakerAbout = "Agriya is a software engineer at Quansight, where he works on scientific open source software in the Scientific Python and Jupyter ecosystems. He is passionate about advancing science policy in India and believes that data, communicated honestly and rigorously, is one of its most powerful tools, a conviction that keeps him equally at home, whether in a terminal or in a policy debate."
 speakerImage = "/images/speakers/2026/speaker-agriya.avif"
 display = true
 pageReady = true
@@ -673,6 +674,7 @@ speakerAbout = "Prasanta Kumar Dutta is an award-winning Information Experience 
 speakerImage = "/images/speakers/2026/speaker-prasanta.avif"
 display = true
 pageReady = true
+ticketCode = "workshop_2026_maps"
 order = 5
 
 
@@ -680,7 +682,7 @@ order = 5
 slug = "draw-with-data"
 sessionType = "Workshops"
 date = "2026-07-03"
-time = "10:00 ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ 13:00"
+time = "10:00 - 13:00"
 slot = "morning"
 venue = "Underline Center"
 title = "Draw with Data: Custom Dataviz Using D3"
@@ -694,6 +696,7 @@ speakerAbout = "Schubert is a frontend and dataviz developer at Revisual Labs. H
 speakerImage = "/images/speakers/2026/speaker-schubert.avif"
 display = true
 pageReady = true
+ticketCode = "workshop_2026_d3_viz"
 order = 3
 
 
@@ -715,6 +718,7 @@ speakerAbout = "Prakriti is an independent data storyteller. She uses words, num
 speakerImage = "/images/speakers/2026/speaker-prakriti.avif"
 display = true
 pageReady = true
+ticketCode = "workshop_2026_datavix_course"
 order = 3
 
 
@@ -737,6 +741,7 @@ speakerAbout = "Adolfo is a Spaniard based in Hong Kong that helps to create vis
 speakerImage = "/images/speakers/2026/speaker-adolfo.avif"
 display = true
 pageReady = true
+ticketCode = "workshop_2026_data_rough"
 order = 6
 
 
@@ -758,6 +763,7 @@ speakerAbout = "Priti is a creative practitioner working globally across digital
 speakerImage = "/images/speakers/2026/speaker-priti.avif"
 display = true
 pageReady = true
+ticketCode = "workshop_2026_datawalk"
 order = 1
 
 
@@ -779,6 +785,7 @@ speakerAbout = "Kenneth Dsouza is an experienced product designer with a Master'
 speakerImage = "/images/speakers/2026/speaker-kenneth.avif"
 display = true
 pageReady = true
+ticketCode = "workshop_2026_ai_data_vix"
 soldOut = true
 order = 6
 
@@ -801,4 +808,5 @@ speakerAbout = "Areena Arora is a journalist who transforms messy data into stor
 speakerImage = "/images/speakers/2026/speaker-areena.avif"
 display = true
 pageReady = true
+ticketCode = "workshop_2026_mobile_viz"
 order = 2

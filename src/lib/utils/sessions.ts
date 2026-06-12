@@ -30,6 +30,7 @@ export interface SessionData {
 	soldOut?: boolean;
 	order?: number;
 	pageReady?: boolean;
+	ticketCode?: string;
 }
 
 export function getSessionOrder(s: Pick<SessionData, 'order'>): number {
