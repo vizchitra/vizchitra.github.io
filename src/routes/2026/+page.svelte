@@ -324,6 +324,7 @@
 								soldOut={session.soldOut}
 								isExpanded={true}
 								descriptionHtml={session.descriptionHtml}
+								pageReady={session.pageReady}
 							/>
 						</div>
 					{/each}

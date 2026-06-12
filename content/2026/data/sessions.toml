@@ -1,4 +1,39 @@
 [[session]]
+slug = "agentic-dataviz"
+sessionType = "Workshops"
+date = "2026-07-03"
+time = "14:30 - 17:30"
+slot = "afternoon"
+venue = "Underline Center"
+title = "Agentic DataViz: Build Systems, Not Charts"
+subtitle = "Find the Story. Teach the Agent. Run It Again."
+shortDescription = """It is now easy to ask an LLM to make a good-looking chart once. The harder problem is getting it to find the right hypotheses / story, use the right data, match your taste, and do it again tomorrow without everything becoming a fresh act of faith. This hands-on workshop teaches a practical workflow for building repeatable AI-assisted dataviz systems"""
+longDescription = """
+LLMs can now produce surprisingly good charts, dashboards, and data stories. The awkward bit is that most of this work still has a demo problem: it works once, on one dataset, with one lucky prompt. The moment the data changes, the story changes, or another person has to run it, the whole thing becomes fragile.
+
+A useful correction is to remember that visualisation follows the same basic process as data science. You start with a question or hypothesis. You inspect whether the data can actually answer it. You iterate when the first answer is not quite right. The chart comes at the end, as the communication layer. AI does not remove this process. If anything, it makes the process more important, because the first generated chart can look plausible even when the underlying story is weak.
+
+This workshop is about turning that old craft process into a repeatable AI-assisted workflow. We will define the job, inspect the data, create a context pack, ask the model to find candidate stories before charting, generate a visual, critique it, and add simple reproducibility checks. The examples draw on my work at Babbage Insight, where we tried to monitor business metrics and surface stories automatically, and on my more recent AI-generated weather visualisations and narrative posts.
+
+Participants will leave with a small reusable system: input data, context, story-finding prompt, visual-generation prompt, generated output, review checklist, and next-run instructions.
+"""
+speakerName = "Karthik Shashidhar"
+designation = "Fractional Data & AI Consultant"
+organisation = ""
+speakerAbout = """Karthik Shashidhar is a fractional data and AI consultant based in Bangalore. Prior to this, he was founder and CEO of Babbage Insight, and SVP of Data at Delhivery.
+
+He has written about data, analytics, and AI on his Substack The Art of Data Science since 2022 (before that, on a personal blog since the mid-2000s). He writes a column for Mint and is the author of Between the Buyer and the Seller. He holds a BTech in Computer Science from IIT Madras and an MBA from IIM Bangalore"""
+speakerImage = "/images/speakers/2026/speaker-karthik.webp"
+display = true
+pageReady = true
+order = 1
+
+
+
+
+
+
+[[session]]
 slug = "shape-health-costs"
 sessionType = "Talks"
 date = "2026-07-04"
