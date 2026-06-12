@@ -1,6 +1,6 @@
 <script lang="ts">
-	const href = '/2026/sponsorship';
-	const text = 'VizChitra 2026 ◦ Open for sponsors ◦ July 3–4, Bengaluru ◦ Talk to us →';
+	const href = 'https://tickets.vizchitra.com';
+	const text = 'VizChitra 2026 ◦ Tickets open ◦ July 3–4 ◦ Get yours →';
 	const repetitions = 6;
 
 	const tileColors = [
@@ -20,7 +20,13 @@
 	];
 </script>
 
-<a class="bar" {href} aria-label="VizChitra 2026 sponsorship — Talk to us">
+<a
+	class="bar"
+	{href}
+	target="_blank"
+	rel="noopener"
+	aria-label="VizChitra 2026 tickets — in person or online"
+>
 	<div class="track" aria-hidden="true">
 		{#each Array(repetitions) as _, i}
 			<span class="sep-tile" style="--tile-color: {tileColors[i % tileColors.length]};"></span>
